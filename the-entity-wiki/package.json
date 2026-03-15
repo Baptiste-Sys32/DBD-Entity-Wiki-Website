@@ -1,0 +1,24 @@
+{
+  "name": "the-entity-wiki",
+  "version": "1.0.1",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "sync": "npx cap sync android",
+    "android:copy": "npx cap copy android",
+    "android:open": "npx cap open android",
+    "android:build": "npm run sync && cd android && ./gradlew assembleRelease",
+    "cf:pages": "./scripts/deploy-pages.sh",
+    "cf:r2:upload": "./scripts/upload-r2-assets.sh"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@capacitor/android": "^5.7.8",
+    "@capacitor/cli": "^5.7.8",
+    "@capacitor/core": "^5.7.8",
+    "@capacitor/haptics": "^5.0.8"
+  }
+}

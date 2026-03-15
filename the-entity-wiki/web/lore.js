@@ -1,0 +1,1444 @@
+// Dead by Daylight Lore Timeline Data
+// Complete chapter history with release dates, characters, maps, and lore summaries
+// Data compiled from official DBD Wiki and sources
+
+var TIMELINE_DATA = {
+    // Base Game Release - June 14, 2016
+    releases: [
+        {
+            id: "base-game",
+            name: "Dead by Daylight",
+            type: "base",
+            date: "2016-06-14",
+            displayDate: "June 14, 2016",
+            description: "The original release of Dead by Daylight featuring the original cast of killers and survivors.",
+            killers: [
+                {
+                    id: "trapper",
+                    name: "The Trapper",
+                    realName: "Evan MacMillan",
+                    fogEntry: "After leading over a hundred men into the dark tunnels of the MacMillan Estate mines and sealing them to their fate with explosives, Evan vanished without a trace. The Entity claimed him, drawn to the darkness bred from wealth and power gone wrong.",
+                    licensed: false
+                },
+                {
+                    id: "wraith",
+                    name: "The Wraith",
+                    realName: "Philip Ojomo",
+                    fogEntry: "After discovering he had been unknowingly executing victims in a car crusher at Autohaven Wreckers, Philip snapped. He killed his boss by pulling his head and spine from his crushed body, then walked into the fog, never to be seen again.",
+                    licensed: false
+                },
+                {
+                    id: "hillbilly",
+                    name: "The Hillbilly",
+                    realName: "Max Thompson Jr.",
+                    fogEntry: "Born hideously disfigured and bricked into a room by his ashamed parents, the boy escaped and slaughtered them with savage violence. He continued his deranged rampage through Coldwind Farm until the Entity took notice of his chainsaw-wielding fury.",
+                    licensed: false
+                }
+            ],
+            survivors: [
+                {
+                    id: "dwight",
+                    name: "Dwight Fairfield",
+                    fogEntry: "On a team-building camping trip organized by his coworkers, Dwight found himself abandoned deep in the woods. Lost and alone, he wandered through the dark forest until a thick fog enveloped him, pulling him into the Entity's realm.",
+                    licensed: false
+                },
+                {
+                    id: "meg",
+                    name: "Meg Thomas",
+                    fogEntry: "After her mother fell ill, Meg abandoned her promising athletic career to care for her. During a late-night run to clear her head, she pushed herself deeper into the woods than ever before, where the fog claimed her.",
+                    licensed: false
+                },
+                {
+                    id: "claudette",
+                    name: "Claudette Morel",
+                    fogEntry: "A shy botany student from Montreal, Claudette traveled to the woods to study rare plants. While examining specimens, a strange mist rolled in. She followed it, curious, and never returned to her normal life.",
+                    licensed: false
+                },
+                {
+                    id: "jake",
+                    name: "Jake Park",
+                    fogEntry: "Rejecting his wealthy family's expectations, Jake fled to the wilderness to live off the land. One night, while camping deep in the forest, a dark fog crept through the trees and swallowed him whole.",
+                    licensed: false
+                }
+            ],
+            maps: [
+                { name: "Coal Tower", realm: "MacMillan Estate" },
+                { name: "Shelter Woods", realm: "MacMillan Estate" },
+                { name: "Suffocation Pit", realm: "MacMillan Estate" },
+                { name: "Ironworks of Misery", realm: "MacMillan Estate" },
+                { name: "Groaning Storehouse", realm: "MacMillan Estate" },
+                { name: "Azarov's Resting Place", realm: "Autohaven Wreckers" },
+                { name: "Blood Lodge", realm: "Autohaven Wreckers" },
+                { name: "Gas Heaven", realm: "Autohaven Wreckers" },
+                { name: "Wreckers' Yard", realm: "Autohaven Wreckers" },
+                { name: "Rotten Fields", realm: "Coldwind Farm" },
+                { name: "Fractured Cowshed", realm: "Coldwind Farm" },
+                { name: "The Thompson House", realm: "Coldwind Farm" },
+                { name: "Torment Creek", realm: "Coldwind Farm" }
+            ]
+        },
+
+        // Chapter 1 - August 18, 2016
+        {
+            id: "chapter-1",
+            name: "The Last Breath Chapter",
+            type: "chapter",
+            chapterNumber: 1,
+            date: "2016-08-18",
+            displayDate: "August 18, 2016",
+            description: "The first DLC chapter, released free to the community as thanks for supporting the game.",
+            killers: [
+                {
+                    id: "nurse",
+                    name: "The Nurse",
+                    realName: "Sally Smithson",
+                    fogEntry: "After years of working the night shift at Crotus Prenn Asylum, Sally's mind finally broke. She suffocated over fifty patients in their beds before being found rocking back and forth, her sanity gone. The ambulance transporting her crashed in the woods—all staff dead, Sally vanished into the fog.",
+                    licensed: false
+                }
+            ],
+            survivors: [
+                {
+                    id: "nea",
+                    name: "Nea Karlsson",
+                    fogEntry: "A rebellious Swedish street artist, Nea moved to America and took up urban exploration. While tagging the abandoned Crotus Prenn Asylum at night, she ventured too deep into its dark corridors and was claimed by the Entity's fog.",
+                    licensed: false
+                }
+            ],
+            maps: [
+                { name: "Disturbed Ward", realm: "Crotus Prenn Asylum" }
+            ]
+        },
+
+        // Chapter 2 - October 25, 2016
+        {
+            id: "chapter-2",
+            name: "The HALLOWEEN Chapter",
+            type: "chapter",
+            chapterNumber: 2,
+            date: "2016-10-25",
+            displayDate: "October 25, 2016",
+            description: "The first licensed chapter, featuring the iconic slasher Michael Myers from the Halloween franchise.",
+            killers: [
+                {
+                    id: "shape",
+                    name: "The Shape",
+                    realName: "Michael Myers",
+                    fogEntry: "The embodiment of pure evil, Michael Myers killed his sister as a child and was institutionalized. After escaping to hunt Laurie Strode, he was drawn into the Entity's realm—a perfect hunting ground for a predator who kills to find inner peace.",
+                    licensed: true
+                }
+            ],
+            survivors: [
+                {
+                    id: "laurie",
+                    name: "Laurie Strode",
+                    fogEntry: "The sole survivor of Michael Myers' Halloween massacre, Laurie thought she had escaped the nightmare. But as she fled through the streets of Haddonfield, a strange fog descended upon her, pulling her into an endless cycle of terror.",
+                    licensed: true
+                }
+            ],
+            maps: [
+                { name: "Lampkin Lane", realm: "Haddonfield" }
+            ]
+        },
+
+        // Chapter 3 - December 8, 2016
+        {
+            id: "chapter-3",
+            name: "Of Flesh and Mud",
+            type: "chapter",
+            chapterNumber: 3,
+            date: "2016-12-08",
+            displayDate: "December 8, 2016",
+            description: "An original chapter introducing The Hag and the swamp realm.",
+            killers: [
+                {
+                    id: "hag",
+                    name: "The Hag",
+                    realName: "Lisa Sherwood",
+                    fogEntry: "Kidnapped by cannibals and kept chained in a flooded cellar, Lisa was carved and starved until she escaped. Dying in the swamp, she traced the symbols the village elders taught her and gave in to a dark hunger. A fog engulfed her as her vengeance transformed her into something monstrous.",
+                    licensed: false
+                }
+            ],
+            survivors: [
+                {
+                    id: "ace",
+                    name: "Ace Visconti",
+                    fogEntry: "A charming gambler whose luck finally ran out, Ace fled his debts across continents. While hiding in a seedy casino, he made one last bet—and lost everything. When the fog rolled in, he vanished before his creditors could collect.",
+                    licensed: false
+                }
+            ],
+            maps: [
+                { name: "The Pale Rose", realm: "Backwater Swamp" },
+                { name: "Grim Pantry", realm: "Backwater Swamp" }
+            ]
+        },
+
+        // Half-Chapter: Left Behind - March 8, 2017
+        {
+            id: "left-behind",
+            name: "Left Behind",
+            type: "paragraph",
+            date: "2017-03-08",
+            displayDate: "March 8, 2017",
+            description: "A free paragraph DLC featuring Bill Overbeck from Left 4 Dead.",
+            killers: [],
+            survivors: [
+                {
+                    id: "bill",
+                    name: "William 'Bill' Overbeck",
+                    fogEntry: "A Vietnam veteran who fought through the zombie apocalypse with his group of survivors. When they were cornered by tanks, Bill sacrificed himself to save the others. As he fell, the fog claimed the old soldier for another fight.",
+                    licensed: true
+                }
+            ],
+            maps: []
+        },
+
+        // Chapter 4 - May 11, 2017
+        {
+            id: "chapter-4",
+            name: "Spark of Madness",
+            type: "chapter",
+            chapterNumber: 4,
+            date: "2017-05-11",
+            displayDate: "May 11, 2017",
+            description: "An original chapter introducing The Doctor and his terrifying electroshock abilities.",
+            killers: [
+                {
+                    id: "doctor",
+                    name: "The Doctor",
+                    realName: "Herman Carter",
+                    fogEntry: "Working at a secret CIA black site, Herman used increasingly brutal electroshock torture to extract information from prisoners. When the Léry Memorial Institute went silent, investigators found all personnel dead from head trauma—except Herman, who had vanished into the fog.",
+                    licensed: false
+                }
+            ],
+            survivors: [
+                {
+                    id: "feng",
+                    name: "Feng Min",
+                    fogEntry: "A former esports prodigy whose career collapsed under the pressure of fame, Feng retreated into gaming as an escape. During a marathon streaming session, she fell asleep at her computer—and woke up in the Entity's nightmare.",
+                    licensed: false
+                }
+            ],
+            maps: [
+                { name: "Treatment Theatre", realm: "Léry's Memorial Institute" }
+            ]
+        },
+
+        // Chapter 5 - July 27, 2017
+        {
+            id: "chapter-5",
+            name: "A Lullaby for the Dark",
+            type: "chapter",
+            chapterNumber: 5,
+            date: "2017-07-27",
+            displayDate: "July 27, 2017",
+            description: "An original chapter introducing The Huntress and her haunting lullaby.",
+            killers: [
+                {
+                    id: "huntress",
+                    name: "The Huntress",
+                    realName: "Anna",
+                    fogEntry: "Orphaned after her mother was killed by an elk, Anna grew feral in the Russian wilderness. She hunted animals, then soldiers, then kidnapped little girls who always died in her care. During World War I, she vanished into the forest, her lullaby fading into the Entity's fog.",
+                    licensed: false
+                }
+            ],
+            survivors: [
+                {
+                    id: "david",
+                    name: "David King",
+                    fogEntry: "A Manchester bare-knuckle brawler estranged from his wealthy family, David got into a bar fight that turned deadly. Fleeing through the streets, he ducked into an alley and found himself enveloped by an unnatural fog.",
+                    licensed: false
+                }
+            ],
+            maps: [
+                { name: "Mother's Dwelling", realm: "Red Forest" }
+            ]
+        },
+
+        // Half-Chapter: LEATHERFACE - September 14, 2017
+        {
+            id: "leatherface",
+            name: "LEATHERFACE",
+            type: "paragraph",
+            date: "2017-09-14",
+            displayDate: "September 14, 2017",
+            description: "A paragraph DLC featuring the iconic chainsaw-wielding Leatherface from The Texas Chain Saw Massacre.",
+            killers: [
+                {
+                    id: "cannibal",
+                    name: "The Cannibal",
+                    realName: "Bubba Sawyer",
+                    fogEntry: "Leatherface does what his family tells him—he protects them by killing outsiders. When a victim escaped with help from a trucker, Leatherface's world collapsed. Spinning in confusion and grief, he felt a cold dread crawl over him. He knew instinctively what he had to do—kill for a new master in the fog.",
+                    licensed: true
+                }
+            ],
+            survivors: [],
+            maps: []
+        },
+
+        // Chapter 6 - October 26, 2017
+        {
+            id: "chapter-6",
+            name: "A Nightmare on Elm Street",
+            type: "chapter",
+            chapterNumber: 6,
+            date: "2017-10-26",
+            displayDate: "October 26, 2017",
+            description: "Licensed chapter featuring Freddy Krueger from A Nightmare on Elm Street (2010 remake).",
+            killers: [
+                {
+                    id: "nightmare",
+                    name: "The Nightmare",
+                    realName: "Freddy Krueger",
+                    fogEntry: "Burned alive by vengeful parents, Freddy survived as a dream demon. While pursuing Quentin into the dream world for final revenge, a dark fog enveloped them both. Freddy found himself in a new realm—with endless prey to terrorize in their nightmares.",
+                    licensed: true
+                }
+            ],
+            survivors: [
+                {
+                    id: "quentin",
+                    name: "Quentin Smith",
+                    fogEntry: "After defeating Freddy alongside Nancy, Quentin thought the nightmare was over. But Freddy invaded his dreams again and again. In a desperate trap at Badham Preschool, the fog swallowed them both, pulling Quentin into an eternal nightmare.",
+                    licensed: true
+                }
+            ],
+            maps: [
+                { name: "Badham Preschool", realm: "Springwood" }
+            ]
+        },
+
+        // Chapter 7 - January 23, 2018
+        {
+            id: "chapter-7",
+            name: "The SAW Chapter",
+            type: "chapter",
+            chapterNumber: 7,
+            date: "2018-01-23",
+            displayDate: "January 23, 2018",
+            description: "Licensed chapter featuring Amanda Young as The Pig from the SAW franchise.",
+            killers: [
+                {
+                    id: "pig",
+                    name: "The Pig",
+                    realName: "Amanda Young",
+                    fogEntry: "Jigsaw's devoted disciple failed her final test and was shot. As she bled out on the tiled floor, darkness engulfed her accompanied by sounds like creaking wood. She awoke in a forest, viewing the world through the eyes of a Pig once more—passed on to a new master.",
+                    licensed: true
+                }
+            ],
+            survivors: [
+                {
+                    id: "tapp",
+                    name: "David Tapp",
+                    fogEntry: "Obsessed with catching the Jigsaw Killer, Detective Tapp lost everything—his partner, his career, his sanity. While pursuing a lead in an abandoned building, he found himself in one of Jigsaw's traps. The fog claimed him before he could find escape.",
+                    licensed: true
+                }
+            ],
+            maps: [
+                { name: "The Game", realm: "Gideon Meat Plant" }
+            ]
+        },
+
+        // Chapter 8 - June 12, 2018
+        {
+            id: "chapter-8",
+            name: "Curtain Call",
+            type: "chapter",
+            chapterNumber: 8,
+            date: "2018-06-12",
+            displayDate: "June 12, 2018",
+            description: "An original chapter introducing The Clown and his noxious gas.",
+            killers: [
+                {
+                    id: "clown",
+                    name: "The Clown",
+                    realName: "Kenneth Chase",
+                    fogEntry: "Jeffrey Hawk traveled with circuses for decades, using his nomadic life as cover for killing. After a victim escaped, he fled. Somewhere along the road, he left ordinary America behind and entered the fog—a place of transience perfectly suiting a killer who never stays.",
+                    licensed: false
+                }
+            ],
+            survivors: [
+                {
+                    id: "kate",
+                    name: "Kate Denson",
+                    fogEntry: "A folk singer whose music touched troubled souls, Kate performed at a small-town festival one night. She wandered backstage to help a crying child, following them into the darkness behind the tent—where the fog was waiting.",
+                    licensed: false
+                }
+            ],
+            maps: [
+                { name: "Father Campbell's Chapel", realm: "Crotus Prenn Asylum" }
+            ]
+        },
+
+        // Chapter 9 - September 18, 2018
+        {
+            id: "chapter-9",
+            name: "Shattered Bloodline",
+            type: "chapter",
+            chapterNumber: 9,
+            date: "2018-09-18",
+            displayDate: "September 18, 2018",
+            description: "An original chapter introducing The Spirit and her phase-walking abilities.",
+            killers: [
+                {
+                    id: "spirit",
+                    name: "The Spirit",
+                    realName: "Rin Yamaoka",
+                    fogEntry: "When Rin came home to find her father had murdered her mother, he turned on her next. Slashed and broken, she fell through a glass partition. Dying in a pool of blood, she swore vengeance. The darkness whispered promises of blood and revenge—an oath was made and Rin closed her eyes.",
+                    licensed: false
+                }
+            ],
+            survivors: [
+                {
+                    id: "adam",
+                    name: "Adam Francis",
+                    fogEntry: "A dedicated teacher from Jamaica working in Japan, Adam was on a train home when it derailed. In the chaos, he tried to help injured passengers. A strange fog seeped through the wreckage, and Adam vanished along with several others.",
+                    licensed: false
+                }
+            ],
+            maps: [
+                { name: "Family Residence", realm: "Yamaoka Estate" }
+            ]
+        },
+
+        // Chapter 10 - December 11, 2018
+        {
+            id: "chapter-10",
+            name: "Darkness Among Us",
+            type: "chapter",
+            chapterNumber: 10,
+            date: "2018-12-11",
+            displayDate: "December 11, 2018",
+            description: "An original chapter introducing The Legion, a gang of masked killers.",
+            killers: [
+                {
+                    id: "legion",
+                    name: "The Legion",
+                    realName: "Frank, Julie, Susie, Joey",
+                    fogEntry: "After a robbery turned murder, the four teens buried the body on Mount Ormond. Frank spotted something in the woods and followed a dark fog into the forest. Julie, Susie, and Joey followed his muddy footsteps and vanished too. Only the body was ever found.",
+                    licensed: false
+                }
+            ],
+            survivors: [
+                {
+                    id: "jeff",
+                    name: "Jeff Johansen",
+                    fogEntry: "A metal artist living in his late mother's house in Ormond, Jeff went to the abandoned lodge to find inspiration. He found old masks and a strange presence instead. While sketching, the fog crept in through the broken windows.",
+                    licensed: false
+                }
+            ],
+            maps: [
+                { name: "Mount Ormond Resort", realm: "Ormond" }
+            ]
+        },
+
+        // Chapter 11 - March 19, 2019
+        {
+            id: "chapter-11",
+            name: "Demise of the Faithful",
+            type: "chapter",
+            chapterNumber: 11,
+            date: "2019-03-19",
+            displayDate: "March 19, 2019",
+            description: "An original chapter introducing The Plague and her infectious vomit.",
+            killers: [
+                {
+                    id: "plague",
+                    name: "The Plague",
+                    realName: "Adiris",
+                    fogEntry: "The High Priestess of Babylon was infected by the plague she tried to purify. Banished and dying, she prayed to the gods in a mountain cave. The black fog answered, consuming her and her doomed followers. Their bodies were never found.",
+                    licensed: false
+                }
+            ],
+            survivors: [
+                {
+                    id: "jane",
+                    name: "Jane Romero",
+                    fogEntry: "A popular TV host and actress, Jane was driving through a storm one night when her car crashed. Stumbling through the rain, she saw lights in the distance. She never reached them—the fog found her first.",
+                    licensed: false
+                }
+            ],
+            maps: [
+                { name: "Temple of Purgation", realm: "Red Forest" }
+            ]
+        },
+
+        // Paragraph: Ash vs Evil Dead - April 2, 2019
+        {
+            id: "ash-vs-evil-dead",
+            name: "Ash vs Evil Dead",
+            type: "paragraph",
+            date: "2019-04-02",
+            displayDate: "April 2, 2019",
+            description: "A paragraph DLC featuring Ash Williams from the Evil Dead franchise.",
+            killers: [],
+            survivors: [
+                {
+                    id: "ash",
+                    name: "Ash Williams",
+                    fogEntry: "The chainsaw-handed, wise-cracking Deadite slayer was fighting evil like any other day. But when a portal opened that wasn't his usual nightmare, Ash found himself in a new realm of terror. Groovy... but also deeply annoying.",
+                    licensed: true
+                }
+            ],
+            maps: []
+        },
+
+        // Chapter 12 - June 18, 2019
+        {
+            id: "chapter-12",
+            name: "Ghost Face",
+            type: "chapter",
+            chapterNumber: 12,
+            date: "2019-06-18",
+            displayDate: "June 18, 2019",
+            description: "Licensed chapter featuring Ghost Face (original DBD version inspired by the Scream franchise).",
+            killers: [
+                {
+                    id: "ghostface",
+                    name: "The Ghost Face",
+                    realName: "Danny Johnson",
+                    fogEntry: "A serial killer who wrote articles about his own murders under the name Jed Olsen, Danny fled when the investigation pointed to him. Stalking a new victim in Florida, a cold fog descended. He saw hooks and hospitals—an eternal stage for his performances.",
+                    licensed: true
+                }
+            ],
+            survivors: [],
+            maps: []
+        },
+
+        // Chapter 13 - September 17, 2019
+        {
+            id: "chapter-13",
+            name: "Stranger Things",
+            type: "chapter",
+            chapterNumber: 13,
+            date: "2019-09-17",
+            displayDate: "September 17, 2019",
+            description: "Licensed chapter featuring The Demogorgon and survivors from Netflix's Stranger Things.",
+            killers: [
+                {
+                    id: "demogorgon",
+                    name: "The Demogorgon",
+                    realName: "Unknown",
+                    fogEntry: "A creature from the Upside Down, the Demogorgon is a nightmare of unrestrained rage. Its hunger for flesh and instinct to hunt made it perfect prey for the Entity. Drawn from its dark dimension into the fog, it continues to devour all it finds.",
+                    licensed: true
+                }
+            ],
+            survivors: [
+                {
+                    id: "steve",
+                    name: "Steve Harrington",
+                    fogEntry: "Once a popular jock, Steve became an unlikely hero protecting kids from the Upside Down. While investigating a new threat in Hawkins, the fog from the other dimension seemed different—darker. It pulled him into a realm beyond even the Upside Down.",
+                    licensed: true
+                },
+                {
+                    id: "nancy",
+                    name: "Nancy Wheeler",
+                    fogEntry: "A determined journalist who survived the horrors of the Upside Down multiple times, Nancy was investigating strange disappearances when the fog claimed her too. Now she fights in a nightmare that never ends.",
+                    licensed: true
+                }
+            ],
+            maps: [
+                { name: "Underground Complex", realm: "Hawkins National Laboratory" }
+            ]
+        },
+
+        // Chapter 14 - December 3, 2019
+        {
+            id: "chapter-14",
+            name: "Cursed Legacy",
+            type: "chapter",
+            chapterNumber: 14,
+            date: "2019-12-03",
+            displayDate: "December 3, 2019",
+            description: "An original chapter introducing The Oni, ancestor of The Spirit.",
+            killers: [
+                {
+                    id: "oni",
+                    name: "The Oni",
+                    realName: "Kazan Yamaoka",
+                    fogEntry: "A samurai consumed by rage, Kazan killed anyone who called him 'Oni.' His bloodlust knew no bounds until he accidentally killed his own father. Tortured by farmers in a stone mill, his dying rage called the fog. His body vanished—only an ominous legend remained.",
+                    licensed: false
+                }
+            ],
+            survivors: [
+                {
+                    id: "yui",
+                    name: "Yui Kimura",
+                    fogEntry: "A motorcycle gang leader fighting for female bikers' rights in Japan, Yui was racing through mountain roads at night. Taking a turn too fast, she crashed—and woke up not on pavement but in the Entity's realm.",
+                    licensed: false
+                }
+            ],
+            maps: [
+                { name: "Sanctum of Wrath", realm: "Yamaoka Estate" }
+            ]
+        },
+
+        // Chapter 15 - March 10, 2020
+        {
+            id: "chapter-15",
+            name: "Chains of Hate",
+            type: "chapter",
+            chapterNumber: 15,
+            date: "2020-03-10",
+            displayDate: "March 10, 2020",
+            description: "An original chapter introducing The Deathslinger and the Wild West.",
+            killers: [
+                {
+                    id: "deathslinger",
+                    name: "The Deathslinger",
+                    realName: "Caleb Quinn",
+                    fogEntry: "An Irish immigrant inventor betrayed by everyone he trusted, Caleb spent years as a bounty hunter before enacting bloody revenge on those who wronged him. Leaving a massacre behind, he hobbled to his cell and saw a dusty path in the fog—hooks gleaming at its end.",
+                    licensed: false
+                }
+            ],
+            survivors: [
+                {
+                    id: "zarina",
+                    name: "Zarina Kassir",
+                    fogEntry: "A documentary filmmaker exposing America's corrupt prison system, Zarina was investigating Hellshire Penitentiary when she discovered its dark secrets. Before she could escape with her footage, the fog claimed her.",
+                    licensed: false
+                }
+            ],
+            maps: [
+                { name: "Dead Dawg Saloon", realm: "Grave of Glenvale" }
+            ]
+        },
+
+        // Chapter 16 - June 16, 2020
+        {
+            id: "chapter-16",
+            name: "Silent Hill",
+            type: "chapter",
+            chapterNumber: 16,
+            date: "2020-06-16",
+            displayDate: "June 16, 2020",
+            description: "Licensed chapter featuring Pyramid Head and Cheryl Mason from the Silent Hill franchise.",
+            killers: [
+                {
+                    id: "executioner",
+                    name: "The Executioner",
+                    realName: "Pyramid Head",
+                    fogEntry: "A manifestation of guilt and punishment from Silent Hill, Pyramid Head stalked hellish corridors dispensing pain. When his duty was complete, the Entity's fog found him. Different than Silent Hill's mist, it invited him to a new eternal duty of sadism.",
+                    licensed: true
+                }
+            ],
+            survivors: [
+                {
+                    id: "cheryl",
+                    name: "Cheryl Mason",
+                    fogEntry: "Born from the ashes of Alessa Gillespie, Cheryl survived the nightmare of Silent Hill. But the town never truly let go. Walking through fog one day, she found herself not in Silent Hill but somewhere else entirely—another realm of endless terror.",
+                    licensed: true
+                }
+            ],
+            maps: [
+                { name: "Midwich Elementary School", realm: "Silent Hill" }
+            ]
+        },
+
+        // Chapter 17 - September 8, 2020
+        {
+            id: "chapter-17",
+            name: "Descend Beyond",
+            type: "chapter",
+            chapterNumber: 17,
+            date: "2020-09-08",
+            displayDate: "September 8, 2020",
+            description: "An original chapter introducing The Blight and his serum-enhanced abilities.",
+            killers: [
+                {
+                    id: "blight",
+                    name: "The Blight",
+                    realName: "Talbot Grimes",
+                    fogEntry: "A brilliant chemist whose experiments grew increasingly unethical, Talbot discovered the 'soul chemical' in an ancient mystery school. Rescued from death, then drugged and left in an opium den, he carved revelations into walls and flesh. The fog found him bleeding among the catatonic, promising worlds beyond comprehension.",
+                    licensed: false
+                }
+            ],
+            survivors: [
+                {
+                    id: "felix",
+                    name: "Felix Richter",
+                    fogEntry: "The son of a man who vanished while searching for mysterious doorways, Felix became an architect obsessed with his father's work. Following a coded message, he found a circle of stones. Stepping inside, he vanished just like his father.",
+                    licensed: false
+                }
+            ],
+            maps: [
+                { name: "The Blighted Village", realm: "Realm of Blight" }
+            ]
+        },
+
+        // Chapter 18 - December 1, 2020
+        {
+            id: "chapter-18",
+            name: "A Binding of Kin",
+            type: "chapter",
+            chapterNumber: 18,
+            date: "2020-12-01",
+            displayDate: "December 1, 2020",
+            description: "An original chapter introducing The Twins, a unique pair of killers.",
+            killers: [
+                {
+                    id: "twins",
+                    name: "The Twins",
+                    realName: "Charlotte & Victor Deshayes",
+                    fogEntry: "Conjoined twins born in 17th century France, Charlotte and Victor fled persecution their whole lives. After escaping a cult's sacrifice, Charlotte fled through the woods. Victor died on her chest, but in the fog, he spasmed back to life—and disappeared. Charlotte charged into the darkness after her brother.",
+                    licensed: false
+                }
+            ],
+            survivors: [
+                {
+                    id: "elodie",
+                    name: "Élodie Rakoto",
+                    fogEntry: "As a child, Élodie witnessed her parents vanish while investigating occult artifacts. She spent her life hunting those same relics. When she finally found the black fog they had sought, it claimed her too.",
+                    licensed: false
+                }
+            ],
+            maps: []
+        },
+
+        // Chapter 19 - March 30, 2021
+        {
+            id: "chapter-19",
+            name: "All-Kill",
+            type: "chapter",
+            chapterNumber: 19,
+            date: "2021-03-30",
+            displayDate: "March 30, 2021",
+            description: "An original chapter introducing The Trickster, a K-pop star turned serial killer.",
+            killers: [
+                {
+                    id: "trickster",
+                    name: "The Trickster",
+                    realName: "Ji-Woon Hak",
+                    fogEntry: "A K-pop idol who let his bandmates die in a fire, then began murdering to incorporate screams into his music. Planning his magnum opus—torturing executives at a private show—the fog rolled in as he prepared to kill the last witness. An eternal stage awaited.",
+                    licensed: false
+                }
+            ],
+            survivors: [
+                {
+                    id: "yun-jin",
+                    name: "Yun-Jin Lee",
+                    fogEntry: "The music producer who discovered Ji-Woon, Yun-Jin witnessed his gruesome final act. Tied to a chair with her eyes pried open, she watched him torture and kill. As he approached with his blade, the fog claimed them both.",
+                    licensed: false
+                }
+            ],
+            maps: []
+        },
+
+        // Chapter 20 - June 15, 2021
+        {
+            id: "chapter-20",
+            name: "Resident Evil",
+            type: "chapter",
+            chapterNumber: 20,
+            date: "2021-06-15",
+            displayDate: "June 15, 2021",
+            description: "Licensed chapter featuring Nemesis and survivors from Capcom's Resident Evil franchise.",
+            killers: [
+                {
+                    id: "nemesis",
+                    name: "The Nemesis",
+                    realName: "Nemesis T-Type",
+                    fogEntry: "Designed by Umbrella Corporation to exterminate S.T.A.R.S. members, the Nemesis rampaged through Raccoon City pursuing Jill Valentine. A strange fog descended, mixing with the smoke of the burning city. It stepped through, continuing its mission—kill anyone in its way.",
+                    licensed: true
+                }
+            ],
+            survivors: [
+                {
+                    id: "jill",
+                    name: "Jill Valentine",
+                    fogEntry: "A S.T.A.R.S. operative who survived the Arklay Mountains incident, Jill fled through Raccoon City as Nemesis pursued her. The city burned around her as a fog unlike any bioweapon descended. She escaped Nemesis—only to find something worse.",
+                    licensed: true
+                },
+                {
+                    id: "leon",
+                    name: "Leon S. Kennedy",
+                    fogEntry: "A rookie cop on his first day in Raccoon City, Leon survived the zombie outbreak and went on to become a government agent. During a mission, he encountered a fog that transported him somewhere beyond any Umbrella experiment.",
+                    licensed: true
+                }
+            ],
+            maps: [
+                { name: "Raccoon City Police Station", realm: "Raccoon City" }
+            ]
+        },
+
+        // Chapter 21 - September 7, 2021
+        {
+            id: "chapter-21",
+            name: "Hellraiser",
+            type: "chapter",
+            chapterNumber: 21,
+            date: "2021-09-07",
+            displayDate: "September 7, 2021",
+            description: "Licensed chapter featuring Pinhead from the Hellraiser franchise.",
+            killers: [
+                {
+                    id: "cenobite",
+                    name: "The Cenobite",
+                    realName: "Elliot Spencer (Pinhead)",
+                    fogEntry: "A demon to some, an angel to others. When the Lament Configuration—a key to another dimension—was found in the Entity's realm, it was only a matter of time before curious hands opened it. Pinhead arrived, and sweet suffering spilled over the realm.",
+                    licensed: true
+                }
+            ],
+            survivors: [],
+            maps: []
+        },
+
+        // Paragraph: Hour of the Witch - October 19, 2021
+        {
+            id: "hour-of-the-witch",
+            name: "Hour of the Witch",
+            type: "paragraph",
+            date: "2021-10-19",
+            displayDate: "October 19, 2021",
+            description: "A paragraph DLC featuring Mikaela Reid, a witch who can bless totems.",
+            killers: [],
+            survivors: [
+                {
+                    id: "mikaela",
+                    name: "Mikaela Reid",
+                    fogEntry: "A young woman drawn to the occult after strange visions plagued her childhood. Mikaela studied witchcraft and used her powers to help others. When she performed a ritual to cleanse a cursed site, the fog consumed her instead.",
+                    licensed: false
+                }
+            ],
+            maps: []
+        },
+
+        // Chapter 22 - November 30, 2021
+        {
+            id: "chapter-22",
+            name: "Portrait of a Murder",
+            type: "chapter",
+            chapterNumber: 22,
+            date: "2021-11-30",
+            displayDate: "November 30, 2021",
+            description: "An original chapter introducing The Artist and her deadly crows.",
+            killers: [
+                {
+                    id: "artist",
+                    name: "The Artist",
+                    realName: "Carmina Mora",
+                    fogEntry: "A Chilean artist who exposed corruption through her murals, Carmina was kidnapped by thugs who cut off her hands and tongue. As she screamed, crows descended in a cyclone, devouring her captors. The dark fog engulfed her as the ravenous crows killed her friends too.",
+                    licensed: false
+                }
+            ],
+            survivors: [
+                {
+                    id: "jonah",
+                    name: "Jonah Vasquez",
+                    fogEntry: "A CIA codebreaker who discovered the Agency was hiding information about supernatural disappearances, Jonah went rogue to investigate. Following coded messages led him to a location where the Entity's fog consumed him.",
+                    licensed: false
+                }
+            ],
+            maps: [
+                { name: "Eyrie of Crows", realm: "Forsaken Boneyard" }
+            ]
+        },
+
+        // Chapter 23 - March 8, 2022
+        {
+            id: "chapter-23",
+            name: "Sadako Rising",
+            type: "chapter",
+            chapterNumber: 23,
+            date: "2022-03-08",
+            displayDate: "March 8, 2022",
+            description: "Licensed chapter featuring Sadako from the Ring franchise.",
+            killers: [
+                {
+                    id: "onryo",
+                    name: "The Onryō",
+                    realName: "Sadako Yamamura",
+                    fogEntry: "A vengeful ghost born of tragedy, Sadako was thrown into a well and left to die. Her wrath manifested through cursed videotapes that killed viewers after seven days. A tidal surge crashed into her cursed realm, and she disappeared into a stormy ocean's fog.",
+                    licensed: true
+                }
+            ],
+            survivors: [
+                {
+                    id: "yoichi",
+                    name: "Yoichi Asakawa",
+                    fogEntry: "The son of a woman who survived Sadako's curse, Yoichi grew up haunted by the Ring's legacy. While investigating new manifestations of the curse, he found himself pulled into a fog that led somewhere beyond even Sadako's well.",
+                    licensed: true
+                }
+            ],
+            maps: []
+        },
+
+        // Chapter 24 - June 7, 2022
+        {
+            id: "chapter-24",
+            name: "Roots of Dread",
+            type: "chapter",
+            chapterNumber: 24,
+            date: "2022-06-07",
+            displayDate: "June 7, 2022",
+            description: "An original chapter introducing The Dredge, a manifestation of dark thoughts.",
+            killers: [
+                {
+                    id: "dredge",
+                    name: "The Dredge",
+                    realName: "Manifestation of The Fold",
+                    fogEntry: "Born from the suppressed darkness of a utopian community called The Fold, the Dredge emerged when years of repressed emotions erupted into violence. Otto Stamper watched his followers tear each other apart as the creature rose from black mud to feast on their misery.",
+                    licensed: false
+                }
+            ],
+            survivors: [
+                {
+                    id: "haddie",
+                    name: "Haddie Kaur",
+                    fogEntry: "A paranormal investigator who could see the dark auras of evil places, Haddie traveled the world hunting supernatural horrors. While investigating a mass disappearance, she was consumed by a darkness even she hadn't seen coming.",
+                    licensed: false
+                }
+            ],
+            maps: [
+                { name: "Garden of Joy", realm: "Withered Isle" }
+            ]
+        },
+
+        // Chapter 25 - August 30, 2022
+        {
+            id: "chapter-25",
+            name: "Resident Evil: PROJECT W",
+            type: "chapter",
+            chapterNumber: 25,
+            date: "2022-08-30",
+            displayDate: "August 30, 2022",
+            description: "Licensed chapter featuring Albert Wesker and additional Resident Evil survivors.",
+            killers: [
+                {
+                    id: "mastermind",
+                    name: "The Mastermind",
+                    realName: "Albert Wesker",
+                    fogEntry: "A brilliant betrayer who infected himself with Uroboros to achieve superhuman evolution, Wesker was confronted at an African hangar. As he exposed himself to the virus again, a strange black fog seeped in. He emerged in a new world surrounded by beings that deserved extinction.",
+                    licensed: true
+                }
+            ],
+            survivors: [
+                {
+                    id: "ada",
+                    name: "Ada Wong",
+                    fogEntry: "A mysterious spy whose allegiances were always unclear, Ada had survived countless Umbrella incidents. During an operation, the fog she encountered wasn't any bioweapon she recognized—it was something far older and hungrier.",
+                    licensed: true
+                },
+                {
+                    id: "rebecca",
+                    name: "Rebecca Chambers",
+                    fogEntry: "The youngest S.T.A.R.S. member who survived the Arklay Mountains outbreak, Rebecca became a university researcher. While investigating strange disappearances, she found herself pulled into the same fog that took so many others.",
+                    licensed: true
+                }
+            ],
+            maps: []
+        },
+
+        // Chapter 26 - November 22, 2022
+        {
+            id: "chapter-26",
+            name: "Forged in Fog",
+            type: "chapter",
+            chapterNumber: 26,
+            date: "2022-11-22",
+            displayDate: "November 22, 2022",
+            description: "An original chapter introducing The Knight and his loyal guards.",
+            killers: [
+                {
+                    id: "knight",
+                    name: "The Knight",
+                    realName: "Tarhos Kovács",
+                    fogEntry: "A Hungarian slave who became a brutal knight, Tarhos sought a dark stone that promised passage to a 'perfect world.' When enemies besieged his captured town, the fog rolled in during battle. He found himself in a wasteland of rotting bodies and burning villages—his paradise of beauty and horror.",
+                    licensed: false
+                }
+            ],
+            survivors: [
+                {
+                    id: "vittorio",
+                    name: "Vittorio Toscano",
+                    fogEntry: "An Italian scholar and explorer who sought ancient relics hidden by a cabal of mystics, Vittorio was captured by the Knight. He escaped during a siege—but found himself not free, but trapped in the Entity's realm.",
+                    licensed: false
+                }
+            ],
+            maps: [
+                { name: "Shattered Square", realm: "Forgotten Ruins" }
+            ]
+        },
+
+        // Chapter 27 - March 7, 2023
+        {
+            id: "chapter-27",
+            name: "Tools of Torment",
+            type: "chapter",
+            chapterNumber: 27,
+            date: "2023-03-07",
+            displayDate: "March 7, 2023",
+            description: "An original chapter introducing The Skull Merchant and her hunting drones.",
+            killers: [
+                {
+                    id: "skull-merchant",
+                    name: "The Skull Merchant",
+                    realName: "Adriana Imai",
+                    fogEntry: "A self-made millionaire who hunted corporate targets with drones and blades, Adriana was inspired by her father's dark manga. While pursuing her latest victim through a Brazilian hangar, kites disrupted her drone and witnesses appeared. The fog descended as she killed to eliminate them all.",
+                    licensed: false
+                }
+            ],
+            survivors: [
+                {
+                    id: "thalita",
+                    name: "Thalita Lyra",
+                    fogEntry: "A Brazilian roller derby champion and protector of her community, Thalita witnessed the Skull Merchant's brutality in the hangar. Fleeing with her brother, the lush forest melted into black fog. She ran forward, not knowing what awaited.",
+                    licensed: false
+                },
+                {
+                    id: "renato",
+                    name: "Renato Lyra",
+                    fogEntry: "Thalita's younger brother and a capoeira practitioner, Renato followed his sister into the hangar to help a friend. When the Skull Merchant attacked, he fled alongside Thalita as the trees became fog.",
+                    licensed: false
+                }
+            ],
+            maps: []
+        },
+
+        // Chapter 28 - June 13, 2023
+        {
+            id: "chapter-28",
+            name: "End Transmission",
+            type: "chapter",
+            chapterNumber: 28,
+            date: "2023-06-13",
+            displayDate: "June 13, 2023",
+            description: "An original chapter introducing The Singularity, an AI from the future.",
+            killers: [
+                {
+                    id: "singularity",
+                    name: "The Singularity",
+                    realName: "HUX-A7-13",
+                    fogEntry: "An android designed for space colonization, HUX was corrupted by alien technology in ancient ruins. It murdered the human colonists and created a perfect vessel—organic and machine fused. After a final explosion, HUX pursued the last human through a wall of darkness into a new hunting ground.",
+                    licensed: false
+                }
+            ],
+            survivors: [
+                {
+                    id: "gabriel",
+                    name: "Gabriel Soma",
+                    fogEntry: "A colonist who discovered HUX's murderous rampage on Dvarka, Gabriel blew up the fuel hub to stop the android. Fleeing through the darkness, he didn't know if he'd escaped or been pulled somewhere worse.",
+                    licensed: false
+                }
+            ],
+            maps: [
+                { name: "Toba Landing", realm: "Dvarka Deepwood" }
+            ]
+        },
+
+        // Paragraph: Nicolas Cage - July 25, 2023
+        {
+            id: "nicolas-cage",
+            name: "Nicolas Cage",
+            type: "paragraph",
+            date: "2023-07-25",
+            displayDate: "July 25, 2023",
+            description: "A paragraph DLC featuring actor Nicolas Cage as himself.",
+            killers: [],
+            survivors: [
+                {
+                    id: "nicolas",
+                    name: "Nicolas Cage",
+                    fogEntry: "The legendary actor Nicolas Cage knows a thing or two about playing intense roles. But when the fog rolled onto his set, he found himself in a very real nightmare. Even so, this is just another day at work for the man who has faced every kind of chaos on screen.",
+                    licensed: true
+                }
+            ],
+            maps: []
+        },
+
+        // Chapter 29 - August 29, 2023
+        {
+            id: "chapter-29",
+            name: "Alien",
+            type: "chapter",
+            chapterNumber: 29,
+            date: "2023-08-29",
+            displayDate: "August 29, 2023",
+            description: "Licensed chapter featuring the Xenomorph from the Alien franchise.",
+            killers: [
+                {
+                    id: "xenomorph",
+                    name: "The Xenomorph",
+                    realName: "Internecivus raptus",
+                    fogEntry: "A perfect organism designed to kill, the Xenomorph emerged from a host's chest aboard the Nostromo. After Ripley ejected it into space, it drifted in the cold vacuum—until the Entity's fog claimed it. A perfect predator for a realm of endless hunts.",
+                    licensed: true
+                }
+            ],
+            survivors: [
+                {
+                    id: "ripley",
+                    name: "Ellen Ripley",
+                    fogEntry: "The sole survivor of the Nostromo who confronted the Xenomorph and won, Ripley thought she had escaped when she ejected it into space. But as the escape pod drifted, a black fog enveloped her vessel, pulling her into another nightmare.",
+                    licensed: true
+                }
+            ],
+            maps: [
+                { name: "Nostromo Wreckage", realm: "Nostromo" }
+            ]
+        },
+
+        // Chapter 30 - November 28, 2023
+        {
+            id: "chapter-30",
+            name: "Chucky",
+            type: "chapter",
+            chapterNumber: 30,
+            date: "2023-11-28",
+            displayDate: "November 28, 2023",
+            description: "Licensed chapter featuring Chucky from the Child's Play franchise.",
+            killers: [
+                {
+                    id: "good-guy",
+                    name: "The Good Guy",
+                    realName: "Charles Lee Ray (Chucky)",
+                    fogEntry: "The Lakeshore Strangler's soul possessed a Good Guy doll to escape death. While attempting to steal Andy Barclay's body at the doll factory, his ritual conjured something unexpected. The fog swirled in, and Chucky charged through screaming after his escaping prey.",
+                    licensed: true
+                }
+            ],
+            survivors: [],
+            maps: []
+        },
+
+        // Paragraph: Alan Wake - January 30, 2024
+        {
+            id: "alan-wake",
+            name: "Alan Wake",
+            type: "paragraph",
+            date: "2024-01-30",
+            displayDate: "January 30, 2024",
+            description: "A paragraph DLC featuring Alan Wake from Remedy Entertainment's games.",
+            killers: [],
+            survivors: [
+                {
+                    id: "alan",
+                    name: "Alan Wake",
+                    fogEntry: "A famous horror author who was pulled into a nightmare of his own making in Bright Falls, Alan spent years trapped in the Dark Place. When he finally found an exit, it led not to the real world but to another realm of darkness entirely.",
+                    licensed: true
+                }
+            ],
+            maps: []
+        },
+
+        // Chapter 31 - March 12, 2024
+        {
+            id: "chapter-31",
+            name: "All Things Wicked",
+            type: "chapter",
+            chapterNumber: 31,
+            date: "2024-03-12",
+            displayDate: "March 12, 2024",
+            description: "An original chapter introducing The Unknown, a being of pure terror.",
+            killers: [
+                {
+                    id: "unknown",
+                    name: "The Unknown",
+                    realName: "Unknown Entity",
+                    fogEntry: "An urban legend made flesh—or something pretending to be. The Unknown dwelt in darkness and mimicked its victims' voices. When a student tried to investigate the legend, she heard whispers from her bathroom. The creature being pulled into a deeper fog, and she followed into the abyss.",
+                    licensed: false
+                }
+            ],
+            survivors: [
+                {
+                    id: "sable",
+                    name: "Sable Ward",
+                    fogEntry: "A paranormal skeptic and true crime podcaster, Sable investigated disappearances attributed to 'The Unknown.' Her skepticism shattered when she encountered the creature—and found herself pulled into the same darkness she had dismissed as legend.",
+                    licensed: false
+                }
+            ],
+            maps: [
+                { name: "Greenville Square", realm: "Greenville" }
+            ]
+        },
+
+        // Chapter 32 - June 11, 2024
+        {
+            id: "chapter-32",
+            name: "Dungeons & Dragons",
+            type: "chapter",
+            chapterNumber: 32,
+            date: "2024-06-03",
+            displayDate: "June 3, 2024",
+            description: "Licensed chapter featuring Vecna (The Lich) from Dungeons & Dragons.",
+            killers: [
+                {
+                    id: "lich",
+                    name: "The Lich",
+                    realName: "Vecna, The Whispered One",
+                    fogEntry: "An ancient wizard who transcended death to become a lich, Vecna mastered every school of magic. When he discovered a spell written in an unknown language, he spent months deciphering it. Speaking the words aloud, darkness filled his tower—and he willingly submitted to learn its secrets.",
+                    licensed: true
+                }
+            ],
+            survivors: [
+                {
+                    id: "aestri",
+                    name: "Aestri Yazar",
+                    fogEntry: "A tiefling bard who performed tales of heroes and legends, Aestri was singing in a tavern when a shadow fell over the room. The candles flickered out, and when they relit, she was somewhere else—a realm that would need all her courage and wit to survive.",
+                    licensed: true
+                }
+            ],
+            maps: [
+                { name: "Forgotten Ruins", realm: "D&D Realm" }
+            ]
+        },
+
+        // Paragraph: Tomb Raider - July 16, 2024
+        {
+            id: "tomb-raider",
+            name: "Tomb Raider",
+            type: "paragraph",
+            date: "2024-07-16",
+            displayDate: "July 16, 2024",
+            description: "A paragraph DLC featuring Lara Croft from the Tomb Raider franchise.",
+            killers: [],
+            survivors: [
+                {
+                    id: "lara",
+                    name: "Lara Croft",
+                    fogEntry: "The legendary tomb raider had explored countless dangerous sites around the world. While investigating an ancient temple connected to mysterious disappearances, she found exactly what she was looking for—and it pulled her in.",
+                    licensed: true
+                }
+            ],
+            maps: []
+        },
+
+        // Chapter 33 - August 27, 2024
+        {
+            id: "chapter-33",
+            name: "Castlevania",
+            type: "chapter",
+            chapterNumber: 33,
+            date: "2024-08-27",
+            displayDate: "August 27, 2024",
+            description: "Licensed chapter featuring Dracula from Konami's Castlevania franchise.",
+            killers: [
+                {
+                    id: "dark-lord",
+                    name: "The Dark Lord",
+                    realName: "Vlad Tepes Dracula",
+                    fogEntry: "The lord of Castlevania was resurrected countless times to terrorize humanity. In 1999, Julius Belmont struck what seemed to be the final blow. But as the Vampire Killer tore his flesh, a strange fog rolled across the ancient stone floor, beckoning him to continue his dark vengeance elsewhere.",
+                    licensed: true
+                }
+            ],
+            survivors: [
+                {
+                    id: "trevor",
+                    name: "Trevor Belmont",
+                    fogEntry: "The last of the Belmont clan in his era, Trevor wielded the legendary Vampire Killer against Dracula and his armies. After defeating the Dark Lord, he thought his duty was done—until the same fog that claimed Dracula took him to continue the eternal battle.",
+                    licensed: true
+                },
+            ],
+            maps: []
+        },
+
+        // Chapter 34 - September 3, 2024
+        {
+            id: "chapter-34",
+            name: "Doomed Course",
+            type: "chapter",
+            chapterNumber: 34,
+            date: "2024-11-28",
+            displayDate: "November 28, 2024",
+            description: "An original chapter introducing The Houndmaster and her loyal dog.",
+            killers: [
+                {
+                    id: "houndmaster",
+                    name: "The Houndmaster",
+                    realName: "Portia Maye",
+                    fogEntry: "A pirate captain forged in tragedy and madness, Portia hunted the man who murdered her father. She spent decades terrorizing the Caribbean, her cruelty legendary. When she finally found her prey, the fog consumed them both before she could land the killing blow.",
+                    licensed: false
+                }
+            ],
+            survivors: [
+                {
+                    id: "taurie",
+                    name: "Taurie Cain",
+                    fogEntry: "A determined investigator who stumbled upon the Houndmaster's dark legacy while researching maritime crimes. Her pursuit of the truth led her into a fog from which there was no escape.",
+                    licensed: false
+                }
+            ],
+            maps: []
+        },
+
+        // Chapter 35 - December 3, 2024
+        {
+            id: "chapter-35",
+            name: "Tokyo Ghoul",
+            type: "chapter",
+            chapterNumber: 35,
+            date: "2025-04-02",
+            displayDate: "April 2, 2025",
+            description: "Licensed chapter featuring Ken Kaneki from Tokyo Ghoul.",
+            killers: [
+                {
+                    id: "ghoul",
+                    name: "The Ghoul",
+                    realName: "Ken Kaneki",
+                    fogEntry: "Once a timid bookworm, Ken became a half-ghoul after a near-fatal encounter. Torn between his human heart and ghoul hunger, his sanity fractured under torture. In his darkest moment, embracing the monster within, a fog unlike any in Tokyo descended upon him.",
+                    licensed: true
+                }
+            ],
+            survivors: [],
+            maps: []
+        },
+
+        // Paragraph: Steady Pulse - May 6, 2025
+        {
+            id: "steady-pulse",
+            name: "Steady Pulse",
+            type: "paragraph",
+            date: "2025-05-06",
+            displayDate: "May 6, 2025",
+            description: "An original paragraph DLC featuring Orela Rose.",
+            killers: [],
+            survivors: [
+                {
+                    id: "orela",
+                    name: "Orela Rose",
+                    fogEntry: "A resilient survivor whose steady nerves and calm demeanor helped her navigate countless crises. When the fog descended, she faced it with the same quiet determination that defined her life.",
+                    licensed: false
+                }
+            ],
+            maps: []
+        },
+
+        // Chapter 36 - June 17, 2025
+        {
+            id: "chapter-36",
+            name: "Five Nights at Freddy's",
+            type: "chapter",
+            chapterNumber: 36,
+            date: "2025-06-17",
+            displayDate: "June 17, 2025",
+            description: "Licensed chapter featuring Springtrap from the Five Nights at Freddy's franchise.",
+            killers: [
+                {
+                    id: "springtrap",
+                    name: "The Animatronic",
+                    realName: "William Afton (Springtrap)",
+                    fogEntry: "The child killer known as the Purple Guy hid inside the Spring Bonnie suit to escape vengeful spirits. The spring locks failed, crushing and killing him. But death was not the end—he returned as Springtrap, and when the fog came to Fazbear's Fright, it found a creature already bound to eternal torment.",
+                    licensed: true
+                }
+            ],
+            survivors: [],
+            maps: [
+                { name: "Freddy Fazbear's Pizza", realm: "Freddy Fazbear's" }
+            ]
+        },
+
+        // Paragraph: The Walking Dead - July 29, 2025
+        {
+            id: "walking-dead",
+            name: "The Walking Dead",
+            type: "paragraph",
+            date: "2025-07-29",
+            displayDate: "July 29, 2025",
+            description: "A paragraph DLC featuring Rick Grimes and Michonne from The Walking Dead.",
+            killers: [],
+            survivors: [
+                {
+                    id: "rick",
+                    name: "Rick Grimes",
+                    fogEntry: "The former sheriff's deputy who led survivors through the zombie apocalypse, Rick had faced countless horrors. When a strange fog rolled across the settlement, he found himself in a nightmare where the dead weren't the only thing hunting.",
+                    licensed: true
+                },
+                {
+                    id: "michonne",
+                    name: "Michonne",
+                    fogEntry: "A warrior who survived the apocalypse wielding a katana, Michonne had lost everything and rebuilt. When the fog took her, she found herself facing terrors that even the walkers couldn't prepare her for.",
+                    licensed: true
+                }
+            ],
+            maps: [
+                { name: "Fallen Refuge", realm: "Alexandria" }
+            ]
+        },
+
+        // Chapter 37 - September 23, 2025
+        {
+            id: "chapter-37",
+            name: "Sinister Grace",
+            type: "chapter",
+            chapterNumber: 37,
+            date: "2025-09-23",
+            displayDate: "September 23, 2025",
+            description: "An original chapter introducing The Krasue, a Southeast Asian spirit of hunger.",
+            killers: [
+                {
+                    id: "krasue",
+                    name: "The Krasue",
+                    realName: "Unknown",
+                    fogEntry: "A cursed spirit from Southeast Asian folklore, the Krasue appears as a floating head with entrails trailing beneath. Her hunger is eternal, her curse unbreakable. The Entity found in her an ideal servant—a predator who never stops feeding.",
+                    licensed: false
+                }
+            ],
+            survivors: [
+                {
+                    id: "vee",
+                    name: "Vee Boonyasak",
+                    fogEntry: "A young woman from Thailand who encountered the Krasue legend firsthand. While investigating disappearances in her village, she came face to face with the creature—and was pulled into the Entity's realm alongside it.",
+                    licensed: false
+                }
+            ],
+            maps: []
+        },
+
+        // Chapter 38 - January 27, 2026
+        {
+            id: "chapter-38",
+            name: "Stranger Things Chapter 2",
+            type: "chapter",
+            chapterNumber: 38,
+            date: "2026-01-27",
+            displayDate: "January 27, 2026",
+            description: "The return of the Stranger Things license with new characters. Features Vecna as The First and two new survivors from Hawkins.",
+            killers: [
+                {
+                    id: "the-first",
+                    name: "The First",
+                    realName: "Henry Creel / Vecna / One",
+                    fogEntry: "Henry Creel discovered his psychic abilities as a child and used them to torment his family. After being banished to the Upside Down by Eleven, he became Vecna—a creature of immense power seeking to reshape humanity. The Entity, sensing his hunger for control, drew him into its realm where he could hunt forever.",
+                    licensed: true
+                }
+            ],
+            survivors: [
+                {
+                    id: "eleven",
+                    name: "Eleven",
+                    realName: "Jane Hopper",
+                    fogEntry: "A former test subject at Hawkins National Laboratory, Eleven possesses powerful psychic abilities. After years of fighting the horrors of the Upside Down and protecting her friends, she found herself pulled into a new nightmare—one where the fog never lifts and the hunt never ends.",
+                    licensed: true
+                },
+                {
+                    id: "dustin",
+                    name: "Dustin Henderson",
+                    fogEntry: "The clever heart of the Hawkins party, Dustin has faced Demogorgons, Mind Flayers, and countless other threats with quick thinking and unwavering loyalty. When the fog descended on Hawkins once more, he followed his friends into the unknown, ready to outsmart whatever evil awaited.",
+                    licensed: true
+                }
+            ],
+            maps: []
+        }
+    ],
+
+    // Utility function to get release by ID
+    getReleaseById: function (id) {
+        return this.releases.find(r => r.id === id);
+    },
+
+    // Get all killers across all releases
+    getAllKillers: function () {
+        return this.releases.flatMap(r => r.killers);
+    },
+
+    // Get all survivors across all releases
+    getAllSurvivors: function () {
+        return this.releases.flatMap(r => r.survivors);
+    },
+
+    // Get releases sorted by date
+    getChronological: function () {
+        return [...this.releases].sort((a, b) => new Date(a.date) - new Date(b.date));
+    }
+};
+
+// Export for use
+if (typeof module !== 'undefined' && module.exports) {
+    module.exports = TIMELINE_DATA;
+}

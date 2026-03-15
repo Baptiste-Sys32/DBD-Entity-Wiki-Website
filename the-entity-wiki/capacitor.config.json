@@ -1,0 +1,8 @@
+{
+  "appId": "com.theentity.wiki",
+  "appName": "The Entity's Wiki",
+  "webDir": "web",
+  "server": {
+    "androidScheme": "https"
+  }
+}
