@@ -1,20 +1,30 @@
-# projet-perso-dbdsite-deploy
+# DBD App: The Entity's Wiki Website
 
-Public copy of the DBD site deploy project.
+Deployment repo for the public website version of the Dead by Daylight companion app.
 
-## Contents
+## Project Structure
+- `the-entity-wiki/web/` static site files
+- `the-entity-wiki/scripts/` deployment helpers for Cloudflare Pages and R2
+- `the-entity-wiki/deploy-cloudflare.md` deployment notes
 - `api/` data files and helper scripts
-- `assets/` shared images and static assets
-- `the-entity-wiki/web/` deployed static site
-- `the-entity-wiki/scripts/` deploy helpers
-- `the-entity-wiki/deploy-cloudflare.md` Cloudflare deployment notes
+- `assets/` shared images and resources
 
-## Notes
-- Local caches, build output, Android signing files, and machine-specific config are intentionally excluded.
-- This repo stays separate from `projet-perso-dbdapp`.
-
-## Local usage
+## Local Setup
 ```bash
 cd the-entity-wiki
 npm install
 ```
+
+## Deploy To Cloudflare Pages
+```bash
+cd the-entity-wiki
+npm run cf:pages -- your-pages-project-name
+```
+
+## Upload Assets To Cloudflare R2
+```bash
+cd the-entity-wiki
+npm run cf:r2:upload -- --bucket your-bucket --public-base-url https://assets.example.com --source web/dbd_images
+```
+
+For the full deployment flow, see `the-entity-wiki/deploy-cloudflare.md`.
