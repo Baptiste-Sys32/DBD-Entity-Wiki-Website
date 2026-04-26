@@ -1,0 +1,262 @@
+{
+  "Enduring": {
+    "status": "different",
+    "sourceUrl": "https://nightlight.gg/perks/Enduring",
+    "descriptionPost95": "You are resilient to pain.\n\nYou reduce the duration of pallet stuns by 40/45/50%. Has no effect while carrying a Survivor."
+  },
+  "Fire Up": {
+    "status": "different",
+    "sourceUrl": "https://nightlight.gg/perks/Fire_Up",
+    "descriptionPost95": "The increased pressure of losing your prey fills you with anger and gives you unsuspected motivation.\n\nEach time the Survivors complete repairs on a generator, Fire Up grows in power.\n\n- For each generator completed, gain a 4/5/6% stackable buff that grants a speed bonus to picking up, dropping, vaulting, damaging generators, and breaking pallets and breakable walls for the remainder of the trial."
+  },
+  "Fixated": {
+    "status": "different",
+    "sourceUrl": "https://nightlight.gg/perks/Fixated",
+    "descriptionPost95": "When you have a goal in mind, there's no turning back: better to ask forgiveness than permission.\n\nYou can see your own scratch marks at all times.\n\nWhile walking, you have 10/15/20% Haste."
+  },
+  "Flip-Flop": {
+    "status": "different",
+    "sourceUrl": "https://nightlight.gg/perks/Flip-Flop",
+    "descriptionPost95": "You have an uncanny ability to escape the inevitable.\nWhile in dying state, 50% of your recovery progression is converted into wiggle progression when you are picked up by The Killer, up to a maximum of 40/45/50% total wiggle progression."
+  },
+  "Forced Penance": {
+    "status": "different",
+    "sourceUrl": "https://nightlight.gg/perks/Forced_Penance",
+    "descriptionPost95": "Those who stand in the way of duty will suffer harsh judgment.\n\nSurvivors who take a protection hit are inflicted with the Broken status effect for 60/70/80 seconds.\nBroken prevents Survivors from being healed."
+  },
+  "For the People": {
+    "status": "different",
+    "sourceUrl": "https://nightlight.gg/perks/For_the_People",
+    "descriptionPost95": "You risk life and injury for others.\n\nFor the People is only active while at full health.\n\nPress the Active Ability Button 1 while healing another Survivor without a Med-kit to instantly heal them from dying to injured, or from injured to healthy.\n\nYou become injured and receive the Broken status effect for 80/70/60 seconds.\n\nYou become the Obsession.\nEquipping this perk decreases your chances of being The Killer's Obsession at the start of the trial.\n\nThe Killer can only be obsessed with one Survivor at a time.\n\nBroken prevents Survivors from being healed."
+  },
+  "Franklin's Demise": {
+    "status": "different",
+    "sourceUrl": "https://nightlight.gg/perks/Franklin%27s_Demise",
+    "descriptionPost95": "Your basic attacks make Survivors drop their item on impact.\n\nReveal items on the ground within 32/48/64 meters with a white aura."
+  },
+  "Furtive Chase": {
+    "status": "different",
+    "sourceUrl": "https://nightlight.gg/perks/Furtive_Chase",
+    "descriptionPost95": "You lurk in the shadows, eliminating your victims one by one.\n\nYou become obsessed with one Survivor. When your Obsession is hooked, gain the Undetectable status effect and a 10% Haste status effect for 14/16/18 seconds.\n\nWhen a Survivor rescues the Obsession from a hook, the rescuer becomes the Obsession.\n\nThe Killer can only be obsessed with one Survivor at a time.\nUndetectable hides the Killer's aura, Terror Radius, and Red Stain.\nHaste increases Killer movement speed."
+  },
+  "Gearhead": {
+    "status": "different",
+    "sourceUrl": "https://nightlight.gg/perks/Gearhead",
+    "descriptionPost95": "You've got an ear for well-oiled gears.\n\nAfter a survivor loses a health state by any means, Gearhead activates for 30 seconds.\n\nWhile Gearhead is active, every time a Survivor performs a good Skill Check while repairing, their aura is revealed to you for 6/7/8 seconds."
+  },
+  "Overcharge": {
+    "status": "different",
+    "sourceUrl": "https://nightlight.gg/perks/Overcharge",
+    "descriptionPost95": "You are fuelled by your hate for progress.\n\nOvercharge a generator by performing the Damage Generator action. The next Survivor interacting with that generator is faced with a difficult Skill Check. Failing the Skill Check results in an additional 2/3/4% loss of progress.\n\nSucceeding the Skill Check grants no progress but prevents the generator explosion.\nAfter Overcharge is applied to a generator, its regression speed increases from 85% of normal to 130% of normal over the next 30 seconds."
+  },
+  "Scourge Hook: Hangman's Trick": {
+    "status": "different",
+    "sourceUrl": "https://nightlight.gg/perks/Scourge_Hook%3A_Hangman%27s_Trick",
+    "descriptionPost95": "Your ingenious modifications to hooks alert you of tampering.\n\nAt the start of the trial, 4 random hooks are changed into scourge hooks. You see their auras in white.\n\nGain a notification when a Survivor begins sabotaging a hook.\n\nWhile carrying a Survivor, see the aura of any Survivor within 12/14/16 meters of a scourge hook."
+  },
+  "Head On": {
+    "status": "different",
+    "sourceUrl": "https://nightlight.gg/perks/Head_On",
+    "descriptionPost95": "When your mind is set, there better be no one standing in your way.\n\nWhile standing in a locker, for 3 seconds, the perk activates.\n\nWhile the perk is activated, performing a rushed action to leave a locker stuns The Killer for 3 seconds if they are standing within range.\n\nCauses the Exhausted status effect for 60/50/40 seconds. Head On cannot be used while Exhausted.\nYou do not recover from the Exhausted status effect while running."
+  },
+  "Hex: Devour Hope": {
+    "status": "different",
+    "sourceUrl": "https://nightlight.gg/perks/Hex%3A_Devour_Hope",
+    "descriptionPost95": "A Hex rooting its power on hope. The false hope of Survivors ignites your hunger.\n\nWhen a Survivor is rescued from a hook at least 24 meters away, Devour Hope receives a token.\n  * 2 Tokens: Gain a 3/4/5% Haste status effect, 10 seconds after hooking a Survivor, for a duration of 10 seconds.\n  * 3 Tokens: Survivors suffer from the Exposed status effect.\n  * 5 Tokens: Grants the ability to kill Survivors by your own hand.\n\nThe Hex effects persist as long as the related Hex Totem is standing.\n\nExposed Survivors will be downed by basic attacks even if uninjured.\n\nHaste increases Killer movement speed."
+  },
+  "Hex: Haunted Ground": {
+    "status": "different",
+    "sourceUrl": "https://nightlight.gg/perks/Hex%3A_Haunted_Ground",
+    "descriptionPost95": "Two trapped Hex Totems will spawn in the trial.\nWhen either one of the two trapped Hex Totems is cleansed by a Survivor, all Survivors suffer from the Exposed status effect for 40/50/60 seconds.\n\nThe remaining trapped Hex Totem immediately becomes a Dull Totem.\n\nExposed Survivors will be downed by basic attacks even if uninjured."
+  },
+  "Hex: Huntress Lullaby": {
+    "status": "different",
+    "sourceUrl": "https://nightlight.gg/perks/Hex%3A_Huntress_Lullaby",
+    "descriptionPost95": "A Hex rooting its power in despair. Your hunt is an irresistible song of dread which muddles your prey's attention.\n\nSurvivors receive a 2/4/6% regression penalty when missing a Skill Check while healing or repairing.\n\nEach time a Survivor is hooked, Huntress Lullaby grows in power. It affects healing and repairing Skill Check warnings:\n  * 1 to 4 Tokens: Time between the Skill Check warning sound and the Skill Check becomes shorter.\n  * 5 Tokens: No Skill Check warning.\n\nThe Hex effects persist as long as the related Hex Totem is standing."
+  },
+  "Hex: Ruin": {
+    "status": "different",
+    "sourceUrl": "https://nightlight.gg/perks/Hex%3A_Ruin",
+    "descriptionPost95": "A Hex that affects all Survivors' generator repair progress.\n\nAll generators are affected by Hex: Ruin. While a generator is not being repaired by a Survivor, it will immediately and automatically regress repair progress at 100/125/150% of the normal regression speed.\n\nThe Hex effects persist as long as the related Hex Totem is standing.\n\n“A curse is upon you. It will be your ruin.”"
+  },
+  "Hex: The Third Seal": {
+    "status": "different",
+    "sourceUrl": "https://nightlight.gg/perks/Hex%3A_The_Third_Seal",
+    "descriptionPost95": "A Hex that hinders one's aura reading ability.\nHitting a Survivor with a basic attack or a special attack while the Hex Totem is active applies the Blindness status effect. This effect applies to the last 2/3/4 Survivors hit.\n\nThe Hex effects persist as long as the related Hex Totem is standing.\n\nBlindness prevents Survivors from seeing auras."
+  },
+  "Hex: Thrill of the Hunt": {
+    "status": "different",
+    "sourceUrl": "https://nightlight.gg/perks/Hex%3A_Thrill_of_the_Hunt",
+    "descriptionPost95": "A Hex rooting its power on hope. The false hope of Survivors fills you with excitement and strengthens your Totems.\n\nFor each Dull and Hex Totem remaining on the map gain a token.\n\n- Survivors' cleansing and blessing speed is reduced by 8/10/12% for each token.\n\nThe Hex effects persist as long as the related Hex Totem is standing."
+  },
+  "Hex: Blood Favor": {
+    "status": "different",
+    "sourceUrl": "https://nightlight.gg/perks/Hex%3A_Blood_Favor",
+    "descriptionPost95": "A Hex that gains The Entity's favor when blood is spilled.\n\nInjuring a Survivor will call upon The Entity to block pallets from being pulled down within a 24/28/32 meter radius of the Survivor location for 15 seconds.\n\nThe Hex effects persist as long as the related Hex Totem is standing."
+  },
+  "Hex: Retribution": {
+    "status": "different",
+    "sourceUrl": "https://nightlight.gg/perks/Hex%3A_Retribution",
+    "descriptionPost95": "A Hex that lashes out upon its destruction. Those who cross you will be punished.\n\nAny Survivor interacting with a Dull Totem or a Hex Totem will suffer from the Oblivious status effect for 40/50/60 seconds.\n\nIf any Hex Totem is removed, including this one, the auras of all Survivors are revealed for 20 seconds.\nOblivious prevents Survivors from hearing or being affected by the Killer's Terror Radius."
+  },
+  "Hex: Undying": {
+    "status": "different",
+    "sourceUrl": "https://nightlight.gg/perks/Hex%3A_Undying",
+    "descriptionPost95": "While Hex: Undying is active, Survivors within 2/3/4 meters of any Dull Totem have their aura revealed.\n\nWhen another Hex Totem would be cleansed, that Totem's Hex transfers to the Hex: Undying Totem, deactivating Hex: Undying. Any tokens the transferred Hex had are transferred as well."
+  },
+  "Hope": {
+    "status": "different",
+    "sourceUrl": "https://nightlight.gg/perks/Hope",
+    "descriptionPost95": "The growing odds of a successful escape fill you with hope and give you wings.\nAs soon as the exit gates are powered you gain a 3/4/5% Haste status effect.\n\nHaste increases Survivor movement speed."
+  },
+  "I'm All Ears": {
+    "status": "different",
+    "sourceUrl": "https://nightlight.gg/perks/I%27m_All_Ears",
+    "descriptionPost95": "Your keen senses are sharpened in the dark realm of The Entity.\n\nUnlocks potential in one's aura reading ability. Any Survivor performing a rushed action within 48 meters from your location will have their aura revealed for 8 seconds.\n\nI'm All Ears can only be triggered once every 60/45/30 seconds."
+  },
+  "Infectious Fright": {
+    "status": "different",
+    "sourceUrl": "https://nightlight.gg/perks/Infectious_Fright",
+    "descriptionPost95": "The cries of the unfaithful make your heart leap.\nAny Survivors that are within your Terror Radius while another Survivor is put into the dying state will scream and reveal their location to you for 4/5/6 seconds.\n\n“Horror overcomes the heart of infidels who cry at the feet of the fallen.” (Hymn of Praise, 11. 4)"
+  },
+  "Inner Strength": {
+    "status": "different",
+    "sourceUrl": "https://nightlight.gg/perks/Inner_Strength",
+    "descriptionPost95": "You look inward and trust your instincts when you feel lost and alone.\n\nEach time you complete a Totem cleanse action, Inner Strength activates. If you are already afflicted by the Broken status effect, Inner Strength does not activate.\n\nWhile Inner Strength is active, hiding inside a locker for 10/9/8 seconds while injured automatically heals you from injured to healthy.\n\nInner Strength becomes deactivated as soon as it has successfully triggered."
+  },
+  "Insidious": {
+    "status": "different",
+    "sourceUrl": "https://nightlight.gg/perks/Insidious",
+    "descriptionPost95": "Unlocks the stealth ability.\n\nStanding still for 3/2/1 seconds grants you the Undetectable status effect until you move or act again.\nUndetectable hides the Killer's aura, Terror Radius, and Red Stain."
+  },
+  "Knock Out": {
+    "status": "different",
+    "sourceUrl": "https://nightlight.gg/perks/Knock_Out",
+    "descriptionPost95": "The trauma caused by your brutal attacks makes crying for help painfully difficult.\n\nWhen a Survivor drops a pallet, if they move 6 meters away from it within 6 seconds, they gain 5% Hindered for 3/4/5 seconds.\n\nHindered reduces Survivor movement speed."
+  },
+  "Iron Grasp": {
+    "status": "different",
+    "sourceUrl": "https://nightlight.gg/perks/Iron_Grasp",
+    "descriptionPost95": "Your powerful hold on the Survivors causes escapes to be nearly impossible.\nEffects of Survivor struggling are reduced by 75%. Time to struggle out of your grasp is increased by 4/8/12%."
+  },
+  "Iron Will": {
+    "status": "different",
+    "sourceUrl": "https://nightlight.gg/perks/Iron_Will",
+    "descriptionPost95": "You're able to concentrate and enter a meditative-like state to numb some pain. Grunts of pain caused by injuries are reduced by 80/90/100%. Does not function while Exhausted. Does not inflict Exhausted.\n\nExhausted prevents Survivors from activating exhausting perks."
+  },
+  "Iron Maiden": {
+    "status": "different",
+    "sourceUrl": "https://nightlight.gg/perks/Iron_Maiden",
+    "descriptionPost95": "You open lockers 30/40/50% faster.\n\nSurvivors who exit lockers suffer from the Exposed status effect for 30 seconds and scream, revealing their location for 4 seconds.\n\nExposed Survivors will be downed by basic attacks even if uninjured."
+  },
+  "Hoarder": {
+    "status": "different",
+    "sourceUrl": "https://nightlight.gg/perks/Hoarder",
+    "descriptionPost95": "You protect what little you have and are attentive to any disturbance of your stockpiles.\nSurvivors reveal their location when they interact with a chest or when they pick up an item within 32/48/64 meters of your location.\n\nThe trial begins with up to 2 additional Chests in the environment."
+  },
+  "Oppression": {
+    "status": "different",
+    "sourceUrl": "https://nightlight.gg/perks/Oppression",
+    "descriptionPost95": "Life has been difficult for you, so you'll make it difficult for others.\n\nWhen you damage a generator, up to 4 other random generators also begin regressing.\n\nIf the affected generators are being repaired, any Survivors repairing them receive a difficult Skill Check.\n\nOppression has a cooldown of 45/40/35 seconds."
+  },
+  "Coup de Grâce": {
+    "status": "different",
+    "sourceUrl": "https://nightlight.gg/perks/Coup_de_Grâce",
+    "descriptionPost95": "As the end nears, you go in for the kill.\n\nEach time a generator is completed, Coup de Grâce grows in power. Gain 2 tokens, with a maximum of 5 tokens.\n\nConsume one token to increase the distance of your next lunge attack by 70/75/80%."
+  },
+  "Starstruck": {
+    "status": "different",
+    "sourceUrl": "https://nightlight.gg/perks/Starstruck",
+    "descriptionPost95": "Your unmatched showmanship dazzles all.\n\nWhile carrying a Survivor, any other Survivors within your Terror Radius suffer from the Exposed status effect.\n\nThe effect persists for 26/28/30 seconds on Survivors who leave your Terror Radius, as well as those within the radius when you hook or release the carried Survivor.\n\nStarstruck has a cooldown of 60 seconds once a Survivor is no longer carried.\n\nExposed Survivors will be downed by basic attacks even if uninjured."
+  },
+  "Hex: Crowd Control": {
+    "status": "different",
+    "sourceUrl": "https://nightlight.gg/perks/Hex%3A_Crowd_Control",
+    "descriptionPost95": "The first time a Survivor medium or fast-vaults a Window, a Dull Totem ignites.\n\nThe last 4/5/6 Windows Survivors medium or fast-vault are blocked.\n\nYou basic-vault blocked Windows 15% faster.\n\nYou see the Auras of blocked Windows within 24 m."
+  },
+  "No Way Out": {
+    "status": "different",
+    "sourceUrl": "https://nightlight.gg/perks/No_Way_Out",
+    "descriptionPost95": "You're not going to let just anyone into the VIP room.\n\nAfter hooking a Survivor for the first time, No Way Out gains a token. Once the exit gates have been powered, No Way Out activates.\n\n- When a Survivor interacts with an exit gate switch, you receive a loud noise notification. The Entity then blocks both exit gate switches for 12 seconds, plus an additional 6/9/12 seconds for each token in your possession."
+  },
+  "Lethal Pursuer": {
+    "status": "different",
+    "sourceUrl": "https://nightlight.gg/perks/Lethal_Pursuer",
+    "descriptionPost95": "You've been designed to track down and eliminate targets.\n\n- At the start of the trial, the auras of all Survivors are revealed to you for 7/8/9 seconds.\n- Any time a Survivor's aura is shown for a period of time, its duration is increased by 2 seconds."
+  },
+  "Hysteria": {
+    "status": "different",
+    "sourceUrl": "https://nightlight.gg/perks/Hysteria",
+    "descriptionPost95": "You know how to brutalize one member of a team to cause a panic.\n\nWhenever a healthy Survivor becomes injured by any means, all injured Survivors suffer from the Oblivious status effect for 30/35/40 seconds.\n\nHysteria can only trigger once every 20 seconds.\n\nOblivious prevents Survivors from hearing or being affected by the Killer's Terror Radius."
+  },
+  "Eruption": {
+    "status": "different",
+    "sourceUrl": "https://nightlight.gg/perks/Eruption",
+    "descriptionPost95": "The NE-α parasite provides you with the intelligence and awareness needed to set a trap.\n\nAfter kicking a generator, its aura is highlighted in yellow.\n  * Whenever a Survivor enters the dying state, every affected generator explodes, losing 10% worth of progress, and starts to regress.\n  * Any Survivor repairing a generator when it explodes will scream and reveal their aura for 8/10/12 seconds.\n\nEruption has a cooldown of 30 seconds."
+  },
+  "Deadlock": {
+    "status": "different",
+    "sourceUrl": "https://nightlight.gg/perks/Deadlock",
+    "descriptionPost95": "You induce mental suffering by crushing any hope of escape.\nAfter a generator is repaired, The Entity blocks the generator with the most progress for 15/20/25 seconds. You see its white aura during this time."
+  },
+  "Hex: Plaything": {
+    "status": "different",
+    "sourceUrl": "https://nightlight.gg/perks/Hex%3A_Plaything",
+    "descriptionPost95": "A Hex that toys with a victim's suffering.\n\nThe first time you hook a Survivor, they become Cursed and Hex: Plaything activates on a Dull Totem. The Cursed Survivor suffers from the Oblivious status effect until Hex: Plaything is cleansed.\nHex: Plaything's totem aura is revealed to the Cursed Survivor when within 24/20/16 meters of it. For the first 90 seconds, only the Cursed Survivor can cleanse the totem.\n\nOblivious prevents Survivors from hearing or being affected by the Killer's Terror Radius."
+  },
+  "Scourge Hook: Gift of Pain": {
+    "status": "different",
+    "sourceUrl": "https://nightlight.gg/perks/Scourge_Hook%3A_Gift_of_Pain",
+    "descriptionPost95": "You are the bringer of sweet pain.\n\nAt the start of the trial, 4 random hooks are changed into scourge hooks. You see their auras in white.\nWhen a Survivor is unhooked from a scourge hook, they suffer from the Hemorrhage and Mangled status effect for 90 seconds. The first time the Survivor is healed, they suffer a 10/13/16% speed penalty to healing and repairing actions until injured again.\n\nHemorrhage regresses healing progress when not healing, and increases blood trails left by injured survivors. This lasts for a set duration or until fully healed.\nMangled increases time required to heal by 25% and lasts for a set duration or until fully healed."
+  },
+  "Grim Embrace": {
+    "status": "different",
+    "sourceUrl": "https://nightlight.gg/perks/Grim_Embrace",
+    "descriptionPost95": "Your act of servitude to The Entity has not gone unnoticed.\n\nEach time a Survivor is hooked for the first time, gain a token. When moving 16 meters away from the hook, all generators are blocked for 6/8/10 seconds.\n\nUpon reaching 4 tokens, when moving 16 meters away from the hook, The Entity instead blocks all generators for 30/40 seconds. The Obsession's aura is revealed to you for 10/6 seconds.\n\nThen, Grim Embrace deactivates.\n\nThe Killer can only be obsessed with one Survivor at a time."
+  },
+  "Scourge Hook: Pain Resonance": {
+    "status": "different",
+    "sourceUrl": "https://nightlight.gg/perks/Scourge_Hook%3A_Pain_Resonance",
+    "descriptionPost95": "Overwhelming pain reverberates outwards into chaos.\n\nAt the start of the trial, 4 random hooks are changed into scourge hooks. You see their auras in white.\nYou start the Trial with 4 tokens, 1 for each Survivor. If a generator is available when that Survivor is hooked on a scourge hook, lose 1 token. The generator with the most progress explodes, instantly losing 10/15/20% progress, and will start to regress. Survivors repairing the generator will scream.\n\nOnce you have no tokens, Pain Resonance deactivates for the rest of the Trial."
+  },
+  "Hex: Pentimento": {
+    "status": "different",
+    "sourceUrl": "https://nightlight.gg/perks/Hex%3A_Pentimento",
+    "descriptionPost95": "You see the aura of cleansed totems and can Rekindle each Totem once.\n\nWhile a Totem is Rekindled, Survivors Heal and Repair 20% slower +1/2/3% for each additional Rekindled Totem.\n\nIf all five totems are Rekindled simultaneously, all Totems are permanently blocked by The Entity.\nSurvivors cursed by this perk see the auras of Rekindled Totems within 16 metres."
+  },
+  "Scourge Hook: Floods of Rage": {
+    "status": "different",
+    "sourceUrl": "https://nightlight.gg/perks/Scourge_Hook%3A_Floods_of_Rage",
+    "descriptionPost95": "You form a psychic connection with The Entity and alter the rules of the trial.\nAt the start of the trial, 4 random hooks are changed into scourge hooks. You see their auras in white.\n\nWhen a Survivor is unhooked from a scourge hook, all other Survivors have their auras revealed for 5/6/7 seconds."
+  },
+  "Call of Brine": {
+    "status": "different",
+    "sourceUrl": "https://nightlight.gg/perks/Call_of_Brine",
+    "descriptionPost95": "Your psychic abilities influence technology in devastating ways.\n\nAfter damaging a generator this perk becomes active for 60/70 seconds.\n\nThe generator regresses at 130/140/150% of the normal regression speed and you can see its aura in yellow.\n\nEach time a Survivor completes a good Skill Check on a generator affected by this perk, you receive a loud noise notification."
+  },
+  "Merciless Storm": {
+    "status": "different",
+    "sourceUrl": "https://nightlight.gg/perks/Merciless_Storm",
+    "descriptionPost95": "Your horrible trauma is felt by everyone.\nWhen a generator reaches 90% progress, Survivors working on the generator will be faced with continuous Skill Checks. If they miss or stop repairing, the generator is blocked by the Entity for 16/18/20 seconds.\n\nMerciless Storm can only trigger once per generator per trial."
+  },
+  "Dissolution": {
+    "status": "different",
+    "sourceUrl": "https://nightlight.gg/perks/Dissolution",
+    "descriptionPost95": "Everything turns to dust. It is as inescapable as the coming of the night.\n\n3 seconds after injuring a Survivor by any means, Dissolution activates for 12/16/20 seconds. While Dissolution is active, if a Survivor fast vaults over a pallet inside of your Terror Radius, The Entity will break the pallet at the end of the vault, and Dissolution deactivates."
+  },
+  "Darkness Revealed": {
+    "status": "different",
+    "sourceUrl": "https://nightlight.gg/perks/Darkness_Revealed",
+    "descriptionPost95": "In your presence, places once thought to be safe are perhaps the most dangerous.\n\nWhen you search a locker, the auras of all Survivors within 8 meters of any lockers are revealed to you for 6/7/8 seconds.\n\nDarkness Revealed has a cooldown of 30 seconds."
+  },
+  "Septic Touch": {
+    "status": "different",
+    "sourceUrl": "https://nightlight.gg/perks/Septic_Touch",
+    "descriptionPost95": "The Land of Shadows subsumes all. Healing only delays the inevitable.\n\nWhenever a Survivor performs the healing action within your Terror Radius, that Survivor suffers from Blindness and Exhausted.\n\nThese effects linger for 20/25/30 seconds after a healing action is interrupted by any means.\n\nBlindness prevents Survivors from seeing auras.\nExhausted prevents Survivors from activating exhausting perks."
+  },
+  "Superior Anatomy": {
+    "status": "different",
+    "sourceUrl": "https://nightlight.gg/perks/Superior_Anatomy",
+    "descriptionPost95": "Decades of research have culminated in you: something faster, stronger, and more dangerous than any human.\nWhen a Survivor performs a fast vault within 12 meters of you, this perk activates. The next time you vault a window, your vaulting speed is increased by 30/35/40%.\n\nThis perk deactivates after vaulting a window.\n\nThis perk has a 25 second cooldown."
+  }
+}

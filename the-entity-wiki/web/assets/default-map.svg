@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 160" role="img" aria-labelledby="title desc">
+  <title id="title">Default map placeholder</title>
+  <desc id="desc">Offline placeholder image for missing map art.</desc>
+  <defs>
+    <linearGradient id="map-bg" x1="0%" x2="100%" y1="0%" y2="100%">
+      <stop offset="0%" stop-color="#0f172a" />
+      <stop offset="100%" stop-color="#111827" />
+    </linearGradient>
+  </defs>
+  <rect width="160" height="160" rx="24" fill="url(#map-bg)" />
+  <rect x="12" y="12" width="136" height="136" rx="22" fill="none" stroke="#38bdf8" stroke-opacity="0.35" stroke-width="4" />
+  <path d="M34 45l29-12 34 14 29-12v80l-29 12-34-14-29 12V45zm29-12v80m34-66v80" fill="none" stroke="#e2e8f0" stroke-linecap="round" stroke-linejoin="round" stroke-width="10" />
+</svg>

@@ -1,0 +1,240 @@
+{
+  "Shadowborn": {
+    "status": "different",
+    "sourceUrl": "https://nightlight.gg/perks/Shadowborn",
+    "descriptionPost95": "Whenever you are blinded, gain 6/8/10% Haste for 10 s."
+  },
+  "Slippery Meat": {
+    "status": "different",
+    "sourceUrl": "https://nightlight.gg/perks/Slippery_Meat",
+    "descriptionPost95": "You can attempt to unhook yourself up to 3 times and have 2/3/4% more chance to succeed."
+  },
+  "Sloppy Butcher": {
+    "status": "different",
+    "sourceUrl": "https://nightlight.gg/perks/Sloppy_Butcher",
+    "descriptionPost95": "Whenever you damage a Survivor with a basic-attack:\n\n* They gain Hemorrhage for 70/80/90 s.\n* They gain Mangled for 70/80/90 s."
+  },
+  "Small Game": {
+    "status": "different",
+    "sourceUrl": "https://nightlight.gg/perks/Small_Game",
+    "descriptionPost95": "Within 8/10/12 m of you, whenever you look at a Totem in a 45 degree cone, you hear a sound cue. Cooldown: 14/12/10 s.\n\nWhenever a Survivor cleanses a Totem, you earn 1 Token, up to 5.\n\nFor each Token, the cone is 5 degrees smaller."
+  },
+  "Down To The Last": {
+    "status": "different",
+    "sourceUrl": "https://nightlight.gg/perks/Sole_Survivor",
+    "descriptionPost95": "Whenever a Survivor dies, you earn 1 Token.\n\nFor each Token, within 20/22/24 m, the Killer cannot see your Aura.\n\nWhen all other Survivors are dead:\n\n* You repair 75% faster.\n* You open Exit Gates and the Hatch 50% faster.\n\nWhen the trial starts, you are more likely to be the Obsession."
+  },
+  "Solidarity": {
+    "status": "different",
+    "sourceUrl": "https://nightlight.gg/perks/Solidarity",
+    "descriptionPost95": "While injured and healing another Survivor without a Med-Kit, you also gain healing progress at 50/60/70% speed."
+  },
+  "Soul Guard": {
+    "status": "different",
+    "sourceUrl": "https://nightlight.gg/perks/Soul_Guard",
+    "descriptionPost95": "While hexed, you can fully recover.\n\nWhenever you fully recover, you gain Endurance for 4/6/8 s. Cooldown: 30 s."
+  },
+  "Spies from the Shadows": {
+    "status": "different",
+    "sourceUrl": "https://nightlight.gg/perks/Spies_from_the_Shadows",
+    "descriptionPost95": "Whenever a Survivor scares a Crow within 20/28/36 m of you, you are alerted. Cooldown: 5 s."
+  },
+  "Spine Chill": {
+    "status": "different",
+    "sourceUrl": "https://nightlight.gg/perks/Spine_Chill",
+    "descriptionPost95": "Within 36 m, whenever the Killer looks at you, you hear a sound cue.\n\nWithin 36 m, while the Killer is looking at you:\n\n* You bless and cleanse Totems 2/4/6% faster.\n* You heal 2/4/6% faster.\n* You open Exit Gates 2/4/6% faster.\n* You repair Generators 2/4/6% faster.\n* You sabotage Hooks 2/4/6% faster.\n* You unhook Survivors 2/4/6% faster.\n* You unlock Chests 2/4/6% faster."
+  },
+  "Spirit Fury": {
+    "status": "different",
+    "sourceUrl": "https://nightlight.gg/perks/Spirit_Fury",
+    "descriptionPost95": "After you break 4/3/2 Pallets, when you are Pallet-stunned, the Pallet is destroyed."
+  },
+  "Sprint Burst": {
+    "status": "different",
+    "sourceUrl": "https://nightlight.gg/perks/Sprint_Burst",
+    "descriptionPost95": "Whenever you start running:\n\n* You gain 50% Haste for 3 s.\n* You gain Exhausted for 60/50/40 s."
+  },
+  "Stake Out": {
+    "status": "different",
+    "sourceUrl": "https://nightlight.gg/perks/Stake_Out",
+    "descriptionPost95": "After hiding for 15 s within the Killer's Terror Radius, you earn 1 Token, up to 2/3/4.\n\nWhenever you hit a good basic Skill Check, spend 1 Token:\n\n* The good Skill Check becomes a great Skill Check.\n* You gain 1% more progress."
+  },
+  "Streetwise": {
+    "status": "different",
+    "sourceUrl": "https://nightlight.gg/perks/Streetwise",
+    "descriptionPost95": "The first time you deplete an Item's Charges, you see the Killer's Aura for 8 s.\n\nWhenever you loot an item from a Chest, it has 60/70/80% more Charges."
+  },
+  "Stridor": {
+    "status": "different",
+    "sourceUrl": "https://nightlight.gg/perks/Stridor",
+    "descriptionPost95": "Survivors' breathing noises are 15/20/25% louder and their Grunts of Pain are 30/40/50% louder."
+  },
+  "Surge": {
+    "status": "different",
+    "sourceUrl": "https://nightlight.gg/perks/Surge",
+    "descriptionPost95": "Whenever you down a Survivor with a basic-attack, Generators within 32 m:\n\n* Explode, lose 6/7/8% progress and start regressing.\n* Survivor repairing them scream."
+  },
+  "Surveillance": {
+    "status": "different",
+    "sourceUrl": "https://nightlight.gg/perks/Surveillance",
+    "descriptionPost95": "You see the Auras of regressing Generators.\n\nWhenever a Generator stops regressing, you see its Aura for 8/12/16 s.\n\nGenerator repair noises can be heard from 8 m farther away."
+  },
+  "Technician": {
+    "status": "different",
+    "sourceUrl": "https://nightlight.gg/perks/Technician",
+    "descriptionPost95": "While repairing a Generator:\n\n* The range of Generator repair noises is 8 m shorter.\n* Whenever you miss a basic Skill Check, the Generator does not explode, but loses 5/4/3% more progress."
+  },
+  "Tenacity": {
+    "status": "different",
+    "sourceUrl": "https://nightlight.gg/perks/Tenacity",
+    "descriptionPost95": "While downed:\n\n* You gain 30/40/50% Haste.\n* You can crawl and recover at the same time.\n* Your Grunts of Pain are 75% quieter."
+  },
+  "Territorial Imperative": {
+    "status": "different",
+    "sourceUrl": "https://nightlight.gg/perks/Territorial_Imperative",
+    "descriptionPost95": "Whenever a Survivor enters the Basement while you are 24 m away from it, you see their Aura for 4/5/6 s. Cooldown: 45 s."
+  },
+  "Thanatophobia": {
+    "status": "different",
+    "sourceUrl": "https://nightlight.gg/perks/Thanatophobia",
+    "descriptionPost95": "For each injured, downed, or hooked Survivor, all Survivors:\n\n* Cleanse totems 1/1.5/2% slower.\n* Repair 1/1.5/2% slower.\n* Sabotage Hooks 1/1.5/2% slower.\n\nWhile 4 Survivors are either injured, downed or hooked, all above actions are additionally 12% slower."
+  },
+  "Mettle of Man": {
+    "status": "different",
+    "sourceUrl": "https://nightlight.gg/perks/Mettle_of_Man",
+    "descriptionPost95": "After taking 3 protection hits, while injured and until you go down, the next time you would be downed by the Killer, take no damage instead.\n\nWhen you become healthy, while you are at least 12/14/16 m from the Killer, they see your Aura.\n\nWhen the trial starts, you are more likely to be the Obsession."
+  },
+  "This Is Not Happening": {
+    "status": "different",
+    "sourceUrl": "https://nightlight.gg/perks/This_Is_Not_Happening",
+    "descriptionPost95": "While injured, great basic Skill Check zones are 10/20/30% bigger."
+  },
+  "Thrilling Tremors": {
+    "status": "different",
+    "sourceUrl": "https://nightlight.gg/perks/Thrilling_Tremors",
+    "descriptionPost95": "Whenever you pick-up a Survivor, all Generators not being repaired are blocked for 16 s. Cooldown: 40/35/30 s."
+  },
+  "Tinkerer": {
+    "status": "different",
+    "sourceUrl": "https://nightlight.gg/perks/Tinkerer",
+    "descriptionPost95": "The first time each Generator has 70% progress:\n\n* You gain Undetectable for 12/14/16 s.\n* You are alerted."
+  },
+  "Trail of Torment": {
+    "status": "different",
+    "sourceUrl": "https://nightlight.gg/perks/Trail_of_Torment",
+    "descriptionPost95": "Whenever you damage a Generator, until it stops regressing:\n\n* You gain undetectable.\n* Survivors see that Generator's Aura.\n\nCooldown: 60/45/30 s."
+  },
+  "Unnerving Presence": {
+    "status": "different",
+    "sourceUrl": "https://nightlight.gg/perks/Unnerving_Presence",
+    "descriptionPost95": "Survivors within your Terror Radius get 10% more basic Skill Checks.\n\nThe good zone of basic Skill Checks is 40/50/60% smaller."
+  },
+  "Unrelenting": {
+    "status": "different",
+    "sourceUrl": "https://nightlight.gg/perks/Unrelenting",
+    "descriptionPost95": "Whenever you miss a basic-attack, your cooldown is 20/25/30% shorter."
+  },
+  "Up the Ante": {
+    "status": "different",
+    "sourceUrl": "https://nightlight.gg/perks/Up_the_Ante",
+    "descriptionPost95": "For each other Survivor alive, all Survivors are 1/2/3% luckier.\n\nAll Survivors can attempt to unhook themselves."
+  },
+  "Urban Evasion": {
+    "status": "different",
+    "sourceUrl": "https://nightlight.gg/perks/Urban_Evasion",
+    "descriptionPost95": "While crouched, you gain 90/95/100% Haste."
+  },
+  "Vigil": {
+    "status": "different",
+    "sourceUrl": "https://nightlight.gg/perks/Vigil",
+    "descriptionPost95": "All Survivors within 16 m of you:\n\n* Lose Blindness 44/55/66% faster.\n* Lose Broken 44/55/66% faster.\n* Lose Exhausted 44/55/66% faster.\n* Lose Exposed 44/55/66% faster.\n* Lose Hemorrhage 44/55/66% faster.\n* Lose Hindered 44/55/66% faster.\n* Lose Mangled 44/55/66% faster.\n* Lose Oblivious 44/55/66% faster.\n\nAfter they leave your range, this ends after 15 s."
+  },
+  "Visionary": {
+    "status": "different",
+    "sourceUrl": "https://nightlight.gg/perks/Visionary",
+    "descriptionPost95": "Within 32 m of you, you see the Auras of Generators.\n\nWhenever a Generator is completed, cooldown: 20/18/16 s."
+  },
+  "Wake Up!": {
+    "status": "different",
+    "sourceUrl": "https://nightlight.gg/perks/Wake_Up%21",
+    "descriptionPost95": "When all Generators are completed:\n\n* You see the Auras of Exit Gate Switches.\n* While opening an Exit Gate, other Survivors see your Aura.\n* For each Survivor alive, you open Exit Gates 8/10/12.5% faster."
+  },
+  "We'll make it": {
+    "status": "different",
+    "sourceUrl": "https://nightlight.gg/perks/We%27ll_make_it",
+    "descriptionPost95": "Whenever you unhook a Survivor, for 30/60/90 s, you heal other Survivors 100% faster."
+  },
+  "We're Gonna Live Forever": {
+    "status": "different",
+    "sourceUrl": "https://nightlight.gg/perks/We%27re_Gonna_Live_Forever",
+    "descriptionPost95": "You heal downed Survivors 100% faster.\n\nWhenever you finish healing a downed Survivor, they gain Endurance for 6/8/10 s. Cooldown: 30 s."
+  },
+  "Whispers": {
+    "status": "different",
+    "sourceUrl": "https://nightlight.gg/perks/Whispers",
+    "descriptionPost95": "While within 48/40/32 m of a Survivor, you randomly hear whispers."
+  },
+  "Windows of Opportunity": {
+    "status": "different",
+    "sourceUrl": "https://nightlight.gg/perks/Windows_of_Opportunity",
+    "descriptionPost95": "Within 24/28/32 m of you:\n\n* You see the Auras of Pallets.\n* You see the Auras of Breakable Walls.\n* You see the Auras of Windows."
+  },
+  "Zanshin Tactics": {
+    "status": "different",
+    "sourceUrl": "https://nightlight.gg/perks/Zanshin_Tactics",
+    "descriptionPost95": "Within 32 m, you see the Auras of Pallets and windows.\n\nWhenever a Survivor drops a Pallet, you see their Aura for 3/4/5 s."
+  },
+  "Turn Back The Clock": {
+    "status": "different",
+    "sourceUrl": "https://nightlight.gg/perks/Turn_Back_The_Clock",
+    "descriptionPost95": "After hooking a Survivor, for the next 40/50/60 s, use Active Ability Button 1 to make target Generator you can see within 20 m explode, lose 10% progress and start regressing."
+  },
+  "Secret Project": {
+    "status": "same_as_legacy",
+    "sourceUrl": "https://nightlight.gg/perks/Secret_Project"
+  },
+  "Hex: Hive Mind": {
+    "status": "same_as_legacy",
+    "sourceUrl": "https://nightlight.gg/perks/Hex%3A_Hive_Mind"
+  },
+  "Extrasensory Perception": {
+    "status": "different",
+    "sourceUrl": "https://nightlight.gg/perks/Extrasensory_Perception",
+    "descriptionPost95": "After crouching for 4 s:\n\n* You see Auras in an expanding radius up to 44 m.\n* You gain Elusive.\n* You gain Oblivious.\n\nWhen you stop crouching, or after 11 s, cooldown: 60/50/40 s."
+  },
+  "We See You": {
+    "status": "different",
+    "sourceUrl": "https://nightlight.gg/perks/We_See_You",
+    "descriptionPost95": "Whenever the Killer sees your Aura, you earn 1 Token. Cooldown: 10 s.\n\nWhen you have 4 Tokens, spend them all. Then, all Survivors see the Killer's Aura for 10/12.5/15 s."
+  },
+  "Teamwork: Soft-Spoken": {
+    "status": "same_as_legacy",
+    "sourceUrl": "https://nightlight.gg/perks/Teamwork%3A_Soft-Spoken"
+  },
+  "Bada Bada Boom": {
+    "status": "different",
+    "sourceUrl": "https://nightlight.gg/perks/Bada_Bada_Boom",
+    "descriptionPost95": "After repairing 20% of Generators, while next to a Window, use Active Ability Button 2 to trap it for 40/50/60 s. All Survivors see that Window's Aura for that time.\n\nWhen the Killer vaults that Window, the trap explodes and they gain 50% Hindered for 4 s."
+  },
+  "Change of Plan": {
+    "status": "same_as_legacy",
+    "sourceUrl": "https://nightlight.gg/perks/Change_of_Plan"
+  },
+  "Teamwork: Full Circuit": {
+    "status": "same_as_legacy",
+    "sourceUrl": "https://nightlight.gg/perks/Teamwork%3A_Full_Circuit"
+  },
+  "A Place For Us": {
+    "status": "same_as_legacy",
+    "sourceUrl": "https://nightlight.gg/perks/A_Place_For_Us"
+  },
+  "Five Moves Ahead": {
+    "status": "same_as_legacy",
+    "sourceUrl": "https://nightlight.gg/perks/Five_Moves_Ahead"
+  },
+  "Flow State": {
+    "status": "different",
+    "sourceUrl": "https://nightlight.gg/perks/Flow_State",
+    "descriptionPost95": "Whenever a generator is completed, earn 1 Token, up to 5.\n\nFor each Token:\n\n* You bless and cleanse 8/9/10% faster.\n* You heal 8/9/10% faster.\n* You unhook Survivors 8/9/10% faster."
+  }
+}

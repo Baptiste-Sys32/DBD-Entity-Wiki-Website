@@ -1,0 +1,213 @@
+{
+  "Ace in the Hole": {
+    "status": "same_as_legacy",
+    "sourceUrl": "https://nightlight.gg/perks/Ace_in_the_Hole"
+  },
+  "Adrenaline": {
+    "status": "same_as_legacy",
+    "sourceUrl": "https://nightlight.gg/perks/Adrenaline"
+  },
+  "Aftercare": {
+    "status": "same_as_legacy",
+    "sourceUrl": "https://nightlight.gg/perks/Aftercare"
+  },
+  "Agitation": {
+    "status": "same_as_legacy",
+    "sourceUrl": "https://nightlight.gg/perks/Agitation"
+  },
+  "Alert": {
+    "status": "same_as_legacy",
+    "sourceUrl": "https://nightlight.gg/perks/Alert"
+  },
+  "Any Means Necessary": {
+    "status": "same_as_legacy",
+    "sourceUrl": "https://nightlight.gg/perks/Any_Means_Necessary"
+  },
+  "Autodidact": {
+    "status": "same_as_legacy",
+    "sourceUrl": "https://nightlight.gg/perks/Autodidact"
+  },
+  "Babysitter": {
+    "status": "same_as_legacy",
+    "sourceUrl": "https://nightlight.gg/perks/Babysitter"
+  },
+  "Balanced Landing": {
+    "status": "same_as_legacy",
+    "sourceUrl": "https://nightlight.gg/perks/Balanced_Landing"
+  },
+  "Bamboozle": {
+    "status": "same_as_legacy",
+    "sourceUrl": "https://nightlight.gg/perks/Bamboozle"
+  },
+  "Barbecue & Chili": {
+    "status": "different",
+    "sourceUrl": "https://nightlight.gg/perks/Barbecue_%26_Chili",
+    "descriptionPost95": "Whenever you hook a Survivor, for 5 s, you see the Auras of all Survivors who are at least 60/50/40 m away from the hooked Survivor."
+  },
+  "Beast of Prey": {
+    "status": "same_as_legacy",
+    "sourceUrl": "https://nightlight.gg/perks/Beast_of_Prey"
+  },
+  "Better Together": {
+    "status": "same_as_legacy",
+    "sourceUrl": "https://nightlight.gg/perks/Better_Together"
+  },
+  "Bitter Murmur": {
+    "status": "same_as_legacy",
+    "sourceUrl": "https://nightlight.gg/perks/Bitter_Murmur"
+  },
+  "Blood Echo": {
+    "status": "same_as_legacy",
+    "sourceUrl": "https://nightlight.gg/perks/Blood_Echo"
+  },
+  "Bloodhound": {
+    "status": "same_as_legacy",
+    "sourceUrl": "https://nightlight.gg/perks/Bloodhound"
+  },
+  "Blood Pact": {
+    "status": "same_as_legacy",
+    "sourceUrl": "https://nightlight.gg/perks/Blood_Pact"
+  },
+  "Blood Warden": {
+    "status": "different",
+    "sourceUrl": "https://nightlight.gg/perks/Blood_Warden",
+    "descriptionPost95": "When an Exit Gate is opened, once per trial, when you hook a Survivor, both Exits are blocked for 40/50/60 s.\n\nYou see the Auras of Survivors within Exit Thresholds."
+  },
+  "Boil Over": {
+    "status": "same_as_legacy",
+    "sourceUrl": "https://nightlight.gg/perks/Boil_Over"
+  },
+  "Bond": {
+    "status": "same_as_legacy",
+    "sourceUrl": "https://nightlight.gg/perks/Bond"
+  },
+  "Shattered Hope": {
+    "status": "same_as_legacy",
+    "sourceUrl": "https://nightlight.gg/perks/Shattered_Hope"
+  },
+  "Borrowed Time": {
+    "status": "same_as_legacy",
+    "sourceUrl": "https://nightlight.gg/perks/Borrowed_Time"
+  },
+  "Botany Knowledge": {
+    "status": "same_as_legacy",
+    "sourceUrl": "https://nightlight.gg/perks/Botany_Knowledge"
+  },
+  "Breakdown": {
+    "status": "same_as_legacy",
+    "sourceUrl": "https://nightlight.gg/perks/Breakdown"
+  },
+  "Breakout": {
+    "status": "same_as_legacy",
+    "sourceUrl": "https://nightlight.gg/perks/Breakout"
+  },
+  "Brutal Strength": {
+    "status": "same_as_legacy",
+    "sourceUrl": "https://nightlight.gg/perks/Brutal_Strength"
+  },
+  "Buckle Up": {
+    "status": "same_as_legacy",
+    "sourceUrl": "https://nightlight.gg/perks/Buckle_Up"
+  },
+  "Built to Last": {
+    "status": "same_as_legacy",
+    "sourceUrl": "https://nightlight.gg/perks/Built_to_Last"
+  },
+  "Calm Spirit": {
+    "status": "same_as_legacy",
+    "sourceUrl": "https://nightlight.gg/perks/Calm_Spirit"
+  },
+  "Camaraderie": {
+    "status": "same_as_legacy",
+    "sourceUrl": "https://nightlight.gg/perks/Camaraderie"
+  },
+  "Corrupt Intervention": {
+    "status": "same_as_legacy",
+    "sourceUrl": "https://nightlight.gg/perks/Corrupt_Intervention"
+  },
+  "Coulrophobia": {
+    "status": "same_as_legacy",
+    "sourceUrl": "https://nightlight.gg/perks/Coulrophobia"
+  },
+  "Cruel Limits": {
+    "status": "same_as_legacy",
+    "sourceUrl": "https://nightlight.gg/perks/Cruel_Limits"
+  },
+  "Dance With Me": {
+    "status": "same_as_legacy",
+    "sourceUrl": "https://nightlight.gg/perks/Dance_With_Me"
+  },
+  "Dark Sense": {
+    "status": "same_as_legacy",
+    "sourceUrl": "https://nightlight.gg/perks/Dark_Sense"
+  },
+  "Dark Devotion": {
+    "status": "same_as_legacy",
+    "sourceUrl": "https://nightlight.gg/perks/Dark_Devotion"
+  },
+  "Dead Hard": {
+    "status": "same_as_legacy",
+    "sourceUrl": "https://nightlight.gg/perks/Dead_Hard"
+  },
+  "Dead Man’s Switch": {
+    "status": "different",
+    "sourceUrl": "https://nightlight.gg/perks/Dead_Man%E2%80%99s_Switch",
+    "descriptionPost95": "When you hook a Survivor, the first time a Survivor stops repairing a Generator, it is blocked for 25/30/35 s. Cooldown: 25/30/35 s."
+  },
+  "Deathbound": {
+    "status": "same_as_legacy",
+    "sourceUrl": "https://nightlight.gg/perks/Deathbound"
+  },
+  "Will To Live": {
+    "status": "same_as_legacy",
+    "sourceUrl": "https://nightlight.gg/perks/Decisive_Strike"
+  },
+  "Deerstalker": {
+    "status": "same_as_legacy",
+    "sourceUrl": "https://nightlight.gg/perks/Deerstalker"
+  },
+  "Deja Vu": {
+    "status": "same_as_legacy",
+    "sourceUrl": "https://nightlight.gg/perks/Deja_Vu"
+  },
+  "Deliverance": {
+    "status": "same_as_legacy",
+    "sourceUrl": "https://nightlight.gg/perks/Deliverance"
+  },
+  "Desperate Measures": {
+    "status": "same_as_legacy",
+    "sourceUrl": "https://nightlight.gg/perks/Desperate_Measures"
+  },
+  "Detective's Hunch": {
+    "status": "same_as_legacy",
+    "sourceUrl": "https://nightlight.gg/perks/Detective's_Hunch"
+  },
+  "Discordance": {
+    "status": "same_as_legacy",
+    "sourceUrl": "https://nightlight.gg/perks/Discordance"
+  },
+  "Distortion": {
+    "status": "same_as_legacy",
+    "sourceUrl": "https://nightlight.gg/perks/Distortion"
+  },
+  "Distressing": {
+    "status": "same_as_legacy",
+    "sourceUrl": "https://nightlight.gg/perks/Distressing"
+  },
+  "Diversion": {
+    "status": "same_as_legacy",
+    "sourceUrl": "https://nightlight.gg/perks/Diversion"
+  },
+  "Dragon’s Grip": {
+    "status": "same_as_legacy",
+    "sourceUrl": "https://nightlight.gg/perks/Dragon%E2%80%99s_Grip"
+  },
+  "Cull The Weak": {
+    "status": "same_as_legacy",
+    "sourceUrl": "https://nightlight.gg/perks/Cull_The_Weak"
+  },
+  "Empathy": {
+    "status": "same_as_legacy",
+    "sourceUrl": "https://nightlight.gg/perks/Empathy"
+  }
+}

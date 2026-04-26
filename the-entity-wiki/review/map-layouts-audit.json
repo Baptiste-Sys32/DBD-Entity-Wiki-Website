@@ -1,0 +1,1144 @@
+{
+  "generatedAt": "2026-04-13T01:42:36.117Z",
+  "options": {
+    "dryRun": false,
+    "refresh": false,
+    "checkMode": false,
+    "upgradeLegacy": true
+  },
+  "source": {
+    "calloutsPage": "https://hens333.com/callouts",
+    "calloutsBase": "https://hens333.com/img/dbd/callouts",
+    "calloutEntryCount": 58
+  },
+  "stats": {
+    "databaseMapCount": 57,
+    "uniqueDatabaseMapNames": 47,
+    "currentMapLayoutKeyCount": 51,
+    "missingMapLayoutKeyCount": 0,
+    "missingSourceCount": 0,
+    "downloadedCount": 0,
+    "reusedCount": 1,
+    "skippedCount": 0,
+    "failedCount": 0,
+    "upgradeCandidateCount": 1
+  },
+  "missingSourceMaps": [],
+  "unresolvedMaps": [],
+  "upgradeCandidates": [
+    "Midwich Elementary School"
+  ],
+  "suggestions": {
+    "missingKeys": {},
+    "legacyUpgrades": {
+      "Midwich Elementary School": [
+        {
+          "path": "map_layouts_hens/midwich_elementary_school.gif",
+          "label": ""
+        }
+      ]
+    }
+  },
+  "rows": [
+    {
+      "mapName": "Greenville Square",
+      "realm": "Withered Isle",
+      "mapIds": [
+        "fd7d55a9-f81c-4df1-bf20-822321bd6108"
+      ],
+      "hasMapLayoutKey": true,
+      "hasExistingFile": true,
+      "hasLegacyOnly": false,
+      "currentPrimaryRelPath": "map_layouts_hens/greenville_square.webp",
+      "candidates": [
+        "Greenville Square",
+        "The Greenville Square"
+      ],
+      "matchedSourceLabel": "Greenville Square",
+      "matchedSourcePath": "Other/Greenville Square.webp",
+      "matchedSourceUrl": "",
+      "generatedRelPath": "map_layouts_hens/greenville_square.webp",
+      "targetRelPath": "map_layouts_hens/greenville_square.webp",
+      "status": "covered",
+      "downloaded": false,
+      "error": ""
+    },
+    {
+      "mapName": "Freddy Fazbear's Pizza",
+      "realm": "Withered Isle",
+      "mapIds": [
+        "94e81e06-b8d1-488d-b8e6-b67d4a9a913c"
+      ],
+      "hasMapLayoutKey": true,
+      "hasExistingFile": true,
+      "hasLegacyOnly": false,
+      "currentPrimaryRelPath": "map_layouts_hens/freddy_fazbears_pizza.webp",
+      "candidates": [
+        "Freddy Fazbear's Pizza",
+        "The Freddy Fazbear's Pizza"
+      ],
+      "matchedSourceLabel": "Freddy Fazbears Pizza",
+      "matchedSourcePath": "Other/Freddy Fazbears Pizza.webp",
+      "matchedSourceUrl": "",
+      "generatedRelPath": "map_layouts_hens/freddy_fazbears_pizza.webp",
+      "targetRelPath": "map_layouts_hens/freddy_fazbears_pizza.webp",
+      "status": "covered",
+      "downloaded": false,
+      "error": ""
+    },
+    {
+      "mapName": "Fallen Refuge",
+      "realm": "Withered Isle",
+      "mapIds": [
+        "58da9baa-6375-45b0-ab40-91e37c107136"
+      ],
+      "hasMapLayoutKey": true,
+      "hasExistingFile": true,
+      "hasLegacyOnly": false,
+      "currentPrimaryRelPath": "map_layouts_hens/fallen_refuge.webp",
+      "candidates": [
+        "Fallen Refuge",
+        "The Fallen Refuge"
+      ],
+      "matchedSourceLabel": "Fallen Refuge",
+      "matchedSourcePath": "Other/Fallen Refuge.webp",
+      "matchedSourceUrl": "",
+      "generatedRelPath": "map_layouts_hens/fallen_refuge.webp",
+      "targetRelPath": "map_layouts_hens/fallen_refuge.webp",
+      "status": "covered",
+      "downloaded": false,
+      "error": ""
+    },
+    {
+      "mapName": "Disturbed Ward",
+      "realm": "Crotus Prenn Asylum",
+      "mapIds": [
+        "6f195162-de09-4b7a-9890-b0c048a1fedf"
+      ],
+      "hasMapLayoutKey": true,
+      "hasExistingFile": true,
+      "hasLegacyOnly": false,
+      "currentPrimaryRelPath": "map_layouts_hens/disturbed_ward.webp",
+      "candidates": [
+        "Disturbed Ward",
+        "The Disturbed Ward"
+      ],
+      "matchedSourceLabel": "Disturbed Ward",
+      "matchedSourcePath": "Crotus Pen/Disturbed Ward.webp",
+      "matchedSourceUrl": "",
+      "generatedRelPath": "map_layouts_hens/disturbed_ward.webp",
+      "targetRelPath": "map_layouts_hens/disturbed_ward.webp",
+      "status": "covered",
+      "downloaded": false,
+      "error": ""
+    },
+    {
+      "mapName": "Father Campbell's Chapel",
+      "realm": "Crotus Prenn Asylum",
+      "mapIds": [
+        "4656d12d-4144-4992-88b1-72ee51022e08"
+      ],
+      "hasMapLayoutKey": true,
+      "hasExistingFile": true,
+      "hasLegacyOnly": false,
+      "currentPrimaryRelPath": "map_layouts_hens/father_campbells_chapel.webp",
+      "candidates": [
+        "Father Campbell's Chapel",
+        "The Father Campbell's Chapel"
+      ],
+      "matchedSourceLabel": "Father Campbells Chapel",
+      "matchedSourcePath": "Crotus Pen/Father Campbells Chapel.webp",
+      "matchedSourceUrl": "",
+      "generatedRelPath": "map_layouts_hens/father_campbells_chapel.webp",
+      "targetRelPath": "map_layouts_hens/father_campbells_chapel.webp",
+      "status": "covered",
+      "downloaded": false,
+      "error": ""
+    },
+    {
+      "mapName": "Mother's Dwelling",
+      "realm": "Red Forest",
+      "mapIds": [
+        "df00ffb3-b098-4287-b294-3f65b4a73546"
+      ],
+      "hasMapLayoutKey": true,
+      "hasExistingFile": true,
+      "hasLegacyOnly": false,
+      "currentPrimaryRelPath": "map_layouts_hens/mothers_dwelling.webp",
+      "candidates": [
+        "Mother's Dwelling",
+        "The Mother's Dwelling"
+      ],
+      "matchedSourceLabel": "Mother's Dwelling",
+      "matchedSourcePath": "Red Forest/Mothers Dwelling.webp",
+      "matchedSourceUrl": "",
+      "generatedRelPath": "map_layouts_hens/mothers_dwelling.webp",
+      "targetRelPath": "map_layouts_hens/mothers_dwelling.webp",
+      "status": "covered",
+      "downloaded": false,
+      "error": ""
+    },
+    {
+      "mapName": "The Temple of Purgation",
+      "realm": "Red Forest",
+      "mapIds": [
+        "d46e0736-5830-470a-8ef5-e6fa00ad3679"
+      ],
+      "hasMapLayoutKey": true,
+      "hasExistingFile": true,
+      "hasLegacyOnly": false,
+      "currentPrimaryRelPath": "map_layouts_hens/temple_of_purgation.webp",
+      "candidates": [
+        "The Temple of Purgation",
+        "Temple of Purgation"
+      ],
+      "matchedSourceLabel": "Temple of Purgation",
+      "matchedSourcePath": "Red Forest/Temple of Purgation.webp",
+      "matchedSourceUrl": "",
+      "generatedRelPath": "map_layouts_hens/the_temple_of_purgation.webp",
+      "targetRelPath": "map_layouts_hens/temple_of_purgation.webp",
+      "status": "covered",
+      "downloaded": false,
+      "error": ""
+    },
+    {
+      "mapName": "Raccoon City Police Station East Wing",
+      "realm": "Raccoon City",
+      "mapIds": [
+        "65a95267-d2f5-40b6-862f-f699cfe3d80c"
+      ],
+      "hasMapLayoutKey": true,
+      "hasExistingFile": true,
+      "hasLegacyOnly": false,
+      "currentPrimaryRelPath": "map_layouts_hens/rpd_east_wing.webp",
+      "candidates": [
+        "Raccoon City Police Station East Wing",
+        "The Raccoon City Police Station East Wing",
+        "Police Station East Wing"
+      ],
+      "matchedSourceLabel": "Police Station East Wing",
+      "matchedSourcePath": "Raccoon City/Rpd East Wing.webp",
+      "matchedSourceUrl": "",
+      "generatedRelPath": "map_layouts_hens/raccoon_city_police_station_east_wing.webp",
+      "targetRelPath": "map_layouts_hens/rpd_east_wing.webp",
+      "status": "covered",
+      "downloaded": false,
+      "error": ""
+    },
+    {
+      "mapName": "Raccoon City Police Station West Wing",
+      "realm": "Raccoon City",
+      "mapIds": [
+        "a2443082-f186-4b70-a918-5d795165117f"
+      ],
+      "hasMapLayoutKey": true,
+      "hasExistingFile": true,
+      "hasLegacyOnly": false,
+      "currentPrimaryRelPath": "map_layouts_hens/rpd_west_wing.webp",
+      "candidates": [
+        "Raccoon City Police Station West Wing",
+        "The Raccoon City Police Station West Wing",
+        "Police Station West Wing"
+      ],
+      "matchedSourceLabel": "Police Station West Wing",
+      "matchedSourcePath": "Raccoon City/Rpd West Wing.webp",
+      "matchedSourceUrl": "",
+      "generatedRelPath": "map_layouts_hens/raccoon_city_police_station_west_wing.webp",
+      "targetRelPath": "map_layouts_hens/rpd_west_wing.webp",
+      "status": "covered",
+      "downloaded": false,
+      "error": ""
+    },
+    {
+      "mapName": "Badham Preschool I",
+      "realm": "Springwood",
+      "mapIds": [
+        "fd637e6f-daef-4073-9cde-2eca57b4021c"
+      ],
+      "hasMapLayoutKey": true,
+      "hasExistingFile": true,
+      "hasLegacyOnly": false,
+      "currentPrimaryRelPath": "map_layouts_hens/preschool1.webp",
+      "candidates": [
+        "Badham Preschool I",
+        "The Badham Preschool I",
+        "Preschool I"
+      ],
+      "matchedSourceLabel": "Preschool I",
+      "matchedSourcePath": "Badham/Preschool1.webp",
+      "matchedSourceUrl": "",
+      "generatedRelPath": "map_layouts_hens/badham_preschool_i.webp",
+      "targetRelPath": "map_layouts_hens/preschool1.webp",
+      "status": "covered",
+      "downloaded": false,
+      "error": ""
+    },
+    {
+      "mapName": "Badham Preschool II",
+      "realm": "Springwood",
+      "mapIds": [
+        "d02f1488-3711-4074-8b12-1c06b9750984"
+      ],
+      "hasMapLayoutKey": true,
+      "hasExistingFile": true,
+      "hasLegacyOnly": false,
+      "currentPrimaryRelPath": "map_layouts_hens/preschool2.webp",
+      "candidates": [
+        "Badham Preschool II",
+        "The Badham Preschool II",
+        "Preschool II"
+      ],
+      "matchedSourceLabel": "Preschool II",
+      "matchedSourcePath": "Badham/Preschool2.webp",
+      "matchedSourceUrl": "",
+      "generatedRelPath": "map_layouts_hens/badham_preschool_ii.webp",
+      "targetRelPath": "map_layouts_hens/preschool2.webp",
+      "status": "covered",
+      "downloaded": false,
+      "error": ""
+    },
+    {
+      "mapName": "Badham Preschool III",
+      "realm": "Springwood",
+      "mapIds": [
+        "fd05902e-41a7-4799-9d8a-3cdb1eefadd9"
+      ],
+      "hasMapLayoutKey": true,
+      "hasExistingFile": true,
+      "hasLegacyOnly": false,
+      "currentPrimaryRelPath": "map_layouts_hens/preschool3.webp",
+      "candidates": [
+        "Badham Preschool III",
+        "The Badham Preschool III",
+        "Preschool III"
+      ],
+      "matchedSourceLabel": "Preschool III",
+      "matchedSourcePath": "Badham/Preschool3.webp",
+      "matchedSourceUrl": "",
+      "generatedRelPath": "map_layouts_hens/badham_preschool_iii.webp",
+      "targetRelPath": "map_layouts_hens/preschool3.webp",
+      "status": "covered",
+      "downloaded": false,
+      "error": ""
+    },
+    {
+      "mapName": "Badham Preschool IV",
+      "realm": "Springwood",
+      "mapIds": [
+        "91afdfaf-befd-4136-aea3-3014e3490185"
+      ],
+      "hasMapLayoutKey": true,
+      "hasExistingFile": true,
+      "hasLegacyOnly": false,
+      "currentPrimaryRelPath": "map_layouts_hens/preschool4.webp",
+      "candidates": [
+        "Badham Preschool IV",
+        "The Badham Preschool IV",
+        "Preschool IV"
+      ],
+      "matchedSourceLabel": "",
+      "matchedSourcePath": "",
+      "matchedSourceUrl": "",
+      "generatedRelPath": "map_layouts_hens/badham_preschool_iv.webp",
+      "targetRelPath": "map_layouts_hens/preschool4.webp",
+      "status": "covered",
+      "downloaded": false,
+      "error": ""
+    },
+    {
+      "mapName": "Badham Preschool V",
+      "realm": "Springwood",
+      "mapIds": [
+        "d614970e-8e58-46f8-8270-cbf0fe2b52c3"
+      ],
+      "hasMapLayoutKey": true,
+      "hasExistingFile": true,
+      "hasLegacyOnly": false,
+      "currentPrimaryRelPath": "map_layouts_hens/preschool5.webp",
+      "candidates": [
+        "Badham Preschool V",
+        "The Badham Preschool V",
+        "Preschool V"
+      ],
+      "matchedSourceLabel": "Preschool V",
+      "matchedSourcePath": "Badham/Preschool5.webp",
+      "matchedSourceUrl": "",
+      "generatedRelPath": "map_layouts_hens/badham_preschool_v.webp",
+      "targetRelPath": "map_layouts_hens/preschool5.webp",
+      "status": "covered",
+      "downloaded": false,
+      "error": ""
+    },
+    {
+      "mapName": "The Game",
+      "realm": "Gideon Meat Plant",
+      "mapIds": [
+        "abc3b759-ea71-467b-9836-876f449ef246"
+      ],
+      "hasMapLayoutKey": true,
+      "hasExistingFile": true,
+      "hasLegacyOnly": false,
+      "currentPrimaryRelPath": "map_layouts_hens/the_game.webp",
+      "candidates": [
+        "The Game",
+        "Game"
+      ],
+      "matchedSourceLabel": "The Game",
+      "matchedSourcePath": "Other/The Game.webp",
+      "matchedSourceUrl": "",
+      "generatedRelPath": "map_layouts_hens/the_game.webp",
+      "targetRelPath": "map_layouts_hens/the_game.webp",
+      "status": "covered",
+      "downloaded": false,
+      "error": ""
+    },
+    {
+      "mapName": "Fractured Cowshed",
+      "realm": "Coldwind Farm",
+      "mapIds": [
+        "6652e0a0-b858-45a2-aeb8-03966d5eadf6"
+      ],
+      "hasMapLayoutKey": true,
+      "hasExistingFile": true,
+      "hasLegacyOnly": false,
+      "currentPrimaryRelPath": "map_layouts_hens/fractured_cowshed.webp",
+      "candidates": [
+        "Fractured Cowshed",
+        "The Fractured Cowshed"
+      ],
+      "matchedSourceLabel": "Fractured Cowshed",
+      "matchedSourcePath": "Coldwind/Fractured Cowshed.webp",
+      "matchedSourceUrl": "",
+      "generatedRelPath": "map_layouts_hens/fractured_cowshed.webp",
+      "targetRelPath": "map_layouts_hens/fractured_cowshed.webp",
+      "status": "covered",
+      "downloaded": false,
+      "error": ""
+    },
+    {
+      "mapName": "Rotten Fields",
+      "realm": "Coldwind Farm",
+      "mapIds": [
+        "c792961c-05d7-41c6-96c8-1f7c60204ab4"
+      ],
+      "hasMapLayoutKey": true,
+      "hasExistingFile": true,
+      "hasLegacyOnly": false,
+      "currentPrimaryRelPath": "map_layouts_hens/rotten_fields.webp",
+      "candidates": [
+        "Rotten Fields",
+        "The Rotten Fields"
+      ],
+      "matchedSourceLabel": "Rotten Fields",
+      "matchedSourcePath": "Coldwind/Rotten Fields.webp",
+      "matchedSourceUrl": "",
+      "generatedRelPath": "map_layouts_hens/rotten_fields.webp",
+      "targetRelPath": "map_layouts_hens/rotten_fields.webp",
+      "status": "covered",
+      "downloaded": false,
+      "error": ""
+    },
+    {
+      "mapName": "The Thompson House",
+      "realm": "Coldwind Farm",
+      "mapIds": [
+        "c706513b-45cb-41a5-a8d2-56a69dbb3ada"
+      ],
+      "hasMapLayoutKey": true,
+      "hasExistingFile": true,
+      "hasLegacyOnly": false,
+      "currentPrimaryRelPath": "map_layouts_hens/the_thompson_house.webp",
+      "candidates": [
+        "The Thompson House",
+        "Thompson House"
+      ],
+      "matchedSourceLabel": "The Thompson House",
+      "matchedSourcePath": "Coldwind/The Thompson House.webp",
+      "matchedSourceUrl": "",
+      "generatedRelPath": "map_layouts_hens/the_thompson_house.webp",
+      "targetRelPath": "map_layouts_hens/the_thompson_house.webp",
+      "status": "covered",
+      "downloaded": false,
+      "error": ""
+    },
+    {
+      "mapName": "Torment Creek",
+      "realm": "Coldwind Farm",
+      "mapIds": [
+        "588b0ffc-7187-467f-8d9e-d4fac4c1d046"
+      ],
+      "hasMapLayoutKey": true,
+      "hasExistingFile": true,
+      "hasLegacyOnly": false,
+      "currentPrimaryRelPath": "map_layouts_hens/torment_creek.webp",
+      "candidates": [
+        "Torment Creek",
+        "The Torment Creek"
+      ],
+      "matchedSourceLabel": "Torment Creek",
+      "matchedSourcePath": "Coldwind/Torment Creek.webp",
+      "matchedSourceUrl": "",
+      "generatedRelPath": "map_layouts_hens/torment_creek.webp",
+      "targetRelPath": "map_layouts_hens/torment_creek.webp",
+      "status": "covered",
+      "downloaded": false,
+      "error": ""
+    },
+    {
+      "mapName": "Rancid Abattoir",
+      "realm": "Coldwind Farm",
+      "mapIds": [
+        "5a4efe52-d731-4d4a-8471-ae3688ce318e"
+      ],
+      "hasMapLayoutKey": true,
+      "hasExistingFile": true,
+      "hasLegacyOnly": false,
+      "currentPrimaryRelPath": "map_layouts_hens/rancid_abbatoir.webp",
+      "candidates": [
+        "Rancid Abattoir",
+        "The Rancid Abattoir",
+        "Rancid Abbatoir"
+      ],
+      "matchedSourceLabel": "Rancid Abbatoir",
+      "matchedSourcePath": "Coldwind/Rancid Abbatoir.webp",
+      "matchedSourceUrl": "",
+      "generatedRelPath": "map_layouts_hens/rancid_abattoir.webp",
+      "targetRelPath": "map_layouts_hens/rancid_abbatoir.webp",
+      "status": "covered",
+      "downloaded": false,
+      "error": ""
+    },
+    {
+      "mapName": "Ormond Lake Mine",
+      "realm": "Ormond",
+      "mapIds": [
+        "ff384b98-a30a-40ef-a213-aee3c74b0226"
+      ],
+      "hasMapLayoutKey": true,
+      "hasExistingFile": true,
+      "hasLegacyOnly": false,
+      "currentPrimaryRelPath": "map_layouts_hens/ormond_lake_mine.webp",
+      "candidates": [
+        "Ormond Lake Mine",
+        "The Ormond Lake Mine"
+      ],
+      "matchedSourceLabel": "Ormond Lake Mine",
+      "matchedSourcePath": "Ormond/Ormond Lake Mine.webp",
+      "matchedSourceUrl": "",
+      "generatedRelPath": "map_layouts_hens/ormond_lake_mine.webp",
+      "targetRelPath": "map_layouts_hens/ormond_lake_mine.webp",
+      "status": "covered",
+      "downloaded": false,
+      "error": ""
+    },
+    {
+      "mapName": "Treatment Theater",
+      "realm": "Léry's Memorial Institute",
+      "mapIds": [
+        "710ffe47-f7c3-4742-91ff-b14ebbeafc24"
+      ],
+      "hasMapLayoutKey": true,
+      "hasExistingFile": true,
+      "hasLegacyOnly": false,
+      "currentPrimaryRelPath": "map_layouts_hens/lerys.webp",
+      "candidates": [
+        "Treatment Theater",
+        "The Treatment Theater",
+        "Treatment Theatre"
+      ],
+      "matchedSourceLabel": "Treatment Theatre",
+      "matchedSourcePath": "Other/Lerys.webp",
+      "matchedSourceUrl": "",
+      "generatedRelPath": "map_layouts_hens/treatment_theater.webp",
+      "targetRelPath": "map_layouts_hens/lerys.webp",
+      "status": "covered",
+      "downloaded": false,
+      "error": ""
+    },
+    {
+      "mapName": "Family Residence",
+      "realm": "Yamaoka Estate",
+      "mapIds": [
+        "8ddbecf5-14cb-480e-93a9-2e28decb9109",
+        "0ab7ff29-8316-4ae0-9e5b-b1414f2b9f8e"
+      ],
+      "hasMapLayoutKey": true,
+      "hasExistingFile": true,
+      "hasLegacyOnly": false,
+      "currentPrimaryRelPath": "map_layouts_hens/family_residence.webp",
+      "candidates": [
+        "Family Residence",
+        "The Family Residence"
+      ],
+      "matchedSourceLabel": "Family Residence",
+      "matchedSourcePath": "Yamaoka/Family Residence.webp",
+      "matchedSourceUrl": "",
+      "generatedRelPath": "map_layouts_hens/family_residence.webp",
+      "targetRelPath": "map_layouts_hens/family_residence.webp",
+      "status": "covered",
+      "downloaded": false,
+      "error": ""
+    },
+    {
+      "mapName": "Sanctum of Wrath",
+      "realm": "Yamaoka Estate",
+      "mapIds": [
+        "c8be21e4-2f82-48bc-8e4e-d935be51c012",
+        "e38170a7-8e0a-428d-8190-01e53adecdac"
+      ],
+      "hasMapLayoutKey": true,
+      "hasExistingFile": true,
+      "hasLegacyOnly": false,
+      "currentPrimaryRelPath": "map_layouts_hens/sanctum_of_wrath.webp",
+      "candidates": [
+        "Sanctum of Wrath",
+        "The Sanctum of Wrath"
+      ],
+      "matchedSourceLabel": "Sanctum of Wrath",
+      "matchedSourcePath": "Yamaoka/Sanctum of Wrath.webp",
+      "matchedSourceUrl": "",
+      "generatedRelPath": "map_layouts_hens/sanctum_of_wrath.webp",
+      "targetRelPath": "map_layouts_hens/sanctum_of_wrath.webp",
+      "status": "covered",
+      "downloaded": false,
+      "error": ""
+    },
+    {
+      "mapName": "Coal Tower",
+      "realm": "The MacMillan Estate",
+      "mapIds": [
+        "d8539ad9-1778-41fa-ab88-8a7cd7a7329b",
+        "87654327-3b32-4de5-b15e-0ec9448d9a55"
+      ],
+      "hasMapLayoutKey": true,
+      "hasExistingFile": true,
+      "hasLegacyOnly": false,
+      "currentPrimaryRelPath": "map_layouts_hens/coal_tower.webp",
+      "candidates": [
+        "Coal Tower",
+        "The Coal Tower"
+      ],
+      "matchedSourceLabel": "Coal Tower",
+      "matchedSourcePath": "McMillan/Coal Tower.webp",
+      "matchedSourceUrl": "",
+      "generatedRelPath": "map_layouts_hens/coal_tower.webp",
+      "targetRelPath": "map_layouts_hens/coal_tower.webp",
+      "status": "covered",
+      "downloaded": false,
+      "error": ""
+    },
+    {
+      "mapName": "Shelter Woods",
+      "realm": "The MacMillan Estate",
+      "mapIds": [
+        "fcde40f0-353e-404d-ac8e-4f151885298c",
+        "3e539988-12b3-473a-9b96-cffda5679b5a"
+      ],
+      "hasMapLayoutKey": true,
+      "hasExistingFile": true,
+      "hasLegacyOnly": false,
+      "currentPrimaryRelPath": "map_layouts_hens/shelter_woods.webp",
+      "candidates": [
+        "Shelter Woods",
+        "The Shelter Woods"
+      ],
+      "matchedSourceLabel": "Shelter Woods",
+      "matchedSourcePath": "McMillan/Shelter Woods.webp",
+      "matchedSourceUrl": "",
+      "generatedRelPath": "map_layouts_hens/shelter_woods.webp",
+      "targetRelPath": "map_layouts_hens/shelter_woods.webp",
+      "status": "covered",
+      "downloaded": false,
+      "error": ""
+    },
+    {
+      "mapName": "Ironworks of Misery",
+      "realm": "The MacMillan Estate",
+      "mapIds": [
+        "7ce1f048-f382-4fc6-800e-8e92294fb259",
+        "86eb3b8c-b1e5-47d5-9328-368a570ce9c6"
+      ],
+      "hasMapLayoutKey": true,
+      "hasExistingFile": true,
+      "hasLegacyOnly": false,
+      "currentPrimaryRelPath": "map_layouts_hens/ironworks_of_misery.webp",
+      "candidates": [
+        "Ironworks of Misery",
+        "The Ironworks of Misery"
+      ],
+      "matchedSourceLabel": "Ironworks Of Misery",
+      "matchedSourcePath": "McMillan/Ironworks Of Misery.webp",
+      "matchedSourceUrl": "",
+      "generatedRelPath": "map_layouts_hens/ironworks_of_misery.webp",
+      "targetRelPath": "map_layouts_hens/ironworks_of_misery.webp",
+      "status": "covered",
+      "downloaded": false,
+      "error": ""
+    },
+    {
+      "mapName": "Suffocation Pit",
+      "realm": "The MacMillan Estate",
+      "mapIds": [
+        "edf23c93-6d67-461e-90e9-a0bf6839bc50",
+        "00d4ee48-2e65-4d17-bb13-b924b1dadeed"
+      ],
+      "hasMapLayoutKey": true,
+      "hasExistingFile": true,
+      "hasLegacyOnly": false,
+      "currentPrimaryRelPath": "map_layouts_hens/suffocation_pit.webp",
+      "candidates": [
+        "Suffocation Pit",
+        "The Suffocation Pit"
+      ],
+      "matchedSourceLabel": "Suffocation Pit",
+      "matchedSourcePath": "McMillan/Suffocation Pit.webp",
+      "matchedSourceUrl": "",
+      "generatedRelPath": "map_layouts_hens/suffocation_pit.webp",
+      "targetRelPath": "map_layouts_hens/suffocation_pit.webp",
+      "status": "covered",
+      "downloaded": false,
+      "error": ""
+    },
+    {
+      "mapName": "Groaning Storehouse",
+      "realm": "The MacMillan Estate",
+      "mapIds": [
+        "1955178f-6fee-48e0-8d16-4550e75272b5",
+        "9156acfc-a5cb-4725-b885-732defbff3d9"
+      ],
+      "hasMapLayoutKey": true,
+      "hasExistingFile": true,
+      "hasLegacyOnly": false,
+      "currentPrimaryRelPath": "map_layouts_hens/groaning_storehouse.webp",
+      "candidates": [
+        "Groaning Storehouse",
+        "The Groaning Storehouse"
+      ],
+      "matchedSourceLabel": "Groaning Storehouse",
+      "matchedSourcePath": "McMillan/Groaning Storehouse.webp",
+      "matchedSourceUrl": "",
+      "generatedRelPath": "map_layouts_hens/groaning_storehouse.webp",
+      "targetRelPath": "map_layouts_hens/groaning_storehouse.webp",
+      "status": "covered",
+      "downloaded": false,
+      "error": ""
+    },
+    {
+      "mapName": "Eyrie of Crows",
+      "realm": "Forsaken Boneyard",
+      "mapIds": [
+        "8f129f25-0183-4546-bce4-13b47e1eada3"
+      ],
+      "hasMapLayoutKey": true,
+      "hasExistingFile": true,
+      "hasLegacyOnly": false,
+      "currentPrimaryRelPath": "map_layouts_hens/eyrie_of_crows.webp",
+      "candidates": [
+        "Eyrie of Crows",
+        "The Eyrie of Crows"
+      ],
+      "matchedSourceLabel": "Eyrie of Crows",
+      "matchedSourcePath": "Boneyard/Eyrie of Crows.webp",
+      "matchedSourceUrl": "",
+      "generatedRelPath": "map_layouts_hens/eyrie_of_crows.webp",
+      "targetRelPath": "map_layouts_hens/eyrie_of_crows.webp",
+      "status": "covered",
+      "downloaded": false,
+      "error": ""
+    },
+    {
+      "mapName": "Wretched Shop",
+      "realm": "Autohaven Wreckers",
+      "mapIds": [
+        "571902fc-890b-46f4-aeb3-3b52e6bdf0f6"
+      ],
+      "hasMapLayoutKey": true,
+      "hasExistingFile": true,
+      "hasLegacyOnly": false,
+      "currentPrimaryRelPath": "map_layouts_hens/wretched_shop.webp",
+      "candidates": [
+        "Wretched Shop",
+        "The Wretched Shop"
+      ],
+      "matchedSourceLabel": "Wretched Shop",
+      "matchedSourcePath": "Azarovs/Wretched Shop.webp",
+      "matchedSourceUrl": "",
+      "generatedRelPath": "map_layouts_hens/wretched_shop.webp",
+      "targetRelPath": "map_layouts_hens/wretched_shop.webp",
+      "status": "covered",
+      "downloaded": false,
+      "error": ""
+    },
+    {
+      "mapName": "Gas Heaven",
+      "realm": "Autohaven Wreckers",
+      "mapIds": [
+        "6d1eb876-6d66-4fc9-91da-d143b96216cd"
+      ],
+      "hasMapLayoutKey": true,
+      "hasExistingFile": true,
+      "hasLegacyOnly": false,
+      "currentPrimaryRelPath": "map_layouts_hens/gas_heaven.webp",
+      "candidates": [
+        "Gas Heaven",
+        "The Gas Heaven"
+      ],
+      "matchedSourceLabel": "Gas Heaven",
+      "matchedSourcePath": "Azarovs/Gas Heaven.webp",
+      "matchedSourceUrl": "",
+      "generatedRelPath": "map_layouts_hens/gas_heaven.webp",
+      "targetRelPath": "map_layouts_hens/gas_heaven.webp",
+      "status": "covered",
+      "downloaded": false,
+      "error": ""
+    },
+    {
+      "mapName": "Blood Lodge",
+      "realm": "Autohaven Wreckers",
+      "mapIds": [
+        "b37412ee-30c8-42c4-901a-750b48f2f7b0"
+      ],
+      "hasMapLayoutKey": true,
+      "hasExistingFile": true,
+      "hasLegacyOnly": false,
+      "currentPrimaryRelPath": "map_layouts_hens/blood_lodge.webp",
+      "candidates": [
+        "Blood Lodge",
+        "The Blood Lodge"
+      ],
+      "matchedSourceLabel": "Blood Lodge",
+      "matchedSourcePath": "Azarovs/Blood Lodge.webp",
+      "matchedSourceUrl": "",
+      "generatedRelPath": "map_layouts_hens/blood_lodge.webp",
+      "targetRelPath": "map_layouts_hens/blood_lodge.webp",
+      "status": "covered",
+      "downloaded": false,
+      "error": ""
+    },
+    {
+      "mapName": "Azarov's Resting Place",
+      "realm": "Autohaven Wreckers",
+      "mapIds": [
+        "9966c410-9b40-4a98-90f9-902e83daeeaf"
+      ],
+      "hasMapLayoutKey": true,
+      "hasExistingFile": true,
+      "hasLegacyOnly": false,
+      "currentPrimaryRelPath": "map_layouts_hens/azarovs_resting_place.webp",
+      "candidates": [
+        "Azarov's Resting Place",
+        "The Azarov's Resting Place"
+      ],
+      "matchedSourceLabel": "Azarov's Resting Place",
+      "matchedSourcePath": "Azarovs/Azarovs Resting Place.webp",
+      "matchedSourceUrl": "",
+      "generatedRelPath": "map_layouts_hens/azarovs_resting_place.webp",
+      "targetRelPath": "map_layouts_hens/azarovs_resting_place.webp",
+      "status": "covered",
+      "downloaded": false,
+      "error": ""
+    },
+    {
+      "mapName": "Wreckers' Yard",
+      "realm": "Autohaven Wreckers",
+      "mapIds": [
+        "73975c16-b2f8-4cda-907d-31bdae84727f"
+      ],
+      "hasMapLayoutKey": true,
+      "hasExistingFile": true,
+      "hasLegacyOnly": false,
+      "currentPrimaryRelPath": "map_layouts_hens/wreckers.webp",
+      "candidates": [
+        "Wreckers' Yard",
+        "The Wreckers' Yard"
+      ],
+      "matchedSourceLabel": "Wreckers' Yard",
+      "matchedSourcePath": "Azarovs/Wreckers.webp",
+      "matchedSourceUrl": "",
+      "generatedRelPath": "map_layouts_hens/wreckers_yard.webp",
+      "targetRelPath": "map_layouts_hens/wreckers.webp",
+      "status": "covered",
+      "downloaded": false,
+      "error": ""
+    },
+    {
+      "mapName": "Mount Ormond Resort",
+      "realm": "Ormond",
+      "mapIds": [
+        "7c795995-7a15-438e-9be4-2619fd7712fc",
+        "aabb7dbe-9a86-4450-8f02-c32bf098cdb5",
+        "ea0ff87d-8303-4d1e-baf6-e52d2c448b5b"
+      ],
+      "hasMapLayoutKey": true,
+      "hasExistingFile": true,
+      "hasLegacyOnly": false,
+      "currentPrimaryRelPath": "map_layouts_hens/ormond.webp",
+      "candidates": [
+        "Mount Ormond Resort",
+        "The Mount Ormond Resort"
+      ],
+      "matchedSourceLabel": "Mount Ormond Resort",
+      "matchedSourcePath": "Ormond/Ormond.webp",
+      "matchedSourceUrl": "",
+      "generatedRelPath": "map_layouts_hens/mount_ormond_resort.webp",
+      "targetRelPath": "map_layouts_hens/ormond.webp",
+      "status": "covered",
+      "downloaded": false,
+      "error": ""
+    },
+    {
+      "mapName": "Garden of Joy",
+      "realm": "Withered Isle",
+      "mapIds": [
+        "7dd8c692-5e56-46bd-9a8c-9d65bfa00f60",
+        "a31f694e-1dd0-44c6-97ab-90dc93299b7c"
+      ],
+      "hasMapLayoutKey": true,
+      "hasExistingFile": true,
+      "hasLegacyOnly": false,
+      "currentPrimaryRelPath": "map_layouts_hens/garden_of_joy.webp",
+      "candidates": [
+        "Garden of Joy",
+        "The Garden of Joy"
+      ],
+      "matchedSourceLabel": "Garden of Joy",
+      "matchedSourcePath": "Other/Garden of Joy.webp",
+      "matchedSourceUrl": "",
+      "generatedRelPath": "map_layouts_hens/garden_of_joy.webp",
+      "targetRelPath": "map_layouts_hens/garden_of_joy.webp",
+      "status": "covered",
+      "downloaded": false,
+      "error": ""
+    },
+    {
+      "mapName": "The Underground Complex",
+      "realm": "Hawkins National Laboratory",
+      "mapIds": [
+        "7f8ea132-aef5-4328-9cf3-ab1e1871e30b"
+      ],
+      "hasMapLayoutKey": true,
+      "hasExistingFile": true,
+      "hasLegacyOnly": false,
+      "currentPrimaryRelPath": "map_layouts_hens/the_underground_complex.webp",
+      "candidates": [
+        "The Underground Complex",
+        "Underground Complex"
+      ],
+      "matchedSourceLabel": "The Underground Complex",
+      "matchedSourcePath": "Other/Hawkins.webp",
+      "matchedSourceUrl": "",
+      "generatedRelPath": "map_layouts_hens/the_underground_complex.webp",
+      "targetRelPath": "map_layouts_hens/the_underground_complex.webp",
+      "status": "covered",
+      "downloaded": false,
+      "error": ""
+    },
+    {
+      "mapName": "The Shattered Square",
+      "realm": "The Decimated Borgo",
+      "mapIds": [
+        "f641fb3d-49be-4739-a30d-7964e9536c49"
+      ],
+      "hasMapLayoutKey": true,
+      "hasExistingFile": true,
+      "hasLegacyOnly": false,
+      "currentPrimaryRelPath": "map_layouts_hens/shattered_square.webp",
+      "candidates": [
+        "The Shattered Square",
+        "Shattered Square"
+      ],
+      "matchedSourceLabel": "Shattered Square",
+      "matchedSourcePath": "Borgo/Shattered Square.webp",
+      "matchedSourceUrl": "",
+      "generatedRelPath": "map_layouts_hens/the_shattered_square.webp",
+      "targetRelPath": "map_layouts_hens/shattered_square.webp",
+      "status": "covered",
+      "downloaded": false,
+      "error": ""
+    },
+    {
+      "mapName": "Forgotten Ruins",
+      "realm": "The Decimated Borgo",
+      "mapIds": [
+        "0dc88853-3f39-4b2c-a089-31845bcae81d"
+      ],
+      "hasMapLayoutKey": true,
+      "hasExistingFile": true,
+      "hasLegacyOnly": false,
+      "currentPrimaryRelPath": "map_layouts_hens/forgotten_ruins.webp",
+      "candidates": [
+        "Forgotten Ruins",
+        "The Forgotten Ruins"
+      ],
+      "matchedSourceLabel": "Forgotten Ruins",
+      "matchedSourcePath": "Borgo/Forgotten Ruins.webp",
+      "matchedSourceUrl": "",
+      "generatedRelPath": "map_layouts_hens/forgotten_ruins.webp",
+      "targetRelPath": "map_layouts_hens/forgotten_ruins.webp",
+      "status": "covered",
+      "downloaded": false,
+      "error": ""
+    },
+    {
+      "mapName": "Grim Pantry",
+      "realm": "Backwater Swamp",
+      "mapIds": [
+        "de355d2e-1a15-4b6c-aea4-0cf8d778c973"
+      ],
+      "hasMapLayoutKey": true,
+      "hasExistingFile": true,
+      "hasLegacyOnly": false,
+      "currentPrimaryRelPath": "map_layouts_hens/grim_pantry.webp",
+      "candidates": [
+        "Grim Pantry",
+        "The Grim Pantry"
+      ],
+      "matchedSourceLabel": "Grim Pantry",
+      "matchedSourcePath": "Swamp/Grim Pantry.webp",
+      "matchedSourceUrl": "",
+      "generatedRelPath": "map_layouts_hens/grim_pantry.webp",
+      "targetRelPath": "map_layouts_hens/grim_pantry.webp",
+      "status": "covered",
+      "downloaded": false,
+      "error": ""
+    },
+    {
+      "mapName": "The Pale Rose",
+      "realm": "Backwater Swamp",
+      "mapIds": [
+        "63cb0c99-d18b-4148-add1-f0118deb55de"
+      ],
+      "hasMapLayoutKey": true,
+      "hasExistingFile": true,
+      "hasLegacyOnly": false,
+      "currentPrimaryRelPath": "map_layouts_hens/pale_rose.webp",
+      "candidates": [
+        "The Pale Rose",
+        "Pale Rose"
+      ],
+      "matchedSourceLabel": "The Pale Rose",
+      "matchedSourcePath": "Swamp/Pale Rose.webp",
+      "matchedSourceUrl": "",
+      "generatedRelPath": "map_layouts_hens/the_pale_rose.webp",
+      "targetRelPath": "map_layouts_hens/pale_rose.webp",
+      "status": "covered",
+      "downloaded": false,
+      "error": ""
+    },
+    {
+      "mapName": "Toba Landing",
+      "realm": "Dvarka Deepwood",
+      "mapIds": [
+        "133b1a6d-6c6e-43df-a555-c9dbc9538bed"
+      ],
+      "hasMapLayoutKey": true,
+      "hasExistingFile": true,
+      "hasLegacyOnly": false,
+      "currentPrimaryRelPath": "map_layouts_hens/toba_landing.webp",
+      "candidates": [
+        "Toba Landing",
+        "The Toba Landing"
+      ],
+      "matchedSourceLabel": "Toba Landing",
+      "matchedSourcePath": "Dvarka Deepwood/Toba Landing.webp",
+      "matchedSourceUrl": "",
+      "generatedRelPath": "map_layouts_hens/toba_landing.webp",
+      "targetRelPath": "map_layouts_hens/toba_landing.webp",
+      "status": "covered",
+      "downloaded": false,
+      "error": ""
+    },
+    {
+      "mapName": "Dead Dawg Saloon",
+      "realm": "Grave of Glenvale",
+      "mapIds": [
+        "178b39fc-3c4c-4291-9848-f716f8a1115b"
+      ],
+      "hasMapLayoutKey": true,
+      "hasExistingFile": true,
+      "hasLegacyOnly": false,
+      "currentPrimaryRelPath": "map_layouts_hens/dead_dawg_saloon.webp",
+      "candidates": [
+        "Dead Dawg Saloon",
+        "The Dead Dawg Saloon"
+      ],
+      "matchedSourceLabel": "Dead Dawg Saloon",
+      "matchedSourcePath": "Other/Dead Dawg Saloon.webp",
+      "matchedSourceUrl": "",
+      "generatedRelPath": "map_layouts_hens/dead_dawg_saloon.webp",
+      "targetRelPath": "map_layouts_hens/dead_dawg_saloon.webp",
+      "status": "covered",
+      "downloaded": false,
+      "error": ""
+    },
+    {
+      "mapName": "Midwich Elementary School",
+      "realm": "Silent Hill",
+      "mapIds": [
+        "12746466-feda-491b-aef2-df523c8bd7f0"
+      ],
+      "hasMapLayoutKey": true,
+      "hasExistingFile": true,
+      "hasLegacyOnly": true,
+      "currentPrimaryRelPath": "map_layouts/midwichelementaryschooloutlinelowerfloor.png",
+      "candidates": [
+        "Midwich Elementary School",
+        "The Midwich Elementary School"
+      ],
+      "matchedSourceLabel": "Midwich Elementary School",
+      "matchedSourcePath": "Other/Midwich.gif",
+      "matchedSourceUrl": "https://hens333.com/img/dbd/callouts/Other/Midwich.gif",
+      "generatedRelPath": "map_layouts_hens/midwich_elementary_school.gif",
+      "targetRelPath": "map_layouts_hens/midwich_elementary_school.gif",
+      "status": "ready-upgrade-alias",
+      "downloaded": false,
+      "error": ""
+    },
+    {
+      "mapName": "Nostromo Wreckage",
+      "realm": "Dvarka Deepwood",
+      "mapIds": [
+        "a5832dcf-0358-4598-b959-8158b194d649"
+      ],
+      "hasMapLayoutKey": true,
+      "hasExistingFile": true,
+      "hasLegacyOnly": false,
+      "currentPrimaryRelPath": "map_layouts_hens/nostromo_wreckage.webp",
+      "candidates": [
+        "Nostromo Wreckage",
+        "The Nostromo Wreckage"
+      ],
+      "matchedSourceLabel": "Nostromo Wreckage",
+      "matchedSourcePath": "Dvarka Deepwood/Nostromo Wreckage.webp",
+      "matchedSourceUrl": "",
+      "generatedRelPath": "map_layouts_hens/nostromo_wreckage.webp",
+      "targetRelPath": "map_layouts_hens/nostromo_wreckage.webp",
+      "status": "covered",
+      "downloaded": false,
+      "error": ""
+    },
+    {
+      "mapName": "Trickster's Delusion",
+      "realm": "Sleepless District",
+      "mapIds": [
+        "tricksters-delusion-map"
+      ],
+      "hasMapLayoutKey": true,
+      "hasExistingFile": true,
+      "hasLegacyOnly": false,
+      "currentPrimaryRelPath": "map_layouts_hens/tricksters_delusion.webp",
+      "candidates": [
+        "Trickster's Delusion",
+        "The Trickster's Delusion"
+      ],
+      "matchedSourceLabel": "Trickster's Delusion",
+      "matchedSourcePath": "Sleepless District/Tricksters Delusion.webp",
+      "matchedSourceUrl": "",
+      "generatedRelPath": "map_layouts_hens/tricksters_delusion.webp",
+      "targetRelPath": "map_layouts_hens/tricksters_delusion.webp",
+      "status": "covered",
+      "downloaded": false,
+      "error": ""
+    }
+  ]
+}

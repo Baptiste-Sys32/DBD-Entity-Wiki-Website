@@ -1,0 +1,11 @@
+Cosmetics Audit
+Generated: 2026-04-26T10:11:55.036Z
+Blocked cosmetics: 0
+Ready cosmetics: 4152
+Character Swaps: 94
+Cosmetics: 4058
+
+Blocked entries: 0
+
+Portrait exceptions: 1
+- The Dredge -> Eddie's Tribute | official-portrait-exception

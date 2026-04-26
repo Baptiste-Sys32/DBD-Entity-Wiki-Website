@@ -1,0 +1,242 @@
+{
+  "Fogwise": {
+    "status": "different",
+    "sourceUrl": "https://nightlight.gg/perks/Fogwise",
+    "descriptionPost95": "While repairing, whenever you hit a great basic Skill Check, you see the Killer's Aura for 4/5/6 s."
+  },
+  "Quick Gambit": {
+    "status": "different",
+    "sourceUrl": "https://nightlight.gg/perks/Quick_Gambit",
+    "descriptionPost95": "While chased by the Killer:\n\n- You see the Auras of other Survivors.\n- Other Survivors repair 3/4/5% faster.\n\nWhenever you take damage, cooldown: 40 s."
+  },
+  "Cut Loose": {
+    "status": "different",
+    "sourceUrl": "https://nightlight.gg/perks/Cut_Loose",
+    "descriptionPost95": "While chased by the Killer, whenever you medium or fast-vault:\n\n- For up to 4/5/6 s, your medium and fast vaults are silent.\n- During that time, whenever you medium or fast-vault, the timer is reset.\n\nCooldown: 45 s."
+  },
+  "Friendly Competition": {
+    "status": "different",
+    "sourceUrl": "https://nightlight.gg/perks/Friendly_Competition",
+    "descriptionPost95": "Whenever you finish repairing a Generator with at least 1 other Survivor, Survivors who finished repairing it repair 5% faster for 100/110/120 s."
+  },
+  "Teamwork: Power of Two": {
+    "status": "different",
+    "sourceUrl": "https://nightlight.gg/perks/Teamwork%3A_Power_of_Two",
+    "descriptionPost95": "Whenever you finish healing another Survivor, while you stay within 8/12/16 m of each other, you both gain 5% Haste. When either of you leaves the range, this ends after 4 s."
+  },
+  "Background Player": {
+    "status": "different",
+    "sourceUrl": "https://nightlight.gg/perks/Background_Player",
+    "descriptionPost95": "Whenever the Killer picks-up another Survivor, for the next 10 s, when you start running:\n\n- Gain 50% Haste for 5 s.\n- Gain Exhausted for 30/25/20 s."
+  },
+  "Blood Rush": {
+    "status": "different",
+    "sourceUrl": "https://nightlight.gg/perks/Blood_Rush",
+    "descriptionPost95": "Until all Generators are completed, whenever you are unhooked, for the next 40/50/60 s, while Exhausted, use Active Ability Button 1 to lose Exhausted instantly.\n\nThis is disabled by conspicuous actions."
+  },
+  "Teamwork: Collective Stealth": {
+    "status": "same_as_legacy",
+    "sourceUrl": "https://nightlight.gg/perks/Teamwork%3A_Collective_Stealth"
+  },
+  "Troubleshooter": {
+    "status": "different",
+    "sourceUrl": "https://nightlight.gg/perks/Troubleshooter",
+    "descriptionPost95": "No amount of distraction will shake you from your primary task.\n\nWhen you are chased by the Killer, Troubleshooter activates.\n\n    * You see the aura of the Generator with the most progress.\n    * You see the aura of the Killer for 4/5/6 seconds after dropping a Pallet.\n\nThe effect lasts for 6/8/10 seconds after being in chase, then deactivates."
+  },
+  "Made for This": {
+    "status": "different",
+    "sourceUrl": "https://nightlight.gg/perks/Made_for_This",
+    "descriptionPost95": "You were born to survive, and raised to adapt.\n\nMade for This activates while you are in the injured state.\n\n    * After you finish healing another Survivor, gain the Endurance status effect for 6/8/10 seconds.\n    * While affected by Deep Wound, you have 3% Haste.\n\nEndurance prevents a Survivor from being downed, inflicting Deep Wound instead.\n\nDeep Wound will put a Survivor in the dying state unless it is mended before the timer runs out.\n\nHaste increases Survivor movement speed.\n\n“I didn't come here to be robot food.” –Gabriel Soma"
+  },
+  "Scavenger": {
+    "status": "different",
+    "sourceUrl": "https://nightlight.gg/perks/Scavenger",
+    "descriptionPost95": "Where others see junk, you see valuable improvised tools.\n\nWhile you are holding an empty toolbox, Scavenger activates.\n\nSucceeding a great skill check while repairing gains 1 token, up to 5.\nWhen you reach maximum tokens, lose all tokens and automatically recharge your toolbox to full. Then, your generator repair speed is 50% slower for 40/35/30 seconds.\n\nThis perk grants the ability to rummage through an opened chest once per Trial and will guarantee a basic Toolbox.\n\n“It's amazing what people will throw away around here.” –Gabriel Soma"
+  },
+  "Dramaturgy": {
+    "status": "different",
+    "sourceUrl": "https://nightlight.gg/perks/Dramaturgy",
+    "descriptionPost95": "While healthy and running, use Active Ability Button 1:\n\n- You gain 25% Haste for 2 s.\n- You gain Exhausted for 60/50/40 s.\n\nThen, one happens at random:\n\n- You gain 25% Haste for 2 s.\n- You gain Exposed for 12 s.\n- You gain a random rare item with random add-ons.\n- You scream, but nothing happens.\n\nThe same effect cannot happen twice in a row."
+  },
+  "Scene Partner": {
+    "status": "different",
+    "sourceUrl": "https://nightlight.gg/perks/Scene_Partner",
+    "descriptionPost95": "You lock in with your co-star, engaging with and reacting to each other on a higher level.\n\nScene Partner activates when you are in the Killer's Terror Radius.\n\nWhenever you look at the Killer, scream, then see the Killer's aura for 4/5/6 seconds.\n\nThere is a chance you will scream again, if you do, you will see the Killer's Aura for an additional 2 seconds.\n\nScene Partner then goes on cooldown for 40 seconds.\n\n“This is not in the script!” –Nicolas Cage"
+  },
+  "Plot Twist": {
+    "status": "different",
+    "sourceUrl": "https://nightlight.gg/perks/Plot_Twist",
+    "descriptionPost95": "While injured, crouched and idle, use Active Ability Button 2 to be downed silently.\n\nWhile downed this way, once per trial:\n\n- You make no Grunts of Pain.\n- You leave no Pools of Blood.\n- You recover 25% faster.\n- You can fully recover.\n\nWhenever you recover this way:\n\n- You gain 50% Haste for 2/3/4 s.\n- You are healed instantly.\n\nWhen all Generators are completed, you can use this ability once again."
+  },
+  "Lucky Star": {
+    "status": "different",
+    "sourceUrl": "https://nightlight.gg/perks/Lucky_Star",
+    "descriptionPost95": "You know how to stay calm in the face of incomprehensible danger.\n\nWhen you hide in a locker, you make no grunts of pain.\n\nAfter exiting the locker, you see the aura of the closest generator and all Survivors, leave no pools of blood and make no grunts of pain for 30 seconds.\n\nThis perk goes on cooldown for 35/30/25 seconds.\n\n“You are my… lucky star…” –Ellen Ripley"
+  },
+  "Chemical Trap": {
+    "status": "different",
+    "sourceUrl": "https://nightlight.gg/perks/Chemical_Trap",
+    "descriptionPost95": "In the Fog, an officer must adapt to the materials at hand.\n\nChemical Trap activates after completing a total of 20% worth of progress on generators.\n\nWhile standing next to a dropped pallet, press the Active Ability Button 2 to install a Trap, which stays active for 40/50/60 seconds.\nAffected pallets will be revealed to all Survivors by a yellow aura. Only one Chemical Trap can be active on a pallet.\n\nWhen the Killer performs the break action on the pallet, the Chemical Trap explodes, and they gain 50% Hindered for 4 seconds.\n\nHindered reduces Killer movement speed.\n\n“How do we kill it, Ash?” –Ellen Ripley"
+  },
+  "Light-footed": {
+    "status": "same_as_legacy",
+    "sourceUrl": "https://nightlight.gg/perks/Light-footed"
+  },
+  "Champion of Light": {
+    "status": "different",
+    "sourceUrl": "https://nightlight.gg/perks/Champion_of_Light",
+    "descriptionPost95": "While you are using a Flashlight, you gain 50% Haste.\n\nWhenever you blind the Killer, they gain 20% Hindered for 6 s. Cooldown: 60/50/40 s."
+  },
+  "Boon: Illumination": {
+    "status": "different",
+    "sourceUrl": "https://nightlight.gg/perks/Boon%3A_Illumination",
+    "descriptionPost95": "Your keen insight is something best shared with others.\n\nPress and hold the Ability button 1 near a Dull or Hex Totem to bless it and create a Boon Totem. Soft chimes ring out in a 24 meter range.\n\nSurvivors inside your Boon Totem's range see the aura of all chests and all generators in blue.\n\nIf you have a lit Boon Totem, you cleanse or bless Totems 6/8/10% faster."
+  },
+  "Deadline": {
+    "status": "different",
+    "sourceUrl": "https://nightlight.gg/perks/Deadline",
+    "descriptionPost95": "Desperation creeps in, and you push yourself to work harder.\n\nThis perk activates when you are injured.\n\nSkill Checks appear 6/8/10% more frequently when repairing or healing and appear in random places.\n\nThe penalty for missing skill checks is reduced by 50%.\n\n“The night had been one desperate situation after another.” – Departure"
+  },
+  "Invocation: Weaving Spiders": {
+    "status": "different",
+    "sourceUrl": "https://nightlight.gg/perks/Invocation%3A_Weaving_Spiders",
+    "descriptionPost95": "The place where fear festers and terror treads is also where those with the gift can reach across the veil.\n\nWhen in the basement near the circle, press the Ability Button 1 to begin the Invocation. Invocations take 60 seconds. Other Survivors will see your aura during this and can join an ongoing interaction.\n\nOnce the Invocation is completed:\n\n    * You become Injured and gain the Broken status effect for the rest of the trial.\n    * Reduce the maximum required generator charges of all remaining generators by 8/9/10.\n\nCompleting the Invocation disables that perk for all Survivors.\n\nBroken prevents Survivors from being healed.\n\n\"I call upon the spirits of the night, to aid us in our desperate flight!\" -Sable"
+  },
+  "Strength in Shadows": {
+    "status": "different",
+    "sourceUrl": "https://nightlight.gg/perks/Strength_in_Shadows",
+    "descriptionPost95": "A chance for renewed power down where danger calls home.\n\nWhen in the basement, this perk activates.\n\nUnlocks the Strength in Shadows ability, which allows you to heal without a Med-kit at 70% normal healing speed.\n\nWhen you finish a heal in the basement, you see the Killer's aura for 6/8/10 seconds.\n\n\"I'm getting out of here, if it's the last thing I do.\" - Sable"
+  },
+  "Wicked": {
+    "status": "different",
+    "sourceUrl": "https://nightlight.gg/perks/Wicked",
+    "descriptionPost95": "They can try to hurt you. But you're not going down so easily.\n\nYour self-unhook attempts in the basement always succeed.\n\nWhen you are unhooked or unhook yourself, you see the Killer's aura for 16/18/20 seconds.\n\n“I haven't let anyone get in my way before. You think I'm gonna start now?” - Sable"
+  },
+  "Mirrored Illusion": {
+    "status": "different",
+    "sourceUrl": "https://nightlight.gg/perks/Mirrored_Illusion",
+    "descriptionPost95": "After repairing 20% of Generators, while next to a Chest, Exit Gate Switch, Generator, or Totem, use Active Ability Button 2 to create a static illusion for 40/50/60 s."
+  },
+  "Bardic Inspiration": {
+    "status": "different",
+    "sourceUrl": "https://nightlight.gg/perks/Bardic_Inspiration",
+    "descriptionPost95": "While idle, use Active Ability Button 1 to perform, empowering all Survivors within 16 m for up to 15 s. While you are performing, other Survivors will see your Aura. Roll a d20:\n\n- 1 | You scream, but nothing happens.\n- 2-10 | Basic Skill Checks give +1% progress.\n- 11-19 | Basic Skill Checks give +2% progress.\n- 20 | Basic Skill Checks give +3% progress.\n\nIf you complete the performance, this effect ends after 90 s. Cooldown: 110/100/90 s."
+  },
+  "Still Sight": {
+    "status": "same_as_legacy",
+    "sourceUrl": "https://nightlight.gg/perks/Still_Sight"
+  },
+  "Finesse": {
+    "status": "same_as_legacy",
+    "sourceUrl": "https://nightlight.gg/perks/Finesse"
+  },
+  "Hardened": {
+    "status": "same_as_legacy",
+    "sourceUrl": "https://nightlight.gg/perks/Hardened"
+  },
+  "Specialist": {
+    "status": "same_as_legacy",
+    "sourceUrl": "https://nightlight.gg/perks/Specialist"
+  },
+  "Eyes of Belmont": {
+    "status": "different",
+    "sourceUrl": "https://nightlight.gg/perks/Eyes_of_Belmont",
+    "descriptionPost95": "Whenever a Generator is completed, you see the Killer's Aura for 1/2/3 s.\n\nWhenever you see the Killer's Aura for a duration, it is 2 s longer."
+  },
+  "Exultation": {
+    "status": "same_as_legacy",
+    "sourceUrl": "https://nightlight.gg/perks/Exultation"
+  },
+  "Moment of Glory": {
+    "status": "same_as_legacy",
+    "sourceUrl": "https://nightlight.gg/perks/Moment_of_Glory"
+  },
+  "Invocation: Treacherous Crows": {
+    "status": "different",
+    "sourceUrl": "https://nightlight.gg/perks/Invocation%3A_Treacherous_Crows",
+    "descriptionPost95": "One with arcane knowledge has no reason to fear those watchful birds.\n\nWhen in the basement near the circle, press the Ability button 2 to begin the Invocation.\n\nInvocations take 60 seconds. Other Survivors will see your aura during this and can join an ongoing interaction.\n\nOnce the Invocation is completed:\n\n  * You become injured and gain the Broken status effect for the rest of the trial.\n  * When a Survivor is in the Terror Radius and the Killer scares a crow, their aura is revealed to all Survivors for 1/1.5/2 seconds.\n\nCompleting the Invocation disables that perk for all Survivors."
+  },
+  "Clean Break": {
+    "status": "different",
+    "sourceUrl": "https://nightlight.gg/perks/Clean_Break",
+    "descriptionPost95": "At the end of the day, everyone has to look out for themselves.\n\nAfter you finish healing another Survivor, while being healed by another Survivor, press the Ability button 1 to gain the Broken status effect.\n\nAfter 80/70/60 seconds, you become healthy.\n\nThis perk does not activate if you are already Broken. The effect is canceled if you go into the dying state."
+  },
+  "Shoulder The Burden": {
+    "status": "different",
+    "sourceUrl": "https://nightlight.gg/perks/Shoulder_the_Burden",
+    "descriptionPost95": "Once per trial, while you do not have 2 Hook States and are next to a hooked Survivor, use Active Ability Button 2 to unhook them:\n\n- They lose 1 Hook State.\n- You gain 1 Hook State.\n- You scream.\n- You gain Exposed for 60/50/40 s."
+  },
+  "Do No Harm": {
+    "status": "different",
+    "sourceUrl": "https://nightlight.gg/perks/Do_No_Harm",
+    "descriptionPost95": "While healing another Survivor:\n\n- For each Hook State they have, you heal 30/40/50% faster.\n- Whenever you hit a great basic Skill Check, you gain 3% more progress."
+  },
+  "Duty of Care": {
+    "status": "same_as_legacy",
+    "sourceUrl": "https://nightlight.gg/perks/Duty_of_Care"
+  },
+  "Rapid Response": {
+    "status": "same_as_legacy",
+    "sourceUrl": "https://nightlight.gg/perks/Rapid_Response"
+  },
+  "Apocalyptic Ingenuity": {
+    "status": "same_as_legacy",
+    "sourceUrl": "https://nightlight.gg/perks/Apocalyptic_Ingenuity"
+  },
+  "Come and Get Me!": {
+    "status": "same_as_legacy",
+    "sourceUrl": "https://nightlight.gg/perks/Come_and_Get_Me%21"
+  },
+  "Teamwork: Toughen Up": {
+    "status": "same_as_legacy",
+    "sourceUrl": "https://nightlight.gg/perks/Teamwork%3A_Toughen_Up"
+  },
+  "Conviction": {
+    "status": "different",
+    "sourceUrl": "https://nightlight.gg/perks/Conviction",
+    "descriptionPost95": "After you finish healing 1 other Survivor, while downed with at least 25% recovery, use Active Ability Button 1 to recover instantly.\n\nYou gain Broken, then, after 20/25/30 s, you are downed instantly."
+  },
+  "Last Stand": {
+    "status": "same_as_legacy",
+    "sourceUrl": "https://nightlight.gg/perks/Last_Stand"
+  },
+  "Teamwork: Throw Down": {
+    "status": "same_as_legacy",
+    "sourceUrl": "https://nightlight.gg/perks/Teamwork%3A_Throw_Down"
+  },
+  "Road Life": {
+    "status": "same_as_legacy",
+    "sourceUrl": "https://nightlight.gg/perks/Road_Life"
+  },
+  "ONE-TWO-THREE-FOUR!": {
+    "status": "same_as_legacy",
+    "sourceUrl": "https://nightlight.gg/perks/ONE-TWO-THREE-FOUR%21"
+  },
+  "Ghost Notes": {
+    "status": "same_as_legacy",
+    "sourceUrl": "https://nightlight.gg/perks/Ghost_Notes"
+  },
+  "Saboteur": {
+    "status": "different",
+    "sourceUrl": "https://nightlight.gg/perks/Saboteur",
+    "descriptionPost95": "Within 56 m of where another Survivor was picked-up by the Killer and is being carried, you see the Auras of Hooks and Scourge Hooks.\n\nYou can sabotage Hooks. Cooldown: 70/65/60 s."
+  },
+  "Keep Them Waiting": {
+    "status": "different",
+    "sourceUrl": "https://nightlight.gg/perks/Save_the_best_for_last",
+    "descriptionPost95": "Whenever you damage a Survivor who is not the Obsession with a basic-attack, you earn 1 Token, up to 6/7/8.\n\nFor each Token, your basic-attack cooldown are 4% shorter.\n\nWhenever the Obsession takes damage, lose 2 Tokens.\n\nWhile the Obsession is dead, you cannot earn Tokens."
+  },
+  "Second Wind": {
+    "status": "same_as_legacy",
+    "sourceUrl": "https://nightlight.gg/perks/Second_Wind"
+  },
+  "Self-Care": {
+    "status": "same_as_legacy",
+    "sourceUrl": "https://nightlight.gg/perks/Self-Care"
+  },
+  "Unbreakable": {
+    "status": "different",
+    "sourceUrl": "https://nightlight.gg/perks/Unbreakable",
+    "descriptionPost95": "Once per trial, while downed by the Killer, you can fully recover.\n\nWhile downed, you recover 25/30/35% faster."
+  }
+}

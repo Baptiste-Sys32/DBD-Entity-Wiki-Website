@@ -1,0 +1,219 @@
+DBD Wordle Emoji Clue Review
+Generated from web/worldle-data.js
+Killers: 42
+Base clue sets: 126
+In-game ordered variants: 756
+
+Note: each base clue set below can appear in any of the 6 orders in-game.
+Permutation patterns: 123, 132, 213, 231, 312, 321
+
+The Trapper
+  1. set-1: 🪤 ⛓️ ⛏️
+  2. set-2: 🐻 🩸 🪤
+  3. set-3: 🔨 🩸 🪤
+
+The Wraith
+  1. set-1: 🔔 🫥 👣
+  2. set-2: 🌫️ 👣 🫥
+  3. set-3: 🔔 🚗 🌫️
+
+The Hillbilly
+  1. set-1: 🪚 🏃 💨
+  2. set-2: 🚜 🔨 🌾
+  3. set-3: 🏃 🪚 🌽
+
+The Nurse
+  1. set-1: 🏥 😮‍💨 🫨
+  2. set-2: 🩺 💨 💊
+  3. set-3: 👩‍⚕️ 🌫️ 🫥
+
+The Hag
+  1. set-1: 🔺 🌿 🩸
+  2. set-2: 🦴 🕯️ 🌾
+  3. set-3: ✋ 🔺 🪵
+
+The Shape
+  1. set-1: 🪟 👁️ 🔪
+  2. set-2: 🏠 🍂 👤
+  3. set-3: 🎃 🧍 🔪
+
+The Doctor
+  1. set-1: ⚡ 🧠 😱
+  2. set-2: 🪑 ⚡ 😵
+  3. set-3: 🔋 🗣️ ⚡
+
+The Huntress
+  1. set-1: 🪓 🎶 🌲
+  2. set-2: 🐇 🪓 🎵
+  3. set-3: ❄️ 🌲 🪓
+
+The Cannibal
+  1. set-1: 🪚 🥩 🍽️
+  2. set-2: 🏚️ 🎭 🍖
+  3. set-3: 🪝 🪚 🍖
+
+The Nightmare
+  1. set-1: 😴 🩸 🧤
+  2. set-2: 🛏️ 🌙 🧤
+  3. set-3: 💤 🕰️ 🩸
+
+The Pig
+  1. set-1: 🧩 ⏰ 📦
+  2. set-2: ⚙️ 📦 🔩
+  3. set-3: ⏳ 🧩 🔪
+
+The Clown
+  1. set-1: 🍾 🥴 💨
+  2. set-2: 🎪 🍾 🔪
+  3. set-3: 🎈 😵 💨
+
+The Spirit
+  1. set-1: 🌬️ 🌸 ⚔️
+  2. set-2: 🎐 👘 🌬️
+  3. set-3: 🗾 👣 ⚔️
+
+The Legion
+  1. set-1: 👥 👟 🔪
+  2. set-2: 🎵 🩹 🏃
+  3. set-3: 👥 😡 🔪
+
+The Plague
+  1. set-1: 🏺 🤢 👑
+  2. set-2: 🛕 💧 🤢
+  3. set-3: 🤮 🫗 🩸
+
+The Ghost Face
+  1. set-1: 📸 🤫 👤
+  2. set-2: 📰 🌒 🔪
+  3. set-3: 📷 🕶️ 🩸
+
+The Demogorgon
+  1. set-1: 🕳️ 🌌 👾
+  2. set-2: 🌲 🕳️ 🩸
+  3. set-3: 👾 🚪 🕳️
+
+The Oni
+  1. set-1: ⛩️ 🏃 🩸
+  2. set-2: ⚔️ ⚔️ 🌸
+  3. set-3: 🏃 🩸 ⛩️
+
+The Deathslinger
+  1. set-1: 🤠 🔫 ⛓️
+  2. set-2: 🎯 🪝 💀
+  3. set-3: 🥃 🤠 🔫
+
+The Executioner
+  1. set-1: 🔺 ⛓️ 🗡️
+  2. set-2: 🌫️ 🚪 ⚔️
+  3. set-3: 📐 🩸 🥩
+
+The Blight
+  1. set-1: ⚗️ 💉 🌪️
+  2. set-2: 🧪 💥 🏃
+  3. set-3: 🟠 🧪 🧱
+
+The Twins
+  1. set-1: 👩 👶 🩸
+  2. set-2: 🫀 👣 🪡
+  3. set-3: 👩 🫀 👶
+
+The Trickster
+  1. set-1: 🎤 ✨ 🌆
+  2. set-2: 📸 💄 🎵
+  3. set-3: 🎯 🔪 🎤
+
+The Nemesis
+  1. set-1: ⭐ 🧟 👊
+  2. set-2: 🦠 🧟 🚪
+  3. set-3: 🦠 👊 🧬
+
+The Cenobite
+  1. set-1: 📦 ⛓️ 🕯️
+  2. set-2: 🧩 🪝 🩸
+  3. set-3: 👁️ ⛓️ 📏
+
+The Artist
+  1. set-1: 🪶 🐦 🎨
+  2. set-2: 🖤 🫀 🪶
+  3. set-3: 🎨 🌑 🐦
+
+The Onryō
+  1. set-1: 📼 ⚪ 🌊
+  2. set-2: 📺 👁️ ⚪
+  3. set-3: 📼 👁️ 🌊
+
+The Dredge
+  1. set-1: 🗄️ 🌑 🫳
+  2. set-2: 🧸 🌘 🫳
+  3. set-3: 🗄️ 🧸 🌘
+
+The Mastermind
+  1. set-1: 🕶️ 🧬 👔
+  2. set-2: 🦠 🚀 🧥
+  3. set-3: 🕶️ 🦾 🧬
+
+The Knight
+  1. set-1: 🛡️ ⚔️ 🏰
+  2. set-2: 💂 ⚜️ 👑
+  3. set-3: 🪖 🗡️ 🏰
+
+The Skull Merchant
+  1. set-1: 📡 📺 📍
+  2. set-2: 📱 🎯 🔋
+  3. set-3: 📍 📷 🗡️
+
+The Singularity
+  1. set-1: 🤖 🧬 📺
+  2. set-2: 🌐 🛰️ 🧬
+  3. set-3: 🤖 📡 🚀
+
+The Xenomorph
+  1. set-1: 🥚 🚇 👽
+  2. set-2: 🦴 🩸 🚇
+  3. set-3: 🥚 🦴 🩸
+
+The Good Guy
+  1. set-1: 📦 🔪 ⚡
+  2. set-2: ❤️ 🪆 🔪
+  3. set-3: 💍 🩸 🔪
+
+The Unknown
+  1. set-1: ❓ 🪓 👤
+  2. set-2: 🫥 🗣️ 👣
+  3. set-3: 👄 🌫️ 🪓
+
+The Lich
+  1. set-1: 🎲 📘 💀
+  2. set-2: 🧙 ⚡ 🗝️
+  3. set-3: 📚 🕸️ 🧠
+
+The Dark Lord
+  1. set-1: 🏰 🩸 🐺
+  2. set-2: 🌑 🐕 🔥
+  3. set-3: 🦇 ⚔️ 🩸
+
+The Houndmaster
+  1. set-1: 🐕 🪝 👉
+  2. set-2: 🐾 🐕 🗺️
+  3. set-3: 👉 ⚔️ 🩸
+
+The Ghoul
+  1. set-1: ☕ 👁️ 🌃
+  2. set-2: 🩸 🎭 🍽️
+  3. set-3: 🌑 👁️ 🕷️
+
+The Animatronic
+  1. set-1: 🍕 🔦 🕛
+  2. set-2: ⚙️ 🩸 🎦
+  3. set-3: 🚪 🎥 ⚡
+
+The Krasue
+  1. set-1: 🫀 🌙 💨
+  2. set-2: 🕯️ 🌌 🩸
+  3. set-3: 🌫️ 🫀 🕯️
+
+The First
+  1. set-1: 1️⃣ 🕰️ ⚡
+  2. set-2: 🧠 🧪 🕳️
+  3. set-3: 🟥 🌩️ ⏰
+

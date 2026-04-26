@@ -1,0 +1,2481 @@
+{
+  "totalPerks": 309,
+  "counts": {
+    "different": 185,
+    "same_as_legacy": 124
+  },
+  "entries": [
+    {
+      "id": "08198d7f-1561-4cf3-b112-7969f8aebc32",
+      "name": "Ace in the Hole",
+      "status": "same_as_legacy",
+      "sourceUrl": "https://dbd.tricky.lol/api/perks#Ace_In_The_Hole",
+      "sourceKey": "Ace_In_The_Hole",
+      "matchType": "name"
+    },
+    {
+      "id": "6e0523a9-0f3f-4329-87c6-01500e72b054",
+      "name": "Adrenaline",
+      "status": "same_as_legacy",
+      "sourceUrl": "https://dbd.tricky.lol/api/perks#Adrenaline",
+      "sourceKey": "Adrenaline",
+      "matchType": "name"
+    },
+    {
+      "id": "19fce903-4735-4332-b609-becf90bfb9c8",
+      "name": "Aftercare",
+      "status": "different",
+      "sourceUrl": "https://dbd.tricky.lol/api/perks#Aftercare",
+      "sourceKey": "Aftercare",
+      "matchType": "name"
+    },
+    {
+      "id": "d74b2d10-d629-4b25-aea6-5e8a3117cbc1",
+      "name": "Agitation",
+      "status": "same_as_legacy",
+      "sourceUrl": "https://dbd.tricky.lol/api/perks#Agitation",
+      "sourceKey": "Agitation",
+      "matchType": "name"
+    },
+    {
+      "id": "7c61d214-5247-405b-80d6-2ddf7e9d7ad1",
+      "name": "Alert",
+      "status": "same_as_legacy",
+      "sourceUrl": "https://dbd.tricky.lol/api/perks#Alert",
+      "sourceKey": "Alert",
+      "matchType": "name"
+    },
+    {
+      "id": "321407ec-ba71-49f7-8d2b-c38c4930c11b",
+      "name": "Any Means Necessary",
+      "status": "different",
+      "sourceUrl": "https://dbd.tricky.lol/api/perks#AnyMeansNecessary",
+      "sourceKey": "AnyMeansNecessary",
+      "matchType": "name"
+    },
+    {
+      "id": "584cbabe-a12f-4183-b7d0-a9143fe985e6",
+      "name": "Autodidact",
+      "status": "different",
+      "sourceUrl": "https://dbd.tricky.lol/api/perks#Autodidact",
+      "sourceKey": "Autodidact",
+      "matchType": "name"
+    },
+    {
+      "id": "69e29014-a402-4ef3-80c9-b1741b7207e3",
+      "name": "Babysitter",
+      "status": "same_as_legacy",
+      "sourceUrl": "https://dbd.tricky.lol/api/perks#Babysitter",
+      "sourceKey": "Babysitter",
+      "matchType": "name"
+    },
+    {
+      "id": "8e03613a-1abb-4328-8fde-cb0601941b6b",
+      "name": "Balanced Landing",
+      "status": "same_as_legacy",
+      "sourceUrl": "https://dbd.tricky.lol/api/perks#Balanced_Landing",
+      "sourceKey": "Balanced_Landing",
+      "matchType": "name"
+    },
+    {
+      "id": "de13a977-5ff0-4cc2-8c5c-0278013da721",
+      "name": "Bamboozle",
+      "status": "same_as_legacy",
+      "sourceUrl": "https://dbd.tricky.lol/api/perks#Bamboozle",
+      "sourceKey": "Bamboozle",
+      "matchType": "name"
+    },
+    {
+      "id": "b075b4a0-0fcc-4ac8-8ce2-ff46553d6092",
+      "name": "Barbecue & Chili",
+      "status": "different",
+      "sourceUrl": "https://dbd.tricky.lol/api/perks#BBQAndChilli",
+      "sourceKey": "BBQAndChilli",
+      "matchType": "name"
+    },
+    {
+      "id": "e839e07f-adf5-41c1-a740-386c8711a011",
+      "name": "Beast of Prey",
+      "status": "same_as_legacy",
+      "sourceUrl": "https://dbd.tricky.lol/api/perks#BeastOfPrey",
+      "sourceKey": "BeastOfPrey",
+      "matchType": "name"
+    },
+    {
+      "id": "c5a1e2a2-c6f0-44d2-a1c1-9e8ab1530fd4",
+      "name": "Better Together",
+      "status": "same_as_legacy",
+      "sourceUrl": "https://dbd.tricky.lol/api/perks#BetterTogether",
+      "sourceKey": "BetterTogether",
+      "matchType": "name"
+    },
+    {
+      "id": "fead883b-ac03-436f-9801-2f861969f517",
+      "name": "Bitter Murmur",
+      "status": "same_as_legacy",
+      "sourceUrl": "https://dbd.tricky.lol/api/perks#Bitter_Murmur",
+      "sourceKey": "Bitter_Murmur",
+      "matchType": "name"
+    },
+    {
+      "id": "c56e61f3-0d14-46d0-86d9-7a0207a309e8",
+      "name": "Blood Echo",
+      "status": "same_as_legacy",
+      "sourceUrl": "https://dbd.tricky.lol/api/perks#BloodEcho",
+      "sourceKey": "BloodEcho",
+      "matchType": "name"
+    },
+    {
+      "id": "ff1707e5-3282-4bdd-8b40-4b667149fd49",
+      "name": "Bloodhound",
+      "status": "same_as_legacy",
+      "sourceUrl": "https://dbd.tricky.lol/api/perks#BloodHound",
+      "sourceKey": "BloodHound",
+      "matchType": "name"
+    },
+    {
+      "id": "1e0302e2-c2d0-44df-9eb9-92a9c25500e0",
+      "name": "Blood Pact",
+      "status": "same_as_legacy",
+      "sourceUrl": "https://dbd.tricky.lol/api/perks#BloodPact",
+      "sourceKey": "BloodPact",
+      "matchType": "name"
+    },
+    {
+      "id": "416727d0-e932-4c3d-9668-55ae8b17be7b",
+      "name": "Blood Warden",
+      "status": "same_as_legacy",
+      "sourceUrl": "https://dbd.tricky.lol/api/perks#BloodWarden",
+      "sourceKey": "BloodWarden",
+      "matchType": "name"
+    },
+    {
+      "id": "39085f9a-64b7-4d4d-87c6-d173c7e0ddc4",
+      "name": "Boil Over",
+      "status": "same_as_legacy",
+      "sourceUrl": "https://dbd.tricky.lol/api/perks#BoilOver",
+      "sourceKey": "BoilOver",
+      "matchType": "name"
+    },
+    {
+      "id": "96176fd7-eda0-4a66-8009-7b6db43468dc",
+      "name": "Bond",
+      "status": "same_as_legacy",
+      "sourceUrl": "https://dbd.tricky.lol/api/perks#Bond",
+      "sourceKey": "Bond",
+      "matchType": "name"
+    },
+    {
+      "id": "fc5650e7-3df9-4b49-9d7d-5c5b2c25036d",
+      "name": "Shattered Hope",
+      "status": "same_as_legacy",
+      "sourceUrl": "https://dbd.tricky.lol/api/perks#BoonDestroyer",
+      "sourceKey": "BoonDestroyer",
+      "matchType": "name"
+    },
+    {
+      "id": "765775d3-949e-47fe-b752-55b5abef864c",
+      "name": "Borrowed Time",
+      "status": "different",
+      "sourceUrl": "https://dbd.tricky.lol/api/perks#BorrowedTime",
+      "sourceKey": "BorrowedTime",
+      "matchType": "name"
+    },
+    {
+      "id": "a86413e5-90c1-4a8f-ba79-0cf8fd291c63",
+      "name": "Botany Knowledge",
+      "status": "same_as_legacy",
+      "sourceUrl": "https://dbd.tricky.lol/api/perks#Botany_Knowledge",
+      "sourceKey": "Botany_Knowledge",
+      "matchType": "name"
+    },
+    {
+      "id": "af4bd6e6-972c-43f3-9f1d-b7ee3f9a16e0",
+      "name": "Breakdown",
+      "status": "same_as_legacy",
+      "sourceUrl": "https://dbd.tricky.lol/api/perks#Breakdown",
+      "sourceKey": "Breakdown",
+      "matchType": "name"
+    },
+    {
+      "id": "fbff21e7-8c66-4c62-a608-1c5f9ab4d8c0",
+      "name": "Breakout",
+      "status": "same_as_legacy",
+      "sourceUrl": "https://dbd.tricky.lol/api/perks#Breakout",
+      "sourceKey": "Breakout",
+      "matchType": "name"
+    },
+    {
+      "id": "e3f712e9-de53-4b94-938f-86c2c4975a4c",
+      "name": "Brutal Strength",
+      "status": "same_as_legacy",
+      "sourceUrl": "https://dbd.tricky.lol/api/perks#Brutal_Strength",
+      "sourceKey": "Brutal_Strength",
+      "matchType": "name"
+    },
+    {
+      "id": "c24fad8b-31ea-4aa8-843b-bb9a0fcae4d2",
+      "name": "Buckle Up",
+      "status": "different",
+      "sourceUrl": "https://dbd.tricky.lol/api/perks#BuckleUp",
+      "sourceKey": "BuckleUp",
+      "matchType": "name"
+    },
+    {
+      "id": "214bfd43-3bc2-45d6-abdd-40fec23c4820",
+      "name": "Built to Last",
+      "status": "same_as_legacy",
+      "sourceUrl": "https://dbd.tricky.lol/api/perks#BuiltToLast",
+      "sourceKey": "BuiltToLast",
+      "matchType": "name"
+    },
+    {
+      "id": "d03e92ab-1e88-4331-9f48-1074344c2483",
+      "name": "Calm Spirit",
+      "status": "different",
+      "sourceUrl": "https://dbd.tricky.lol/api/perks#Calm_Spirit",
+      "sourceKey": "Calm_Spirit",
+      "matchType": "name"
+    },
+    {
+      "id": "48e14117-8981-4d95-8429-3d17e54c13d1",
+      "name": "Camaraderie",
+      "status": "same_as_legacy",
+      "sourceUrl": "https://dbd.tricky.lol/api/perks#Camaraderie",
+      "sourceKey": "Camaraderie",
+      "matchType": "name"
+    },
+    {
+      "id": "065be203-2a00-4cfe-887f-82df602ae163",
+      "name": "Corrupt Intervention",
+      "status": "same_as_legacy",
+      "sourceUrl": "https://dbd.tricky.lol/api/perks#CorruptIntervention",
+      "sourceKey": "CorruptIntervention",
+      "matchType": "name"
+    },
+    {
+      "id": "1a712263-dc42-4775-a5f3-dc6f37c04821",
+      "name": "Coulrophobia",
+      "status": "same_as_legacy",
+      "sourceUrl": "https://dbd.tricky.lol/api/perks#Coulrophobia",
+      "sourceKey": "Coulrophobia",
+      "matchType": "name"
+    },
+    {
+      "id": "2df0c016-7462-4f1e-b63c-c6d64945565b",
+      "name": "Cruel Limits",
+      "status": "same_as_legacy",
+      "sourceUrl": "https://dbd.tricky.lol/api/perks#CruelConfinement",
+      "sourceKey": "CruelConfinement",
+      "matchType": "name"
+    },
+    {
+      "id": "8830b945-5ddc-4a01-8810-932d20641efa",
+      "name": "Dance With Me",
+      "status": "same_as_legacy",
+      "sourceUrl": "https://dbd.tricky.lol/api/perks#Dance_with_me",
+      "sourceKey": "Dance_with_me",
+      "matchType": "name"
+    },
+    {
+      "id": "901abd9c-9b05-40e7-8f70-c2150f24c844",
+      "name": "Dark Sense",
+      "status": "same_as_legacy",
+      "sourceUrl": "https://dbd.tricky.lol/api/perks#Dark_Sense",
+      "sourceKey": "Dark_Sense",
+      "matchType": "name"
+    },
+    {
+      "id": "c6f5369e-23a7-4e61-8bf3-b1345ed3c1b2",
+      "name": "Dark Devotion",
+      "status": "same_as_legacy",
+      "sourceUrl": "https://dbd.tricky.lol/api/perks#DarkDevotion",
+      "sourceKey": "DarkDevotion",
+      "matchType": "name"
+    },
+    {
+      "id": "47f75683-d54f-4965-a73a-2c5f0b2007eb",
+      "name": "Dead Hard",
+      "status": "different",
+      "sourceUrl": "https://dbd.tricky.lol/api/perks#DeadHard",
+      "sourceKey": "DeadHard",
+      "matchType": "name"
+    },
+    {
+      "id": "37169069-42b3-43b9-9e7c-e8951a394822",
+      "name": "Dead Man’s Switch",
+      "status": "same_as_legacy",
+      "sourceUrl": "https://dbd.tricky.lol/api/perks#DeadMansSwitch",
+      "sourceKey": "DeadMansSwitch",
+      "matchType": "name"
+    },
+    {
+      "id": "a706b265-6d9b-4501-9bcb-59a260fcbb87",
+      "name": "Deathbound",
+      "status": "same_as_legacy",
+      "sourceUrl": "https://dbd.tricky.lol/api/perks#Deathbound",
+      "sourceKey": "Deathbound",
+      "matchType": "name"
+    },
+    {
+      "id": "3ae77ce7-8f08-419c-b6f7-c972fc47b184",
+      "name": "Will To Live",
+      "status": "different",
+      "sourceUrl": "https://dbd.tricky.lol/api/perks#DecisiveStrike",
+      "sourceKey": "DecisiveStrike",
+      "matchType": "image-token"
+    },
+    {
+      "id": "9cd78d6d-5ab2-4bd8-96e9-eef24dc904f2",
+      "name": "Deerstalker",
+      "status": "same_as_legacy",
+      "sourceUrl": "https://dbd.tricky.lol/api/perks#Deerstalker",
+      "sourceKey": "Deerstalker",
+      "matchType": "name"
+    },
+    {
+      "id": "996509d8-617e-4b69-9fe0-d74e1a12c58b",
+      "name": "Deja Vu",
+      "status": "same_as_legacy",
+      "sourceUrl": "https://dbd.tricky.lol/api/perks#Deja_Vu",
+      "sourceKey": "Deja_Vu",
+      "matchType": "name"
+    },
+    {
+      "id": "040a47c2-b8fc-4ee3-a21e-549a04aac8dd",
+      "name": "Deliverance",
+      "status": "same_as_legacy",
+      "sourceUrl": "https://dbd.tricky.lol/api/perks#Deliverance",
+      "sourceKey": "Deliverance",
+      "matchType": "name"
+    },
+    {
+      "id": "9d5a3f00-8b30-4dc7-a0cc-1be920a3ea27",
+      "name": "Desperate Measures",
+      "status": "same_as_legacy",
+      "sourceUrl": "https://dbd.tricky.lol/api/perks#DesperateMeasures",
+      "sourceKey": "DesperateMeasures",
+      "matchType": "name"
+    },
+    {
+      "id": "e2f11c8b-8e86-4eea-b63a-01b7b95ac39f",
+      "name": "Detective's Hunch",
+      "status": "same_as_legacy",
+      "sourceUrl": "https://dbd.tricky.lol/api/perks#DetectivesHunch",
+      "sourceKey": "DetectivesHunch",
+      "matchType": "name"
+    },
+    {
+      "id": "f8734342-4124-44be-972d-4083c1e24342",
+      "name": "Discordance",
+      "status": "same_as_legacy",
+      "sourceUrl": "https://dbd.tricky.lol/api/perks#Discordance",
+      "sourceKey": "Discordance",
+      "matchType": "name"
+    },
+    {
+      "id": "57abe9a1-0a0f-43c4-a63a-6df52c5c56c7",
+      "name": "Distortion",
+      "status": "same_as_legacy",
+      "sourceUrl": "https://dbd.tricky.lol/api/perks#Distortion",
+      "sourceKey": "Distortion",
+      "matchType": "name"
+    },
+    {
+      "id": "8a98e5d4-14e0-43c7-a0f9-78c63a946d79",
+      "name": "Distressing",
+      "status": "same_as_legacy",
+      "sourceUrl": "https://dbd.tricky.lol/api/perks#Distressing",
+      "sourceKey": "Distressing",
+      "matchType": "name"
+    },
+    {
+      "id": "c25de189-b41d-4ba3-ad7b-442f1576994e",
+      "name": "Diversion",
+      "status": "different",
+      "sourceUrl": "https://dbd.tricky.lol/api/perks#Diversion",
+      "sourceKey": "Diversion",
+      "matchType": "name"
+    },
+    {
+      "id": "6a7b425b-d497-4bf8-9ae9-2bf5ddef2f7c",
+      "name": "Dragon’s Grip",
+      "status": "same_as_legacy",
+      "sourceUrl": "https://dbd.tricky.lol/api/perks#DragonsGrip",
+      "sourceKey": "DragonsGrip",
+      "matchType": "name"
+    },
+    {
+      "id": "c0b52a61-266f-4e7c-827d-2668bf91f94b",
+      "name": "Cull The Weak",
+      "status": "same_as_legacy",
+      "sourceUrl": "https://dbd.tricky.lol/api/perks#Dying_Light",
+      "sourceKey": "Dying_Light",
+      "matchType": "image-token"
+    },
+    {
+      "id": "a06cc9a1-2814-4a68-8fee-a3383b23cbc0",
+      "name": "Empathy",
+      "status": "same_as_legacy",
+      "sourceUrl": "https://dbd.tricky.lol/api/perks#Empathy",
+      "sourceKey": "Empathy",
+      "matchType": "name"
+    },
+    {
+      "id": "541adb9b-a816-4a54-b3cb-e99f705bff6b",
+      "name": "Enduring",
+      "status": "same_as_legacy",
+      "sourceUrl": "https://dbd.tricky.lol/api/perks#Enduring",
+      "sourceKey": "Enduring",
+      "matchType": "name"
+    },
+    {
+      "id": "28a82d08-aca7-41b0-aa56-b6ec8210f4ae",
+      "name": "Fire Up",
+      "status": "different",
+      "sourceUrl": "https://dbd.tricky.lol/api/perks#FireUp",
+      "sourceKey": "FireUp",
+      "matchType": "name"
+    },
+    {
+      "id": "3e2dd367-1d00-4a3b-857e-81ef3d03fb90",
+      "name": "Fixated",
+      "status": "same_as_legacy",
+      "sourceUrl": "https://dbd.tricky.lol/api/perks#Fixated",
+      "sourceKey": "Fixated",
+      "matchType": "name"
+    },
+    {
+      "id": "21c2561f-2a7b-43f0-85a2-c376ddb3f56e",
+      "name": "Flip-Flop",
+      "status": "same_as_legacy",
+      "sourceUrl": "https://dbd.tricky.lol/api/perks#FlipFlop",
+      "sourceKey": "FlipFlop",
+      "matchType": "name"
+    },
+    {
+      "id": "beebdea2-eeb3-473e-89c9-f9539865ffbc",
+      "name": "Forced Penance",
+      "status": "same_as_legacy",
+      "sourceUrl": "https://dbd.tricky.lol/api/perks#ForcedPenance",
+      "sourceKey": "ForcedPenance",
+      "matchType": "name"
+    },
+    {
+      "id": "b3aa41ad-c469-4775-9bba-78b50d7b8635",
+      "name": "For the People",
+      "status": "same_as_legacy",
+      "sourceUrl": "https://dbd.tricky.lol/api/perks#ForThePeople",
+      "sourceKey": "ForThePeople",
+      "matchType": "name"
+    },
+    {
+      "id": "bd81838c-d327-48b0-a84f-b5adc2bfc804",
+      "name": "Franklin's Demise",
+      "status": "same_as_legacy",
+      "sourceUrl": "https://dbd.tricky.lol/api/perks#FranklinsLoss",
+      "sourceKey": "FranklinsLoss",
+      "matchType": "name"
+    },
+    {
+      "id": "b48973ed-45c7-4edb-9132-3e72f91508a4",
+      "name": "Furtive Chase",
+      "status": "same_as_legacy",
+      "sourceUrl": "https://dbd.tricky.lol/api/perks#FurtiveChase",
+      "sourceKey": "FurtiveChase",
+      "matchType": "name"
+    },
+    {
+      "id": "19b63ef1-3478-4837-a5f9-0b82e9413ca2",
+      "name": "Gearhead",
+      "status": "same_as_legacy",
+      "sourceUrl": "https://dbd.tricky.lol/api/perks#Gearhead",
+      "sourceKey": "Gearhead",
+      "matchType": "name"
+    },
+    {
+      "id": "adb820eb-8e9a-45e7-95c2-135cc2ec68ab",
+      "name": "Overcharge",
+      "status": "same_as_legacy",
+      "sourceUrl": "https://dbd.tricky.lol/api/perks#GeneratorOvercharge",
+      "sourceKey": "GeneratorOvercharge",
+      "matchType": "name"
+    },
+    {
+      "id": "21cf2212-b02c-465f-be9f-1db493a3c688",
+      "name": "Scourge Hook: Hangman's Trick",
+      "status": "same_as_legacy",
+      "sourceUrl": "https://dbd.tricky.lol/api/perks#HangmansTrick",
+      "sourceKey": "HangmansTrick",
+      "matchType": "name"
+    },
+    {
+      "id": "d5e1e4cc-7f90-4681-bd1d-94561019f558",
+      "name": "Head On",
+      "status": "same_as_legacy",
+      "sourceUrl": "https://dbd.tricky.lol/api/perks#HeadOn",
+      "sourceKey": "HeadOn",
+      "matchType": "name"
+    },
+    {
+      "id": "938344a0-a5b1-4a3a-a8e7-1a1d8509e9e4",
+      "name": "Hex: Devour Hope",
+      "status": "different",
+      "sourceUrl": "https://dbd.tricky.lol/api/perks#Hex_Devour_Hope",
+      "sourceKey": "Hex_Devour_Hope",
+      "matchType": "name"
+    },
+    {
+      "id": "61c6b48d-3b59-447c-b797-c1c8dc06a8ff",
+      "name": "Hex: Haunted Ground",
+      "status": "same_as_legacy",
+      "sourceUrl": "https://dbd.tricky.lol/api/perks#Hex_HauntedGround",
+      "sourceKey": "Hex_HauntedGround",
+      "matchType": "name"
+    },
+    {
+      "id": "aee41824-ebc3-4d9c-9e3e-8b5f0220dcf0",
+      "name": "Hex: Huntress Lullaby",
+      "status": "different",
+      "sourceUrl": "https://dbd.tricky.lol/api/perks#Hex_HuntressLullaby",
+      "sourceKey": "Hex_HuntressLullaby",
+      "matchType": "name"
+    },
+    {
+      "id": "e8cdf09d-14d2-4bf8-8be5-a7588a7f36de",
+      "name": "Hex: Ruin",
+      "status": "same_as_legacy",
+      "sourceUrl": "https://dbd.tricky.lol/api/perks#Hex_Ruin",
+      "sourceKey": "Hex_Ruin",
+      "matchType": "name"
+    },
+    {
+      "id": "198ff19c-d46f-48df-b46d-c86ee3b5ff93",
+      "name": "Hex: The Third Seal",
+      "status": "same_as_legacy",
+      "sourceUrl": "https://dbd.tricky.lol/api/perks#Hex_The_Third_Seal",
+      "sourceKey": "Hex_The_Third_Seal",
+      "matchType": "name"
+    },
+    {
+      "id": "3bee2d4f-68ec-4d55-9bda-aac02277388c",
+      "name": "Hex: Thrill of the Hunt",
+      "status": "different",
+      "sourceUrl": "https://dbd.tricky.lol/api/perks#Hex_Thrill_Of_The_Hunt",
+      "sourceKey": "Hex_Thrill_Of_The_Hunt",
+      "matchType": "name"
+    },
+    {
+      "id": "f8d54b63-7495-447f-9f0b-a95f72ad174b",
+      "name": "Hex: Blood Favor",
+      "status": "same_as_legacy",
+      "sourceUrl": "https://dbd.tricky.lol/api/perks#HexBloodFavor",
+      "sourceKey": "HexBloodFavor",
+      "matchType": "name"
+    },
+    {
+      "id": "10f3eee2-e1d7-4e3b-9973-ac8d24c07005",
+      "name": "Hex: Retribution",
+      "status": "same_as_legacy",
+      "sourceUrl": "https://dbd.tricky.lol/api/perks#HexRetribution",
+      "sourceKey": "HexRetribution",
+      "matchType": "name"
+    },
+    {
+      "id": "61f9c429-9485-492b-9ce7-f9ba108bc717",
+      "name": "Hex: Undying",
+      "status": "same_as_legacy",
+      "sourceUrl": "https://dbd.tricky.lol/api/perks#HexUndying",
+      "sourceKey": "HexUndying",
+      "matchType": "name"
+    },
+    {
+      "id": "29b1f23f-2527-487e-8fcf-f2bdfe9d74c0",
+      "name": "Hope",
+      "status": "same_as_legacy",
+      "sourceUrl": "https://dbd.tricky.lol/api/perks#Hope",
+      "sourceKey": "Hope",
+      "matchType": "name"
+    },
+    {
+      "id": "c93660d7-844f-4abf-aa53-3c540863a5ce",
+      "name": "I'm All Ears",
+      "status": "same_as_legacy",
+      "sourceUrl": "https://dbd.tricky.lol/api/perks#ImAllEars",
+      "sourceKey": "ImAllEars",
+      "matchType": "name"
+    },
+    {
+      "id": "d558f193-871d-4bdb-975c-7809c3683082",
+      "name": "Infectious Fright",
+      "status": "same_as_legacy",
+      "sourceUrl": "https://dbd.tricky.lol/api/perks#InfectiousFright",
+      "sourceKey": "InfectiousFright",
+      "matchType": "name"
+    },
+    {
+      "id": "659e79f8-602a-47a8-af9e-f5712a24c8e0",
+      "name": "Inner Strength",
+      "status": "same_as_legacy",
+      "sourceUrl": "https://dbd.tricky.lol/api/perks#InnerStrength",
+      "sourceKey": "InnerStrength",
+      "matchType": "name"
+    },
+    {
+      "id": "8afdf441-086b-4bf5-825a-7092d31a3c5a",
+      "name": "Insidious",
+      "status": "same_as_legacy",
+      "sourceUrl": "https://dbd.tricky.lol/api/perks#Insidious",
+      "sourceKey": "Insidious",
+      "matchType": "name"
+    },
+    {
+      "id": "592d38d7-2e45-4128-80b8-c596d60b7099",
+      "name": "Knock Out",
+      "status": "different",
+      "sourceUrl": "https://dbd.tricky.lol/api/perks#InTheDark",
+      "sourceKey": "InTheDark",
+      "matchType": "name"
+    },
+    {
+      "id": "3d0dea2c-ec15-41e2-a118-3a70b0cd3d82",
+      "name": "Iron Grasp",
+      "status": "same_as_legacy",
+      "sourceUrl": "https://dbd.tricky.lol/api/perks#Iron_Grasp",
+      "sourceKey": "Iron_Grasp",
+      "matchType": "name"
+    },
+    {
+      "id": "939a90d0-0096-479b-ab9a-fbabc42470ab",
+      "name": "Iron Will",
+      "status": "same_as_legacy",
+      "sourceUrl": "https://dbd.tricky.lol/api/perks#Iron_Will",
+      "sourceKey": "Iron_Will",
+      "matchType": "name"
+    },
+    {
+      "id": "b72a02ab-a542-4766-a2a1-5808a5cc44dc",
+      "name": "Iron Maiden",
+      "status": "same_as_legacy",
+      "sourceUrl": "https://dbd.tricky.lol/api/perks#Ironmaiden",
+      "sourceKey": "Ironmaiden",
+      "matchType": "name"
+    },
+    {
+      "id": "bf8e1760-274d-4e69-9c1f-235ccc69ea3c",
+      "name": "Hoarder",
+      "status": "different",
+      "sourceUrl": "https://dbd.tricky.lol/api/perks#K22P01",
+      "sourceKey": "K22P01",
+      "matchType": "name"
+    },
+    {
+      "id": "7e738ff9-bea4-4836-8a1f-3bad9a4d3e3b",
+      "name": "Oppression",
+      "status": "different",
+      "sourceUrl": "https://dbd.tricky.lol/api/perks#K22P02",
+      "sourceKey": "K22P02",
+      "matchType": "name"
+    },
+    {
+      "id": "82144f53-487a-4150-9c63-b85498ad37bc",
+      "name": "Coup de Grâce",
+      "status": "different",
+      "sourceUrl": "https://dbd.tricky.lol/api/perks#K22P03",
+      "sourceKey": "K22P03",
+      "matchType": "name"
+    },
+    {
+      "id": "c85acb7f-016a-4962-9b0d-5911514e4700",
+      "name": "Starstruck",
+      "status": "different",
+      "sourceUrl": "https://dbd.tricky.lol/api/perks#K23P01",
+      "sourceKey": "K23P01",
+      "matchType": "name"
+    },
+    {
+      "id": "f4bb2e5d-dcfa-4745-afc9-45c63b120c7f",
+      "name": "Hex: Crowd Control",
+      "status": "different",
+      "sourceUrl": "https://dbd.tricky.lol/api/perks#K23P02",
+      "sourceKey": "K23P02",
+      "matchType": "name"
+    },
+    {
+      "id": "5420d24a-002a-4c9f-bffd-44c4893d30d5",
+      "name": "No Way Out",
+      "status": "different",
+      "sourceUrl": "https://dbd.tricky.lol/api/perks#K23P03",
+      "sourceKey": "K23P03",
+      "matchType": "name"
+    },
+    {
+      "id": "456efbe1-38ab-4b1b-8e9d-145ca06ead03",
+      "name": "Lethal Pursuer",
+      "status": "different",
+      "sourceUrl": "https://dbd.tricky.lol/api/perks#K24P01",
+      "sourceKey": "K24P01",
+      "matchType": "name"
+    },
+    {
+      "id": "eee0b6ba-ddc3-498f-82c3-ddcd9a60de96",
+      "name": "Hysteria",
+      "status": "different",
+      "sourceUrl": "https://dbd.tricky.lol/api/perks#K24P02",
+      "sourceKey": "K24P02",
+      "matchType": "name"
+    },
+    {
+      "id": "8941443e-cbba-4e4e-80ec-94ee9bf8914e",
+      "name": "Eruption",
+      "status": "different",
+      "sourceUrl": "https://dbd.tricky.lol/api/perks#K24P03",
+      "sourceKey": "K24P03",
+      "matchType": "name"
+    },
+    {
+      "id": "40f88098-e449-4bb6-ae4b-320c66c485cf",
+      "name": "Deadlock",
+      "status": "different",
+      "sourceUrl": "https://dbd.tricky.lol/api/perks#K25P01",
+      "sourceKey": "K25P01",
+      "matchType": "name"
+    },
+    {
+      "id": "f7d9b1df-b8c2-4280-9b97-8dde8987e521",
+      "name": "Hex: Plaything",
+      "status": "different",
+      "sourceUrl": "https://dbd.tricky.lol/api/perks#K25P02",
+      "sourceKey": "K25P02",
+      "matchType": "name"
+    },
+    {
+      "id": "77b7b655-52e6-41b1-8caf-38d8eab3d0f7",
+      "name": "Scourge Hook: Gift of Pain",
+      "status": "different",
+      "sourceUrl": "https://dbd.tricky.lol/api/perks#K25P03",
+      "sourceKey": "K25P03",
+      "matchType": "name"
+    },
+    {
+      "id": "bafedf67-73f7-44ae-a705-b3dce85d1328",
+      "name": "Grim Embrace",
+      "status": "different",
+      "sourceUrl": "https://dbd.tricky.lol/api/perks#K26P01",
+      "sourceKey": "K26P01",
+      "matchType": "name"
+    },
+    {
+      "id": "a223dc5c-43b4-4822-94c5-168024ab9ae0",
+      "name": "Scourge Hook: Pain Resonance",
+      "status": "different",
+      "sourceUrl": "https://dbd.tricky.lol/api/perks#K26P02",
+      "sourceKey": "K26P02",
+      "matchType": "name"
+    },
+    {
+      "id": "7a9b4051-2447-4d39-bdef-c0fa5fbdfc9c",
+      "name": "Hex: Pentimento",
+      "status": "different",
+      "sourceUrl": "https://dbd.tricky.lol/api/perks#K26P03",
+      "sourceKey": "K26P03",
+      "matchType": "name"
+    },
+    {
+      "id": "96a98802-3723-481b-af2b-9a304ea360a3",
+      "name": "Scourge Hook: Floods of Rage",
+      "status": "different",
+      "sourceUrl": "https://dbd.tricky.lol/api/perks#K27P01",
+      "sourceKey": "K27P01",
+      "matchType": "name"
+    },
+    {
+      "id": "979cedf3-0774-4bd2-ae41-29e59193dba2",
+      "name": "Call of Brine",
+      "status": "different",
+      "sourceUrl": "https://dbd.tricky.lol/api/perks#K27P02",
+      "sourceKey": "K27P02",
+      "matchType": "name"
+    },
+    {
+      "id": "8f021313-ad25-4612-aa5d-44ad4b161a60",
+      "name": "Merciless Storm",
+      "status": "different",
+      "sourceUrl": "https://dbd.tricky.lol/api/perks#K27P03",
+      "sourceKey": "K27P03",
+      "matchType": "name"
+    },
+    {
+      "id": "a1652be8-0e34-44fc-8fcd-62a9687d8a12",
+      "name": "Dissolution",
+      "status": "different",
+      "sourceUrl": "https://dbd.tricky.lol/api/perks#K28P01",
+      "sourceKey": "K28P01",
+      "matchType": "name"
+    },
+    {
+      "id": "1638c14c-e018-4825-9ed1-21d1d0615ad1",
+      "name": "Darkness Revealed",
+      "status": "different",
+      "sourceUrl": "https://dbd.tricky.lol/api/perks#K28P02",
+      "sourceKey": "K28P02",
+      "matchType": "name"
+    },
+    {
+      "id": "2961103c-4450-45ef-b617-e7be52cc62ad",
+      "name": "Septic Touch",
+      "status": "different",
+      "sourceUrl": "https://dbd.tricky.lol/api/perks#K28P03",
+      "sourceKey": "K28P03",
+      "matchType": "name"
+    },
+    {
+      "id": "fb732468-e055-4ce2-9f81-91a82785cb5a",
+      "name": "Superior Anatomy",
+      "status": "different",
+      "sourceUrl": "https://dbd.tricky.lol/api/perks#K29P01",
+      "sourceKey": "K29P01",
+      "matchType": "name"
+    },
+    {
+      "id": "2e5382d0-70a2-4143-b270-4743bfa0d516",
+      "name": "Awakened Awareness",
+      "status": "different",
+      "sourceUrl": "https://dbd.tricky.lol/api/perks#K29P02",
+      "sourceKey": "K29P02",
+      "matchType": "name"
+    },
+    {
+      "id": "ac0c4c9e-0587-4a7a-bfcb-0c1130a15167",
+      "name": "Terminus",
+      "status": "different",
+      "sourceUrl": "https://dbd.tricky.lol/api/perks#K29P03",
+      "sourceKey": "K29P03",
+      "matchType": "name"
+    },
+    {
+      "id": "5aded9d8-a40c-4454-a28a-97d33a3655dd",
+      "name": "Nowhere to Hide",
+      "status": "different",
+      "sourceUrl": "https://dbd.tricky.lol/api/perks#K30P01",
+      "sourceKey": "K30P01",
+      "matchType": "name"
+    },
+    {
+      "id": "3b04e69f-2975-481b-9cc0-5eb5eafd81e1",
+      "name": "Hex: Face the Darkness",
+      "status": "different",
+      "sourceUrl": "https://dbd.tricky.lol/api/perks#K30P02",
+      "sourceKey": "K30P02",
+      "matchType": "name"
+    },
+    {
+      "id": "b7b0c6ae-3582-48b1-a232-a7d875b3c5b8",
+      "name": "Hubris",
+      "status": "different",
+      "sourceUrl": "https://dbd.tricky.lol/api/perks#K30P03",
+      "sourceKey": "K30P03",
+      "matchType": "name"
+    },
+    {
+      "id": "8a52e30f-43e1-4800-810e-6f4944e2a5c1",
+      "name": "Game Afoot",
+      "status": "different",
+      "sourceUrl": "https://dbd.tricky.lol/api/perks#K31P01",
+      "sourceKey": "K31P01",
+      "matchType": "name"
+    },
+    {
+      "id": "9c388a3b-74ce-4b9b-90be-d71b6c459ac7",
+      "name": "THWACK!",
+      "status": "different",
+      "sourceUrl": "https://dbd.tricky.lol/api/perks#K31P02",
+      "sourceKey": "K31P02",
+      "matchType": "name"
+    },
+    {
+      "id": "6ba702e1-d6bf-40b3-a0eb-43e0d3b92852",
+      "name": "Leverage",
+      "status": "different",
+      "sourceUrl": "https://dbd.tricky.lol/api/perks#K31P03",
+      "sourceKey": "K31P03",
+      "matchType": "name"
+    },
+    {
+      "id": "6fa24b2b-1c4c-4bc1-a5ab-babc4f0004c1",
+      "name": "Genetic Limits",
+      "status": "different",
+      "sourceUrl": "https://dbd.tricky.lol/api/perks#K32P01",
+      "sourceKey": "K32P01",
+      "matchType": "name"
+    },
+    {
+      "id": "431fcf2a-2138-4e56-8c2b-0fa506fe093f",
+      "name": "Forced Hesitation",
+      "status": "different",
+      "sourceUrl": "https://dbd.tricky.lol/api/perks#K32P02",
+      "sourceKey": "K32P02",
+      "matchType": "name"
+    },
+    {
+      "id": "5c7beea7-b5fb-43ad-b215-18365d5eec48",
+      "name": "Machine Learning",
+      "status": "different",
+      "sourceUrl": "https://dbd.tricky.lol/api/perks#K32P03",
+      "sourceKey": "K32P03",
+      "matchType": "name"
+    },
+    {
+      "id": "a723238b-4fcb-4720-98dc-9361b4f7b7d4",
+      "name": "Ultimate Weapon",
+      "status": "different",
+      "sourceUrl": "https://dbd.tricky.lol/api/perks#K33P01",
+      "sourceKey": "K33P01",
+      "matchType": "name"
+    },
+    {
+      "id": "7e146cbf-9258-4f5b-a5a6-cf1985a46a60",
+      "name": "Rapid Brutality",
+      "status": "different",
+      "sourceUrl": "https://dbd.tricky.lol/api/perks#K33P02",
+      "sourceKey": "K33P02",
+      "matchType": "name"
+    },
+    {
+      "id": "b6940536-9372-455f-abb3-14dccba26a0e",
+      "name": "Alien Instinct",
+      "status": "different",
+      "sourceUrl": "https://dbd.tricky.lol/api/perks#K33P03",
+      "sourceKey": "K33P03",
+      "matchType": "name"
+    },
+    {
+      "id": "ae93858c-5745-4836-b003-1cc6aa92a75e",
+      "name": "Hex: Two Can Play",
+      "status": "different",
+      "sourceUrl": "https://dbd.tricky.lol/api/perks#K34P01",
+      "sourceKey": "K34P01",
+      "matchType": "name"
+    },
+    {
+      "id": "faebd1c4-43a1-4a41-8fb2-00ea5bc989f5",
+      "name": "Friends ‘Til the End",
+      "status": "different",
+      "sourceUrl": "https://dbd.tricky.lol/api/perks#K34P02",
+      "sourceKey": "K34P02",
+      "matchType": "name"
+    },
+    {
+      "id": "320a2bcb-b84e-424a-95e0-b12e47201b7c",
+      "name": "Batteries Included",
+      "status": "different",
+      "sourceUrl": "https://dbd.tricky.lol/api/perks#K34P03",
+      "sourceKey": "K34P03",
+      "matchType": "name"
+    },
+    {
+      "id": "281a584d-1676-42e9-88ab-a1376dec27f9",
+      "name": "Unbound",
+      "status": "different",
+      "sourceUrl": "https://dbd.tricky.lol/api/perks#K35P01",
+      "sourceKey": "K35P01",
+      "matchType": "name"
+    },
+    {
+      "id": "f5d6a865-79b9-451f-b15b-82bfce4bcff8",
+      "name": "Unforeseen",
+      "status": "different",
+      "sourceUrl": "https://dbd.tricky.lol/api/perks#K35P02",
+      "sourceKey": "K35P02",
+      "matchType": "name"
+    },
+    {
+      "id": "38072257-f1d2-43d6-beee-717d9ad18ddd",
+      "name": "Undone",
+      "status": "different",
+      "sourceUrl": "https://dbd.tricky.lol/api/perks#K35P03",
+      "sourceKey": "K35P03",
+      "matchType": "name"
+    },
+    {
+      "id": "ea191a8e-1892-4bf8-8482-c383ed038e6e",
+      "name": "Weave Attunement",
+      "status": "different",
+      "sourceUrl": "https://dbd.tricky.lol/api/perks#K36P01",
+      "sourceKey": "K36P01",
+      "matchType": "name"
+    },
+    {
+      "id": "ade375f2-eefb-45e1-9f7a-0a78bc994682",
+      "name": "Languid Touch",
+      "status": "different",
+      "sourceUrl": "https://dbd.tricky.lol/api/perks#K36P02",
+      "sourceKey": "K36P02",
+      "matchType": "name"
+    },
+    {
+      "id": "aaef5753-3c84-4704-bab8-c0acf50f6d72",
+      "name": "Dark Arrogance",
+      "status": "different",
+      "sourceUrl": "https://dbd.tricky.lol/api/perks#K36P03",
+      "sourceKey": "K36P03",
+      "matchType": "name"
+    },
+    {
+      "id": "ce81c2eb-6f00-4be9-aae0-61616aa1c06a",
+      "name": "Hex: Wretched Fate",
+      "status": "different",
+      "sourceUrl": "https://dbd.tricky.lol/api/perks#K37P01",
+      "sourceKey": "K37P01",
+      "matchType": "name"
+    },
+    {
+      "id": "a5181fd2-c2e1-486e-9268-eb177dc203d9",
+      "name": "Human Greed",
+      "status": "different",
+      "sourceUrl": "https://dbd.tricky.lol/api/perks#K37P02",
+      "sourceKey": "K37P02",
+      "matchType": "name"
+    },
+    {
+      "id": "240467d3-b209-40af-a9ca-e32bb307e8a5",
+      "name": "Dominance",
+      "status": "different",
+      "sourceUrl": "https://dbd.tricky.lol/api/perks#K37P03",
+      "sourceKey": "K37P03",
+      "matchType": "name"
+    },
+    {
+      "id": "178688f3-64ba-4e06-85a4-2ec75c3fb211",
+      "name": "All-Shaking Thunder",
+      "status": "different",
+      "sourceUrl": "https://dbd.tricky.lol/api/perks#K38P01",
+      "sourceKey": "K38P01",
+      "matchType": "name"
+    },
+    {
+      "id": "cab0dff1-b44c-466a-875b-6027052b9c38",
+      "name": "Scourge Hook: Jagged Compass",
+      "status": "different",
+      "sourceUrl": "https://dbd.tricky.lol/api/perks#K38P02",
+      "sourceKey": "K38P02",
+      "matchType": "name"
+    },
+    {
+      "id": "85310867-fdb6-4f7e-8075-1a540d6a2754",
+      "name": "No Quarter",
+      "status": "different",
+      "sourceUrl": "https://dbd.tricky.lol/api/perks#K38P03",
+      "sourceKey": "K38P03",
+      "matchType": "name"
+    },
+    {
+      "id": "6b92651b-2d89-42dd-8f26-3ebe61719911",
+      "name": "Hex: Nothing But Misery",
+      "status": "different",
+      "sourceUrl": "https://dbd.tricky.lol/api/perks#K39P01",
+      "sourceKey": "K39P01",
+      "matchType": "name"
+    },
+    {
+      "id": "84437572-9948-4a9f-a580-907e74b4d9de",
+      "name": "Forever Entwined",
+      "status": "different",
+      "sourceUrl": "https://dbd.tricky.lol/api/perks#K39P02",
+      "sourceKey": "K39P02",
+      "matchType": "name"
+    },
+    {
+      "id": "e8229df8-9955-4f2e-a1f2-6bb1578872b2",
+      "name": "None Are Free",
+      "status": "different",
+      "sourceUrl": "https://dbd.tricky.lol/api/perks#K39P03",
+      "sourceKey": "K39P03",
+      "matchType": "name"
+    },
+    {
+      "id": "b0bb6c95-7685-4f79-8d6d-27948c5be377",
+      "name": "Help Wanted",
+      "status": "different",
+      "sourceUrl": "https://dbd.tricky.lol/api/perks#K40P01",
+      "sourceKey": "K40P01",
+      "matchType": "name"
+    },
+    {
+      "id": "1ab5bdd8-1ddf-4c96-a6cb-e2594762ed28",
+      "name": "Phantom Fear",
+      "status": "different",
+      "sourceUrl": "https://dbd.tricky.lol/api/perks#K40P02",
+      "sourceKey": "K40P02",
+      "matchType": "name"
+    },
+    {
+      "id": "c8e1fa7a-8b4c-46cb-9468-79f0ec97169c",
+      "name": "Haywire",
+      "status": "different",
+      "sourceUrl": "https://dbd.tricky.lol/api/perks#K40P03",
+      "sourceKey": "K40P03",
+      "matchType": "name"
+    },
+    {
+      "id": "5594e410-b903-44d7-b949-477d34f6b2a7",
+      "name": "Ravenous",
+      "status": "different",
+      "sourceUrl": "https://dbd.tricky.lol/api/perks#K41P01",
+      "sourceKey": "K41P01",
+      "matchType": "name"
+    },
+    {
+      "id": "db9dc9dd-87a4-4d5f-8752-23dcdde0ae00",
+      "name": "Wandering Eye",
+      "status": "different",
+      "sourceUrl": "https://dbd.tricky.lol/api/perks#K41P02",
+      "sourceKey": "K41P02",
+      "matchType": "name"
+    },
+    {
+      "id": "697ab247-b1e1-4eea-90c5-47c1fa8de821",
+      "name": "Hex: Overture of Doom",
+      "status": "different",
+      "sourceUrl": "https://dbd.tricky.lol/api/perks#K41P03",
+      "sourceKey": "K41P03",
+      "matchType": "name"
+    },
+    {
+      "id": "0fab3912-b6bd-4bb8-b9ed-1350d5a29559",
+      "name": "Kindred",
+      "status": "same_as_legacy",
+      "sourceUrl": "https://dbd.tricky.lol/api/perks#Kindred",
+      "sourceKey": "Kindred",
+      "matchType": "name"
+    },
+    {
+      "id": "856e54dd-d045-4ca3-980b-b774404c4a67",
+      "name": "Leader",
+      "status": "same_as_legacy",
+      "sourceUrl": "https://dbd.tricky.lol/api/perks#Leader",
+      "sourceKey": "Leader",
+      "matchType": "name"
+    },
+    {
+      "id": "10e9bfd6-f002-4cd5-8b9f-88cbc88e3b52",
+      "name": "Left Behind",
+      "status": "same_as_legacy",
+      "sourceUrl": "https://dbd.tricky.lol/api/perks#LeftBehind",
+      "sourceKey": "LeftBehind",
+      "matchType": "name"
+    },
+    {
+      "id": "a0103f12-994a-4a09-ace9-40fdec12a815",
+      "name": "Lightborn",
+      "status": "same_as_legacy",
+      "sourceUrl": "https://dbd.tricky.lol/api/perks#Lightborn",
+      "sourceKey": "Lightborn",
+      "matchType": "name"
+    },
+    {
+      "id": "3372bb89-6809-41d8-af57-4759e603d8af",
+      "name": "Lightweight",
+      "status": "same_as_legacy",
+      "sourceUrl": "https://dbd.tricky.lol/api/perks#Lightweight",
+      "sourceKey": "Lightweight",
+      "matchType": "name"
+    },
+    {
+      "id": "78d4df28-88b4-4461-be57-df0291c61e64",
+      "name": "Lithe",
+      "status": "same_as_legacy",
+      "sourceUrl": "https://dbd.tricky.lol/api/perks#Lithe",
+      "sourceKey": "Lithe",
+      "matchType": "name"
+    },
+    {
+      "id": "fb931562-0b27-43a0-9a16-e387c2fc21b4",
+      "name": "Lucky Break",
+      "status": "different",
+      "sourceUrl": "https://dbd.tricky.lol/api/perks#LuckyBreak",
+      "sourceKey": "LuckyBreak",
+      "matchType": "name"
+    },
+    {
+      "id": "57a97d36-2da1-4bdb-a8d5-b5894b1e3dee",
+      "name": "Mad Grit",
+      "status": "same_as_legacy",
+      "sourceUrl": "https://dbd.tricky.lol/api/perks#MadGrit",
+      "sourceKey": "MadGrit",
+      "matchType": "name"
+    },
+    {
+      "id": "360c9f72-3dbc-4c14-a1b6-5ac52c2d0b58",
+      "name": "Make your Choice",
+      "status": "same_as_legacy",
+      "sourceUrl": "https://dbd.tricky.lol/api/perks#MakeYourChoice",
+      "sourceKey": "MakeYourChoice",
+      "matchType": "name"
+    },
+    {
+      "id": "5df30b9b-2d36-47b4-8361-7ada42c50a2c",
+      "name": "Mindbreaker",
+      "status": "same_as_legacy",
+      "sourceUrl": "https://dbd.tricky.lol/api/perks#Mindbreaker",
+      "sourceKey": "Mindbreaker",
+      "matchType": "name"
+    },
+    {
+      "id": "693c103f-1057-467b-b3a7-e3cb93206b5c",
+      "name": "Monitor & Abuse",
+      "status": "same_as_legacy",
+      "sourceUrl": "https://dbd.tricky.lol/api/perks#MonitorAndAbuse",
+      "sourceKey": "MonitorAndAbuse",
+      "matchType": "name"
+    },
+    {
+      "id": "0ef07304-9160-4bf8-8445-14d7350764c2",
+      "name": "Scourge Hook: Monstrous Shrine",
+      "status": "different",
+      "sourceUrl": "https://dbd.tricky.lol/api/perks#Monstrous_Shrine",
+      "sourceKey": "Monstrous_Shrine",
+      "matchType": "name"
+    },
+    {
+      "id": "8c9bf71f-68ba-456e-bacb-6b5219a761b1",
+      "name": "Nemesis",
+      "status": "same_as_legacy",
+      "sourceUrl": "https://dbd.tricky.lol/api/perks#Nemesis",
+      "sourceKey": "Nemesis",
+      "matchType": "name"
+    },
+    {
+      "id": "2af0cb82-accc-4ab6-9078-13cbfa89586c",
+      "name": "Hex: No One Escapes Death",
+      "status": "different",
+      "sourceUrl": "https://dbd.tricky.lol/api/perks#No_One_Escapes_Death",
+      "sourceKey": "No_One_Escapes_Death",
+      "matchType": "name"
+    },
+    {
+      "id": "f68aed3b-e8dc-478b-91eb-0fb05a73cb87",
+      "name": "No One Left Behind",
+      "status": "different",
+      "sourceUrl": "https://dbd.tricky.lol/api/perks#No_One_Left_Behind",
+      "sourceKey": "No_One_Left_Behind",
+      "matchType": "name"
+    },
+    {
+      "id": "8adf88bc-7a4d-400d-9bdb-917d37d01ed2",
+      "name": "No Mither",
+      "status": "different",
+      "sourceUrl": "https://dbd.tricky.lol/api/perks#NoMither",
+      "sourceKey": "NoMither",
+      "matchType": "name"
+    },
+    {
+      "id": "54944810-74fa-4452-8c18-6508af885055",
+      "name": "A Nurse's Calling",
+      "status": "same_as_legacy",
+      "sourceUrl": "https://dbd.tricky.lol/api/perks#NurseCalling",
+      "sourceKey": "NurseCalling",
+      "matchType": "name"
+    },
+    {
+      "id": "42701511-01fb-4eac-b660-5268afd34953",
+      "name": "Bound by Obsession",
+      "status": "same_as_legacy",
+      "sourceUrl": "https://dbd.tricky.lol/api/perks#ObjectOfObsession",
+      "sourceKey": "ObjectOfObsession",
+      "matchType": "image-token"
+    },
+    {
+      "id": "e62ef844-923b-46c0-bc8c-932bf316e667",
+      "name": "Off the Record",
+      "status": "different",
+      "sourceUrl": "https://dbd.tricky.lol/api/perks#OffTheRecord",
+      "sourceKey": "OffTheRecord",
+      "matchType": "name"
+    },
+    {
+      "id": "50c19de9-8753-4d9b-8aef-776c9f3bc577",
+      "name": "Open-Handed",
+      "status": "different",
+      "sourceUrl": "https://dbd.tricky.lol/api/perks#Open_Handed",
+      "sourceKey": "Open_Handed",
+      "matchType": "name"
+    },
+    {
+      "id": "9bc27ebc-74e9-4c30-a1ef-a6607ed2c3d4",
+      "name": "Overwhelming Presence",
+      "status": "same_as_legacy",
+      "sourceUrl": "https://dbd.tricky.lol/api/perks#OverwhelmingPresence",
+      "sourceKey": "OverwhelmingPresence",
+      "matchType": "name"
+    },
+    {
+      "id": "42793d20-da82-4b66-a167-61f9e7fc3f34",
+      "name": "Pharmacy",
+      "status": "different",
+      "sourceUrl": "https://dbd.tricky.lol/api/perks#Pharmacy",
+      "sourceKey": "Pharmacy",
+      "matchType": "name"
+    },
+    {
+      "id": "223a4acf-7db9-4c9b-9b3c-c185af95faf3",
+      "name": "See How They Run",
+      "status": "same_as_legacy",
+      "sourceUrl": "https://dbd.tricky.lol/api/perks#Play_With_Your_Food",
+      "sourceKey": "Play_With_Your_Food",
+      "matchType": "image-token"
+    },
+    {
+      "id": "d2484d9b-e671-450b-96f5-7fe7a3d3be9f",
+      "name": "Plunderer's Instinct",
+      "status": "same_as_legacy",
+      "sourceUrl": "https://dbd.tricky.lol/api/perks#Plunderers_Instinct",
+      "sourceKey": "Plunderers_Instinct",
+      "matchType": "name"
+    },
+    {
+      "id": "4154f760-078c-4df9-92a5-abf8fbd74508",
+      "name": "Poised",
+      "status": "same_as_legacy",
+      "sourceUrl": "https://dbd.tricky.lol/api/perks#Poised",
+      "sourceKey": "Poised",
+      "matchType": "name"
+    },
+    {
+      "id": "d2810af7-39e0-456f-911a-2abe478196b3",
+      "name": "Pop Goes the Weasel",
+      "status": "different",
+      "sourceUrl": "https://dbd.tricky.lol/api/perks#pop_goes_the_weasel",
+      "sourceKey": "pop_goes_the_weasel",
+      "matchType": "name"
+    },
+    {
+      "id": "18a337fc-3f95-4ac2-961b-ccd6b53db7d8",
+      "name": "Predator",
+      "status": "same_as_legacy",
+      "sourceUrl": "https://dbd.tricky.lol/api/perks#Predator",
+      "sourceKey": "Predator",
+      "matchType": "name"
+    },
+    {
+      "id": "081e97e7-14d3-43e3-887e-dba00f7c5e97",
+      "name": "Premonition",
+      "status": "same_as_legacy",
+      "sourceUrl": "https://dbd.tricky.lol/api/perks#Premonition",
+      "sourceKey": "Premonition",
+      "matchType": "name"
+    },
+    {
+      "id": "15f879c3-7043-4a13-8239-ab465e0d361f",
+      "name": "Prove Thyself",
+      "status": "same_as_legacy",
+      "sourceUrl": "https://dbd.tricky.lol/api/perks#Prove_Thyself",
+      "sourceKey": "Prove_Thyself",
+      "matchType": "name"
+    },
+    {
+      "id": "b5040797-733e-404b-9d47-37b938981524",
+      "name": "Quick & Quiet",
+      "status": "same_as_legacy",
+      "sourceUrl": "https://dbd.tricky.lol/api/perks#QuickQuiet",
+      "sourceKey": "QuickQuiet",
+      "matchType": "name"
+    },
+    {
+      "id": "e5a908e8-bfb5-489b-8a69-31139fbb0b1a",
+      "name": "Rancor",
+      "status": "same_as_legacy",
+      "sourceUrl": "https://dbd.tricky.lol/api/perks#Rancor",
+      "sourceKey": "Rancor",
+      "matchType": "name"
+    },
+    {
+      "id": "301b1564-f123-462e-ae51-19ff47bb5789",
+      "name": "Red Herring",
+      "status": "different",
+      "sourceUrl": "https://dbd.tricky.lol/api/perks#RedHerring",
+      "sourceKey": "RedHerring",
+      "matchType": "name"
+    },
+    {
+      "id": "0d650984-28b6-4d2e-b96c-d2fd48cd2e66",
+      "name": "Remember Me",
+      "status": "same_as_legacy",
+      "sourceUrl": "https://dbd.tricky.lol/api/perks#RememberMe",
+      "sourceKey": "RememberMe",
+      "matchType": "name"
+    },
+    {
+      "id": "6ea657a2-8dc3-49fd-8066-6503b13c5cf9",
+      "name": "Repressed Alliance ",
+      "status": "same_as_legacy",
+      "sourceUrl": "https://dbd.tricky.lol/api/perks#RepressedAlliance",
+      "sourceKey": "RepressedAlliance",
+      "matchType": "image-token"
+    },
+    {
+      "id": "8e3bbf89-2207-4bdd-8878-9a14409adf97",
+      "name": "Resilience",
+      "status": "same_as_legacy",
+      "sourceUrl": "https://dbd.tricky.lol/api/perks#Resilience",
+      "sourceKey": "Resilience",
+      "matchType": "name"
+    },
+    {
+      "id": "0c30ec56-706d-4479-a682-d53690316656",
+      "name": "Appraisal",
+      "status": "different",
+      "sourceUrl": "https://dbd.tricky.lol/api/perks#S24P01",
+      "sourceKey": "S24P01",
+      "matchType": "name"
+    },
+    {
+      "id": "ba446f74-0d05-4bac-adad-c26d9ddb8005",
+      "name": "Deception",
+      "status": "different",
+      "sourceUrl": "https://dbd.tricky.lol/api/perks#S24P02",
+      "sourceKey": "S24P02",
+      "matchType": "name"
+    },
+    {
+      "id": "5e7ea487-ee35-4ca6-85e6-68ab66f85300",
+      "name": "Power Struggle",
+      "status": "different",
+      "sourceUrl": "https://dbd.tricky.lol/api/perks#S24P03",
+      "sourceKey": "S24P03",
+      "matchType": "name"
+    },
+    {
+      "id": "a5400c83-6bef-439b-a817-359657785aa7",
+      "name": "Fast Track",
+      "status": "different",
+      "sourceUrl": "https://dbd.tricky.lol/api/perks#S25P01",
+      "sourceKey": "S25P01",
+      "matchType": "name"
+    },
+    {
+      "id": "7221fa33-5830-44eb-b421-a8295d6266f8",
+      "name": "Smash Hit",
+      "status": "different",
+      "sourceUrl": "https://dbd.tricky.lol/api/perks#S25P02",
+      "sourceKey": "S25P02",
+      "matchType": "name"
+    },
+    {
+      "id": "9089421d-0604-4715-89e6-e54daaaae961",
+      "name": "Self-Preservation",
+      "status": "different",
+      "sourceUrl": "https://dbd.tricky.lol/api/perks#S25P03",
+      "sourceKey": "S25P03",
+      "matchType": "name"
+    },
+    {
+      "id": "0263eccc-a7a1-4a3b-bd37-240444e29d90",
+      "name": "Counterforce",
+      "status": "different",
+      "sourceUrl": "https://dbd.tricky.lol/api/perks#S26P01",
+      "sourceKey": "S26P01",
+      "matchType": "name"
+    },
+    {
+      "id": "401509c4-c3d9-4671-91d8-df7e13bf8940",
+      "name": "Resurgence",
+      "status": "different",
+      "sourceUrl": "https://dbd.tricky.lol/api/perks#S26P02",
+      "sourceKey": "S26P02",
+      "matchType": "name"
+    },
+    {
+      "id": "bc318656-bd68-43de-83de-9ddbe8e7aede",
+      "name": "Blast Mine",
+      "status": "different",
+      "sourceUrl": "https://dbd.tricky.lol/api/perks#S26P03",
+      "sourceKey": "S26P03",
+      "matchType": "name"
+    },
+    {
+      "id": "072b1040-bdb2-43e3-b2c7-9df22de4f54b",
+      "name": "Bite the Bullet",
+      "status": "different",
+      "sourceUrl": "https://dbd.tricky.lol/api/perks#S27P01",
+      "sourceKey": "S27P01",
+      "matchType": "name"
+    },
+    {
+      "id": "5a51d0a1-ee48-44ed-960f-fa1063a38b52",
+      "name": "Flashbang",
+      "status": "different",
+      "sourceUrl": "https://dbd.tricky.lol/api/perks#S27P02",
+      "sourceKey": "S27P02",
+      "matchType": "name"
+    },
+    {
+      "id": "a86c92d5-e927-421a-bb67-a640e416e42f",
+      "name": "Rookie Spirit",
+      "status": "different",
+      "sourceUrl": "https://dbd.tricky.lol/api/perks#S27P03",
+      "sourceKey": "S27P03",
+      "matchType": "name"
+    },
+    {
+      "id": "92cd68e5-7998-4f52-ae0e-009c32fe52f2",
+      "name": "Clairvoyance",
+      "status": "different",
+      "sourceUrl": "https://dbd.tricky.lol/api/perks#S28P01",
+      "sourceKey": "S28P01",
+      "matchType": "name"
+    },
+    {
+      "id": "c3216a0e-b763-4857-88d7-2c6260beb9ad",
+      "name": "Boon: Circle of Healing",
+      "status": "different",
+      "sourceUrl": "https://dbd.tricky.lol/api/perks#S28P02",
+      "sourceKey": "S28P02",
+      "matchType": "name"
+    },
+    {
+      "id": "03209cbd-a56e-4aca-96c5-77f0a7af15d2",
+      "name": "Boon: Shadow Step",
+      "status": "different",
+      "sourceUrl": "https://dbd.tricky.lol/api/perks#S28P03",
+      "sourceKey": "S28P03",
+      "matchType": "name"
+    },
+    {
+      "id": "3221f0b9-1fe6-445e-8712-88e44892d1d1",
+      "name": "Overcome",
+      "status": "different",
+      "sourceUrl": "https://dbd.tricky.lol/api/perks#S29P01",
+      "sourceKey": "S29P01",
+      "matchType": "name"
+    },
+    {
+      "id": "cddbed17-3d02-4425-97ac-9956679ff1d2",
+      "name": "Corrective Action",
+      "status": "different",
+      "sourceUrl": "https://dbd.tricky.lol/api/perks#S29P02",
+      "sourceKey": "S29P02",
+      "matchType": "name"
+    },
+    {
+      "id": "6067172f-0ea0-4113-9e7f-114fce349c6b",
+      "name": "Boon: Exponential",
+      "status": "different",
+      "sourceUrl": "https://dbd.tricky.lol/api/perks#S29P03",
+      "sourceKey": "S29P03",
+      "matchType": "name"
+    },
+    {
+      "id": "cde5bc25-4d44-4135-a4a5-4637fbb2f355",
+      "name": "Parental Guidance",
+      "status": "different",
+      "sourceUrl": "https://dbd.tricky.lol/api/perks#S30P01",
+      "sourceKey": "S30P01",
+      "matchType": "name"
+    },
+    {
+      "id": "ca4e3ab4-ab45-482f-b0b6-3f0a25f6ef7a",
+      "name": "Empathic Connection",
+      "status": "different",
+      "sourceUrl": "https://dbd.tricky.lol/api/perks#S30P02",
+      "sourceKey": "S30P02",
+      "matchType": "name"
+    },
+    {
+      "id": "37b07615-cebd-4af1-99d9-624ab6e88316",
+      "name": "Boon: Dark Theory",
+      "status": "different",
+      "sourceUrl": "https://dbd.tricky.lol/api/perks#S30P03",
+      "sourceKey": "S30P03",
+      "matchType": "name"
+    },
+    {
+      "id": "f5afd9f5-6450-458d-8c6f-6ad76a81422f",
+      "name": "Inner Focus",
+      "status": "different",
+      "sourceUrl": "https://dbd.tricky.lol/api/perks#S31P01",
+      "sourceKey": "S31P01",
+      "matchType": "name"
+    },
+    {
+      "id": "add66937-4495-4240-8d8c-33d5eeeede3e",
+      "name": "Residual Manifest",
+      "status": "different",
+      "sourceUrl": "https://dbd.tricky.lol/api/perks#S31P02",
+      "sourceKey": "S31P02",
+      "matchType": "name"
+    },
+    {
+      "id": "29f4d71d-fc38-44f1-bce9-5c2b762483e0",
+      "name": "Overzealous",
+      "status": "different",
+      "sourceUrl": "https://dbd.tricky.lol/api/perks#S31P03",
+      "sourceKey": "S31P03",
+      "matchType": "name"
+    },
+    {
+      "id": "73c8e0d3-c776-461b-981f-5dca49bdfe8b",
+      "name": "Wiretap",
+      "status": "different",
+      "sourceUrl": "https://dbd.tricky.lol/api/perks#S32P01",
+      "sourceKey": "S32P01",
+      "matchType": "name"
+    },
+    {
+      "id": "10340736-3601-4bdd-a5b4-d23295644ab9",
+      "name": "Reactive Healing",
+      "status": "different",
+      "sourceUrl": "https://dbd.tricky.lol/api/perks#S32P02",
+      "sourceKey": "S32P02",
+      "matchType": "name"
+    },
+    {
+      "id": "587dd88e-7312-4e7a-beaa-aa14c88cae27",
+      "name": "Low Profile",
+      "status": "different",
+      "sourceUrl": "https://dbd.tricky.lol/api/perks#S32P03",
+      "sourceKey": "S32P03",
+      "matchType": "name"
+    },
+    {
+      "id": "58ec5ad1-9da0-4c30-b0f9-945354aa4ca7",
+      "name": "Better Than New",
+      "status": "different",
+      "sourceUrl": "https://dbd.tricky.lol/api/perks#S33P01",
+      "sourceKey": "S33P01",
+      "matchType": "name"
+    },
+    {
+      "id": "53ad7029-6338-4658-aff4-bdfc74e705a3",
+      "name": "Reassurance",
+      "status": "different",
+      "sourceUrl": "https://dbd.tricky.lol/api/perks#S33P02",
+      "sourceKey": "S33P02",
+      "matchType": "name"
+    },
+    {
+      "id": "37fc5755-d056-4d07-ae2e-10e519e2b6f7",
+      "name": "Hyperfocus",
+      "status": "different",
+      "sourceUrl": "https://dbd.tricky.lol/api/perks#S33P03",
+      "sourceKey": "S33P03",
+      "matchType": "name"
+    },
+    {
+      "id": "095db15b-5be5-468a-ac4b-31fef04ab7dd",
+      "name": "Potential Energy",
+      "status": "different",
+      "sourceUrl": "https://dbd.tricky.lol/api/perks#S34P01",
+      "sourceKey": "S34P01",
+      "matchType": "name"
+    },
+    {
+      "id": "22d15841-24e0-4623-8e21-5fad89d6c551",
+      "name": "Fogwise",
+      "status": "different",
+      "sourceUrl": "https://dbd.tricky.lol/api/perks#S34P02",
+      "sourceKey": "S34P02",
+      "matchType": "name"
+    },
+    {
+      "id": "302cd6b2-9712-48f6-8702-9bf7216af912",
+      "name": "Quick Gambit",
+      "status": "different",
+      "sourceUrl": "https://dbd.tricky.lol/api/perks#S34P03",
+      "sourceKey": "S34P03",
+      "matchType": "name"
+    },
+    {
+      "id": "9aee190b-b8af-4159-b8aa-6d586dffa736",
+      "name": "Cut Loose",
+      "status": "different",
+      "sourceUrl": "https://dbd.tricky.lol/api/perks#S35P01",
+      "sourceKey": "S35P01",
+      "matchType": "name"
+    },
+    {
+      "id": "2dd62454-dea4-4d45-9b4b-0c74690d9047",
+      "name": "Friendly Competition",
+      "status": "different",
+      "sourceUrl": "https://dbd.tricky.lol/api/perks#S35P02",
+      "sourceKey": "S35P02",
+      "matchType": "name"
+    },
+    {
+      "id": "dfcae0d8-6b49-45d7-a514-f936fd98252a",
+      "name": "Teamwork: Power of Two",
+      "status": "different",
+      "sourceUrl": "https://dbd.tricky.lol/api/perks#S35P03",
+      "sourceKey": "S35P03",
+      "matchType": "name"
+    },
+    {
+      "id": "5f004c9f-0306-436d-bae5-f77c4bdb7639",
+      "name": "Background Player",
+      "status": "different",
+      "sourceUrl": "https://dbd.tricky.lol/api/perks#S36P01",
+      "sourceKey": "S36P01",
+      "matchType": "name"
+    },
+    {
+      "id": "35019eb6-9eec-4e96-a151-9255b3dbc753",
+      "name": "Blood Rush",
+      "status": "different",
+      "sourceUrl": "https://dbd.tricky.lol/api/perks#S36P02",
+      "sourceKey": "S36P02",
+      "matchType": "name"
+    },
+    {
+      "id": "b9065b89-24f3-4c73-9c1b-4fad7283efdb",
+      "name": "Teamwork: Collective Stealth",
+      "status": "different",
+      "sourceUrl": "https://dbd.tricky.lol/api/perks#S36P03",
+      "sourceKey": "S36P03",
+      "matchType": "name"
+    },
+    {
+      "id": "60566d31-1f72-4f9b-a6e6-aafe55ed1f48",
+      "name": "Troubleshooter",
+      "status": "different",
+      "sourceUrl": "https://dbd.tricky.lol/api/perks#S37P01",
+      "sourceKey": "S37P01",
+      "matchType": "name"
+    },
+    {
+      "id": "14839c0f-159c-49d0-a34e-6c66627bb814",
+      "name": "Made for This",
+      "status": "different",
+      "sourceUrl": "https://dbd.tricky.lol/api/perks#S37P02",
+      "sourceKey": "S37P02",
+      "matchType": "name"
+    },
+    {
+      "id": "390ad3cb-21dd-48b1-883e-62622304a5f4",
+      "name": "Scavenger",
+      "status": "different",
+      "sourceUrl": "https://dbd.tricky.lol/api/perks#S37P03",
+      "sourceKey": "S37P03",
+      "matchType": "name"
+    },
+    {
+      "id": "64397a56-09ef-4da8-be70-4b60a3a329cd",
+      "name": "Dramaturgy",
+      "status": "different",
+      "sourceUrl": "https://dbd.tricky.lol/api/perks#S38P01",
+      "sourceKey": "S38P01",
+      "matchType": "name"
+    },
+    {
+      "id": "d860e3cc-a44b-4790-856f-d3154c567b85",
+      "name": "Scene Partner",
+      "status": "different",
+      "sourceUrl": "https://dbd.tricky.lol/api/perks#S38P02",
+      "sourceKey": "S38P02",
+      "matchType": "name"
+    },
+    {
+      "id": "fc4a9248-90ab-4fe5-8631-88862be4f784",
+      "name": "Plot Twist",
+      "status": "different",
+      "sourceUrl": "https://dbd.tricky.lol/api/perks#S38P03",
+      "sourceKey": "S38P03",
+      "matchType": "name"
+    },
+    {
+      "id": "9fba91c6-2eec-4163-842a-cc938e67e1b8",
+      "name": "Lucky Star",
+      "status": "different",
+      "sourceUrl": "https://dbd.tricky.lol/api/perks#S39P01",
+      "sourceKey": "S39P01",
+      "matchType": "name"
+    },
+    {
+      "id": "31ee3af4-8640-4948-81c4-b4b4e459ed28",
+      "name": "Chemical Trap",
+      "status": "different",
+      "sourceUrl": "https://dbd.tricky.lol/api/perks#S39P02",
+      "sourceKey": "S39P02",
+      "matchType": "name"
+    },
+    {
+      "id": "225cde9d-d73e-44c5-ad92-abcf44de10db",
+      "name": "Light-footed",
+      "status": "different",
+      "sourceUrl": "https://dbd.tricky.lol/api/perks#S39P03",
+      "sourceKey": "S39P03",
+      "matchType": "name"
+    },
+    {
+      "id": "1420a21b-808f-402f-9534-f921eeb27ad2",
+      "name": "Champion of Light",
+      "status": "different",
+      "sourceUrl": "https://dbd.tricky.lol/api/perks#S40P01",
+      "sourceKey": "S40P01",
+      "matchType": "name"
+    },
+    {
+      "id": "46445e8e-69b9-40d0-8820-1423d545643f",
+      "name": "Boon: Illumination",
+      "status": "different",
+      "sourceUrl": "https://dbd.tricky.lol/api/perks#S40P02",
+      "sourceKey": "S40P02",
+      "matchType": "name"
+    },
+    {
+      "id": "aacfa2e9-4883-4fe5-aa6f-6d57708f8a17",
+      "name": "Deadline",
+      "status": "different",
+      "sourceUrl": "https://dbd.tricky.lol/api/perks#S40P03",
+      "sourceKey": "S40P03",
+      "matchType": "name"
+    },
+    {
+      "id": "a4f2f09a-1fef-4fb6-97d3-b4256b9d159a",
+      "name": "Invocation: Weaving Spiders",
+      "status": "different",
+      "sourceUrl": "https://dbd.tricky.lol/api/perks#S41P01",
+      "sourceKey": "S41P01",
+      "matchType": "name"
+    },
+    {
+      "id": "ba0fc61b-9e88-48e9-9c3c-6fd0cfdab0a0",
+      "name": "Strength in Shadows",
+      "status": "different",
+      "sourceUrl": "https://dbd.tricky.lol/api/perks#S41P02",
+      "sourceKey": "S41P02",
+      "matchType": "name"
+    },
+    {
+      "id": "cbadb33a-1844-426f-81d0-3061a3ccc675",
+      "name": "Wicked",
+      "status": "different",
+      "sourceUrl": "https://dbd.tricky.lol/api/perks#S41P03",
+      "sourceKey": "S41P03",
+      "matchType": "name"
+    },
+    {
+      "id": "f393c539-85d1-43a2-9303-215317f9ab3b",
+      "name": "Mirrored Illusion",
+      "status": "different",
+      "sourceUrl": "https://dbd.tricky.lol/api/perks#S42P01",
+      "sourceKey": "S42P01",
+      "matchType": "name"
+    },
+    {
+      "id": "d8361a25-49b1-4355-980e-5559216c83b2",
+      "name": "Bardic Inspiration",
+      "status": "different",
+      "sourceUrl": "https://dbd.tricky.lol/api/perks#S42P02",
+      "sourceKey": "S42P02",
+      "matchType": "name"
+    },
+    {
+      "id": "0b869c49-7156-40c2-a328-31ea52701eba",
+      "name": "Still Sight",
+      "status": "different",
+      "sourceUrl": "https://dbd.tricky.lol/api/perks#S42P03",
+      "sourceKey": "S42P03",
+      "matchType": "name"
+    },
+    {
+      "id": "2449b61d-b51b-4bf3-9ef3-15059ad9c342",
+      "name": "Finesse",
+      "status": "different",
+      "sourceUrl": "https://dbd.tricky.lol/api/perks#S43P01",
+      "sourceKey": "S43P01",
+      "matchType": "name"
+    },
+    {
+      "id": "ce846eba-5eca-40b6-b437-5080f96d87fc",
+      "name": "Hardened",
+      "status": "different",
+      "sourceUrl": "https://dbd.tricky.lol/api/perks#S43P02",
+      "sourceKey": "S43P02",
+      "matchType": "name"
+    },
+    {
+      "id": "1c2dc1d0-7a6c-41fa-b239-1fd441e54cb4",
+      "name": "Specialist",
+      "status": "different",
+      "sourceUrl": "https://dbd.tricky.lol/api/perks#S43P03",
+      "sourceKey": "S43P03",
+      "matchType": "name"
+    },
+    {
+      "id": "59aa3db3-dee8-4b3e-a3d0-a12393e167b2",
+      "name": "Eyes of Belmont",
+      "status": "different",
+      "sourceUrl": "https://dbd.tricky.lol/api/perks#S44P01",
+      "sourceKey": "S44P01",
+      "matchType": "name"
+    },
+    {
+      "id": "2b8cffbf-5264-4e54-a432-c77a43b01c49",
+      "name": "Exultation",
+      "status": "different",
+      "sourceUrl": "https://dbd.tricky.lol/api/perks#S44P02",
+      "sourceKey": "S44P02",
+      "matchType": "name"
+    },
+    {
+      "id": "a86235ae-59c1-4c26-b5ae-3c81a7c2dcdd",
+      "name": "Moment of Glory",
+      "status": "different",
+      "sourceUrl": "https://dbd.tricky.lol/api/perks#S44P03",
+      "sourceKey": "S44P03",
+      "matchType": "name"
+    },
+    {
+      "id": "gelato-perk-001-invocationtreacherouscrows",
+      "name": "Invocation: Treacherous Crows",
+      "status": "different",
+      "sourceUrl": "https://dbd.tricky.lol/api/perks#S45P01",
+      "sourceKey": "S45P01",
+      "matchType": "name"
+    },
+    {
+      "id": "gelato-perk-002-cleanbreak",
+      "name": "Clean Break",
+      "status": "different",
+      "sourceUrl": "https://dbd.tricky.lol/api/perks#S45P02",
+      "sourceKey": "S45P02",
+      "matchType": "name"
+    },
+    {
+      "id": "gelato-perk-003-shouldertheburden",
+      "name": "Shoulder The Burden",
+      "status": "different",
+      "sourceUrl": "https://dbd.tricky.lol/api/perks#S45P03",
+      "sourceKey": "S45P03",
+      "matchType": "name-insensitive"
+    },
+    {
+      "id": "ed3358b4-6226-4e58-84d7-a08b3d019375",
+      "name": "Do No Harm",
+      "status": "different",
+      "sourceUrl": "https://dbd.tricky.lol/api/perks#S46P01",
+      "sourceKey": "S46P01",
+      "matchType": "name"
+    },
+    {
+      "id": "c1e6614f-811c-444a-b118-74635c34a5f0",
+      "name": "Duty of Care",
+      "status": "different",
+      "sourceUrl": "https://dbd.tricky.lol/api/perks#S46P02",
+      "sourceKey": "S46P02",
+      "matchType": "name"
+    },
+    {
+      "id": "4d64057f-7df0-4bbf-b000-91e403a5843d",
+      "name": "Rapid Response",
+      "status": "different",
+      "sourceUrl": "https://dbd.tricky.lol/api/perks#S46P03",
+      "sourceKey": "S46P03",
+      "matchType": "name"
+    },
+    {
+      "id": "13db6264-2bc8-4252-9e56-8cc6955720d4",
+      "name": "Apocalyptic Ingenuity",
+      "status": "different",
+      "sourceUrl": "https://dbd.tricky.lol/api/perks#S47P01",
+      "sourceKey": "S47P01",
+      "matchType": "name"
+    },
+    {
+      "id": "ed08c5b9-8a75-4db3-858d-5f3ca7896205",
+      "name": "Come and Get Me!",
+      "status": "different",
+      "sourceUrl": "https://dbd.tricky.lol/api/perks#S47P02",
+      "sourceKey": "S47P02",
+      "matchType": "name"
+    },
+    {
+      "id": "bacf50de-163f-4a6b-b116-fb594dcce7ec",
+      "name": "Teamwork: Toughen Up",
+      "status": "different",
+      "sourceUrl": "https://dbd.tricky.lol/api/perks#S47P03",
+      "sourceKey": "S47P03",
+      "matchType": "name"
+    },
+    {
+      "id": "cf0536f5-62ba-4b43-9b95-ef1dd75080fc",
+      "name": "Conviction",
+      "status": "different",
+      "sourceUrl": "https://dbd.tricky.lol/api/perks#S48P01",
+      "sourceKey": "S48P01",
+      "matchType": "name"
+    },
+    {
+      "id": "b9df9358-478d-4db7-ad86-b5fe3ead009d",
+      "name": "Last Stand",
+      "status": "different",
+      "sourceUrl": "https://dbd.tricky.lol/api/perks#S48P02",
+      "sourceKey": "S48P02",
+      "matchType": "name"
+    },
+    {
+      "id": "b3f51624-95f0-46bd-acea-8ded59ecf270",
+      "name": "Teamwork: Throw Down",
+      "status": "different",
+      "sourceUrl": "https://dbd.tricky.lol/api/perks#S48P03",
+      "sourceKey": "S48P03",
+      "matchType": "name"
+    },
+    {
+      "id": "f6404b68-f093-48b9-8a31-176f320785dd",
+      "name": "Road Life",
+      "status": "different",
+      "sourceUrl": "https://dbd.tricky.lol/api/perks#S49P01",
+      "sourceKey": "S49P01",
+      "matchType": "name"
+    },
+    {
+      "id": "fb8b1e06-d1ed-4300-b44e-aeb7448770b2",
+      "name": "ONE-TWO-THREE-FOUR!",
+      "status": "different",
+      "sourceUrl": "https://dbd.tricky.lol/api/perks#S49P02",
+      "sourceKey": "S49P02",
+      "matchType": "name"
+    },
+    {
+      "id": "9afcff9d-4930-4fde-914c-32455214afa2",
+      "name": "Ghost Notes",
+      "status": "different",
+      "sourceUrl": "https://dbd.tricky.lol/api/perks#S49P03",
+      "sourceKey": "S49P03",
+      "matchType": "name"
+    },
+    {
+      "id": "592f4cc2-cb7b-4f02-9db8-a8ccb38d812f",
+      "name": "Saboteur",
+      "status": "different",
+      "sourceUrl": "https://dbd.tricky.lol/api/perks#Saboteur",
+      "sourceKey": "Saboteur",
+      "matchType": "name"
+    },
+    {
+      "id": "2061f4a0-b04f-4d76-890c-e8e27e673855",
+      "name": "Keep Them Waiting",
+      "status": "different",
+      "sourceUrl": "https://dbd.tricky.lol/api/perks#Save_The_Best_For_Last",
+      "sourceKey": "Save_The_Best_For_Last",
+      "matchType": "image-token"
+    },
+    {
+      "id": "2581bb20-08bb-463c-b9f1-19426c1f85f3",
+      "name": "Second Wind",
+      "status": "same_as_legacy",
+      "sourceUrl": "https://dbd.tricky.lol/api/perks#SecondWind",
+      "sourceKey": "SecondWind",
+      "matchType": "name"
+    },
+    {
+      "id": "6c5e4608-00f8-4a81-82c7-85f47a80cd21",
+      "name": "Self-Care",
+      "status": "same_as_legacy",
+      "sourceUrl": "https://dbd.tricky.lol/api/perks#Self_Care",
+      "sourceKey": "Self_Care",
+      "matchType": "name"
+    },
+    {
+      "id": "07f074eb-76f7-4b47-a7b4-7a4cc806c45c",
+      "name": "Unbreakable",
+      "status": "same_as_legacy",
+      "sourceUrl": "https://dbd.tricky.lol/api/perks#SelfSufficient",
+      "sourceKey": "SelfSufficient",
+      "matchType": "name"
+    },
+    {
+      "id": "a98d3ead-20d6-4243-9ee7-79b6bd4ecef8",
+      "name": "Shadowborn",
+      "status": "same_as_legacy",
+      "sourceUrl": "https://dbd.tricky.lol/api/perks#Shadowborn",
+      "sourceKey": "Shadowborn",
+      "matchType": "name"
+    },
+    {
+      "id": "409cc60f-238b-4d81-9fb2-3c4ab78911fc",
+      "name": "Slippery Meat",
+      "status": "different",
+      "sourceUrl": "https://dbd.tricky.lol/api/perks#Slippery_Meat",
+      "sourceKey": "Slippery_Meat",
+      "matchType": "name"
+    },
+    {
+      "id": "b1658b77-2755-4191-a180-5a56f80a863c",
+      "name": "Sloppy Butcher",
+      "status": "different",
+      "sourceUrl": "https://dbd.tricky.lol/api/perks#Sloppy_Butcher",
+      "sourceKey": "Sloppy_Butcher",
+      "matchType": "name"
+    },
+    {
+      "id": "66f81785-7098-460d-9863-0cda5c2216bf",
+      "name": "Small Game",
+      "status": "same_as_legacy",
+      "sourceUrl": "https://dbd.tricky.lol/api/perks#Small_Game",
+      "sourceKey": "Small_Game",
+      "matchType": "name"
+    },
+    {
+      "id": "b761a0e2-a9a3-476f-9c81-ca0f0b6e8dc4",
+      "name": "Down To The Last",
+      "status": "different",
+      "sourceUrl": "https://dbd.tricky.lol/api/perks#SoleSurvivor",
+      "sourceKey": "SoleSurvivor",
+      "matchType": "image-token"
+    },
+    {
+      "id": "bb05b400-dd71-4fbf-bce8-ae9fc9b812ca",
+      "name": "Solidarity",
+      "status": "same_as_legacy",
+      "sourceUrl": "https://dbd.tricky.lol/api/perks#Solidarity",
+      "sourceKey": "Solidarity",
+      "matchType": "name"
+    },
+    {
+      "id": "04c95215-eb62-4457-bb56-078c7897c043",
+      "name": "Soul Guard",
+      "status": "same_as_legacy",
+      "sourceUrl": "https://dbd.tricky.lol/api/perks#SoulGuard",
+      "sourceKey": "SoulGuard",
+      "matchType": "name"
+    },
+    {
+      "id": "b44be1da-dd50-41a3-97ee-da5bdb4495f6",
+      "name": "Spies from the Shadows",
+      "status": "same_as_legacy",
+      "sourceUrl": "https://dbd.tricky.lol/api/perks#Spies_From_The_Shadows",
+      "sourceKey": "Spies_From_The_Shadows",
+      "matchType": "name"
+    },
+    {
+      "id": "bb7692fd-9dae-4fbd-9442-ec18c742f5ba",
+      "name": "Spine Chill",
+      "status": "different",
+      "sourceUrl": "https://dbd.tricky.lol/api/perks#Spine_Chill",
+      "sourceKey": "Spine_Chill",
+      "matchType": "name"
+    },
+    {
+      "id": "434be009-2075-4c07-89cc-2a5f757e2361",
+      "name": "Spirit Fury",
+      "status": "same_as_legacy",
+      "sourceUrl": "https://dbd.tricky.lol/api/perks#SpiritFury",
+      "sourceKey": "SpiritFury",
+      "matchType": "name"
+    },
+    {
+      "id": "2da832c2-5d99-45d4-bc22-e4d9cd443456",
+      "name": "Sprint Burst",
+      "status": "same_as_legacy",
+      "sourceUrl": "https://dbd.tricky.lol/api/perks#Sprint_Burst",
+      "sourceKey": "Sprint_Burst",
+      "matchType": "name"
+    },
+    {
+      "id": "b7175faf-cd51-48e4-99e2-3f971e84a155",
+      "name": "Stake Out",
+      "status": "same_as_legacy",
+      "sourceUrl": "https://dbd.tricky.lol/api/perks#StakeOut",
+      "sourceKey": "StakeOut",
+      "matchType": "name"
+    },
+    {
+      "id": "9a392989-fabc-44be-83ba-b7822d21a379",
+      "name": "Streetwise",
+      "status": "same_as_legacy",
+      "sourceUrl": "https://dbd.tricky.lol/api/perks#Streetwise",
+      "sourceKey": "Streetwise",
+      "matchType": "name"
+    },
+    {
+      "id": "80dc5e73-cebe-4af4-b78b-1c1c4249097c",
+      "name": "Stridor",
+      "status": "same_as_legacy",
+      "sourceUrl": "https://dbd.tricky.lol/api/perks#Stridor",
+      "sourceKey": "Stridor",
+      "matchType": "name"
+    },
+    {
+      "id": "da76b8c2-680f-4e2c-a19e-6abaa01399aa",
+      "name": "Surge",
+      "status": "same_as_legacy",
+      "sourceUrl": "https://dbd.tricky.lol/api/perks#Surge",
+      "sourceKey": "Surge",
+      "matchType": "name"
+    },
+    {
+      "id": "7404e57a-e5b9-4bf3-a723-09053eb702aa",
+      "name": "Surveillance",
+      "status": "same_as_legacy",
+      "sourceUrl": "https://dbd.tricky.lol/api/perks#Surveillance",
+      "sourceKey": "Surveillance",
+      "matchType": "name"
+    },
+    {
+      "id": "4956ae2f-b008-4ab6-92c6-b684ccbd7f73",
+      "name": "Technician",
+      "status": "different",
+      "sourceUrl": "https://dbd.tricky.lol/api/perks#Technician",
+      "sourceKey": "Technician",
+      "matchType": "name"
+    },
+    {
+      "id": "d7f8e8c9-a7c2-48a0-9b03-93841d08b87c",
+      "name": "Tenacity",
+      "status": "different",
+      "sourceUrl": "https://dbd.tricky.lol/api/perks#Tenacity",
+      "sourceKey": "Tenacity",
+      "matchType": "name"
+    },
+    {
+      "id": "cd91aa5e-cb5b-42b1-9ec4-738e6c1499ab",
+      "name": "Territorial Imperative",
+      "status": "same_as_legacy",
+      "sourceUrl": "https://dbd.tricky.lol/api/perks#TerritorialImperative",
+      "sourceKey": "TerritorialImperative",
+      "matchType": "name"
+    },
+    {
+      "id": "e359ca23-fc1b-45b3-8a62-d342760acee6",
+      "name": "Thanatophobia",
+      "status": "different",
+      "sourceUrl": "https://dbd.tricky.lol/api/perks#Thanatophobia",
+      "sourceKey": "Thanatophobia",
+      "matchType": "name"
+    },
+    {
+      "id": "5adc59b9-38e0-41e1-9824-0035cc55c45e",
+      "name": "Mettle of Man",
+      "status": "different",
+      "sourceUrl": "https://dbd.tricky.lol/api/perks#TheMettleOfMan",
+      "sourceKey": "TheMettleOfMan",
+      "matchType": "name"
+    },
+    {
+      "id": "b0971322-cb09-45f5-bc4b-4d0a1d64574b",
+      "name": "This Is Not Happening",
+      "status": "same_as_legacy",
+      "sourceUrl": "https://dbd.tricky.lol/api/perks#This_Is_Not_Happening",
+      "sourceKey": "This_Is_Not_Happening",
+      "matchType": "name"
+    },
+    {
+      "id": "7a59d54a-7917-4877-8ca5-bc4fecd81669",
+      "name": "Thrilling Tremors",
+      "status": "same_as_legacy",
+      "sourceUrl": "https://dbd.tricky.lol/api/perks#ThrillingTremors",
+      "sourceKey": "ThrillingTremors",
+      "matchType": "name"
+    },
+    {
+      "id": "c7d97a0b-26bd-46e3-ab9e-590af217a1f8",
+      "name": "Tinkerer",
+      "status": "same_as_legacy",
+      "sourceUrl": "https://dbd.tricky.lol/api/perks#Tinkerer",
+      "sourceKey": "Tinkerer",
+      "matchType": "name"
+    },
+    {
+      "id": "b49e556e-7dff-4ac6-90cd-476fad54a47e",
+      "name": "Trail of Torment",
+      "status": "same_as_legacy",
+      "sourceUrl": "https://dbd.tricky.lol/api/perks#TrailofTorment",
+      "sourceKey": "TrailofTorment",
+      "matchType": "name"
+    },
+    {
+      "id": "00a7b4f6-eee6-4b9c-a0c9-c87de689ea90",
+      "name": "Unnerving Presence",
+      "status": "same_as_legacy",
+      "sourceUrl": "https://dbd.tricky.lol/api/perks#Unnerving_Presence",
+      "sourceKey": "Unnerving_Presence",
+      "matchType": "name"
+    },
+    {
+      "id": "1cee9f2e-28e0-41eb-8e21-6a5e3ca759ed",
+      "name": "Unrelenting",
+      "status": "same_as_legacy",
+      "sourceUrl": "https://dbd.tricky.lol/api/perks#Unrelenting",
+      "sourceKey": "Unrelenting",
+      "matchType": "name"
+    },
+    {
+      "id": "a813e86c-fc29-41ed-b631-d09a089bcacc",
+      "name": "Up the Ante",
+      "status": "same_as_legacy",
+      "sourceUrl": "https://dbd.tricky.lol/api/perks#Up_The_Ante",
+      "sourceKey": "Up_The_Ante",
+      "matchType": "name"
+    },
+    {
+      "id": "f46c4657-a389-46e3-ab75-aa2c2158e0e2",
+      "name": "Urban Evasion",
+      "status": "same_as_legacy",
+      "sourceUrl": "https://dbd.tricky.lol/api/perks#Urban_Evasion",
+      "sourceKey": "Urban_Evasion",
+      "matchType": "name"
+    },
+    {
+      "id": "3b437963-8cc5-4820-bdef-ee4240e3cca1",
+      "name": "Vigil",
+      "status": "same_as_legacy",
+      "sourceUrl": "https://dbd.tricky.lol/api/perks#Vigil",
+      "sourceKey": "Vigil",
+      "matchType": "name"
+    },
+    {
+      "id": "05d826d9-af67-4cf9-a5db-05e348d22a12",
+      "name": "Visionary",
+      "status": "same_as_legacy",
+      "sourceUrl": "https://dbd.tricky.lol/api/perks#Visionary",
+      "sourceKey": "Visionary",
+      "matchType": "name"
+    },
+    {
+      "id": "001074bc-2675-4331-ba1d-3bd4b2fe2e07",
+      "name": "Wake Up!",
+      "status": "same_as_legacy",
+      "sourceUrl": "https://dbd.tricky.lol/api/perks#WakeUp",
+      "sourceKey": "WakeUp",
+      "matchType": "name"
+    },
+    {
+      "id": "0cb402a7-dd11-4510-ac67-70955c658ee8",
+      "name": "We'll make it",
+      "status": "same_as_legacy",
+      "sourceUrl": "https://dbd.tricky.lol/api/perks#WellMakeIt",
+      "sourceKey": "WellMakeIt",
+      "matchType": "name"
+    },
+    {
+      "id": "d1858747-451d-45e7-a643-34e9370a08b5",
+      "name": "We're Gonna Live Forever",
+      "status": "same_as_legacy",
+      "sourceUrl": "https://dbd.tricky.lol/api/perks#WereGonnaLiveForever",
+      "sourceKey": "WereGonnaLiveForever",
+      "matchType": "name"
+    },
+    {
+      "id": "40743bbd-e2cc-4d8e-b03b-8df64d00f3fd",
+      "name": "Whispers",
+      "status": "same_as_legacy",
+      "sourceUrl": "https://dbd.tricky.lol/api/perks#Whispers",
+      "sourceKey": "Whispers",
+      "matchType": "name"
+    },
+    {
+      "id": "c332140b-588d-4288-a4ea-22f6655460d9",
+      "name": "Windows of Opportunity",
+      "status": "same_as_legacy",
+      "sourceUrl": "https://dbd.tricky.lol/api/perks#WindowsOfOpportunity",
+      "sourceKey": "WindowsOfOpportunity",
+      "matchType": "name"
+    },
+    {
+      "id": "52b3b35a-9194-4423-8351-9498c2936230",
+      "name": "Zanshin Tactics",
+      "status": "same_as_legacy",
+      "sourceUrl": "https://dbd.tricky.lol/api/perks#ZanshinTactics",
+      "sourceKey": "ZanshinTactics",
+      "matchType": "name"
+    },
+    {
+      "id": "st2-perk-001-turnbacktheclock",
+      "name": "Turn Back The Clock",
+      "status": "different",
+      "sourceUrl": "https://dbd.tricky.lol/api/perks#K42P01",
+      "sourceKey": "K42P01",
+      "matchType": "name"
+    },
+    {
+      "id": "st2-perk-002-secretproject",
+      "name": "Secret Project",
+      "status": "different",
+      "sourceUrl": "https://dbd.tricky.lol/api/perks#K42P02",
+      "sourceKey": "K42P02",
+      "matchType": "name"
+    },
+    {
+      "id": "st2-perk-003-hexhivemind",
+      "name": "Hex: Hive Mind",
+      "status": "different",
+      "sourceUrl": "https://dbd.tricky.lol/api/perks#K42P03",
+      "sourceKey": "K42P03",
+      "matchType": "name"
+    },
+    {
+      "id": "st2-perk-004-extrasensoryperception",
+      "name": "Extrasensory Perception",
+      "status": "different",
+      "sourceUrl": "https://dbd.tricky.lol/api/perks#S51P01",
+      "sourceKey": "S51P01",
+      "matchType": "name"
+    },
+    {
+      "id": "st2-perk-005-weseeyou",
+      "name": "We See You",
+      "status": "different",
+      "sourceUrl": "https://dbd.tricky.lol/api/perks#S51P02",
+      "sourceKey": "S51P02",
+      "matchType": "name"
+    },
+    {
+      "id": "st2-perk-006-teamworksoftspoken",
+      "name": "Teamwork: Soft-Spoken",
+      "status": "different",
+      "sourceUrl": "https://dbd.tricky.lol/api/perks#S51P03",
+      "sourceKey": "S51P03",
+      "matchType": "name"
+    },
+    {
+      "id": "st2-perk-007-badabadaboom",
+      "name": "Bada Bada Boom",
+      "status": "different",
+      "sourceUrl": "https://dbd.tricky.lol/api/perks#S50P01",
+      "sourceKey": "S50P01",
+      "matchType": "name"
+    },
+    {
+      "id": "st2-perk-008-changeofplan",
+      "name": "Change of Plan",
+      "status": "different",
+      "sourceUrl": "https://dbd.tricky.lol/api/perks#S50P02",
+      "sourceKey": "S50P02",
+      "matchType": "name"
+    },
+    {
+      "id": "st2-perk-009-teamworkfullcircuit",
+      "name": "Teamwork: Full Circuit",
+      "status": "different",
+      "sourceUrl": "https://dbd.tricky.lol/api/perks#S50P03",
+      "sourceKey": "S50P03",
+      "matchType": "name"
+    },
+    {
+      "id": "akc-perk-001-aplaceforus",
+      "name": "A Place For Us",
+      "status": "different",
+      "sourceUrl": "https://dbd.tricky.lol/api/perks#S52P02",
+      "sourceKey": "S52P02",
+      "matchType": "name"
+    },
+    {
+      "id": "akc-perk-002-fivemovesahead",
+      "name": "Five Moves Ahead",
+      "status": "different",
+      "sourceUrl": "https://dbd.tricky.lol/api/perks#S52P03",
+      "sourceKey": "S52P03",
+      "matchType": "name"
+    },
+    {
+      "id": "akc-perk-003-flowstate",
+      "name": "Flow State",
+      "status": "different",
+      "sourceUrl": "https://dbd.tricky.lol/api/perks#S52P01",
+      "sourceKey": "S52P01",
+      "matchType": "name"
+    }
+  ]
+}

@@ -1,0 +1,262 @@
+{
+  "No One Left Behind": {
+    "status": "different",
+    "sourceUrl": "https://nightlight.gg/perks/No_One_Left_Behind",
+    "descriptionPost95": "When all Generators are completed:\n\n- You heal 50/75/100% faster.\n- You unhook other Survivors 50/75/100% faster.\n- Whenever you unhook a Survivor, they gain 10% more Haste.\n- You see the Auras of other Survivors."
+  },
+  "No Mither": {
+    "status": "different",
+    "sourceUrl": "https://nightlight.gg/perks/No_Mither",
+    "descriptionPost95": "When the trial starts, you become injured, then:\n\n- You gain Broken.\n- Your Grunts of Pain are 100% quieter.\n- You leave no Pools of Blood.\n- You recover 15/20/25% faster.\n- You can fully recover."
+  },
+  "A Nurse's Calling": {
+    "status": "different",
+    "sourceUrl": "https://nightlight.gg/perks/A_Nurse%27s_Calling",
+    "descriptionPost95": "Within 28/30/32 m of injured Survivors who are healing or being healed, you see their Auras."
+  },
+  "Bound by Obsession": {
+    "status": "different",
+    "sourceUrl": "https://nightlight.gg/perks/Object_of_Obsession",
+    "descriptionPost95": "While you are the Obsession, every 30 s, the Killer sees your Aura for 3 s.\n\nWhile the Killer sees your Aura:\n\n- You see their Aura.\n- You cleanse Totems 2/4/6% faster.\n- You heal 2/4/6% faster.\n- You repair 2/4/6% faster.\n\nWhen the trial starts, you are more likely to be the Obsession."
+  },
+  "Off the Record": {
+    "status": "different",
+    "sourceUrl": "https://nightlight.gg/perks/Off_the_Record",
+    "descriptionPost95": "Until all Generators are completed, whenever you are unhooked, for the next 30/35/40 s:\n\n- You gain Endurance.\n- Your Grunts of Pain are 100% quieter.\n- The Killer cannot see your Aura."
+  },
+  "Open-Handed": {
+    "status": "different",
+    "sourceUrl": "https://nightlight.gg/perks/Open-Handed",
+    "descriptionPost95": "All Survivors see Auras that have a range from 8/12/16 m farther."
+  },
+  "Overwhelming Presence": {
+    "status": "different",
+    "sourceUrl": "https://nightlight.gg/perks/Overwhelming_Presence",
+    "descriptionPost95": "Whenever a Survivor uses an item within 32 m of you, they gain Exhausted for 15 s.\n\nWhenever a Survivor within 32 m of you gains Exhausted, you see the closest Exhausted Survivor's Aura for 2/3/4 s. Cooldown: 25 s."
+  },
+  "Pharmacy": {
+    "status": "different",
+    "sourceUrl": "https://nightlight.gg/perks/Pharmacy",
+    "descriptionPost95": "Whenever you unlock a Chest, it will contain a rare Med-Kit.\n\nYou unlock Chests 75/100/125% faster.\n\nThe range at which the Killer hears you unlocking Chests is 12 m shorter."
+  },
+  "See How They Run": {
+    "status": "different",
+    "sourceUrl": "https://nightlight.gg/perks/Play_With_Your_Food",
+    "descriptionPost95": "Whenever you stop chasing the Obsession, you earn 1 Token, up to 3.\n\nFor each Token, gain 3/4/5% Haste.\n\nWhenever you attack, lose 1 Token."
+  },
+  "Plunderer's Instinct": {
+    "status": "different",
+    "sourceUrl": "https://nightlight.gg/perks/Plunderer%27s_Instinct",
+    "descriptionPost95": "Within 32/48/64 m of locked Chests and dropped items, you see their Auras.\n\nWhenever you unlock a Chest, you are 50% more likely to find an item of higher rarity."
+  },
+  "Poised": {
+    "status": "different",
+    "sourceUrl": "https://nightlight.gg/perks/Poised",
+    "descriptionPost95": "The first time you start repairing each Generator, you see the Killer's Aura for 8 s.\n\nWhenever a Generator is completed, you leave no Scratch Marks for 20/25/30 s."
+  },
+  "Pop Goes the Weasel": {
+    "status": "different",
+    "sourceUrl": "https://nightlight.gg/perks/Pop_Goes_the_Weasel",
+    "descriptionPost95": "Whenever you hook a Survivor, for the next 35/40/45 s, when you damage a Generator, it explodes and loses 15% more progress."
+  },
+  "Predator": {
+    "status": "different",
+    "sourceUrl": "https://nightlight.gg/perks/Predator",
+    "descriptionPost95": "When you stop chasing a Survivor, you see their Aura for 4 s. Cooldown: 60/50/40 s."
+  },
+  "Premonition": {
+    "status": "different",
+    "sourceUrl": "https://nightlight.gg/perks/Premonition",
+    "descriptionPost95": "While the Killer is within 36 m of you and inside a 45 degree cone, whenever you look at them, you hear a sound cue. Cooldown: 60/45/30 s."
+  },
+  "Prove Thyself": {
+    "status": "different",
+    "sourceUrl": "https://nightlight.gg/perks/Prove_Thyself",
+    "descriptionPost95": "For each other Survivor within 4 m of you, all Survivors repair 6/8/10% faster."
+  },
+  "Quick & Quiet": {
+    "status": "different",
+    "sourceUrl": "https://nightlight.gg/perks/Quick_%26_Quiet",
+    "descriptionPost95": "You hide in Lockers and vault silently. The Killer is not alerted. Cooldown: 25/20/15 s."
+  },
+  "Rancor": {
+    "status": "different",
+    "sourceUrl": "https://nightlight.gg/perks/Rancor",
+    "descriptionPost95": "Whenever a Generator is completed:\n\n- You are alerted to the position of all Survivors for 3 s.\n- The Obsession sees your Aura for 5/4/3 s.\n\nWhen all Generators are completed:\n\n- The Obsession gains Exposed.\n- You can Kill the Obsession."
+  },
+  "Red Herring": {
+    "status": "different",
+    "sourceUrl": "https://nightlight.gg/perks/Red_Herring",
+    "descriptionPost95": "After you repair a Generator for at least 1 s, you see its Aura.\n\nWhen you hide in a Locker, the Killer is alerted to the Generator. Cooldown: 25/20/15 s."
+  },
+  "Remember Me": {
+    "status": "different",
+    "sourceUrl": "https://nightlight.gg/perks/Remember_Me",
+    "descriptionPost95": "Whenever the Obsession takes damage, you earn 1 Token, up to 3/4/5.\n\nFor each Token, Survivors who are not the Obsession open Exit Gates 30% slower."
+  },
+  "Repressed Alliance ": {
+    "status": "different",
+    "sourceUrl": "https://nightlight.gg/perks/Repressed%C2%A0Alliance",
+    "descriptionPost95": "You're accustomed to being hunted by malicious forces, and you've begun using it to your advantage.\n\nRepressed Alliance activates after repairing generators for a total of 55/50/45 seconds.\n\nWhen repairing a generator while the perk is active, press the Active Ability Button 1 to call upon The Entity to block the generator for 30 seconds. The perk deactivates.\n\nThis interaction is not available if other Survivors are repairing the generator.\n\nAffected generators will be revealed by a white aura to all Survivors."
+  },
+  "Resilience": {
+    "status": "different",
+    "sourceUrl": "https://nightlight.gg/perks/Resilience",
+    "descriptionPost95": "While injured:\n\n- You bless and cleanse Totems 3/6/9% faster.\n- You heal 3/6/9% faster.\n- You open Exit Gates 3/6/9% faster.\n- You repair 3/6/9% faster.\n- You sabotage Hooks 3/6/9% faster.\n- You unhook Survivors 3/6/9% faster.\n- You unlock chests 3/6/9% faster.\n- You vault 3/6/9% faster."
+  },
+  "Appraisal": {
+    "status": "different",
+    "sourceUrl": "https://nightlight.gg/perks/Appraisal",
+    "descriptionPost95": "When the trial starts, you earn 4 Tokens.\n\nSpend 1 Token to rummage an empty Chest, up to 2 times per chest.\n\nYou rummage Chests 40/60/80% faster."
+  },
+  "Deception": {
+    "status": "different",
+    "sourceUrl": "https://nightlight.gg/perks/Deception",
+    "descriptionPost95": "Whenever you attempt to fast-enter a Locker:\n\n- You do not enter the Locker.\n- The Killer is alerted.\n- You leave no Scratch Marks for 5 s.\n\nCooldown: 25/20/15 s."
+  },
+  "Power Struggle": {
+    "status": "different",
+    "sourceUrl": "https://nightlight.gg/perks/Power_Struggle",
+    "descriptionPost95": "While carried by the Killer, while you have at least 25/20/15% wiggle and next to an Upright Pallet, you can drop it to stun the Killer.\n\nWhile downed, you see the Auras of Upright Pallets."
+  },
+  "Fast Track": {
+    "status": "different",
+    "sourceUrl": "https://nightlight.gg/perks/Fast_Track",
+    "descriptionPost95": "Whenever another Survivor is hooked, you earn 1/2/3 Token(s), up to 9.\n\nWhile repairing, whenever you hit a great basic Skill Check, spend all Tokens. For each Token spent, the Generator gains 2% permanent progress."
+  },
+  "Smash Hit": {
+    "status": "different",
+    "sourceUrl": "https://nightlight.gg/perks/Smash_Hit",
+    "descriptionPost95": "Whenever you Pallet-stun the Killer:\n\n- You gain 50% Haste for 4 s.\n- You gain Exhausted for 30/25/20 s."
+  },
+  "Self-Preservation": {
+    "status": "different",
+    "sourceUrl": "https://nightlight.gg/perks/Self-Preservation",
+    "descriptionPost95": "Whenever another Survivor is hooked, you gain Elusive for 20/25/30 s."
+  },
+  "Counterforce": {
+    "status": "different",
+    "sourceUrl": "https://nightlight.gg/perks/Counterforce",
+    "descriptionPost95": "When the trial starts, you earn 1 Token.\n\nWhenever you cleanse a Totem, earn 1 Token, then, you see the Aura of the farthest Totem for 10/12/14 s.\n\nFor each Token, you cleanse Totems 25% faster."
+  },
+  "Resurgence": {
+    "status": "different",
+    "sourceUrl": "https://nightlight.gg/perks/Resurgence",
+    "descriptionPost95": "Whenever you are unhooked, you gain 50/60/70% healing progress."
+  },
+  "Blast Mine": {
+    "status": "different",
+    "sourceUrl": "https://nightlight.gg/perks/Blast_Mine",
+    "descriptionPost95": "After repairing 40% of Generators, while next to a Generator, use Active Ability Button 2 to trap it for 100/110/120 s. All Survivors see that Generator's Aura for that time.\n\nWhen the Killer damages that Generator, the trap explodes, then:\n\n- They are stunned for 4 s.\n- Everyone nearby looking at the detonation is blinded."
+  },
+  "Bite the Bullet": {
+    "status": "different",
+    "sourceUrl": "https://nightlight.gg/perks/Bite_the_Bullet",
+    "descriptionPost95": "While healing, you and the healed Survivor make no noises or Grunts of Pain. Whenever you miss a basic Skill Check:\n\n- You lose only 3/2/1% progress.\n- The Killer is not alerted."
+  },
+  "Flashbang": {
+    "status": "different",
+    "sourceUrl": "https://nightlight.gg/perks/Flashbang",
+    "descriptionPost95": "After repairing 50/45/40% of Generators, while hiding in a Locker, use Active Ability Button 1 to craft a Flashbang.\n\nWhen you use the Flashbang:\n\n- Everyone nearby looking at the detonation is blinded.\n- The Killer is alerted."
+  },
+  "Rookie Spirit": {
+    "status": "different",
+    "sourceUrl": "https://nightlight.gg/perks/Rookie_Spirit",
+    "descriptionPost95": "After you hit 5/4/3 basic repair Skill Checks, while a Generator is regressing, you see its Aura."
+  },
+  "Clairvoyance": {
+    "status": "different",
+    "sourceUrl": "https://nightlight.gg/perks/Clairvoyance",
+    "descriptionPost95": "Whenever you bless or cleanse a Totem, while not holding an item, use the Use Item button to, for up to 10/11/12 s and within 64 m:\n\n- See the Auras of Chests.\n- See the Auras of Exit Gate Switches.\n- See the Auras of Generators.\n- See the Aura of the Hatch.\n- See the Auras of Hooks."
+  },
+  "Boon: Circle of Healing": {
+    "status": "different",
+    "sourceUrl": "https://nightlight.gg/perks/Boon%3A_Circle_of_Healing",
+    "descriptionPost95": "While next to a totem, use Active Ability Button 1 to bless it, creating a unique Boon Totem that combines all your Boons.\n\nSurvivors within the Boon's range:\n\n- While healing without a Med-Kit, they heal others 50/75/100% faster.\n- While injured, other Survivors see their Aura."
+  },
+  "Boon: Shadow Step": {
+    "status": "different",
+    "sourceUrl": "https://nightlight.gg/perks/Boon%3A_Shadow_Step",
+    "descriptionPost95": "While next to a Totem, use Active Ability Button 1 to bless it, creating a unique Boon Totem that combines all your Boons. Survivors within the Boon's range:\n\n- Leave no Scratch Marks.\n- Their Auras cannot be seen by the Killer.\n\nWhen leaving the range, this ends after 2/3/4 s."
+  },
+  "Overcome": {
+    "status": "different",
+    "sourceUrl": "https://nightlight.gg/perks/Overcome",
+    "descriptionPost95": "Whenever you take damage:\n\n- You retain your speed boost for 2 s longer.\n- You gain Exhausted for 60/50/40 s."
+  },
+  "Corrective Action": {
+    "status": "different",
+    "sourceUrl": "https://nightlight.gg/perks/Corrective_Action",
+    "descriptionPost95": "When the trial starts, you earn 1/2/3 Tokens, up to 5.\n\nWhenever you hit a great basic Skill Check, earn 1 Token.\n\nWhenever another Survivor misses a basic Skill Check, spend 1 Token:\n\n- The missed Skill Check becomes a good Skill Check.\n- You see that Survivor's Aura for 6 s."
+  },
+  "Boon: Exponential": {
+    "status": "different",
+    "sourceUrl": "https://nightlight.gg/perks/Boon%3A_Exponential",
+    "descriptionPost95": "While next to a totem, use Active Ability Button 1 to bless it, creating a unique Boon totem that combines all your Boons.\n\nDowned Survivors within the Boon's range:\n\n- Recover 90/95/100% faster.\n- Can fully recover."
+  },
+  "Parental Guidance": {
+    "status": "different",
+    "sourceUrl": "https://nightlight.gg/perks/Parental_Guidance",
+    "descriptionPost95": "Whenever you stun the Killer, for 5/6/7 s:\n\n- You make no Grunts of Pain.\n- You leave no Pools of Blood.\n- You leave no Scratch Marks."
+  },
+  "Empathic Connection": {
+    "status": "different",
+    "sourceUrl": "https://nightlight.gg/perks/Empathic_Connection",
+    "descriptionPost95": "You heal other Survivors 25/30/35% faster.\n\nInjured Survivors see your Aura."
+  },
+  "Boon: Dark Theory": {
+    "status": "different",
+    "sourceUrl": "https://nightlight.gg/perks/Boon%3A_Dark_Theory",
+    "descriptionPost95": "While next to a totem, use Active Ability Button 1 to bless it, creating a unique Boon Totem that combines all your Boons.\n\nSurvivors within the Boon's range gain 3% Haste. When leaving the range, this ends after 2/3/4 s."
+  },
+  "Inner Focus": {
+    "status": "different",
+    "sourceUrl": "https://nightlight.gg/perks/Inner_Focus",
+    "descriptionPost95": "Whenever the Killer damages another Survivor, you see the Killer's Aura for 6/8/10 s.\n\nYou see other Survivors' Scratch Marks."
+  },
+  "Residual Manifest": {
+    "status": "different",
+    "sourceUrl": "https://nightlight.gg/perks/Residual_Manifest",
+    "descriptionPost95": "Whenever you blind the Killer, they gain Blindness for 20/25/30 s.\n\nYou can rummage Chests 1 time. The first time you rummage a Chest, it will contain an uncommon Flashlight."
+  },
+  "Overzealous": {
+    "status": "different",
+    "sourceUrl": "https://nightlight.gg/perks/Overzealous",
+    "descriptionPost95": "Whenever you bless or cleanse a Totem, until you take damage, you repair 8/9/10% faster. If that Totem was a Hex Totem, the effect is doubled."
+  },
+  "Wiretap": {
+    "status": "different",
+    "sourceUrl": "https://nightlight.gg/perks/Wiretap",
+    "descriptionPost95": "After repairing 40% of Generators, while next to a Generator, use Active Ability Button 2 to trap it for 100/110/120 s or until the Killer damages that Generator. All Survivors see that Generator's Aura for that time.\n\nWhile the Killer is within 14 m of that Generator, all Survivors see the Killer's Aura."
+  },
+  "Reactive Healing": {
+    "status": "different",
+    "sourceUrl": "https://nightlight.gg/perks/Reactive_Healing",
+    "descriptionPost95": "While injured, whenever another Survivor within 32 m of you takes damage, you gain 40/45/50% missing healing progress."
+  },
+  "Low Profile": {
+    "status": "different",
+    "sourceUrl": "https://nightlight.gg/perks/Low_Profile",
+    "descriptionPost95": "When all other Survivors are downed or hooked, for 70/80/90 s:\n\n- You make no Grunts of Pain.\n- You leave no Pools of Blood.\n- You leave no Scratch Marks."
+  },
+  "Better Than New": {
+    "status": "different",
+    "sourceUrl": "https://nightlight.gg/perks/Better_Than_New",
+    "descriptionPost95": "Whenever you finish healing another Survivor, until they take damage:\n\n- They bless and cleanse 12/14/16% faster.\n- They heal 12/14/16% faster.\n- They unlock Chests 12/14/16% faster."
+  },
+  "Reassurance": {
+    "status": "different",
+    "sourceUrl": "https://nightlight.gg/perks/Reassurance",
+    "descriptionPost95": "Once per Hook State, while within 6 m of a hooked Survivor, use Active Ability Button 2 to stop the sacrifice progress for 20/25/30 s."
+  },
+  "Hyperfocus": {
+    "status": "different",
+    "sourceUrl": "https://nightlight.gg/perks/Hyperfocus",
+    "descriptionPost95": "Whenever you hit a great basic Skill Check, you earn 1 Token, up to 6.\n\nFor each Token, basic Skill Checks:\n\n- Appear 4% more often.\n- Spin 4% faster.\n- Whenever you hit a great, give 10/20/30% more progress.\n\nWhenever you miss a basic Skill Check, hit a good Skill Check, or stop healing or repairing, lose all Tokens."
+  },
+  "Potential Energy": {
+    "status": "different",
+    "sourceUrl": "https://nightlight.gg/perks/Potential_Energy",
+    "descriptionPost95": "While repairing, use Active Ability Button 2 to earn Tokens instead of progress, up to 10/15/20 Tokens.\n\nWhile you have at least 1 Token, Active Ability Button 2 to spend all Tokens and gain 1% progress for each Token spent.\n\nWhenever you take damage, lose all Tokens."
+  }
+}

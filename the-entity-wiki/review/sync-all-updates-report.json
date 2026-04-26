@@ -1,0 +1,251 @@
+{
+  "generatedAt": "2026-04-13T01:50:36.501Z",
+  "artifacts": {
+    "reportPath": "review/sync-all-updates-report.json",
+    "releaseSummaryPath": "review/release-summary.md"
+  },
+  "options": {
+    "includeAssets": true,
+    "mode": "full",
+    "rawArgs": [
+      "--include-assets"
+    ]
+  },
+  "durationMs": 484675,
+  "status": "ok",
+  "failedStep": null,
+  "steps": [
+    {
+      "name": "health-check-community-sources",
+      "command": "node scripts/sync-community-content.js --health-check",
+      "durationMs": 467,
+      "exitCode": 0,
+      "signal": null,
+      "status": "ok"
+    },
+    {
+      "name": "health-check-map-layout-sources",
+      "command": "node scripts/sync-map-layouts.js --health-check",
+      "durationMs": 353,
+      "exitCode": 0,
+      "signal": null,
+      "status": "ok"
+    },
+    {
+      "name": "health-check-description-sources",
+      "command": "node scripts/sync-descriptions.js --health-check",
+      "durationMs": 1508,
+      "exitCode": 0,
+      "signal": null,
+      "status": "ok"
+    },
+    {
+      "name": "sync-community-content",
+      "command": "node scripts/sync-community-content.js",
+      "durationMs": 1575,
+      "exitCode": 0,
+      "signal": null,
+      "status": "ok"
+    },
+    {
+      "name": "sync-map-layouts",
+      "command": "node scripts/sync-map-layouts.js --upgrade-legacy",
+      "durationMs": 349,
+      "exitCode": 0,
+      "signal": null,
+      "status": "ok"
+    },
+    {
+      "name": "sync-descriptions",
+      "command": "node scripts/sync-descriptions.js",
+      "durationMs": 1368,
+      "exitCode": 0,
+      "signal": null,
+      "status": "ok"
+    },
+    {
+      "name": "sync-game-icons",
+      "command": "node scripts/sync-game-icons.js",
+      "durationMs": 26484,
+      "exitCode": 0,
+      "signal": null,
+      "status": "ok"
+    },
+    {
+      "name": "sync-offering-fixes",
+      "command": "node scripts/sync-offering-fixes.js",
+      "durationMs": 39,
+      "exitCode": 0,
+      "signal": null,
+      "status": "ok"
+    },
+    {
+      "name": "discover-cosmetics",
+      "command": "node scripts/discover-cosmetics.js",
+      "durationMs": 450824,
+      "exitCode": 0,
+      "signal": null,
+      "status": "ok"
+    },
+    {
+      "name": "normalize-cosmetics",
+      "command": "node scripts/normalize-cosmetics.js",
+      "durationMs": 233,
+      "exitCode": 0,
+      "signal": null,
+      "status": "ok"
+    },
+    {
+      "name": "sync-cosmetic-assets",
+      "command": "node scripts/sync-cosmetic-assets.js",
+      "durationMs": 137,
+      "exitCode": 0,
+      "signal": null,
+      "status": "ok"
+    },
+    {
+      "name": "build-data",
+      "command": "node scripts/build-data.js",
+      "durationMs": 249,
+      "exitCode": 0,
+      "signal": null,
+      "status": "ok"
+    },
+    {
+      "name": "normalize-images-check",
+      "command": "node scripts/normalize-images.js --check",
+      "durationMs": 101,
+      "exitCode": 0,
+      "signal": null,
+      "status": "ok"
+    },
+    {
+      "name": "build-data-check",
+      "command": "node scripts/build-data.js --check",
+      "durationMs": 257,
+      "exitCode": 0,
+      "signal": null,
+      "status": "ok"
+    },
+    {
+      "name": "audit-cosmetics",
+      "command": "node scripts/audit-cosmetics.js",
+      "durationMs": 146,
+      "exitCode": 0,
+      "signal": null,
+      "status": "ok"
+    },
+    {
+      "name": "verify-teachables",
+      "command": "node scripts/verify-teachables.js",
+      "durationMs": 54,
+      "exitCode": 0,
+      "signal": null,
+      "status": "ok"
+    },
+    {
+      "name": "verify-perk-descriptions",
+      "command": "node scripts/verify-perk-descriptions.js",
+      "durationMs": 43,
+      "exitCode": 0,
+      "signal": null,
+      "status": "ok"
+    },
+    {
+      "name": "verify-data-contracts",
+      "command": "node scripts/verify-data-contracts.js",
+      "durationMs": 70,
+      "exitCode": 0,
+      "signal": null,
+      "status": "ok"
+    },
+    {
+      "name": "verify-offline-runtime",
+      "command": "node scripts/verify-offline-runtime.js",
+      "durationMs": 259,
+      "exitCode": 0,
+      "signal": null,
+      "status": "ok"
+    }
+  ],
+  "changes": {
+    "addedFiles": [],
+    "removedFiles": [],
+    "modifiedFiles": [
+      "content/community-content.json",
+      "review/description-sync-report.json",
+      "review/map-layouts-audit.json",
+      "web/community-content.js",
+      "web/cosmetics.js"
+    ],
+    "totals": {
+      "added": 0,
+      "removed": 0,
+      "modified": 5,
+      "all": 5
+    }
+  },
+  "databaseDescriptionChanges": {
+    "perkPost95": {
+      "added": 0,
+      "removed": 0,
+      "updated": 0,
+      "sample": []
+    },
+    "addonDescriptions": {
+      "updated": 0,
+      "sample": []
+    }
+  },
+  "descriptionSyncSummary": {
+    "perks": {
+      "total": 309,
+      "counts": {
+        "different": 185,
+        "same_as_legacy": 124
+      },
+      "changes": {
+        "added": 0,
+        "updated": 0,
+        "removed": 0,
+        "unchanged": 309,
+        "total": 0
+      },
+      "unresolvedCount": 0,
+      "unresolved": [],
+      "sampleChanges": []
+    },
+    "addons": {
+      "total": 906,
+      "counts": {
+        "updated": 0,
+        "unchanged": 906,
+        "unresolved": 0
+      },
+      "changes": {
+        "updated": 0,
+        "unchanged": 906,
+        "total": 0
+      },
+      "unresolvedCount": 0,
+      "unresolved": [],
+      "sampleChanges": []
+    }
+  },
+  "mapLayoutSummary": {
+    "stats": {
+      "databaseMapCount": 57,
+      "uniqueDatabaseMapNames": 47,
+      "currentMapLayoutKeyCount": 51,
+      "missingMapLayoutKeyCount": 0,
+      "missingSourceCount": 0,
+      "downloadedCount": 0,
+      "reusedCount": 1,
+      "skippedCount": 0,
+      "failedCount": 0,
+      "upgradeCandidateCount": 1
+    },
+    "missingSourceMaps": [],
+    "unresolvedMaps": []
+  }
+}

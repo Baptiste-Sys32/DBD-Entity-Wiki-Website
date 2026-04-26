@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 160" role="img" aria-labelledby="title desc">
+  <title id="title">Default perk placeholder</title>
+  <desc id="desc">Offline placeholder image for missing perk art.</desc>
+  <defs>
+    <linearGradient id="perk-bg" x1="0%" x2="100%" y1="0%" y2="100%">
+      <stop offset="0%" stop-color="#171717" />
+      <stop offset="100%" stop-color="#09090b" />
+    </linearGradient>
+    <linearGradient id="perk-border" x1="0%" x2="100%" y1="0%" y2="100%">
+      <stop offset="0%" stop-color="#e5e7eb" stop-opacity="0.85" />
+      <stop offset="100%" stop-color="#52525b" stop-opacity="0.6" />
+    </linearGradient>
+  </defs>
+  <rect width="160" height="160" fill="#050505" />
+  <g transform="translate(80 80) rotate(45) translate(-80 -80)">
+    <rect x="28" y="28" width="104" height="104" rx="18" fill="url(#perk-bg)" stroke="url(#perk-border)" stroke-width="6" />
+    <path d="M80 54c-12.6 0-23 10.4-23 23 0 18.4 23 39 23 39s23-20.6 23-39c0-12.6-10.4-23-23-23zm0 31a8 8 0 1 1 0-16 8 8 0 0 1 0 16z" fill="#e5e7eb" fill-opacity="0.92" transform="rotate(-45 80 80)" />
+  </g>
+</svg>

@@ -1,0 +1,256 @@
+{
+  "Awakened Awareness": {
+    "status": "different",
+    "sourceUrl": "https://nightlight.gg/perks/Awakened_Awareness",
+    "descriptionPost95": "While carrying a Survivor, within 16/18/20 m of you, you see the Auras of other Survivors."
+  },
+  "Terminus": {
+    "status": "different",
+    "sourceUrl": "https://nightlight.gg/perks/Terminus",
+    "descriptionPost95": "When all Generators are completed: all injured, downed, and hooked Survivors gain Broken.\n\nWhen an Exit Gate is opened, this ends after 35/40/45 s."
+  },
+  "Nowhere to Hide": {
+    "status": "different",
+    "sourceUrl": "https://nightlight.gg/perks/Nowhere_to_Hide",
+    "descriptionPost95": "Whenever you damage a Generator, for 3/4/5 s, you see the Auras of Survivors within 24 m of you."
+  },
+  "Hex: Face the Darkness": {
+    "status": "different",
+    "sourceUrl": "https://nightlight.gg/perks/Hex%3A_Face_the_Darkness",
+    "descriptionPost95": "Whenever you damage a Survivor, they are hexed and a Dull Totem ignites.\n\nEvery 35/30/25 s, other Survivors not within your Terror Radius scream, then you see their Auras for 2 s."
+  },
+  "Hubris": {
+    "status": "different",
+    "sourceUrl": "https://nightlight.gg/perks/Hubris",
+    "descriptionPost95": "Whenever you are stunned by a Survivor, they gain Exposed for 20/25/30 s. Cooldown: 20 s."
+  },
+  "Game Afoot": {
+    "status": "different",
+    "sourceUrl": "https://nightlight.gg/perks/Game_Afoot",
+    "descriptionPost95": "While chasing the Obsession, whenever you basic-break Pallets or Breakable Walls, or damage Generators, you gain 7% Haste for 8/9/10 s.\n\nWhenever you damage the Survivor with the most chase time with a basic-attack, they become the Obsession."
+  },
+  "THWACK!": {
+    "status": "different",
+    "sourceUrl": "https://nightlight.gg/perks/THWACK%21",
+    "descriptionPost95": "When the trial starts, you earn 3 Tokens, up to 3.\n\nWhenever you hook a Survivor, you earn 1 Token.\n\nWhenever you break a Pallet or Breakable Wall, spend 1 Token. Then, all Survivors within 36 m scream and you see their Auras for 4/5/6 s."
+  },
+  "Leverage": {
+    "status": "different",
+    "sourceUrl": "https://nightlight.gg/perks/Leverage",
+    "descriptionPost95": "Whenever a Survivor unhooks another or themselves, they heal 20/25/30% slower for 60 s."
+  },
+  "Genetic Limits": {
+    "status": "different",
+    "sourceUrl": "https://nightlight.gg/perks/Genetic_Limits",
+    "descriptionPost95": "Whenever a Survivor takes damage, they gain Exhausted for 6/7/8 s."
+  },
+  "Forced Hesitation": {
+    "status": "different",
+    "sourceUrl": "https://nightlight.gg/perks/Forced_Hesitation",
+    "descriptionPost95": "Whenever you down a Survivor, other Survivors within 16 m of the downed Survivor gain 20% Hindered for 10 s. Cooldown: 40/35/30 s."
+  },
+  "Machine Learning": {
+    "status": "different",
+    "sourceUrl": "https://nightlight.gg/perks/Machine_Learning",
+    "descriptionPost95": "Whenever you damage a Generator, it becomes Compromised.\n\nWhen the Compromised generator is completed by Survivors:\n\n    * You gain 8% Haste for 40/50/60 s.\n    * You gain Undetectable for 40/50/60 s.\n\nOnly one Generator can be compromised at a time."
+  },
+  "Ultimate Weapon": {
+    "status": "different",
+    "sourceUrl": "https://nightlight.gg/perks/Ultimate_Weapon",
+    "descriptionPost95": "Whenever you search a Locker, Survivors within 40 m:\n\n    * Gain Blindness for 30 s.\n    * Scream.\n\nCooldown: 55/50/45 s."
+  },
+  "Rapid Brutality": {
+    "status": "different",
+    "sourceUrl": "https://nightlight.gg/perks/Rapid_Brutality",
+    "descriptionPost95": "Whenever you damage a Survivor with a basic-attack, you gain 5% Haste for 8/9/10 s.\n\nWhile chasing a Survivor, you cannot gain Bloodlust."
+  },
+  "Alien Instinct": {
+    "status": "different",
+    "sourceUrl": "https://nightlight.gg/perks/Alien_Instinct",
+    "descriptionPost95": "Whenever you hook a Survivor, the farthest injured Survivor:\n\n    * Gains Oblivious for 40/50/60 s.\n    * You see their Aura for 8 s."
+  },
+  "Hex: Two Can Play": {
+    "status": "same_as_legacy",
+    "sourceUrl": "https://nightlight.gg/perks/Hex%3A_Two_Can_Play"
+  },
+  "Friends ‘Til the End": {
+    "status": "different",
+    "sourceUrl": "https://nightlight.gg/perks/Friends_%E2%80%98Til_the_End",
+    "descriptionPost95": "Whenever you hook a Survivor that is not the Obsession:\n\n- The Obsession gains Exposed for 20 s.\n- You see the Obsession's Aura for 6/8/10 s.\n\nWhenever you hook the Obsession, another Survivor:\n\n- Screams, then you are alerted.\n- Becomes the Obsession."
+  },
+  "Batteries Included": {
+    "status": "different",
+    "sourceUrl": "https://nightlight.gg/perks/Batteries_Included",
+    "descriptionPost95": "Being somewhere between man and machine has its upsides.\nWhen within 16 meters of a completed generator, you have 5% Haste.\n\nThe movement speed bonus lingers for 1/3/5 seconds after leaving the generator's range.\n\nHaste increases Killer movement speed.\n\n“Surprise! Did you miss me, Andy?” – Chucky"
+  },
+  "Unbound": {
+    "status": "same_as_legacy",
+    "sourceUrl": "https://nightlight.gg/perks/Unbound"
+  },
+  "Unforeseen": {
+    "status": "different",
+    "sourceUrl": "https://nightlight.gg/perks/Unforeseen",
+    "descriptionPost95": "Terror takes many forms and whispers devastating lies in its victims' ears.\n\nWhen you perform the damage action on a generator, your Terror Radius transfers to the generator for 22/26/30 seconds and its radius is set to 32 meters.\n\nYou gain Undetectable for that duration.\n\nThen, this perk goes on cooldown for 30 seconds.\n\nUndetectable hides the Killer's aura, Terror Radius, and Red Stain.\n\n\"Mom, if you find this, I'm sorry...” - Final Journal Entry, 07/12/1991"
+  },
+  "Undone": {
+    "status": "different",
+    "sourceUrl": "https://nightlight.gg/perks/Undone",
+    "descriptionPost95": "Hope is the delusion that keeps its victims alive.\n\nWhen a Survivor misses a healing or repair Skill Check, gain 3 tokens, up to 18/24/30.\nWhen you perform the damage action on a generator, if you have any tokens, consume all of them. For each token consumed, the generator loses 1% total progress and then becomes blocked for 1 second. Then, once the generator is unblocked, it starts regressing.\n\nThis perk goes on cooldown for 60 seconds.\n\n\"Erratic behavior in machinery could be related to [REDACTED], further testing required.” - OSS Report, 12/02/1943"
+  },
+  "Weave Attunement": {
+    "status": "different",
+    "sourceUrl": "https://nightlight.gg/perks/Weave_Attunement",
+    "descriptionPost95": "You are so attuned to magical energies that you can sense even minor ripples around enchantments.\n\nWhen an item becomes depleted for the first time, it is dropped. You see the auras of dropped items.\n\nSurvivors within 12 meters of dropped items have their auras revealed to you. Affected Survivors see the item's aura.\nWhen a Survivor picks up a Survivor item, they suffer from the Oblivious status effect for 20/25/30 seconds.\n\nOblivious prevents Survivors from hearing or being affected by the Killer's Terror Radius.\n\n“No number of novelties will protect you from me!” - Vecna"
+  },
+  "Languid Touch": {
+    "status": "different",
+    "sourceUrl": "https://nightlight.gg/perks/Languid_Touch",
+    "descriptionPost95": "Your dreadful aura is so suffocating that even terrifying scenes tire your prey.\nWhen a Survivor within 36 meters of you scares a crow, they suffer from the Exhausted status effect for 6/8/10 seconds.\n\nLanguid Touch has a cooldown of 5 seconds.\n\nExhausted prevents Survivors from activating exhausting perks.\n\n“Submit to me. It is inevitable.” - Vecna"
+  },
+  "Dark Arrogance": {
+    "status": "different",
+    "sourceUrl": "https://nightlight.gg/perks/Dark_Arrogance",
+    "descriptionPost95": "When everything is going right, you are an inescapable inevitability.\nIncreases the duration you are blinded by any means and the duration of pallet stuns by 15%.\n\nIncreases regular vault speed by 15/20/25%.\n\n“Run all you want. I will not be denied.” - Vecna"
+  },
+  "Hex: Wretched Fate": {
+    "status": "same_as_legacy",
+    "sourceUrl": "https://nightlight.gg/perks/Hex%3A_Wretched_Fate"
+  },
+  "Human Greed": {
+    "status": "different",
+    "sourceUrl": "https://nightlight.gg/perks/Human_Greed",
+    "descriptionPost95": "One can always rely on the avarice of the living and use it to one's advantage.\n\nYou see the auras of Unopened chests and Survivors' auras are revealed for 3/4/5 seconds when they enter a 8-meter range.\n\nYou also gain the ability to kick chests to close them. This ability has a 10-second cooldown.\n\n\"Come running, one and all, and see what fortune awaits you.\" - Dracula"
+  },
+  "Dominance": {
+    "status": "same_as_legacy",
+    "sourceUrl": "https://nightlight.gg/perks/Dominance"
+  },
+  "All-Shaking Thunder": {
+    "status": "different",
+    "sourceUrl": "https://nightlight.gg/perks/All-Shaking_Thunder",
+    "descriptionPost95": "Enemies on land and sea learned to tremble before your might.\nAfter you fall from a height, your lunge attack distance is increased by 75% for 15/20/25 seconds.\n\nThis perk has a 5-second cooldown.\n\n\"Go on. Run. Tell your friends I'm coming for them.\" - Portia Maye"
+  },
+  "Scourge Hook: Jagged Compass": {
+    "status": "different",
+    "sourceUrl": "https://nightlight.gg/perks/Scourge_Hook%3A_Jagged_Compass",
+    "descriptionPost95": "Sometimes the compass points north. Other times it points somewhere else entirely.\n\nAt the start of the trial, up to 4 random hooks are changed into scourge hooks. You see their auras in white.\n\nWhen a Survivor is unhooked from a hook, it becomes a scourge hook.\nWhen you hook a Survivor on a scourge hook, the aura of the generator with the most progress is revealed in yellow for 6/8/10 seconds.\n\n\"Drop anchor! I will chart us a new course.\" - Portia Maye"
+  },
+  "No Quarter": {
+    "status": "different",
+    "sourceUrl": "https://nightlight.gg/perks/No_Quarter",
+    "descriptionPost95": "Every skirmish ended with a relentless volley of cannon fire, leaving no doubt who was superior.\n\nWhen a Survivor reaches 75% healing progress while self-healing, they are faced with continuous Skill Checks.\n\nIf one of these Skill Checks is missed or the heal is interrupted, the Survivor suffers from the Broken status effect for 20/25/30 seconds.\n\nBroken prevents Survivors from being healed.\n\n\"Fire another broadside! Don't stop until the sea takes them!\" - Portia Maye"
+  },
+  "Hex: Nothing But Misery": {
+    "status": "different",
+    "sourceUrl": "https://nightlight.gg/perks/Hex%3A_Nothing_But_Misery",
+    "descriptionPost95": "You've been driven to the absolute depths of pain, and now you're ready to inflict that pain on others.\n\nAfter you damage Survivors 8 times with basic attacks, a Dull Totem becomes a Hex Totem, cursing all Survivors.\n\nWhen you damage a Survivor with a basic attack, they gain 5% Hindered for 10/12.5/15 seconds.\n\nThe effects last until the Hex Totem is cleansed.\nHindered reduces Survivor movement speed.\n\n\"All of the liabilities of this world are due to the inadequacies of the person involved.\" - Ken Kaneki"
+  },
+  "Forever Entwined": {
+    "status": "same_as_legacy",
+    "sourceUrl": "https://nightlight.gg/perks/Forever_Entwined"
+  },
+  "None Are Free": {
+    "status": "different",
+    "sourceUrl": "https://nightlight.gg/perks/None_Are_Free",
+    "descriptionPost95": "You know better than anyone that the light at the end of the tunnel is only an illusion.\n\nWhen you hook a Survivor for the first time, gain 1 token, up to 4.\n\nWhen all generators are completed, for each token, all windows and upright pallets are blocked for 12/14/16 seconds.\n\n\"I'm not wrong. What's wrong is this messed-up world!\" - Ken Kaneki"
+  },
+  "Help Wanted": {
+    "status": "same_as_legacy",
+    "sourceUrl": "https://nightlight.gg/perks/Help_Wanted"
+  },
+  "Phantom Fear": {
+    "status": "different",
+    "sourceUrl": "https://nightlight.gg/perks/Phantom_Fear",
+    "descriptionPost95": "You've always had a reputation for startling unsuspecting guests.\nWhen a Survivor within your Terror Radius looks at you, they scream and you see their aura for 2 seconds.\n\nThis perk has a 80/70/60-second cooldown.\n\n\"Excellent. Your screams please me.\" - Springtrap"
+  },
+  "Haywire": {
+    "status": "different",
+    "sourceUrl": "https://nightlight.gg/perks/Haywire",
+    "descriptionPost95": "For some reason, machinery has a habit of failing when you are near.\n\nExit gate switches with at least 50% progress regress at a rate of 40/45/50% of gate opening speed.\n\nWhile they are regressing, Survivors see the exit gate lights flicker randomly.\n\n\"There will be no redemption for you.\" - Springtrap"
+  },
+  "Ravenous": {
+    "status": "different",
+    "sourceUrl": "https://nightlight.gg/perks/Ravenous",
+    "descriptionPost95": "The scent of blood is in the air. Time to feast.\n\nWhenever you hook a Survivor for the first time, gain 1 token, up to a maximum of 4.\n\nWhen you have 4 tokens, all Survivors scream and are inflicted with Exposed for 40/50/60 seconds.\n\nExposed Survivors are downed by basic attacks, even if uninjured.\n\n“Weeping Ginevra's blood streams/The devil smells the weak.” —Fabbro Barone's “Ginevra”"
+  },
+  "Wandering Eye": {
+    "status": "different",
+    "sourceUrl": "https://nightlight.gg/perks/Wandering_Eye",
+    "descriptionPost95": "Bloodied prey surrounds you, vying for your attention.\n\nWhenever you start chasing a Survivor, reveal the auras of all other injured Survivors within 16 meters for 5 seconds.\n\nThis perk has a 40/35/30-second cooldown.\n\n“A drop does not satiate/when a river is needed.”\n\n—Elliot Campbell's “Grandeur of Samuel”"
+  },
+  "Hex: Overture of Doom": {
+    "status": "different",
+    "sourceUrl": "https://nightlight.gg/perks/Hex%3A_Overture_of_Doom",
+    "descriptionPost95": "A hex that plays on the paranoia of others.\n\nSpawns a Hex Totem that curses the farthest generator and reveals its aura in yellow.\n\nWhen a Survivor repairs the cursed generator for 5 seconds, you gain Undetectable and your Terror Radius is applied to the generator for 20/25/30 seconds.\nWhen the cursed generator is repaired, the next farthest generator is cursed.\n\nUndetectable hides the Killer's aura, Terror Radius, and Red Stain.\n\n“From salvation's ruin, be warned/death comes from all around.” —Giovanni Serrata's “Fog Hill”"
+  },
+  "Kindred": {
+    "status": "different",
+    "sourceUrl": "https://nightlight.gg/perks/Kindred",
+    "descriptionPost95": "Unlocks potential in one's aura reading ability. While you are on the hook, all Survivor's auras are revealed to all other Survivors. If The Killer is within a 8/12/16 meter range, The Killer's aura is revealed to you and all other Survivors.\nWhile a Survivor other than you is on the hook, all other Survivors' auras are revealed to you. If The Killer is within a 8/12/16 meter range of the hooked Survivor, The Killer's aura is revealed to you.\n\n“Be kind to one another. We're all in this together.” -Lost Tapes: Sujan"
+  },
+  "Leader": {
+    "status": "different",
+    "sourceUrl": "https://nightlight.gg/perks/Leader",
+    "descriptionPost95": "You're able to organize a team to cooperate more efficiently.\n\nIncreases other Survivors' healing, sabotage, unhooking, cleansing, opening exit gates, and chest unlocking speeds by 20/25/30% when they are within a 10 meter range from you.\n\nSurvivors can only be affected by one Leader effect at a time.\n\nOnce out of range, this effect persists for 20 seconds.\n\n“Straight from the Lab. Value through teamwork.” -Dwight Fairfield"
+  },
+  "Left Behind": {
+    "status": "different",
+    "sourceUrl": "https://nightlight.gg/perks/Left_Behind",
+    "descriptionPost95": "Unlocks potential in one's aura reading ability.\nIf you are the last Survivor remaining in the trial, you can see the aura of the Hatch within a 24/28/32 meter range.\n\n\"I'm not horseshittin' around. I'm doing this alone!\" -Bill"
+  },
+  "Lightborn": {
+    "status": "different",
+    "sourceUrl": "https://nightlight.gg/perks/Lightborn",
+    "descriptionPost95": "Unlike other beasts of The Fog, you have adapted to light.\n\nYou are immune to blindness caused by Flashlights, firecrackers, flashbangs, and blast mines. Survivors that attempt blinding you have their aura revealed for 6/8/10 seconds.\n\n\"These monsters… they adapt! They emerge with strange new abilities.\" -Vigo's Journal"
+  },
+  "Lightweight": {
+    "status": "different",
+    "sourceUrl": "https://nightlight.gg/perks/Lightweight",
+    "descriptionPost95": "Your running is light and soft, making your tracks harder to follow. Scratch marks stay visible 3/4/5 seconds less than normal, and their spacing is inconsistent.\n\n\"Take it slow, he knows where you've been… just like I've always said: live slow and die old.\" -Lost Tapes: Dylan"
+  },
+  "Lithe": {
+    "status": "different",
+    "sourceUrl": "https://nightlight.gg/perks/Lithe",
+    "descriptionPost95": "After performing a rushed vault, you gain 50% Haste for 3 seconds.\n\nCauses the Exhausted status effect for 60/50/40 seconds.\nLithe cannot be used while Exhausted.\n\nHaste increases Survivor movement speed.\n\nExhausted prevents Survivors from activating exhausting perks.\n\n“U mad?” -Feng Min"
+  },
+  "Lucky Break": {
+    "status": "different",
+    "sourceUrl": "https://nightlight.gg/perks/Lucky_Break",
+    "descriptionPost95": "You've had your share of scrapes and bruises, but luck's always on your side.\n\nLucky Break activates any time you are injured. While Lucky Break is active, you won't leave trails of blood or scratch marks for a total of 40/50/60 seconds.\nWhile healthy, for each 1 second spent healing another Survivor, increase Lucky Break's duration by 1 second. Lucky Break's duration cannot increase beyond its starting value.\n\n\"That's not enough to beat me. Not even close.\" -Yui Kimura"
+  },
+  "Mad Grit": {
+    "status": "different",
+    "sourceUrl": "https://nightlight.gg/perks/Mad_Grit",
+    "descriptionPost95": "While carrying a Survivor, you suffer no cooldown for missed basic attacks and successfully hitting another Survivor with a basic attack will pause the carried Survivor's wiggle timer for 2/3/4 seconds.\n\n“There's no getting out of this now. We're too good at it.” -The Legion"
+  },
+  "Make your Choice": {
+    "status": "different",
+    "sourceUrl": "https://nightlight.gg/perks/Make_your_Choice",
+    "descriptionPost95": "When a Survivor rescues another from a hook at least 32 meters away from you, Make your Choice causes the Survivor to scream and applies the Exposed status effect to them for 40/50/60 seconds.\n\nMake your Choice has a cooldown of 40/50/60 seconds.\n\nExposed Survivors will be downed by basic attacks even if uninjured.\n\n\"You'd be surprised what tools can save a life.\" -Amanda Young"
+  },
+  "Mindbreaker": {
+    "status": "different",
+    "sourceUrl": "https://nightlight.gg/perks/Mindbreaker",
+    "descriptionPost95": "Your distressing presence drains and weakens your prey.\n\nWhile repairing generators, Survivors are afflicted by the Blindness and Exhausted status effect.\n\nAny existing Exhausted status effect timers are paused while the Survivor is repairing a generator. After ending the repair action, the Survivor is afflicted by the Blindness and Exhausted status effect for 3/4/5 seconds.\nBlindness prevents Survivors from seeing auras.\n\nExhausted prevents Survivors from activating exhausting perks.\n\n\"The specimen's apparent telepathic ability can evoke feelings of dread and fatigue in nearby individuals.\" -Hawkins National Laboratory"
+  },
+  "Monitor & Abuse": {
+    "status": "different",
+    "sourceUrl": "https://nightlight.gg/perks/Monitor_%26_Abuse",
+    "descriptionPost95": "Meticulous in your approach, terrifying in your application.\nWhile in a chase, your Terror Radius is increased by 5/10/15%. Otherwise, your Terror Radius is decreased by 15/20/25%.\n\n\"It's time for your treatment!\" -The Doctor"
+  },
+  "Scourge Hook: Monstrous Shrine": {
+    "status": "different",
+    "sourceUrl": "https://nightlight.gg/perks/Scourge_Hook%3A_Monstrous_Shrine",
+    "descriptionPost95": "Your fervent care of the hooks found in the basement have aroused The Entity's interest.\n\nAt the start of the trial, 4 random hooks are changed into scourge hooks. You see their auras in white.\n\n  * Scourge Hooks grant 10/15/20% faster Entity progression if the Killer is not within 24 meters.\n\nBasement hooks count as Scourge Hooks.\n\"Then you will know that there is no escape. When hanging in the depths, you face the dark one.\""
+  },
+  "Nemesis": {
+    "status": "different",
+    "sourceUrl": "https://nightlight.gg/perks/Nemesis",
+    "descriptionPost95": "You seek retribution on those who have wronged you.\n\nA Survivor who blinds you or stuns you using a pallet or locker becomes your Obsession. Anytime a new Survivor becomes the Obsession, they are affected by the Oblivious status effect for 40/50/60 seconds and their aura is shown to you for 8 seconds.\n\nThe Killer can only be obsessed with one Survivor at a time.\nOblivious prevents Survivors from hearing or being affected by the Killer's Terror Radius.\n\n“Only a fool would spit in a demon's face and declare victory.” -Renjiro's Doctrine 4:9"
+  },
+  "Hex: No One Escapes Death": {
+    "status": "different",
+    "sourceUrl": "https://nightlight.gg/perks/Hex%3A_No_One_Escapes_Death",
+    "descriptionPost95": "A Hex rooting its power on hope. You are animated by the power of your Hex Totem when the Survivors are on the verge of escaping.\n\nOnce the exit gates are powered, if there is a Dull Totem remaining on the map, this Hex is applied to it.\n\nWhile this Hex is active,\n\n  * Survivors suffer from the Exposed status effect.\n  * You have 2/3/4% Haste.\nOnce the Hex's effect is revealed to the Survivors, its Hex Totem's aura is shown to the Survivors at a range of 4 meters. This range increases steadily over the next 30 seconds to 24 meters.\n\nThe Hex effects persist as long as the related Hex Totem is standing.\n\nExposed Survivors will be downed by basic attacks even if uninjured.\nHaste increases Killer movement speed.\n\n\"And the beast became faster and more powerful as if The Entity's shadowy whips were lashing at its back.\""
+  }
+}
