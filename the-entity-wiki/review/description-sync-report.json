@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-04-16T23:47:22.136Z",
+  "generatedAt": "2026-04-30T18:58:49.514Z",
   "options": {
     "dryRun": false,
     "checkMode": false,
@@ -18,131 +18,35 @@
       "same_as_legacy": 124
     },
     "changes": {
-      "added": 58,
-      "updated": 119,
-      "removed": 67,
-      "unchanged": 65,
-      "total": 244
-    },
-    "unresolvedCount": 0,
-    "unresolved": [],
-    "sampleChanges": [
-      {
-        "name": "Aftercare",
-        "kind": "addedPost95",
-        "matchType": "name"
-      },
-      {
-        "name": "Any Means Necessary",
-        "kind": "addedPost95",
-        "matchType": "name"
-      },
-      {
-        "name": "Autodidact",
-        "kind": "addedPost95",
-        "matchType": "name"
-      },
-      {
-        "name": "Barbecue & Chili",
-        "kind": "updatedPost95",
-        "matchType": "name"
-      },
-      {
-        "name": "Blood Warden",
-        "kind": "removedPost95",
-        "matchType": "name"
-      },
-      {
-        "name": "Borrowed Time",
-        "kind": "addedPost95",
-        "matchType": "name"
-      },
-      {
-        "name": "Buckle Up",
-        "kind": "addedPost95",
-        "matchType": "name"
-      },
-      {
-        "name": "Calm Spirit",
-        "kind": "addedPost95",
-        "matchType": "name"
-      },
-      {
-        "name": "Dead Hard",
-        "kind": "addedPost95",
-        "matchType": "name"
-      },
-      {
-        "name": "Dead Man’s Switch",
-        "kind": "removedPost95",
-        "matchType": "name"
-      },
-      {
-        "name": "Will To Live",
-        "kind": "addedPost95",
-        "matchType": "image-token"
-      },
-      {
-        "name": "Diversion",
-        "kind": "addedPost95",
-        "matchType": "name"
-      },
-      {
-        "name": "Fire Up",
-        "kind": "addedPost95",
-        "matchType": "name"
-      },
-      {
-        "name": "Fixated",
-        "kind": "removedPost95",
-        "matchType": "name"
-      },
-      {
-        "name": "Forced Penance",
-        "kind": "removedPost95",
-        "matchType": "name"
-      },
-      {
-        "name": "For the People",
-        "kind": "removedPost95",
-        "matchType": "name"
-      },
-      {
-        "name": "Furtive Chase",
-        "kind": "removedPost95",
-        "matchType": "name"
-      },
-      {
-        "name": "Gearhead",
-        "kind": "removedPost95",
-        "matchType": "name"
-      },
-      {
-        "name": "Head On",
-        "kind": "removedPost95",
-        "matchType": "name"
-      },
-      {
-        "name": "Hex: Devour Hope",
-        "kind": "updatedPost95",
-        "matchType": "name"
-      }
-    ]
-  },
-  "addons": {
-    "total": 906,
-    "counts": {
+      "added": 0,
       "updated": 0,
-      "unchanged": 906,
-      "unresolved": 0
-    },
-    "changes": {
-      "updated": 0,
-      "unchanged": 906,
+      "removed": 0,
+      "unchanged": 309,
       "total": 0
     },
     "unresolvedCount": 0,
     "unresolved": [],
     "sampleChanges": []
+  },
+  "addons": {
+    "total": 906,
+    "counts": {
+      "updated": 1,
+      "unchanged": 905,
+      "unresolved": 0
+    },
+    "changes": {
+      "updated": 1,
+      "unchanged": 905,
+      "total": 1
+    },
+    "unresolvedCount": 0,
+    "unresolved": [],
+    "sampleChanges": [
+      {
+        "name": "Walleye's Matchbook",
+        "internalId": "Addon_Ghost_WalleyesMatchbook"
+      }
+    ]
   }
 }

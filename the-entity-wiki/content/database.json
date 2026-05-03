@@ -2348,9 +2348,9 @@
       "name": "Fast Track",
       "owner": "Yun-Jin Lee",
       "type": "Survivor",
-      "description": "Sometimes the sacrifice of others is necessary to get ahead.\n\nWhenever another Survivor is hooked, you earn 1/2/3 Token(s), up to 9.\n\nWhile repairing, whenever you hit a Great basic Skill Check, spend all Tokens. For each Token spent, the Generator gains 2 permanent Charges.",
+      "description": "Sometimes taking responsibility for the rescue is the fastest way to get ahead.\n\nWhenever you unhook another Survivor, you earn 1 Token, up to 1/2/3.\n\nWhile repairing, whenever you hit a Great basic Skill Check, spend all Tokens. For each Token spent, the Generator gains 5% permanent progress.",
       "image": "dbd_images/perks/IconPerks_fastTrack.png",
-      "descriptionPost95": "Whenever another Survivor is hooked, you earn 1/2/3 Token(s), up to 9.\n\nWhile repairing, whenever you hit a great basic Skill Check, spend all Tokens. For each Token spent, the Generator gains 2% permanent progress."
+      "descriptionPost95": "Whenever you unhook another Survivor, you earn 1 Token, up to 1/2/3.\n\nWhile repairing, whenever you hit a great basic Skill Check, spend all Tokens. For each Token spent, the Generator gains 5% permanent progress."
     },
     {
       "id": "7221fa33-5830-44eb-b421-a8295d6266f8",
@@ -10444,7 +10444,7 @@
         "Item_Slasher_GhostPower"
       ],
       "killerName": "The Ghost Face",
-      "description": "A sheet of matches from Walleye's, a small bar in Northern Roseville. A victim’s phone number is scribbled in blue. One of the incriminating pieces of evidence found.\n\nDecreases Night Shroud recovery time by 3 seconds.",
+      "description": "A sheet of matches from Walleye's, a small bar in Northern Roseville. A victim's phone number is scribbled in blue. One of the incriminating pieces of evidence found.\n\nDecreases Night Shroud recovery time by 2 seconds.",
       "role": "killer",
       "rarity": "common",
       "bloodweb": true,
@@ -12780,7 +12780,7 @@
         "Item_Slasher_K29Power"
       ],
       "killerName": "The Mastermind",
-      "description": "To the person whose only tool is a crank, the whole world looks like a crank-shaped hole. Increases movement speed between the first and second Virulent Bounds by 8%.",
+      "description": "To the person whose only tool is a crank, the whole world looks like a crank-shaped hole. Increases movement speed between the first and second Virulent Bounds by 15%.",
       "role": "killer",
       "rarity": "uncommon",
       "bloodweb": true,
@@ -12924,7 +12924,7 @@
         "Item_Slasher_K29Power"
       ],
       "killerName": "The Mastermind",
-      "description": "A highly coveted foodstuff. The cash worth is second only to its regenerative effects. Increases the duration of the additional Virulent Bound window by 50%.",
+      "description": "A highly coveted foodstuff. The cash worth is second only to its regenerative effects. Increases the Chain Bound window by 20%.",
       "role": "killer",
       "rarity": "rare",
       "bloodweb": true,
@@ -16268,7 +16268,7 @@
         "Item_Slasher_K40Power"
       ],
       "killerName": "The Animatronic",
-      "description": "The lamination is peeling and crusty. How appetizing.\n\nDecreases the minimum time required to retrieve an axe embedded in the environment by 20%.",
+      "description": "The lamination is peeling and crusty. How appetizing.\n\nDecreases the minimum time required to retrieve an axe embedded in the environment by 10%.",
       "role": "killer",
       "rarity": "common",
       "bloodweb": true,
@@ -16476,7 +16476,7 @@
         "Item_Slasher_K40Power"
       ],
       "killerName": "The Animatronic",
-      "description": "Gaining control over the security doors is key to getting the job done.\n\nYour Axe gains the ability to travel through Security Doors, and will exit straight through the connected Security Door.\n\nWhen aiming your Axe:Gain Killer Instinct on Survivors within 4 meters of any Security Door.Reveals the auras of all Security Door numbers.",
+      "description": "Gaining control over the security doors is key to getting the job done.\n\nYour Axe gains the ability to travel through Security Doors, and will exit straight through the connected Security Door.\n\nWhen aiming your Axe:Gain Killer Instinct on Survivors within 6 meters of any Security Door.Reveals the auras of all Security Door numbers.",
       "role": "killer",
       "rarity": "veryrare",
       "bloodweb": true,
@@ -17704,7 +17704,7 @@
         "Item_Slasher_Blinker"
       ],
       "killerName": "The Nurse",
-      "description": "The slow and bulging breath stolen from the orderly. Dimly oscillates at The Nurse's touch.\n\nExtends the duration of a lunge after more than one Blink by 30%.",
+      "description": "The slow and bulging breath stolen from the orderly. Dimly oscillates at The Nurse's touch.\n\nExtends the duration of a lunge after more than one Blink by 10%.",
       "role": "killer",
       "rarity": "rare",
       "bloodweb": true,

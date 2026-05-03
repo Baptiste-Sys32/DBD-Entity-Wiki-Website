@@ -51,7 +51,7 @@ The script uses `rclone sync`, so re-running only transfers changed/missing file
 
 ## 4) Point site asset URLs to R2
 
-Set this in your app before production:
+Set this in your website before production:
 
 - `window.DBD_IMAGE_BASE_URL = "https://assets.yourdomain.com"`
 
@@ -59,7 +59,7 @@ Then image URLs should resolve to:
 
 `https://assets.yourdomain.com/<prefix>/<file>`
 
-If your app currently uses relative local paths, keep them for development and switch to this base URL in production.
+If your website currently uses relative local paths, keep them for development and switch to this base URL in production.
 
 ## 5) Attach custom domain
 

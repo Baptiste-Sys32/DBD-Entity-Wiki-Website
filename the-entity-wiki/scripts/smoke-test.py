@@ -163,7 +163,7 @@ def main():
             "label": "boot",
             "params": {},
             "check": lambda state: (
-                state["smokeReady"] or (_ for _ in ()).throw(RuntimeError("boot: app did not mount")),
+                state["smokeReady"] or (_ for _ in ()).throw(RuntimeError("boot: website did not mount")),
                 state["smokeView"] == "home" or (_ for _ in ()).throw(RuntimeError(f"boot: expected home, found {state['smokeView']}")),
                 "Something went wrong" not in state["text"] or (_ for _ in ()).throw(RuntimeError("boot: error boundary rendered")),
             ),
@@ -173,7 +173,7 @@ def main():
             "params": {"view": "settings"},
             "check": lambda state: (
                 state["smokeView"] == "settings" or (_ for _ in ()).throw(RuntimeError(f"settings: expected settings, found {state['smokeView']}")),
-                "App preferences" in state["text"] or (_ for _ in ()).throw(RuntimeError("settings: missing expected text")),
+                "Website preferences" in state["text"] or (_ for _ in ()).throw(RuntimeError("settings: missing expected text")),
             ),
         },
         {

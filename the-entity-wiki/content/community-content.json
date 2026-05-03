@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-04-13T01:42:35.738Z",
+  "generatedAt": "2026-04-30T18:41:40.971Z",
   "metadata": {
     "scraperVersion": 2,
     "attribution": "Data sourced from Otzdarva web properties. Keep attribution when redistributing.",
@@ -7,47 +7,47 @@
       {
         "id": "home",
         "url": "https://otzdarva.com/",
-        "fetchedAt": "2026-04-13T01:42:35.738Z"
+        "fetchedAt": "2026-04-30T18:41:40.971Z"
       },
       {
         "id": "addonTierlist",
         "url": "https://otz-addon-tierlist.pages.dev/",
-        "fetchedAt": "2026-04-13T01:42:35.738Z"
+        "fetchedAt": "2026-04-30T18:41:40.971Z"
       },
       {
         "id": "buildsHome",
         "url": "https://otzdarva-builds.com/",
-        "fetchedAt": "2026-04-13T01:42:35.738Z"
+        "fetchedAt": "2026-04-30T18:41:40.971Z"
       },
       {
         "id": "buildsPanels",
         "url": "https://otzdarva-builds.com/assets/modules/XMLHttpRequest/returnCharacterPanels.php",
-        "fetchedAt": "2026-04-13T01:42:35.738Z"
+        "fetchedAt": "2026-04-30T18:41:40.971Z"
       },
       {
         "id": "buildsPerkDetails",
         "url": "https://otzdarva-builds.com/assets/modules/XMLHttpRequest/showPerkDetails.php",
-        "fetchedAt": "2026-04-13T01:42:35.738Z"
+        "fetchedAt": "2026-04-30T18:41:40.971Z"
       },
       {
         "id": "characterInfo",
         "url": "https://otzdarva.com/dbd/character-info",
-        "fetchedAt": "2026-04-13T01:42:35.738Z"
+        "fetchedAt": "2026-04-30T18:41:40.971Z"
       },
       {
         "id": "beginnerGuides",
         "url": "https://otzdarva.com/dbd/beginner-guides",
-        "fetchedAt": "2026-04-13T01:42:35.738Z"
+        "fetchedAt": "2026-04-30T18:41:40.971Z"
       },
       {
         "id": "tierlists",
         "url": "https://otzdarva.com/dbd/tierlists",
-        "fetchedAt": "2026-04-13T01:42:35.738Z"
+        "fetchedAt": "2026-04-30T18:41:40.971Z"
       },
       {
         "id": "killerGuides",
         "url": "https://otzdarva.com/dbd/killer-guides",
-        "fetchedAt": "2026-04-13T01:42:35.738Z"
+        "fetchedAt": "2026-04-30T18:41:40.971Z"
       }
     ],
     "stats": {
@@ -1614,7 +1614,7 @@
             "name": "Heavy Panting",
             "imageUrl": "https://otz-addon-tierlist.pages.dev/public/addons/nurse/heavypanting.png",
             "otzComment": "Heavy Panting : A ridiculously powerful add-on that increases the Nurse's lunge without any downside. Makes it even harder for Survivors to outplay you.",
-            "description": "The slow and bulging breath stolen from Harvey Kavanagh, the asylum's \"Fat Orderly\".Dimly oscillates at The Nurse's touch. Extends the Lunge duration of Special Attacks to 130 %, which increases your Attack range by +30 %. This effect only applies after the second or third Blink.",
+            "description": "This description is based on the changes announced for or featured in the upcoming Patch 9.6.0The slow and bulging breath stolen from Harvey Kavanagh, the asylum's \"Fat Orderly\".Dimly oscillates at The Nurse's touch. Extends the Lunge duration of Special Attacks to 110 %, which increases your Attack range by +10 %. This effect only applies after the second or third Blink.",
             "localMatch": {
               "addonId": "b18e555d-aa41-4b43-861b-554120a1d22b",
               "internalId": "ADDON_Lastbreath_HeavyPanting",
@@ -7437,7 +7437,7 @@
             "name": "Walleye's Matchbook",
             "imageUrl": "https://otz-addon-tierlist.pages.dev/public/addons/ghostface/walleyesmatchbook.png",
             "otzComment": "Walleye's Matchbook : This add-on shortens the already short power cooldown another 3 seconds. Good by itself, especially considering its rarity. Does not pair well with other add-ons that automatically recover your power like the blue Olsen's Wallet.",
-            "description": "A sheet of matches from Walleye's, a small bar in Northern Roseville.A victim's phone number is scribbled in blue.One of the incriminating pieces of evidence found. Reduces the Power Recharge time by -3 seconds.",
+            "description": "This description is based on the changes announced for or featured in the upcoming Patch 9.6.0A sheet of matches from Walleye's, a small bar in Northern Roseville.A victim's phone number is scribbled in blue.One of the incriminating pieces of evidence found. Reduces the Power Recharge time by -2 seconds.",
             "localMatch": {
               "addonId": "634fe595-c33b-41a2-af36-b78e7ddfca4f",
               "internalId": "Addon_Ghost_WalleyesMatchbook",
@@ -10736,7 +10736,7 @@
             "name": "Death Throes Compilation",
             "imageUrl": "https://otz-addon-tierlist.pages.dev/public/addons/trickster/deaththroescompilation.png",
             "otzComment": "Death Throes Compilation : Automatically reloads 75% of your blade ammo upon finishing Main Event, greatly reducing the need to reload and lose momentum between chases. A simple but strong effect that shines best if you have a build that constantly feeds you information and points you towards the next chase.",
-            "description": "A collection of the final sounds from Ji-Woon's victims, adapted to a vinyl record.Terrifying and emotionally raw. 50% of the maximum Blade capacity is refilled once Main Event ends. \"Please, no... don't make it hurt... I can't... I...\" — Unidentified Voice",
+            "description": "A collection of the final sounds from Ji-Woon's victims, adapted to a vinyl record.Terrifying and emotionally raw. 75% of the maximum Blade capacity is refilled once Main Event ends. \"Please, no... don't make it hurt... I can't... I...\" — Unidentified Voice",
             "localMatch": {
               "addonId": "8a6720b7-ff5e-401c-ab94-dc498d244006",
               "internalId": "Addon_Trickster_19",
@@ -10752,7 +10752,7 @@
             "name": "Ripper Brace",
             "imageUrl": "https://otz-addon-tierlist.pages.dev/public/addons/trickster/ripperbrace.png",
             "otzComment": "Ripper Brace : Provides an increasingly bigger bonus to action speeds (break and vault) based on your current style rank. Particularly useful when you reach the maximum S-rank since it lasts for 66 seconds by default and allows you to benefit from this effect for quite a long time. Not a bad effect but it can sometimes be somewhat counter-productive if you're going out of your way to perform breaks or vaults at inappropriate times. These effects can be stacked with perks such as Brutal Strength or Fire Up.",
-            "description": "A wrist brace worn by Ji-Woon during the filming of his music video Ripper.Though unintentional, the design stabilises the wrist better than many medical braces. For each Style Rank, you basic-vault Windows, basic-break Pallets, Breakable Walls and damage Generators +3 % faster.",
+            "description": "A wrist brace worn by Ji-Woon during the filming of his music video Ripper.Though unintentional, the design stabilises the wrist better than many medical braces. For each Style Rank, you basic-vault Windows, basic-break Pallets, Breakable Walls and damage Generators +6 % faster.",
             "localMatch": {
               "addonId": "faedb603-17ce-44cd-9e26-3b7cc0d85cf3",
               "internalId": "Addon_Trickster_13",
@@ -10784,7 +10784,7 @@
             "name": "Trick Pouch",
             "imageUrl": "https://otz-addon-tierlist.pages.dev/public/addons/trickster/trickpouch.png",
             "otzComment": "Trick Pouch : Increases your blade ammo counter by 8, leading to less frequent reloads and a better ability to pressure Survivors without interruptions. A simple but great effect, especially for beginners that do not always the get full value of the Main Event's temporary infinite blades.",
-            "description": "A pouch with a number of hidden pockets.Used by aspiring magicians and those with something to hide. Increases the number of carried Blades by +4.",
+            "description": "A pouch with a number of hidden pockets.Used by aspiring magicians and those with something to hide. Increases the number of carried Blades by +8.",
             "localMatch": {
               "addonId": "1d7e5140-bfc0-4fe4-a041-970fe3968ebd",
               "internalId": "Addon_Trickster_02",
@@ -10816,7 +10816,7 @@
             "name": "Lucky Blade",
             "imageUrl": "https://otz-addon-tierlist.pages.dev/public/addons/trickster/luckyblade.png",
             "otzComment": "Lucky Blade : Triggers one of three randomized effects after each 8 blade hits.",
-            "description": "The first throwing knife Ji-Woon ever owned.Purchased by his father, he was expected to put on a show for those frequenting the family restaurant.On every eighth Blade hit, a bonus is assigned at random: 45% chance: Throw rate is increased by +8 % for 8 seconds. 45% chance: Gain +3 % Haste Status Effect for 3 seconds. 10% chance: Gain 1 additional Style Point.",
+            "description": "The first throwing knife Ji-Woon ever owned.Purchased by his father, he was expected to put on a show for those frequenting the family restaurant.On every eighth Blade hit, a bonus is assigned at random: Throw rate is increased by +5 % for 5 seconds. Gain +3 % Haste Status Effect for 6 seconds. Gain 1 additional Style Point.",
             "localMatch": {
               "addonId": "868e799a-37e5-4f3f-94a4-b762a786a890",
               "internalId": "Addon_Trickster_07",
@@ -10832,7 +10832,7 @@
             "name": "Tequila Moonrock",
             "imageUrl": "https://otz-addon-tierlist.pages.dev/public/addons/trickster/tequilamoonrock.png",
             "otzComment": "Tequila Moonrock : Increases the throw rate of blades by a noticeable 8% for a short duration after gaining a style rank point. The effect is noticeable but sometimes triggers at awkward times when you can't really make the most out of it.",
-            "description": "A drink invented in a modest Changwon bar.Became a favourite of Ji-Woon's. Increases the Throw rate by +15 % for 10 seconds after gaining a Style Rank.",
+            "description": "A drink invented in a modest Changwon bar.Became a favourite of Ji-Woon's. Increases the Throw rate by +8 % for 10 seconds after gaining a Style Rank.",
             "localMatch": {
               "addonId": "42dc359a-4fb3-4718-a615-43951c0f8e02",
               "internalId": "Addon_Trickster_09",
@@ -10864,7 +10864,7 @@
             "name": "Fizz-Spin Soda",
             "imageUrl": "https://otz-addon-tierlist.pages.dev/public/addons/trickster/fizzspinsoda.png",
             "otzComment": "Fizz-Spin Soda : Decreases the amount of consecutive blades needed before the throw rate is increased (down to 3-8 instead of the original 5-10). This makes it easier to throw more blades per second when you're performing many consecutive throws but doesn't really have any effects when throwing them in very small bursts or during Main Event. Being able to squeeze in one or two additional hits here and there can make a difference, but the effect of this add-on is simply too small in most situations.",
-            "description": "A limited edition can of soda promoting NO SPIN.High sugar and caffeine content. Increases the amount of Blade throws needed to slow movement speed by 2.",
+            "description": "A limited edition can of soda promoting NO SPIN.High sugar and caffeine content. Decreases the amount of Blade throws needed to increase Throw rate by 2.",
             "localMatch": {
               "addonId": "ff975e54-dec3-4617-80e0-a7efbd27c6d3",
               "internalId": "Addon_Trickster_11",
@@ -10880,7 +10880,7 @@
             "name": "Waiting For You Watch",
             "imageUrl": "https://otz-addon-tierlist.pages.dev/public/addons/trickster/waitingforyouwatch.png",
             "otzComment": "Waiting For You Watch : Reveals the aura of a Survivor for a very decent duration of 10 seconds when their laceration fully decays. Useful when you land a knife or two on a target that you lose sight of momentarily. It can also help you keep track of a group of Survivors that has scattered away after being interrupted by your blades. Do keep in mind that the laceration decay is 100% paused during S-rank, delaying the effects of this add-on.",
-            "description": "A pocket watch worn by Ji-Woon during a live performance of I'll Be Waiting For You.It is a stage prop that does not work and never will. Reveals auras of Survivors who fully recovered from Laceration for 4 seconds. \"Don't run awayDon't say we're throughNo way to escape thisI'll be waiting for you\" — NO SPIN'S \"Waiting For You\"",
+            "description": "A pocket watch worn by Ji-Woon during a live performance of I'll Be Waiting For You.It is a stage prop that does not work and never will. Reveals auras of Survivors who fully recovered from Laceration for 10 seconds. \"Don't run awayDon't say we're throughNo way to escape thisI'll be waiting for you\" — NO SPIN'S \"Waiting For You\"",
             "localMatch": {
               "addonId": "103a7823-7eda-4095-a789-097ca854fe65",
               "internalId": "Addon_Trickster_12",
@@ -10896,7 +10896,7 @@
             "name": "On Target Single",
             "imageUrl": "https://otz-addon-tierlist.pages.dev/public/addons/trickster/ontargetsingle.png",
             "otzComment": "On Target Single : Extends the duration of Main Event, making it about 5% longer for each blade that you hit (0.5s per blade). This could theoretically keep Main Event going for an additional 20 seconds at most. A few extra seconds can still be devastating against Survivors that are grouped up after unhooking (for example), but you'll often find that there's a lot of situations where a longer Main Event is redundant or unnecessary.",
-            "description": "An underground single produced by Ji-Woon before achieving fame.Only the biggest NO SPIN fans collected this hidden gem. Increases the Decay delay of the Laceration Meter by +30 %.",
+            "description": "An underground single produced by Ji-Woon before achieving fame.Only the biggest NO SPIN fans collected this hidden gem. While in S-Rank, each Blade hit increases the duration of Main Event by 0.5 seconds up to a maximum of 20 seconds.",
             "localMatch": {
               "addonId": "43633561-19fe-40f3-a307-2b7c937231f2",
               "internalId": "Addon_Trickster_06",
@@ -10928,7 +10928,7 @@
             "name": "Bloody Boa",
             "imageUrl": "https://otz-addon-tierlist.pages.dev/public/addons/trickster/bloodyboa.png",
             "otzComment": "Bloody Boa : Signicantly extends the rate at which Survivors lose laceration (partial knife damage), although it doesn't seem to have an effect on the first laceration token (only subsequent ones). A simple and useful effect for beginners that might struggle to track Survivors in chase. Just keep in mind that this add-on has bad synergy with the blue Waiting For You Watch and that laceration does not decay at all when you're in S-rank.",
-            "description": "A boa that Ji-Woon draped around a victim's slashed neck.A number of pockets are concealed within it. Decreases the speed at which Laceration decays by -25 %.",
+            "description": "A boa that Ji-Woon draped around a victim's slashed neck.A number of pockets are concealed within it. Decreases the speed at which Laceration decays by -75 %.",
             "localMatch": {
               "addonId": "fe8d2585-3242-4527-9ad1-7f6a581f652e",
               "internalId": "Addon_Trickster_10",
@@ -10944,7 +10944,7 @@
             "name": "Killing Part Chords",
             "imageUrl": "https://otz-addon-tierlist.pages.dev/public/addons/trickster/killingpartchords.png",
             "otzComment": "Killing Part Chords : Increases the time before S-rank decreases by about 12 seconds. However, the normal S-rank timer is already very generous and these extra few seconds rarely make a difference unless you really need to delay using Main Event for some reason. You might choose to run this add-on if you're trying to extend the S-rank duration to benefit from another add-on such as the blue Ripper Brace.",
-            "description": "A set of chords that Ji-Woon never found a song for.Still, the sound is undeniably catchy. Increases the time before Style Ranks D to A decay by +20 %.",
+            "description": "A set of chords that Ji-Woon never found a song for.Still, the sound is undeniably catchy. Increases the time before Style Ranks D to A decay by +50 %.",
             "localMatch": {
               "addonId": "90219073-6c81-437c-93c1-1ce6fd94054a",
               "internalId": "Addon_Trickster_03",
@@ -10976,7 +10976,7 @@
             "name": "Inferno Wires",
             "imageUrl": "https://otz-addon-tierlist.pages.dev/public/addons/trickster/infernowires.png",
             "otzComment": "Inferno Wires : WARNING: Add-on is possible bugged currently. Increases the time before rank decreases from D to A. Each rank has a unique timer that ranges from 30 to 20 seconds, so this add-on will give you an average of about 12 extra seconds before your rank is depleted. This effect is decent for newer players that struggle to build up rank but largely unnecessary for experienced players that are already very good at building it quickly.",
-            "description": "Burnt wires form the studio fire that killed four of the five NO SPIN members.Their deaths gave rise to The Trickster. Decreases the cool-down of Showstoper after performing Main Event by -44 %.",
+            "description": "Burnt wires form the studio fire that killed four of the five NO SPIN members.Their deaths gave rise to The Trickster. Increases the decay time of S-Rank by 20 %.",
             "localMatch": {
               "addonId": "ad367ac7-69fe-482a-9b82-840de1b4c767",
               "internalId": "Addon_Trickster_04",
@@ -13622,7 +13622,7 @@
             "name": "Egg (Gold)",
             "imageUrl": "https://otz-addon-tierlist.pages.dev/public/addons/wesker/egggold.png",
             "otzComment": "Egg (Gold) : Extends the window of time between your dashes, allowing you to reposition for longer before using second dash. In some rare cases, this longer period can lead to more wasted time, but overall this is a solid add-on that catches many Survivors off-guard when they think you're already in cooldown. Even more importantly, this add-on indirectly affects the speed at which you move during this period. This makes it a far superior alternative to the yellow Loose Crank, and has a much more noticeable effect. Some advanced players really appreciate this feature and use it to perform certain tricks that involve sliding along obstacles.",
-            "description": "A highly coveted foodstuff.The cash worth is second only to its regenerative effects. Increases the duration of the Chain Bound Window by +50 %.",
+            "description": "This description is based on the changes announced for or featured in the upcoming Patch 9.6.0A highly coveted foodstuff.The cash worth is second only to its regenerative effects. Increases the duration of the Chain Bound Window by +20 %.",
             "localMatch": {
               "addonId": "4ee877c1-bcf9-4527-a61d-9f4725b3797a",
               "internalId": "Addon_K29_14",
@@ -13830,7 +13830,7 @@
             "name": "Loose Crank",
             "imageUrl": "https://otz-addon-tierlist.pages.dev/public/addons/wesker/loosecrank.png",
             "otzComment": "Loose Crank : Increasing the movement speed between your dashes might sound very appealing, but the effects of this add-on are very small and barely make a difference. The blue Egg (Gold) is actually a much alternative for this particular purpose.",
-            "description": "To the person whose only tool is a crank, the whole world looks like a crank-shaped hole. Increases your Movement speed during the Chain Bound Window by +8 %.",
+            "description": "This description is based on the changes announced for or featured in the upcoming Patch 9.6.0To the person whose only tool is a crank, the whole world looks like a crank-shaped hole. Increases your Movement speed during the Chain Bound Window by +15 %.",
             "localMatch": {
               "addonId": "ae3633c0-545d-4527-956a-a9b6006e6c8f",
               "internalId": "Addon_K29_05",
@@ -18823,7 +18823,7 @@
             "name": "Restaurant Menu",
             "imageUrl": "https://otz-addon-tierlist.pages.dev/public/addons/springtrap/restaurantmenu.png",
             "otzComment": "Restaurant Menu : Reduces the recall time of a missed axe that is left on the environment (normally 7 seconds), making it 1.4 seconds faster. An amazing effect for beginners that are still not too accurate with their axe but also for experienced players, since throwing your axe around is generally a good idea to make yourself 5% faster (until you need to recall it at a later point). Pairs very well with any add-on that gives you effects that trigger when walking into your axe's area of effect, such as the blue Foxy's Hook or the purple Endo CPU. It does not, however, reduce the recall time when the axe is lodged on a Survivor after hitting them.",
-            "description": "\"The lamination is peeling and crusty.How appetising.\" While retrieving the Fire Axe whenever it is embedded in the environment, you benefit from the following effect: Reduces the minimum Retrieval time by -20 %.",
+            "description": "This description is based on the changes announced for or featured in the upcoming Patch 9.6.0\"The lamination is peeling and crusty.How appetising.\" While retrieving the Fire Axe whenever it is embedded in the environment, you benefit from the following effect: Reduces the minimum Retrieval time by -10 %.",
             "localMatch": {
               "addonId": "e3b0a01c-fde7-4d6e-a7c8-7f9420ae0ad8",
               "internalId": "Addon_K40_03",
@@ -18999,7 +18999,7 @@
             "name": "Access Panel",
             "imageUrl": "https://otz-addon-tierlist.pages.dev/public/addons/springtrap/accesspanel.png",
             "otzComment": "Access Panel : When holding your axe, reveals any Survivor within 4 meters of a security door. On top of being able to reliably find people using security doors, it can occasionally reveal Survivors working on generators near them. While most generators are too far away from them, some maps may have 1 or 2 generators close enough to a gate to make detection with this add-on unavoidable. Being able to briefly tap your power button to get immediate information on Survivor locations is very powerful and pairs well with several other add-ons, such as the iridescent Faz-Coin. If you use the Faz-Coin and detect a Survivor near a door, you can get rid of your axe and begin to approach them while stealthy. This add-on also unlocks the ability to throw your axe through security doors, making it come out of whatever other door is linked to it. This ability is not generally very useful, but you can pair it with the Faz-Coin to immediately create a fake terror radius across the map.",
-            "description": "\"Gaining control over the security doors is key to getting the job done.\" Unlocks a special ability for the Fire Axe: The Fire Axe can travel through Security Doors and will exit straight through the connected Security Door. While aiming the Fire Axe, you benefit from the following effect: Survivors within 4 metres of any Security Door trigger Killer Instinct.",
+            "description": "This description is based on the changes announced for or featured in the upcoming Patch 9.6.0\"Gaining control over the security doors is key to getting the job done.\" Unlocks a special ability for the Fire Axe: The Fire Axe can travel through Security Doors and will exit straight through the connected Security Door. While aiming the Fire Axe, you benefit from the following effect: Survivors within 6 metres of any Security Door trigger Killer Instinct.",
             "localMatch": {
               "addonId": "0a1f6cf5-d410-46ac-b374-9a1ac69b6726",
               "internalId": "Addon_K40_16",
@@ -29929,7 +29929,7 @@
         "difficulty": "Intermediate Difficulty",
         "cost": "250 AC / 4,500 IS",
         "availableIn": "\"Endless Hunt\" DLC Pack",
-        "speed": "4.6 m/s (115%)",
+      "speed": "4.4 m/s (110%)",
         "terrorRadius": "24m",
         "stealth": "",
         "loudnessHealthy": "",
@@ -30181,7 +30181,7 @@
         "difficulty": "High Difficulty",
         "cost": "250 AC / 4,500 IS",
         "availableIn": "\"Macabre Tales\" DLC Pack",
-        "speed": "4.6 m/s (115%)",
+        "speed": "4.4 m/s (110%)",
         "terrorRadius": "32m",
         "stealth": "",
         "loudnessHealthy": "",
@@ -30643,7 +30643,7 @@
         "difficulty": "High Difficulty",
         "cost": "250 AC / 4,500 IS",
         "availableIn": "\"Macabre Tales\" DLC Pack",
-        "speed": "4.6 m/s (115%)",
+        "speed": "4.4 m/s (110%)",
         "terrorRadius": "40m",
         "stealth": "",
         "loudnessHealthy": "",
@@ -36091,28 +36091,30 @@
       {
         "id": "e9563bb7-8ec3-4f7f-87ec-588ca45adbc3",
         "title": "Killer Perk Tierlist",
-        "description": "All Killer Perks explained & tierlisted.",
-        "patch": "8.3.0",
-        "dateLabel": "Oct 10th, 2024",
-        "dateIso": "2024-10-09T22:00:00.000Z",
+        "description": "Latest Otz perk-tierlist stream found on YouTube; use this for current perk rankings until the official tierlists page is refreshed.",
+        "patch": "9.5.0",
+        "dateLabel": "Mar 23rd, 2026",
+        "dateIso": "2026-03-22T23:00:00.000Z",
         "category": "1",
         "categoryLabel": "Killer Focus",
-        "imageUrl": "https://otzdarva.com/[object%20Object]",
-        "url": "https://youtu.be/9beMyN9FwWA",
-        "sourceType": "video"
+        "imageUrl": "https://i.ytimg.com/vi/K2ZqYJqkbxY/maxresdefault.jpg",
+        "url": "https://www.youtube.com/watch?v=K2ZqYJqkbxY",
+        "sourceType": "video",
+        "sourceNote": "Manual YouTube freshness override; otzdarva.com/dbd/tierlists still points to the Oct 2024 edited video."
       },
       {
         "id": "4eb3b866-167e-4849-8ef0-ec21485f9fef",
         "title": "Survivor Perk Tierlist",
-        "description": "All Survivor Perks explained & tierlisted.",
-        "patch": "8.3.0",
-        "dateLabel": "Oct 7th, 2024",
-        "dateIso": "2024-10-06T22:00:00.000Z",
+        "description": "All 170 Survivor Perks: Tierlist & Full Explanation.",
+        "patch": "9.5.0",
+        "dateLabel": "Apr 29th, 2026",
+        "dateIso": "2026-04-28T22:00:00.000Z",
         "category": "2",
         "categoryLabel": "Survivor Focus",
-        "imageUrl": "https://otzdarva.com/[object%20Object]",
-        "url": "https://youtu.be/nEkj3cp7Ows",
-        "sourceType": "video"
+        "imageUrl": "https://i.ytimg.com/vi_webp/pqHHCN9Po-4/maxresdefault.webp",
+        "url": "https://www.youtube.com/watch?v=pqHHCN9Po-4",
+        "sourceType": "video",
+        "sourceNote": "Manual YouTube freshness override; otzdarva.com/dbd/tierlists still points to the Oct 2024 edited video."
       },
       {
         "id": "55502172-df2a-45fc-badb-1ff4693cc6e7",
