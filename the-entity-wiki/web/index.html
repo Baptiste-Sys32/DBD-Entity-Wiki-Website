@@ -7512,38 +7512,226 @@
               </div>
             )}
           </div>
-          <div className="px-6 pb-32">
+<div className="px-6 pb-32">
+            <table className="cx-wikitable"><tbody>
             {filtered.map(item => {
               const category = type === 'Killers' ? 'Killer' : type === 'Survivors' ? 'Survivor' : 'Perk';
               const showPerks = category === 'Killer' || category === 'Survivor';
               const perksForOwner = showPerks ? (perksByOwner[item.name] || []) : [];
               const relatedBuilds = showPerks ? (buildsByOwner[item.name] || []) : [];
+              const isCharacter = category === 'Killer' || category === 'Survivor';
+              const isPerk = category === 'Perk';
+              const subtext = category === 'Killer' ? (item.realName || item.name) : category === 'Survivor' ? item.role : (item.owner || 'Universal');
+              const accentTone = category === 'Killer' ? '#ff3b30' : category === 'Survivor' ? '#38bdf8' : (item.type === 'Killer' ? '#ff3b30' : '#38bdf8');
+              const fallbackIcon = category === 'Killer' ? <Icons.Sword width={24} height={24} className="opacity-20" /> : category === 'Survivor' ? <Icons.Heart width={24} height={24} className="opacity-20" /> : <Icons.BookOpen width={20} height={20} className="opacity-20" />;
+              const isInCompare = category === 'Perk' && comparePerks.some(p => p.id === item.id);
+              const onLongPress = category === 'Perk' && onPerkLongPress ? () => onPerkLongPress(item) : undefined;
+              const isFavorite = favoritePerks.includes(item.id);
+              const onToggleFavoriteFn = onToggleFavorite ? () => onToggleFavorite(item.id) : undefined;
+              const onPerkTapFn = category === 'Perk' && onPerkTap ? () => onPerkTap(item) : undefined;
+              const onShowLoreFn = showPerks && onShowLore ? () => onShowLore(item) : undefined;
+              const onShowPowerFn = category === 'Killer' && onShowPower ? () => onShowPower(item) : undefined;
+              const onViewProfileFn = showPerks && onViewProfile ? () => onViewProfile(item) : undefined;
+              const onToggleFn = showPerks ? () => setExpandedId(expandedId === item.id ? null : item.id) : undefined;
+              const onPerkClickFn = perk => {
+                onPerkSelect && onPerkSelect(perk.name);
+                setView && setView('perks');
+              };
+              const onCreateBuildFn = showPerks && onCreateBuildSeed ? () => { onCreateBuildSeed({ role: category, characterId: item.id, characterName: item.name }); setView && setView('buildLab'); } : undefined;
+              void relatedBuilds;
+              void onCreateBuildFn;
+              const isExpanded = showPerks && expandedId === item.id;
+              let pressTimer = null;
+              let longPressFired = false;
+              const handleTouchStart = () => {
+                if (!onLongPress) return;
+                longPressFired = false;
+                pressTimer = setTimeout(() => {
+                  longPressFired = true;
+                  onLongPress();
+                }, 500);
+              };
+              const handleTouchEnd = () => {
+                if (pressTimer) {
+                  clearTimeout(pressTimer);
+                  pressTimer = null;
+                }
+              };
+              const handlePerkClick = () => {
+                if (longPressFired) {
+                  longPressFired = false;
+                  return;
+                }
+                if (onPerkTapFn) onPerkTapFn();
+              };
+              const handleCharacterClick = () => {
+                if (onViewProfileFn) { onViewProfileFn(); return; }
+                if (onToggleFn) onToggleFn();
+              };
+              if (isCharacter) {
+                return (
+                  <React.Fragment key={item.id}>
+                    <tr
+                      onClick={handleCharacterClick}
+                      className={`${isInCompare ? 'ring-2 ring-purple-500' : ''}`}
+                      style={isExpanded ? { borderColor: accentTone, boxShadow: 'inset 3px 0 0 ' + accentTone } : { boxShadow: 'inset 3px 0 0 ' + accentTone }}
+                    >
+                      <td className="cx-perkcell">
+                        <div style={{ width: 34, height: 34, overflow: 'hidden', flexShrink: 0, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                          <AssetFrame type={category} imageUrl={item.image} fallbackIcon={fallbackIcon} />
+                        </div>
+                      </td>
+                      <td className="cx-sec">
+                        <span className="text-[10px] font-semibold uppercase tracking-wider text-slate-300">{category}</span>
+                        <h3 className="text-lg font-semibold text-white mb-1 tracking-tight">{item.name}</h3>
+                        <p className="text-zinc-400 text-sm font-medium">{subtext}</p>
+                      </td>
+                      <td>
+                        {(isPerk || isCharacter) && onToggleFavoriteFn && (
+                          <button
+                            onClick={(e) => { e.stopPropagation(); onToggleFavoriteFn(); }}
+                            className={`p-1.5 rounded-full transition-colors ${isFavorite ? 'bg-yellow-500/20' : 'bg-white/10 hover:bg-white/20'}`}
+                          >
+                            <Icons.Star width={16} height={16} className={isFavorite ? 'text-yellow-400 fill-yellow-400' : 'text-zinc-500'} />
+                          </button>
+                        )}
+                      </td>
+                    </tr>
+                    {isExpanded && (
+                      <tr key={item.id + '-detail'}>
+                        <td colSpan={3}>
+                          {category === 'Killer' && item.power && (
+                            <p className="text-zinc-500 text-xs mt-2 leading-relaxed">{item.power}</p>
+                          )}
+                          {category === 'Killer' && KILLER_STATS[item.name] && (
+                            <div className="flex flex-wrap gap-2 mt-2">
+                              <span className="px-2 py-1 rounded-lg bg-red-500/10 border border-red-500/20 text-[10px] font-bold text-red-400">
+                                TR: {KILLER_STATS[item.name].terrorRadius}
+                              </span>
+                              <span className="px-2 py-1 rounded-lg bg-red-500/10 border border-red-500/20 text-[10px] font-bold text-red-400">
+                                Speed: {KILLER_STATS[item.name].speed}
+                              </span>
+                              <span className="px-2 py-1 rounded-lg bg-red-500/10 border border-red-500/20 text-[10px] font-bold text-red-400">
+                                Height: {KILLER_STATS[item.name].height}
+                              </span>
+                            </div>
+                          )}
+                          {item.description && (
+                            <p className="perk-effect-text text-zinc-300/90 text-xs leading-relaxed font-medium tracking-wide">
+                              <span className="perk-effect-label text-zinc-500 mr-2 uppercase text-[10px] font-bold">Effect</span>
+                              {stripHtml(item.description)}
+                            </p>
+                          )}
+                          {onShowLoreFn && (
+                            <div className="flex gap-2 mt-2">
+                              <button
+                                onClick={(e) => { e.stopPropagation(); onShowLoreFn(); }}
+                                className="flex-1 py-2.5 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 text-zinc-300 text-sm font-semibold transition-colors flex items-center justify-center gap-2"
+                              >
+                                <Icons.BookOpen width={16} height={16} />
+                                Lore
+                              </button>
+                              {category === 'Killer' && item.power && onShowPowerFn && (
+                                <button
+                                  onClick={(e) => { e.stopPropagation(); onShowPowerFn(); }}
+                                  className="flex-1 py-2.5 rounded-xl bg-red-500/20 hover:bg-red-500/30 border border-red-500/30 text-red-400 text-sm font-semibold transition-colors flex items-center justify-center gap-2"
+                                >
+                                  <Icons.Zap width={16} height={16} />
+                                  Power
+                                </button>
+                              )}
+                            </div>
+                          )}
+                          {perksForOwner.length > 0 && (
+                            <div className="mt-2">
+                              <p className="text-zinc-500 text-[10px] font-bold uppercase tracking-widest mb-3">Teachables</p>
+                              <div className="space-y-2">
+                                {perksForOwner.slice(0, 3).map(perk => (
+                                  <button
+                                    key={perk.id}
+                                    onClick={(e) => { e.stopPropagation(); onPerkClickFn && onPerkClickFn(perk); }}
+                                    className="w-full text-left p-3 rounded-xl bg-white/5 border border-white/5 hover:border-white/15 transition-colors flex items-start gap-3"
+                                  >
+                                    <AssetFrame type="Perk" imageUrl={perk.image} fallbackIcon={<Icons.BookOpen width={18} height={18} className="text-white/60" />} />
+                                    <div className="flex-1">
+                                      <p className="text-white text-sm font-bold">{perk.name}</p>
+                                      <PerkDescriptionBlock
+                                        perk={perk}
+                                        settings={settings}
+                                        accentColor={accentTone}
+                                        compactLines={2}
+                                        className="text-zinc-500 text-xs mt-1 leading-relaxed"
+                                      />
+                                    </div>
+                                  </button>
+                                ))}
+                              </div>
+                            </div>
+                          )}
+                        </td>
+                      </tr>
+                    )}
+                  </React.Fragment>
+                );
+              }
               return (
-                <GlassCard
+                <tr
                   key={item.id}
-                  item={item}
-                  category={category}
-                  expanded={showPerks && expandedId === item.id}
-                  onToggle={showPerks ? () => setExpandedId(expandedId === item.id ? null : item.id) : undefined}
-                  perksForOwner={perksForOwner}
-                  onPerkClick={perk => {
-                    onPerkSelect && onPerkSelect(perk.name);
-                    setView && setView('perks');
-                  }}
-                  buildsForOwner={relatedBuilds}
-                  onCreateBuild={showPerks && onCreateBuildSeed ? () => { onCreateBuildSeed({ role: category, characterId: item.id, characterName: item.name }); setView && setView('buildLab'); } : undefined}
-                  isInCompare={category === 'Perk' && comparePerks.some(p => p.id === item.id)}
-                  onLongPress={category === 'Perk' && onPerkLongPress ? () => onPerkLongPress(item) : undefined}
-                  isFavorite={favoritePerks.includes(item.id)}
-                  onToggleFavorite={onToggleFavorite ? () => onToggleFavorite(item.id) : undefined}
-                  onPerkTap={category === 'Perk' && onPerkTap ? () => onPerkTap(item) : undefined}
-                  onShowLore={showPerks && onShowLore ? () => onShowLore(item) : undefined}
-                  onShowPower={category === 'Killer' && onShowPower ? () => onShowPower(item) : undefined}
-                  onViewProfile={showPerks && onViewProfile ? () => onViewProfile(item) : undefined}
-                  settings={settings}
-                />
+                  onClick={isPerk && onPerkTapFn ? handlePerkClick : undefined}
+                  onTouchStart={isPerk ? handleTouchStart : undefined}
+                  onTouchEnd={isPerk ? handleTouchEnd : undefined}
+                  onTouchCancel={isPerk ? handleTouchEnd : undefined}
+                  onMouseDown={isPerk ? handleTouchStart : undefined}
+                  onMouseUp={isPerk ? handleTouchEnd : undefined}
+                  onMouseLeave={isPerk ? handleTouchEnd : undefined}
+                  className={`${onPerkTapFn ? 'cursor-pointer' : ''} ${isInCompare ? 'ring-2 ring-purple-500' : ''}`}
+                  style={{ boxShadow: 'inset 3px 0 0 ' + accentTone }}
+                >
+                  <td className="cx-perkcell">
+                    <div style={{ width: 34, height: 34, overflow: 'hidden', flexShrink: 0, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                      <AssetFrame type={category} imageUrl={item.image} fallbackIcon={fallbackIcon} />
+                    </div>
+                  </td>
+                  <td className="cx-sec">
+                    <span className="text-[10px] font-semibold uppercase tracking-wider text-slate-300">{category}</span>
+                    <h3 className="text-lg font-semibold text-white mb-1 tracking-tight">{item.name}</h3>
+                    <p className="text-zinc-400 text-sm font-medium">{subtext}</p>
+                    {isPerk && onLongPress && (
+                      <p className="text-zinc-600 text-[10px] mt-1">Long press to compare</p>
+                    )}
+                    {item.description && (
+                      <div className="perk-effect-text text-zinc-300/90 text-xs font-medium tracking-wide">
+                        <span className="perk-effect-label text-zinc-500 mr-2 uppercase text-[10px] font-bold">Effect</span>
+                        <PerkDescriptionBlock
+                          perk={item}
+                          settings={settings}
+                          accentColor={accentTone}
+                          compactLines={3}
+                          className="inline"
+                          lineClassName="leading-relaxed"
+                        />
+                      </div>
+                    )}
+                  </td>
+                  <td>
+                    {isInCompare && (
+                      <div className="w-6 h-6 rounded-full bg-amber-500 flex items-center justify-center mb-2">
+                        <Icons.Check width={14} height={14} className="text-white" />
+                      </div>
+                    )}
+                    {(isPerk || isCharacter) && onToggleFavoriteFn && (
+                      <button
+                        onClick={(e) => { e.stopPropagation(); onToggleFavoriteFn(); }}
+                        className={`p-1.5 rounded-full transition-colors ${isFavorite ? 'bg-yellow-500/20' : 'bg-white/10 hover:bg-white/20'}`}
+                      >
+                        <Icons.Star width={16} height={16} className={isFavorite ? 'text-yellow-400 fill-yellow-400' : 'text-zinc-500'} />
+                      </button>
+                    )}
+                  </td>
+                </tr>
               );
             })}
+            </tbody></table>
           </div>
         </div>
       );
@@ -11665,60 +11853,67 @@
               <span className="text-[11px] text-zinc-500 uppercase tracking-wider self-center">{filteredItems.length} items</span>
             </div>
           )}
-          <div className="pb-32 space-y-3 -mx-6 px-6">
+<div className="pb-32 space-y-3 -mx-6 px-6">
             {mode === 'survivor' && (
               filteredItems.length === 0 ? <div className="text-center text-zinc-500 mt-12">No items found.</div> :
-                filteredItems.map(item => {
+              <table className="cx-wikitable"><tbody>
+                {filteredItems.map(item => {
                   const isExpanded = expandedId === item.id;
                   const itemAddons = getAddonsForItemType(item.itemType);
                   return (
-                    <div
-                      key={item.id}
+                    <React.Fragment key={item.id}>
+                    <tr
                       data-smoke-target={initialTargetType === 'item' && initialTargetId === item.id ? 'true' : undefined}
                       ref={(node) => {
                         if (node) itemCardRefs.current[item.id] = node;
                         else delete itemCardRefs.current[item.id];
                       }}
-                      className={`p-4 rounded-3xl bg-zinc-900/40 border backdrop-blur-md cursor-pointer ${initialTargetType === 'item' && initialTargetId === item.id ? 'border-cyan-400/35 shadow-[0_0_0_1px_rgba(34,211,238,0.12)]' : 'border-white/5'}`}
                       onClick={() => setExpandedId(isExpanded ? null : item.id)}
+                      className={`cursor-pointer ${initialTargetType === 'item' && initialTargetId === item.id ? 'border-cyan-400/35 shadow-[0_0_0_1px_rgba(34,211,238,0.12)]' : 'border-white/5'}`}
                     >
-                      <div className="flex items-center gap-4 mb-2">
+                      <td className="cx-perkcell">
                         <div className="w-16 h-16 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center flex-shrink-0 overflow-hidden">
                           <AssetFrame type="Item" imageUrl={item.image} fallbackIcon={<Icons.Package width={24} height={24} className="text-white/40" />} />
                         </div>
-                        <div className="flex-1">
-                          <h3 className="text-lg font-bold text-white">{item.name}</h3>
-                          <div className="flex items-center gap-2">
-                            <span className="text-xs text-zinc-500 font-bold uppercase tracking-wider">{item.itemType || 'Item'}</span>
-                            <span className="text-[10px] px-2 py-1 rounded-md bg-white/5 font-bold" style={{ color: getRarityColor(item.rarity) }}>{formatRarity(item.rarity)}</span>
-                          </div>
+                      </td>
+                      <td className="cx-sec">
+                        <h3 className="text-lg font-bold text-white">{item.name}</h3>
+                        <div className="flex items-center gap-2">
+                          <span className="text-xs text-zinc-500 font-bold uppercase tracking-wider">{item.itemType || 'Item'}</span>
+                          <span className="text-[10px] px-2 py-1 rounded-md bg-white/5 font-bold" style={{ color: getRarityColor(item.rarity) }}>{formatRarity(item.rarity)}</span>
                         </div>
+                        {item.description && <p className="text-zinc-500 text-xs mt-2 leading-relaxed">{stripHtml(item.description)}</p>}
+                      </td>
+                      <td>
                         {onToggleFavoriteItem && (
                           <button onClick={(e) => { e.stopPropagation(); onToggleFavoriteItem(item.id); }} className={`p-1.5 rounded-full transition-colors flex-shrink-0 ${favoriteItems.includes(item.id) ? 'bg-yellow-500/20' : 'bg-white/10 hover:bg-white/20'}`}>
                             <Icons.Star width={16} height={16} className={favoriteItems.includes(item.id) ? 'text-yellow-400 fill-yellow-400' : 'text-zinc-500'} />
                           </button>
                         )}
-                      </div>
-                      {item.description && <p className="text-zinc-500 text-xs mt-2 leading-relaxed">{stripHtml(item.description)}</p>}
-                      {isExpanded && itemAddons.length > 0 && (
-                        <div className="mt-3 pt-3 border-t border-white/10">
+                      </td>
+                    </tr>
+                    {isExpanded && itemAddons.length > 0 && (
+                      <tr key={item.id + '-addons'}>
+                        <td colSpan={3}>
                           <p className="text-xs text-zinc-500 font-bold uppercase mb-2">Compatible Addons ({itemAddons.length})</p>
-                          <div className="space-y-2 max-h-64 overflow-y-auto custom-scrollbar px-1 pt-1 pb-2">
+                          <table className="cx-wikitable"><tbody>
                             {itemAddons.map(addon => (
-                              <div
+                              <tr
                                 key={addon.id}
                                 data-smoke-target={initialTargetType === 'addon' && initialTargetId === addon.id ? 'true' : undefined}
                                 ref={(node) => {
                                   if (node) addonRefs.current[addon.id] = node;
                                   else delete addonRefs.current[addon.id];
                                 }}
-                                className={`p-2 rounded-xl border flex items-start gap-3 ${initialTargetType === 'addon' && initialTargetId === addon.id ? 'bg-cyan-500/10 border-cyan-400/25' : 'bg-white/5 border-white/5'}`}
+                                className={`${initialTargetType === 'addon' && initialTargetId === addon.id ? 'bg-cyan-500/10 border-cyan-400/25' : 'bg-white/5 border-white/5'}`}
                                 style={{ boxShadow: getRarityGlow(addon.rarity, settings.rarityGlows !== false) }}
                               >
-                                <div className="w-10 h-10 rounded-lg bg-white/5 border border-white/10 flex-shrink-0 overflow-hidden">
-                                  <AssetFrame type="Addon" size="fill" imageUrl={addon.image} fallbackIcon={<Icons.Wrench width={16} height={16} className="text-white/40" />} />
-                                </div>
-                                <div className="flex-1 min-w-0">
+                                <td className="cx-perkcell">
+                                  <div className="w-10 h-10 rounded-lg bg-white/5 border border-white/10 flex-shrink-0 overflow-hidden">
+                                    <AssetFrame type="Addon" size="fill" imageUrl={addon.image} fallbackIcon={<Icons.Wrench width={16} height={16} className="text-white/40" />} />
+                                  </div>
+                                </td>
+                                <td className="cx-sec">
                                   <div className="flex justify-between items-start">
                                     <p className="text-white text-sm font-bold">{addon.name}</p>
                                     <div className="flex items-center gap-1 flex-shrink-0">
@@ -11731,38 +11926,43 @@
                                     </div>
                                   </div>
                                   {addon.description && <p className="text-zinc-500 text-xs mt-1">{stripHtml(addon.description)}</p>}
-                                </div>
-                              </div>
+                                </td>
+                              </tr>
                             ))}
-                          </div>
-                        </div>
-                      )}
-                      {isExpanded && itemAddons.length === 0 && (
-                        <div className="mt-3 pt-3 border-t border-white/10">
+                          </tbody></table>
+                        </td>
+                      </tr>
+                    )}
+                    {isExpanded && itemAddons.length === 0 && (
+                      <tr key={item.id + '-noaddons'}>
+                        <td colSpan={3}>
                           <p className="text-zinc-600 text-xs">No addons for this item type.</p>
-                        </div>
-                      )}
-                    </div>
+                        </td>
+                      </tr>
+                    )}
+                    </React.Fragment>
                   );
-                })
+                })}
+              </tbody></table>
             )}
             {mode === 'killer' && (
               filteredKillers.length === 0 ? <div className="text-center text-zinc-500 mt-12">No killers found.</div> :
-                filteredKillers.map(killer => {
+              <table className="cx-wikitable"><tbody>
+                {filteredKillers.map(killer => {
                   const isExpanded = expandedId === killer.id;
                   const powerAddons = getAddonsForKiller(killer);
                   return (
-                    <div
-                      key={killer.id}
+                    <React.Fragment key={killer.id}>
+                    <tr
                       data-smoke-target={initialTargetType === 'addon' && targetAddon?.role === 'killer' && targetKillerAddonHost?.id === killer.id ? 'true' : undefined}
                       ref={(node) => {
                         if (node) killerCardRefs.current[killer.id] = node;
                         else delete killerCardRefs.current[killer.id];
                       }}
-                      className={`p-4 rounded-3xl bg-zinc-900/40 border backdrop-blur-md cursor-pointer ${initialTargetType === 'addon' && targetAddon?.role === 'killer' && targetKillerAddonHost?.id === killer.id ? 'border-cyan-400/35 shadow-[0_0_0_1px_rgba(34,211,238,0.12)]' : 'border-white/5'}`}
                       onClick={() => setExpandedId(isExpanded ? null : killer.id)}
+                      className={`cursor-pointer ${initialTargetType === 'addon' && targetAddon?.role === 'killer' && targetKillerAddonHost?.id === killer.id ? 'border-cyan-400/35 shadow-[0_0_0_1px_rgba(34,211,238,0.12)]' : 'border-white/5'}`}
                     >
-                      <div className="flex items-center gap-4">
+                      <td className="cx-perkcell">
                         <div className="w-20 h-20 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center flex-shrink-0 overflow-hidden">
                           <AssetFrame
                             type="Killer"
@@ -11771,33 +11971,37 @@
                             fallbackIcon={<Icons.User width={28} height={28} className="text-zinc-500" />}
                           />
                         </div>
-                        <div className="flex-1">
-                          <div className="flex items-center justify-between">
-                            <h3 className="text-lg font-bold text-white">{killer.name}</h3>
-                            <span className="text-xs text-zinc-500 font-bold uppercase tracking-wider">{powerAddons.length} addons</span>
-                          </div>
-                          <p className="text-zinc-400 text-sm">{killer.realName || killer.power || ''}</p>
+                      </td>
+                      <td className="cx-sec">
+                        <div className="flex items-center justify-between">
+                          <h3 className="text-lg font-bold text-white">{killer.name}</h3>
+                          <span className="text-xs text-zinc-500 font-bold uppercase tracking-wider">{powerAddons.length} addons</span>
                         </div>
-                      </div>
-                      {isExpanded && powerAddons.length > 0 && (
-                        <div className="mt-3 pt-3 border-t border-white/10">
+                        <p className="text-zinc-400 text-sm">{killer.realName || killer.power || ''}</p>
+                      </td>
+                    </tr>
+                    {isExpanded && powerAddons.length > 0 && (
+                      <tr key={killer.id + '-addons'}>
+                        <td colSpan={2}>
                           <p className="text-xs text-zinc-500 font-bold uppercase mb-2">Power Addons</p>
-                          <div className="space-y-2 max-h-80 overflow-y-auto custom-scrollbar px-1 pt-1 pb-2">
+                          <table className="cx-wikitable"><tbody>
                             {powerAddons.map(addon => (
-                              <div
+                              <tr
                                 key={addon.id}
                                 data-smoke-target={initialTargetType === 'addon' && initialTargetId === addon.id ? 'true' : undefined}
                                 ref={(node) => {
                                   if (node) addonRefs.current[addon.id] = node;
                                   else delete addonRefs.current[addon.id];
                                 }}
-                                className={`p-2 rounded-xl border flex items-start gap-3 ${initialTargetType === 'addon' && initialTargetId === addon.id ? 'bg-cyan-500/10 border-cyan-400/25' : 'bg-white/5 border-white/5'}`}
+                                className={`${initialTargetType === 'addon' && initialTargetId === addon.id ? 'bg-cyan-500/10 border-cyan-400/25' : 'bg-white/5 border-white/5'}`}
                                 style={{ boxShadow: getRarityGlow(addon.rarity, settings.rarityGlows !== false) }}
                               >
-                                <div className="w-10 h-10 rounded-lg bg-white/5 border border-white/10 flex-shrink-0 overflow-hidden">
-                                  <AssetFrame type="Addon" size="fill" imageUrl={addon.image} fallbackIcon={<Icons.Wrench width={16} height={16} className="text-white/40" />} />
-                                </div>
-                                <div className="flex-1 min-w-0">
+                                <td className="cx-perkcell">
+                                  <div className="w-10 h-10 rounded-lg bg-white/5 border border-white/10 flex-shrink-0 overflow-hidden">
+                                    <AssetFrame type="Addon" size="fill" imageUrl={addon.image} fallbackIcon={<Icons.Wrench width={16} height={16} className="text-white/40" />} />
+                                  </div>
+                                </td>
+                                <td className="cx-sec">
                                   <div className="flex justify-between items-start">
                                     <p className="text-white text-sm font-bold">{addon.name}</p>
                                     <div className="flex items-center gap-1 flex-shrink-0">
@@ -11810,20 +12014,24 @@
                                     </div>
                                   </div>
                                   {addon.description && <p className="text-zinc-500 text-xs mt-1">{stripHtml(addon.description)}</p>}
-                                </div>
-                              </div>
+                                </td>
+                              </tr>
                             ))}
-                          </div>
-                        </div>
-                      )}
-                      {isExpanded && powerAddons.length === 0 && (
-                        <div className="mt-3 pt-3 border-t border-white/10">
+                          </tbody></table>
+                        </td>
+                      </tr>
+                    )}
+                    {isExpanded && powerAddons.length === 0 && (
+                      <tr key={killer.id + '-noaddons'}>
+                        <td colSpan={2}>
                           <p className="text-zinc-600 text-xs">No addons found for this killer's power.</p>
-                        </div>
-                      )}
-                    </div>
+                        </td>
+                      </tr>
+                    )}
+                    </React.Fragment>
                   );
-                })
+                })}
+              </tbody></table>
             )}
           </div>
         </div>
@@ -11929,46 +12137,48 @@
             </select>
             <span className="text-[11px] text-zinc-500 uppercase tracking-wider self-center ml-2">{filtered.length} offerings</span>
           </div>
-          <div className="pb-32 space-y-3 -mx-6 px-6">
+<div className="pb-32 space-y-3 -mx-6 px-6">
             {filtered.length === 0 && <div className="text-center text-zinc-500 mt-12">No offerings found.</div>}
+            <table className="cx-wikitable"><tbody>
             {filtered.map(offering => {
               const isExpanded = expandedId === offering.id;
               return (
-                <div
+                <tr
                   key={offering.id}
                   data-smoke-target={initialTargetId === offering.id ? 'true' : undefined}
                   ref={(node) => {
                     if (node) offeringRefs.current[offering.id] = node;
                     else delete offeringRefs.current[offering.id];
                   }}
-                  className={`p-4 rounded-3xl bg-zinc-900/40 border backdrop-blur-md cursor-pointer ${initialTargetId === offering.id ? 'border-cyan-400/35 shadow-[0_0_0_1px_rgba(34,211,238,0.12)]' : 'border-white/5'}`}
                   onClick={() => setExpandedId(isExpanded ? null : offering.id)}
+                  className={`cursor-pointer ${initialTargetId === offering.id ? 'border-cyan-400/35 shadow-[0_0_0_1px_rgba(34,211,238,0.12)]' : 'border-white/5'}`}
                 >
-                  <div className="flex items-center gap-4">
+                  <td className="cx-perkcell">
                     <div className="w-16 h-16 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center flex-shrink-0 overflow-hidden">
                       <AssetFrame type="Offering" imageUrl={offering.image} fallbackIcon={<Icons.Flame width={24} height={24} className="text-white/40" />} />
                     </div>
-                    <div className="flex-1">
-                      <div className="flex items-center justify-between mb-1">
-                        <h3 className="text-lg font-bold text-white">{offering.name}</h3>
-                        <div className="flex items-center gap-2">
-                          {onToggleFavoriteOffering && (
-                            <button onClick={(e) => { e.stopPropagation(); onToggleFavoriteOffering(offering.id); }} className={`p-1.5 rounded-full transition-colors ${favoriteOfferings.includes(offering.id) ? 'bg-yellow-500/20' : 'bg-white/10 hover:bg-white/20'}`}>
-                              <Icons.Star width={16} height={16} className={favoriteOfferings.includes(offering.id) ? 'text-yellow-400 fill-yellow-400' : 'text-zinc-500'} />
-                            </button>
-                          )}
-                          <span className="text-xs font-bold uppercase tracking-wider" style={{ color: getRoleColor(offering.role) }}>{formatRole(offering.role)}</span>
-                        </div>
+                  </td>
+                  <td className="cx-sec">
+                    <div className="flex items-center justify-between mb-1">
+                      <h3 className="text-lg font-bold text-white">{offering.name}</h3>
+                      <div className="flex items-center gap-2">
+                        {onToggleFavoriteOffering && (
+                          <button onClick={(e) => { e.stopPropagation(); onToggleFavoriteOffering(offering.id); }} className={`p-1.5 rounded-full transition-colors ${favoriteOfferings.includes(offering.id) ? 'bg-yellow-500/20' : 'bg-white/10 hover:bg-white/20'}`}>
+                            <Icons.Star width={16} height={16} className={favoriteOfferings.includes(offering.id) ? 'text-yellow-400 fill-yellow-400' : 'text-zinc-500'} />
+                          </button>
+                        )}
+                        <span className="text-xs font-bold uppercase tracking-wider" style={{ color: getRoleColor(offering.role) }}>{formatRole(offering.role)}</span>
                       </div>
-                      <span className="text-[10px] px-2 py-1 rounded-md bg-white/5 font-bold" style={{ color: getRarityColor(offering.rarity) }}>{formatRarity(offering.rarity)}</span>
                     </div>
-                  </div>
-                  {offering.description && (
-                    <p className="text-zinc-400 text-xs mt-3 leading-relaxed">{offering.description}</p>
-                  )}
-                </div>
+                    <span className="text-[10px] px-2 py-1 rounded-md bg-white/5 font-bold" style={{ color: getRarityColor(offering.rarity) }}>{formatRarity(offering.rarity)}</span>
+                    {offering.description && (
+                      <p className="text-zinc-400 text-xs mt-3 leading-relaxed">{offering.description}</p>
+                    )}
+                  </td>
+                </tr>
               );
             })}
+            </tbody></table>
           </div>
         </div>
       );
