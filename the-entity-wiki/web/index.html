@@ -13999,252 +13999,256 @@
         </div>
       );
     };
-    const LoreModal = ({ character, onClose }) => {
-      if (!character) return null;
-      const isKiller = character.type === 'Killer' || character.power;
-      const accentColor = isKiller ? '#ff3b30' : '#38bdf8';
-      return (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm" onClick={onClose}>
-          <div
-            className="relative w-full max-w-lg max-h-[85vh] overflow-hidden rounded-3xl bg-zinc-900 border border-white/10 shadow-2xl"
-            onClick={e => e.stopPropagation()}
+const LoreModal = ({ character, onClose }) => {
+  if (!character) return null;
+  const isKiller = character.type === 'Killer' || character.power;
+  const accentColor = isKiller ? '#ff3b30' : '#38bdf8';
+  return (
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm" onClick={onClose}>
+      <div
+        className="relative w-full max-w-lg max-h-[85vh] overflow-hidden rounded-xl bg-[#0a0a0a] border border-white/10 shadow-2xl"
+        onClick={e => e.stopPropagation()}
+      >
+        {/* Header */}
+        <div className="sticky top-0 z-10 flex items-center justify-between p-4 bg-[#0a0a0a]/95 backdrop-blur border-b border-white/10">
+          <div>
+            <p className="text-[10px] font-bold uppercase tracking-widest text-zinc-500 mb-1">Backstory</p>
+            <h2 className="text-lg text-white pb-1" style={{ fontFamily: 'var(--font-display)', fontWeight: 600, borderBottom: `2px solid ${accentColor}`, display: 'inline-block' }}>{character.name}</h2>
+            {character.realName && character.realName !== character.name && (
+              <p className="text-sm text-zinc-400">{character.realName}</p>
+            )}
+          </div>
+          <button
+            onClick={onClose}
+            className="p-2 rounded-full bg-white/10 hover:bg-white/20 transition-colors"
           >
-            {/* Header */}
-            <div className="sticky top-0 z-10 flex items-center justify-between p-4 bg-zinc-900/95 backdrop-blur border-b border-white/10">
-              <div>
-                <p className="text-[10px] font-bold uppercase tracking-widest text-zinc-500 mb-1">Backstory</p>
-                <h2 className="text-lg font-bold text-white pb-1" style={{ borderBottom: `2px solid ${accentColor}`, display: 'inline-block' }}>{character.name}</h2>
-                {character.realName && character.realName !== character.name && (
-                  <p className="text-sm text-zinc-400">{character.realName}</p>
-                )}
-              </div>
-              <button
-                onClick={onClose}
-                className="p-2 rounded-full bg-white/10 hover:bg-white/20 transition-colors"
-              >
-                <Icons.X width={20} height={20} className="text-white" />
-              </button>
+            <Icons.X width={20} height={20} className="text-white" />
+          </button>
+        </div>
+        {/* Lore Content */}
+        <div className="p-4 overflow-y-auto max-h-[70vh] custom-scrollbar">
+          {character.lore ? (
+            <div className="space-y-4 text-zinc-300 text-sm leading-relaxed">
+              {character.lore.split('\n\n').map((paragraph, i) => (
+                <p key={i}>{paragraph}</p>
+              ))}
             </div>
-            {/* Lore Content */}
-            <div className="p-4 overflow-y-auto max-h-[70vh] custom-scrollbar">
-              {character.lore ? (
-                <div className="space-y-4 text-zinc-300 text-sm leading-relaxed">
-                  {character.lore.split('\n\n').map((paragraph, i) => (
-                    <p key={i}>{paragraph}</p>
-                  ))}
-                </div>
-              ) : (
-                <p className="text-zinc-500 italic">The Fog obscures this knowledge...</p>
-              )}
+          ) : (
+            <p className="text-zinc-500 italic">The Fog obscures this knowledge...</p>
+          )}
+        </div>
+        {/* Close Button */}
+        <div className="p-4 pb-6 border-t border-white/10" style={{ paddingBottom: 'max(1.5rem, env(safe-area-inset-bottom))' }}>
+          <button
+            onClick={onClose}
+            className="w-full py-3 rounded-xl bg-white/5 hover:bg-white/10 text-zinc-300 font-semibold transition-colors"
+          >
+            Close
+          </button>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+/* ANCHOR: replaces PowerModal, lines 13719-13812 (useState stays first, before guard) */
+const PowerModal = ({ killer, onClose }) => {
+  const [activeTab, setActiveTab] = useState('survivor');
+  if (!killer || !killer.power) return null;
+  const guide = KILLER_GUIDES[killer.name];
+  const powerName = guide?.powerName || "Power";
+  const survivorTips = guide?.survivorTips || "No survivor tips available yet.";
+  const killerTips = guide?.killerTips || "No killer tips available yet.";
+  return (
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm" onClick={onClose}>
+      <div
+        className="relative w-full max-w-lg max-h-[85vh] overflow-hidden rounded-xl bg-[#0a0a0a] border border-red-500/20 shadow-2xl"
+        onClick={e => e.stopPropagation()}
+      >
+        {/* Header */}
+        <div className="sticky top-0 z-10 flex items-center justify-between p-4 bg-[#0a0a0a]/95 backdrop-blur border-b border-white/10">
+          <div className="flex items-center gap-3">
+            <div className="w-14 h-14 rounded-xl bg-zinc-800/80 flex items-center justify-center border border-red-500/40 overflow-hidden">
+              {(() => {
+                const safeName = killer.name.toLowerCase().replace(/ /g, '_').replace(/'/g, '');
+                const iconPath = `./dbd_images/powers/${safeName}_power.png`;
+                return (
+                  <div className="w-12 h-12">
+                    <AssetFrame
+                      type="Power"
+                      size="fill"
+                      imageUrl={iconPath}
+                      fallbackIcon={<Icons.Zap width={24} height={24} className="text-red-500" />}
+                    />
+                  </div>
+                );
+              })()}
             </div>
-            {/* Close Button */}
-            <div className="p-4 pb-6 border-t border-white/10" style={{ paddingBottom: 'max(1.5rem, env(safe-area-inset-bottom))' }}>
-              <button
-                onClick={onClose}
-                className="w-full py-3 rounded-xl bg-white/5 hover:bg-white/10 text-zinc-300 font-semibold transition-colors"
-              >
-                Close
-              </button>
+            <div>
+              <p className="text-[10px] font-bold uppercase tracking-widest text-red-500 mb-0.5">{powerName}</p>
+              <h2 className="text-lg text-white" style={{ fontFamily: 'var(--font-display)', fontWeight: 600 }}>{killer.name}</h2>
             </div>
           </div>
-        </div>
-      );
-    };
-    const PowerModal = ({ killer, onClose }) => {
-      const [activeTab, setActiveTab] = useState('survivor');
-      if (!killer || !killer.power) return null;
-      const guide = KILLER_GUIDES[killer.name];
-      const powerName = guide?.powerName || "Power";
-      const survivorTips = guide?.survivorTips || "No survivor tips available yet.";
-      const killerTips = guide?.killerTips || "No killer tips available yet.";
-      return (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm" onClick={onClose}>
-          <div
-            className="relative w-full max-w-lg max-h-[85vh] overflow-hidden rounded-3xl bg-zinc-900 border border-red-500/20 shadow-2xl"
-            onClick={e => e.stopPropagation()}
+          <button
+            onClick={onClose}
+            className="p-2 rounded-full bg-white/10 hover:bg-white/20 transition-colors"
           >
-            {/* Header */}
-            <div className="sticky top-0 z-10 flex items-center justify-between p-4 bg-zinc-900/95 backdrop-blur border-b border-white/10">
-              <div className="flex items-center gap-3">
-                <div className="w-14 h-14 rounded-xl bg-zinc-800/80 flex items-center justify-center border border-red-500/40 overflow-hidden">
-                  {(() => {
-                    const safeName = killer.name.toLowerCase().replace(/ /g, '_').replace(/'/g, '');
-                    const iconPath = `./dbd_images/powers/${safeName}_power.png`;
-                    return (
-                      <div className="w-12 h-12">
-                        <AssetFrame
-                          type="Power"
-                          size="fill"
-                          imageUrl={iconPath}
-                          fallbackIcon={<Icons.Zap width={24} height={24} className="text-red-500" />}
-                        />
-                      </div>
-                    );
-                  })()}
-                </div>
-                <div>
-                  <p className="text-[10px] font-bold uppercase tracking-widest text-red-500 mb-0.5">{powerName}</p>
-                  <h2 className="text-lg font-bold text-white">{killer.name}</h2>
-                </div>
+            <Icons.X width={20} height={20} className="text-white" />
+          </button>
+        </div>
+        {/* Tabs */}
+        <div className="flex border-b border-white/10">
+          <button
+            onClick={() => setActiveTab('survivor')}
+            className={`flex-1 py-3 text-sm font-bold transition-colors ${activeTab === 'survivor' ? 'text-sky-400 border-b-2 border-sky-400 bg-sky-500/10' : 'text-zinc-500 hover:text-zinc-300'}`}
+          >
+            <span className="flex items-center justify-center gap-2">
+              <Icons.Heart width={16} height={16} />
+              Survivor Tips
+            </span>
+          </button>
+          <button
+            onClick={() => setActiveTab('killer')}
+            className={`flex-1 py-3 text-sm font-bold transition-colors ${activeTab === 'killer' ? 'text-red-400 border-b-2 border-red-400 bg-red-500/10' : 'text-zinc-500 hover:text-zinc-300'}`}
+          >
+            <span className="flex items-center justify-center gap-2">
+              <Icons.Sword width={16} height={16} />
+              Killer Tips
+            </span>
+          </button>
+        </div>
+        {/* Content */}
+        <div className="p-4 overflow-y-auto max-h-[55vh] custom-scrollbar">
+          <div className={`p-4 rounded-xl ${activeTab === 'survivor' ? 'bg-sky-500/10 border border-sky-500/20' : 'bg-red-500/10 border border-red-500/20'}`}>
+            <div className="flex items-center gap-2 mb-3">
+              <div className={`w-8 h-8 rounded-lg flex items-center justify-center ${activeTab === 'survivor' ? 'bg-sky-500/30' : 'bg-red-500/30'}`}>
+                {activeTab === 'survivor' ? <Icons.Heart width={18} height={18} className="text-sky-400" /> : <Icons.Sword width={18} height={18} className="text-red-400" />}
               </div>
-              <button
-                onClick={onClose}
-                className="p-2 rounded-full bg-white/10 hover:bg-white/20 transition-colors"
-              >
-                <Icons.X width={20} height={20} className="text-white" />
-              </button>
+              <h3 className={`font-bold ${activeTab === 'survivor' ? 'text-sky-400' : 'text-red-400'}`}>
+                {activeTab === 'survivor' ? 'How to Counter' : 'How to Play'}
+              </h3>
             </div>
-            {/* Tabs */}
-            <div className="flex border-b border-white/10">
-              <button
-                onClick={() => setActiveTab('survivor')}
-                className={`flex-1 py-3 text-sm font-bold transition-colors ${activeTab === 'survivor' ? 'text-sky-400 border-b-2 border-sky-400 bg-sky-500/10' : 'text-zinc-500 hover:text-zinc-300'}`}
-              >
-                <span className="flex items-center justify-center gap-2">
-                  <Icons.Heart width={16} height={16} />
-                  Survivor Tips
-                </span>
-              </button>
-              <button
-                onClick={() => setActiveTab('killer')}
-                className={`flex-1 py-3 text-sm font-bold transition-colors ${activeTab === 'killer' ? 'text-red-400 border-b-2 border-red-400 bg-red-500/10' : 'text-zinc-500 hover:text-zinc-300'}`}
-              >
-                <span className="flex items-center justify-center gap-2">
-                  <Icons.Sword width={16} height={16} />
-                  Killer Tips
-                </span>
-              </button>
-            </div>
-            {/* Content */}
-            <div className="p-4 overflow-y-auto max-h-[55vh] custom-scrollbar">
-              <div className={`p-4 rounded-2xl ${activeTab === 'survivor' ? 'bg-sky-500/10 border border-sky-500/20' : 'bg-red-500/10 border border-red-500/20'}`}>
-                <div className="flex items-center gap-2 mb-3">
-                  <div className={`w-8 h-8 rounded-lg flex items-center justify-center ${activeTab === 'survivor' ? 'bg-sky-500/30' : 'bg-red-500/30'}`}>
-                    {activeTab === 'survivor' ? <Icons.Heart width={18} height={18} className="text-sky-400" /> : <Icons.Sword width={18} height={18} className="text-red-400" />}
-                  </div>
-                  <h3 className={`font-bold ${activeTab === 'survivor' ? 'text-sky-400' : 'text-red-400'}`}>
-                    {activeTab === 'survivor' ? 'How to Counter' : 'How to Play'}
-                  </h3>
-                </div>
-                <p className="text-zinc-300 text-sm leading-relaxed">
-                  {activeTab === 'survivor' ? survivorTips : killerTips}
-                </p>
-              </div>
-            </div>
-            {/* Close Button */}
-            <div className="p-4 border-t border-white/10">
-              <button
-                onClick={onClose}
-                className="w-full py-3 rounded-xl bg-red-500/20 hover:bg-red-500/30 text-red-400 font-semibold transition-colors"
-              >
-                Close
-              </button>
-            </div>
+            <p className="text-zinc-300 text-sm leading-relaxed">
+              {activeTab === 'survivor' ? survivorTips : killerTips}
+            </p>
           </div>
         </div>
-      );
-    };
-    const MapLayoutModal = ({ map, onClose, noteValue = '', onNoteChange }) => {
-      const [currentIndex, setCurrentIndex] = useState(0);
-      const [layoutBroken, setLayoutBroken] = useState(false);
-      useEffect(() => {
-        setLayoutBroken(false);
-        setCurrentIndex(0);
-      }, [map?.name]);
-      useEffect(() => {
-        setLayoutBroken(false);
-      }, [currentIndex]);
-      if (!map) return null;
-      const layouts = getMapLayoutsForName(map.name);
-      const hasMultiple = layouts.length > 1;
-      return (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/90 backdrop-blur-sm" onClick={onClose}>
-          <div
-            className="relative w-full max-w-2xl max-h-[90vh] flex flex-col rounded-3xl bg-zinc-900 border border-white/10 shadow-2xl"
-            onClick={e => e.stopPropagation()}
+        {/* Close Button */}
+        <div className="p-4 border-t border-white/10">
+          <button
+            onClick={onClose}
+            className="w-full py-3 rounded-xl bg-red-500/20 hover:bg-red-500/30 text-red-400 font-semibold transition-colors"
           >
-            {/* Header */}
-            <div className="flex-shrink-0 flex items-center justify-between p-4 bg-zinc-900/95 backdrop-blur border-b border-white/10 rounded-t-3xl">
-              <div>
-                <p className="text-[10px] font-bold uppercase tracking-widest text-zinc-500 mb-1">Map Details</p>
-                <h2 className="text-lg font-bold text-white pb-1" style={{ borderBottom: '2px solid #ff3b30', display: 'inline-block' }}>{map.name}</h2>
-                {map.realm && <p className="text-xs text-zinc-500 mt-1">{map.realm}</p>}
-                {hasMultiple && layouts[currentIndex].label && (
-                  <p className="text-xs text-zinc-400 mt-1">{layouts[currentIndex].label}</p>
-                )}
-              </div>
-              <button
-                onClick={onClose}
-                className="p-2 rounded-full bg-white/10 hover:bg-white/20 transition-colors"
-              >
-                <Icons.X width={20} height={20} className="text-white" />
-              </button>
+            Close
+          </button>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+/* ANCHOR: replaces MapLayoutModal, lines 13813-13913 (state/effect order kept) */
+const MapLayoutModal = ({ map, onClose, noteValue = '', onNoteChange }) => {
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [layoutBroken, setLayoutBroken] = useState(false);
+  useEffect(() => {
+    setLayoutBroken(false);
+    setCurrentIndex(0);
+  }, [map?.name]);
+  useEffect(() => {
+    setLayoutBroken(false);
+  }, [currentIndex]);
+  if (!map) return null;
+  const layouts = getMapLayoutsForName(map.name);
+  const hasMultiple = layouts.length > 1;
+  return (
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/90 backdrop-blur-sm" onClick={onClose}>
+      <div
+        className="relative w-full max-w-2xl max-h-[90vh] flex flex-col rounded-xl bg-[#0a0a0a] border border-white/10 shadow-2xl"
+        onClick={e => e.stopPropagation()}
+      >
+        {/* Header */}
+        <div className="flex-shrink-0 flex items-center justify-between p-4 bg-[#0a0a0a]/95 backdrop-blur border-b border-white/10 rounded-t-xl">
+          <div>
+            <p className="text-[10px] font-bold uppercase tracking-widest text-zinc-500 mb-1">Map Details</p>
+            <h2 className="text-lg text-white pb-1" style={{ fontFamily: 'var(--font-display)', fontWeight: 600, borderBottom: '2px solid #ff3b30', display: 'inline-block' }}>{map.name}</h2>
+            {map.realm && <p className="text-xs text-zinc-500 mt-1">{map.realm}</p>}
+            {hasMultiple && layouts[currentIndex].label && (
+              <p className="text-xs text-zinc-400 mt-1">{layouts[currentIndex].label}</p>
+            )}
+          </div>
+          <button
+            onClick={onClose}
+            className="p-2 rounded-full bg-white/10 hover:bg-white/20 transition-colors"
+          >
+            <Icons.X width={20} height={20} className="text-white" />
+          </button>
+        </div>
+        {/* Layout Image - scrollable area */}
+        <div className="flex-1 overflow-y-auto p-4 flex flex-col items-center">
+          <div className="w-full space-y-4">
+            <div className="p-4 rounded-xl bg-white/5 border border-white/10">
+              <p className="text-[10px] uppercase tracking-wider text-zinc-500 font-bold mb-2">Overview</p>
+              <p className="text-sm text-zinc-300 leading-relaxed">{map.description || 'No description available for this map yet.'}</p>
             </div>
-            {/* Layout Image - scrollable area */}
-            <div className="flex-1 overflow-y-auto p-4 flex flex-col items-center">
-              <div className="w-full space-y-4">
-                <div className="p-4 rounded-2xl bg-white/5 border border-white/10">
-                  <p className="text-[10px] uppercase tracking-wider text-zinc-500 font-bold mb-2">Overview</p>
-                  <p className="text-sm text-zinc-300 leading-relaxed">{map.description || 'No description available for this map yet.'}</p>
-                </div>
-                {layouts.length > 0 ? (
-                  <div className="relative w-full aspect-square max-h-[55vh] bg-zinc-800 rounded-2xl overflow-hidden flex items-center justify-center">
-                    {!layoutBroken ? (
-                      <img
-                        src={`./dbd_images/${layouts[currentIndex].path}`}
-                        alt={`${map.name} layout`}
-                        className="max-w-full max-h-full object-contain"
-                        onError={() => setLayoutBroken(true)}
-                      />
-                    ) : (
-                      <div className="flex flex-col items-center justify-center gap-3 text-zinc-500 px-6 text-center">
-                        <Icons.Map width={36} height={36} className="text-zinc-600" />
-                        <p className="text-sm font-medium">Map layout unavailable in the offline bundle.</p>
-                      </div>
-                    )}
-                  </div>
+            {layouts.length > 0 ? (
+              <div className="relative w-full aspect-square max-h-[55vh] bg-zinc-800 rounded-xl overflow-hidden flex items-center justify-center">
+                {!layoutBroken ? (
+                  <img
+                    src={`./dbd_images/${layouts[currentIndex].path}`}
+                    alt={`${map.name} layout`}
+                    className="max-w-full max-h-full object-contain"
+                    onError={() => setLayoutBroken(true)}
+                  />
                 ) : (
-                  <div className="w-full aspect-square max-h-[40vh] rounded-2xl bg-zinc-800/70 border border-white/10 flex flex-col items-center justify-center text-center px-6">
-                    <Icons.Map width={36} height={36} className="text-zinc-600 mb-3" />
-                    <p className="text-sm font-medium text-zinc-400">No layout art bundled for this map.</p>
+                  <div className="flex flex-col items-center justify-center gap-3 text-zinc-500 px-6 text-center">
+                    <Icons.Map width={36} height={36} className="text-zinc-600" />
+                    <p className="text-sm font-medium">Map layout unavailable in the offline bundle.</p>
                   </div>
                 )}
               </div>
-              {hasMultiple && (
-                <div className="flex gap-2 mt-4 flex-wrap justify-center">
-                  {layouts.map((layout, idx) => (
-                    <button
-                      key={idx}
-                      onClick={() => setCurrentIndex(idx)}
-                      className={`px-4 py-2 rounded-xl text-sm font-medium transition-colors ${currentIndex === idx ? 'bg-red-500 text-white' : 'bg-white/10 text-zinc-400 hover:bg-white/20'}`}
-                    >
-                      {layout.label || `Layout ${idx + 1}`}
-                    </button>
-                  ))}
-                </div>
-              )}
-              <div className="w-full">
-                <NotesEditor
-                  title="Map Notes"
-                  value={noteValue}
-                  onChange={onNoteChange}
-                  placeholder="Tiles to watch, favorite loops, spawn notes, or personal callouts..."
-                />
+            ) : (
+              <div className="w-full aspect-square max-h-[40vh] rounded-xl bg-zinc-800/70 border border-white/10 flex flex-col items-center justify-center text-center px-6">
+                <Icons.Map width={36} height={36} className="text-zinc-600 mb-3" />
+                <p className="text-sm font-medium text-zinc-400">No layout art bundled for this map.</p>
               </div>
+            )}
+          </div>
+          {hasMultiple && (
+            <div className="flex gap-2 mt-4 flex-wrap justify-center">
+              {layouts.map((layout, idx) => (
+                <button
+                  key={idx}
+                  onClick={() => setCurrentIndex(idx)}
+                  className={`px-4 py-2 rounded-xl text-sm font-medium transition-colors ${currentIndex === idx ? 'bg-red-500 text-white' : 'bg-white/10 text-zinc-400 hover:bg-white/20'}`}
+                >
+                  {layout.label || `Layout ${idx + 1}`}
+                </button>
+              ))}
             </div>
-            {/* Close Button - fixed at bottom */}
-            <div className="flex-shrink-0 p-4 pt-3 pb-5 border-t border-white/10">
-              <button
-                onClick={onClose}
-                className="w-full py-3 rounded-xl bg-white/5 hover:bg-white/10 text-zinc-300 font-semibold transition-colors"
-              >
-                Close
-              </button>
-            </div>
+          )}
+          <div className="w-full">
+            <NotesEditor
+              title="Map Notes"
+              value={noteValue}
+              onChange={onNoteChange}
+              placeholder="Tiles to watch, favorite loops, spawn notes, or personal callouts..."
+            />
           </div>
         </div>
-      );
-    };
+        {/* Close Button - fixed at bottom */}
+        <div className="flex-shrink-0 p-4 pt-3 pb-5 border-t border-white/10">
+          <button
+            onClick={onClose}
+            className="w-full py-3 rounded-xl bg-white/5 hover:bg-white/10 text-zinc-300 font-semibold transition-colors"
+          >
+            Close
+          </button>
+        </div>
+      </div>
+    </div>
+  );
+};
     const PerkCompareModal = ({ perks, onClose, onRemove, theme, settings = {} }) => {
       if (!perks || perks.length === 0) return null;
       const accentColor = theme?.accent || '#38bdf8';
@@ -14556,348 +14560,369 @@
       );
     };
 
-    const CharacterProfileModal = ({ character, onClose, allPerks = [], onPerkTap, theme, settings = {}, noteValue = '', onNoteChange, cosmeticsByBaseId = {} }) => {
-      if (!character) return null;
-      const isKiller = character.type === 'Killer' || character.power;
-      const accentColor = isKiller ? '#ff3b30' : '#38bdf8';
-      const stats = isKiller ? KILLER_STATS[character.name] : null;
-      const guide = isKiller ? KILLER_GUIDES[character.name] : null;
-      const teachables = allPerks.filter(p => p.owner === character.name);
-      const [activeTab, setActiveTab] = useState('overview');
-      const cosmeticsSectionRef = useRef(null);
-      const cosmeticsEntries = cosmeticsByBaseId[character.id] || [];
-      const focusedCosmeticId = character.cosmeticFocusId || null;
-      const characterSwapGroups = useMemo(() => {
-        const groups = cosmeticsEntries
-          .filter((entry) => entry.isCharacterSwap)
-          .reduce((acc, entry) => {
-            if (!acc[entry.groupLabel]) acc[entry.groupLabel] = [];
-            acc[entry.groupLabel].push(entry);
-            return acc;
-          }, {});
-        return ['Legendary', 'Costume', 'Ultra Rare']
-          .map((label) => ({ label, entries: (groups[label] || []).slice().sort((a, b) => a.name.localeCompare(b.name)) }))
-          .filter((group) => group.entries.length > 0);
-      }, [cosmeticsEntries]);
-      const fullSetGroups = useMemo(() => {
-        const groups = cosmeticsEntries
-          .filter((entry) => !entry.isCharacterSwap)
-          .reduce((acc, entry) => {
-            const key = entry.rarity || 'Other';
-            if (!acc[key]) acc[key] = [];
-            acc[key].push(entry);
-            return acc;
-          }, {});
-        return Object.entries(groups)
-          .map(([label, entries]) => ({ label, entries: entries.slice().sort((a, b) => a.name.localeCompare(b.name)) }))
-          .sort((a, b) => raritySortRank(a.label) - raritySortRank(b.label) || compareUiText(a.label, b.label));
-      }, [cosmeticsEntries]);
-      const fullSetLinkStats = useMemo(() => (
-        cosmeticsEntries
-          .filter((entry) => !entry.isCharacterSwap)
-          .reduce((acc, entry) => {
-            const mode = String(entry.outfitLinkMode || 'unlinked').toLowerCase();
-            const key = ['linked', 'partially_linked', 'unlinked'].includes(mode) ? mode : 'unlinked';
-            acc[key] += 1;
-            return acc;
-          }, { linked: 0, partially_linked: 0, unlinked: 0 })
-      ), [cosmeticsEntries]);
-      const linkedFullSetCount = fullSetLinkStats.linked + fullSetLinkStats.partially_linked;
+const CharacterProfileModal = ({ character, onClose, allPerks = [], onPerkTap, theme, settings = {}, noteValue = '', onNoteChange, cosmeticsByBaseId = {}, allAddons = [] }) => {
+  if (!character) return null;
+  const isKiller = character.type === 'Killer' || character.power;
+  const accentColor = isKiller ? '#ff3b30' : '#38bdf8';
+  const stats = isKiller ? KILLER_STATS[character.name] : null;
+  const guide = isKiller ? KILLER_GUIDES[character.name] : null;
+  const teachables = allPerks.filter(p => p.owner === character.name);
+  const [powerTipsTab, setPowerTipsTab] = useState('survivor');
+  const cosmeticsSectionRef = useRef(null);
+  const scrollRef = useRef(null);
+  const sectionEls = useRef({});
+  const cosmeticsEntries = cosmeticsByBaseId[character.id] || [];
+  const focusedCosmeticId = character.cosmeticFocusId || null;
+  const addonCount = useMemo(() => (
+    (allAddons || []).filter(a => a.role === 'killer' && a.killerName === character.name).length
+  ), [allAddons, character.name]);
+  const characterSwapGroups = useMemo(() => {
+    const groups = cosmeticsEntries
+      .filter((entry) => entry.isCharacterSwap)
+      .reduce((acc, entry) => {
+        if (!acc[entry.groupLabel]) acc[entry.groupLabel] = [];
+        acc[entry.groupLabel].push(entry);
+        return acc;
+      }, {});
+    return ['Legendary', 'Costume', 'Ultra Rare']
+      .map((label) => ({ label, entries: (groups[label] || []).slice().sort((a, b) => a.name.localeCompare(b.name)) }))
+      .filter((group) => group.entries.length > 0);
+  }, [cosmeticsEntries]);
+  const fullSetGroups = useMemo(() => {
+    const groups = cosmeticsEntries
+      .filter((entry) => !entry.isCharacterSwap)
+      .reduce((acc, entry) => {
+        const key = entry.rarity || 'Other';
+        if (!acc[key]) acc[key] = [];
+        acc[key].push(entry);
+        return acc;
+      }, {});
+    return Object.entries(groups)
+      .map(([label, entries]) => ({ label, entries: entries.slice().sort((a, b) => a.name.localeCompare(b.name)) }))
+      .sort((a, b) => raritySortRank(a.label) - raritySortRank(b.label) || compareUiText(a.label, b.label));
+  }, [cosmeticsEntries]);
+  const fullSetLinkStats = useMemo(() => (
+    cosmeticsEntries
+      .filter((entry) => !entry.isCharacterSwap)
+      .reduce((acc, entry) => {
+        const mode = String(entry.outfitLinkMode || 'unlinked').toLowerCase();
+        const key = ['linked', 'partially_linked', 'unlinked'].includes(mode) ? mode : 'unlinked';
+        acc[key] += 1;
+        return acc;
+      }, { linked: 0, partially_linked: 0, unlinked: 0 })
+  ), [cosmeticsEntries]);
+  const linkedFullSetCount = fullSetLinkStats.linked + fullSetLinkStats.partially_linked;
 
-      const releaseInfo = useMemo(() => {
-        if (typeof TIMELINE_DATA === 'undefined') return null;
-        for (const release of TIMELINE_DATA.releases) {
-          const found = (release.killers || []).find(k => k.name === character.name) ||
-            (release.survivors || []).find(s => s.name === character.name);
-          if (found) return { date: release.displayDate, chapter: release.name, licensed: found.licensed };
-        }
-        return null;
-      }, [character.name]);
+  const releaseInfo = useMemo(() => {
+    if (typeof TIMELINE_DATA === 'undefined') return null;
+    for (const release of TIMELINE_DATA.releases) {
+      const found = (release.killers || []).find(k => k.name === character.name) ||
+        (release.survivors || []).find(s => s.name === character.name);
+      if (found) return { date: release.displayDate, chapter: release.name, licensed: found.licensed };
+    }
+    return null;
+  }, [character.name]);
 
-      const tabs = isKiller
-        ? [{ id: 'overview', label: 'Overview' }, { id: 'power', label: 'Power' }, { id: 'perks', label: 'Perks' }, { id: 'lore', label: 'Lore' }]
-        : [{ id: 'overview', label: 'Overview' }, { id: 'perks', label: 'Perks' }, { id: 'lore', label: 'Lore' }];
+  const scrollToSection = (id) => {
+    const el = sectionEls.current[id];
+    if (el && typeof el.scrollIntoView === 'function') el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  };
+  const setSectionRef = (id) => (el) => { if (el) sectionEls.current[id] = el; };
 
-      useEffect(() => {
-        setActiveTab('overview');
-      }, [character.id, focusedCosmeticId]);
+  const tocEntries = [
+    { id: 'overview', label: 'Overview' },
+    ...((isKiller && character.power) ? [{ id: 'power', label: `Power: ${guide?.powerName || 'Power'}` }] : []),
+    { id: 'perks', label: `${character.name}'s Perks` },
+    ...(cosmeticsEntries.length > 0 ? [{ id: 'cosmetics', label: 'Cosmetics' }] : []),
+    { id: 'lore', label: 'Lore' },
+    ...(isKiller ? [{ id: 'notes', label: 'Notes' }] : []),
+  ];
 
-      useEffect(() => {
-        if (!focusedCosmeticId || activeTab !== 'overview' || !cosmeticsSectionRef.current) return undefined;
-        const timer = window.setTimeout(() => {
-          cosmeticsSectionRef.current?.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-        }, 140);
-        return () => window.clearTimeout(timer);
-      }, [focusedCosmeticId, activeTab, character.id]);
+  useEffect(() => {
+    if (scrollRef.current) scrollRef.current.scrollTop = 0;
+  }, [character.id]);
 
-      return (
-        <div className="fixed inset-0 z-50 bg-black/95 backdrop-blur-sm" onClick={onClose}>
-          <div className="h-full overflow-y-auto custom-scrollbar" data-smoke-profile={character.id} onClick={e => e.stopPropagation()}>
-            <div className="max-w-2xl mx-auto min-h-full">
-              {/* Hero Section */}
-              <div className="relative px-6 pb-4" style={{ paddingTop: 'max(1.5rem, calc(env(safe-area-inset-top, 0px) + 0.75rem))' }}>
-                <button onClick={onClose} className="absolute right-4 z-10 p-2.5 rounded-full bg-white/10 hover:bg-white/20 transition-colors" style={{ top: 'max(1rem, calc(env(safe-area-inset-top, 0px) + 0.5rem))' }}>
-                  <Icons.X width={20} height={20} className="text-white" />
-                </button>
-                <div className="flex items-center gap-5">
-                  <div className="w-28 h-28 rounded-2xl overflow-hidden border flex-shrink-0" style={{ borderColor: `${accentColor}55` }}>
-                    <AssetFrame type={isKiller ? 'Killer' : 'Survivor'} size="fill" imageUrl={character.image} fallbackIcon={<Icons.User width={40} height={40} className="text-zinc-500" />} />
-                  </div>
-                  <div className="flex-1 min-w-0">
-                    <h1 className="text-3xl text-white tracking-tight" style={{ fontFamily: 'var(--font-display)', fontWeight: 600, lineHeight: 1.05 }}>{character.name}</h1>
-                    {character.realName && character.realName !== character.name && (
-                      <p className="text-zinc-400 text-sm mt-0.5">{character.realName}</p>
-                    )}
-                    <div className="flex flex-wrap items-center gap-2 mt-2">
-                      {character.difficulty && (
-                        <span className="px-2.5 py-1 rounded-lg text-[10px] font-bold uppercase tracking-wider" style={{ backgroundColor: `${accentColor}20`, color: accentColor }}>
-                          {character.difficulty}
-                        </span>
-                      )}
-                      {releaseInfo?.licensed && (
-                        <span className="px-2.5 py-1 rounded-lg text-[10px] font-bold uppercase tracking-wider bg-yellow-500/20 text-yellow-400">
-                          Licensed
-                        </span>
-                      )}
-                    </div>
-                    {releaseInfo && (
-                      <div className="flex items-center gap-1.5 mt-2">
-                        <Icons.Calendar width={12} height={12} className="text-zinc-500" />
-                        <span className="text-zinc-500 text-xs">{releaseInfo.date}</span>
-                        <span className="text-zinc-600 text-[10px]">• {releaseInfo.chapter}</span>
-                      </div>
-                    )}
-                  </div>
-                </div>
+  useEffect(() => {
+    if (!focusedCosmeticId || !cosmeticsSectionRef.current) return undefined;
+    const timer = window.setTimeout(() => {
+      cosmeticsSectionRef.current?.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }, 140);
+    return () => window.clearTimeout(timer);
+  }, [focusedCosmeticId, character.id]);
+
+  return (
+    <div className="fixed inset-0 z-50 bg-black/95 backdrop-blur-sm" onClick={onClose}>
+      <div ref={scrollRef} className="h-full overflow-y-auto custom-scrollbar" data-smoke-profile={character.id} onClick={e => e.stopPropagation()}>
+        <div className="cx-article max-w-2xl mx-auto min-h-full" style={{ '--link': accentColor }}>
+          {/* Article header */}
+          <div className="relative px-6 pb-4" style={{ paddingTop: 'max(1.5rem, calc(env(safe-area-inset-top, 0px) + 0.75rem))' }}>
+            <button onClick={onClose} className="absolute right-4 z-10 p-2.5 rounded-full bg-white/10 hover:bg-white/20 transition-colors" style={{ top: 'max(1rem, calc(env(safe-area-inset-top, 0px) + 0.5rem))' }}>
+              <Icons.X width={20} height={20} className="text-white" />
+            </button>
+            <nav className="cx-crumbs" aria-label="Breadcrumb">
+              <span>Main page</span>
+              <span aria-hidden="true"> › </span>
+              <span>{isKiller ? 'Killers' : 'Survivors'}</span>
+              <span aria-hidden="true"> › </span>
+              <b>{character.name}</b>
+            </nav>
+            <h1 className="cx-title">{character.name}</h1>
+            {(releaseInfo?.chapter || (isKiller && character.power)) && (
+              <p className="cx-hatnote">
+                {releaseInfo?.chapter ? (
+                  <span>For the chapter this {isKiller ? 'Killer' : 'Survivor'} was introduced in, see <span >{releaseInfo.chapter}</span>. </span>
+                ) : null}
+                {isKiller && character.power ? (
+                  <span>For their power, see <button type="button" onClick={() => scrollToSection('power')} style={{ color: accentColor }}>{guide?.powerName || 'Power'}</button>.</span>
+                ) : null}
+              </p>
+            )}
+            {character.realName && character.realName !== character.name && (
+              <p className="text-zinc-400 text-sm mt-0.5">{character.realName}</p>
+            )}
+            <div className="flex flex-wrap items-center gap-2 mt-2">
+              {character.difficulty && (
+                <span className="px-2.5 py-1 rounded-lg text-[10px] font-bold uppercase tracking-wider" style={{ backgroundColor: `${accentColor}20`, color: accentColor }}>
+                  {character.difficulty}
+                </span>
+              )}
+              {releaseInfo?.licensed && (
+                <span className="px-2.5 py-1 rounded-lg text-[10px] font-bold uppercase tracking-wider bg-yellow-500/20 text-yellow-400">
+                  Licensed
+                </span>
+              )}
+            </div>
+            {releaseInfo && (
+              <p className="cx-metaline">{releaseInfo.date} · {releaseInfo.chapter}</p>
+            )}
+          </div>
+
+          {/* Lead + infobox */}
+          <div className="px-6">
+            <div className="cx-leadgrid">
+              <div>
+                <p><b>{character.name}</b> is a playable <b>{isKiller ? 'Killer' : 'Survivor'}</b> in <i>Dead by Daylight</i>.</p>
+                {releaseInfo && (
+                  <p>Introduced in <b>{releaseInfo.chapter}</b>, released {releaseInfo.date}.</p>
+                )}
+                {teachables.length > 0 ? (
+                  <p>Their personal perks are {teachables.map(p => p.name).join(', ')}. See <button type="button" onClick={() => scrollToSection('perks')} style={{ color: accentColor }}>perks</button> for full descriptions.</p>
+                ) : (
+                  <p>No teachable perks are currently listed for this character.</p>
+                )}
               </div>
-
-              {/* Tab Navigation */}
-              <div className="px-6 mb-4">
-                <div className="flex gap-1 bg-zinc-900/60 p-1 rounded-xl border border-white/5">
-                  {tabs.map(tab => (
-                    <button
-                      key={tab.id}
-                      onClick={() => setActiveTab(tab.id)}
-                      className={`flex-1 py-2 rounded-lg text-xs font-bold uppercase tracking-wider transition-all ${activeTab === tab.id ? 'text-white' : 'text-zinc-500 hover:text-zinc-300'}`}
-                      style={activeTab === tab.id ? { backgroundColor: `${accentColor}25`, color: accentColor } : {}}
-                    >
-                      {tab.label}
-                    </button>
-                  ))}
+              <aside className="cx-infobox" aria-label={`${character.name} infobox`}>
+                <p className="cx-ib-title">{character.name}</p>
+                <p className="cx-ib-sub">{isKiller ? 'Killer' : 'Survivor'}</p>
+                <div className="cx-ib-media" style={{ width: '100%', aspectRatio: '1 / 1' }}>
+                  <AssetFrame type={isKiller ? 'Killer' : 'Survivor'} size="fill" imageUrl={character.image} fallbackIcon={<Icons.User width={40} height={40} className="text-zinc-500" />} />
                 </div>
-              </div>
-
-              {/* Tab Content */}
-              <div className="px-6 pb-12">
-                {/* Overview Tab */}
-                {activeTab === 'overview' && (
-                  <div className="space-y-4 animate-in fade-in duration-300">
-                    {/* Stats (Killer) */}
+                <table>
+                  <tbody>
+                    {character.difficulty && (
+                      <tr><th>Difficulty</th><td>{character.difficulty}</td></tr>
+                    )}
                     {stats && (
-                      <div className="p-4 rounded-2xl bg-red-500/10 border border-red-500/20">
-                        <p className="text-[10px] uppercase tracking-widest text-red-400 font-bold mb-3">Killer Stats</p>
-                        <div className="grid grid-cols-3 gap-3">
-                          <div className="text-center p-3 rounded-xl bg-black/30">
-                            <p className="text-white text-sm font-bold">{stats.speed}</p>
-                            <p className="text-zinc-500 text-[10px] uppercase tracking-wider mt-1">Speed</p>
-                          </div>
-                          <div className="text-center p-3 rounded-xl bg-black/30">
-                            <p className="text-white text-sm font-bold">{stats.terrorRadius}</p>
-                            <p className="text-zinc-500 text-[10px] uppercase tracking-wider mt-1">Terror Radius</p>
-                          </div>
-                          <div className="text-center p-3 rounded-xl bg-black/30">
-                            <p className="text-white text-sm font-bold">{stats.height}</p>
-                            <p className="text-zinc-500 text-[10px] uppercase tracking-wider mt-1">Height</p>
-                          </div>
-                        </div>
-                      </div>
+                      <tr><th>Terror Radius</th><td>{stats.terrorRadius}</td></tr>
                     )}
-
-                    {/* Quick Power Summary (Killer) */}
+                    {stats && (
+                      <tr><th>Movement speed</th><td>{stats.speed}</td></tr>
+                    )}
+                    {stats && (
+                      <tr><th>Height</th><td>{stats.height}</td></tr>
+                    )}
                     {isKiller && character.power && (
-                      <div className="p-4 rounded-2xl bg-white/5 border border-white/10">
-                        <div className="flex items-center gap-2 mb-2">
-                          <Icons.Zap width={14} height={14} className="text-red-400" />
-                          <p className="text-[10px] uppercase tracking-widest text-red-400 font-bold">{guide?.powerName || 'Power'}</p>
-                        </div>
-                        <p className="text-zinc-300 text-sm leading-relaxed line-clamp-4">{stripHtml(character.power)}</p>
-                        <button onClick={() => setActiveTab('power')} className="mt-2 text-xs font-semibold transition-colors" style={{ color: accentColor }}>
-                          Read more →
-                        </button>
-                      </div>
+                      <tr><th>Power</th><td><button type="button" onClick={() => scrollToSection('power')} style={{ color: accentColor }}>{guide?.powerName || 'Power'}</button></td></tr>
                     )}
-
-                    {/* Teachable Perks Preview */}
-                    {teachables.length > 0 && (
-                      <div className="p-4 rounded-2xl bg-white/5 border border-white/10">
-                        <div className="flex items-center justify-between mb-3">
-                          <p className="text-[10px] uppercase tracking-widest text-zinc-500 font-bold">Teachable Perks</p>
-                          <button onClick={() => setActiveTab('perks')} className="text-[10px] font-bold uppercase" style={{ color: accentColor }}>View All →</button>
-                        </div>
-                        <div className="flex gap-3 justify-center">
-                          {teachables.slice(0, 3).map(perk => (
-                            <button key={perk.id} onClick={() => onPerkTap && onPerkTap(perk)} className="flex flex-col items-center gap-2 group">
-                              <AssetFrame type="Perk" imageUrl={perk.image} fallbackIcon={<Icons.BookOpen width={18} height={18} className="text-white/60" />} />
-                              <span className="text-[10px] text-zinc-400 font-semibold text-center leading-tight w-16 line-clamp-2 group-hover:text-white transition-colors">{perk.name}</span>
-                            </button>
-                          ))}
-                        </div>
-                      </div>
+                    {releaseInfo && (
+                      <tr><th>Chapter</th><td>{releaseInfo.chapter}</td></tr>
                     )}
-
-                    {cosmeticsEntries.length > 0 && (
-                      <div
-                        ref={cosmeticsSectionRef}
-                        data-smoke-cosmetics={character.id}
-                        className="p-4 rounded-2xl bg-white/5 border border-white/10 scroll-mt-24 space-y-4"
-                        style={focusedCosmeticId ? { borderColor: `${accentColor}55`, boxShadow: `0 0 0 1px ${accentColor}15` } : {}}
-                      >
-                        <div className="flex items-center justify-between gap-3">
-                          <div>
-                            <p className="text-[10px] uppercase tracking-widest font-bold" style={{ color: accentColor }}>Character Cosmetics</p>
-                            <p className="text-xs text-zinc-500 mt-1">Character swaps and all cosmetics linked to this character.</p>
-                          </div>
-                          <div className="flex flex-wrap justify-end gap-2">
-                            <span className="px-2 py-1 rounded-lg bg-white/5 border border-white/10 text-[10px] uppercase tracking-wider text-zinc-400">
-                              {cosmeticsEntries.length} total
-                            </span>
-                            {characterSwapGroups.length > 0 && (
-                              <span className="px-2 py-1 rounded-lg bg-white/5 border border-white/10 text-[10px] uppercase tracking-wider text-zinc-500">
-                                {characterSwapGroups.reduce((total, group) => total + group.entries.length, 0)} swaps
-                              </span>
-                            )}
-                            {fullSetGroups.length > 0 && (
-                              <span className="px-2 py-1 rounded-lg bg-white/5 border border-white/10 text-[10px] uppercase tracking-wider text-zinc-500">
-                                {fullSetGroups.reduce((total, group) => total + group.entries.length, 0)} cosmetics
-                              </span>
-                            )}
-                            {linkedFullSetCount > 0 && (
-                              <span className="px-2 py-1 rounded-lg bg-emerald-500/10 border border-emerald-500/20 text-[10px] uppercase tracking-wider text-emerald-300">
-                                {linkedFullSetCount} linked outfits
-                              </span>
-                            )}
-                          </div>
-                        </div>
-
-                        {characterSwapGroups.map((group) => (
-                          <div key={group.label} className="space-y-3">
-                            <div className="flex items-center justify-between gap-2">
-                              <p className="text-[10px] uppercase tracking-widest text-zinc-500 font-bold">{group.label}</p>
-                              <span className="text-[10px] uppercase tracking-wider text-zinc-600">{group.entries.length}</span>
-                            </div>
-                            <div className={group.entries.length === 1 ? 'grid grid-cols-1 gap-3 justify-items-center' : 'grid grid-cols-2 sm:grid-cols-3 gap-3'}>
-                              {group.entries.map((entry) => {
-                                const isFocused = entry.id === focusedCosmeticId;
-                                return (
-                                  <div key={entry.id} className={group.entries.length === 1 ? 'w-full max-w-[19rem]' : 'w-full'}>
-                                    <CosmeticCard entry={entry} accentColor={accentColor} focused={isFocused} />
-                                  </div>
-                                );
-                              })}
-                            </div>
-                          </div>
-                        ))}
-
-                        {fullSetGroups.map((group) => (
-                          <div key={group.label} className="space-y-3">
-                            <div className="flex items-center justify-between gap-2">
-                              <p className="text-[10px] uppercase tracking-widest text-zinc-500 font-bold">{group.label}</p>
-                              <span className="text-[10px] uppercase tracking-wider text-zinc-600">{group.entries.length}</span>
-                            </div>
-                            <div className={group.entries.length === 1 ? 'grid grid-cols-1 gap-3 justify-items-center' : 'grid grid-cols-2 sm:grid-cols-3 gap-3'}>
-                              {group.entries.map((entry) => {
-                                const isFocused = entry.id === focusedCosmeticId;
-                                return (
-                                  <div key={entry.id} className={group.entries.length === 1 ? 'w-full max-w-[19rem]' : 'w-full'}>
-                                    <CosmeticCard entry={entry} accentColor={accentColor} focused={isFocused} />
-                                  </div>
-                                );
-                              })}
-                            </div>
-                          </div>
-                        ))}
-                      </div>
+                    {releaseInfo && (
+                      <tr><th>Released</th><td>{releaseInfo.date}</td></tr>
                     )}
-
-                    {/* Lore Preview */}
-                    {character.lore && (
-                      <div className="p-4 rounded-2xl bg-white/5 border border-white/10">
-                        <div className="flex items-center gap-2 mb-2">
-                          <Icons.BookOpen width={14} height={14} style={{ color: accentColor }} />
-                          <p className="text-[10px] uppercase tracking-widest font-bold" style={{ color: accentColor }}>Backstory</p>
-                        </div>
-                        <p className="text-zinc-400 text-sm leading-relaxed line-clamp-3">{character.lore.split('\n\n')[0]}</p>
-                        <button onClick={() => setActiveTab('lore')} className="mt-2 text-xs font-semibold transition-colors" style={{ color: accentColor }}>
-                          Read full lore →
-                        </button>
-                      </div>
+                    {releaseInfo?.licensed && (
+                      <tr><th>Licensed</th><td>Yes</td></tr>
                     )}
-                  </div>
+                    <tr><th>Teachable perks</th><td>{teachables.length}</td></tr>
+                    {isKiller && (
+                      <tr><th>Add-ons</th><td>{addonCount}</td></tr>
+                    )}
+                  </tbody>
+                </table>
+                {character.realName && character.realName !== character.name && (
+                  <p className="cx-ib-note">Real name: {character.realName}.</p>
                 )}
+              </aside>
+            </div>
 
-                {/* Power Tab (Killer only) */}
-                {activeTab === 'power' && isKiller && (
-                  <div className="space-y-4 animate-in fade-in duration-300">
-                    {character.power && (
-                      <div className="p-4 rounded-2xl bg-white/5 border border-white/10">
-                        <div className="flex items-center gap-3 mb-3">
-                          {(() => {
-                            const safeName = character.name.toLowerCase().replace(/ /g, '_').replace(/'/g, '');
-                            const iconPath = `./dbd_images/powers/${safeName}_power.png`;
-                            return (
-                              <div className="w-14 h-14 rounded-xl bg-zinc-800/80 flex items-center justify-center border border-red-500/40 overflow-hidden">
-                                <AssetFrame
-                                  type="Power"
-                                  size="fill"
-                                  imageUrl={iconPath}
-                                  fallbackIcon={<Icons.Zap width={24} height={24} className="text-red-500" />}
-                                />
-                              </div>
-                            );
-                          })()}
-                          <div>
-                            <p className="text-[10px] uppercase tracking-widest text-red-400 font-bold">{guide?.powerName || 'Power'}</p>
-                            <h3 className="text-white font-bold">{character.name}</h3>
-                          </div>
-                        </div>
-                        <p className="text-zinc-300 text-sm leading-relaxed">{stripHtml(character.power)}</p>
-                      </div>
-                    )}
+            {/* TOC */}
+            <nav className="cx-toc" aria-label="Contents">
+              <p className="cx-toc-title">Contents</p>
+              <ol>
+                {tocEntries.map((entry, idx) => (
+                  <li key={entry.id}>
+                    <button type="button" onClick={() => scrollToSection(entry.id)}>
+                      <span>{idx + 1}. </span>{entry.label}
+                    </button>
+                  </li>
+                ))}
+              </ol>
+            </nav>
+          </div>
 
-                    {/* Tips */}
-                    {guide && (
-                      <div className="space-y-3">
-                        <div className="p-4 rounded-2xl bg-sky-500/10 border border-sky-500/20">
-                          <div className="flex items-center gap-2 mb-2">
-                            <Icons.Heart width={14} height={14} className="text-sky-400" />
-                            <p className="text-[10px] uppercase tracking-widest text-sky-400 font-bold">How to Counter</p>
-                          </div>
-                          <p className="text-zinc-300 text-sm leading-relaxed">{guide.survivorTips}</p>
-                        </div>
-                        <div className="p-4 rounded-2xl bg-red-500/10 border border-red-500/20">
-                          <div className="flex items-center gap-2 mb-2">
-                            <Icons.Sword width={14} height={14} className="text-red-400" />
-                            <p className="text-[10px] uppercase tracking-widest text-red-400 font-bold">How to Play</p>
-                          </div>
-                          <p className="text-zinc-300 text-sm leading-relaxed">{guide.killerTips}</p>
-                        </div>
-                      </div>
-                    )}
+          {/* Article body */}
+          <div className="px-6 pb-12">
+            {/* Overview */}
+            <section className="cx-sec" id="overview" ref={setSectionRef('overview')}>
+              <h2>Overview</h2>
+              {stats && (
+                <div className="p-4 rounded-2xl bg-red-500/10 border border-red-500/20">
+                  <p className="text-[10px] uppercase tracking-widest text-red-400 font-bold mb-3">Killer Stats</p>
+                  <div className="grid grid-cols-3 gap-3">
+                    <div className="text-center p-3 rounded-xl bg-black/30">
+                      <p className="text-white text-sm font-bold">{stats.speed}</p>
+                      <p className="text-zinc-500 text-[10px] uppercase tracking-wider mt-1">Speed</p>
+                    </div>
+                    <div className="text-center p-3 rounded-xl bg-black/30">
+                      <p className="text-white text-sm font-bold">{stats.terrorRadius}</p>
+                      <p className="text-zinc-500 text-[10px] uppercase tracking-wider mt-1">Terror Radius</p>
+                    </div>
+                    <div className="text-center p-3 rounded-xl bg-black/30">
+                      <p className="text-white text-sm font-bold">{stats.height}</p>
+                      <p className="text-zinc-500 text-[10px] uppercase tracking-wider mt-1">Height</p>
+                    </div>
                   </div>
-                )}
+                </div>
+              )}
+              {isKiller && character.power && (
+                <div className="p-4 rounded-2xl bg-white/5 border border-white/10">
+                  <div className="flex items-center gap-2 mb-2">
+                    <Icons.Zap width={14} height={14} className="text-red-400" />
+                    <p className="text-[10px] uppercase tracking-widest text-red-400 font-bold">{guide?.powerName || 'Power'}</p>
+                  </div>
+                  <p className="text-zinc-300 text-sm leading-relaxed">{stripHtml(character.power)}</p>
+                  <button type="button" onClick={() => scrollToSection('power')} className="mt-2 text-xs font-semibold transition-colors" style={{ color: accentColor }}>
+                    Read more →
+                  </button>
+                </div>
+              )}
+              {!isKiller && (
+                <div className="space-y-3">
+                  {character.difficulty && (
+                    <p className="text-zinc-300 text-sm leading-relaxed">Difficulty: <b>{character.difficulty}</b>.</p>
+                  )}
+                  {releaseInfo && (
+                    <p className="text-zinc-300 text-sm leading-relaxed">Part of <b>{releaseInfo.chapter}</b>, released {releaseInfo.date}.</p>
+                  )}
+                  {teachables.length > 0 ? (
+                    <p className="text-zinc-300 text-sm leading-relaxed">
+                      Teaches {teachables.length} personal perk{teachables.length === 1 ? '' : 's'}. See <button type="button" onClick={() => scrollToSection('perks')} className="font-semibold" style={{ color: accentColor }}>perks</button> for full descriptions.
+                    </p>
+                  ) : (
+                    <p className="text-zinc-500 text-sm italic">No teachable perks are currently listed for this Survivor.</p>
+                  )}
+                </div>
+              )}
+            </section>
 
-                {/* Perks Tab */}
-                {activeTab === 'perks' && (
-                  <div className="space-y-3 animate-in fade-in duration-300">
-                    {teachables.length > 0 ? teachables.map(perk => (
+            {/* Power (Killer only) */}
+            {isKiller && character.power && (
+              <section className="cx-sec" id="power" ref={setSectionRef('power')}>
+                <h2>Power: {guide?.powerName || 'Power'}</h2>
+                <div className="p-4 rounded-2xl bg-white/5 border border-white/10">
+                  <div className="flex items-center gap-3 mb-3">
+                    {(() => {
+                      const safeName = character.name.toLowerCase().replace(/ /g, '_').replace(/'/g, '');
+                      const iconPath = `./dbd_images/powers/${safeName}_power.png`;
+                      return (
+                        <div className="w-14 h-14 rounded-xl bg-zinc-800/80 flex items-center justify-center border border-red-500/40 overflow-hidden">
+                          <AssetFrame
+                            type="Power"
+                            size="fill"
+                            imageUrl={iconPath}
+                            fallbackIcon={<Icons.Zap width={24} height={24} className="text-red-500" />}
+                          />
+                        </div>
+                      );
+                    })()}
+                    <div>
+                      <p className="text-[10px] uppercase tracking-widest text-red-400 font-bold">{guide?.powerName || 'Power'}</p>
+                      <h3 className="text-white font-bold">{character.name}</h3>
+                    </div>
+                  </div>
+                  <p className="text-zinc-300 text-sm leading-relaxed">{stripHtml(character.power)}</p>
+                </div>
+                {guide && (
+                  <div className="mt-3">
+                    <div className="flex border-b border-white/10">
                       <button
+                        onClick={() => setPowerTipsTab('survivor')}
+                        className={`flex-1 py-3 text-sm font-bold transition-colors ${powerTipsTab === 'survivor' ? 'text-sky-400 border-b-2 border-sky-400 bg-sky-500/10' : 'text-zinc-500 hover:text-zinc-300'}`}
+                      >
+                        <span className="flex items-center justify-center gap-2">
+                          <Icons.Heart width={16} height={16} />
+                          Survivor Tips
+                        </span>
+                      </button>
+                      <button
+                        onClick={() => setPowerTipsTab('killer')}
+                        className={`flex-1 py-3 text-sm font-bold transition-colors ${powerTipsTab === 'killer' ? 'text-red-400 border-b-2 border-red-400 bg-red-500/10' : 'text-zinc-500 hover:text-zinc-300'}`}
+                      >
+                        <span className="flex items-center justify-center gap-2">
+                          <Icons.Sword width={16} height={16} />
+                          Killer Tips
+                        </span>
+                      </button>
+                    </div>
+                    <div className={`p-4 rounded-2xl mt-3 ${powerTipsTab === 'survivor' ? 'bg-sky-500/10 border border-sky-500/20' : 'bg-red-500/10 border border-red-500/20'}`}>
+                      <div className="flex items-center gap-2 mb-3">
+                        <div className={`w-8 h-8 rounded-lg flex items-center justify-center ${powerTipsTab === 'survivor' ? 'bg-sky-500/30' : 'bg-red-500/30'}`}>
+                          {powerTipsTab === 'survivor' ? <Icons.Heart width={18} height={18} className="text-sky-400" /> : <Icons.Sword width={18} height={18} className="text-red-400" />}
+                        </div>
+                        <h3 className={`font-bold ${powerTipsTab === 'survivor' ? 'text-sky-400' : 'text-red-400'}`}>
+                          {powerTipsTab === 'survivor' ? 'How to Counter' : 'How to Play'}
+                        </h3>
+                      </div>
+                      <p className="text-zinc-300 text-sm leading-relaxed">
+                        {powerTipsTab === 'survivor' ? guide.survivorTips : guide.killerTips}
+                      </p>
+                    </div>
+                  </div>
+                )}
+              </section>
+            )}
+
+            {/* Perks */}
+            <section className="cx-sec" id="perks" ref={setSectionRef('perks')}>
+              <h2>{character.name}'s Perks</h2>
+              {teachables.length > 0 ? (
+                <table className="cx-wikitable">
+                  <caption>Teachable perks of {character.name}</caption>
+                  <thead>
+                    <tr><th>Perk</th><th>Effect</th><th>Unlock</th></tr>
+                  </thead>
+                  <tbody>
+                    {teachables.map(perk => (
+                      <tr
                         key={perk.id}
                         onClick={() => onPerkTap && onPerkTap(perk)}
-                        className="w-full text-left p-4 rounded-2xl bg-white/5 border border-white/5 hover:border-white/15 transition-colors flex items-start gap-4"
+                        className="cursor-pointer"
                       >
-                        <AssetFrame type="Perk" imageUrl={perk.image} fallbackIcon={<Icons.BookOpen width={20} height={20} className="text-white/60" />} />
-                        <div className="flex-1">
-                          <p className="text-white text-sm font-bold">{perk.name}</p>
+                        <td className="perkcell">
+                          <AssetFrame type="Perk" imageUrl={perk.image} fallbackIcon={<Icons.BookOpen width={20} height={20} className="text-white/60" />} />
+                          <span>
+                            <button
+                              type="button"
+                              onClick={(e) => { e.stopPropagation(); onPerkTap && onPerkTap(perk); }}
+                              className="font-semibold text-left"
+                              style={{ color: accentColor }}
+                            >
+                              {perk.name}
+                            </button>
+                            <small>{perk.type} Perk</small>
+                          </span>
+                        </td>
+                        <td>
                           <PerkDescriptionBlock
                             perk={perk}
                             settings={settings}
@@ -14905,66 +14930,158 @@
                             compactLines={3}
                             className="text-zinc-500 text-xs mt-1.5 leading-relaxed"
                           />
-                        </div>
-                      </button>
-                    )) : (
-                      <div className="text-center py-12">
-                        <Icons.BookOpen width={40} height={40} className="mx-auto text-zinc-700 mb-3" />
-                        <p className="text-zinc-500">No teachable perks found</p>
-                      </div>
-                    )}
-                  </div>
-                )}
-
-                {/* Lore Tab */}
-                {activeTab === 'lore' && (
-                  <div className="animate-in fade-in duration-300">
-                    {character.lore ? (
-                      <div className="p-4 rounded-2xl bg-white/5 border border-white/10">
-                        <div className="flex items-center gap-2 mb-4">
-                          <Icons.BookOpen width={14} height={14} style={{ color: accentColor }} />
-                          <p className="text-[10px] uppercase tracking-widest font-bold" style={{ color: accentColor }}>Backstory</p>
-                        </div>
-                        <div className="space-y-4 text-zinc-300 text-sm leading-relaxed">
-                          {character.lore.split('\n\n').map((paragraph, i) => (
-                            <p key={i}>{paragraph}</p>
-                          ))}
-                        </div>
-                      </div>
-                    ) : (
-                      <div className="text-center py-12">
-                        <Icons.BookOpen width={40} height={40} className="mx-auto text-zinc-700 mb-3" />
-                        <p className="text-zinc-500 italic">The Fog obscures this knowledge...</p>
-                      </div>
-                    )}
-                  </div>
-                )}
-              </div>
-              {isKiller && (
-                <div className="px-6 pb-3">
-                  <NotesEditor
-                    title="Killer Notes"
-                    value={noteValue}
-                    onChange={onNoteChange}
-                    placeholder="Matchups, addon ideas, macro notes, or personal reminders for this killer..."
-                  />
+                        </td>
+                        <td>Teachable</td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              ) : (
+                <div className="text-center py-12">
+                  <Icons.BookOpen width={40} height={40} className="mx-auto text-zinc-700 mb-3" />
+                  <p className="text-zinc-500">No teachable perks found</p>
                 </div>
               )}
+            </section>
 
-              {/* Close Button */}
-              <div className="sticky bottom-0 px-6 pb-6 pt-3 bg-gradient-to-t from-black via-black/95 to-transparent">
-                <button
-                  onClick={onClose}
-                  className="w-full py-3 rounded-xl bg-white/5 hover:bg-white/10 text-zinc-300 font-semibold transition-colors border border-white/10"
+            {/* Cosmetics */}
+            {cosmeticsEntries.length > 0 && (
+              <section className="cx-sec" id="cosmetics" ref={setSectionRef('cosmetics')}>
+                <h2>Cosmetics</h2>
+                <div
+                  ref={cosmeticsSectionRef}
+                  data-smoke-cosmetics={character.id}
+                  className="p-4 rounded-2xl bg-white/5 border border-white/10 scroll-mt-24 space-y-4"
+                  style={focusedCosmeticId ? { borderColor: `${accentColor}55`, boxShadow: `0 0 0 1px ${accentColor}15` } : {}}
                 >
-                  Close
-                </button>
-              </div>
+                  <div className="flex items-center justify-between gap-3">
+                    <div>
+                      <p className="text-[10px] uppercase tracking-widest font-bold" style={{ color: accentColor }}>Character Cosmetics</p>
+                      <p className="text-xs text-zinc-500 mt-1">Character swaps and all cosmetics linked to this character.</p>
+                    </div>
+                    <div className="flex flex-wrap justify-end gap-2">
+                      <span className="px-2 py-1 rounded-lg bg-white/5 border border-white/10 text-[10px] uppercase tracking-wider text-zinc-400">
+                        {cosmeticsEntries.length} total
+                      </span>
+                      {characterSwapGroups.length > 0 && (
+                        <span className="px-2 py-1 rounded-lg bg-white/5 border border-white/10 text-[10px] uppercase tracking-wider text-zinc-500">
+                          {characterSwapGroups.reduce((total, group) => total + group.entries.length, 0)} swaps
+                        </span>
+                      )}
+                      {fullSetGroups.length > 0 && (
+                        <span className="px-2 py-1 rounded-lg bg-white/5 border border-white/10 text-[10px] uppercase tracking-wider text-zinc-500">
+                          {fullSetGroups.reduce((total, group) => total + group.entries.length, 0)} cosmetics
+                        </span>
+                      )}
+                      {linkedFullSetCount > 0 && (
+                        <span className="px-2 py-1 rounded-lg bg-emerald-500/10 border border-emerald-500/20 text-[10px] uppercase tracking-wider text-emerald-300">
+                          {linkedFullSetCount} linked outfits
+                        </span>
+                      )}
+                    </div>
+                  </div>
+
+                  {characterSwapGroups.map((group) => (
+                    <div key={group.label} className="space-y-3">
+                      <div className="flex items-center justify-between gap-2">
+                        <p className="text-[10px] uppercase tracking-widest text-zinc-500 font-bold">{group.label}</p>
+                        <span className="text-[10px] uppercase tracking-wider text-zinc-600">{group.entries.length}</span>
+                      </div>
+                      <div className={group.entries.length === 1 ? 'grid grid-cols-1 gap-3 justify-items-center' : 'grid grid-cols-2 sm:grid-cols-3 gap-3'}>
+                        {group.entries.map((entry) => {
+                          const isFocused = entry.id === focusedCosmeticId;
+                          return (
+                            <div key={entry.id} className={group.entries.length === 1 ? 'w-full max-w-[19rem]' : 'w-full'}>
+                              <CosmeticCard entry={entry} accentColor={accentColor} focused={isFocused} />
+                            </div>
+                          );
+                        })}
+                      </div>
+                    </div>
+                  ))}
+
+                  {fullSetGroups.map((group) => (
+                    <div key={group.label} className="space-y-3">
+                      <div className="flex items-center justify-between gap-2">
+                        <p className="text-[10px] uppercase tracking-widest text-zinc-500 font-bold">{group.label}</p>
+                        <span className="text-[10px] uppercase tracking-wider text-zinc-600">{group.entries.length}</span>
+                      </div>
+                      <div className={group.entries.length === 1 ? 'grid grid-cols-1 gap-3 justify-items-center' : 'grid grid-cols-2 sm:grid-cols-3 gap-3'}>
+                        {group.entries.map((entry) => {
+                          const isFocused = entry.id === focusedCosmeticId;
+                          return (
+                            <div key={entry.id} className={group.entries.length === 1 ? 'w-full max-w-[19rem]' : 'w-full'}>
+                              <CosmeticCard entry={entry} accentColor={accentColor} focused={isFocused} />
+                            </div>
+                          );
+                        })}
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </section>
+            )}
+
+            {/* Lore */}
+            <section className="cx-sec" id="lore" ref={setSectionRef('lore')}>
+              <h2>Lore</h2>
+              {character.lore ? (
+                <div className="p-4 rounded-2xl bg-white/5 border border-white/10">
+                  <div className="flex items-center gap-2 mb-4">
+                    <Icons.BookOpen width={14} height={14} style={{ color: accentColor }} />
+                    <p className="text-[10px] uppercase tracking-widest font-bold" style={{ color: accentColor }}>Backstory</p>
+                  </div>
+                  <div className="space-y-4 text-zinc-300 text-sm leading-relaxed">
+                    {character.lore.split('\n\n').map((paragraph, i) => (
+                      <p key={i}>{paragraph}</p>
+                    ))}
+                  </div>
+                </div>
+              ) : (
+                <div className="text-center py-12">
+                  <Icons.BookOpen width={40} height={40} className="mx-auto text-zinc-700 mb-3" />
+                  <p className="text-zinc-500 italic">The Fog obscures this knowledge...</p>
+                </div>
+              )}
+            </section>
+
+            {/* Notes (Killer only) */}
+            {isKiller && (
+              <section className="cx-sec" id="notes" ref={setSectionRef('notes')}>
+                <h2>Notes</h2>
+                <NotesEditor
+                  title="Killer Notes"
+                  value={noteValue}
+                  onChange={onNoteChange}
+                  placeholder="Matchups, addon ideas, macro notes, or personal reminders for this killer..."
+                />
+              </section>
+            )}
+
+            {/* Categories */}
+            <div className="cx-cats">
+              <span>Categories:</span>
+              <span>{isKiller ? 'Killers' : 'Survivors'}</span>
+              {releaseInfo?.chapter ? (<span> · {releaseInfo.chapter}</span>) : null}
+              {character.difficulty ? (<span> · {character.difficulty} {isKiller ? 'Killers' : 'Survivors'}</span>) : null}
+              {releaseInfo?.licensed ? (<span> · Licensed Characters</span>) : null}
             </div>
           </div>
+
+          {/* Close Button */}
+          <div className="sticky bottom-0 px-6 pb-6 pt-3 bg-gradient-to-t from-black via-black/95 to-transparent">
+            <button
+              onClick={onClose}
+              className="w-full py-3 rounded-xl bg-white/5 hover:bg-white/10 text-zinc-300 font-semibold transition-colors border border-white/10"
+            >
+              Close
+            </button>
+          </div>
         </div>
-      );
-    };
+      </div>
+    </div>
+  );
+};
     const App = () => {
       const { killers = [], survivors = [], perks = [], maps = [], realms = [], items = [], offerings = [], addons = [] } = DATABASE;
       const isAndroidNative = useMemo(() => isNativeAndroidPlatform(), []);
@@ -15582,6 +15699,7 @@
               noteValue={profileCharacter && (profileCharacter.type === 'Killer' || profileCharacter.power) ? getEntityNote('killer', profileCharacter.id) : ''}
               onNoteChange={(value) => setEntityNote('killer', profileCharacter?.id, value)}
               cosmeticsByBaseId={cosmeticsByBaseId}
+              allAddons={addons}
             />
           )}
           {/* Bottom Sheet for perk details */}
