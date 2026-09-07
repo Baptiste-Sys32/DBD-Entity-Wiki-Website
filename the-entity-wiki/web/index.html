@@ -238,7 +238,7 @@
     .launch-progress-fill {
       inset: 2px auto 2px 2px;
       width: 42%;
-      background: rgba(255, 59, 48, 0.85);
+      background: rgba(250, 250, 250, 0.85);
       box-shadow: none;
       animation: launchBarSweep 1.9s cubic-bezier(0.4, 0.05, 0.6, 0.95) infinite;
     }
@@ -1348,28 +1348,28 @@
 
       0%,
       100% {
-        box-shadow: 0 0 20px rgba(220, 38, 38, 0.3), inset 0 0 30px rgba(0, 0, 0, 0.5);
+        box-shadow: 0 0 20px rgba(250, 250, 250, 0.22), inset 0 0 30px rgba(0, 0, 0, 0.5);
       }
 
       50% {
-        box-shadow: 0 0 40px rgba(220, 38, 38, 0.5), inset 0 0 30px rgba(0, 0, 0, 0.5);
+        box-shadow: 0 0 40px rgba(250, 250, 250, 0.35), inset 0 0 30px rgba(0, 0, 0, 0.5);
       }
     }
 
     @keyframes countPulse {
       0% {
         transform: scale(1);
-        text-shadow: 0 0 10px rgba(220, 38, 38, 0.5);
+        text-shadow: 0 0 10px rgba(250, 250, 250, 0.4);
       }
 
       50% {
         transform: scale(1.02);
-        text-shadow: 0 0 25px rgba(220, 38, 38, 0.8);
+        text-shadow: 0 0 25px rgba(250, 250, 250, 0.65);
       }
 
       100% {
         transform: scale(1);
-        text-shadow: 0 0 10px rgba(220, 38, 38, 0.5);
+        text-shadow: 0 0 10px rgba(250, 250, 250, 0.4);
       }
     }
 
@@ -1429,6 +1429,7 @@
       padding: 26px 44px 70px;
       color: var(--text);
     }
+    .cx-alink { color: var(--link); font: inherit; background: none; border: 0; padding: 0; cursor: pointer; text-decoration: underline; text-underline-offset: 2px; }
     .cx-article a {
       color: var(--link);
       text-decoration: none;
@@ -7776,7 +7777,14 @@
       }, [initialSearch]);
       const filteredMaps = useMemo(() => {
         const term = mapSearch.toLowerCase();
-        return (maps || []).filter(mp => !term || (mp.name || '').toLowerCase().includes(term));
+        const seen = new Set();
+        return (maps || []).filter(mp => {
+          if (term && !((mp.name || '').toLowerCase().includes(term))) return false;
+          const key = (mp.name || '').trim().toLowerCase();
+          if (seen.has(key)) return false;
+          seen.add(key);
+          return true;
+        });
       }, [maps, mapSearch]);
       const grouped = useMemo(() => {
         const bucket = {};
@@ -13891,7 +13899,7 @@
       };
       return (
         <div className="h-full pt-12 pb-32 overflow-y-auto custom-scrollbar">
-          <div className="relative px-6 max-w-2xl mx-auto">
+          <div className="relative px-6 max-w-2xl md:max-w-5xl mx-auto">
             <div className="fog-layer fixed inset-0 pointer-events-none z-0" style={{
             }} />
             <div className="relative z-10">
@@ -13944,7 +13952,7 @@
                       style={{
                         width: `${progressPercent}%`,
                         background: 'linear-gradient(90deg, #52525b, #a1a1aa, #fafafa)',
-                        boxShadow: '0 0 10px rgba(220,38,38,0.5)'
+                        boxShadow: '0 0 10px rgba(250,250,250,0.4)'
                       }}
                     />
                   </div>
@@ -13972,7 +13980,7 @@
                   <div className="flex gap-2">
                     {[
                       { id: 'efficient', label: 'Skip Level', desc: '~850k/P', sub: 'Skip Level Up', color: '#e4e4e7', bg: 'rgba(228,228,231,0.12)' },
-                      { id: 'average', label: 'Auto Buy', desc: '~1.05M/P', sub: 'Auto Purchase', color: '#dc2626', bg: 'rgba(220,38,38,0.2)' },
+                      { id: 'average', label: 'Auto Buy', desc: '~1.05M/P', sub: 'Auto Purchase', color: '#e4e4e7', bg: 'rgba(228,228,231,0.12)' },
                       { id: 'completionist', label: 'Manual', desc: '~1.5M/P', sub: 'Full Bloodweb', color: '#d4d4d8', bg: 'rgba(212,212,216,0.12)' },
                     ].map(opt => (
                       <button
@@ -15049,7 +15057,7 @@ const CharacterProfileModal = ({ character, onClose, allPerks = [], onPerkTap, t
   return (
     <div className="fixed inset-0 z-50 bg-black/95 backdrop-blur-sm" onClick={onClose}>
       <div ref={scrollRef} className="h-full overflow-y-auto custom-scrollbar" data-smoke-profile={character.id} onClick={e => e.stopPropagation()}>
-        <div className="cx-article max-w-2xl mx-auto min-h-full" style={{ '--link': accentColor }}>
+        <div className="cx-article max-w-2xl md:max-w-5xl mx-auto min-h-full pb-32 md:pb-24">
           {/* Article header */}
           <div className="relative px-6 pb-4" style={{ paddingTop: 'max(1.5rem, calc(env(safe-area-inset-top, 0px) + 0.75rem))' }}>
             <button onClick={onClose} className="absolute right-4 z-10 p-2.5 rounded-full bg-white/10 hover:bg-white/20 transition-colors" style={{ top: 'max(1rem, calc(env(safe-area-inset-top, 0px) + 0.5rem))' }}>
@@ -15069,7 +15077,7 @@ const CharacterProfileModal = ({ character, onClose, allPerks = [], onPerkTap, t
                   <span>For the chapter this {isKiller ? 'Killer' : 'Survivor'} was introduced in, see <span >{releaseInfo.chapter}</span>. </span>
                 ) : null}
                 {isKiller && character.power ? (
-                  <span>For their power, see <button type="button" onClick={() => scrollToSection('power')} style={{ color: accentColor }}>{guide?.powerName || 'Power'}</button>.</span>
+                  <span>For their power, see <button type="button" onClick={() => scrollToSection('power')} className="cx-alink">{guide?.powerName || 'Power'}</button>.</span>
                 ) : null}
               </p>
             )}
@@ -15102,7 +15110,7 @@ const CharacterProfileModal = ({ character, onClose, allPerks = [], onPerkTap, t
                   <p>Introduced in <b>{releaseInfo.chapter}</b>, released {releaseInfo.date}.</p>
                 )}
                 {teachables.length > 0 ? (
-                  <p>Their personal perks are {teachables.map(p => p.name).join(', ')}. See <button type="button" onClick={() => scrollToSection('perks')} style={{ color: accentColor }}>perks</button> for full descriptions.</p>
+                  <p>Their personal perks are {teachables.map(p => p.name).join(', ')}. See <button type="button" onClick={() => scrollToSection('perks')} className="cx-alink">perks</button> for full descriptions.</p>
                 ) : (
                   <p>No teachable perks are currently listed for this character.</p>
                 )}
@@ -15128,7 +15136,7 @@ const CharacterProfileModal = ({ character, onClose, allPerks = [], onPerkTap, t
                       <tr><th>Height</th><td>{stats.height}</td></tr>
                     )}
                     {isKiller && character.power && (
-                      <tr><th>Power</th><td><button type="button" onClick={() => scrollToSection('power')} style={{ color: accentColor }}>{guide?.powerName || 'Power'}</button></td></tr>
+                      <tr><th>Power</th><td><button type="button" onClick={() => scrollToSection('power')} className="cx-alink">{guide?.powerName || 'Power'}</button></td></tr>
                     )}
                     {releaseInfo && (
                       <tr><th>Chapter</th><td>{releaseInfo.chapter}</td></tr>
@@ -15197,7 +15205,7 @@ const CharacterProfileModal = ({ character, onClose, allPerks = [], onPerkTap, t
                     <p className="text-[10px] uppercase tracking-widest text-zinc-100 font-bold">{guide?.powerName || 'Power'}</p>
                   </div>
                   <p className="text-zinc-300 text-sm leading-relaxed">{stripHtml(character.power)}</p>
-                  <button type="button" onClick={() => scrollToSection('power')} className="mt-2 text-xs font-semibold transition-colors" style={{ color: accentColor }}>
+                  <button type="button" onClick={() => scrollToSection('power')} className="mt-2 text-xs font-semibold transition-colors text-zinc-100 underline underline-offset-2">
                     Read more →
                   </button>
                 </div>
@@ -15212,7 +15220,7 @@ const CharacterProfileModal = ({ character, onClose, allPerks = [], onPerkTap, t
                   )}
                   {teachables.length > 0 ? (
                     <p className="text-zinc-300 text-sm leading-relaxed">
-                      Teaches {teachables.length} personal perk{teachables.length === 1 ? '' : 's'}. See <button type="button" onClick={() => scrollToSection('perks')} className="font-semibold" style={{ color: accentColor }}>perks</button> for full descriptions.
+                      Teaches {teachables.length} personal perk{teachables.length === 1 ? '' : 's'}. See <button type="button" onClick={() => scrollToSection('perks')} className="font-semibold cx-alink">perks</button> for full descriptions.
                     </p>
                   ) : (
                     <p className="text-zinc-500 text-sm italic">No teachable perks are currently listed for this Survivor.</p>
