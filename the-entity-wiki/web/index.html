@@ -7760,11 +7760,11 @@
           <Header title="Realms" subtitle="Maps & Locations" onBack={onBack} />
           <div className="sticky top-0 z-20 -mx-6 px-6 pb-4 pointer-events-none">
             <div className="relative max-w-3xl mx-auto">
-              <div className="absolute inset-0 bg-red-600 rounded-3xl blur-2xl opacity-0 transition-opacity duration-500"></div>
-              <div className="relative flex items-center bg-zinc-800/60 backdrop-blur-xl border border-white/10 rounded-3xl p-2 shadow-2xl pointer-events-auto">
+              <div className="absolute inset-0 bg-transparent rounded-xl blur-2xl opacity-0 transition-opacity duration-500"></div>
+              <div className="relative flex items-center bg-[var(--panel)] border border-[var(--stroke)] rounded-xl p-2 pointer-events-auto">
                 <div className="pl-4 text-zinc-400"><Icons.Search width={18} height={18} /></div>
                 <input value={mapSearch} onChange={e => setMapSearch(e.target.value)} placeholder="Search maps..." className="w-full bg-transparent text-white p-3 text-sm sm:text-base font-medium placeholder-zinc-600 focus:outline-none" />
-                {mapSearch && <button onClick={() => setMapSearch('')} className="p-2 mr-1 rounded-xl bg-white/5 text-zinc-300 hover:text-white hover:bg-white/10 transition-colors"><Icons.X width={18} height={18} /></button>}
+                {mapSearch && <button onClick={() => setMapSearch('')} className="p-2 mr-1 rounded-xl border border-[var(--stroke)] text-zinc-300 hover:text-white transition-colors"><Icons.X width={18} height={18} /></button>}
               </div>
             </div>
           </div>
@@ -7773,7 +7773,7 @@
               <div className="text-center text-zinc-500 mt-12">No map data available.</div>
             )}
             {realms.map(([realm, realmMaps]) => (
-              <div key={realm} className="p-4 rounded-3xl bg-zinc-900/40 border border-white/5 backdrop-blur-md">
+              <div key={realm} className="p-4 rounded-xl bg-[var(--panel)] border border-[var(--stroke)]">
                 <div className="flex items-center justify-between mb-3">
                   <h3 className="text-lg font-bold text-white">{realm}</h3>
                   <span className="text-xs text-zinc-500 font-bold uppercase tracking-wider">{realmMaps.length} maps</span>
@@ -7782,7 +7782,7 @@
                   {realmMaps.map(mp => {
                     const hasLayout = MAP_LAYOUTS[mp.name] && MAP_LAYOUTS[mp.name].length > 0;
                     return (
-                      <div key={mp.id} className="flex items-start gap-3 p-3 rounded-2xl bg-white/5 border border-white/5 hover:border-red-500/30 transition-colors">
+                      <div key={mp.id} className="flex items-start gap-3 p-3 rounded-xl bg-[var(--panel)] border border-[var(--stroke)] hover:border-[var(--accent)] transition-colors">
                         <AssetFrame type="Map" imageUrl={mp.image} fallbackIcon={<Icons.Map width={20} height={20} className="opacity-30" />} />
                         <div className="flex-1">
                           <p className="text-white font-bold text-sm">{mp.name}</p>
@@ -11165,7 +11165,7 @@
           <div className="mb-2">
             <button
               onClick={() => toggleCharacter(charKey)}
-              className="w-full flex items-center gap-3 p-3 rounded-xl transition-all bg-white/5 border border-white/5 hover:bg-white/8 hover:border-white/10"
+              className="w-full flex items-center gap-3 p-3 rounded-xl transition-colors bg-[var(--panel)] border border-[var(--stroke)]"
               style={isExpanded ? { backgroundColor: `${accent}15`, borderColor: `${accent}30` } : {}}
             >
               {/* Portrait */}
@@ -11268,7 +11268,7 @@
                 value={search}
                 onChange={(e) => setSearch(e.target.value)}
                 placeholder="Search chapters, killers, survivors..."
-                className="w-full bg-zinc-800/60 border border-white/10 rounded-2xl py-3 pl-12 pr-10 text-white placeholder-zinc-600 text-sm focus:outline-none focus:border-white/20"
+                className="w-full bg-[var(--panel)] border border-[var(--stroke)] rounded-xl py-3 pl-12 pr-10 text-white placeholder-zinc-600 text-sm focus:outline-none"
               />
               {search && (
                 <button
@@ -11343,7 +11343,7 @@
 
                         {/* Release card */}
                         <div
-                          className="rounded-xl border transition-all"
+                          className="rounded-xl border border-[var(--stroke)] bg-[var(--panel)] transition-colors"
                           style={isExpanded
                             ? { backgroundColor: `${accentSoft}60`, borderColor: `${accent}30`, boxShadow: `0 0 20px ${accent}15` }
                             : { backgroundColor: 'rgba(255,255,255,0.03)', borderColor: 'rgba(255,255,255,0.05)' }
@@ -11367,7 +11367,7 @@
                                 <p className="text-xs text-zinc-500 mb-1">{release.displayDate}</p>
 
                                 {/* Name */}
-                                <h3 className="text-lg font-bold text-white leading-tight">{release.name}</h3>
+                                <h3 className="text-lg font-bold text-white leading-tight [font-family:var(--font-display)]">{release.name}</h3>
 
                                 {/* Content count - simple text */}
                                 {hasContent && (
@@ -11440,7 +11440,7 @@
                                   </p>
                                   <div className="space-y-1">
                                     {release.maps.map(map => (
-                                      <div key={map.name} className="flex items-center gap-3 p-2.5 rounded-lg bg-white/5 border border-white/5">
+                                      <div key={map.name} className="flex items-center gap-3 p-2.5 rounded-xl bg-[var(--panel)] border border-[var(--stroke)]">
                                         <div>
                                           <p className="text-white font-medium text-sm">{map.name}</p>
                                           <p className="text-[11px] text-zinc-500">{map.realm}</p>
@@ -11468,7 +11468,7 @@
               onClick={() => setSelectedCharacter(null)}
             >
               <div
-                className="w-full max-w-lg max-h-[85vh] bg-zinc-900 rounded-t-3xl overflow-hidden animate-slideUp"
+                className="w-full max-w-2xl max-h-[85vh] bg-[var(--panel)] border border-[var(--stroke)] rounded-t-xl overflow-hidden animate-slideUp"
                 onClick={(e) => e.stopPropagation()}
               >
                 {/* Modal header */}
@@ -11639,7 +11639,7 @@
                     <div className="sticky top-16 z-10 py-2 -mx-2 px-2 mb-2 backdrop-blur-md">
                       <div className="flex items-center gap-3">
                         <span className="text-2xl font-black text-white" style={{ color: 'var(--accent)' }}>{letter}</span>
-                        <div className="flex-1 h-px bg-white/10"></div>
+                        <div className="flex-1 h-px bg-[var(--stroke)]"></div>
                         <span className="text-[10px] text-zinc-500 font-bold uppercase tracking-wider">{groupedTerms[letter].length}</span>
                       </div>
                     </div>
@@ -11647,7 +11647,7 @@
                     {/* Terms for this letter */}
                     <div className="space-y-2 mb-6">
                       {groupedTerms[letter].map(item => (
-                        <div key={item.term} className="p-3 rounded-2xl bg-zinc-900/40 border border-white/5 backdrop-blur-md">
+                        <div key={item.term} className="p-3 rounded-xl bg-[var(--panel)] border border-[var(--stroke)]">
                           <div className="flex items-start gap-3">
                             <div className="flex-1">
                               <p className="text-white text-sm font-bold mb-1">{item.term}</p>
@@ -11672,7 +11672,7 @@
                   key={letter}
                   onClick={() => hasTerms && scrollToLetter(letter)}
                   disabled={!hasTerms}
-                  className="text-[9px] font-bold py-0.5 transition-all"
+                  className="text-[9px] font-bold py-0.5 px-1 transition-all"
                   style={{
                     color: hasTerms ? 'var(--accent)' : '#3f3f46',
                     opacity: hasTerms ? 1 : 0.4
@@ -12255,8 +12255,8 @@
       return (
         <div
           data-smoke-target={focused ? 'true' : undefined}
-          className="rounded-[1.35rem] border overflow-hidden transition-all h-full flex flex-col"
-          style={focused ? { borderColor: `${accentColor}aa`, boxShadow: `0 0 0 1px ${accentColor}25, 0 18px 40px rgba(0,0,0,0.28)` } : { borderColor: 'rgba(255,255,255,0.08)', background: 'rgba(0,0,0,0.18)' }}
+          className="rounded-xl border border-[var(--stroke)] bg-[var(--panel)] overflow-hidden transition-all h-full flex flex-col"
+          style={focused ? { borderColor: `${accentColor}aa`, boxShadow: `0 0 0 1px ${accentColor}25, 0 18px 40px rgba(0,0,0,0.28)` } : { borderColor: 'var(--stroke)', background: 'var(--panel)' }}
         >
           <div className={`${isCharacterSwap ? 'aspect-[3/4]' : 'aspect-square'} bg-black/30`}>
             <AssetFrame
@@ -12275,24 +12275,24 @@
           <div className="p-3.5 flex flex-1 flex-col gap-3">
             <div className="flex flex-wrap gap-1.5">
               {isCharacterSwap ? (
-                <span className="inline-flex items-center rounded-full border px-2 py-1 text-[10px] font-bold uppercase tracking-[0.16em] bg-fuchsia-500/10 text-fuchsia-200 border-fuchsia-500/20">
+                <span className="inline-flex items-center rounded-md border px-2 py-1 text-[10px] font-bold uppercase tracking-[0.16em] bg-fuchsia-500/10 text-fuchsia-200 border-fuchsia-500/20">
                   Character swaps
                 </span>
               ) : (
-                <span className="inline-flex items-center rounded-full border px-2 py-1 text-[10px] font-bold uppercase tracking-[0.16em]" style={badgeStyle}>
+                <span className="inline-flex items-center rounded-md border px-2 py-1 text-[10px] font-bold uppercase tracking-[0.16em]" style={badgeStyle}>
                   {pieceLabel}
                 </span>
               )}
-              <span className={`inline-flex items-center rounded-full border px-2 py-1 text-[10px] font-bold uppercase tracking-[0.16em] ${roleChipClasses}`}>
+              <span className={`inline-flex items-center rounded-md border px-2 py-1 text-[10px] font-bold uppercase tracking-[0.16em] ${roleChipClasses}`}>
                 {entry.baseCharacterType}
               </span>
               {!isCharacterSwap && pieceLabel === 'Outfit' && (
-                <span className={`inline-flex items-center rounded-full border px-2 py-1 text-[10px] font-bold uppercase tracking-[0.16em] ${getOutfitLinkModeChipClasses(outfitLinkMode)}`}>
+                <span className={`inline-flex items-center rounded-md border px-2 py-1 text-[10px] font-bold uppercase tracking-[0.16em] ${getOutfitLinkModeChipClasses(outfitLinkMode)}`}>
                   {getOutfitLinkModeLabel(outfitLinkMode)}
                 </span>
               )}
               {entry.rarity && (
-                <span className="inline-flex items-center rounded-full border px-2 py-1 text-[10px] font-bold uppercase tracking-[0.16em] bg-white/5 text-zinc-200 border-white/10">
+                <span className="inline-flex items-center rounded-md border px-2 py-1 text-[10px] font-bold uppercase tracking-[0.16em] bg-white/5 text-zinc-200 border-white/10">
                   {entry.rarity}
                 </span>
               )}
@@ -12313,7 +12313,7 @@
             {typeof onOpen === 'function' && (
               <button
                 onClick={() => onOpen(entry)}
-                className="w-full py-2.5 rounded-xl bg-white/5 border border-white/10 text-[11px] text-white uppercase tracking-[0.18em] hover:bg-white/10 transition-colors mt-auto"
+                className="w-full py-2.5 rounded-xl bg-[var(--panel)] border border-[var(--stroke)] text-[11px] text-white uppercase tracking-[0.18em] transition-colors mt-auto"
               >
                 Open Base Profile
               </button>
@@ -12450,7 +12450,7 @@
           <Header title="Cosmetics" subtitle={`${readyCosmetics.length} cosmetics • ${characterSwapCount} character swaps`} onBack={onBack} />
           {showFullSetPackBanner && (
             <div className="max-w-5xl mx-auto w-full mb-4">
-              <div className="p-4 rounded-2xl bg-amber-500/10 border border-amber-500/20 space-y-3">
+              <div className="p-4 rounded-xl bg-[var(--panel)] border border-[var(--stroke)] space-y-3">
                 <div className="flex flex-wrap items-start justify-between gap-3">
                   <div>
                     <p className="text-[10px] uppercase tracking-widest font-bold text-amber-300">Full Cosmetics Pack</p>
@@ -12461,7 +12461,7 @@
                   </div>
                   <div className="flex flex-wrap gap-2">
                     {typeof onRefreshFullSetPack === 'function' && (
-                      <button onClick={() => onRefreshFullSetPack({ forceAssetReload: true })} className="px-3 py-2 rounded-xl bg-white/5 border border-white/10 text-xs font-semibold text-zinc-200">
+                      <button onClick={() => onRefreshFullSetPack({ forceAssetReload: true })} className="px-3 py-2 rounded-xl bg-[var(--panel)] border border-[var(--stroke)] text-xs font-semibold text-zinc-200">
                         Refresh
                       </button>
                     )}
@@ -12476,7 +12476,7 @@
           )}
           <div className="sticky top-0 z-20 -mx-6 px-6 pb-4 pointer-events-none">
             <div className="relative max-w-5xl mx-auto pointer-events-auto">
-              <div className="relative flex items-center bg-zinc-800/60 backdrop-blur-xl border border-white/10 rounded-3xl p-2 shadow-2xl">
+              <div className="relative flex items-center bg-[var(--panel)] border border-[var(--stroke)] rounded-xl p-2">
                 <div className="pl-4 text-zinc-400"><Icons.Search width={18} height={18} /></div>
                 <input
                   value={search}
@@ -12485,7 +12485,7 @@
                   className="w-full bg-transparent text-white p-3 text-sm font-medium placeholder-zinc-600 focus:outline-none"
                 />
                 {search && (
-                  <button onClick={() => setSearch('')} className="p-2 mr-1 rounded-xl bg-white/5 text-zinc-300 hover:text-white hover:bg-white/10 transition-colors">
+                  <button onClick={() => setSearch('')} className="p-2 mr-1 rounded-xl border border-[var(--stroke)] text-zinc-300 hover:text-white transition-colors">
                     <Icons.X width={18} height={18} />
                   </button>
                 )}
@@ -12524,7 +12524,7 @@
                     <p className="text-[10px] uppercase tracking-widest font-bold text-zinc-500">{group.label}</p>
                     <p className="text-xs text-zinc-500 mt-1">{roleFilter} cosmetics sorted by rarity.</p>
                   </div>
-                  <span className="px-2 py-1 rounded-lg bg-white/5 border border-white/10 text-[10px] uppercase tracking-wider text-zinc-400">{(groupedByRarity.find((full) => full.label === group.label)?.entries.length ?? group.entries.length)}</span>
+                  <span className="px-2 py-1 rounded-md bg-[var(--panel)] border border-[var(--stroke)] text-[10px] uppercase tracking-wider text-zinc-400">{(groupedByRarity.find((full) => full.label === group.label)?.entries.length ?? group.entries.length)}</span>
                 </div>
                 <div className="grid grid-cols-2 sm:grid-cols-3 xl:grid-cols-4 gap-3">
                   {group.entries.map((entry) => {
@@ -12541,7 +12541,7 @@
               <div className="flex justify-center pt-2">
                 <button
                   onClick={() => setVisibleCosmeticCount((count) => count + COSMETICS_PAGE_SIZE)}
-                  className="px-5 py-2.5 rounded-2xl bg-white/5 border border-white/10 text-sm font-semibold text-zinc-200 hover:text-white hover:bg-white/10 transition-colors"
+                  className="px-5 py-2.5 rounded-xl bg-[var(--panel)] border border-[var(--stroke)] text-sm font-semibold text-zinc-200 hover:text-white transition-colors"
                 >
                   Show more ({filteredCosmetics.length - shownCosmeticCount} remaining)
                 </button>
@@ -12549,7 +12549,7 @@
             )}
 
             {groupedByRarity.length === 0 && (
-              <div className="text-center py-12">
+              <div className="text-center py-12 rounded-xl border border-[var(--stroke)] bg-[var(--panel)]">
                 <Icons.Image width={36} height={36} className="mx-auto text-zinc-700 mb-3" />
                 <p className="text-zinc-500 text-sm">No cosmetics match the current filters.</p>
                 <p className="text-zinc-600 text-xs mt-2">Try selecting all characters or clearing the search query.</p>
@@ -12858,11 +12858,11 @@
                     value={addonSearch}
                     onChange={(event) => setAddonSearch(event.target.value)}
                     placeholder="Search addon or comment"
-                    className="flex-1 min-w-[200px] bg-zinc-800/50 border border-white/10 rounded-xl px-3 py-2 text-sm text-white placeholder-zinc-500"
+                    className="flex-1 min-w-[200px] bg-[var(--panel)] border border-[var(--stroke)] rounded-xl px-3 py-2 text-sm text-white placeholder-zinc-500"
                   />
                 </div>
                 {activeKillerCombos.length > 0 && (
-                  <div className="p-3 rounded-2xl bg-zinc-900/45 border border-white/10">
+                  <div className="p-3 rounded-xl bg-[var(--panel)] border border-[var(--stroke)]">
                     <p className="text-[10px] uppercase tracking-[0.18em] text-zinc-500 font-bold">Recommended Addon Combos</p>
                     <div className="mt-2 space-y-2">
                       {activeKillerCombos.map((combo, comboIndex) => (
@@ -12895,7 +12895,7 @@
                   {filteredAddons.map((addon) => {
                     const tierStyle = getTierStyle(addon.tierBucket);
                     return (
-                      <div key={`${addon.rank}-${addon.name}`} className="p-3 rounded-2xl bg-zinc-900/45 border border-white/10">
+                      <div key={`${addon.rank}-${addon.name}`} className="p-3 rounded-xl bg-[var(--panel)] border border-[var(--stroke)]">
                         <div className="flex items-start gap-3">
                           <div className="w-11 h-11 rounded-lg bg-zinc-950/70 border border-white/10 overflow-hidden shrink-0">
                             <AssetFrame
@@ -12921,7 +12921,7 @@
                     );
                   })}
                   {filteredAddons.length === 0 && (
-                    <div className="p-4 rounded-2xl bg-zinc-900/45 border border-white/10 text-zinc-500 text-sm">No addon entries match the current filters.</div>
+                    <div className="p-4 rounded-xl bg-[var(--panel)] border border-[var(--stroke)] text-zinc-500 text-sm">No addon entries match the current filters.</div>
                   )}
                 </div>
               </div>
@@ -12938,12 +12938,12 @@
                 </div>
                 {activeBuildProfile ? (
                   <div className="space-y-3">
-                    <div className="p-3 rounded-2xl bg-zinc-900/45 border border-white/10">
+                    <div className="p-3 rounded-xl bg-[var(--panel)] border border-[var(--stroke)]">
                       <p className="text-white font-semibold text-sm">{activeBuildProfile.name}</p>
                       <p className="text-[11px] text-zinc-500 mt-1">{activeBuildProfile.buildCount} builds • Featured: {activeBuildProfile.featuredBuildName || 'n/a'}</p>
                     </div>
                     {activeBuildProfile.builds.map((build) => (
-                      <div key={build.name} className="p-3 rounded-2xl bg-zinc-900/45 border border-white/10 space-y-2">
+                      <div key={build.name} className="p-3 rounded-xl bg-[var(--panel)] border border-[var(--stroke)] space-y-2">
                         <p className="text-white font-semibold text-sm">{build.name}</p>
                         <div className="flex flex-wrap gap-1.5">
                           {(build.perks || []).map((perk) => (
@@ -12966,7 +12966,7 @@
                       </div>
                     ))}
                     {selectedBuildPerkName && (
-                      <div className="p-3 rounded-2xl bg-zinc-900/45 border border-white/10 space-y-2">
+                      <div className="p-3 rounded-xl bg-[var(--panel)] border border-[var(--stroke)] space-y-2">
                         <p className="text-[10px] uppercase tracking-[0.16em] text-zinc-500 font-bold">Perk Deep Dive</p>
                         {selectedBuildPerkDetails ? (
                           <>
@@ -12990,7 +12990,7 @@
                     )}
                   </div>
                 ) : (
-                  <div className="p-4 rounded-2xl bg-zinc-900/45 border border-white/10 text-zinc-500 text-sm">No build profiles were found for this role.</div>
+                  <div className="p-4 rounded-xl bg-[var(--panel)] border border-[var(--stroke)] text-zinc-500 text-sm">No build profiles were found for this role.</div>
                 )}
               </div>
             )}
@@ -13004,13 +13004,13 @@
                     value={characterSearch}
                     onChange={(event) => setCharacterSearch(event.target.value)}
                     placeholder="Search character"
-                    className="flex-1 min-w-[220px] bg-zinc-800/50 border border-white/10 rounded-xl px-3 py-2 text-sm text-white placeholder-zinc-500"
+                    className="flex-1 min-w-[220px] bg-[var(--panel)] border border-[var(--stroke)] rounded-xl px-3 py-2 text-sm text-white placeholder-zinc-500"
                   />
                 </div>
                 <div className="space-y-2">
                   <p className="text-[11px] text-zinc-500">Sorted from most important to least important.</p>
                   {visibleCharacters.map((entry, index) => (
-                    <div key={entry.id || entry.name} className="p-3 rounded-2xl bg-zinc-900/45 border border-white/10">
+                    <div key={entry.id || entry.name} className="p-3 rounded-xl bg-[var(--panel)] border border-[var(--stroke)]">
                       <div className="flex flex-wrap items-center justify-between gap-2">
                         <p className="text-sm text-white font-semibold">{entry.name}</p>
                         <span className="px-2 py-0.5 rounded-md bg-white/5 border border-white/10 text-[10px] uppercase tracking-wider text-zinc-400">
@@ -13030,7 +13030,7 @@
                     </div>
                   ))}
                   {visibleCharacters.length === 0 && (
-                    <div className="p-4 rounded-2xl bg-zinc-900/45 border border-white/10 text-zinc-500 text-sm">No character entries match the current filters.</div>
+                    <div className="p-4 rounded-xl bg-[var(--panel)] border border-[var(--stroke)] text-zinc-500 text-sm">No character entries match the current filters.</div>
                   )}
                 </div>
               </div>
@@ -13042,25 +13042,25 @@
                   value={academySearch}
                   onChange={(event) => setAcademySearch(event.target.value)}
                   placeholder="Search beginner guides"
-                  className="w-full bg-zinc-800/50 border border-white/10 rounded-xl px-3 py-2 text-sm text-white placeholder-zinc-500"
+                  className="w-full bg-[var(--panel)] border border-[var(--stroke)] rounded-xl px-3 py-2 text-sm text-white placeholder-zinc-500"
                 />
                 <div className="space-y-2">
                   {filteredBeginnerGuides.map((entry) => (
-                    <div key={entry.id} className="p-3 rounded-2xl bg-zinc-900/45 border border-white/10">
+                    <div key={entry.id} className="p-3 rounded-xl bg-[var(--panel)] border border-[var(--stroke)]">
                       <div className="flex flex-wrap items-center justify-between gap-2">
                         <p className="text-sm text-white font-semibold">{entry.title}</p>
                         <span className="px-2 py-0.5 rounded-md bg-white/5 border border-white/10 text-[10px] uppercase tracking-wider text-zinc-400">{entry.sourceType || 'resource'}</span>
                       </div>
                       {entry.description && <p className="text-xs text-zinc-300 mt-2 leading-relaxed break-words whitespace-normal">{entry.description}</p>}
                       {entry.url && (
-                        <a href={entry.url} target="_blank" rel="noreferrer" className="inline-flex mt-2 px-3 py-1.5 rounded-lg bg-white/5 border border-white/10 text-[11px] text-zinc-300 hover:text-white transition-colors">
+                        <a href={entry.url} target="_blank" rel="noreferrer" className="inline-flex mt-2 px-3 py-1.5 rounded-xl bg-[var(--panel)] border border-[var(--stroke)] text-[11px] text-zinc-300 hover:text-white transition-colors">
                           Open Guide
                         </a>
                       )}
                     </div>
                   ))}
                   {filteredBeginnerGuides.length === 0 && (
-                    <div className="p-4 rounded-2xl bg-zinc-900/45 border border-white/10 text-zinc-500 text-sm">No beginner guides match the current search.</div>
+                    <div className="p-4 rounded-xl bg-[var(--panel)] border border-[var(--stroke)] text-zinc-500 text-sm">No beginner guides match the current search.</div>
                   )}
                 </div>
               </div>
@@ -13070,7 +13070,7 @@
               <div className="space-y-3">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
                   {tierlistComparisons.map((comparison) => (
-                    <div key={comparison.categoryLabel} className="p-3 rounded-2xl bg-zinc-900/45 border border-white/10">
+                    <div key={comparison.categoryLabel} className="p-3 rounded-xl bg-[var(--panel)] border border-[var(--stroke)]">
                       <p className="text-[10px] uppercase tracking-[0.16em] text-zinc-500 font-bold">{comparison.categoryLabel}</p>
                       <p className="text-sm text-white mt-1">Latest: {comparison.latest?.title || 'n/a'}</p>
                       <p className="text-[11px] text-zinc-500 mt-1">Previous: {comparison.previous?.title || 'none recorded'}</p>
@@ -13086,22 +13086,22 @@
                     value={tierlistSearch}
                     onChange={(event) => setTierlistSearch(event.target.value)}
                     placeholder="Search tierlists"
-                    className="flex-1 min-w-[200px] bg-zinc-800/50 border border-white/10 rounded-xl px-3 py-2 text-sm text-white placeholder-zinc-500"
+                    className="flex-1 min-w-[200px] bg-[var(--panel)] border border-[var(--stroke)] rounded-xl px-3 py-2 text-sm text-white placeholder-zinc-500"
                   />
                 </div>
                 <div className="space-y-2">
                   {filteredTierlists.map((entry) => {
                     const freshness = getTierlistFreshness(entry);
                     return (
-                      <div key={entry.id} className="p-3 rounded-2xl bg-zinc-900/45 border border-white/10">
+                      <div key={entry.id} className="p-3 rounded-xl bg-[var(--panel)] border border-[var(--stroke)]">
                         <div className="flex flex-wrap items-center justify-between gap-2">
                           <p className="text-sm text-white font-semibold">{entry.title}</p>
                           <span className={`text-[10px] uppercase tracking-wider ${freshness.color}`}>{freshness.label}</span>
                         </div>
-                        <p className="text-[11px] text-zinc-500 mt-1">{entry.categoryLabel} • {entry.patch || 'Patch n/a'} • {entry.dateLabel || 'Undated'} • {getTierlistAgeLabel(entry)}</p>
+                        <p className="mt-1 font-mono text-[11px] text-zinc-500">{entry.categoryLabel} • {entry.patch || 'Patch n/a'} • {entry.dateLabel || 'Undated'} • {getTierlistAgeLabel(entry)}</p>
                         {entry.description && <p className="text-xs text-zinc-300 mt-2 leading-relaxed break-words whitespace-normal">{entry.description}</p>}
                         {entry.url && (
-                          <a href={entry.url} target="_blank" rel="noreferrer" className="inline-flex mt-2 px-3 py-1.5 rounded-lg bg-white/5 border border-white/10 text-[11px] text-zinc-300 hover:text-white transition-colors">
+                          <a href={entry.url} target="_blank" rel="noreferrer" className="inline-flex mt-2 px-3 py-1.5 rounded-xl bg-[var(--panel)] border border-[var(--stroke)] text-[11px] text-zinc-300 hover:text-white transition-colors">
                             Open Tierlist
                           </a>
                         )}
@@ -13109,7 +13109,7 @@
                     );
                   })}
                   {filteredTierlists.length === 0 && (
-                    <div className="p-4 rounded-2xl bg-zinc-900/45 border border-white/10 text-zinc-500 text-sm">No tierlists match the current filters.</div>
+                    <div className="p-4 rounded-xl bg-[var(--panel)] border border-[var(--stroke)] text-zinc-500 text-sm">No tierlists match the current filters.</div>
                   )}
                 </div>
               </div>
@@ -13126,12 +13126,12 @@
                     value={guideSearch}
                     onChange={(event) => setGuideSearch(event.target.value)}
                     placeholder="Search guide vault"
-                    className="flex-1 min-w-[220px] bg-zinc-800/50 border border-white/10 rounded-xl px-3 py-2 text-sm text-white placeholder-zinc-500"
+                    className="flex-1 min-w-[220px] bg-[var(--panel)] border border-[var(--stroke)] rounded-xl px-3 py-2 text-sm text-white placeholder-zinc-500"
                   />
                 </div>
                 <div className="space-y-2">
                   {filteredGuideVaultEntries.map((entry) => (
-                    <div key={entry.id} className="p-3 rounded-2xl bg-zinc-900/45 border border-white/10">
+                    <div key={entry.id} className="p-3 rounded-xl bg-[var(--panel)] border border-[var(--stroke)]">
                       <div className="flex flex-wrap items-center justify-between gap-2">
                         <p className="text-sm text-white font-semibold">{entry.label}</p>
                         <span className="px-2 py-0.5 rounded-md bg-white/5 border border-white/10 text-[10px] uppercase tracking-wider text-zinc-400">{entry.sourceType || 'resource'}</span>
@@ -13139,25 +13139,25 @@
                       <p className="text-[11px] text-zinc-500 mt-1">{entry.host || 'external resource'}</p>
                       {entry.context && <p className="text-xs text-zinc-300 mt-2 leading-relaxed break-words whitespace-normal">{entry.context}</p>}
                       {entry.url && (
-                        <a href={entry.url} target="_blank" rel="noreferrer" className="inline-flex mt-2 px-3 py-1.5 rounded-lg bg-white/5 border border-white/10 text-[11px] text-zinc-300 hover:text-white transition-colors">
+                        <a href={entry.url} target="_blank" rel="noreferrer" className="inline-flex mt-2 px-3 py-1.5 rounded-xl bg-[var(--panel)] border border-[var(--stroke)] text-[11px] text-zinc-300 hover:text-white transition-colors">
                           Open Resource
                         </a>
                       )}
                     </div>
                   ))}
                   {filteredGuideVaultEntries.length === 0 && (
-                    <div className="p-4 rounded-2xl bg-zinc-900/45 border border-white/10 text-zinc-500 text-sm">No guide vault entries match the current filters.</div>
+                    <div className="p-4 rounded-xl bg-[var(--panel)] border border-[var(--stroke)] text-zinc-500 text-sm">No guide vault entries match the current filters.</div>
                   )}
                 </div>
               </div>
             )}
 
             {links.length > 0 && (
-              <div className="p-4 rounded-2xl bg-zinc-900/45 border border-white/10">
+              <div className="p-4 rounded-xl bg-[var(--panel)] border border-[var(--stroke)]">
                 <p className="text-[10px] uppercase tracking-[0.18em] text-zinc-500 font-bold">Open Otzdarva Resources</p>
                 <div className="mt-3 flex flex-wrap gap-2">
                   {links.map((link) => (
-                    <a key={link.url} href={link.url} target="_blank" rel="noreferrer" className="px-3 py-1.5 rounded-lg bg-white/5 border border-white/10 text-[11px] text-zinc-300 hover:text-white transition-colors">
+                    <a key={link.url} href={link.url} target="_blank" rel="noreferrer" className="px-3 py-1.5 rounded-xl bg-[var(--panel)] border border-[var(--stroke)] text-[11px] text-zinc-300 hover:text-white transition-colors">
                       {link.label || link.url}
                     </a>
                   ))}
@@ -13200,38 +13200,38 @@
         );
       };
       const CharCard = ({ item, category }) => (
-        <div key={item.id} className="p-3 rounded-2xl bg-zinc-900/40 border border-white/5 flex items-center gap-3 group">
-          <div className="w-12 h-12 rounded-xl bg-white/5 border border-white/10 flex-shrink-0 overflow-hidden">
+        <div key={item.id} className="p-3 rounded-xl bg-[var(--panel)] border border-[var(--stroke)] flex items-center gap-3 group">
+          <div className="w-12 h-12 rounded-xl bg-white/5 border border-[var(--stroke)] flex-shrink-0 overflow-hidden">
             <AssetFrame type={category} size="fill" imageUrl={item.image} fallbackIcon={<Icons.User width={20} height={20} className="text-white/40" />} />
           </div>
           <div className="flex-1 min-w-0">
             <p className="text-white font-bold text-sm truncate">{item.name}</p>
             <p className="text-zinc-500 text-xs">{item.realName || category}</p>
           </div>
-          <button onClick={() => setView(category === 'Killer' ? 'killers' : 'survivors', { search: item.name })} className="px-3 py-1.5 rounded-lg bg-white/5 border border-white/10 text-[11px] text-zinc-300 hover:text-white transition-colors mr-1">View</button>
+          <button onClick={() => setView(category === 'Killer' ? 'killers' : 'survivors', { search: item.name })} className="px-3 py-1.5 rounded-xl bg-[var(--panel)] border border-[var(--stroke)] text-[11px] text-zinc-300 hover:text-white transition-colors mr-1">View</button>
           <button onClick={() => toggleFavorite(category, item.id)} className="p-1.5 rounded-full bg-yellow-500/20 transition-colors hover:bg-yellow-500/30">
             <Icons.Star width={14} height={14} className="text-yellow-400 fill-yellow-400" />
           </button>
         </div>
       );
       const PerkCard = ({ item }) => (
-        <div key={item.id} className="p-3 rounded-2xl bg-zinc-900/40 border border-white/5 flex items-center gap-3">
-          <div className="w-10 h-10 rounded-lg bg-white/5 border border-white/10 flex-shrink-0 overflow-hidden flex items-center justify-center">
+        <div key={item.id} className="p-3 rounded-xl bg-[var(--panel)] border border-[var(--stroke)] flex items-center gap-3">
+          <div className="w-10 h-10 rounded-lg bg-white/5 border border-[var(--stroke)] flex-shrink-0 overflow-hidden flex items-center justify-center">
             <AssetFrame type="Perk" size="fill" imageUrl={item.image} fallbackIcon={<Icons.BookOpen width={16} height={16} className="text-white/40" />} />
           </div>
           <div className="flex-1 min-w-0">
             <p className="text-white font-bold text-sm truncate">{item.name}</p>
             <p className="text-zinc-500 text-xs truncate">{item.owner || (item.type === 'Killer' ? 'Killer' : 'Survivor')}</p>
           </div>
-          <button onClick={() => onPerkTap && onPerkTap(item)} className="px-3 py-1.5 rounded-lg bg-white/5 border border-white/10 text-[11px] text-zinc-300 hover:text-white transition-colors mr-1">View</button>
+          <button onClick={() => onPerkTap && onPerkTap(item)} className="px-3 py-1.5 rounded-xl bg-[var(--panel)] border border-[var(--stroke)] text-[11px] text-zinc-300 hover:text-white transition-colors mr-1">View</button>
           <button onClick={() => toggleFavorite('Perk', item.id)} className="p-1.5 rounded-full bg-yellow-500/20 transition-colors hover:bg-yellow-500/30">
             <Icons.Star width={14} height={14} className="text-yellow-400 fill-yellow-400" />
           </button>
         </div>
       );
       const SmallCard = ({ item, category, subtitle }) => (
-        <div key={item.id} className="p-3 rounded-2xl bg-zinc-900/40 border border-white/5 flex items-center gap-3">
-          <div className="w-10 h-10 rounded-lg bg-white/5 border border-white/10 flex-shrink-0 overflow-hidden">
+        <div key={item.id} className="p-3 rounded-xl bg-[var(--panel)] border border-[var(--stroke)] flex items-center gap-3">
+          <div className="w-10 h-10 rounded-lg bg-white/5 border border-[var(--stroke)] flex-shrink-0 overflow-hidden">
             <AssetFrame type={category} size="fill" imageUrl={item.image} fallbackIcon={<Icons.Package width={16} height={16} className="text-white/40" />} />
           </div>
           <div className="flex-1 min-w-0">
@@ -13263,12 +13263,12 @@
           <div className="pb-32 -mx-6 px-6">
             {totalCount === 0 ? (
               <div className="flex flex-col items-center justify-center text-center mt-16 animate-in fade-in duration-500">
-                <div className="w-20 h-20 rounded-2xl bg-yellow-500/10 border border-yellow-500/20 flex items-center justify-center mb-4">
+                <div className="w-20 h-20 rounded-xl bg-yellow-500/10 border border-yellow-500/20 flex items-center justify-center mb-4">
                   <Icons.Star width={36} height={36} className="text-yellow-500/40" />
                 </div>
-                <h3 className="text-lg font-bold text-white mb-2">No Favorites Yet</h3>
+                <h3 className="text-lg font-bold text-white mb-2 [font-family:var(--font-display)]">No Favorites Yet</h3>
                 <p className="text-zinc-500 text-sm max-w-xs">Star any killer, survivor, perk, item, addon, or offering to see them here for quick access.</p>
-                <button onClick={() => setView('home')} className="mt-6 px-6 py-3 rounded-xl bg-white/5 border border-white/10 text-zinc-300 text-sm font-semibold hover:bg-white/10 transition-colors">Browse Content</button>
+                <button onClick={() => setView('home')} className="mt-6 px-6 py-3 rounded-xl bg-[var(--panel)] border border-[var(--stroke)] text-zinc-300 text-sm font-semibold transition-colors">Browse Content</button>
               </div>
             ) : (
               <div className="animate-in fade-in slide-in-from-bottom-4 duration-500">
@@ -14063,7 +14063,7 @@
           <div className="fixed inset-0 z-[100] flex items-center justify-center p-4" onClick={onClose}>
             <div className="absolute inset-0 bg-black/85 backdrop-blur-sm" />
             <div
-              className="relative w-full max-w-sm rounded-3xl overflow-hidden border-2 shadow-2xl"
+              className="relative w-full max-w-sm rounded-xl overflow-hidden border-2"
               style={{ borderColor, background: '#0a0a0a', boxShadow: `0 0 40px ${borderColor}40` }}
               onClick={e => e.stopPropagation()}
             >
@@ -14073,7 +14073,7 @@
               </button>
               {/* Icon + Name */}
               <div className="flex flex-col items-center pt-8 pb-4 px-6">
-                <div className="w-20 h-20 rounded-2xl flex items-center justify-center mb-4 border-2" style={{ borderColor: `${borderColor}60`, backgroundColor: `${borderColor}15` }}>
+                <div className="w-20 h-20 rounded-xl flex items-center justify-center mb-4 border-2" style={{ borderColor: `${borderColor}60`, backgroundColor: `${borderColor}15` }}>
                   <div className="w-14 h-14">
                     <AssetFrame
                       type="GameIcon"
@@ -14086,7 +14086,7 @@
                 <h2 className="text-xl font-black text-white tracking-tight text-center" style={{ borderBottom: `3px solid ${borderColor}`, paddingBottom: '4px' }}>
                   {icon.name}
                 </h2>
-                <span className="text-[10px] font-bold uppercase tracking-widest mt-2 px-3 py-1 rounded-full" style={{ backgroundColor: `${borderColor}20`, color: borderColor }}>
+                <span className="text-[10px] font-bold uppercase tracking-widest mt-2 px-3 py-1 rounded-md" style={{ backgroundColor: `${borderColor}20`, color: borderColor }}>
                   {categoryLabels[icon.category] || icon.category}
                 </span>
               </div>
@@ -14111,7 +14111,7 @@
 
           {/* Mode Toggle */}
           <div className="px-6 mb-3">
-            <div className="max-w-3xl mx-auto flex rounded-2xl overflow-hidden border border-white/10 bg-zinc-900/60">
+            <div className="max-w-3xl mx-auto flex rounded-xl overflow-hidden border border-[var(--stroke)] bg-[var(--panel)]">
               <button
                 onClick={() => setViewMode('glossary')}
                 className={`flex-1 py-3 px-4 text-xs font-bold uppercase tracking-wider transition-all flex items-center justify-center gap-2 ${viewMode === 'glossary' ? 'text-white' : 'text-zinc-500 hover:text-zinc-300'}`}
@@ -14134,7 +14134,7 @@
           {/* Sticky Search + Filters (both modes) */}
           <div className="sticky top-0 z-20 px-6 pb-4 pt-1 pointer-events-none">
             <div className="relative mb-3 max-w-3xl mx-auto pointer-events-auto">
-              <div className="relative flex items-center bg-zinc-800/60 backdrop-blur-xl border border-white/10 rounded-3xl p-2 shadow-2xl">
+              <div className="relative flex items-center bg-[var(--panel)] border border-[var(--stroke)] rounded-xl p-2">
                 <div className="pl-4 text-zinc-400"><Icons.Search width={18} height={18} /></div>
                 <input
                   type="text"
@@ -14144,7 +14144,7 @@
                   onChange={e => setSearch(e.target.value)}
                 />
                 {search && (
-                  <button onClick={() => setSearch('')} className="p-2 mr-1 rounded-xl bg-white/5 text-zinc-300 hover:text-white hover:bg-white/10 transition-colors">
+                  <button onClick={() => setSearch('')} className="p-2 mr-1 rounded-xl border border-[var(--stroke)] text-zinc-300 hover:text-white transition-colors">
                     <Icons.X width={18} height={18} />
                   </button>
                 )}
@@ -14176,7 +14176,7 @@
                     <button
                       key={icon.id}
                       onClick={() => setFlashcardIcon(icon)}
-                      className="game-icon-tile relative aspect-square rounded-2xl flex flex-col items-center justify-center p-1.5 border transition-all duration-150 hover:scale-105 active:scale-95 group"
+                      className="game-icon-tile relative aspect-square rounded-xl flex flex-col items-center justify-center p-1.5 border transition-colors group"
                       style={{
                         borderColor: `${ringColor}40`,
                         background: `linear-gradient(145deg, ${ringColor}10, #0a0a0a)`,
@@ -14227,7 +14227,7 @@
                   <div
                     key={icon.id}
                     onClick={() => setExpandedId(isExpanded ? null : icon.id)}
-                    className="game-icon-row mb-3 rounded-2xl backdrop-blur-md border border-white/10 cursor-pointer transition-all duration-200 hover:border-white/20 overflow-hidden"
+                    className="game-icon-row mb-3 rounded-xl border border-[var(--stroke)] bg-[var(--panel)] cursor-pointer transition-colors overflow-hidden"
                     style={{
                       background: `linear-gradient(145deg, ${accentSoft}40, #09090b)`,
                       boxShadow: isExpanded ? `0 0 20px ${accentColor}30` : 'none'
@@ -14251,7 +14251,7 @@
                       <div className="flex-1 min-w-0">
                         <div className="flex items-center gap-2 flex-wrap">
                           <h3
-                            className="text-white font-bold text-base pb-0.5"
+                            className="text-white font-bold text-base pb-0.5 [font-family:var(--font-display)]"
                             style={{ borderBottom: `2px solid ${underlineColor}`, display: 'inline-block' }}
                           >
                             {icon.name}
@@ -14277,7 +14277,7 @@
                     </div>
                     {isExpanded && (
                       <div className="px-4 pb-4 pt-0">
-                        <div className="p-3 rounded-xl bg-black/30 border border-white/5">
+                        <div className="p-3 rounded-xl bg-[var(--panel)] border border-[var(--stroke)]">
                           <p className="text-zinc-300 text-sm leading-relaxed">{icon.description}</p>
                         </div>
                       </div>
