@@ -1410,6 +1410,340 @@
       appearance: textfield;
       -moz-appearance: textfield;
     }
+
+    /* ===== Codex article system (shared) ===== */
+    /* Codex wiki article layer: OLED black, serif display, hairline rules */
+    :root {
+      --link: #6fa8ff;
+      --link-visited: #9c86ff;
+    }
+    body.light-mode {
+      --link: #1d4ed8;
+      --link-visited: #6d28d9;
+    }
+    .cx-article {
+      min-width: 0;
+      width: 100%;
+      padding: 26px 44px 70px;
+      color: var(--text);
+    }
+    .cx-article a {
+      color: var(--link);
+      text-decoration: none;
+    }
+    .cx-article a:visited {
+      color: var(--link-visited);
+    }
+    .cx-article a:hover {
+      text-decoration: underline;
+    }
+    .cx-crumbs {
+      font-size: 11.5px;
+      color: var(--text-faint);
+      margin-bottom: 14px;
+    }
+    .cx-crumbs a {
+      color: var(--muted);
+    }
+    .cx-crumbs .cx-sep {
+      margin: 0 6px;
+      color: var(--text-faint);
+    }
+    .cx-crumbs b {
+      color: var(--text);
+      font-weight: 600;
+    }
+    .cx-title {
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 38px;
+      letter-spacing: -0.01em;
+      line-height: 1.1;
+      color: var(--text);
+      border-bottom: 1px solid var(--stroke);
+      padding-bottom: 10px;
+    }
+    .cx-hatnote {
+      font-size: 13px;
+      font-style: italic;
+      color: var(--muted);
+      padding: 8px 0 2px;
+    }
+    .cx-metaline {
+      font-size: 12px;
+      color: var(--text-faint);
+      margin-top: 10px;
+    }
+    .cx-metaline a {
+      color: var(--muted);
+    }
+    .cx-metaline .cx-sep {
+      margin: 0 6px;
+    }
+    .cx-leadgrid {
+      display: grid;
+      grid-template-columns: 1fr 300px;
+      gap: 36px;
+      margin-top: 18px;
+      align-items: start;
+    }
+    .cx-leadmain {
+      min-width: 0;
+    }
+    .cx-leadmain > p {
+      font-size: 15.5px;
+      line-height: 1.7;
+      color: var(--text);
+      margin-top: 12px;
+    }
+    .cx-leadmain > p:first-child {
+      margin-top: 0;
+    }
+    .cx-leadmain > p a {
+      color: var(--link);
+    }
+    .cx-infobox {
+      border: 1px solid var(--stroke);
+      background: var(--glass-bg);
+      font-size: 12.5px;
+      color: var(--text);
+      align-self: start;
+      min-width: 0;
+    }
+    .cx-infobox .cx-ib-title {
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 17px;
+      text-align: center;
+      color: var(--text);
+      padding: 12px 14px 4px;
+    }
+    .cx-infobox .cx-ib-sub {
+      text-align: center;
+      font-size: 10.5px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--text-faint);
+      padding-bottom: 10px;
+      border-bottom: 1px solid var(--stroke);
+    }
+    .cx-infobox .cx-ib-media {
+      padding: 14px 14px 4px;
+    }
+    .cx-infobox .cx-ib-media img {
+      width: 100%;
+      display: block;
+    }
+    .cx-infobox table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+    .cx-infobox th {
+      text-align: left;
+      font-weight: 600;
+      color: var(--muted);
+      padding: 7px 14px;
+      width: 42%;
+      vertical-align: top;
+      border-top: 1px solid var(--stroke);
+    }
+    .cx-infobox td {
+      padding: 7px 14px 7px 0;
+      border-top: 1px solid var(--stroke);
+      color: var(--text-soft);
+      vertical-align: top;
+    }
+    .cx-infobox td a {
+      color: var(--link);
+    }
+    .cx-infobox .cx-ib-note {
+      padding: 10px 14px;
+      font-size: 11px;
+      color: var(--text-faint);
+      border-top: 1px solid var(--stroke);
+    }
+    .cx-toc {
+      border: 1px solid var(--stroke);
+      background: var(--glass-bg);
+      display: inline-block;
+      padding: 14px 22px 14px 16px;
+      margin-top: 16px;
+      font-size: 13px;
+      color: var(--text);
+    }
+    .cx-toc .cx-toc-title {
+      font-family: var(--font-display);
+      font-weight: 700;
+      text-align: center;
+      margin-bottom: 8px;
+      color: var(--text);
+    }
+    .cx-toc ol {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      counter-reset: cx-toc;
+    }
+    .cx-toc ol ol {
+      counter-reset: none;
+    }
+    .cx-toc li {
+      counter-increment: cx-toc;
+      padding: 2.5px 0;
+    }
+    .cx-toc li::before {
+      content: counter(cx-toc) ". ";
+      color: var(--muted);
+    }
+    .cx-toc ol ol li {
+      counter-increment: none;
+    }
+    .cx-toc ol ol li::before {
+      content: none;
+    }
+    .cx-toc li.cx-l2 {
+      padding-left: 22px;
+      font-size: 12.5px;
+    }
+    .cx-toc a {
+      color: var(--link);
+    }
+    .cx-sec {
+      font-family: var(--font-display);
+      font-size: 24px;
+      font-weight: 700;
+      color: var(--text);
+      border-bottom: 1px solid var(--stroke);
+      padding-bottom: 6px;
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 12px;
+    }
+    .cx-sec .cx-edit {
+      font-family: var(--font-display);
+      font-size: 11.5px;
+      font-weight: 400;
+      color: var(--text-faint);
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 0;
+    }
+    .cx-sec .cx-edit:hover {
+      color: var(--link);
+    }
+    .cx-sub {
+      font-family: var(--font-display);
+      font-size: 18px;
+      font-weight: 600;
+      color: var(--text);
+      margin: 24px 0 8px;
+    }
+    .cx-article section {
+      margin-top: 34px;
+    }
+    .cx-article section > p {
+      margin-top: 12px;
+      color: var(--text-soft);
+      line-height: 1.7;
+    }
+    .cx-article section > p a {
+      color: var(--link);
+      border-bottom: 1px dotted var(--link);
+      text-decoration: none;
+    }
+    .cx-article section > p a:hover {
+      text-decoration: none;
+    }
+    table.cx-wikitable {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 14px;
+      font-size: 13.5px;
+    }
+    table.cx-wikitable caption {
+      caption-side: top;
+      text-align: left;
+      font-size: 11.5px;
+      color: var(--text-faint);
+      padding-bottom: 8px;
+      letter-spacing: 0.06em;
+    }
+    table.cx-wikitable th {
+      font-family: var(--font-display);
+      text-align: left;
+      font-weight: 600;
+      font-size: 13px;
+      background: var(--glass-bg);
+      color: var(--text);
+      border: 1px solid var(--stroke);
+      padding: 8px 12px;
+    }
+    table.cx-wikitable td {
+      border: 1px solid var(--stroke);
+      padding: 8px 12px;
+      vertical-align: top;
+      color: var(--text-soft);
+    }
+    table.cx-wikitable tbody tr:hover td {
+      background: var(--ghost-surface);
+    }
+    table.cx-wikitable td a {
+      color: var(--link);
+    }
+    td.cx-perkcell {
+      vertical-align: middle;
+    }
+    .cx-perkcell-inner {
+      display: flex;
+      gap: 12px;
+      align-items: center;
+    }
+    .cx-perkcell-inner img {
+      width: 34px;
+      height: 34px;
+      object-fit: contain;
+      display: block;
+    }
+    .cx-perkcell-inner a {
+      color: var(--link);
+      font-weight: 600;
+    }
+    .cx-perkcell-inner small {
+      display: block;
+      color: var(--text-faint);
+      font-size: 11px;
+    }
+    .cx-rarity {
+      text-transform: capitalize;
+    }
+    .cx-cats {
+      margin-top: 46px;
+      border: 1px solid var(--stroke);
+      padding: 12px 16px;
+      font-size: 12.5px;
+      color: var(--text-faint);
+      display: flex;
+      gap: 6px;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+    .cx-cats a {
+      color: var(--link);
+      margin: 0 2px;
+    }
+    .cx-cats .cx-sep {
+      margin: 0 2px;
+    }
+    @media (max-width: 860px) {
+      .cx-article {
+        padding: 20px 18px 56px;
+      }
+      .cx-leadgrid {
+        grid-template-columns: 1fr;
+      }
+    }
   </style>
 </head>
 
@@ -14059,6 +14393,169 @@
         </button>
       );
     };
+    /* ===== Codex shared components ===== */
+    /* Codex article components: pure presentational units, no data loading, no routing. */
+    /* Contract: ArticleShell composes the units below. Pass hatnote as a Hatnote node, */
+    /* meta as a MetaLine node, lead as paragraph nodes, toc as a Toc items array, */
+    /* infobox as an Infobox props object, categories as a CategoryBar array. */
+    /* Section pattern for children: section with id, h2.cx-sec with label plus */
+    /* button.cx-edit, anchors as plain href="#id" links. */
+    const Hatnote = ({ children }) => {
+      if (!children) return null;
+      return (
+        <p className="cx-hatnote">{children}</p>
+      );
+    };
+    const MetaLine = ({ updated, editsLabel, onHistory, onTalk }) => {
+      return (
+        <div className="cx-metaline">
+          <span>Last edited {updated}</span>
+          <span className="cx-sep" aria-hidden="true">·</span>
+          <a href="#history">{editsLabel}</a>
+          <span className="cx-sep" aria-hidden="true">·</span>
+          <a href="#history" onClick={onHistory}>page history</a>
+          <span className="cx-sep" aria-hidden="true">·</span>
+          <a href="#talk" onClick={onTalk}>talk</a>
+        </div>
+      );
+    };
+    const Infobox = ({ title, sub, image, imageAlt, imageType, rows, note }) => {
+      return (
+        <aside className="cx-infobox w-full">
+          <div className="cx-ib-title">{title}</div>
+          {sub ? <div className="cx-ib-sub">{sub}</div> : null}
+          {image ? (
+            <div className="cx-ib-media w-full aspect-[3/4] overflow-hidden" title={imageAlt || title}>
+              <AssetFrame type={imageType || "Killer"} imageUrl={image} size="fill" />
+            </div>
+          ) : null}
+          {rows && rows.length > 0 ? (
+            <table>
+              <tbody>
+                {rows.map((row, i) => (
+                  <tr key={i}>
+                    <th scope="row">{row.label}</th>
+                    <td>{row.value}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          ) : null}
+          {note ? <div className="cx-ib-note">{note}</div> : null}
+        </aside>
+      );
+    };
+    const Toc = ({ items }) => {
+      if (!items || items.length === 0) return null;
+      return (
+        <nav className="cx-toc" aria-label="Contents">
+          <div className="cx-toc-title">Contents</div>
+          <ol>
+            {items.map((item) => (
+              <li key={item.id}>
+                <a href={"#" + item.id}>{item.label}</a>
+                {item.children && item.children.length > 0 ? (
+                  <ol>
+                    {item.children.map((child) => (
+                      <li key={child.id} className="cx-l2">
+                        <a href={"#" + child.id}>{child.label}</a>
+                      </li>
+                    ))}
+                  </ol>
+                ) : null}
+              </li>
+            ))}
+          </ol>
+        </nav>
+      );
+    };
+    const WikiTable = ({ caption, headers, rows }) => {
+      return (
+        <table className="cx-wikitable w-full">
+          {caption ? <caption>{caption}</caption> : null}
+          {headers && headers.length > 0 ? (
+            <thead>
+              <tr>
+                {headers.map((h, i) => (
+                  <th key={i} scope="col">{h}</th>
+                ))}
+              </tr>
+            </thead>
+          ) : null}
+          <tbody>
+            {rows.map((row, ri) => (
+              <tr key={ri}>
+                {row.map((cell, ci) => (
+                  cell && typeof cell === "object" && cell.perk ? (
+                    <td key={ci} className="cx-perkcell">{cell.node}</td>
+                  ) : (
+                    <td key={ci}>{cell}</td>
+                  )
+                ))}
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      );
+    };
+    const CategoryBar = ({ categories }) => {
+      if (!categories || categories.length === 0) return null;
+      return (
+        <div className="cx-cats">
+          <span>Categories:</span>
+          {categories.map((cat, i) => {
+            const label = typeof cat === "string" ? cat : cat.label;
+            const onClick = typeof cat === "string" ? null : (cat.onClick || null);
+            return (
+              <span key={i}>
+                {i > 0 ? <span className="cx-sep" aria-hidden="true">·</span> : null}
+                {onClick ? (
+                  <a href="#" onClick={(e) => { e.preventDefault(); onClick(e); }}>{label}</a>
+                ) : (
+                  <a href="#">{label}</a>
+                )}
+              </span>
+            );
+          })}
+        </div>
+      );
+    };
+    const ArticleShell = ({ crumbs, title, hatnote, meta, lead, toc, infobox, categories, children }) => {
+      return (
+        <article className="cx-article w-full min-w-0">
+          {crumbs && crumbs.length > 0 ? (
+            <nav className="cx-crumbs" aria-label="Breadcrumbs">
+              {crumbs.map((crumb, i) => {
+                const isLast = i === crumbs.length - 1;
+                const label = typeof crumb === "string" ? crumb : crumb.label;
+                const href = typeof crumb === "string" ? "#" : (crumb.href || "#");
+                return (
+                  <span key={i}>
+                    {i > 0 ? <span className="cx-sep" aria-hidden="true">›</span> : null}
+                    {isLast ? <b>{label}</b> : <a href={href}>{label}</a>}
+                  </span>
+                );
+              })}
+            </nav>
+          ) : null}
+          <h1 className="cx-title">{title}</h1>
+          {hatnote ? <Hatnote>{hatnote}</Hatnote> : null}
+          {meta ? <MetaLine updated={meta.updated} editsLabel={meta.editsLabel} onHistory={meta.onHistory} onTalk={meta.onTalk} /> : null}
+          <div className="cx-leadgrid">
+            <div className="cx-leadmain">
+              {lead}
+              {toc && toc.length > 0 ? <Toc items={toc} /> : null}
+            </div>
+            {infobox ? (
+              <Infobox title={infobox.title} sub={infobox.sub} image={infobox.image} imageAlt={infobox.imageAlt} imageType={infobox.imageType} rows={infobox.rows} note={infobox.note} />
+            ) : null}
+          </div>
+          {children}
+          {categories && categories.length > 0 ? <CategoryBar categories={categories} /> : null}
+        </article>
+      );
+    };
+
     const CharacterProfileModal = ({ character, onClose, allPerks = [], onPerkTap, theme, settings = {}, noteValue = '', onNoteChange, cosmeticsByBaseId = {} }) => {
       if (!character) return null;
       const isKiller = character.type === 'Killer' || character.power;
