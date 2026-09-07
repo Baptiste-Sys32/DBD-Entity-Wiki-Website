@@ -6988,156 +6988,283 @@
                 }) : <div className="text-center mt-12 text-zinc-600"><p className="font-medium text-sm">No results found.</p></div>}
               </div>
             ) : (
-              <div className="grid grid-cols-1 xl:grid-cols-[minmax(0,1fr)_360px] gap-5 lg:gap-6">
-                <div className="space-y-6">
-                  <section className="space-y-3">
-                    <div className="flex items-end justify-between gap-3">
+              <div className="cx-article">
+                <nav className="cx-crumbs" aria-label="Breadcrumb">Main Page</nav>
+                <h1 className="cx-title">Main Page</h1>
+                <p className="cx-hatnote">The community reference for Dead by Daylight. Start with the featured article, or browse the archive by category.</p>
+                <p className="cx-metaline">{killers.length} Killers · {survivors.length} Survivors · {visiblePerks.length} Perks · {items.length} Items · {addons.length} Add-ons · {offerings.filter((offering) => !offering.retired).length} Offerings · {new Set(maps.map((m) => m.realm)).size} Realms</p>
+                <nav className="cx-toc" aria-label="Contents">
+                  <p className="cx-toc-title">Contents</p>
+                  <ol>
+                    <li><a href="#featured" style={{ color: 'var(--link)' }}>Featured article</a></li>
+                    <li><a href="#news" style={{ color: 'var(--link)' }}>Latest releases</a></li>
+                    <li><a href="#browse" style={{ color: 'var(--link)' }}>Browse by category</a></li>
+                    <li><a href="#tools" style={{ color: 'var(--link)' }}>Tools</a></li>
+                    <li><a href="#shelf" style={{ color: 'var(--link)' }}>Shelf</a></li>
+                  </ol>
+                </nav>
+
+                <section id="featured" aria-label="Featured article">
+                  <h2 className="cx-sec">Featured article</h2>
+                  {(() => {
+                    const chronological = (typeof TIMELINE_DATA !== 'undefined' && TIMELINE_DATA && typeof TIMELINE_DATA.getChronological === 'function') ? TIMELINE_DATA.getChronological() : [];
+                    const latestRelease = chronological.length > 0 ? chronological[chronological.length - 1] : null;
+                    if (!latestRelease) {
+                      return null;
+                    }
+                    const releaseKillerEntry = latestRelease.killers && latestRelease.killers.length > 0 ? latestRelease.killers[0] : null;
+                    const databaseKillers = (typeof DATABASE !== 'undefined' && DATABASE && DATABASE.killers) ? DATABASE.killers : [];
+                    const featuredKiller = releaseKillerEntry ? (killers.find((killer) => killer.name === releaseKillerEntry.name) || killers.find((killer) => killer.name && String(killer.name).toLowerCase() === String(releaseKillerEntry.name || '').toLowerCase()) || databaseKillers.find((killer) => killer.name === releaseKillerEntry.name) || null) : null;
+                    const loreExcerpt = featuredKiller && featuredKiller.lore ? (String(featuredKiller.lore).slice(0, 180) + '…') : (releaseKillerEntry && releaseKillerEntry.fogEntry ? releaseKillerEntry.fogEntry : (latestRelease.description || ''));
+                    const powerExcerpt = featuredKiller && featuredKiller.power ? String(featuredKiller.power).split('\n\n')[0] : '';
+                    const featuredName = featuredKiller ? featuredKiller.name : (releaseKillerEntry ? releaseKillerEntry.name : latestRelease.name);
+                    return (
                       <div>
-                        <p className="text-[10px] uppercase tracking-[0.24em] text-zinc-500 font-black">Quick access</p>
-                        <h2 className="mt-1 text-xl font-black text-white">Core tools</h2>
-                      </div>
-                    </div>
-
-                    <div className="divide-y divide-white/[0.07] border-y border-white/[0.08]">
-                      {primaryTiles.map((tile) => {
-                        const TileIcon = Icons[tile.icon] || Icons.Zap;
-                        const openTile = () => {
-                          if (tile.id === 'import') {
-                            setShowImportModal(true);
-                            return;
-                          }
-                          setView(tile.id);
-                        };
-                        return (
-                          <button key={tile.id} onClick={openTile} className="group w-full py-3.5 text-left flex items-center gap-4 hover:bg-white/[0.025] transition-colors">
-                            <span className="home-tool-icon w-9 h-9 shrink-0 rounded-lg flex items-center justify-center"><TileIcon width={17} height={17} /></span>
-                            <span className="min-w-0 flex-1">
-                              <span className="block text-sm font-black text-white truncate">{tile.label}</span>
-                              <span className="mt-0.5 block text-xs text-zinc-500 truncate">{tile.desc}</span>
-                            </span>
-                            <Icons.ChevronRight width={17} height={17} className="shrink-0 text-zinc-700 group-hover:text-white transition-colors" />
-                          </button>
-                        );
-                      })}
-                    </div>
-                  </section>
-
-                  {secondaryTiles.length > 0 && (
-                    <section className="space-y-3">
-                      <div className="flex items-end justify-between gap-3">
-                        <div>
-                          <p className="text-[10px] uppercase tracking-[0.24em] text-zinc-500 font-black">Library</p>
-                          <h2 className="mt-1 text-xl font-black text-white">All modules</h2>
+                        <p className="cx-hatnote">From {latestRelease.name}{latestRelease.chapterNumber ? ', Chapter ' + latestRelease.chapterNumber : ''} ({latestRelease.displayDate}). See the full chronicle in the timeline.</p>
+                        <div className="cx-leadgrid">
+                          <div>
+                            <p><b>{featuredName}</b> is the featured Killer. {loreExcerpt}</p>
+                            {powerExcerpt ? (<p>Power: {powerExcerpt}</p>) : null}
+                            <div className="mt-3 flex flex-wrap gap-2">
+                              <button onClick={() => { if (featuredKiller && onOpenCharacterProfile) { onOpenCharacterProfile(featuredKiller); } }} className="px-3 py-1.5 rounded-lg bg-white/5 border border-white/10 text-[11px] text-white">Open profile</button>
+                              <button onClick={() => setView('timeline')} className="px-3 py-1.5 rounded-lg bg-white/5 border border-white/10 text-[11px] text-white">Open timeline</button>
+                            </div>
+                          </div>
+                          <aside className="cx-infobox" aria-label="Featured Killer portrait">
+                            <div className="w-full overflow-hidden">
+                              <AssetFrame type="Killer" imageUrl={featuredKiller ? featuredKiller.image : undefined} fallbackIcon={<Icons.User width={24} height={24} className="text-zinc-600" />} />
+                            </div>
+                            <p className="mt-2 text-sm text-white font-black">{featuredName}</p>
+                            <p className="text-[11px] text-zinc-500 uppercase tracking-wider">{latestRelease.name} · {latestRelease.displayDate}</p>
+                          </aside>
                         </div>
                       </div>
-                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-5 border-t border-white/[0.08]">
-                        {secondaryTiles.map((tile) => {
-                          const TileIcon = Icons[tile.icon] || Icons.Zap;
-                          const openTile = () => {
-                            if (tile.id === 'import') {
-                              setShowImportModal(true);
-                              return;
+                    );
+                  })()}
+                </section>
+
+                <section id="news" aria-label="Latest releases">
+                  <h2 className="cx-sec">Latest releases</h2>
+                  {(() => {
+                    const chronological = (typeof TIMELINE_DATA !== 'undefined' && TIMELINE_DATA && typeof TIMELINE_DATA.getChronological === 'function') ? TIMELINE_DATA.getChronological() : [];
+                    const latestTwo = chronological.slice(-2).reverse();
+                    if (latestTwo.length === 0) {
+                      return null;
+                    }
+                    return (
+                      <table className="cx-wikitable">
+                        <caption>Latest releases from the lore timeline</caption>
+                        <thead>
+                          <tr><th>Release</th><th>Date</th><th>Summary</th><th></th></tr>
+                        </thead>
+                        <tbody>
+                          {latestTwo.map((rel) => (
+                            <tr key={rel.id || rel.name}>
+                              <td>
+                                <span className="block text-sm text-white font-bold">{rel.name}</span>
+                                <span className="block text-[11px] text-zinc-500 uppercase tracking-wider">{rel.chapterNumber ? ('Chapter ' + rel.chapterNumber) : (rel.type === 'base' ? 'Base Game' : (rel.type || 'Release'))}</span>
+                              </td>
+                              <td className="whitespace-nowrap">{rel.displayDate}</td>
+                              <td><span className="block text-xs text-zinc-400 line-clamp-2">{rel.description}</span></td>
+                              <td><button onClick={() => setView('timeline')} className="px-3 py-1 rounded-lg bg-white/5 border border-white/10 text-[11px] text-white whitespace-nowrap">Open timeline</button></td>
+                            </tr>
+                          ))}
+                        </tbody>
+                      </table>
+                    );
+                  })()}
+                </section>
+
+                <section id="browse" aria-label="Browse by category">
+                  <h2 className="cx-sec">Browse by category</h2>
+                  <div className="grid grid-cols-2 lg:grid-cols-3 gap-2">
+                    <button onClick={() => setView('killers')} className="rounded-xl border border-white/10 bg-white/[0.02] p-4 text-left hover:bg-white/[0.05] transition-colors">
+                      <span className="block text-sm font-black text-white">Killers</span>
+                      <span className="mt-1 block text-xl font-black text-white">{killers.length}</span>
+                      <span className="block text-[11px] text-zinc-500">Open roster</span>
+                    </button>
+                    <button onClick={() => setView('survivors')} className="rounded-xl border border-white/10 bg-white/[0.02] p-4 text-left hover:bg-white/[0.05] transition-colors">
+                      <span className="block text-sm font-black text-white">Survivors</span>
+                      <span className="mt-1 block text-xl font-black text-white">{survivors.length}</span>
+                      <span className="block text-[11px] text-zinc-500">Open roster</span>
+                    </button>
+                    <button onClick={() => setView('perks')} className="rounded-xl border border-white/10 bg-white/[0.02] p-4 text-left hover:bg-white/[0.05] transition-colors">
+                      <span className="block text-sm font-black text-white">Perks</span>
+                      <span className="mt-1 block text-xl font-black text-white">{visiblePerks.length}</span>
+                      <span className="block text-[11px] text-zinc-500">Open perk finder</span>
+                    </button>
+                    <button onClick={() => setView('items', { mode: 'killer' })} className="rounded-xl border border-white/10 bg-white/[0.02] p-4 text-left hover:bg-white/[0.05] transition-colors">
+                      <span className="block text-sm font-black text-white">Add-ons</span>
+                      <span className="mt-1 block text-xl font-black text-white">{addons.length}</span>
+                      <span className="block text-[11px] text-zinc-500">Open killer add-ons</span>
+                    </button>
+                    <button onClick={() => setView('items', { mode: 'survivor' })} className="rounded-xl border border-white/10 bg-white/[0.02] p-4 text-left hover:bg-white/[0.05] transition-colors">
+                      <span className="block text-sm font-black text-white">Items</span>
+                      <span className="mt-1 block text-xl font-black text-white">{items.length}</span>
+                      <span className="block text-[11px] text-zinc-500">Open survivor items</span>
+                    </button>
+                    <button onClick={() => setView('offerings')} className="rounded-xl border border-white/10 bg-white/[0.02] p-4 text-left hover:bg-white/[0.05] transition-colors">
+                      <span className="block text-sm font-black text-white">Offerings</span>
+                      <span className="mt-1 block text-xl font-black text-white">{offerings.filter((offering) => !offering.retired).length}</span>
+                      <span className="block text-[11px] text-zinc-500">Open offerings</span>
+                    </button>
+                    <button onClick={() => setView('realms')} className="rounded-xl border border-white/10 bg-white/[0.02] p-4 text-left hover:bg-white/[0.05] transition-colors">
+                      <span className="block text-sm font-black text-white">Realms</span>
+                      <span className="mt-1 block text-xl font-black text-white">{new Set(maps.map((m) => m.realm)).size}</span>
+                      <span className="block text-[11px] text-zinc-500">Open realms</span>
+                    </button>
+                  </div>
+                </section>
+
+                <section id="tools" aria-label="Tools directory">
+                  <h2 className="cx-sec">Tools</h2>
+                  <div className="divide-y divide-white/[0.07] border-y border-white/[0.08]">
+                    {['buildLab', 'roulette', 'worldle', 'prestige', 'matches', 'settings'].map((id) => ALL_HOME_TILES.find((tile) => tile.id === id) || (id === 'settings' ? { id: 'settings', label: 'Settings', icon: 'Gear', desc: 'Preferences and backups' } : null)).filter(Boolean).map((tile) => {
+                      const TileIcon = Icons[tile.icon] || Icons.Zap;
+                      const openTile = () => {
+                        if (tile.id === 'import') {
+                          setShowImportModal(true);
+                          return;
+                        }
+                        setView(tile.id);
+                      };
+                      return (
+                        <button key={tile.id} onClick={openTile} className="group w-full py-3.5 text-left flex items-center gap-4 hover:bg-white/[0.025] transition-colors">
+                          <span className="home-tool-icon w-9 h-9 shrink-0 rounded-lg flex items-center justify-center"><TileIcon width={17} height={17} /></span>
+                          <span className="min-w-0 flex-1">
+                            <span className="block text-sm font-black text-white truncate">{tile.label}</span>
+                            <span className="mt-0.5 block text-xs text-zinc-500 truncate">{tile.desc}</span>
+                          </span>
+                          <Icons.ChevronRight width={17} height={17} className="shrink-0 text-zinc-700 group-hover:text-white transition-colors" />
+                        </button>
+                      );
+                    })}
+                  </div>
+                  <h3>All modules</h3>
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-5 border-t border-white/[0.08]">
+                    {['killers', 'survivors', 'perks', 'favorites', 'progression', 'communityContent', 'cosmetics', 'realms', 'items', 'offerings', 'glossary', 'gameIcons', 'import', 'timeline'].map((id) => ALL_HOME_TILES.find((tile) => tile.id === id)).filter(Boolean).map((tile) => {
+                      const TileIcon = Icons[tile.icon] || Icons.Zap;
+                      const openTile = () => {
+                        if (tile.id === 'import') {
+                          setShowImportModal(true);
+                          return;
+                        }
+                        setView(tile.id);
+                      };
+                      return (
+                        <button
+                          key={tile.id}
+                          onClick={openTile}
+                          className="group py-3 border-b border-white/[0.07] text-left flex items-center gap-3 hover:bg-white/[0.025] transition-colors"
+                        >
+                          <span className="text-zinc-500 group-hover:text-white transition-colors"><TileIcon width={16} height={16} /></span>
+                          <span className="min-w-0 flex-1">
+                            <span className="block text-sm font-bold text-white truncate">{tile.label}</span>
+                            <span className="block text-[11px] text-zinc-600 truncate">{tile.desc}</span>
+                          </span>
+                        </button>
+                      );
+                    })}
+                  </div>
+                </section>
+
+                <section id="shelf" aria-label="Shelf">
+                  <h2 className="cx-sec">Shelf</h2>
+                  <div className="space-y-4">
+                    <section className="home-signal-card rounded-xl overflow-hidden">
+                      <div className="px-4 py-3 border-b border-white/[0.08] flex items-center justify-between gap-3">
+                        <div>
+                          <p className="text-[10px] uppercase tracking-[0.22em] text-zinc-500 font-black">Quick Chaos Shuffle</p>
+                          <h3 className="mt-1 text-base font-black text-white">Random killer</h3>
+                        </div>
+                        <button onClick={() => setView('roulette')} className="text-[11px] font-black uppercase tracking-widest text-zinc-500 hover:text-white">Open</button>
+                      </div>
+                      <div className="p-4">
+                        <button
+                          onClick={() => {
+                            if (quickKiller && onOpenCharacterProfile) {
+                              onOpenCharacterProfile(quickKiller);
                             }
-                            setView(tile.id);
-                          };
-                          return (
-                            <button
-                              key={tile.id}
-                              onClick={openTile}
-                              className="group py-3 border-b border-white/[0.07] text-left flex items-center gap-3 hover:bg-white/[0.025] transition-colors"
-                            >
-                              <span className="text-zinc-500 group-hover:text-white transition-colors"><TileIcon width={16} height={16} /></span>
-                              <span className="min-w-0 flex-1">
-                                <span className="block text-sm font-bold text-white truncate">{tile.label}</span>
-                                <span className="block text-[11px] text-zinc-600 truncate">{tile.desc}</span>
-                              </span>
-                            </button>
-                          );
-                        })}
+                          }}
+                          className="home-portrait-card w-full rounded-lg overflow-hidden relative min-h-[190px]"
+                        >
+                          {quickKiller ? (
+                            <AssetFrame
+                              type="Killer"
+                              imageUrl={quickKiller.image}
+                              size="fill"
+                              fallbackIcon={<Icons.User width={24} height={24} className="text-zinc-600" />}
+                            />
+                          ) : (
+                            <div className="absolute inset-0 flex flex-col items-center justify-center gap-3 text-zinc-600">
+                              <Icons.Dices width={34} height={34} />
+                              <span className="text-xs font-black uppercase tracking-widest">No roll yet</span>
+                            </div>
+                          )}
+                          <div className="home-portrait-caption absolute inset-x-0 bottom-0 p-3">
+                            <p className="text-[10px] text-zinc-500 font-black uppercase tracking-widest">Killer pick</p>
+                            <p className="text-sm text-white font-black truncate">{quickKiller?.name || 'Roll a killer'}</p>
+                          </div>
+                        </button>
+                        <div className="mt-3 grid grid-cols-2 gap-2">
+                          <button onClick={rollQuickKiller} className="px-3 py-2.5 rounded-lg border border-white/10 bg-white/[0.035] text-sm font-bold text-white hover:bg-white/[0.06] transition-colors flex items-center justify-center gap-2">
+                            <Icons.Dices width={16} height={16} /> Roll
+                          </button>
+                          <button onClick={() => setView('roulette')} className="px-3 py-2.5 rounded-lg border border-white/10 bg-white/[0.02] text-sm font-bold text-zinc-300 hover:text-white hover:bg-white/[0.05] transition-colors">
+                            Full shuffle
+                          </button>
+                        </div>
                       </div>
                     </section>
-                  )}
-                </div>
 
-                <aside className="space-y-4">
-                  <section className="home-signal-card rounded-xl overflow-hidden">
-                    <div className="px-4 py-3 border-b border-white/[0.08] flex items-center justify-between gap-3">
-                      <div>
-                        <p className="text-[10px] uppercase tracking-[0.22em] text-zinc-500 font-black">Quick Chaos Shuffle</p>
-                        <h3 className="mt-1 text-base font-black text-white">Random killer</h3>
-                      </div>
-                      <button onClick={() => setView('roulette')} className="text-[11px] font-black uppercase tracking-widest text-zinc-500 hover:text-white">Open</button>
-                    </div>
-                    <div className="p-4">
-                      <button
-                        onClick={() => {
-                          if (quickKiller && onOpenCharacterProfile) {
-                            onOpenCharacterProfile(quickKiller);
-                          }
-                        }}
-                        className="home-portrait-card w-full rounded-lg overflow-hidden relative min-h-[190px]"
-                      >
-                        {quickKiller ? (
-                          <AssetFrame
-                            type="Killer"
-                            imageUrl={quickKiller.image}
-                            size="fill"
-                            fallbackIcon={<Icons.User width={24} height={24} className="text-zinc-600" />}
-                          />
-                        ) : (
-                          <div className="absolute inset-0 flex flex-col items-center justify-center gap-3 text-zinc-600">
-                            <Icons.Dices width={34} height={34} />
-                            <span className="text-xs font-black uppercase tracking-widest">No roll yet</span>
-                          </div>
-                        )}
-                        <div className="home-portrait-caption absolute inset-x-0 bottom-0 p-3">
-                          <p className="text-[10px] text-zinc-500 font-black uppercase tracking-widest">Killer pick</p>
-                          <p className="text-sm text-white font-black truncate">{quickKiller?.name || 'Roll a killer'}</p>
+                    <button onClick={() => setView('worldle')} className="home-signal-card rounded-xl p-4 w-full text-left hover:bg-white/[0.035] transition-colors">
+                      <div className="flex items-center justify-between gap-3">
+                        <div>
+                          <p className="text-[10px] uppercase tracking-[0.22em] text-zinc-500 font-black">Daily Worldle</p>
+                          <h3 className="mt-1 text-lg font-black text-white">Today&apos;s puzzle</h3>
+                          <p className="mt-1 text-xs text-zinc-500">Guess today&apos;s DBD Wordle.</p>
                         </div>
-                      </button>
-                      <div className="mt-3 grid grid-cols-2 gap-2">
-                        <button onClick={rollQuickKiller} className="px-3 py-2.5 rounded-lg border border-white/10 bg-white/[0.035] text-sm font-bold text-white hover:bg-white/[0.06] transition-colors flex items-center justify-center gap-2">
-                          <Icons.Dices width={16} height={16} /> Roll
-                        </button>
-                        <button onClick={() => setView('roulette')} className="px-3 py-2.5 rounded-lg border border-white/10 bg-white/[0.02] text-sm font-bold text-zinc-300 hover:text-white hover:bg-white/[0.05] transition-colors">
-                          Full shuffle
-                        </button>
+                        <Icons.Notepad width={22} height={22} style={{ color: theme.accent }} />
                       </div>
-                    </div>
-                  </section>
+                    </button>
 
-                  <button onClick={() => setView('worldle')} className="home-signal-card rounded-xl p-4 w-full text-left hover:bg-white/[0.035] transition-colors">
-                    <div className="flex items-center justify-between gap-3">
-                      <div>
-                        <p className="text-[10px] uppercase tracking-[0.22em] text-zinc-500 font-black">Daily Worldle</p>
-                        <h3 className="mt-1 text-lg font-black text-white">Today&apos;s puzzle</h3>
-                        <p className="mt-1 text-xs text-zinc-500">Guess today&apos;s DBD Wordle.</p>
+                    <section className="home-signal-card rounded-xl p-4">
+                      <div className="flex items-center justify-between gap-3">
+                        <p className="text-[10px] uppercase tracking-[0.22em] text-zinc-500 font-black">Favorites</p>
+                        <button onClick={() => setView('favorites')} className="text-[11px] font-black uppercase tracking-widest text-zinc-500 hover:text-white">Open</button>
                       </div>
-                      <Icons.Notepad width={22} height={22} style={{ color: theme.accent }} />
-                    </div>
-                  </button>
+                      <div className="mt-3 divide-y divide-white/[0.07]">
+                        {favoriteEntries.slice(0, 4).map((entry) => (
+                          <button key={`${entry.favoriteCategory}-${entry.id}`} onClick={() => setView(entry.favoriteView)} className="w-full py-2.5 text-left hover:bg-white/[0.025] transition-colors">
+                            <span className="block text-sm text-white font-bold truncate">{entry.name}</span>
+                            <span className="block text-[11px] text-zinc-500 truncate">{entry.favoriteCategory}</span>
+                          </button>
+                        ))}
+                        {favoriteEntries.length === 0 && (
+                          <button onClick={() => setView('favorites')} className="w-full py-2.5 text-left hover:bg-white/[0.025] transition-colors">
+                            <span className="block text-sm text-white font-bold">No favorites yet</span>
+                            <span className="block text-[11px] text-zinc-500">Favorite perks, characters, items, addons, or offerings to show them here.</span>
+                          </button>
+                        )}
+                      </div>
+                    </section>
+                  </div>
+                </section>
 
-                  <section className="home-signal-card rounded-xl p-4">
-                    <div className="flex items-center justify-between gap-3">
-                      <p className="text-[10px] uppercase tracking-[0.22em] text-zinc-500 font-black">Favorites</p>
-                      <button onClick={() => setView('favorites')} className="text-[11px] font-black uppercase tracking-widest text-zinc-500 hover:text-white">Open</button>
-                    </div>
-                    <div className="mt-3 divide-y divide-white/[0.07]">
-                      {favoriteEntries.slice(0, 4).map((entry) => (
-                        <button key={`${entry.favoriteCategory}-${entry.id}`} onClick={() => setView(entry.favoriteView)} className="w-full py-2.5 text-left hover:bg-white/[0.025] transition-colors">
-                          <span className="block text-sm text-white font-bold truncate">{entry.name}</span>
-                          <span className="block text-[11px] text-zinc-500 truncate">{entry.favoriteCategory}</span>
-                        </button>
-                      ))}
-                      {favoriteEntries.length === 0 && (
-                        <button onClick={() => setView('favorites')} className="w-full py-2.5 text-left hover:bg-white/[0.025] transition-colors">
-                          <span className="block text-sm text-white font-bold">No favorites yet</span>
-                          <span className="block text-[11px] text-zinc-500">Favorite perks, characters, items, addons, or offerings to show them here.</span>
-                        </button>
-                      )}
-                    </div>
-                  </section>
-                </aside>
+                <nav className="cx-cats" aria-label="Categories">
+                  <span>Categories:</span>
+                  <button onClick={() => setView('killers')} style={{ color: 'var(--link)' }}>Killers</button>
+                  <span> · </span>
+                  <button onClick={() => setView('survivors')} style={{ color: 'var(--link)' }}>Survivors</button>
+                  <span> · </span>
+                  <button onClick={() => setView('perks')} style={{ color: 'var(--link)' }}>Perks</button>
+                  <span> · </span>
+                  <button onClick={() => setView('realms')} style={{ color: 'var(--link)' }}>Realms</button>
+                  <span> · </span>
+                  <button onClick={() => setView('timeline')} style={{ color: 'var(--link)' }}>Timeline</button>
+                  <span> · </span>
+                  <button onClick={() => setView('glossary')} style={{ color: 'var(--link)' }}>Glossary</button>
+                </nav>
               </div>
             )}
           </div>
