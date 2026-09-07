@@ -202,18 +202,19 @@ def main():
         },
         {
             "label": "killer-profile",
-            "params": {"view": "killers", "profileId": killer["id"]},
+            "params": {"view": "killer", "id": killer["id"]},
             "check": lambda state: (
-                state["smokeView"] == "killers" or (_ for _ in ()).throw(RuntimeError(f"killer-profile: expected killers, found {state['smokeView']}")),
-                state["smokeProfile"] == killer["id"] or (_ for _ in ()).throw(RuntimeError("killer-profile: modal did not open")),
+                state["smokeView"] == "killer" or (_ for _ in ()).throw(RuntimeError(f"killer-profile: expected killer, found {state['smokeView']}")),
+                state["smokeProfile"] == killer["id"] or (_ for _ in ()).throw(RuntimeError("killer-profile: article did not render")),
+                killer["name"] in state["text"] or (_ for _ in ()).throw(RuntimeError("killer-profile: missing title")),
             ),
         },
         {
             "label": "survivor-profile-cosmetic",
-            "params": {"view": "survivors", "profileId": cosmetic["baseCharacterId"], "cosmeticId": cosmetic["id"]},
+            "params": {"view": "survivor", "id": cosmetic["baseCharacterId"], "cosmeticId": cosmetic["id"]},
             "check": lambda state: (
-                state["smokeView"] == "survivors" or (_ for _ in ()).throw(RuntimeError(f"survivor-profile-cosmetic: expected survivors, found {state['smokeView']}")),
-                state["smokeProfile"] == cosmetic["baseCharacterId"] or (_ for _ in ()).throw(RuntimeError("survivor-profile-cosmetic: profile modal missing")),
+                state["smokeView"] == "survivor" or (_ for _ in ()).throw(RuntimeError(f"survivor-profile-cosmetic: expected survivor, found {state['smokeView']}")),
+                state["smokeProfile"] == cosmetic["baseCharacterId"] or (_ for _ in ()).throw(RuntimeError("survivor-profile-cosmetic: article missing")),
                 state["smokeTarget"] or (_ for _ in ()).throw(RuntimeError("survivor-profile-cosmetic: focused cosmetic missing")),
             ),
         },
