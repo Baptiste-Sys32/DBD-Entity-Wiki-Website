@@ -5322,6 +5322,31 @@
         </div>
       </div>
     );
+    const ViewCrumbs = ({ trail = [], current }) => {
+      if (!current && (!trail || trail.length === 0)) return null;
+      return (
+        <nav className="cx-crumbs flex items-center flex-wrap gap-x-1.5 gap-y-1 px-0.5 pb-1 text-[11.5px] leading-relaxed" aria-label="Breadcrumb">
+          {trail.map((crumb, index) => (
+            <span key={`cx-crumb-${index}`} className="cx-crumbs__item inline-flex items-center gap-1.5 min-w-0">
+              {typeof crumb.onClick === 'function' ? (
+                <button
+                  type="button"
+                  onClick={crumb.onClick}
+                  className="cx-crumbs__link text-zinc-500 hover:text-zinc-200 transition-colors font-medium truncate"
+                >
+                  {crumb.label}
+                </button>
+              ) : (
+                <span className="cx-crumbs__link text-zinc-500 font-medium truncate">{crumb.label}</span>
+              )}
+              <span className="cx-crumbs__sep text-zinc-700 select-none" aria-hidden="true">›</span>
+            </span>
+          ))}
+          <span className="cx-crumbs__current text-zinc-100 font-bold truncate" aria-current="page">{current}</span>
+        </nav>
+      );
+    };
+
     const GlassCard = ({ item, category, expanded = false, onToggle, perksForOwner = [], onPerkClick, buildsForOwner = [], onCreateBuild, isInCompare = false, onLongPress, isFavorite = false, onToggleFavorite, onPerkTap, onShowLore, onShowPower, onViewProfile, settings = {} }) => {
       let subtext = '';
       let accentTone = 'var(--accent)';
@@ -5743,6 +5768,7 @@
       );
       return (
         <div className="flex flex-col h-full pt-12 pb-32 px-6 overflow-y-auto custom-scrollbar space-y-4">
+          <ViewCrumbs trail={[{ label: 'Main page', onClick: onBack }]} current="Chaos Shuffle" />
           <Header title="Chaos Shuffle" subtitle="Randomize your fate" onBack={onBack} />
           <h2 className="cx-sec">Role</h2>
           <table className="cx-wikitable"><tbody>
@@ -7469,7 +7495,7 @@
       }, [data, localSearch, effectiveFilter, sortBy, isCharacterList, favoritePerks, isPerkList]);
       return (
         <div ref={scrollRef} className="flex flex-col h-full pt-12 pb-32 overflow-y-auto custom-scrollbar">
-          <div className="px-6"><Header title={type} subtitle="Database" onBack={onBack} onScrollTop={scrollToTop} /></div>
+          <div className="px-6"><ViewCrumbs trail={[{ label: 'Main page', onClick: onBack }]} current={type} /><Header title={type} subtitle="Database" onBack={onBack} onScrollTop={scrollToTop} /></div>
           <div className="sticky top-0 z-20 px-6 pb-4 pt-1 pointer-events-none">
             <div className="relative mb-3 max-w-3xl mx-auto pointer-events-auto">
               <div className="absolute inset-0 bg-red-600 rounded-3xl blur-2xl opacity-0 transition-opacity duration-500"></div>
@@ -7760,6 +7786,7 @@
       const realms = Object.entries(grouped);
       return (
         <div className="flex flex-col h-full pt-12 pb-32 px-6 overflow-y-auto custom-scrollbar">
+          <ViewCrumbs trail={[{ label: 'Main page', onClick: onBack }]} current="Realms" />
           <Header title="Realms" subtitle="Maps & Locations" onBack={onBack} />
           <div className="sticky top-0 z-20 -mx-6 px-6 pb-4 pointer-events-none">
             <div className="relative max-w-3xl mx-auto">
@@ -8276,6 +8303,7 @@
       };
       return (
         <div className="flex flex-col h-full pt-12 pb-32 px-6 overflow-y-auto custom-scrollbar">
+          <ViewCrumbs trail={[{ label: 'Main page', onClick: onBack }]} current="Build & Loadout Lab" />
           <Header title="Build & Loadout Lab" subtitle="Create, filter, favorite and clone builds" onBack={onBack} />
           <InfoCallout lines={[
             'Use New Build to craft a loadout; role, character, perks, and notes live in the form.',
@@ -9140,6 +9168,7 @@
       });
       return (
         <div className="flex flex-col h-full pt-12 pb-32 px-6 overflow-y-auto custom-scrollbar">
+          <ViewCrumbs trail={[{ label: 'Main page', onClick: onBack }]} current="Premade Builds" />
           <Header title="Premade Builds" subtitle="Ready-to-run perk combos" onBack={onBack} />
           <div className="sticky top-0 z-20 -mx-6 px-6 pb-4 pointer-events-none">
             <div className="relative max-w-3xl mx-auto">
@@ -9307,6 +9336,7 @@
       };
       return (
         <div className="flex flex-col h-full pt-12 pb-32 px-6 overflow-y-auto custom-scrollbar">
+          <ViewCrumbs trail={[{ label: 'Main page', onClick: onBack }]} current="Match Log" />
           <Header title="Match Log" subtitle="Log games with saved build and map details" onBack={onBack} />
           <InfoCallout lines={[
             'Pick Survivor or Killer, link a saved build, and choose a map so your records stay clear over time.',
@@ -10016,6 +10046,7 @@
       if (!target || activeCatalog.length === 0) {
         return (
           <div className="flex flex-col h-full pt-12 pb-32 px-6 overflow-y-auto custom-scrollbar">
+            <ViewCrumbs trail={[{ label: 'Main page', onClick: onBack }]} current="Wordle" />
             <Header title="Wordle" subtitle="Test your DBD knowledge" onBack={onBack} />
             <table className="cx-wikitable"><tbody>
               <tr><th scope="row">Status</th><td><div className="text-center text-zinc-400">
@@ -10027,6 +10058,7 @@
       }
       return (
         <div className="flex flex-col h-full pt-12 pb-32 px-6 overflow-y-auto custom-scrollbar">
+          <ViewCrumbs trail={[{ label: 'Main page', onClick: onBack }]} current="Wordle" />
           <Header title="Wordle" subtitle="Test your DBD knowledge" onBack={onBack} />
           <InfoCallout lines={[
             'Daily puzzles reset at midnight.',
@@ -10476,6 +10508,7 @@
       };
       return (
         <div className="flex flex-col h-full pt-12 pb-32 px-6 overflow-y-auto custom-scrollbar">
+          <ViewCrumbs trail={[{ label: 'Main page', onClick: onBack }]} current="Progression Hub" />
           <Header title="Progression Hub" subtitle="Achievements, roster, challenges and analytics" onBack={onBack} />
           <InfoCallout lines={[
             'Progression hub: achievements, roster ownership, custom challenges, and match analytics are all stored here.',
@@ -11211,6 +11244,7 @@
         <div className="h-full flex flex-col">
           {/* Header */}
           <div className="flex-shrink-0 px-6 pt-6 pb-4">
+            <ViewCrumbs trail={[{ label: 'Main page', onClick: onBack }]} current="Lore Timeline" />
             <div className="flex items-center gap-3 mb-4">
               <button onClick={onBack} className="w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center hover:bg-white/10 transition-colors">
                 <Icons.ArrowLeft width={20} height={20} />
@@ -11574,6 +11608,7 @@
         <div className="flex h-full pt-12">
           {/* Main content */}
           <div ref={scrollRef} className="flex-1 overflow-y-auto custom-scrollbar px-6 pb-28 md:pb-8">
+            <ViewCrumbs trail={[{ label: 'Main page', onClick: onBack }]} current="Glossary" />
             <Header title="Glossary" subtitle={`${allTerms.length} terms`} onBack={onBack} />
 
             {/* Search bar */}
@@ -11787,6 +11822,7 @@
       }, [initialTargetType, targetItem, targetAddon, targetKillerAddonHost, targetSurvivorAddonHostItem, mode, expandedId, filteredItems, filteredKillers]);
       return (
         <div className="flex flex-col h-full pt-12 pb-32 px-6 overflow-y-auto custom-scrollbar">
+          <ViewCrumbs trail={[{ label: 'Main page', onClick: onBack }]} current="Items & Addons" />
           <Header title="Items & Addons" subtitle={mode === 'survivor' ? bloodwebItems.length + ' items' : killers.length + ' killers'} onBack={onBack} />
           <div className="sticky top-0 z-20 -mx-6 px-6 pb-4 pointer-events-none">
             <div className="relative max-w-3xl mx-auto">
@@ -12080,6 +12116,7 @@
       }, [targetOffering, expandedId, filtered]);
       return (
         <div className="flex flex-col h-full pt-12 pb-32 px-6 overflow-y-auto custom-scrollbar">
+          <ViewCrumbs trail={[{ label: 'Main page', onClick: onBack }]} current="Offerings" />
           <Header title="Offerings" subtitle={active.length + " offerings"} onBack={onBack} />
           <div className="sticky top-0 z-20 -mx-6 px-6 pb-4 pointer-events-none">
             <div className="relative max-w-3xl mx-auto">
@@ -12415,6 +12452,7 @@
 
       return (
         <div className="flex flex-col h-full pt-12 pb-32 px-6 overflow-y-auto custom-scrollbar" data-smoke-cosmetics="true">
+          <ViewCrumbs trail={[{ label: 'Main page', onClick: onBack }]} current="Cosmetics" />
           <Header title="Cosmetics" subtitle={`${readyCosmetics.length} cosmetics • ${characterSwapCount} character swaps`} onBack={onBack} />
           {showFullSetPackBanner && (
             <div className="max-w-5xl mx-auto w-full mb-4">
@@ -12803,6 +12841,7 @@
 
       return (
         <div className="flex flex-col h-full pt-12 pb-32 px-6 overflow-y-auto custom-scrollbar">
+          <ViewCrumbs trail={[{ label: 'Main page', onClick: onBack }]} current="Community Content" />
           <Header title="Community Content" subtitle="Guides, builds, and tierlists" onBack={onBack} />
           <div className="max-w-5xl mx-auto w-full pb-32 space-y-4">
             <div className="flex flex-wrap items-center gap-2">
@@ -13217,6 +13256,7 @@
       const showSection = (tab) => activeTab === 'All' || activeTab === tab;
       return (
         <div className="flex flex-col h-full pt-12 pb-32 px-6 overflow-y-auto custom-scrollbar">
+          <ViewCrumbs trail={[{ label: 'Main page', onClick: onBack }]} current="My Favorites" />
           <Header title="My Favorites" subtitle={totalCount + ' bookmarked'} onBack={onBack} />
           <div className="max-w-3xl mx-auto flex flex-wrap justify-center gap-2 mb-6">
             {tabs.map(tab => {
@@ -13364,6 +13404,7 @@
       const restorePreview = backupPreview?.payload || null;
       return (
         <div className="flex flex-col h-full pt-12 pb-32 px-6 overflow-y-auto custom-scrollbar">
+          <ViewCrumbs trail={[{ label: 'Main page', onClick: onBack }]} current="Settings" />
           <Header title="Settings" subtitle="Website preferences" onBack={onBack} />
           <div className="pb-32 -mx-6 px-6 space-y-4">
             {isMobile && settings.googlePlayCtaHidden === true && (
@@ -13850,6 +13891,7 @@
             <div className="fog-layer fixed inset-0 pointer-events-none z-0" style={{
             }} />
             <div className="relative z-10">
+              <ViewCrumbs trail={[{ label: 'Main page', onClick: onBack }]} current="The Entity's Offering" />
               <Header title="The Entity's Offering" subtitle="Prestige Calculator" onBack={onBack} />
               <p className="text-red-400/80 text-sm italic font-medium tracking-wide text-center mb-4">{getEntityQuote()}</p>
               <h2 className="cx-sec">Prestige inputs</h2>
@@ -14120,7 +14162,7 @@
 
       return (
         <div ref={scrollRef} className="flex flex-col h-full pt-12 pb-32 overflow-y-auto custom-scrollbar">
-          <div className="px-6"><Header title="Game Icons" subtitle={viewMode === 'glossary' ? 'Glossary' : 'Trial Grid'} onBack={onBack} onScrollTop={scrollToTop} /></div>
+          <div className="px-6"><ViewCrumbs trail={[{ label: 'Main page', onClick: onBack }]} current={viewMode === 'glossary' ? 'Glossary' : 'Trial Grid'} /><Header title="Game Icons" subtitle={viewMode === 'glossary' ? 'Glossary' : 'Trial Grid'} onBack={onBack} onScrollTop={scrollToTop} /></div>
 
           {/* Mode Toggle */}
           <div className="px-6 mb-3">
@@ -15664,6 +15706,11 @@ const CharacterProfileModal = ({ character, onClose, allPerks = [], onPerkTap, t
           perkSearch
         });
       }, [currentView, viewContext, perkFilter, perkSearch]);
+      window.__codexQA = {
+        view: () => currentView,
+        context: () => viewContext,
+        crumbs: () => Array.from(document.querySelectorAll('.cx-crumbs__current')).map(node => node.textContent),
+      };
       useEffect(() => {
         try {
           localStorage.removeItem(STORAGE_KEY_ACHIEVEMENTS);
