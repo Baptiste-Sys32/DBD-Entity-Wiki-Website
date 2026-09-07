@@ -6694,7 +6694,7 @@
           <div className="px-0 sm:px-6 pb-4 pt-4 pointer-events-none">
             <div className="relative max-w-3xl mx-auto pointer-events-auto">
               <div className="absolute inset-0 bg-zinc-500 rounded-3xl blur-2xl opacity-0 transition-opacity duration-500"></div>
-              <div className="relative flex items-center bg-zinc-800/60 backdrop-blur-xl border border-white/10 rounded-3xl p-2 shadow-2xl">
+              <div className="relative flex items-center bg-white/5 border border-white/15 rounded-lg p-2">
                 <div className="pl-4 text-zinc-400"><Icons.Search width={18} height={18} /></div>
                 <input type="text" className="w-full bg-transparent text-white p-3 text-sm sm:text-base font-medium placeholder-zinc-600 focus:outline-none" placeholder="Search perks, killers, maps, builds..." value={searchTerm} onChange={(e) => setSearchTerm(e.target.value)} />
                 {searchTerm && <button onClick={() => setSearchTerm('')} className="p-2 mr-1 rounded-xl bg-white/5 text-zinc-300 hover:text-white hover:bg-white/10 transition-colors"><Icons.X width={18} height={18} /></button>}
@@ -7433,6 +7433,11 @@
       const [expandedId, setExpandedId] = useState(null);
       const isPerkList = type === 'Perks';
       const isCharacterList = type === 'Killers' || type === 'Survivors';
+      const listHatnote = type === 'Killers'
+        ? 'The playable killers of Dead by Daylight, with their real names and teachable perks.'
+        : type === 'Survivors'
+          ? 'The playable survivors of Dead by Daylight, with their teachable perks.'
+          : 'All killer and survivor perks, searchable by role, tag, and text.';
       const effectiveFilter = activeFilter || 'All';
       const updateFilter = (val) => setActiveFilter && setActiveFilter(val);
       const stripThe = (name) => (name || '').replace(/^The\s+/i, '');
@@ -7501,11 +7506,16 @@
       }, [data, localSearch, effectiveFilter, sortBy, isCharacterList, favoritePerks, isPerkList]);
       return (
         <div ref={scrollRef} className="flex flex-col h-full pt-12 pb-32 overflow-y-auto custom-scrollbar">
-          <div className="px-6"><ViewCrumbs trail={[{ label: 'Main page', onClick: onBack }]} current={type} /><Header title={type} subtitle="Database" onBack={onBack} onScrollTop={scrollToTop} /></div>
+          <div className="cx-article w-full max-w-[1280px] mx-auto" style={{ paddingBottom: '0' }}>
+            <ViewCrumbs trail={[{ label: 'Main page', onClick: onBack }]} current={type} />
+            <h1 className="cx-title">{type}</h1>
+            <p className="cx-hatnote">{listHatnote}</p>
+            <div className="cx-metaline">{data.length} {type.toLowerCase()} · patch {META.gameVersion}</div>
+          </div>
           <div className="sticky top-0 z-20 px-6 pb-4 pt-1 pointer-events-none">
             <div className="relative mb-3 max-w-3xl mx-auto pointer-events-auto">
               <div className="absolute inset-0 bg-zinc-500 rounded-3xl blur-2xl opacity-0 transition-opacity duration-500"></div>
-              <div className="relative flex items-center bg-zinc-800/60 backdrop-blur-xl border border-white/10 rounded-3xl p-2 shadow-2xl">
+              <div className="relative flex items-center bg-white/5 border border-white/15 rounded-lg p-2">
                 <div className="pl-4 text-zinc-400"><Icons.Search width={18} height={18} /></div>
                 <input type="text" placeholder={`Filter ${type}...`} className="w-full bg-transparent text-white p-3 text-sm sm:text-base font-medium placeholder-zinc-600 focus:outline-none" value={localSearch} onChange={e => { setLocalSearch(e.target.value); onSearchChange && onSearchChange(e.target.value); }} />
                 {localSearch && <button onClick={() => { setLocalSearch(''); onSearchChange && onSearchChange(''); }} className="p-2 mr-1 rounded-xl bg-white/5 text-zinc-300 hover:text-white hover:bg-white/10 transition-colors"><Icons.X width={18} height={18} /></button>}
@@ -7529,25 +7539,24 @@
             {isPerkList ? (
               <div className="max-w-3xl mx-auto flex flex-wrap justify-center gap-2 pb-4">
                 {filterOptions && filterOptions.map(opt => (
-                  <GlassButton
+                  <button
                     key={opt}
-                    active={effectiveFilter === opt}
                     onClick={() => updateFilter(effectiveFilter === opt ? 'All' : opt)}
-                    className="text-xs py-2 px-4"
+                    className={`px-4 py-2 text-xs rounded-lg border transition-colors ${effectiveFilter === opt ? 'bg-zinc-100 text-black border-zinc-100 font-bold' : 'bg-transparent text-zinc-300 border-white/15 hover:border-white/30'}`}
                   >
                     {opt}
-                  </GlassButton>
+                  </button>
                 ))}
               </div>
             ) : filterOptions && (
               <div className="max-w-3xl mx-auto flex flex-wrap justify-center gap-2 pb-4">
                 {filterOptions.map(opt => (
-                  <GlassButton key={opt} active={activeFilter === opt} onClick={() => updateFilter(opt)} className="text-xs py-2 px-4">{opt}</GlassButton>
+                  <button key={opt} onClick={() => updateFilter(opt)} className={`px-4 py-2 text-xs rounded-lg border transition-colors ${activeFilter === opt ? 'bg-zinc-100 text-black border-zinc-100 font-bold' : 'bg-transparent text-zinc-300 border-white/15 hover:border-white/30'}`}>{opt}</button>
                 ))}
               </div>
             )}
           </div>
-<div className="px-6 pb-32">
+<div className="w-full max-w-[1280px] mx-auto px-[44px] pb-32">
             <table className="cx-wikitable"><tbody>
             {filtered.map(item => {
               const category = type === 'Killers' ? 'Killer' : type === 'Survivors' ? 'Survivor' : 'Perk';
@@ -7800,7 +7809,9 @@
       return (
         <div className="flex flex-col h-full pt-12 pb-32 px-6 overflow-y-auto custom-scrollbar">
           <ViewCrumbs trail={[{ label: 'Main page', onClick: onBack }]} current="Realms" />
-          <Header title="Realms" subtitle="Maps & Locations" onBack={onBack} />
+          <h1 className="cx-title">Realms</h1>
+          <p className="cx-hatnote">Maps and locations of the trials, grouped by realm.</p>
+          <div className="cx-metaline">{maps.length} maps · patch {META.gameVersion}</div>
           <div className="sticky top-0 z-20 -mx-6 px-6 pb-4 pointer-events-none">
             <div className="relative max-w-3xl mx-auto">
               <div className="absolute inset-0 bg-transparent rounded-xl blur-2xl opacity-0 transition-opacity duration-500"></div>
@@ -11836,7 +11847,9 @@
       return (
         <div className="flex flex-col h-full pt-12 pb-32 px-6 overflow-y-auto custom-scrollbar">
           <ViewCrumbs trail={[{ label: 'Main page', onClick: onBack }]} current="Items & Addons" />
-          <Header title="Items & Addons" subtitle={mode === 'survivor' ? bloodwebItems.length + ' items' : killers.length + ' killers'} onBack={onBack} />
+          <h1 className="cx-title">Items &amp; Addons</h1>
+          <p className="cx-hatnote">Survivor items, Killer powers, and their add-ons.</p>
+          <div className="cx-metaline">{mode === 'survivor' ? bloodwebItems.length + ' items' : killers.length + ' killers'} · patch {META.gameVersion}</div>
           <div className="sticky top-0 z-20 -mx-6 px-6 pb-4 pointer-events-none">
             <div className="relative max-w-3xl mx-auto">
               <div className="relative flex items-center bg-zinc-800/60 backdrop-blur-xl border border-white/10 rounded-3xl p-2 shadow-2xl pointer-events-auto">
@@ -12130,7 +12143,9 @@
       return (
         <div className="flex flex-col h-full pt-12 pb-32 px-6 overflow-y-auto custom-scrollbar">
           <ViewCrumbs trail={[{ label: 'Main page', onClick: onBack }]} current="Offerings" />
-          <Header title="Offerings" subtitle={active.length + " offerings"} onBack={onBack} />
+          <h1 className="cx-title">Offerings</h1>
+          <p className="cx-hatnote">Offerings for the Entity, by rarity.</p>
+          <div className="cx-metaline">{active.length} offerings · patch {META.gameVersion}</div>
           <div className="sticky top-0 z-20 -mx-6 px-6 pb-4 pointer-events-none">
             <div className="relative max-w-3xl mx-auto">
               <div className="relative flex items-center bg-zinc-800/60 backdrop-blur-xl border border-white/10 rounded-3xl p-2 shadow-2xl pointer-events-auto">
