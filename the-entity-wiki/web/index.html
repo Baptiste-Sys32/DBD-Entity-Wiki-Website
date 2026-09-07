@@ -98,13 +98,13 @@
       --surface-hover: color-mix(in srgb, var(--ghost-surface) 72%, var(--accent-soft));
       --shadow-soft: 0 8px 30px rgba(0, 0, 0, 0.35);
       --shadow-strong: 0 16px 60px rgba(0, 0, 0, 0.45);
-      --accent: #ff3b30;
-      --accent-soft: rgba(255, 59, 48, 0.14);
+      --accent: #fafafa;
+      --accent-soft: rgba(250, 250, 250, 0.12);
       --site-shell-bg: #000000;
-      --ambient-glow: radial-gradient(120% 120% at 20% 0%, rgba(255, 59, 48, 0.05), transparent 55%);
+      --ambient-glow: radial-gradient(120% 120% at 20% 0%, rgba(250, 250, 250, 0.035), transparent 55%);
       --ambient-opacity: 0.3;
-      --selection-bg: rgba(255, 59, 48, 0.22);
-      --selection-text: #ffffff;
+      --selection-bg: rgba(250, 250, 250, 0.88);
+      --selection-text: #000000;
       --full-panel-bg: var(--panel);
       --full-panel-border: var(--stroke);
       --full-button-bg: #0a0a0a;
@@ -115,7 +115,7 @@
       --full-select-border: var(--stroke);
       --full-select-text: var(--text);
       --full-select-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.03), 0 10px 28px rgba(0, 0, 0, 0.35);
-      --full-select-focus-ring: rgba(255, 59, 48, 0.25);
+      --full-select-focus-ring: rgba(250, 250, 250, 0.28);
     }
 
     body {
@@ -1132,32 +1132,32 @@
       color: #64748b !important;
     }
 
-    .light-mode .text-cyan-200,
-    .light-mode .text-cyan-300 {
+    .light-mode .text-zinc-300,
+    .light-mode .text-zinc-200 {
       color: #0e7490 !important;
     }
 
-    .light-mode .text-emerald-200,
-    .light-mode .text-emerald-300 {
+    .light-mode .text-zinc-100,
+    .light-mode .text-zinc-100 {
       color: #047857 !important;
     }
 
-    .light-mode .text-fuchsia-300 {
+    .light-mode .text-zinc-200 {
       color: #a21caf !important;
     }
 
-    .light-mode .text-red-200,
-    .light-mode .text-red-300 {
+    .light-mode .text-zinc-300,
+    .light-mode .text-zinc-200 {
       color: #b91c1c !important;
     }
 
-    .light-mode .text-amber-200,
-    .light-mode .text-amber-300 {
+    .light-mode .text-zinc-300,
+    .light-mode .text-zinc-200 {
       color: #b45309 !important;
     }
 
-    .light-mode .text-blue-200,
-    .light-mode .text-blue-300 {
+    .light-mode .text-zinc-300,
+    .light-mode .text-zinc-200 {
       color: #1d4ed8 !important;
     }
 
@@ -1414,13 +1414,15 @@
     /* ===== Codex article system (shared) ===== */
     /* Codex wiki article layer: OLED black, serif display, hairline rules */
     :root {
-      --link: #6fa8ff;
-      --link-visited: #9c86ff;
+      --link: #fafafa;
+      --link-visited: #d4d4d8;
     }
     body.light-mode {
       --link: #1d4ed8;
       --link-visited: #6d28d9;
     }
+    .website-sidebar img[src*="favicon"] { filter: grayscale(1) brightness(1.6); }
+    .launch-logo { filter: grayscale(1) brightness(1.2); }
     .cx-article {
       min-width: 0;
       width: 100%;
@@ -1737,7 +1739,9 @@
       margin: 0 2px;
     }
     @media (max-width: 860px) {
-      .cx-article {
+      .website-sidebar img[src*="favicon"] { filter: grayscale(1) brightness(1.6); }
+    .launch-logo { filter: grayscale(1) brightness(1.2); }
+    .cx-article {
         padding: 20px 18px 56px;
       }
       .cx-leadgrid {
@@ -2197,8 +2201,8 @@
       },
       ghost: {
         name: "Ghost White",
-        accent: "#ff3b30",
-        accentSoft: "rgba(255,59,48,0.14)",
+        accent: "#fafafa",
+        accentSoft: "rgba(250,250,250,0.14)",
         tileGradient: "linear-gradient(145deg, #0a0a0a, #121212)",
         tileBorder: "rgba(255,255,255,0.3)",
         tileShadow: "0 0 25px rgba(255,255,255,0.15)"
@@ -2671,13 +2675,13 @@
       return ALL_HOME_TILES.find((tile) => tile.id === id)?.desc || '';
     };
     const RARITY_GLOWS = {
-      common: 'rgba(81,63,49,0.5)',
-      uncommon: 'rgba(27,140,34,0.45)',
-      rare: 'rgba(59,130,246,0.45)',
-      veryrare: 'rgba(113,58,132,0.5)',
-      ultrarare: 'rgba(207,12,70,0.55)',
-      visceral: 'rgba(207,12,70,0.55)',
-      event: 'rgba(255,215,0,0.45)',
+      common: 'rgba(255,255,255,0.10)',
+      uncommon: 'rgba(255,255,255,0.16)',
+      rare: 'rgba(255,255,255,0.22)',
+      veryrare: 'rgba(255,255,255,0.28)',
+      ultrarare: 'rgba(255,255,255,0.36)',
+      visceral: 'rgba(255,255,255,0.36)',
+      event: 'rgba(255,255,255,0.28)',
     };
     const getRarityGlow = (rarity, enabled = true) => {
       if (!enabled) return 'none';
@@ -3308,11 +3312,11 @@
     };
     const WORLDLE_METADATA = typeof WORLDLE_DATA === 'undefined' ? { aliases: {}, genders: {}, emojiClues: {} } : WORLDLE_DATA;
     const WORLDLE_MODE_META = {
-      classic: { label: 'Classic', queue: 'flex', accent: '#ff3b30', description: 'Guess the killer from stats, release clues, and comparisons.' },
-      emoji: { label: 'Emoji', queue: 'flex', accent: '#f59e0b', description: 'Decode the clues to identify the killer.' },
-      survivorPerk: { label: 'Survivor Perk', queue: 'flex', accent: '#38bdf8', description: 'Identify a survivor perk from its icon.' },
-      killerPerk: { label: 'Killer Perk', queue: 'flex', accent: '#ff3b30', description: 'Identify a killer perk from its icon.' },
-      teachables: { label: 'Teachables', queue: 'flex', accent: '#a855f7', description: 'Guess the three killer teachable perks for the featured killer.' }
+      classic: { label: 'Classic', queue: 'flex', accent: '#fafafa', description: 'Guess the killer from stats, release clues, and comparisons.' },
+      emoji: { label: 'Emoji', queue: 'flex', accent: '#d4d4d8', description: 'Decode the clues to identify the killer.' },
+      survivorPerk: { label: 'Survivor Perk', queue: 'flex', accent: '#a1a1aa', description: 'Identify a survivor perk from its icon.' },
+      killerPerk: { label: 'Killer Perk', queue: 'flex', accent: '#fafafa', description: 'Identify a killer perk from its icon.' },
+      teachables: { label: 'Teachables', queue: 'flex', accent: '#e4e4e7', description: 'Guess the three killer teachable perks for the featured killer.' }
     };
     const getWorldleDateKey = (date = new Date()) => {
       const y = date.getFullYear();
@@ -4080,7 +4084,7 @@
         }
         setDragY(0);
       };
-      const accentColor = perk.type === 'Killer' ? '#ff3b30' : '#38bdf8';
+      const accentColor = perk.type === 'Killer' ? '#fafafa' : '#a1a1aa';
       return (
         <div
           className="fixed inset-0 z-50 flex items-end justify-center bottom-sheet-backdrop"
@@ -5383,20 +5387,20 @@
       };
       if (category === 'Killer') {
         subtext = item.realName || item.name;
-        accentTone = '#ff3b30';
+        accentTone = '#fafafa';
         fallbackIcon = <Icons.Sword width={24} height={24} className="opacity-20" />;
       } else if (category === 'Survivor') {
         subtext = item.role;
-        accentTone = '#38bdf8';
+        accentTone = '#a1a1aa';
         fallbackIcon = <Icons.Heart width={24} height={24} className="opacity-20" />;
       } else if (isPerk) {
         subtext = item.owner || 'Universal';
-        accentTone = item.type === 'Killer' ? '#ff3b30' : '#38bdf8';
+        accentTone = item.type === 'Killer' ? '#fafafa' : '#a1a1aa';
         fallbackIcon = <Icons.BookOpen width={20} height={20} className="opacity-20" />;
       }
       return (
         <div
-          className={`group relative overflow-hidden rounded-2xl glass-panel backdrop-blur-md p-4 mb-4 transition-all duration-200 ${isCharacter || (isPerk && onPerkTap) ? 'cursor-pointer' : ''} ${isInCompare ? 'ring-2 ring-purple-500' : ''}`}
+          className={`group relative overflow-hidden rounded-2xl glass-panel backdrop-blur-md p-4 mb-4 transition-all duration-200 ${isCharacter || (isPerk && onPerkTap) ? 'cursor-pointer' : ''} ${isInCompare ? 'ring-2 ring-zinc-500' : ''}`}
           style={expanded ? { borderColor: accentTone, boxShadow: '0 10px 30px rgba(0,0,0,0.4)' } : {}}
           onClick={isCharacter ? handleCharacterClick : (isPerk && onPerkTap ? handlePerkClick : undefined)}
           onTouchStart={isPerk ? handleTouchStart : undefined}
@@ -5408,7 +5412,7 @@
         >
           {/* Checkmark overlay for selected perks */}
           {isInCompare && (
-            <div className="absolute top-2 right-2 z-20 w-6 h-6 rounded-full bg-amber-500 flex items-center justify-center">
+            <div className="absolute top-2 right-2 z-20 w-6 h-6 rounded-full bg-zinc-400 flex items-center justify-center">
               <Icons.Check width={14} height={14} className="text-white" />
             </div>
           )}
@@ -5416,9 +5420,9 @@
           {(isPerk || isCharacter) && onToggleFavorite && (
             <button
               onClick={(e) => { e.stopPropagation(); onToggleFavorite(); }}
-              className={`absolute top-2 ${isInCompare ? 'right-10' : 'right-2'} z-20 p-1.5 rounded-full transition-colors ${isFavorite ? 'bg-yellow-500/20' : 'bg-white/10 hover:bg-white/20'}`}
+              className={`absolute top-2 ${isInCompare ? 'right-10' : 'right-2'} z-20 p-1.5 rounded-full transition-colors ${isFavorite ? 'bg-white/10' : 'bg-white/10 hover:bg-white/20'}`}
             >
-              <Icons.Star width={16} height={16} className={isFavorite ? 'text-yellow-400 fill-yellow-400' : 'text-zinc-500'} />
+              <Icons.Star width={16} height={16} className={isFavorite ? 'text-zinc-100 fill-zinc-100' : 'text-zinc-500'} />
             </button>
           )}
           <div className="absolute left-0 top-0 bottom-0 w-1" style={{ background: accentTone, opacity: 0.6 }}></div>
@@ -5437,13 +5441,13 @@
               {/* Show killer stats when expanded */}
               {isCharacter && expanded && category === 'Killer' && KILLER_STATS[item.name] && (
                 <div className="flex flex-wrap gap-2 mt-2">
-                  <span className="px-2 py-1 rounded-lg bg-red-500/10 border border-red-500/20 text-[10px] font-bold text-red-400">
+                  <span className="px-2 py-1 rounded-lg bg-zinc-500/10 border border-white/25/20 text-[10px] font-bold text-zinc-100">
                     TR: {KILLER_STATS[item.name].terrorRadius}
                   </span>
-                  <span className="px-2 py-1 rounded-lg bg-red-500/10 border border-red-500/20 text-[10px] font-bold text-red-400">
+                  <span className="px-2 py-1 rounded-lg bg-zinc-500/10 border border-white/25/20 text-[10px] font-bold text-zinc-100">
                     Speed: {KILLER_STATS[item.name].speed}
                   </span>
-                  <span className="px-2 py-1 rounded-lg bg-red-500/10 border border-red-500/20 text-[10px] font-bold text-red-400">
+                  <span className="px-2 py-1 rounded-lg bg-zinc-500/10 border border-white/25/20 text-[10px] font-bold text-zinc-100">
                     Height: {KILLER_STATS[item.name].height}
                   </span>
                 </div>
@@ -5492,7 +5496,7 @@
                 {category === 'Killer' && item.power && onShowPower && (
                   <button
                     onClick={(e) => { e.stopPropagation(); onShowPower(); }}
-                    className="flex-1 py-2.5 rounded-xl bg-red-500/20 hover:bg-red-500/30 border border-red-500/30 text-red-400 text-sm font-semibold transition-colors flex items-center justify-center gap-2"
+                    className="flex-1 py-2.5 rounded-xl bg-zinc-500/20 hover:bg-zinc-500/30 border border-white/25/30 text-zinc-100 text-sm font-semibold transition-colors flex items-center justify-center gap-2"
                   >
                     <Icons.Zap width={16} height={16} />
                     Power
@@ -5644,13 +5648,13 @@
       };
       const getRarityColor = (rarity) => {
         switch ((rarity || '').toLowerCase()) {
-          case 'common': return '#513F31';
-          case 'uncommon': return '#1B8C22';
-          case 'rare': return '#3B82F6';
-          case 'veryrare': return '#713A84';
-          case 'ultrarare': return '#CF0C46';
-          case 'visceral': return '#CF0C46';
-          case 'event': return '#FFD700';
+          case 'common': return '#71717a';
+          case 'uncommon': return '#a1a1aa';
+          case 'rare': return '#d4d4d8';
+          case 'veryrare': return '#e4e4e7';
+          case 'ultrarare': return '#fafafa';
+          case 'visceral': return '#fafafa';
+          case 'event': return '#e4e4e7';
           default: return '#71717a';
         }
       };
@@ -5696,7 +5700,7 @@
             {result.character && (
               <tr><th scope="row">{role}</th><td>
                 <div className="flex items-center gap-4">
-                  <div className={`w-1 h-16 rounded-full ${role === 'Killer' ? 'bg-red-500 shadow-[0_0_10px_rgba(255,59,48,0.5)]' : 'bg-blue-500 shadow-[0_0_10px_rgba(59,130,246,0.5)]'}`} />
+                  <div className={`w-1 h-16 rounded-full ${role === 'Killer' ? 'bg-zinc-300 shadow-[0_0_10px_rgba(255,255,255,0.3)]' : 'bg-zinc-600 shadow-[0_0_10px_rgba(255,255,255,0.12)]'}`} />
                   <AssetFrame type={role} imageUrl={result.character.image} />
                   <div className="flex-1">
                     <p className="text-[10px] font-bold uppercase tracking-widest text-zinc-500 mb-1">{role}</p>
@@ -5782,7 +5786,7 @@
                 </button>
                 <button
                   onClick={() => setRole('Killer')}
-                  className={`flex-1 py-2.5 rounded-lg text-xs font-bold uppercase tracking-wider transition-all ${role === 'Killer' ? 'bg-red-600 text-white' : 'text-zinc-500 hover:text-zinc-300'}`}
+                  className={`flex-1 py-2.5 rounded-lg text-xs font-bold uppercase tracking-wider transition-all ${role === 'Killer' ? 'bg-zinc-100 text-black' : 'text-zinc-500 hover:text-zinc-300'}`}
                 >
                   Killer
                 </button>
@@ -5843,14 +5847,14 @@
                   <tr><th scope="row">Lock</th><td>
                     <div className="flex items-center justify-between mb-2">
                       <div className="flex items-center gap-2">
-                        <Icons.Lock width={12} height={12} className={lockedChar ? (role === 'Killer' ? 'text-red-400' : 'text-blue-400') : 'text-zinc-500'} />
+                        <Icons.Lock width={12} height={12} className={lockedChar ? (role === 'Killer' ? 'text-zinc-100' : 'text-zinc-100') : 'text-zinc-500'} />
                         <p className="text-[10px] font-bold uppercase tracking-wider text-zinc-400">Playing As</p>
                         {lockedChar && (
                           <span className="text-[10px] text-white/80 bg-white/10 px-1.5 py-0.5 rounded-md font-semibold">{lockedChar.name}</span>
                         )}
                       </div>
                       {lockedChar && (
-                        <button onClick={() => setLockedCharacterId(null)} className="text-[9px] px-1.5 py-0.5 rounded bg-red-500/20 text-red-400 hover:bg-red-500/30 border border-red-500/30 font-bold uppercase">
+                        <button onClick={() => setLockedCharacterId(null)} className="text-[9px] px-1.5 py-0.5 rounded bg-zinc-500/20 text-zinc-100 hover:bg-zinc-500/30 border border-white/25/30 font-bold uppercase">
                           Clear
                         </button>
                       )}
@@ -5859,7 +5863,7 @@
                       <p className="text-zinc-600 text-[10px] mb-2">Lock a specific {role.toLowerCase()} to always play. Perks still come from your owned pool below.</p>
                     ) : (
                       <div className="flex items-center gap-3 p-2 rounded-xl bg-white/5 border border-white/10">
-                        <div className={`w-12 h-12 rounded-lg overflow-hidden border ${role === 'Killer' ? 'border-red-500/50' : 'border-blue-500/50'}`}>
+                        <div className={`w-12 h-12 rounded-lg overflow-hidden border ${role === 'Killer' ? 'border-white/40' : 'border-white/25'}`}>
                           <AssetFrame type={role} imageUrl={lockedChar.image} size="fill" fallbackIcon={<Icons.User width={16} height={16} className="text-zinc-600" />} />
                         </div>
                         <div className="flex-1">
@@ -5868,7 +5872,7 @@
                             <p className="text-zinc-500 text-xs">{lockedChar.realName}</p>
                           )}
                         </div>
-                        <Icons.Lock width={14} height={14} className={role === 'Killer' ? 'text-red-400' : 'text-blue-400'} />
+                        <Icons.Lock width={14} height={14} className={role === 'Killer' ? 'text-zinc-100' : 'text-zinc-100'} />
                       </div>
                     )}
                     {!lockedChar && (
@@ -5925,7 +5929,7 @@
                         <button
                           key={char.id}
                           onClick={() => toggleCharacter(char.id)}
-                          className={`relative aspect-square rounded-lg border transition-all overflow-hidden bg-zinc-900 ${isOwned ? (role === 'Killer' ? 'border-red-500/70 ring-1 ring-red-500/30' : 'border-blue-500/70 ring-1 ring-blue-500/30') : 'border-white/10 opacity-35 grayscale hover:opacity-60 hover:grayscale-0'}`}
+                          className={`relative aspect-square rounded-lg border transition-all overflow-hidden bg-zinc-900 ${isOwned ? (role === 'Killer' ? 'border-white/50 ring-1 ring-white/30' : 'border-white/30 ring-1 ring-white/30') : 'border-white/10 opacity-35 grayscale hover:opacity-60 hover:grayscale-0'}`}
                           title={char.name}
                         >
                           <AssetFrame
@@ -5935,7 +5939,7 @@
                             fallbackIcon={<Icons.User width={16} height={16} className="text-zinc-600" />}
                           />
                           {isOwned && (
-                            <div className={`absolute top-0.5 right-0.5 w-2 h-2 rounded-full z-10 ${role === 'Killer' ? 'bg-red-500' : 'bg-blue-500'}`} />
+                            <div className={`absolute top-0.5 right-0.5 w-2 h-2 rounded-full z-10 ${role === 'Killer' ? 'bg-zinc-400' : 'bg-zinc-600'}`} />
                           )}
                         </button>
                       );
@@ -5949,7 +5953,7 @@
                 <button
                   onClick={rollDice}
                   disabled={isSpinning || (ownedCharacters.size === 0 && !lockedCharacterId)}
-                  className={`w-full py-3 ${role === 'Survivor' ? 'bg-sky-700' : 'bg-red-700'} rounded-xl font-bold uppercase tracking-widest text-sm text-white hover:scale-[1.01] active:scale-[0.99] transition-all disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2`}
+                  className={`w-full py-3 ${role === 'Survivor' ? 'bg-zinc-100 text-black' : 'bg-zinc-100 text-black'} rounded-xl font-bold uppercase tracking-widest text-sm hover:scale-[1.01] active:scale-[0.99] transition-all disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2`}
                 >
                   <Icons.Dices width={18} height={18} className={isSpinning ? 'animate-spin' : ''} />
                   {isSpinning ? 'Consulting Entity...' : lockedCharacterId ? `Randomize as ${characters.find(c => c.id === lockedCharacterId)?.name || role}` : 'Randomize'}
@@ -6117,13 +6121,13 @@
 
       const getRarityColor = (rarity) => {
         switch ((rarity || '').toLowerCase()) {
-          case 'common': return '#513F31';
-          case 'uncommon': return '#1B8C22';
-          case 'rare': return '#3B82F6';
-          case 'veryrare': return '#713A84';
-          case 'ultrarare': return '#CF0C46';
-          case 'visceral': return '#CF0C46';
-          case 'event': return '#FFD700';
+          case 'common': return '#71717a';
+          case 'uncommon': return '#a1a1aa';
+          case 'rare': return '#d4d4d8';
+          case 'veryrare': return '#e4e4e7';
+          case 'ultrarare': return '#fafafa';
+          case 'visceral': return '#fafafa';
+          case 'event': return '#e4e4e7';
           default: return '#71717a';
         }
       };
@@ -6687,7 +6691,7 @@
           </div>
           <div className="px-0 sm:px-6 pb-4 pt-4 pointer-events-none">
             <div className="relative max-w-3xl mx-auto pointer-events-auto">
-              <div className="absolute inset-0 bg-red-600 rounded-3xl blur-2xl opacity-0 transition-opacity duration-500"></div>
+              <div className="absolute inset-0 bg-zinc-500 rounded-3xl blur-2xl opacity-0 transition-opacity duration-500"></div>
               <div className="relative flex items-center bg-zinc-800/60 backdrop-blur-xl border border-white/10 rounded-3xl p-2 shadow-2xl">
                 <div className="pl-4 text-zinc-400"><Icons.Search width={18} height={18} /></div>
                 <input type="text" className="w-full bg-transparent text-white p-3 text-sm sm:text-base font-medium placeholder-zinc-600 focus:outline-none" placeholder="Search perks, killers, maps, builds..." value={searchTerm} onChange={(e) => setSearchTerm(e.target.value)} />
@@ -6700,31 +6704,31 @@
             {randomResult && (
               <div className="space-y-4 animate-in fade-in slide-in-from-bottom-4 duration-500">
                 {randomResult.type === 'help' && (
-                  <div className="p-6 rounded-3xl bg-red-900/20 border border-red-500/20">
+                  <div className="p-6 rounded-3xl bg-white/5 border border-white/25/20">
                     <div className="flex items-center gap-3 mb-4">
-                      <div className="p-2 rounded-xl bg-red-500/15">
-                        <Icons.Dices width={24} height={24} className="text-red-400" />
+                      <div className="p-2 rounded-xl bg-zinc-500/15">
+                        <Icons.Dices width={24} height={24} className="text-zinc-100" />
                       </div>
                       <h3 className="text-lg font-bold text-white">Quick Random</h3>
                     </div>
                     <p className="text-sm text-zinc-400 mb-4">Generate random addons and offerings instantly!</p>
                     <div className="space-y-2 text-xs">
-                      <p className="text-zinc-300"><span className="text-red-400 font-mono">random:killer</span> — Random killer + 2 addons</p>
-                      <p className="text-zinc-300"><span className="text-red-400 font-mono">random:trapper</span> — 2 random Trapper addons</p>
-                      <p className="text-zinc-300"><span className="text-red-400 font-mono">random:huntress</span> — 2 random Huntress addons</p>
-                      <p className="text-zinc-300"><span className="text-red-400 font-mono">random:medkit</span> — Random Med-Kit + 2 addons</p>
-                      <p className="text-zinc-300"><span className="text-red-400 font-mono">random:toolbox</span> — Random Toolbox + 2 addons</p>
-                      <p className="text-zinc-300"><span className="text-red-400 font-mono">random:offering</span> — 1 random offering</p>
+                      <p className="text-zinc-300"><span className="text-zinc-100 font-mono">random:killer</span> — Random killer + 2 addons</p>
+                      <p className="text-zinc-300"><span className="text-zinc-100 font-mono">random:trapper</span> — 2 random Trapper addons</p>
+                      <p className="text-zinc-300"><span className="text-zinc-100 font-mono">random:huntress</span> — 2 random Huntress addons</p>
+                      <p className="text-zinc-300"><span className="text-zinc-100 font-mono">random:medkit</span> — Random Med-Kit + 2 addons</p>
+                      <p className="text-zinc-300"><span className="text-zinc-100 font-mono">random:toolbox</span> — Random Toolbox + 2 addons</p>
+                      <p className="text-zinc-300"><span className="text-zinc-100 font-mono">random:offering</span> — 1 random offering</p>
                     </div>
                   </div>
                 )}
 
                 {randomResult.type === 'killer' && (
-                  <div className="p-5 rounded-3xl bg-red-900/25 border border-red-500/20 shadow-lg shadow-red-500/5">
+                  <div className="p-5 rounded-3xl bg-white/5 border border-white/25/20 shadow-lg shadow-white/5">
                     <div className="flex items-center gap-4 mb-4">
                       <AssetFrame type="Killer" imageUrl={randomResult.killer.image} fallbackIcon={<Icons.User width={28} height={28} className="text-zinc-500" />} />
                       <div>
-                        <p className="text-[10px] font-bold uppercase tracking-widest text-red-400 mb-1">Killer Addons</p>
+                        <p className="text-[10px] font-bold uppercase tracking-widest text-zinc-100 mb-1">Killer Addons</p>
                         <h3 className="text-xl font-bold text-white">{randomResult.killer.name}</h3>
                       </div>
                     </div>
@@ -6748,7 +6752,7 @@
                       ))}
                     </div>
                     <div className="flex gap-2 mt-4">
-                      <button onClick={rerollRandom} className="flex-1 py-2.5 rounded-xl bg-red-600/20 border border-red-500/30 text-red-300 text-xs font-bold uppercase tracking-wider hover:bg-red-600/30 transition-colors flex items-center justify-center gap-2">
+                      <button onClick={rerollRandom} className="flex-1 py-2.5 rounded-xl bg-white/10 border border-white/20 text-zinc-100 text-xs font-bold uppercase tracking-wider hover:bg-white/10 transition-colors flex items-center justify-center gap-2">
                         <Icons.Dices width={14} height={14} /> Re-roll
                       </button>
                       <button onClick={clearRandom} className="py-2.5 px-4 rounded-xl bg-white/5 border border-white/10 text-zinc-400 text-xs font-bold uppercase tracking-wider hover:bg-white/10 transition-colors">
@@ -6759,13 +6763,13 @@
                 )}
 
                 {randomResult.type === 'item' && (
-                  <div className="p-5 rounded-3xl bg-blue-900/25 border border-blue-500/20 shadow-lg shadow-blue-500/5">
+                  <div className="p-5 rounded-3xl bg-white/5 border border-white/15 shadow-lg shadow-white/5">
                     <div className="flex items-center gap-4 mb-4">
                       <div className="w-14 h-14 rounded-xl overflow-hidden flex-shrink-0">
                         <AssetFrame type="Item" imageUrl={randomResult.item?.image} size="fill" fallbackIcon={<Icons.Package width={24} height={24} className="text-zinc-500" />} />
                       </div>
                       <div>
-                        <p className="text-[10px] font-bold uppercase tracking-widest text-blue-400 mb-1">Item Addons</p>
+                        <p className="text-[10px] font-bold uppercase tracking-widest text-zinc-400 mb-1">Item Addons</p>
                         <h3 className="text-xl font-bold text-white">{randomResult.item?.name || randomResult.itemType}</h3>
                       </div>
                     </div>
@@ -6789,7 +6793,7 @@
                       ))}
                     </div>
                     <div className="flex gap-2 mt-4">
-                      <button onClick={rerollRandom} className="flex-1 py-2.5 rounded-xl bg-blue-600/20 border border-blue-500/30 text-blue-300 text-xs font-bold uppercase tracking-wider hover:bg-blue-600/30 transition-colors flex items-center justify-center gap-2">
+                      <button onClick={rerollRandom} className="flex-1 py-2.5 rounded-xl bg-white/10 border border-white/20 text-zinc-100 text-xs font-bold uppercase tracking-wider hover:bg-white/10 transition-colors flex items-center justify-center gap-2">
                         <Icons.Dices width={14} height={14} /> Re-roll
                       </button>
                       <button onClick={clearRandom} className="py-2.5 px-4 rounded-xl bg-white/5 border border-white/10 text-zinc-400 text-xs font-bold uppercase tracking-wider hover:bg-white/10 transition-colors">
@@ -6800,20 +6804,20 @@
                 )}
 
                 {randomResult.type === 'offering' && (
-                  <div className="p-5 rounded-3xl bg-amber-900/25 border border-amber-500/20 shadow-lg shadow-amber-500/5">
+                  <div className="p-5 rounded-3xl bg-amber-900/25 border border-white/15 shadow-lg shadow-white/5">
                     <div className="flex flex-col items-center text-center">
-                      <p className="text-[10px] font-bold uppercase tracking-widest text-amber-400 mb-3">Random Offering</p>
+                      <p className="text-[10px] font-bold uppercase tracking-widest text-zinc-200 mb-3">Random Offering</p>
                       <div
                         className="w-20 h-20 rounded-2xl overflow-hidden mb-3"
                         style={{ boxShadow: getRarityGlow(randomResult.offering.rarity) }}
                       >
-                        <AssetFrame type="Offering" imageUrl={randomResult.offering.image} size="fill" fallbackIcon={<Icons.Flame width={32} height={32} className="text-amber-500" />} />
+                        <AssetFrame type="Offering" imageUrl={randomResult.offering.image} size="fill" fallbackIcon={<Icons.Flame width={32} height={32} className="text-zinc-500" />} />
                       </div>
                       <h3 className="text-lg font-bold" style={{ color: getRarityColor(randomResult.offering.rarity) }}>{randomResult.offering.name}</h3>
                       <p className="text-zinc-500 text-xs mt-2 max-w-xs line-clamp-3">{randomResult.offering.description}</p>
                     </div>
                     <div className="flex gap-2 mt-4">
-                      <button onClick={rerollRandom} className="flex-1 py-2.5 rounded-xl bg-amber-600/20 border border-amber-500/30 text-amber-300 text-xs font-bold uppercase tracking-wider hover:bg-amber-600/30 transition-colors flex items-center justify-center gap-2">
+                      <button onClick={rerollRandom} className="flex-1 py-2.5 rounded-xl bg-white/10 border border-white/20 text-zinc-100 text-xs font-bold uppercase tracking-wider hover:bg-white/15 transition-colors flex items-center justify-center gap-2">
                         <Icons.Dices width={14} height={14} /> Re-roll
                       </button>
                       <button onClick={clearRandom} className="py-2.5 px-4 rounded-xl bg-white/5 border border-white/10 text-zinc-400 text-xs font-bold uppercase tracking-wider hover:bg-white/10 transition-colors">
@@ -6842,7 +6846,7 @@
                     {searchTerm.includes(':') && <span className="ml-2 text-zinc-600">• {searchTerm.split(':')[0]} filter</span>}
                   </span>
                   {results.length > 0 && results[0]._score >= 20 && searchTerm.split(/\s+/).length >= 2 && (
-                    <span className="text-[10px] font-bold uppercase tracking-wider text-sky-400 bg-sky-500/10 border border-sky-500/20 px-2 py-1 rounded-lg">Best Match ↓</span>
+                    <span className="text-[10px] font-bold uppercase tracking-wider text-zinc-100 bg-white/10 border border-white/20 px-2 py-1 rounded-lg">Best Match ↓</span>
                   )}
                 </div>
                 {results.length > 0 ? results.map((item, idx) => {
@@ -6884,7 +6888,7 @@
                       <div key={item.id || item.name} className="p-3 rounded-2xl bg-zinc-900/60 border border-white/10">
                         <div className="flex justify-between items-center mb-1">
                           <span className="text-[10px] uppercase tracking-widest font-bold text-zinc-500">Build</span>
-                          <span className={`px-2 py-1 rounded-lg text-[10px] font-bold uppercase tracking-wider ${item.role === 'Killer' ? 'bg-red-600/30 text-red-200' : 'bg-blue-600/30 text-blue-200'}`}>{item.role}</span>
+                          <span className={`px-2 py-1 rounded-lg text-[10px] font-bold uppercase tracking-wider ${item.role === 'Killer' ? 'bg-white/10 text-zinc-100' : 'bg-white/5 text-zinc-300'}`}>{item.role}</span>
                         </div>
                         <p className="text-white font-bold">{item.name}</p>
                         <div className="flex flex-wrap gap-1 mt-1">
@@ -6963,7 +6967,7 @@
                     );
                   }
                   if (item.category === 'GameIcon') {
-                    const categoryColors = { health: '#22c55e', buff: '#38bdf8', debuff: '#ff3b30', killer: '#a855f7', activity: '#fbbf24' };
+                    const categoryColors = { health: '#e4e4e7', buff: '#d4d4d8', debuff: '#71717a', killer: '#fafafa', activity: '#a1a1aa' };
                     const color = categoryColors[item.category] || '#a1a1aa';
                     return wrapBest(
                       <div key={item.id || item.name} className="p-3 rounded-2xl bg-zinc-900/60 border border-white/10 flex items-center gap-3">
@@ -7317,10 +7321,10 @@
                       placeholder="Paste shared build text here..."
                       className="w-full h-24 bg-zinc-800/60 border border-white/10 rounded-xl px-4 py-3 text-white placeholder-zinc-600 focus:outline-none focus:border-white/20 resize-none font-mono text-sm"
                     />
-                    {importError && <p className="text-red-400 text-sm mt-2">{importError}</p>}
+                    {importError && <p className="text-zinc-100 text-sm mt-2">{importError}</p>}
                     <div className="flex gap-3 mt-4">
                       <button onClick={cancelImport} className="flex-1 px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-zinc-300 font-semibold hover:bg-white/10 transition-colors">Cancel</button>
-                      <button onClick={handleImportBuild} className="flex-1 px-4 py-3 rounded-xl bg-blue-600 text-white font-semibold hover:bg-blue-500 transition-colors">Preview</button>
+                      <button onClick={handleImportBuild} className="flex-1 px-4 py-3 rounded-xl bg-zinc-800 text-zinc-100 border border-white/20 font-semibold hover:bg-zinc-500 transition-colors">Preview</button>
                     </div>
                   </>
                 ) : (
@@ -7330,7 +7334,7 @@
                       {/* Build Name & Role */}
                       <div className="p-4 rounded-xl bg-zinc-800/50 border border-white/5">
                         <div className="flex items-center gap-2 mb-2">
-                          <span className={`px-2 py-1 rounded-lg text-[10px] font-bold uppercase tracking-widest ${importPreview.role === 'Killer' ? 'bg-red-600/30 text-red-200' : 'bg-blue-600/30 text-blue-200'}`}>
+                          <span className={`px-2 py-1 rounded-lg text-[10px] font-bold uppercase tracking-widest ${importPreview.role === 'Killer' ? 'bg-white/10 text-zinc-100' : 'bg-white/5 text-zinc-300'}`}>
                             {importPreview.role}
                           </span>
                           {importPreview.characterName && (
@@ -7382,9 +7386,9 @@
 
                       {/* Warnings */}
                       {importWarnings.length > 0 && (
-                        <div className="p-3 rounded-xl bg-yellow-500/10 border border-yellow-500/30">
-                          <p className="text-yellow-300 text-xs font-bold uppercase tracking-wider mb-1">Warnings</p>
-                          <ul className="text-yellow-200/80 text-xs space-y-0.5">
+                        <div className="p-3 rounded-xl bg-white/5 border border-white/20">
+                          <p className="text-zinc-200 text-xs font-bold uppercase tracking-wider mb-1">Warnings</p>
+                          <ul className="text-zinc-300 text-xs space-y-0.5">
                             {importWarnings.map((w, i) => (
                               <li key={i}>• {w}</li>
                             ))}
@@ -7395,7 +7399,7 @@
 
                     <div className="flex gap-3 mt-6">
                       <button onClick={() => { setImportPreview(null); setImportWarnings([]); }} className="flex-1 px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-zinc-300 font-semibold hover:bg-white/10 transition-colors">Back</button>
-                      <button onClick={confirmImport} className="flex-1 px-4 py-3 rounded-xl bg-green-600 text-white font-semibold hover:bg-green-500 transition-colors">Save Build</button>
+                      <button onClick={confirmImport} className="flex-1 px-4 py-3 rounded-xl bg-zinc-100 text-black font-semibold hover:bg-zinc-300 transition-colors">Save Build</button>
                     </div>
                   </>
                 )}
@@ -7498,7 +7502,7 @@
           <div className="px-6"><ViewCrumbs trail={[{ label: 'Main page', onClick: onBack }]} current={type} /><Header title={type} subtitle="Database" onBack={onBack} onScrollTop={scrollToTop} /></div>
           <div className="sticky top-0 z-20 px-6 pb-4 pt-1 pointer-events-none">
             <div className="relative mb-3 max-w-3xl mx-auto pointer-events-auto">
-              <div className="absolute inset-0 bg-red-600 rounded-3xl blur-2xl opacity-0 transition-opacity duration-500"></div>
+              <div className="absolute inset-0 bg-zinc-500 rounded-3xl blur-2xl opacity-0 transition-opacity duration-500"></div>
               <div className="relative flex items-center bg-zinc-800/60 backdrop-blur-xl border border-white/10 rounded-3xl p-2 shadow-2xl">
                 <div className="pl-4 text-zinc-400"><Icons.Search width={18} height={18} /></div>
                 <input type="text" placeholder={`Filter ${type}...`} className="w-full bg-transparent text-white p-3 text-sm sm:text-base font-medium placeholder-zinc-600 focus:outline-none" value={localSearch} onChange={e => { setLocalSearch(e.target.value); onSearchChange && onSearchChange(e.target.value); }} />
@@ -7551,7 +7555,7 @@
               const isCharacter = category === 'Killer' || category === 'Survivor';
               const isPerk = category === 'Perk';
               const subtext = category === 'Killer' ? (item.realName || item.name) : category === 'Survivor' ? item.role : (item.owner || 'Universal');
-              const accentTone = category === 'Killer' ? '#ff3b30' : category === 'Survivor' ? '#38bdf8' : (item.type === 'Killer' ? '#ff3b30' : '#38bdf8');
+              const accentTone = category === 'Killer' ? '#fafafa' : category === 'Survivor' ? '#a1a1aa' : (item.type === 'Killer' ? '#fafafa' : '#a1a1aa');
               const fallbackIcon = category === 'Killer' ? <Icons.Sword width={24} height={24} className="opacity-20" /> : category === 'Survivor' ? <Icons.Heart width={24} height={24} className="opacity-20" /> : <Icons.BookOpen width={20} height={20} className="opacity-20" />;
               const isInCompare = category === 'Perk' && comparePerks.some(p => p.id === item.id);
               const onLongPress = category === 'Perk' && onPerkLongPress ? () => onPerkLongPress(item) : undefined;
@@ -7602,7 +7606,7 @@
                   <React.Fragment key={item.id}>
                     <tr
                       onClick={handleCharacterClick}
-                      className={`${isInCompare ? 'ring-2 ring-purple-500' : ''}`}
+                      className={`${isInCompare ? 'ring-2 ring-zinc-500' : ''}`}
                       style={isExpanded ? { borderColor: accentTone, boxShadow: 'inset 3px 0 0 ' + accentTone } : { boxShadow: 'inset 3px 0 0 ' + accentTone }}
                     >
                       <td className="cx-perkcell">
@@ -7619,9 +7623,9 @@
                         {(isPerk || isCharacter) && onToggleFavoriteFn && (
                           <button
                             onClick={(e) => { e.stopPropagation(); onToggleFavoriteFn(); }}
-                            className={`p-1.5 rounded-full transition-colors ${isFavorite ? 'bg-yellow-500/20' : 'bg-white/10 hover:bg-white/20'}`}
+                            className={`p-1.5 rounded-full transition-colors ${isFavorite ? 'bg-white/10' : 'bg-white/10 hover:bg-white/20'}`}
                           >
-                            <Icons.Star width={16} height={16} className={isFavorite ? 'text-yellow-400 fill-yellow-400' : 'text-zinc-500'} />
+                            <Icons.Star width={16} height={16} className={isFavorite ? 'text-zinc-100 fill-zinc-100' : 'text-zinc-500'} />
                           </button>
                         )}
                       </td>
@@ -7634,13 +7638,13 @@
                           )}
                           {category === 'Killer' && KILLER_STATS[item.name] && (
                             <div className="flex flex-wrap gap-2 mt-2">
-                              <span className="px-2 py-1 rounded-lg bg-red-500/10 border border-red-500/20 text-[10px] font-bold text-red-400">
+                              <span className="px-2 py-1 rounded-lg bg-zinc-500/10 border border-white/25/20 text-[10px] font-bold text-zinc-100">
                                 TR: {KILLER_STATS[item.name].terrorRadius}
                               </span>
-                              <span className="px-2 py-1 rounded-lg bg-red-500/10 border border-red-500/20 text-[10px] font-bold text-red-400">
+                              <span className="px-2 py-1 rounded-lg bg-zinc-500/10 border border-white/25/20 text-[10px] font-bold text-zinc-100">
                                 Speed: {KILLER_STATS[item.name].speed}
                               </span>
-                              <span className="px-2 py-1 rounded-lg bg-red-500/10 border border-red-500/20 text-[10px] font-bold text-red-400">
+                              <span className="px-2 py-1 rounded-lg bg-zinc-500/10 border border-white/25/20 text-[10px] font-bold text-zinc-100">
                                 Height: {KILLER_STATS[item.name].height}
                               </span>
                             </div>
@@ -7663,7 +7667,7 @@
                               {category === 'Killer' && item.power && onShowPowerFn && (
                                 <button
                                   onClick={(e) => { e.stopPropagation(); onShowPowerFn(); }}
-                                  className="flex-1 py-2.5 rounded-xl bg-red-500/20 hover:bg-red-500/30 border border-red-500/30 text-red-400 text-sm font-semibold transition-colors flex items-center justify-center gap-2"
+                                  className="flex-1 py-2.5 rounded-xl bg-zinc-500/20 hover:bg-zinc-500/30 border border-white/25/30 text-zinc-100 text-sm font-semibold transition-colors flex items-center justify-center gap-2"
                                 >
                                   <Icons.Zap width={16} height={16} />
                                   Power
@@ -7713,7 +7717,7 @@
                   onMouseDown={isPerk ? handleTouchStart : undefined}
                   onMouseUp={isPerk ? handleTouchEnd : undefined}
                   onMouseLeave={isPerk ? handleTouchEnd : undefined}
-                  className={`${onPerkTapFn ? 'cursor-pointer' : ''} ${isInCompare ? 'ring-2 ring-purple-500' : ''}`}
+                  className={`${onPerkTapFn ? 'cursor-pointer' : ''} ${isInCompare ? 'ring-2 ring-zinc-500' : ''}`}
                   style={{ boxShadow: 'inset 3px 0 0 ' + accentTone }}
                 >
                   <td className="cx-perkcell">
@@ -7744,16 +7748,16 @@
                   </td>
                   <td>
                     {isInCompare && (
-                      <div className="w-6 h-6 rounded-full bg-amber-500 flex items-center justify-center mb-2">
+                      <div className="w-6 h-6 rounded-full bg-zinc-400 flex items-center justify-center mb-2">
                         <Icons.Check width={14} height={14} className="text-white" />
                       </div>
                     )}
                     {(isPerk || isCharacter) && onToggleFavoriteFn && (
                       <button
                         onClick={(e) => { e.stopPropagation(); onToggleFavoriteFn(); }}
-                        className={`p-1.5 rounded-full transition-colors ${isFavorite ? 'bg-yellow-500/20' : 'bg-white/10 hover:bg-white/20'}`}
+                        className={`p-1.5 rounded-full transition-colors ${isFavorite ? 'bg-white/10' : 'bg-white/10 hover:bg-white/20'}`}
                       >
-                        <Icons.Star width={16} height={16} className={isFavorite ? 'text-yellow-400 fill-yellow-400' : 'text-zinc-500'} />
+                        <Icons.Star width={16} height={16} className={isFavorite ? 'text-zinc-100 fill-zinc-100' : 'text-zinc-500'} />
                       </button>
                     )}
                   </td>
@@ -7819,7 +7823,7 @@
                           <p className="text-zinc-500 text-xs mt-1 line-clamp-2 leading-relaxed">{mp.description}</p>
                           <button
                             onClick={() => onViewLayout && onViewLayout(mp)}
-                            className="mt-2 px-3 py-1.5 text-xs font-semibold rounded-lg bg-red-500/20 text-red-400 hover:bg-red-500/30 transition-colors flex items-center gap-1"
+                            className="mt-2 px-3 py-1.5 text-xs font-semibold rounded-lg bg-zinc-500/20 text-zinc-100 hover:bg-zinc-500/30 transition-colors flex items-center gap-1"
                           >
                             <Icons.Map width={12} height={12} />
                             {hasLayout ? 'Open Details + Layout' : 'Open Details'}
@@ -7846,13 +7850,13 @@
       const getRarityOrder = (r) => RARITY_ORDER[(r || '').toLowerCase()] || 0;
       const getRarityColor = (rarity) => {
         switch ((rarity || '').toLowerCase()) {
-          case 'common': return '#513F31';
-          case 'uncommon': return '#1B8C22';
-          case 'rare': return '#3B82F6';
-          case 'veryrare': return '#713A84';
-          case 'ultrarare': return '#CF0C46';
-          case 'visceral': return '#CF0C46';
-          case 'event': return '#FFD700';
+          case 'common': return '#71717a';
+          case 'uncommon': return '#a1a1aa';
+          case 'rare': return '#d4d4d8';
+          case 'veryrare': return '#e4e4e7';
+          case 'ultrarare': return '#fafafa';
+          case 'visceral': return '#fafafa';
+          case 'event': return '#e4e4e7';
           default: return '#71717a';
         }
       };
@@ -7991,23 +7995,23 @@
                 <button
                   onClick={() => changeRole('Survivor')}
                   className="flex-1 sm:flex-none px-4 py-3 rounded-xl text-xs font-bold uppercase tracking-wider transition-all"
-                  style={form.role === 'Survivor' ? { background: '#0a0a0a', border: '2px solid #38bdf8', color: '#38bdf8', boxShadow: '0 4px 15px rgba(56,189,248,0.2)' } : { background: '#0a0a0a', border: '1px solid rgba(255,255,255,0.1)', color: '#a1a1aa' }}
+                  style={form.role === 'Survivor' ? { background: '#0a0a0a', border: '2px solid #fafafa', color: '#fafafa', boxShadow: '0 4px 15px rgba(250,250,250,0.2)' } : { background: '#0a0a0a', border: '1px solid rgba(255,255,255,0.1)', color: '#a1a1aa' }}
                 >
                   Survivor
                 </button>
                 <button
                   onClick={() => changeRole('Killer')}
                   className="flex-1 sm:flex-none px-4 py-3 rounded-xl text-xs font-bold uppercase tracking-wider transition-all"
-                  style={form.role === 'Killer' ? { background: '#0a0a0a', border: '2px solid #ef4444', color: '#ff3b30', boxShadow: '0 4px 15px rgba(255,59,48,0.2)' } : { background: '#0a0a0a', border: '1px solid rgba(255,255,255,0.1)', color: '#a1a1aa' }}
+                  style={form.role === 'Killer' ? { background: '#0a0a0a', border: '2px solid #fafafa', color: '#fafafa', boxShadow: '0 4px 15px rgba(250,250,250,0.2)' } : { background: '#0a0a0a', border: '1px solid rgba(255,255,255,0.1)', color: '#a1a1aa' }}
                 >
                   Killer
                 </button>
                 <button
                   onClick={() => setForm(f => ({ ...f, favorite: !f.favorite }))}
                   className="px-3 py-2 rounded-xl text-xs font-bold uppercase transition-all"
-                  style={form.favorite ? { background: '#0a0a0a', border: '2px solid #facc15', color: '#facc15' } : { background: '#0a0a0a', border: '1px solid rgba(255,255,255,0.1)', color: '#a1a1aa' }}
+                  style={form.favorite ? { background: '#0a0a0a', border: '2px solid #fafafa', color: '#fafafa' } : { background: '#0a0a0a', border: '1px solid rgba(255,255,255,0.1)', color: '#a1a1aa' }}
                 >
-                  <Icons.Star width={16} height={16} className={form.favorite ? 'fill-yellow-300' : ''} />
+                  <Icons.Star width={16} height={16} className={form.favorite ? 'fill-zinc-100' : ''} />
                 </button>
               </div>
             </td></tr>
@@ -8023,7 +8027,7 @@
               </div>
               {form.characterName ? (
                 <div className="flex items-center gap-3 p-3 rounded-xl bg-white/5 border border-white/10">
-                  <div className={`w-1 h-12 rounded-full ${form.role === 'Killer' ? 'bg-red-500' : 'bg-blue-500'}`} />
+                  <div className={`w-1 h-12 rounded-full ${form.role === 'Killer' ? 'bg-zinc-400' : 'bg-zinc-600'}`} />
                   <AssetFrame type={form.role} imageUrl={characters.find(c => c.id === form.characterId)?.image} fallbackIcon={<Icons.User width={20} height={20} className="text-zinc-600" />} />
                   <div className="flex-1">
                     <p className="text-white font-bold">{form.characterName}</p>
@@ -8042,7 +8046,7 @@
                     <button
                       key={char.id}
                       onClick={() => pickCharacter(char)}
-                      className={`aspect-square rounded-xl border-2 transition-all overflow-hidden ${form.characterId === char.id ? (form.role === 'Killer' ? 'border-red-500 shadow-[0_0_10px_rgba(255,59,48,0.3)]' : 'border-blue-500 shadow-[0_0_10px_rgba(59,130,246,0.3)]') : 'border-white/10 hover:border-white/30'}`}
+                      className={`aspect-square rounded-xl border-2 transition-all overflow-hidden ${form.characterId === char.id ? (form.role === 'Killer' ? 'border-white/50 shadow-[0_0_10px_rgba(250,250,250,0.3)]' : 'border-white/25 shadow-[0_0_10px_rgba(255,255,255,0.12)]') : 'border-white/10 hover:border-white/30'}`}
                       title={char.name}
                     >
                       <div className="w-full h-full bg-zinc-900">
@@ -8196,7 +8200,7 @@
                 </button>
                 <button
                   onClick={handleSave}
-                  className={`px-5 py-2.5 rounded-xl text-sm font-bold text-white shadow-lg transition-all hover:scale-105 ${form.role === 'Killer' ? 'bg-red-700' : 'bg-sky-700'}`}
+                  className={`px-5 py-2.5 rounded-xl text-sm font-bold text-black shadow-lg transition-all hover:scale-105 ${form.role === 'Killer' ? 'bg-zinc-100' : 'bg-zinc-100'}`}
                 >
                   Save Build
                 </button>
@@ -8314,7 +8318,7 @@
           <table className="cx-wikitable"><tbody>
             <tr><th scope="row">Builds</th><td>
               <div className="mb-4 flex flex-wrap gap-2 items-center">
-                <button onClick={() => { setEditing(null); setShowForm(true); }} className="px-4 py-2 rounded-xl bg-red-700 text-white font-bold text-sm shadow-lg">New Build</button>
+                <button onClick={() => { setEditing(null); setShowForm(true); }} className="px-4 py-2 rounded-xl bg-zinc-100 text-black font-bold text-sm shadow-lg">New Build</button>
                 <GlassButton active={filters.role === 'Killer'} onClick={() => setFilters(f => ({ ...f, role: filters.role === 'Killer' ? 'All' : 'Killer' }))} className="text-xs py-2 px-3">Killer</GlassButton>
                 <GlassButton active={filters.role === 'Survivor'} onClick={() => setFilters(f => ({ ...f, role: filters.role === 'Survivor' ? 'All' : 'Survivor' }))} className="text-xs py-2 px-3">Survivor</GlassButton>
                 <GlassButton onClick={() => setFilters({ role: 'All', character: 'All', tag: 'All', search: '', include: '', exclude: '' })} className="text-xs py-2 px-3">Reset</GlassButton>
@@ -8377,9 +8381,9 @@
                 <td>
                   <div className="flex flex-wrap items-center gap-2 justify-between">
                     <div className="flex items-center gap-2">
-                      <span className={`px-2 py-1 rounded-lg text-[10px] font-bold uppercase tracking-widest ${build.role === 'Killer' ? 'bg-red-600/30 text-red-200' : 'bg-blue-600/30 text-blue-200'}`}>{build.role}</span>
+                      <span className={`px-2 py-1 rounded-lg text-[10px] font-bold uppercase tracking-widest ${build.role === 'Killer' ? 'bg-white/10 text-zinc-100' : 'bg-white/5 text-zinc-300'}`}>{build.role}</span>
                       {build.characterName && <span className="text-xs text-zinc-400 font-semibold">{build.characterName}</span>}
-                      {build.favorite && <span className="text-yellow-300 text-sm">*</span>}
+                      {build.favorite && <span className="text-zinc-200 text-sm">*</span>}
                     </div>
                     <div className="flex gap-2 text-[11px] text-zinc-500">
                       {build.updatedAt && <span>Updated {formatDate(build.updatedAt)}</span>}
@@ -8389,9 +8393,9 @@
                   <div className="flex gap-2 mt-1 flex-wrap">
                     <button onClick={() => { setEditing(build); setShowForm(true); }} className="text-xs px-3 py-1 rounded-xl bg-white/5 text-white border border-white/10">Edit</button>
                     <button onClick={() => duplicateBuild(build)} className="text-xs px-3 py-1 rounded-xl bg-white/5 text-zinc-200 border border-white/10">Duplicate</button>
-                    <button onClick={() => { const code = encodeBuild(build); if (code) { navigator.clipboard.writeText(code).then(() => alert('Build share text copied!')).catch(() => alert('Could not copy automatically. Please copy it manually.')); } else { alert('Could not prepare this build to share.'); } }} className="text-xs px-3 py-1 rounded-xl bg-white/5 text-blue-200 border border-blue-500/30">Share</button>
-                    <button onClick={() => toggleFavorite(build.id)} className="text-xs px-3 py-1 rounded-xl bg-white/5 text-yellow-200 border border-yellow-500/30">{build.favorite ? 'Unfavorite' : 'Favorite'}</button>
-                    <button onClick={() => deleteBuild(build.id)} className="text-xs px-3 py-1 rounded-xl bg-red-900/50 text-red-200 border border-red-600/40">Delete</button>
+                    <button onClick={() => { const code = encodeBuild(build); if (code) { navigator.clipboard.writeText(code).then(() => alert('Build share text copied!')).catch(() => alert('Could not copy automatically. Please copy it manually.')); } else { alert('Could not prepare this build to share.'); } }} className="text-xs px-3 py-1 rounded-xl bg-white/5 text-zinc-200 border border-white/20">Share</button>
+                    <button onClick={() => toggleFavorite(build.id)} className="text-xs px-3 py-1 rounded-xl bg-white/5 text-zinc-300 border border-white/20">{build.favorite ? 'Unfavorite' : 'Favorite'}</button>
+                    <button onClick={() => deleteBuild(build.id)} className="text-xs px-3 py-1 rounded-xl bg-white/10 text-zinc-100 border border-white/25">Delete</button>
                   </div>
                   <div className="mt-3 flex flex-wrap gap-2">
                     {(build.perks || []).map(p => (
@@ -8424,14 +8428,14 @@
                     <th scope="row">{tpl.title}</th>
                     <td>
                       <div className="flex items-center justify-between mb-1">
-                        <span className={`px-2 py-1 rounded-lg text-[10px] font-bold uppercase tracking-wider ${tpl.role === 'Killer' ? 'bg-red-600/30 text-red-200' : 'bg-blue-600/30 text-blue-200'}`}>{tpl.role}</span>
+                        <span className={`px-2 py-1 rounded-lg text-[10px] font-bold uppercase tracking-wider ${tpl.role === 'Killer' ? 'bg-white/10 text-zinc-100' : 'bg-white/5 text-zinc-300'}`}>{tpl.role}</span>
                         <span className="text-[10px] text-zinc-500 uppercase font-bold">{tpl.perks.length} perks</span>
                       </div>
                       <div className="flex flex-wrap gap-1 mt-2">
                         {tpl.perks.map(p => <span key={p} className="px-2 py-1 rounded-lg bg-white/5 border border-white/10 text-[11px] text-white">{p}</span>)}
                       </div>
                       <p className="text-xs text-zinc-400 mt-2">{tpl.note}</p>
-                      <button onClick={() => cloneTemplate(tpl)} className="mt-3 w-full py-2 rounded-xl bg-white/5 text-sm font-bold text-white border border-white/10 hover:border-red-500/40">Clone into Build</button>
+                      <button onClick={() => cloneTemplate(tpl)} className="mt-3 w-full py-2 rounded-xl bg-white/5 text-sm font-bold text-white border border-white/10 hover:border-white/25/40">Clone into Build</button>
                     </td>
                   </tr>
                 ))}
@@ -9172,7 +9176,7 @@
           <Header title="Premade Builds" subtitle="Ready-to-run perk combos" onBack={onBack} />
           <div className="sticky top-0 z-20 -mx-6 px-6 pb-4 pointer-events-none">
             <div className="relative max-w-3xl mx-auto">
-              <div className="absolute inset-0 bg-red-600 rounded-3xl blur-2xl opacity-0 transition-opacity duration-500"></div>
+              <div className="absolute inset-0 bg-zinc-500 rounded-3xl blur-2xl opacity-0 transition-opacity duration-500"></div>
               <div className="relative flex items-center bg-zinc-800/60 backdrop-blur-xl border border-white/10 rounded-3xl p-2 shadow-2xl pointer-events-auto">
                 <div className="pl-4 text-zinc-400"><Icons.Search width={18} height={18} /></div>
                 <input value={search} onChange={e => setSearch(e.target.value)} placeholder="Search builds or perks..." className="w-full bg-transparent text-white p-3 text-sm sm:text-base font-medium placeholder-zinc-600 focus:outline-none" />
@@ -9189,7 +9193,7 @@
               <div key={sheet.title} className="p-4 rounded-3xl bg-zinc-900/40 border border-white/5 backdrop-blur-md">
                 <div className="flex items-center justify-between mb-2">
                   <div className="inline-flex items-center px-2 py-1 rounded-lg bg-white/5 border border-white/5">
-                    <span className={`w-1.5 h-1.5 rounded-full ${sheet.role === 'Killer' ? 'bg-red-500' : 'bg-blue-500'} mr-2 shadow-[0_0_5px_currentColor]`}></span>
+                    <span className={`w-1.5 h-1.5 rounded-full ${sheet.role === 'Killer' ? 'bg-zinc-400' : 'bg-zinc-600'} mr-2 shadow-[0_0_5px_currentColor]`}></span>
                     <span className="text-[10px] font-bold uppercase tracking-wider text-zinc-400">{sheet.role}</span>
                   </div>
                   <p className="text-xs text-zinc-500 font-bold uppercase tracking-wider">4 perks</p>
@@ -9350,14 +9354,14 @@
                 <button
                   onClick={() => changeRole('Survivor')}
                   className="px-3 py-2 rounded-xl text-xs font-bold uppercase tracking-wider transition-all"
-                  style={form.role === 'Survivor' ? { background: '#0a0a0a', border: '2px solid #38bdf8', color: '#38bdf8' } : { background: '#0a0a0a', border: '1px solid rgba(255,255,255,0.1)', color: '#a1a1aa' }}
+                  style={form.role === 'Survivor' ? { background: '#0a0a0a', border: '2px solid #fafafa', color: '#fafafa' } : { background: '#0a0a0a', border: '1px solid rgba(255,255,255,0.1)', color: '#a1a1aa' }}
                 >Survivor</button>
                 <button
                   onClick={() => changeRole('Killer')}
                   className="px-3 py-2 rounded-xl text-xs font-bold uppercase tracking-wider transition-all"
-                  style={form.role === 'Killer' ? { background: '#0a0a0a', border: '2px solid #ef4444', color: '#ff3b30' } : { background: '#0a0a0a', border: '1px solid rgba(255,255,255,0.1)', color: '#a1a1aa' }}
+                  style={form.role === 'Killer' ? { background: '#0a0a0a', border: '2px solid #fafafa', color: '#fafafa' } : { background: '#0a0a0a', border: '1px solid rgba(255,255,255,0.1)', color: '#a1a1aa' }}
                 >Killer</button>
-                {editingId && <span className="text-[11px] text-yellow-300 font-bold">Editing existing match</span>}
+                {editingId && <span className="text-[11px] text-zinc-200 font-bold">Editing existing match</span>}
               </div>
             </td></tr>
             <tr><th scope="row">Date/Time</th><td>
@@ -9415,7 +9419,7 @@
             <tr><th scope="row">Save</th><td>
               <div className="flex justify-end gap-2">
                 <button onClick={() => { setForm(blankForm(form.role)); setEditingId(null); }} className="px-4 py-2 rounded-xl text-sm font-bold bg-white/5 text-zinc-300 border border-white/10">Reset</button>
-                <button onClick={handleSubmit} className="px-4 py-2 rounded-xl text-sm font-bold bg-red-700 text-white shadow-lg">{editingId ? 'Update Match' : 'Save Match'}</button>
+                <button onClick={handleSubmit} className="px-4 py-2 rounded-xl text-sm font-bold bg-zinc-100 text-black shadow-lg">{editingId ? 'Update Match' : 'Save Match'}</button>
               </div>
             </td></tr>
           </tbody></table>
@@ -9488,13 +9492,13 @@
                   <div className="flex flex-col gap-1">
                     <div className="flex flex-wrap justify-between gap-2 items-center">
                       <div className="flex items-center gap-2 flex-wrap">
-                        <span className={`px-2 py-1 rounded-lg text-[10px] font-bold uppercase tracking-wider ${match.role === 'Killer' ? 'bg-red-600/30 text-red-200' : 'bg-blue-600/30 text-blue-200'}`}>{match.role}</span>
+                        <span className={`px-2 py-1 rounded-lg text-[10px] font-bold uppercase tracking-wider ${match.role === 'Killer' ? 'bg-white/10 text-zinc-100' : 'bg-white/5 text-zinc-300'}`}>{match.role}</span>
                         <span className="text-white font-semibold text-sm">{getMatchCharacterLabel(match)}</span>
                         {(match.buildSnapshot?.name || match.buildId) && <span className="text-[11px] text-zinc-400">- {getMatchBuildLabel(match)}</span>}
                       </div>
                       <div className="flex gap-2 text-[11px] text-zinc-400">
                         <button onClick={() => editMatch(match)} className="px-2 py-1 rounded-lg bg-white/5 border border-white/10">Edit</button>
-                        <button onClick={() => deleteMatch(match.id)} className="px-2 py-1 rounded-lg bg-red-900/40 border border-red-700/60 text-red-100">Delete</button>
+                        <button onClick={() => deleteMatch(match.id)} className="px-2 py-1 rounded-lg bg-white/10 border border-white/25 text-zinc-100">Delete</button>
                       </div>
                     </div>
                     <div className="text-xs text-zinc-500 flex flex-wrap gap-2">
@@ -9505,7 +9509,7 @@
                       {match.performance && <span>- Self {match.performance}</span>}
                       {match.sweat && <span>- Sweat {match.sweat}</span>}
                       {match.tilt && <span>- Tilt {match.tilt}</span>}
-                      {match.dc && <span className="text-orange-300">- DC</span>}
+                      {match.dc && <span className="text-zinc-400">- DC</span>}
                     </div>
                     {match.perkSnapshots?.length > 0 && (
                       <div className="flex flex-wrap gap-1 mt-1">
@@ -9664,7 +9668,7 @@
                   <span style={{ color: row.rate >= 50 ? '#4ade80' : '#f87171' }}>{row.rate}%</span>
                 </div>
                 <div className="h-1.5 rounded-full bg-zinc-800 overflow-hidden mb-1">
-                  <div className="h-full rounded-full transition-all" style={{ width: `${row.rate}%`, background: row.rate >= 50 ? '#22c55e' : '#ff3b30' }} />
+                  <div className="h-full rounded-full transition-all" style={{ width: `${row.rate}%`, background: row.rate >= 50 ? '#fafafa' : '#52525b' }} />
                 </div>
                 <p className="text-[10px] text-zinc-500">{row.total} matches · Avg self score {row.avgPerf}</p>
                 {(row.owner || row.type) && <p className="text-[10px] text-zinc-600 mt-1">{[row.type, row.owner].filter(Boolean).join(' · ')}</p>}
@@ -9707,10 +9711,10 @@
           <div className="grid grid-cols-2 md:grid-cols-5 gap-3">
             {[
               { label: 'Filtered Matches', value: filteredMatches.length, color: '#f4f4f5' },
-              { label: 'Overall Win Rate', value: `${overallWinRate}%`, color: overallWinRate >= 50 ? '#22c55e' : '#ff3b30' },
-              { label: 'Survivor Win Rate', value: `${survivorWinRate}%`, color: '#38bdf8' },
-              { label: 'Killer Win Rate', value: `${killerWinRate}%`, color: '#ff3b30' },
-              { label: 'Perk Coverage', value: `${perkSnapshotMatches}/${filteredMatches.length || 0}`, color: '#facc15' }
+              { label: 'Overall Win Rate', value: `${overallWinRate}%`, color: overallWinRate >= 50 ? '#fafafa' : '#a1a1aa' },
+              { label: 'Survivor Win Rate', value: `${survivorWinRate}%`, color: '#a1a1aa' },
+              { label: 'Killer Win Rate', value: `${killerWinRate}%`, color: '#fafafa' },
+              { label: 'Perk Coverage', value: `${perkSnapshotMatches}/${filteredMatches.length || 0}`, color: '#d4d4d8' }
             ].map((card) => (
               <div key={card.label} className="p-4 rounded-2xl bg-zinc-900/60 border border-white/10 text-center">
                 <p className="text-2xl font-bold" style={{ color: card.color }}>{card.value}</p>
@@ -10012,7 +10016,7 @@
           <div key={`${guess.id}-${index}`} className="p-3 rounded-2xl bg-zinc-900/60 border border-white/10">
             <div className="flex items-center justify-between gap-3 mb-2">
               <p className="text-sm font-bold text-white">{guessedKiller.name}</p>
-              <span className={`px-2 py-1 rounded-lg text-[10px] uppercase tracking-wider font-bold ${guess.correct ? 'bg-emerald-500/20 text-emerald-300' : 'bg-red-500/20 text-red-200'}`}>
+              <span className={`px-2 py-1 rounded-lg text-[10px] uppercase tracking-wider font-bold ${guess.correct ? 'bg-zinc-100 text-black' : 'bg-white/5 text-zinc-500 border border-white/10'}`}>
                 {guess.correct ? 'Solved' : 'Wrong'}
               </span>
             </div>
@@ -10025,10 +10029,10 @@
                   ? guessedValue < targetValue ? '↑' : '↓'
                   : '';
                 const palette = exact
-                  ? 'bg-emerald-500/15 border-emerald-400/30 text-emerald-200'
+                  ? 'bg-zinc-100 border-zinc-100 text-black'
                   : field.key === 'releaseYear'
-                    ? 'bg-amber-500/10 border-amber-400/25 text-amber-100'
-                    : 'bg-red-500/10 border-red-400/20 text-red-100';
+                    ? 'bg-white/5 border-white/10 text-zinc-400'
+                    : 'bg-zinc-500/10 border-white/25/20 text-zinc-200';
                 return (
                   <div key={field.key} className={`p-2 rounded-xl border ${palette}`}>
                     <p className="text-[10px] uppercase tracking-wider opacity-70 mb-1">{field.label}</p>
@@ -10088,7 +10092,7 @@
                       type="button"
                       key={entry}
                       onClick={() => setQueueType(entry)}
-                      className={`px-3 py-2 rounded-xl text-xs font-bold uppercase tracking-[0.22em] border ${activeQueue === entry ? 'border-cyan-400/40 text-cyan-200 bg-cyan-500/10' : 'border-white/10 text-zinc-500 bg-black/20'}`}
+                      className={`px-3 py-2 rounded-xl text-xs font-bold uppercase tracking-[0.22em] border ${activeQueue === entry ? 'border-white/20 text-zinc-300 bg-white/5' : 'border-white/10 text-zinc-500 bg-black/20'}`}
                     >
                       {entry === 'daily' ? 'Daily' : 'Practice'}
                     </button>
@@ -10123,9 +10127,9 @@
                 {mode === 'classic' ? (
                   <div className="grid grid-cols-2 gap-2 text-sm">
                     {classicFields.map(field => (
-                      <div key={field.key} className={`p-3 rounded-xl border ${revealedClassicFields[field.key] ? 'bg-emerald-500/10 border-emerald-400/20' : 'bg-black/25 border-white/5'}`}>
+                      <div key={field.key} className={`p-3 rounded-xl border ${revealedClassicFields[field.key] ? 'bg-white/10 border-white/20' : 'bg-black/25 border-white/5'}`}>
                         <p className="text-[10px] uppercase tracking-wider text-zinc-500 mb-1">{field.label}</p>
-                        <p className={revealedClassicFields[field.key] ? 'text-emerald-200' : 'text-zinc-300'}>
+                        <p className={revealedClassicFields[field.key] ? 'text-zinc-100' : 'text-zinc-300'}>
                           {revealedClassicFields[field.key] ? formatClassicValue(field.key, target[field.key]) : 'Unknown'}
                         </p>
                       </div>
@@ -10144,8 +10148,8 @@
                   </div>
                 )}
                 {isFinished && (
-                  <div className={`p-3 rounded-2xl border mt-3 ${session.solved ? 'bg-emerald-500/10 border-emerald-400/20' : 'bg-amber-500/10 border-amber-400/20'}`}>
-                    <p className="text-[10px] uppercase tracking-[0.22em] font-bold mb-1" style={{ color: session.solved ? '#86efac' : '#fcd34d' }}>
+                  <div className={`p-3 rounded-2xl border mt-3 ${session.solved ? 'bg-white/10 border-white/25' : 'bg-white/5 border-white/10'}`}>
+                    <p className="text-[10px] uppercase tracking-[0.22em] font-bold mb-1" style={{ color: session.solved ? '#fafafa' : '#a1a1aa' }}>
                       {session.solved ? 'Solved' : 'Revealed'}
                     </p>
                     <p className="text-lg font-bold text-white">{target.name}</p>
@@ -10173,8 +10177,8 @@
                       </div>
                     </div>
                     {isFinished && (
-                      <div className={`p-3 rounded-2xl border ${session.solved ? 'bg-emerald-500/10 border-emerald-400/20' : 'bg-amber-500/10 border-amber-400/20'}`}>
-                        <p className="text-[10px] uppercase tracking-[0.22em] font-bold mb-1" style={{ color: session.solved ? '#86efac' : '#fcd34d' }}>
+                      <div className={`p-3 rounded-2xl border ${session.solved ? 'bg-white/10 border-white/25' : 'bg-white/5 border-white/10'}`}>
+                        <p className="text-[10px] uppercase tracking-[0.22em] font-bold mb-1" style={{ color: session.solved ? '#fafafa' : '#a1a1aa' }}>
                           {session.solved ? 'Solved' : 'Revealed'}
                         </p>
                         <p className="text-lg font-bold text-white">{target.name}</p>
@@ -10199,7 +10203,7 @@
                       {target.teachables.map((perk) => {
                         const solved = solvedIds.includes(perk.id) || isFinished;
                         return (
-                          <div key={perk.id} className={`p-4 rounded-2xl border ${solved ? 'bg-emerald-500/10 border-emerald-400/20' : 'bg-white/5 border-white/10'}`}>
+                          <div key={perk.id} className={`p-4 rounded-2xl border ${solved ? 'bg-white/10 border-white/25' : 'bg-white/5 border-white/10'}`}>
                             <div className="w-16 h-16 rounded-xl overflow-hidden bg-black/30 border border-white/10 mb-3">
                               {solved ? (
                                 <AssetFrame type="Perk" size="fill" imageUrl={perk.image} fallbackIcon={<Icons.BookOpen width={24} height={24} className="text-zinc-600" />} />
@@ -10213,8 +10217,8 @@
                       })}
                     </div>
                     {isFinished && (
-                      <div className={`p-3 rounded-2xl border ${session.solved ? 'bg-emerald-500/10 border-emerald-400/20' : 'bg-amber-500/10 border-amber-400/20'}`}>
-                        <p className="text-[10px] uppercase tracking-[0.22em] font-bold mb-1" style={{ color: session.solved ? '#86efac' : '#fcd34d' }}>
+                      <div className={`p-3 rounded-2xl border ${session.solved ? 'bg-white/10 border-white/25' : 'bg-white/5 border-white/10'}`}>
+                        <p className="text-[10px] uppercase tracking-[0.22em] font-bold mb-1" style={{ color: session.solved ? '#fafafa' : '#a1a1aa' }}>
                           {session.solved ? 'Solved' : 'Revealed'}
                         </p>
                         <p className="text-sm text-white">Target killer: <span className="font-bold">{target.name}</span></p>
@@ -10252,8 +10256,8 @@
                     enterKeyHint="go"
                     className="w-full bg-zinc-800/60 border border-white/10 rounded-2xl px-4 py-3 text-sm text-white placeholder-zinc-500"
                   />
-                  {inputError && <p className="text-xs text-amber-300 mt-2">{inputError}</p>}
-                  {inputNotice && <p className="text-xs text-cyan-300 mt-2">{inputNotice}</p>}
+                  {inputError && <p className="text-xs text-zinc-200 mt-2">{inputError}</p>}
+                  {inputNotice && <p className="text-xs text-zinc-200 mt-2">{inputNotice}</p>}
                   {inputSuggestions.length > 0 && !isFinished && (
                     <div className="mt-3 flex flex-wrap gap-2">
                       {inputSuggestions.map((option) => (
@@ -10274,7 +10278,7 @@
                   onMouseDown={e => e.preventDefault()}
                   onClick={() => handleGuessSubmit()}
                   disabled={!guessInput.trim() || isFinished}
-                  className="px-5 py-3 rounded-2xl bg-red-700 text-white font-bold text-sm disabled:opacity-40 disabled:cursor-not-allowed"
+                  className="px-5 py-3 rounded-2xl bg-zinc-100 text-black font-bold text-sm disabled:opacity-40 disabled:cursor-not-allowed"
                 >
                   Submit
                 </button>
@@ -10282,7 +10286,7 @@
                   {activeQueue === 'daily' ? 'Reveal' : 'Skip'}
                 </button>
                 {activeQueue === 'practice' && isFinished && (
-                  <button type="button" onClick={advancePractice} className="px-5 py-3 rounded-2xl bg-cyan-500/10 border border-cyan-400/20 text-cyan-200 font-bold text-sm">
+                  <button type="button" onClick={advancePractice} className="px-5 py-3 rounded-2xl bg-white/5 border border-white/20 text-zinc-100 font-bold text-sm">
                     Next Puzzle
                   </button>
                 )}
@@ -10297,10 +10301,10 @@
               ) : (
                 <div className="space-y-2">
                   {(session.guesses || []).map((guess, index) => (
-                    <div key={`${guess.id || guess.label}-${index}`} className={`p-3 rounded-2xl border ${guess.correct ? 'bg-emerald-500/10 border-emerald-400/20' : 'bg-red-500/10 border-red-400/20'}`}>
+                    <div key={`${guess.id || guess.label}-${index}`} className={`p-3 rounded-2xl border ${guess.correct ? 'bg-white/10 border-white/25' : 'bg-white/5 border-white/10'}`}>
                       <div className="flex items-center justify-between gap-3">
                         <span className="text-sm font-semibold text-white">{guess.label}</span>
-                        <span className={`text-[10px] uppercase tracking-[0.22em] font-bold ${guess.correct ? 'text-emerald-300' : 'text-red-200'}`}>
+                        <span className={`text-[10px] uppercase tracking-[0.22em] font-bold ${guess.correct ? 'text-zinc-100' : 'text-zinc-500'}`}>
                           {guess.correct ? 'Correct' : 'Wrong'}
                         </span>
                       </div>
@@ -10320,15 +10324,15 @@
                   <p className="text-[10px] uppercase tracking-wider text-zinc-500 mt-1">Played</p>
                 </div>
                 <div className="p-3 rounded-2xl bg-white/5 border border-white/10 text-center">
-                  <p className="text-2xl font-black text-emerald-300">{statsBucket.solved}</p>
+                  <p className="text-2xl font-black text-zinc-100">{statsBucket.solved}</p>
                   <p className="text-[10px] uppercase tracking-wider text-zinc-500 mt-1">Solved</p>
                 </div>
                 <div className="p-3 rounded-2xl bg-white/5 border border-white/10 text-center">
-                  <p className="text-2xl font-black text-cyan-300">{statsBucket.averageGuesses || 0}</p>
+                  <p className="text-2xl font-black text-zinc-200">{statsBucket.averageGuesses || 0}</p>
                   <p className="text-[10px] uppercase tracking-wider text-zinc-500 mt-1">Avg Guesses</p>
                 </div>
                 <div className="p-3 rounded-2xl bg-white/5 border border-white/10 text-center">
-                  <p className="text-2xl font-black text-fuchsia-300">{activeQueue === 'daily' ? statsBucket.bestStreak : historyRows.length}</p>
+                  <p className="text-2xl font-black text-zinc-200">{activeQueue === 'daily' ? statsBucket.bestStreak : historyRows.length}</p>
                   <p className="text-[10px] uppercase tracking-wider text-zinc-500 mt-1">{activeQueue === 'daily' ? 'Best Streak' : 'Recent Runs'}</p>
                 </div>
               </div>
@@ -10351,7 +10355,7 @@
                   <div key={bucket} className="grid grid-cols-[40px,1fr,28px] items-center gap-2">
                     <span className="text-xs text-zinc-500 font-semibold">{bucket}</span>
                     <div className="h-2 rounded-full bg-zinc-800 overflow-hidden">
-                      <div className="h-full rounded-full bg-red-500" style={{ width: `${((Number(value) || 0) / histogramMax) * 100}%` }} />
+                      <div className="h-full rounded-full bg-zinc-500" style={{ width: `${((Number(value) || 0) / histogramMax) * 100}%` }} />
                     </div>
                     <span className="text-xs text-zinc-400 text-right">{value}</span>
                   </div>
@@ -10367,7 +10371,7 @@
                         <p className="text-sm font-semibold text-white">{row.targetSnapshot?.name || 'Unknown target'}</p>
                         <p className="text-[11px] text-zinc-500 uppercase tracking-wider">{row.puzzleKey} · {row.queue}</p>
                       </div>
-                      <span className={`px-2 py-1 rounded-lg text-[10px] uppercase tracking-[0.22em] font-bold ${row.solved ? 'bg-emerald-500/20 text-emerald-300' : 'bg-amber-500/20 text-amber-200'}`}>
+                      <span className={`px-2 py-1 rounded-lg text-[10px] uppercase tracking-[0.22em] font-bold ${row.solved ? 'bg-zinc-100 text-black' : 'bg-white/5 text-zinc-400 border border-white/10'}`}>
                         {row.solved ? `${row.guessCount} guesses` : 'Revealed'}
                       </span>
                     </div>
@@ -10523,7 +10527,7 @@
                   <button
                     key={tabId}
                     onClick={() => setTab(tabId)}
-                    className={`px-4 py-2 rounded-xl text-xs font-bold uppercase tracking-wider border ${tab === tabId ? 'bg-red-600 text-white border-red-500/60' : 'bg-white/5 text-zinc-300 border-white/10'}`}
+                    className={`px-4 py-2 rounded-xl text-xs font-bold uppercase tracking-wider border ${tab === tabId ? 'bg-zinc-100 text-black border-zinc-100' : 'bg-white/5 text-zinc-300 border-white/10'}`}
                   >
                     {tabMeta[tabId]}
                   </button>
@@ -10554,8 +10558,8 @@
               <table className="cx-wikitable"><tbody>
                 <tr><th scope="row">Completed</th><td className="text-center"><p className="text-2xl font-bold text-white">{completedCount}</p></td></tr>
                 <tr><th scope="row">Total</th><td className="text-center"><p className="text-2xl font-bold text-white">{DBD_ACHIEVEMENTS.length}</p></td></tr>
-                <tr><th scope="row">Completion</th><td className="text-center"><p className="text-2xl font-bold text-green-400">{DBD_ACHIEVEMENTS.length ? Math.round((completedCount / DBD_ACHIEVEMENTS.length) * 100) : 0}%</p></td></tr>
-                <tr><th scope="row">Remaining</th><td className="text-center"><p className="text-2xl font-bold text-yellow-300">{DBD_ACHIEVEMENTS.length - completedCount}</p></td></tr>
+                <tr><th scope="row">Completion</th><td className="text-center"><p className="text-2xl font-bold text-zinc-100">{DBD_ACHIEVEMENTS.length ? Math.round((completedCount / DBD_ACHIEVEMENTS.length) * 100) : 0}%</p></td></tr>
+                <tr><th scope="row">Remaining</th><td className="text-center"><p className="text-2xl font-bold text-zinc-200">{DBD_ACHIEVEMENTS.length - completedCount}</p></td></tr>
                 <tr><th scope="row">Search</th><td>
                   <input
                     type="text"
@@ -10587,11 +10591,11 @@
                         <div
                           key={achievement.id}
                           onClick={() => toggleAchievement(achievement.id)}
-                          className={`p-3 rounded-2xl border cursor-pointer transition-all ${isComplete ? 'bg-white/5 border-green-500/40 opacity-70' : 'bg-zinc-900/60 border-white/10 hover:border-white/20'}`}
+                          className={`p-3 rounded-2xl border cursor-pointer transition-all ${isComplete ? 'bg-white/5 border-zinc-300/40 opacity-70' : 'bg-zinc-900/60 border-white/10 hover:border-white/20'}`}
                         >
                           <div className="flex items-start gap-3">
-                            <div className={`mt-0.5 w-5 h-5 rounded-md border-2 flex items-center justify-center shrink-0 transition-colors ${isComplete ? 'bg-green-500 border-green-500' : 'border-zinc-500'}`}>
-                              {isComplete && <span className="text-white text-xs font-bold">✓</span>}
+                            <div className={`mt-0.5 w-5 h-5 rounded-md border-2 flex items-center justify-center shrink-0 transition-colors ${isComplete ? 'bg-zinc-100 border-zinc-100' : 'border-zinc-500'}`}>
+                              {isComplete && <span className="text-black text-xs font-bold">✓</span>}
                             </div>
                             <div className="flex-1 min-w-0">
                               <p className={`font-semibold text-sm ${isComplete ? 'text-zinc-400 line-through' : 'text-white'}`}>{achievement.name}</p>
@@ -10613,10 +10617,10 @@
               <h2 className="cx-sec">Roster</h2>
               <table className="cx-wikitable"><tbody>
                 <tr><th scope="row">Owned Characters</th><td className="text-center"><p className="text-2xl font-bold text-white">{ownedCharacters.length}</p></td></tr>
-                <tr><th scope="row">Owned Killers</th><td className="text-center"><p className="text-2xl font-bold text-red-400">{ownedKillers.length}</p></td></tr>
-                <tr><th scope="row">Owned Survivors</th><td className="text-center"><p className="text-2xl font-bold text-blue-400">{ownedSurvivors.length}</p></td></tr>
-                <tr><th scope="row">Favorites</th><td className="text-center"><p className="text-2xl font-bold text-yellow-300">{ownedCharacters.filter(character => progression.characters?.[character.id]?.favorite).length}</p></td></tr>
-                <tr><th scope="row">Teachable Perks Unlocked</th><td className="text-center"><p className="text-2xl font-bold text-emerald-300">{unlockedTeachableTotal}</p></td></tr>
+                <tr><th scope="row">Owned Killers</th><td className="text-center"><p className="text-2xl font-bold text-zinc-100">{ownedKillers.length}</p></td></tr>
+                <tr><th scope="row">Owned Survivors</th><td className="text-center"><p className="text-2xl font-bold text-zinc-100">{ownedSurvivors.length}</p></td></tr>
+                <tr><th scope="row">Favorites</th><td className="text-center"><p className="text-2xl font-bold text-zinc-200">{ownedCharacters.filter(character => progression.characters?.[character.id]?.favorite).length}</p></td></tr>
+                <tr><th scope="row">Teachable Perks Unlocked</th><td className="text-center"><p className="text-2xl font-bold text-zinc-100">{unlockedTeachableTotal}</p></td></tr>
                 <tr><th scope="row">Coverage note</th><td>
                   <InfoCallout lines={[
                     'Perks are no longer tracked manually here. Personal perks now unlock from roster prestige.',
@@ -10641,8 +10645,8 @@
                       return (
                         <div key={character.id} className="p-3 rounded-2xl bg-zinc-900/60 border border-white/10">
                           <div className="flex justify-between items-center mb-2">
-                            <span className={`px-2 py-1 rounded-lg text-[10px] font-bold uppercase tracking-wider ${isKiller ? 'bg-red-600/30 text-red-200' : 'bg-blue-600/30 text-blue-200'}`}>{isKiller ? 'Killer' : 'Survivor'}</span>
-                            <button onClick={() => toggleCharacter(character.id, 'favorite')} className="text-yellow-300 text-sm">{state.favorite ? '*' : ''}</button>
+                            <span className={`px-2 py-1 rounded-lg text-[10px] font-bold uppercase tracking-wider ${isKiller ? 'bg-white/10 text-zinc-100' : 'bg-white/5 text-zinc-300'}`}>{isKiller ? 'Killer' : 'Survivor'}</span>
+                            <button onClick={() => toggleCharacter(character.id, 'favorite')} className="text-zinc-200 text-sm">{state.favorite ? '*' : ''}</button>
                           </div>
                           <p className="text-white font-bold">{character.name}</p>
                           <div className="flex items-center gap-2 mt-2 text-sm text-zinc-300">
@@ -10675,8 +10679,8 @@
               <h2 className="cx-sec">Challenges</h2>
               <table className="cx-wikitable"><tbody>
                 <tr><th scope="row">planned</th><td className="text-center"><p className="text-2xl font-bold" style={{ color: '#a1a1aa' }}>{challengeCounts.planned}</p></td></tr>
-                <tr><th scope="row">active</th><td className="text-center"><p className="text-2xl font-bold" style={{ color: '#facc15' }}>{challengeCounts.active}</p></td></tr>
-                <tr><th scope="row">completed</th><td className="text-center"><p className="text-2xl font-bold" style={{ color: '#22c55e' }}>{challengeCounts.completed}</p></td></tr>
+                <tr><th scope="row">active</th><td className="text-center"><p className="text-2xl font-bold" style={{ color: '#d4d4d8' }}>{challengeCounts.active}</p></td></tr>
+                <tr><th scope="row">completed</th><td className="text-center"><p className="text-2xl font-bold" style={{ color: '#d4d4d8' }}>{challengeCounts.completed}</p></td></tr>
                 <tr><th scope="row">New Challenge</th><td>
                   <div className="space-y-2">
                     <input value={challengeDraft.name} onChange={e => setChallengeDraft(draft => ({ ...draft, name: e.target.value }))} placeholder="Name" className="w-full bg-zinc-800/60 border border-white/10 rounded-xl px-3 py-2 text-sm text-white placeholder-zinc-500" />
@@ -10693,7 +10697,7 @@
                         {builds.map(build => <option key={build.id} value={build.id}>{build.name}</option>)}
                       </select>
                     </div>
-                    <button onClick={addChallenge} className="px-4 py-2 rounded-xl bg-red-700 text-white font-bold text-sm">Add Challenge</button>
+                    <button onClick={addChallenge} className="px-4 py-2 rounded-xl bg-zinc-100 text-black font-bold text-sm">Add Challenge</button>
                   </div>
                 </td></tr>
                 <tr><th scope="row">List</th><td>
@@ -11054,7 +11058,7 @@
       const [yearFilter, setYearFilter] = useState('all');
 
       // Theme colors
-      const accent = theme.accent || '#38bdf8';
+      const accent = theme.accent || '#fafafa';
       const accentSoft = theme.accentSoft || '#0f172a';
 
 
@@ -11702,13 +11706,13 @@
       const getRarityOrder = (r) => RARITY_ORDER[(r || '').toLowerCase()] || 0;
       const getRarityColor = (rarity) => {
         switch ((rarity || '').toLowerCase()) {
-          case 'common': return '#513F31';
-          case 'uncommon': return '#1B8C22';
-          case 'rare': return '#3B82F6';
-          case 'veryrare': return '#713A84';
-          case 'ultrarare': return '#CF0C46';
-          case 'visceral': return '#CF0C46';
-          case 'event': return '#FFD700';
+          case 'common': return '#71717a';
+          case 'uncommon': return '#a1a1aa';
+          case 'rare': return '#d4d4d8';
+          case 'veryrare': return '#e4e4e7';
+          case 'ultrarare': return '#fafafa';
+          case 'visceral': return '#fafafa';
+          case 'event': return '#e4e4e7';
           default: return '#71717a';
         }
       };
@@ -11838,10 +11842,10 @@
             </div>
           </div>
           <div className="max-w-3xl mx-auto flex flex-wrap justify-center gap-2 mb-4">
-            <button onClick={() => { setMode('survivor'); setExpandedId(null); }} className={"px-4 py-2 rounded-xl text-xs uppercase tracking-wider transition-all " + (mode === 'survivor' ? 'bg-sky-500/20 text-sky-400 border border-sky-500/40' : 'bg-white/5 text-zinc-400 border border-white/10')}>
+            <button onClick={() => { setMode('survivor'); setExpandedId(null); }} className={"px-4 py-2 rounded-xl text-xs uppercase tracking-wider transition-all " + (mode === 'survivor' ? 'bg-zinc-100 text-black border border-zinc-100' : 'bg-white/5 text-zinc-400 border border-white/10')}>
               Survivor Items
             </button>
-            <button onClick={() => { setMode('killer'); setExpandedId(null); }} className={"px-4 py-2 rounded-xl text-xs uppercase tracking-wider transition-all " + (mode === 'killer' ? 'bg-red-500/20 text-red-400 border border-red-500/40' : 'bg-white/5 text-zinc-400 border border-white/10')}>
+            <button onClick={() => { setMode('killer'); setExpandedId(null); }} className={"px-4 py-2 rounded-xl text-xs uppercase tracking-wider transition-all " + (mode === 'killer' ? 'bg-zinc-500/20 text-zinc-100 border border-white/25/40' : 'bg-white/5 text-zinc-400 border border-white/10')}>
               Killer Addons
             </button>
           </div>
@@ -11873,7 +11877,7 @@
                         else delete itemCardRefs.current[item.id];
                       }}
                       onClick={() => setExpandedId(isExpanded ? null : item.id)}
-                      className={`cursor-pointer ${initialTargetType === 'item' && initialTargetId === item.id ? 'border-cyan-400/35 shadow-[0_0_0_1px_rgba(34,211,238,0.12)]' : 'border-white/5'}`}
+                      className={`cursor-pointer ${initialTargetType === 'item' && initialTargetId === item.id ? 'border-white/15 shadow-[0_0_0_1px_rgba(34,211,238,0.12)]' : 'border-white/5'}`}
                     >
                       <td className="cx-perkcell">
                         <div className="w-16 h-16 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center flex-shrink-0 overflow-hidden">
@@ -11890,8 +11894,8 @@
                       </td>
                       <td>
                         {onToggleFavoriteItem && (
-                          <button onClick={(e) => { e.stopPropagation(); onToggleFavoriteItem(item.id); }} className={`p-1.5 rounded-full transition-colors flex-shrink-0 ${favoriteItems.includes(item.id) ? 'bg-yellow-500/20' : 'bg-white/10 hover:bg-white/20'}`}>
-                            <Icons.Star width={16} height={16} className={favoriteItems.includes(item.id) ? 'text-yellow-400 fill-yellow-400' : 'text-zinc-500'} />
+                          <button onClick={(e) => { e.stopPropagation(); onToggleFavoriteItem(item.id); }} className={`p-1.5 rounded-full transition-colors flex-shrink-0 ${favoriteItems.includes(item.id) ? 'bg-white/10' : 'bg-white/10 hover:bg-white/20'}`}>
+                            <Icons.Star width={16} height={16} className={favoriteItems.includes(item.id) ? 'text-zinc-100 fill-zinc-100' : 'text-zinc-500'} />
                           </button>
                         )}
                       </td>
@@ -11909,7 +11913,7 @@
                                   if (node) addonRefs.current[addon.id] = node;
                                   else delete addonRefs.current[addon.id];
                                 }}
-                                className={`${initialTargetType === 'addon' && initialTargetId === addon.id ? 'bg-cyan-500/10 border-cyan-400/25' : 'bg-white/5 border-white/5'}`}
+                                className={`${initialTargetType === 'addon' && initialTargetId === addon.id ? 'bg-white/5 border-white/15' : 'bg-white/5 border-white/5'}`}
                                 style={{ boxShadow: getRarityGlow(addon.rarity, settings.rarityGlows !== false) }}
                               >
                                 <td className="cx-perkcell">
@@ -11922,8 +11926,8 @@
                                     <p className="text-white text-sm font-bold">{addon.name}</p>
                                     <div className="flex items-center gap-1 flex-shrink-0">
                                       {onToggleFavoriteAddon && (
-                                        <button onClick={(e) => { e.stopPropagation(); onToggleFavoriteAddon(addon.id); }} className={`p-1 rounded-full transition-colors ${favoriteAddons.includes(addon.id) ? 'bg-yellow-500/20' : 'bg-white/5 hover:bg-white/10'}`}>
-                                          <Icons.Star width={12} height={12} className={favoriteAddons.includes(addon.id) ? 'text-yellow-400 fill-yellow-400' : 'text-zinc-600'} />
+                                        <button onClick={(e) => { e.stopPropagation(); onToggleFavoriteAddon(addon.id); }} className={`p-1 rounded-full transition-colors ${favoriteAddons.includes(addon.id) ? 'bg-white/10' : 'bg-white/5 hover:bg-white/10'}`}>
+                                          <Icons.Star width={12} height={12} className={favoriteAddons.includes(addon.id) ? 'text-zinc-100 fill-zinc-100' : 'text-zinc-600'} />
                                         </button>
                                       )}
                                       <span className="text-[10px] font-bold ml-1" style={{ color: getRarityColor(addon.rarity) }}>{formatRarity(addon.rarity)}</span>
@@ -11964,7 +11968,7 @@
                         else delete killerCardRefs.current[killer.id];
                       }}
                       onClick={() => setExpandedId(isExpanded ? null : killer.id)}
-                      className={`cursor-pointer ${initialTargetType === 'addon' && targetAddon?.role === 'killer' && targetKillerAddonHost?.id === killer.id ? 'border-cyan-400/35 shadow-[0_0_0_1px_rgba(34,211,238,0.12)]' : 'border-white/5'}`}
+                      className={`cursor-pointer ${initialTargetType === 'addon' && targetAddon?.role === 'killer' && targetKillerAddonHost?.id === killer.id ? 'border-white/15 shadow-[0_0_0_1px_rgba(34,211,238,0.12)]' : 'border-white/5'}`}
                     >
                       <td className="cx-perkcell">
                         <div className="w-20 h-20 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center flex-shrink-0 overflow-hidden">
@@ -11997,7 +12001,7 @@
                                   if (node) addonRefs.current[addon.id] = node;
                                   else delete addonRefs.current[addon.id];
                                 }}
-                                className={`${initialTargetType === 'addon' && initialTargetId === addon.id ? 'bg-cyan-500/10 border-cyan-400/25' : 'bg-white/5 border-white/5'}`}
+                                className={`${initialTargetType === 'addon' && initialTargetId === addon.id ? 'bg-white/5 border-white/15' : 'bg-white/5 border-white/5'}`}
                                 style={{ boxShadow: getRarityGlow(addon.rarity, settings.rarityGlows !== false) }}
                               >
                                 <td className="cx-perkcell">
@@ -12010,8 +12014,8 @@
                                     <p className="text-white text-sm font-bold">{addon.name}</p>
                                     <div className="flex items-center gap-1 flex-shrink-0">
                                       {onToggleFavoriteAddon && (
-                                        <button onClick={(e) => { e.stopPropagation(); onToggleFavoriteAddon(addon.id); }} className={`p-1 rounded-full transition-colors ${favoriteAddons.includes(addon.id) ? 'bg-yellow-500/20' : 'bg-white/5 hover:bg-white/10'}`}>
-                                          <Icons.Star width={12} height={12} className={favoriteAddons.includes(addon.id) ? 'text-yellow-400 fill-yellow-400' : 'text-zinc-600'} />
+                                        <button onClick={(e) => { e.stopPropagation(); onToggleFavoriteAddon(addon.id); }} className={`p-1 rounded-full transition-colors ${favoriteAddons.includes(addon.id) ? 'bg-white/10' : 'bg-white/5 hover:bg-white/10'}`}>
+                                          <Icons.Star width={12} height={12} className={favoriteAddons.includes(addon.id) ? 'text-zinc-100 fill-zinc-100' : 'text-zinc-600'} />
                                         </button>
                                       )}
                                       <span className="text-[10px] font-bold ml-1" style={{ color: getRarityColor(addon.rarity) }}>{formatRarity(addon.rarity)}</span>
@@ -12052,13 +12056,13 @@
       const getRarityOrder = (r) => RARITY_ORDER[(r || '').toLowerCase()] || 0;
       const getRarityColor = (rarity) => {
         switch ((rarity || '').toLowerCase()) {
-          case 'common': return '#513F31';
-          case 'uncommon': return '#1B8C22';
-          case 'rare': return '#3B82F6';
-          case 'veryrare': return '#713A84';
-          case 'ultrarare': return '#CF0C46';
-          case 'visceral': return '#CF0C46';
-          case 'event': return '#FFD700';
+          case 'common': return '#71717a';
+          case 'uncommon': return '#a1a1aa';
+          case 'rare': return '#d4d4d8';
+          case 'veryrare': return '#e4e4e7';
+          case 'ultrarare': return '#fafafa';
+          case 'visceral': return '#fafafa';
+          case 'event': return '#e4e4e7';
           default: return '#71717a';
         }
       };
@@ -12072,7 +12076,7 @@
       };
       const getRoleColor = (role) => {
         if (!role || role === 'universal') return '#a1a1aa';
-        return role === 'killer' ? '#ff3b30' : '#38bdf8';
+        return role === 'killer' ? '#fafafa' : '#a1a1aa';
       };
       const formatRole = (role) => {
         if (!role) return 'Universal';
@@ -12156,7 +12160,7 @@
                     else delete offeringRefs.current[offering.id];
                   }}
                   onClick={() => setExpandedId(isExpanded ? null : offering.id)}
-                  className={`cursor-pointer ${initialTargetId === offering.id ? 'border-cyan-400/35 shadow-[0_0_0_1px_rgba(34,211,238,0.12)]' : 'border-white/5'}`}
+                  className={`cursor-pointer ${initialTargetId === offering.id ? 'border-white/15 shadow-[0_0_0_1px_rgba(34,211,238,0.12)]' : 'border-white/5'}`}
                 >
                   <td className="cx-perkcell">
                     <div className="w-16 h-16 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center flex-shrink-0 overflow-hidden">
@@ -12168,8 +12172,8 @@
                       <h3 className="text-lg font-bold text-white">{offering.name}</h3>
                       <div className="flex items-center gap-2">
                         {onToggleFavoriteOffering && (
-                          <button onClick={(e) => { e.stopPropagation(); onToggleFavoriteOffering(offering.id); }} className={`p-1.5 rounded-full transition-colors ${favoriteOfferings.includes(offering.id) ? 'bg-yellow-500/20' : 'bg-white/10 hover:bg-white/20'}`}>
-                            <Icons.Star width={16} height={16} className={favoriteOfferings.includes(offering.id) ? 'text-yellow-400 fill-yellow-400' : 'text-zinc-500'} />
+                          <button onClick={(e) => { e.stopPropagation(); onToggleFavoriteOffering(offering.id); }} className={`p-1.5 rounded-full transition-colors ${favoriteOfferings.includes(offering.id) ? 'bg-white/10' : 'bg-white/10 hover:bg-white/20'}`}>
+                            <Icons.Star width={16} height={16} className={favoriteOfferings.includes(offering.id) ? 'text-zinc-100 fill-zinc-100' : 'text-zinc-500'} />
                           </button>
                         )}
                         <span className="text-xs font-bold uppercase tracking-wider" style={{ color: getRoleColor(offering.role) }}>{formatRole(offering.role)}</span>
@@ -12200,10 +12204,10 @@
     };
     const getOutfitLinkModeChipClasses = (mode) => {
       switch (String(mode || '').toLowerCase()) {
-        case 'linked': return 'bg-emerald-500/10 text-emerald-200 border-emerald-500/20';
-        case 'partially_linked': return 'bg-amber-500/10 text-amber-200 border-amber-500/20';
+        case 'linked': return 'bg-white/10 text-zinc-100 border-white/20';
+        case 'partially_linked': return 'bg-white/5 text-zinc-300 border-white/15';
         case 'unlinked': return 'bg-zinc-500/10 text-zinc-300 border-zinc-500/20';
-        case 'character_swap': return 'bg-fuchsia-500/10 text-fuchsia-200 border-fuchsia-500/20';
+        case 'character_swap': return 'bg-white/5 text-zinc-300 border-white/15';
         default: return 'bg-white/5 text-zinc-300 border-white/10';
       }
     };
@@ -12250,8 +12254,8 @@
         : (entry.collectionName || entry.sourceBucket || entry.groupLabel || 'Cosmetic');
       const pieceLabel = entry.pieceType || (isCharacterSwap ? 'Outfit' : 'Cosmetic');
       const roleChipClasses = entry.baseCharacterType === 'Killer'
-        ? 'bg-red-500/10 text-red-200 border-red-500/20'
-        : 'bg-sky-500/10 text-sky-200 border-sky-500/20';
+        ? 'bg-white/10 text-zinc-100 border-white/20'
+        : 'bg-white/5 text-zinc-300 border-white/10';
       const badgeStyle = {
         borderColor: `${accentColor}30`,
         color: focused ? accentColor : '#d4d4d8',
@@ -12280,7 +12284,7 @@
           <div className="p-3.5 flex flex-1 flex-col gap-3">
             <div className="flex flex-wrap gap-1.5">
               {isCharacterSwap ? (
-                <span className="inline-flex items-center rounded-md border px-2 py-1 text-[10px] font-bold uppercase tracking-[0.16em] bg-fuchsia-500/10 text-fuchsia-200 border-fuchsia-500/20">
+                <span className="inline-flex items-center rounded-md border px-2 py-1 text-[10px] font-bold uppercase tracking-[0.16em] bg-white/5 text-zinc-300 border-white/15">
                   Character swaps
                 </span>
               ) : (
@@ -12459,7 +12463,7 @@
               <div className="p-4 rounded-xl bg-[var(--panel)] border border-[var(--stroke)] space-y-3">
                 <div className="flex flex-wrap items-start justify-between gap-3">
                   <div>
-                    <p className="text-[10px] uppercase tracking-widest font-bold text-amber-300">Full Cosmetics Pack</p>
+                    <p className="text-[10px] uppercase tracking-widest font-bold text-zinc-200">Full Cosmetics Pack</p>
                     <p className="text-sm text-zinc-200 mt-1">{fullSetPackStatusLabel}</p>
                     <p className="text-xs text-zinc-400 mt-1">
                       {fullSetCatalogCount} full-set cosmetics can take a little longer to appear after install or update.
@@ -12473,10 +12477,10 @@
                     )}
                   </div>
                 </div>
-                <p className="text-[11px] text-amber-200/90">
+                <p className="text-[11px] text-zinc-300/90">
                   Character swaps stay available immediately. This banner only affects the larger full-set image library.
                 </p>
-                {errorHelp && <p className="text-[11px] text-amber-100/90">{errorHelp}</p>}
+                {errorHelp && <p className="text-[11px] text-zinc-300">{errorHelp}</p>}
               </div>
             </div>
           )}
@@ -12797,12 +12801,12 @@
 
       const getTierStyle = (tierBucket) => {
         const bucket = String(tierBucket || '').toLowerCase();
-        if (bucket === 'strongest') return { color: '#f43f5e', borderColor: 'rgba(244,63,94,0.35)' };
-        if (bucket === 'good') return { color: '#f97316', borderColor: 'rgba(249,115,22,0.35)' };
-        if (bucket === 'decent') return { color: '#22c55e', borderColor: 'rgba(34,197,94,0.35)' };
-        if (bucket === 'almost-no-effect') return { color: '#64748b', borderColor: 'rgba(100,116,139,0.35)' };
-        if (bucket === 'detrimental') return { color: '#ff3b30', borderColor: 'rgba(255,59,48,0.35)' };
-        return { color: '#94a3b8', borderColor: 'rgba(148,163,184,0.35)' };
+        if (bucket === 'strongest') return { color: '#fafafa', borderColor: 'rgba(250,250,250,0.4)' };
+        if (bucket === 'good') return { color: '#e4e4e7', borderColor: 'rgba(228,228,231,0.35)' };
+        if (bucket === 'decent') return { color: '#d4d4d8', borderColor: 'rgba(212,212,216,0.3)' };
+        if (bucket === 'almost-no-effect') return { color: '#71717a', borderColor: 'rgba(113,113,122,0.3)' };
+        if (bucket === 'detrimental') return { color: '#52525b', borderColor: 'rgba(82,82,91,0.35)' };
+        return { color: '#a1a1aa', borderColor: 'rgba(161,161,170,0.3)' };
       };
 
       const links = useMemo(() => {
@@ -12826,8 +12830,8 @@
       const getTierlistFreshness = (entry) => {
         if (!entry?.dateIso) return { label: 'Undated', color: 'text-zinc-400' };
         const ageDays = Math.floor((Date.now() - new Date(entry.dateIso).getTime()) / (1000 * 60 * 60 * 24));
-        if (ageDays <= 120) return { label: 'Fresh', color: 'text-emerald-400' };
-        if (ageDays <= 365) return { label: 'Aging', color: 'text-amber-400' };
+        if (ageDays <= 120) return { label: 'Fresh', color: 'text-zinc-300' };
+        if (ageDays <= 365) return { label: 'Aging', color: 'text-zinc-200' };
         return { label: 'Legacy', color: 'text-zinc-400' };
       };
 
@@ -12957,7 +12961,7 @@
                             <button
                               key={`${build.name}-${perk.name}`}
                               onClick={() => setSelectedBuildPerkName(perk.name)}
-                              className={`px-2 py-1 rounded-lg border text-[10px] uppercase tracking-wider transition-colors ${selectedBuildPerkName === perk.name ? 'bg-amber-500/20 border-amber-400/40 text-amber-200' : 'bg-white/5 border-white/10 text-zinc-300 hover:text-white'}`}
+                              className={`px-2 py-1 rounded-lg border text-[10px] uppercase tracking-wider transition-colors ${selectedBuildPerkName === perk.name ? 'bg-white/10 border-amber-400/40 text-zinc-300' : 'bg-white/5 border-white/10 text-zinc-300 hover:text-white'}`}
                             >
                               {perk.name}
                             </button>
@@ -13188,8 +13192,8 @@
       const totalCount = favKillers.length + favSurvivors.length + favPerks.length + favItems.length + favAddons.length + favOfferings.length;
       const getRarityColor = (rarity) => {
         switch ((rarity || '').toLowerCase()) {
-          case 'common': return '#513F31'; case 'uncommon': return '#1B8C22'; case 'rare': return '#3B82F6';
-          case 'veryrare': return '#713A84'; case 'ultrarare': case 'visceral': return '#CF0C46'; case 'event': return '#FFD700'; default: return '#71717a';
+          case 'common': return '#71717a'; case 'uncommon': return '#a1a1aa'; case 'rare': return '#d4d4d8';
+          case 'veryrare': return '#e4e4e7'; case 'ultrarare': case 'visceral': return '#fafafa'; case 'event': return '#e4e4e7'; default: return '#71717a';
         }
       };
       const FavSection = ({ title, items: sectionItems, category, accentColor, renderItem }) => {
@@ -13216,8 +13220,8 @@
             <p className="text-zinc-500 text-xs">{item.realName || category}</p>
           </div>
           <button onClick={() => setView(category === 'Killer' ? 'killers' : 'survivors', { search: item.name })} className="px-3 py-1.5 rounded-xl bg-[var(--panel)] border border-[var(--stroke)] text-[11px] text-zinc-300 hover:text-white transition-colors mr-1">View</button>
-          <button onClick={() => toggleFavorite(category, item.id)} className="p-1.5 rounded-full bg-yellow-500/20 transition-colors hover:bg-yellow-500/30">
-            <Icons.Star width={14} height={14} className="text-yellow-400 fill-yellow-400" />
+          <button onClick={() => toggleFavorite(category, item.id)} className="p-1.5 rounded-full bg-white/10 transition-colors hover:bg-white/15">
+            <Icons.Star width={14} height={14} className="text-zinc-100 fill-zinc-100" />
           </button>
         </div>
       );
@@ -13231,8 +13235,8 @@
             <p className="text-zinc-500 text-xs truncate">{item.owner || (item.type === 'Killer' ? 'Killer' : 'Survivor')}</p>
           </div>
           <button onClick={() => onPerkTap && onPerkTap(item)} className="px-3 py-1.5 rounded-xl bg-[var(--panel)] border border-[var(--stroke)] text-[11px] text-zinc-300 hover:text-white transition-colors mr-1">View</button>
-          <button onClick={() => toggleFavorite('Perk', item.id)} className="p-1.5 rounded-full bg-yellow-500/20 transition-colors hover:bg-yellow-500/30">
-            <Icons.Star width={14} height={14} className="text-yellow-400 fill-yellow-400" />
+          <button onClick={() => toggleFavorite('Perk', item.id)} className="p-1.5 rounded-full bg-white/10 transition-colors hover:bg-white/15">
+            <Icons.Star width={14} height={14} className="text-zinc-100 fill-zinc-100" />
           </button>
         </div>
       );
@@ -13248,8 +13252,8 @@
               {item.rarity && <span className="text-[10px] font-bold" style={{ color: getRarityColor(item.rarity) }}>{(item.rarity || '').replace('veryrare', 'Very Rare').replace('ultrarare', 'Ultra Rare')}</span>}
             </div>
           </div>
-          <button onClick={() => toggleFavorite(category, item.id)} className="p-1.5 rounded-full bg-yellow-500/20 transition-colors hover:bg-yellow-500/30">
-            <Icons.Star width={14} height={14} className="text-yellow-400 fill-yellow-400" />
+          <button onClick={() => toggleFavorite(category, item.id)} className="p-1.5 rounded-full bg-white/10 transition-colors hover:bg-white/15">
+            <Icons.Star width={14} height={14} className="text-zinc-100 fill-zinc-100" />
           </button>
         </div>
       );
@@ -13271,8 +13275,8 @@
           <div className="pb-32 -mx-6 px-6">
             {totalCount === 0 ? (
               <div className="flex flex-col items-center justify-center text-center mt-16 animate-in fade-in duration-500">
-                <div className="w-20 h-20 rounded-xl bg-yellow-500/10 border border-yellow-500/20 flex items-center justify-center mb-4">
-                  <Icons.Star width={36} height={36} className="text-yellow-500/40" />
+                <div className="w-20 h-20 rounded-xl bg-white/5 border border-white/15 flex items-center justify-center mb-4">
+                  <Icons.Star width={36} height={36} className="text-zinc-500" />
                 </div>
                 <h3 className="text-lg font-bold text-white mb-2 [font-family:var(--font-display)]">No Favorites Yet</h3>
                 <p className="text-zinc-500 text-sm max-w-xs">Star any killer, survivor, perk, item, addon, or offering to see them here for quick access.</p>
@@ -13280,12 +13284,12 @@
               </div>
             ) : (
               <div className="animate-in fade-in slide-in-from-bottom-4 duration-500">
-                {showSection('Killers') && <FavSection title="Killers" items={favKillers} category="Killer" accentColor="#ef4444" renderItem={(item) => <CharCard key={item.id} item={item} category="Killer" />} />}
-                {showSection('Survivors') && <FavSection title="Survivors" items={favSurvivors} category="Survivor" accentColor="#38bdf8" renderItem={(item) => <CharCard key={item.id} item={item} category="Survivor" />} />}
-                {showSection('Perks') && <FavSection title="Perks" items={favPerks} category="Perk" accentColor="#a78bfa" renderItem={(item) => <PerkCard key={item.id} item={item} />} />}
-                {showSection('Items') && <FavSection title="Items" items={favItems} category="Item" accentColor="#22c55e" renderItem={(item) => <SmallCard key={item.id} item={item} category="Item" subtitle={item.itemType || 'Item'} />} />}
-                {showSection('Addons') && <FavSection title="Addons" items={favAddons} category="Addon" accentColor="#f59e0b" renderItem={(item) => <SmallCard key={item.id} item={item} category="Addon" subtitle={item.killerName || item.itemType || 'Addon'} />} />}
-                {showSection('Offerings') && <FavSection title="Offerings" items={favOfferings} category="Offering" accentColor="#f97316" renderItem={(item) => <SmallCard key={item.id} item={item} category="Offering" subtitle={item.role || 'Universal'} />} />}
+                {showSection('Killers') && <FavSection title="Killers" items={favKillers} category="Killer" accentColor="#fafafa" renderItem={(item) => <CharCard key={item.id} item={item} category="Killer" />} />}
+                {showSection('Survivors') && <FavSection title="Survivors" items={favSurvivors} category="Survivor" accentColor="#a1a1aa" renderItem={(item) => <CharCard key={item.id} item={item} category="Survivor" />} />}
+                {showSection('Perks') && <FavSection title="Perks" items={favPerks} category="Perk" accentColor="#e4e4e7" renderItem={(item) => <PerkCard key={item.id} item={item} />} />}
+                {showSection('Items') && <FavSection title="Items" items={favItems} category="Item" accentColor="#d4d4d8" renderItem={(item) => <SmallCard key={item.id} item={item} category="Item" subtitle={item.itemType || 'Item'} />} />}
+                {showSection('Addons') && <FavSection title="Addons" items={favAddons} category="Addon" accentColor="#a1a1aa" renderItem={(item) => <SmallCard key={item.id} item={item} category="Addon" subtitle={item.killerName || item.itemType || 'Addon'} />} />}
+                {showSection('Offerings') && <FavSection title="Offerings" items={favOfferings} category="Offering" accentColor="#71717a" renderItem={(item) => <SmallCard key={item.id} item={item} category="Offering" subtitle={item.role || 'Universal'} />} />}
               </div>
             )}
           </div>
@@ -13744,7 +13748,7 @@
                     className="w-full bg-zinc-800/60 border border-white/10 rounded-2xl px-4 py-3 text-sm text-white placeholder-zinc-600 focus:outline-none focus:border-white/20 font-mono"
                   />
                   {backupError && (
-                    <div className="rounded-2xl border border-red-500/20 bg-red-500/10 px-4 py-3 text-sm text-red-200">
+                    <div className="rounded-2xl border border-white/25/20 bg-zinc-500/10 px-4 py-3 text-sm text-zinc-300">
                       {backupError}
                     </div>
                   )}
@@ -13799,7 +13803,7 @@
             <table className="cx-wikitable"><tbody>
               <tr><th scope="row">Defaults</th><td>
                 <p className="text-sm text-zinc-400 mb-2">Restore every website preference to its default value. Builds, matches, progression, and backups are not touched.</p>
-                <button type="button" onClick={resetAllSettings} className="px-4 py-3 rounded-2xl bg-red-700 text-white font-bold text-sm">Reset all preferences</button>
+                <button type="button" onClick={resetAllSettings} className="px-4 py-3 rounded-2xl bg-zinc-100 text-black font-bold text-sm">Reset all preferences</button>
               </td></tr>
             </tbody></table>
             <h2 className="cx-sec">About</h2>
@@ -13808,7 +13812,7 @@
                 <ul className="text-sm text-zinc-400 space-y-1">
                   {META.thanks.map((item, i) => (
                     <li key={i} className="flex items-start gap-2">
-                      <span className="text-red-500">•</span>
+                      <span className="text-zinc-100">•</span>
                       <span>{item}</span>
                     </li>
                   ))}
@@ -13893,7 +13897,7 @@
             <div className="relative z-10">
               <ViewCrumbs trail={[{ label: 'Main page', onClick: onBack }]} current="The Entity's Offering" />
               <Header title="The Entity's Offering" subtitle="Prestige Calculator" onBack={onBack} />
-              <p className="text-red-400/80 text-sm italic font-medium tracking-wide text-center mb-4">{getEntityQuote()}</p>
+              <p className="text-zinc-100/80 text-sm italic font-medium tracking-wide text-center mb-4">{getEntityQuote()}</p>
               <h2 className="cx-sec">Prestige inputs</h2>
               <table className="cx-wikitable"><tbody>
                 <tr><th scope="row">Prestige</th><td>
@@ -13904,7 +13908,7 @@
                     value={currentPrestige}
                     onChange={e => setCurrentPrestige(e.target.value === '' ? '' : parseInt(e.target.value) || 0)}
                     onBlur={e => setCurrentPrestige(Math.min(100, Math.max(0, parseInt(e.target.value) || 0)))}
-                    className="w-full text-center text-4xl font-bold bg-black/40 border-2 border-red-900/50 rounded-2xl py-4 text-white focus:outline-none focus:border-red-500 transition-colors"
+                    className="w-full text-center text-4xl font-bold bg-black/40 border-2 border-white/10 rounded-2xl py-4 text-white focus:outline-none focus:border-white/25 transition-colors"
                   />
                 </td></tr>
                 <tr><th scope="row">Level</th><td>
@@ -13915,7 +13919,7 @@
                     value={currentLevel}
                     onChange={e => setCurrentLevel(e.target.value === '' ? '' : parseInt(e.target.value) || 1)}
                     onBlur={e => setCurrentLevel(Math.min(50, Math.max(1, parseInt(e.target.value) || 1)))}
-                    className="w-full text-center text-lg font-bold bg-black/30 border border-red-900/30 rounded-xl py-2 text-zinc-300 focus:outline-none focus:border-red-500 transition-colors"
+                    className="w-full text-center text-lg font-bold bg-black/30 border border-white/10 rounded-xl py-2 text-zinc-300 focus:outline-none focus:border-white/25 transition-colors"
                   />
                 </td></tr>
                 <tr><th scope="row">Target</th><td>
@@ -13926,7 +13930,7 @@
                     value={targetPrestige}
                     onChange={e => setTargetPrestige(e.target.value === '' ? '' : parseInt(e.target.value) || 0)}
                     onBlur={e => setTargetPrestige(Math.min(100, Math.max(0, parseInt(e.target.value) || 0)))}
-                    className="w-full text-center text-4xl font-bold bg-black/40 border-2 border-red-900/50 rounded-2xl py-4 text-white focus:outline-none focus:border-red-500 transition-colors"
+                    className="w-full text-center text-4xl font-bold bg-black/40 border-2 border-white/10 rounded-2xl py-4 text-white focus:outline-none focus:border-white/25 transition-colors"
                   />
                 </td></tr>
                 <tr><th scope="row">Progress</th><td>
@@ -13934,12 +13938,12 @@
                     <span>Progress</span>
                     <span>{progressPercent.toFixed(0)}%</span>
                   </div>
-                  <div className="h-3 bg-black/50 rounded-full overflow-hidden border border-red-900/30">
+                  <div className="h-3 bg-black/50 rounded-full overflow-hidden border border-white/10">
                     <div
                       className="h-full rounded-full transition-all duration-1000 ease-out"
                       style={{
                         width: `${progressPercent}%`,
-                        background: 'linear-gradient(90deg, #7f1d1d, #dc2626, #ef4444)',
+                        background: 'linear-gradient(90deg, #52525b, #a1a1aa, #fafafa)',
                         boxShadow: '0 0 10px rgba(220,38,38,0.5)'
                       }}
                     />
@@ -13967,9 +13971,9 @@
                 <tr><th scope="row">Bloodweb Mode</th><td>
                   <div className="flex gap-2">
                     {[
-                      { id: 'efficient', label: 'Skip Level', desc: '~850k/P', sub: 'Skip Level Up', color: '#22c55e', bg: 'rgba(34,197,94,0.15)' },
+                      { id: 'efficient', label: 'Skip Level', desc: '~850k/P', sub: 'Skip Level Up', color: '#e4e4e7', bg: 'rgba(228,228,231,0.12)' },
                       { id: 'average', label: 'Auto Buy', desc: '~1.05M/P', sub: 'Auto Purchase', color: '#dc2626', bg: 'rgba(220,38,38,0.2)' },
-                      { id: 'completionist', label: 'Manual', desc: '~1.5M/P', sub: 'Full Bloodweb', color: '#a855f7', bg: 'rgba(168,85,247,0.15)' }
+                      { id: 'completionist', label: 'Manual', desc: '~1.5M/P', sub: 'Full Bloodweb', color: '#d4d4d8', bg: 'rgba(212,212,216,0.12)' },
                     ].map(opt => (
                       <button
                         key={opt.id}
@@ -13993,7 +13997,7 @@
                     value={bpPerMatch}
                     onChange={e => setBpPerMatch(e.target.value === '' ? '' : parseInt(e.target.value) || 30000)}
                     onBlur={e => setBpPerMatch(Math.max(1000, parseInt(e.target.value) || 30000))}
-                    className="w-full bg-black/40 border border-red-900/30 rounded-xl px-3 py-2 text-white text-sm focus:outline-none focus:border-red-500 transition-colors"
+                    className="w-full bg-black/40 border border-white/10 rounded-xl px-3 py-2 text-white text-sm focus:outline-none focus:border-white/25 transition-colors"
                   />
                 </td></tr>
                 <tr><th scope="row">Match Length (min)</th><td>
@@ -14002,12 +14006,12 @@
                     value={matchLength}
                     onChange={e => setMatchLength(e.target.value === '' ? '' : parseInt(e.target.value) || 12)}
                     onBlur={e => setMatchLength(Math.max(1, parseInt(e.target.value) || 12))}
-                    className="w-full bg-black/40 border border-red-900/30 rounded-xl px-3 py-2 text-white text-sm focus:outline-none focus:border-red-500 transition-colors"
+                    className="w-full bg-black/40 border border-white/10 rounded-xl px-3 py-2 text-white text-sm focus:outline-none focus:border-white/25 transition-colors"
                   />
                 </td></tr>
                 <tr><th scope="row">Milestones</th><td>
                   <div className="text-center text-[10px] text-zinc-500 leading-relaxed">
-                    <span className="text-red-800">P1-3</span> Universal teachables (T1→T2→T3) • <span className="text-red-800">P4-6</span> Bloody cosmetics • <span className="text-red-800">P7-9</span> Perk charms • <span className="text-red-800">P25/50/75/100</span> Character badge reward tiers
+                    <span className="text-zinc-500">P1-3</span> Universal teachables (T1→T2→T3) • <span className="text-zinc-500">P4-6</span> Bloody cosmetics • <span className="text-zinc-500">P7-9</span> Perk charms • <span className="text-zinc-500">P25/50/75/100</span> Character badge reward tiers
                   </div>
                 </td></tr>
               </tbody></table>
@@ -14040,7 +14044,7 @@
       }), [search, filter]);
 
       const scrollToTop = () => scrollRef.current?.scrollTo({ top: 0, behavior: 'smooth' });
-      const accentColor = theme?.accent || '#38bdf8';
+      const accentColor = theme?.accent || '#fafafa';
       const accentSoft = theme?.accentSoft || '#0f172a';
 
       // Quick-reference tips for Trial Grid flashcards
@@ -14113,7 +14117,7 @@
         if (!icon) return null;
         const isBuff = icon.type === 'buff';
         const isDebuff = icon.type === 'debuff';
-        const borderColor = isBuff ? '#22c55e' : isDebuff ? '#ff3b30' : accentColor;
+        const borderColor = isBuff ? '#e4e4e7' : isDebuff ? '#71717a' : accentColor;
         return (
           <div className="fixed inset-0 z-[100] flex items-center justify-center p-4" onClick={onClose}>
             <div className="absolute inset-0 bg-black/85 backdrop-blur-sm" />
@@ -14226,7 +14230,7 @@
                 {filteredIcons.map(icon => {
                   const isBuff = icon.type === 'buff';
                   const isDebuff = icon.type === 'debuff';
-                  const ringColor = isBuff ? '#22c55e' : isDebuff ? '#ff3b30' : `${accentColor}60`;
+                  const ringColor = isBuff ? '#e4e4e7' : isDebuff ? '#71717a' : `${accentColor}60`;
                   return (
                     <button
                       key={icon.id}
@@ -14263,8 +14267,8 @@
               )}
               {/* Legend */}
               <div className="max-w-3xl mx-auto mt-6 flex items-center justify-center gap-4 text-[10px] text-zinc-600 font-bold uppercase tracking-wider">
-                <span className="flex items-center gap-1.5"><span className="w-2.5 h-2.5 rounded-full bg-green-500 inline-block" /> Buff</span>
-                <span className="flex items-center gap-1.5"><span className="w-2.5 h-2.5 rounded-full bg-red-500 inline-block" /> Debuff</span>
+                <span className="flex items-center gap-1.5"><span className="w-2.5 h-2.5 rounded-full bg-zinc-300 inline-block" /> Buff</span>
+                <span className="flex items-center gap-1.5"><span className="w-2.5 h-2.5 rounded-full bg-zinc-500 inline-block" /> Debuff</span>
                 <span className="flex items-center gap-1.5"><span className="w-2.5 h-2.5 rounded-full inline-block" style={{ backgroundColor: `${accentColor}60` }} /> Neutral</span>
               </div>
             </div>
@@ -14277,7 +14281,7 @@
                 const isExpanded = expandedId === icon.id;
                 const isBuff = icon.type === 'buff';
                 const isDebuff = icon.type === 'debuff';
-                const underlineColor = isBuff ? '#22c55e' : isDebuff ? '#ff3b30' : 'transparent';
+                const underlineColor = isBuff ? '#e4e4e7' : isDebuff ? '#71717a' : 'transparent';
                 return (
                   <div
                     key={icon.id}
@@ -14357,7 +14361,7 @@
     };
     const FloatingCompareBadge = ({ count, onClick, onClear, theme }) => {
       if (count === 0) return null;
-      const accentColor = theme?.accent || '#38bdf8';
+      const accentColor = theme?.accent || '#fafafa';
       return (
         <div className="fixed bottom-24 right-4 z-50 flex items-center gap-2">
           {/* Clear button */}
@@ -14366,9 +14370,9 @@
             className="p-3 rounded-full font-bold shadow-lg hover:scale-105 transition-all"
             style={{
               background: '#0a0a0a',
-              border: '2px solid #ef4444',
-              color: '#ff3b30',
-              boxShadow: '0 4px 20px rgba(255,59,48,0.3)'
+              border: '2px solid #fafafa',
+              color: '#fafafa',
+              boxShadow: '0 4px 20px rgba(250,250,250,0.25)'
             }}
             title="Clear comparison"
           >
@@ -14394,7 +14398,7 @@
 const LoreModal = ({ character, onClose }) => {
   if (!character) return null;
   const isKiller = character.type === 'Killer' || character.power;
-  const accentColor = isKiller ? '#ff3b30' : '#38bdf8';
+  const accentColor = isKiller ? '#fafafa' : '#a1a1aa';
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm" onClick={onClose}>
       <div
@@ -14454,13 +14458,13 @@ const PowerModal = ({ killer, onClose }) => {
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm" onClick={onClose}>
       <div
-        className="relative w-full max-w-lg max-h-[85vh] overflow-hidden rounded-xl bg-[#0a0a0a] border border-red-500/20 shadow-2xl"
+        className="relative w-full max-w-lg max-h-[85vh] overflow-hidden rounded-xl bg-[#0a0a0a] border border-white/25/20 shadow-2xl"
         onClick={e => e.stopPropagation()}
       >
         {/* Header */}
         <div className="sticky top-0 z-10 flex items-center justify-between p-4 bg-[#0a0a0a]/95 backdrop-blur border-b border-white/10">
           <div className="flex items-center gap-3">
-            <div className="w-14 h-14 rounded-xl bg-zinc-800/80 flex items-center justify-center border border-red-500/40 overflow-hidden">
+            <div className="w-14 h-14 rounded-xl bg-zinc-800/80 flex items-center justify-center border border-white/25/40 overflow-hidden">
               {(() => {
                 const safeName = killer.name.toLowerCase().replace(/ /g, '_').replace(/'/g, '');
                 const iconPath = `./dbd_images/powers/${safeName}_power.png`;
@@ -14470,14 +14474,14 @@ const PowerModal = ({ killer, onClose }) => {
                       type="Power"
                       size="fill"
                       imageUrl={iconPath}
-                      fallbackIcon={<Icons.Zap width={24} height={24} className="text-red-500" />}
+                      fallbackIcon={<Icons.Zap width={24} height={24} className="text-zinc-100" />}
                     />
                   </div>
                 );
               })()}
             </div>
             <div>
-              <p className="text-[10px] font-bold uppercase tracking-widest text-red-500 mb-0.5">{powerName}</p>
+              <p className="text-[10px] font-bold uppercase tracking-widest text-zinc-100 mb-0.5">{powerName}</p>
               <h2 className="text-lg text-white" style={{ fontFamily: 'var(--font-display)', fontWeight: 600 }}>{killer.name}</h2>
             </div>
           </div>
@@ -14492,7 +14496,7 @@ const PowerModal = ({ killer, onClose }) => {
         <div className="flex border-b border-white/10">
           <button
             onClick={() => setActiveTab('survivor')}
-            className={`flex-1 py-3 text-sm font-bold transition-colors ${activeTab === 'survivor' ? 'text-sky-400 border-b-2 border-sky-400 bg-sky-500/10' : 'text-zinc-500 hover:text-zinc-300'}`}
+            className={`flex-1 py-3 text-sm font-bold transition-colors ${activeTab === 'survivor' ? 'text-zinc-100 border-b-2 border-zinc-100 bg-white/10' : 'text-zinc-500 hover:text-zinc-300'}`}
           >
             <span className="flex items-center justify-center gap-2">
               <Icons.Heart width={16} height={16} />
@@ -14501,7 +14505,7 @@ const PowerModal = ({ killer, onClose }) => {
           </button>
           <button
             onClick={() => setActiveTab('killer')}
-            className={`flex-1 py-3 text-sm font-bold transition-colors ${activeTab === 'killer' ? 'text-red-400 border-b-2 border-red-400 bg-red-500/10' : 'text-zinc-500 hover:text-zinc-300'}`}
+            className={`flex-1 py-3 text-sm font-bold transition-colors ${activeTab === 'killer' ? 'text-zinc-100 border-b-2 border-white/25 bg-zinc-500/10' : 'text-zinc-500 hover:text-zinc-300'}`}
           >
             <span className="flex items-center justify-center gap-2">
               <Icons.Sword width={16} height={16} />
@@ -14511,12 +14515,12 @@ const PowerModal = ({ killer, onClose }) => {
         </div>
         {/* Content */}
         <div className="p-4 overflow-y-auto max-h-[55vh] custom-scrollbar">
-          <div className={`p-4 rounded-xl ${activeTab === 'survivor' ? 'bg-sky-500/10 border border-sky-500/20' : 'bg-red-500/10 border border-red-500/20'}`}>
+          <div className={`p-4 rounded-xl ${activeTab === 'survivor' ? 'bg-white/5 border-white/10' : 'bg-white/5 border-white/10'}`}>
             <div className="flex items-center gap-2 mb-3">
-              <div className={`w-8 h-8 rounded-lg flex items-center justify-center ${activeTab === 'survivor' ? 'bg-sky-500/30' : 'bg-red-500/30'}`}>
-                {activeTab === 'survivor' ? <Icons.Heart width={18} height={18} className="text-sky-400" /> : <Icons.Sword width={18} height={18} className="text-red-400" />}
+              <div className={`w-8 h-8 rounded-lg flex items-center justify-center ${activeTab === 'survivor' ? 'bg-white/15' : 'bg-white/15'}`}>
+                {activeTab === 'survivor' ? <Icons.Heart width={18} height={18} className="text-zinc-100" /> : <Icons.Sword width={18} height={18} className="text-zinc-100" />}
               </div>
-              <h3 className={`font-bold ${activeTab === 'survivor' ? 'text-sky-400' : 'text-red-400'}`}>
+              <h3 className={`font-bold ${activeTab === 'survivor' ? 'text-zinc-100' : 'text-zinc-100'}`}>
                 {activeTab === 'survivor' ? 'How to Counter' : 'How to Play'}
               </h3>
             </div>
@@ -14529,7 +14533,7 @@ const PowerModal = ({ killer, onClose }) => {
         <div className="p-4 border-t border-white/10">
           <button
             onClick={onClose}
-            className="w-full py-3 rounded-xl bg-red-500/20 hover:bg-red-500/30 text-red-400 font-semibold transition-colors"
+            className="w-full py-3 rounded-xl bg-zinc-500/20 hover:bg-zinc-500/30 text-zinc-100 font-semibold transition-colors"
           >
             Close
           </button>
@@ -14563,7 +14567,7 @@ const MapLayoutModal = ({ map, onClose, noteValue = '', onNoteChange }) => {
         <div className="flex-shrink-0 flex items-center justify-between p-4 bg-[#0a0a0a]/95 backdrop-blur border-b border-white/10 rounded-t-xl">
           <div>
             <p className="text-[10px] font-bold uppercase tracking-widest text-zinc-500 mb-1">Map Details</p>
-            <h2 className="text-lg text-white pb-1" style={{ fontFamily: 'var(--font-display)', fontWeight: 600, borderBottom: '2px solid #ff3b30', display: 'inline-block' }}>{map.name}</h2>
+            <h2 className="text-lg text-white pb-1" style={{ fontFamily: 'var(--font-display)', fontWeight: 600, borderBottom: '2px solid #fafafa', display: 'inline-block' }}>{map.name}</h2>
             {map.realm && <p className="text-xs text-zinc-500 mt-1">{map.realm}</p>}
             {hasMultiple && layouts[currentIndex].label && (
               <p className="text-xs text-zinc-400 mt-1">{layouts[currentIndex].label}</p>
@@ -14612,7 +14616,7 @@ const MapLayoutModal = ({ map, onClose, noteValue = '', onNoteChange }) => {
                 <button
                   key={idx}
                   onClick={() => setCurrentIndex(idx)}
-                  className={`px-4 py-2 rounded-xl text-sm font-medium transition-colors ${currentIndex === idx ? 'bg-red-500 text-white' : 'bg-white/10 text-zinc-400 hover:bg-white/20'}`}
+                  className={`px-4 py-2 rounded-xl text-sm font-medium transition-colors ${currentIndex === idx ? 'bg-zinc-100 text-black' : 'bg-white/10 text-zinc-400 hover:bg-white/20'}`}
                 >
                   {layout.label || `Layout ${idx + 1}`}
                 </button>
@@ -14643,7 +14647,7 @@ const MapLayoutModal = ({ map, onClose, noteValue = '', onNoteChange }) => {
 };
     const PerkCompareModal = ({ perks, onClose, onRemove, theme, settings = {} }) => {
       if (!perks || perks.length === 0) return null;
-      const accentColor = theme?.accent || '#38bdf8';
+      const accentColor = theme?.accent || '#fafafa';
       return (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm" onClick={onClose}>
           <div
@@ -14681,9 +14685,9 @@ const MapLayoutModal = ({ map, onClose, noteValue = '', onNoteChange }) => {
                   {/* Remove button */}
                   <button
                     onClick={() => onRemove(perk)}
-                    className="absolute top-2 right-2 p-1 rounded-full bg-red-500/20 hover:bg-red-500/40 transition-colors"
+                    className="absolute top-2 right-2 p-1 rounded-full bg-zinc-500/20 hover:bg-zinc-500/40 transition-colors"
                   >
-                    <Icons.X width={14} height={14} className="text-red-400" />
+                    <Icons.X width={14} height={14} className="text-zinc-100" />
                   </button>
                   {/* Perk Image */}
                   <div className="flex justify-center mb-3">
@@ -14955,7 +14959,7 @@ const MapLayoutModal = ({ map, onClose, noteValue = '', onNoteChange }) => {
 const CharacterProfileModal = ({ character, onClose, allPerks = [], onPerkTap, theme, settings = {}, noteValue = '', onNoteChange, cosmeticsByBaseId = {}, allAddons = [] }) => {
   if (!character) return null;
   const isKiller = character.type === 'Killer' || character.power;
-  const accentColor = isKiller ? '#ff3b30' : '#38bdf8';
+  const accentColor = isKiller ? '#fafafa' : '#a1a1aa';
   const stats = isKiller ? KILLER_STATS[character.name] : null;
   const guide = isKiller ? KILLER_GUIDES[character.name] : null;
   const teachables = allPerks.filter(p => p.owner === character.name);
@@ -15079,7 +15083,7 @@ const CharacterProfileModal = ({ character, onClose, allPerks = [], onPerkTap, t
                 </span>
               )}
               {releaseInfo?.licensed && (
-                <span className="px-2.5 py-1 rounded-lg text-[10px] font-bold uppercase tracking-wider bg-yellow-500/20 text-yellow-400">
+                <span className="px-2.5 py-1 rounded-lg text-[10px] font-bold uppercase tracking-wider bg-white/10 text-zinc-100">
                   Licensed
                 </span>
               )}
@@ -15168,8 +15172,8 @@ const CharacterProfileModal = ({ character, onClose, allPerks = [], onPerkTap, t
             <section className="cx-sec" id="overview" ref={setSectionRef('overview')}>
               <h2>Overview</h2>
               {stats && (
-                <div className="p-4 rounded-2xl bg-red-500/10 border border-red-500/20">
-                  <p className="text-[10px] uppercase tracking-widest text-red-400 font-bold mb-3">Killer Stats</p>
+                <div className="p-4 rounded-2xl bg-zinc-500/10 border border-white/25/20">
+                  <p className="text-[10px] uppercase tracking-widest text-zinc-100 font-bold mb-3">Killer Stats</p>
                   <div className="grid grid-cols-3 gap-3">
                     <div className="text-center p-3 rounded-xl bg-black/30">
                       <p className="text-white text-sm font-bold">{stats.speed}</p>
@@ -15189,8 +15193,8 @@ const CharacterProfileModal = ({ character, onClose, allPerks = [], onPerkTap, t
               {isKiller && character.power && (
                 <div className="p-4 rounded-2xl bg-white/5 border border-white/10">
                   <div className="flex items-center gap-2 mb-2">
-                    <Icons.Zap width={14} height={14} className="text-red-400" />
-                    <p className="text-[10px] uppercase tracking-widest text-red-400 font-bold">{guide?.powerName || 'Power'}</p>
+                    <Icons.Zap width={14} height={14} className="text-zinc-100" />
+                    <p className="text-[10px] uppercase tracking-widest text-zinc-100 font-bold">{guide?.powerName || 'Power'}</p>
                   </div>
                   <p className="text-zinc-300 text-sm leading-relaxed">{stripHtml(character.power)}</p>
                   <button type="button" onClick={() => scrollToSection('power')} className="mt-2 text-xs font-semibold transition-colors" style={{ color: accentColor }}>
@@ -15227,18 +15231,18 @@ const CharacterProfileModal = ({ character, onClose, allPerks = [], onPerkTap, t
                       const safeName = character.name.toLowerCase().replace(/ /g, '_').replace(/'/g, '');
                       const iconPath = `./dbd_images/powers/${safeName}_power.png`;
                       return (
-                        <div className="w-14 h-14 rounded-xl bg-zinc-800/80 flex items-center justify-center border border-red-500/40 overflow-hidden">
+                        <div className="w-14 h-14 rounded-xl bg-zinc-800/80 flex items-center justify-center border border-white/25/40 overflow-hidden">
                           <AssetFrame
                             type="Power"
                             size="fill"
                             imageUrl={iconPath}
-                            fallbackIcon={<Icons.Zap width={24} height={24} className="text-red-500" />}
+                            fallbackIcon={<Icons.Zap width={24} height={24} className="text-zinc-100" />}
                           />
                         </div>
                       );
                     })()}
                     <div>
-                      <p className="text-[10px] uppercase tracking-widest text-red-400 font-bold">{guide?.powerName || 'Power'}</p>
+                      <p className="text-[10px] uppercase tracking-widest text-zinc-100 font-bold">{guide?.powerName || 'Power'}</p>
                       <h3 className="text-white font-bold">{character.name}</h3>
                     </div>
                   </div>
@@ -15249,7 +15253,7 @@ const CharacterProfileModal = ({ character, onClose, allPerks = [], onPerkTap, t
                     <div className="flex border-b border-white/10">
                       <button
                         onClick={() => setPowerTipsTab('survivor')}
-                        className={`flex-1 py-3 text-sm font-bold transition-colors ${powerTipsTab === 'survivor' ? 'text-sky-400 border-b-2 border-sky-400 bg-sky-500/10' : 'text-zinc-500 hover:text-zinc-300'}`}
+                        className={`flex-1 py-3 text-sm font-bold transition-colors ${powerTipsTab === 'survivor' ? 'text-zinc-100 border-b-2 border-zinc-100 bg-white/10' : 'text-zinc-500 hover:text-zinc-300'}`}
                       >
                         <span className="flex items-center justify-center gap-2">
                           <Icons.Heart width={16} height={16} />
@@ -15258,7 +15262,7 @@ const CharacterProfileModal = ({ character, onClose, allPerks = [], onPerkTap, t
                       </button>
                       <button
                         onClick={() => setPowerTipsTab('killer')}
-                        className={`flex-1 py-3 text-sm font-bold transition-colors ${powerTipsTab === 'killer' ? 'text-red-400 border-b-2 border-red-400 bg-red-500/10' : 'text-zinc-500 hover:text-zinc-300'}`}
+                        className={`flex-1 py-3 text-sm font-bold transition-colors ${powerTipsTab === 'killer' ? 'text-zinc-100 border-b-2 border-white/25 bg-zinc-500/10' : 'text-zinc-500 hover:text-zinc-300'}`}
                       >
                         <span className="flex items-center justify-center gap-2">
                           <Icons.Sword width={16} height={16} />
@@ -15266,12 +15270,12 @@ const CharacterProfileModal = ({ character, onClose, allPerks = [], onPerkTap, t
                         </span>
                       </button>
                     </div>
-                    <div className={`p-4 rounded-2xl mt-3 ${powerTipsTab === 'survivor' ? 'bg-sky-500/10 border border-sky-500/20' : 'bg-red-500/10 border border-red-500/20'}`}>
+                    <div className={`p-4 rounded-2xl mt-3 ${powerTipsTab === 'survivor' ? 'bg-white/5 border-white/10' : 'bg-white/5 border-white/10'}`}>
                       <div className="flex items-center gap-2 mb-3">
-                        <div className={`w-8 h-8 rounded-lg flex items-center justify-center ${powerTipsTab === 'survivor' ? 'bg-sky-500/30' : 'bg-red-500/30'}`}>
-                          {powerTipsTab === 'survivor' ? <Icons.Heart width={18} height={18} className="text-sky-400" /> : <Icons.Sword width={18} height={18} className="text-red-400" />}
+                        <div className={`w-8 h-8 rounded-lg flex items-center justify-center ${powerTipsTab === 'survivor' ? 'bg-white/15' : 'bg-white/15'}`}>
+                          {powerTipsTab === 'survivor' ? <Icons.Heart width={18} height={18} className="text-zinc-100" /> : <Icons.Sword width={18} height={18} className="text-zinc-100" />}
                         </div>
-                        <h3 className={`font-bold ${powerTipsTab === 'survivor' ? 'text-sky-400' : 'text-red-400'}`}>
+                        <h3 className={`font-bold ${powerTipsTab === 'survivor' ? 'text-zinc-100' : 'text-zinc-100'}`}>
                           {powerTipsTab === 'survivor' ? 'How to Counter' : 'How to Play'}
                         </h3>
                       </div>
@@ -15366,7 +15370,7 @@ const CharacterProfileModal = ({ character, onClose, allPerks = [], onPerkTap, t
                         </span>
                       )}
                       {linkedFullSetCount > 0 && (
-                        <span className="px-2 py-1 rounded-lg bg-emerald-500/10 border border-emerald-500/20 text-[10px] uppercase tracking-wider text-emerald-300">
+                        <span className="px-2 py-1 rounded-lg bg-white/10 border border-white/15 text-[10px] uppercase tracking-wider text-zinc-100">
                           {linkedFullSetCount} linked outfits
                         </span>
                       )}
