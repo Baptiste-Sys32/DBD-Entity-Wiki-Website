@@ -1607,6 +1607,10 @@
     .cx-side-link:hover { color: var(--text); background: var(--ghost-surface); }
     .cx-side-link--active { color: var(--text); font-weight: 700; }
     .cx-side-count { color: var(--text-faint); font-size: 11px; flex-shrink: 0; }
+    .mp-welcome { border: 1px solid var(--line); background: var(--panel); padding: 30px 24px; text-align: center; }
+    .mp-welcome-title { font-family: var(--font-display); font-size: 30px; font-weight: 700; color: var(--text); margin: 0; line-height: 1.2; }
+    .mp-welcome-name { color: var(--link); }
+    .mp-welcome-sub { margin: 8px 0 0; font-size: 14.5px; color: var(--text-soft); }
     .cx-linkcols { margin-top: 14px; columns: 3; column-gap: 36px; font-size: 13.5px; }
     .cx-linkcols > div { break-inside: avoid; padding: 3px 0; }
     .cx-cnt { color: var(--text-faint); font-size: 11.5px; }
@@ -7134,16 +7138,10 @@
               </div>
             ) : (
               <div className="cx-article">
-                <nav className="cx-crumbs" aria-label="Breadcrumb">Main Page</nav>
-                <h1 className="cx-title">Main Page</h1>
-                <nav className="cx-toc" aria-label="Contents">
-                  <p className="cx-toc-title">Contents</p>
-                  <ol>
-                    <li><a href="#browse" style={{ color: 'var(--link)' }}>Browse by category</a></li>
-                    <li><a href="#tools" style={{ color: 'var(--link)' }}>Tools</a></li>
-                    <li><a href="#news" style={{ color: 'var(--link)' }}>Patch notes</a></li>
-                  </ol>
-                </nav>
+                <div className="mp-welcome">
+                  <p className="mp-welcome-title">Welcome to <span className="mp-welcome-name">The Entity's Wiki</span>,</p>
+                  <p className="mp-welcome-sub">the free DBD encyclopedia that anyone can edit.</p>
+                </div>
 
                 <section id="browse" aria-label="Browse by category">
                   <h2 className="cx-sec">Browse by category</h2>
