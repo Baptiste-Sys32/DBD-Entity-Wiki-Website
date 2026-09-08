@@ -1734,6 +1734,11 @@
     td.cx-perkcell {
       vertical-align: middle;
     }
+    .cx-perkimg { display: flex; flex-direction: column; align-items: center; justify-content: flex-start; gap: 5px; width: 112px; flex-shrink: 0; }
+    .cx-perkimg small { color: var(--text-faint); font-size: 11px; display: block; text-align: center; }
+    .cx-perkimg .cx-alink { text-align: center; line-height: 1.3; }
+    .cx-imgbox { width: 76px; height: 76px; overflow: visible; display: flex; align-items: center; justify-content: center; }
+    .cx-imgbox img { width: 76px; height: 76px; object-fit: contain; transform: scale(1.12); }
     .cx-perkcell-inner {
       display: flex;
       gap: 12px;
@@ -5300,11 +5305,6 @@
                 </div>
               ))}
             </nav>
-            <div className="px-4 py-3 border-t border-white/10">
-              <p className="text-[9.5px] text-zinc-600" style={{ fontFamily: 'var(--mono-fallback, ui-monospace, monospace)', letterSpacing: '0.12em', textTransform: 'uppercase' }}>
-                Patch {META.gameVersion} · synced {META.lastSynced}
-              </p>
-            </div>
             <PlayStoreFooter />
             <SiteLegalFooter className="px-4 pb-4" />
           </aside>
@@ -7550,16 +7550,14 @@
                   className={`${onPerkTapFn ? 'cursor-pointer' : ''} ${isInCompare ? 'cx-row-compare' : ''}`}
                 >
                   <td className="cx-perkcell">
-                    <div className="cx-perkcell-inner">
-                      <div style={{ width: 44, height: 44, overflow: 'hidden', flexShrink: 0, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                    <div className="cx-perkimg">
+                      <div className="cx-imgbox">
                         <AssetFrame type={category} imageUrl={item.image} fallbackIcon={fallbackIcon} size="fill" />
                       </div>
-                      <span>
-                        {onPerkTapFn ? (
-                          <button type="button" className="cx-alink" onClick={(e) => { e.stopPropagation(); onPerkTapFn(); }}>{item.name}</button>
-                        ) : <span className="font-semibold text-zinc-100">{item.name}</span>}
-                        <small>{typeLabel}</small>
-                      </span>
+                      {onPerkTapFn ? (
+                        <button type="button" className="cx-alink" onClick={(e) => { e.stopPropagation(); onPerkTapFn(); }}>{item.name}</button>
+                      ) : <span className="font-semibold text-zinc-100">{item.name}</span>}
+                      <small>{typeLabel}</small>
                     </div>
                   </td>
                   <td>
@@ -11084,8 +11082,6 @@
             ) : (
               <div className="relative">
                 {/* Timeline line */}
-                <div className="absolute left-2 top-0 bottom-0 w-0.5" style={{ background: `linear-gradient(to bottom, ${accent}60, ${accent}20)` }} />
-
                 {/* Chronicle table */}
                 <div>
                   <table className="cx-wikitable">
@@ -12937,14 +12933,12 @@
       const PerkRow = ({ item }) => (
         <tr key={item.id} onClick={() => onPerkTap && onPerkTap(item)} style={{ cursor: 'pointer' }}>
           <td className="cx-perkcell">
-            <div className="cx-perkcell-inner">
-              <div style={{ width: 44, height: 44, overflow: 'hidden', flexShrink: 0, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+            <div className="cx-perkimg">
+              <div className="cx-imgbox">
                 <AssetFrame type="Perk" size="fill" imageUrl={item.image} fallbackIcon={<Icons.BookOpen width={16} height={16} className="text-white/40" />} />
               </div>
-              <span>
-                <span className="font-semibold text-zinc-100">{item.name}</span>
-                <small>{item.type} Perk{item.name.startsWith('Hex:') ? ' \u00b7 Hex' : ''}</small>
-              </span>
+              <span className="font-semibold text-zinc-100">{item.name}</span>
+              <small>{item.type} Perk{item.name.startsWith('Hex:') ? ' · Hex' : ''}</small>
             </div>
           </td>
           <td style={{ color: 'var(--dim)' }}>{item.owner || 'Universal'}</td>
@@ -14783,9 +14777,12 @@ const MapLayoutModal = ({ map, onClose, noteValue = '', onNoteChange }) => {
                     {teachables.map(perk => (
                       <tr key={perk.id} onClick={() => onPerkTap && onPerkTap(perk)} style={{ cursor: onPerkTap ? 'pointer' : 'default' }}>
                         <td className="cx-perkcell">
-                          <div className="cx-perkcell-inner">
-                            <AssetFrame type="Perk" size="fill" imageUrl={perk.image} fallbackIcon={<Icons.BookOpen width={24} height={24} className="text-zinc-600" />} />
-                            <span><button type="button" className="cx-alink" onClick={(e) => { e.stopPropagation(); onPerkTap && onPerkTap(perk); }}>{perk.name}</button><small>{perk.type} Perk{perk.name.startsWith('Hex:') ? ' · Hex' : ''}</small></span>
+                          <div className="cx-perkimg">
+                            <div className="cx-imgbox">
+                              <AssetFrame type="Perk" size="fill" imageUrl={perk.image} fallbackIcon={<Icons.BookOpen width={24} height={24} className="text-zinc-600" />} />
+                            </div>
+                            <button type="button" className="cx-alink" onClick={(e) => { e.stopPropagation(); onPerkTap && onPerkTap(perk); }}>{perk.name}</button>
+                            <small>{perk.type} Perk{perk.name.startsWith('Hex:') ? ' · Hex' : ''}</small>
                           </div>
                         </td>
                         <td><PerkDescriptionBlock perk={perk} settings={settings} accentColor={linkAccent} compactLines={3} /></td>
