@@ -1566,6 +1566,18 @@
       color: var(--text-faint);
       border-top: 1px solid var(--stroke);
     }
+    .wiki-header { background: #000; border-bottom: 1px solid var(--line-soft); height: 56px; }
+    .wiki-header #wiki-header-search-slot > * { width: 100%; }
+    .wiki-header #wiki-header-search-slot .relative { width: 100%; }
+    .wiki-header #wiki-header-search-slot .p-2 { padding: 4px 8px !important; background: var(--panel) !important; border-radius: 6px !important; box-shadow: none !important; backdrop-filter: none !important; }
+    .wiki-header #wiki-header-search-slot .p-3 { padding: 7px 8px !important; font-size: 13px !important; }
+    .wiki-header #wiki-header-search-slot .pl-4 { padding-left: 6px !important; }
+    .wiki-header #wiki-header-search-slot svg { width: 15px; height: 15px; }
+    .wiki-header #wiki-header-search-slot .rounded-3xl { border-radius: 6px !important; }
+    .wiki-header #wiki-header-search-slot .rounded-xl { border-radius: 6px !important; }
+    .wiki-header #wiki-header-search-slot .mb-4 { margin-bottom: 0 !important; }
+    .wiki-header #wiki-header-search-slot .absolute.left-4 { left: 8px !important; }
+    .wiki-header #wiki-header-search-slot .py-3 { padding-top: 6px !important; padding-bottom: 6px !important; padding-left: 30px !important; }
     .website-sidebar.cx-side { width: 212px; padding: 16px 14px 0; border-right: 1px solid rgba(234, 234, 234, 0.45); background: #000; }
     .cx-side-nav { scrollbar-width: none; }
     .cx-side-nav::-webkit-scrollbar { display: none; }
@@ -5152,6 +5164,55 @@
         </div>
       );
     };
+    const WikiHeaderSearchPortal = ({ children }) => {
+      if (typeof document === 'undefined') return null;
+      const slot = document.getElementById('wiki-header-search-slot');
+      const isDesktop = typeof window !== 'undefined' && window.matchMedia('(min-width: 768px)').matches;
+      if (isDesktop && slot) return ReactDOM.createPortal(children, slot);
+      return (
+        <div className="sticky top-0 z-20 px-6 pb-4 pt-1 pointer-events-none">
+          <div className="relative max-w-3xl mx-auto pointer-events-auto">{children}</div>
+        </div>
+      );
+    };
+    const WikiHeader = ({ currentView, setView }) => {
+      useEffect(() => {
+        const onKey = (e) => {
+          if (e.key !== '/') return;
+          const t = e.target;
+          if (t && (t.tagName === 'INPUT' || t.tagName === 'TEXTAREA' || t.tagName === 'SELECT' || t.isContentEditable)) return;
+          const slot = document.getElementById('wiki-header-search-slot');
+          const input = slot && slot.querySelector('input');
+          if (input) {
+            e.preventDefault();
+            input.focus();
+            input.select();
+          }
+        };
+        window.addEventListener('keydown', onKey);
+        return () => window.removeEventListener('keydown', onKey);
+      }, []);
+      const hasSearch = !['home'].includes(currentView);
+      return (
+        <header className="wiki-header sticky top-0 z-30 flex items-center justify-between gap-4 px-6">
+          <button type="button" onClick={() => setView('home')} className="flex items-center gap-2.5 min-w-0" aria-label="Main page">
+            <img src="./assets/favicon.png" alt="" width={28} height={28} />
+            <span className="text-[15px] font-bold text-[var(--text)] truncate" style={{ fontFamily: 'var(--font-display)', fontWeight: 700 }}>The Entity's Wiki</span>
+          </button>
+          <div className="flex items-center gap-3 min-w-0">
+            <div id="wiki-header-search-slot" className="flex items-center min-w-0" style={{ width: hasSearch ? '480px' : '0px', opacity: hasSearch ? 1 : 0, pointerEvents: hasSearch ? 'auto' : 'none' }} />
+            <button
+              type="button"
+              onClick={() => setView('settings')}
+              className="shrink-0 w-9 h-9 border border-white/10 text-zinc-400 hover:text-white hover:bg-white/10 transition-colors flex items-center justify-center"
+              aria-label="Settings"
+            >
+              <Icons.Gear width={16} height={16} />
+            </button>
+          </div>
+        </header>
+      );
+    };
     const WebsiteHeader = ({ currentView, setView, titleOverride }) => {
       const headerTitle = currentView === 'home' ? 'Search' : (titleOverride || getNavDisplayLabel(currentView));
       return (
@@ -5271,15 +5332,6 @@
       if (!isMobile) {
         return (
           <aside className="website-sidebar cx-side relative z-10 hidden md:flex h-full shrink-0 flex-col">
-            <div className="cx-side-head">
-              <button
-                className="cx-side-search"
-                onClick={() => { setView('home'); window.setTimeout(() => { const el = document.getElementById('home-search-input'); if (el) { el.focus(); el.select(); } }, 350); }}
-              >
-                <Icons.Search width={14} height={14} />
-                <span>Search the wiki…</span>
-              </button>
-            </div>
             <nav className="website-sidebar-scroll flex-1 overflow-y-auto cx-side-nav">
               <button
                 onClick={() => setView('home')}
@@ -7385,16 +7437,14 @@
             <h1 className="cx-title">{type}</h1>
             <p className="cx-hatnote">{listHatnote}</p>
           </div>
-          <div className="sticky top-0 z-20 px-6 pb-4 pt-1 pointer-events-none">
-            <div className="relative mb-3 max-w-3xl mx-auto pointer-events-auto">
+          <WikiHeaderSearchPortal><div className="relative mb-3 max-w-3xl mx-auto pointer-events-auto">
               <div className="absolute inset-0 bg-zinc-500 rounded-3xl blur-2xl opacity-0 transition-opacity duration-500"></div>
               <div className="relative flex items-center bg-white/5 border border-white/15 rounded-lg p-2">
                 <div className="pl-4 text-zinc-400"><Icons.Search width={18} height={18} /></div>
                 <input type="text" placeholder={`Filter ${type}...`} className="w-full bg-transparent text-white p-3 text-sm sm:text-base font-medium placeholder-zinc-600 focus:outline-none" value={localSearch} onChange={e => { setLocalSearch(e.target.value); onSearchChange && onSearchChange(e.target.value); }} />
                 {localSearch && <button onClick={() => { setLocalSearch(''); onSearchChange && onSearchChange(''); }} className="p-2 mr-1 rounded-xl bg-white/5 text-zinc-300 hover:text-white hover:bg-white/10 transition-colors"><Icons.X width={18} height={18} /></button>}
               </div>
-            </div>
-          </div>
+            </div></WikiHeaderSearchPortal>
           {isCharacterList && (
             <div className="max-w-3xl mx-auto flex justify-center gap-2 mb-2 px-6">
               <select value={sortBy} onChange={e => setSortBy(e.target.value)} className="themed-select compact text-sm">
@@ -7613,16 +7663,14 @@
           <ViewCrumbs trail={[{ label: 'Main page', onClick: onBack }]} current="Realms" />
           <h1 className="cx-title">Realms</h1>
           <p className="cx-hatnote">Maps and locations of the trials, grouped by realm.</p>
-          <div className="sticky top-0 z-20 -mx-6 px-6 pb-4 pointer-events-none">
-            <div className="relative max-w-3xl mx-auto">
+          <WikiHeaderSearchPortal><div className="relative max-w-3xl mx-auto">
               <div className="absolute inset-0 bg-transparent rounded-xl blur-2xl opacity-0 transition-opacity duration-500"></div>
               <div className="relative flex items-center bg-[var(--panel)] border border-[var(--stroke)] rounded-xl p-2 pointer-events-auto">
                 <div className="pl-4 text-zinc-400"><Icons.Search width={18} height={18} /></div>
                 <input value={mapSearch} onChange={e => setMapSearch(e.target.value)} placeholder="Search maps..." className="w-full bg-transparent text-white p-3 text-sm sm:text-base font-medium placeholder-zinc-600 focus:outline-none" />
                 {mapSearch && <button onClick={() => setMapSearch('')} className="p-2 mr-1 rounded-xl border border-[var(--stroke)] text-zinc-300 hover:text-white transition-colors"><Icons.X width={18} height={18} /></button>}
               </div>
-            </div>
-          </div>
+            </div></WikiHeaderSearchPortal>
           <div className="w-full max-w-[1280px] mx-auto px-[44px] pb-32">
             {realms.length === 0 && (
               <div className="text-center text-zinc-500 mt-12">No map data available.</div>
@@ -11005,8 +11053,7 @@
             <p className="cx-hatnote">Releases from June 2016 to the present, most recent first.</p>
 
             {/* Search bar */}
-            <div className="relative mb-4">
-              <div className="absolute left-4 top-1/2 -translate-y-1/2 text-zinc-500">
+            <WikiHeaderSearchPortal><div className="absolute left-4 top-1/2 -translate-y-1/2 text-zinc-500">
                 <Icons.Search width={18} height={18} />
               </div>
               <input
@@ -11023,8 +11070,7 @@
                 >
                   <Icons.X width={14} height={14} />
                 </button>
-              )}
-            </div>
+              )}</WikiHeaderSearchPortal>
 
           </div>
 
@@ -11293,8 +11339,7 @@
             <p className="cx-hatnote">Community terminology and callouts.</p>
 
             {/* Search bar */}
-            <div className="sticky top-0 z-20 -mx-6 px-6 pb-4 pointer-events-none">
-              <div className="relative max-w-3xl mx-auto">
+            <WikiHeaderSearchPortal><div className="relative max-w-3xl mx-auto">
                 <div className="relative flex items-center bg-white/5 border border-white/15 rounded-lg p-2 pointer-events-auto">
                   <div className="pl-4 text-zinc-400"><Icons.Search width={18} height={18} /></div>
                   <input
@@ -11309,8 +11354,7 @@
                     </button>
                   )}
                 </div>
-              </div>
-            </div>
+              </div></WikiHeaderSearchPortal>
 
             {/* Dictionary entries */}
             <div className="pb-8 pr-8">
@@ -11496,8 +11540,7 @@
           <ViewCrumbs trail={[{ label: 'Main page', onClick: onBack }]} current="Items & Addons" />
           <h1 className="cx-title">Items &amp; Addons</h1>
           <p className="cx-hatnote">Survivor items, Killer powers, and their add-ons.</p>
-          <div className="sticky top-0 z-20 -mx-6 px-6 pb-4 pointer-events-none">
-            <div className="relative max-w-3xl mx-auto">
+          <WikiHeaderSearchPortal><div className="relative max-w-3xl mx-auto">
               <div className="relative flex items-center bg-zinc-800/60 backdrop-blur-xl border border-white/10 rounded-3xl p-2 shadow-2xl pointer-events-auto">
                 <div className="pl-4 text-zinc-400"><Icons.Search width={18} height={18} /></div>
                 <input value={search} onChange={e => setSearch(e.target.value)} placeholder="Search..." className="w-full bg-transparent text-white p-3 text-sm font-medium placeholder-zinc-600 focus:outline-none" />
@@ -11507,8 +11550,7 @@
                   </button>
                 )}
               </div>
-            </div>
-          </div>
+            </div></WikiHeaderSearchPortal>
           <div className="max-w-3xl mx-auto flex flex-wrap justify-center gap-2 mb-4">
             <button onClick={() => { setMode('survivor'); setExpandedId(null); }} className={"px-4 py-2 rounded-xl text-xs uppercase tracking-wider transition-all " + (mode === 'survivor' ? 'bg-zinc-100 text-black border border-zinc-100' : 'bg-white/5 text-zinc-400 border border-white/10')}>
               Survivor Items
@@ -11784,8 +11826,7 @@
           <ViewCrumbs trail={[{ label: 'Main page', onClick: onBack }]} current="Offerings" />
           <h1 className="cx-title">Offerings</h1>
           <p className="cx-hatnote">Offerings for the Entity, by rarity.</p>
-          <div className="sticky top-0 z-20 -mx-6 px-6 pb-4 pointer-events-none">
-            <div className="relative max-w-3xl mx-auto">
+          <WikiHeaderSearchPortal><div className="relative max-w-3xl mx-auto">
               <div className="relative flex items-center bg-zinc-800/60 backdrop-blur-xl border border-white/10 rounded-3xl p-2 shadow-2xl pointer-events-auto">
                 <div className="pl-4 text-zinc-400"><Icons.Search width={18} height={18} /></div>
                 <input value={search} onChange={e => setSearch(e.target.value)} placeholder="Search..." className="w-full bg-transparent text-white p-3 text-sm font-medium placeholder-zinc-600 focus:outline-none" />
@@ -11795,8 +11836,7 @@
                   </button>
                 )}
               </div>
-            </div>
-          </div>
+            </div></WikiHeaderSearchPortal>
           <div className="max-w-3xl mx-auto flex flex-wrap justify-center gap-2 mb-4">
             {['All', 'Killer', 'Survivor', 'Universal'].map(opt => (
 <button key={opt} type="button" className="px-4 py-2 text-xs rounded-lg border transition-colors {filterRole === opt ? 'bg-zinc-100 text-black border-zinc-100 font-bold' : 'bg-transparent text-zinc-300 border-white/15 hover:border-white/30'}">{opt}</button>
@@ -12111,8 +12151,7 @@
               </div>
             </div>
           )}
-          <div className="sticky top-0 z-20 -mx-6 px-6 pb-4 pointer-events-none">
-            <div className="relative max-w-5xl mx-auto pointer-events-auto">
+          <WikiHeaderSearchPortal><div className="relative max-w-5xl mx-auto pointer-events-auto">
               <div className="relative flex items-center bg-[var(--panel)] border border-[var(--stroke)] rounded-xl p-2">
                 <div className="pl-4 text-zinc-400"><Icons.Search width={18} height={18} /></div>
                 <input
@@ -12127,8 +12166,7 @@
                   </button>
                 )}
               </div>
-            </div>
-          </div>
+            </div></WikiHeaderSearchPortal>
           <div className="max-w-5xl mx-auto space-y-3 mb-4">
             <div className="flex flex-wrap items-center justify-center gap-2">
               <span className="text-[10px] text-zinc-500 uppercase tracking-[0.18em]">Role</span>
@@ -13853,8 +13891,7 @@
           </div>
 
           {/* Sticky Search + Filters (both modes) */}
-          <div className="sticky top-0 z-20 px-6 pb-4 pt-1 pointer-events-none">
-            <div className="relative mb-3 max-w-3xl mx-auto pointer-events-auto">
+          <WikiHeaderSearchPortal><div className="relative mb-3 max-w-3xl mx-auto pointer-events-auto">
               <div className="relative flex items-center bg-[var(--panel)] border border-[var(--stroke)] rounded-xl p-2">
                 <div className="pl-4 text-zinc-400"><Icons.Search width={18} height={18} /></div>
                 <input
@@ -13870,8 +13907,7 @@
                   </button>
                 )}
               </div>
-            </div>
-          </div>
+            </div></WikiHeaderSearchPortal>
 
           {/* Filter Pills */}
           <div className="max-w-3xl mx-auto flex flex-wrap justify-center gap-2 mb-2 px-4">
@@ -15378,6 +15414,7 @@ const MapLayoutModal = ({ map, onClose, noteValue = '', onNoteChange }) => {
           onTouchStart={handleTouchStart}
           onTouchEnd={handleTouchEnd}
         >
+          {!device.isMobile && <WikiHeader currentView={currentView} setView={setView} />}
           {device.isMobile && <WebsiteHeader currentView={currentView} setView={setView} titleOverride={(currentView === 'killer' || currentView === 'survivor') && viewContext.id && allCharactersById.get(viewContext.id) ? allCharactersById.get(viewContext.id).name : null} />}
           <div className="website-workspace relative z-10 flex-1 min-h-0 flex">
             {!device.isMobile && <Navigation currentView={currentView} setView={setView} theme={theme} isMobile={false} onPerksReset={() => setPerkSearch('')} customNavItems={DEFAULT_SETTINGS.navItems} />}
