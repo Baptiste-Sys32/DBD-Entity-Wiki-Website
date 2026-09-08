@@ -1734,6 +1734,9 @@
     td.cx-perkcell {
       vertical-align: middle;
     }
+    .cx-coscard { border: 0; background: none; }
+    .cx-coscard:hover .cx-cosimg img { filter: brightness(1.12); }
+    .cx-cosimg { background: none; }
     .cx-perkimg { display: flex; flex-direction: column; align-items: center; justify-content: flex-start; gap: 5px; width: 112px; flex-shrink: 0; margin: 0 auto; }
     .cx-perkimg small { color: var(--text-faint); font-size: 11px; display: block; text-align: center; }
     .cx-perkimg .cx-alink { text-align: center; line-height: 1.3; }
@@ -11939,10 +11942,11 @@
       return (
         <div
           data-smoke-target={focused ? 'true' : undefined}
-          className="rounded-xl border border-[var(--stroke)] bg-[var(--panel)] overflow-hidden transition-all h-full flex flex-col"
-          style={focused ? { borderColor: `${accentColor}aa`, boxShadow: `0 0 0 1px ${accentColor}25, 0 18px 40px rgba(0,0,0,0.28)` } : { borderColor: 'var(--stroke)', background: 'var(--panel)' }}
+          className={typeof onOpen === 'function' ? 'cx-coscard cursor-pointer h-full flex flex-col' : 'cx-coscard h-full flex flex-col'}
+          onClick={typeof onOpen === 'function' ? () => onOpen(entry) : undefined}
+          style={focused ? { outline: '1px solid var(--link)', outlineOffset: '2px' } : undefined}
         >
-          <div className={`${isCharacterSwap ? 'aspect-[3/4]' : 'aspect-square'} bg-black/30`}>
+          <div className={`${isCharacterSwap ? 'aspect-[3/4]' : 'aspect-square'} cx-cosimg`}>
             <AssetFrame
               type={isCharacterSwap ? entry.baseCharacterType : 'Image'}
               size="fill"
@@ -11956,51 +11960,17 @@
               }
             />
           </div>
-          <div className="p-3.5 flex flex-1 flex-col gap-3">
-            <div className="flex flex-wrap gap-1.5">
-              {isCharacterSwap ? (
-                <span className="inline-flex items-center rounded-md border px-2 py-1 text-[10px] font-bold uppercase tracking-[0.16em] bg-white/5 text-zinc-300 border-white/15">
-                  Character swaps
-                </span>
-              ) : (
-                <span className="inline-flex items-center rounded-md border px-2 py-1 text-[10px] font-bold uppercase tracking-[0.16em]" style={badgeStyle}>
-                  {pieceLabel}
-                </span>
-              )}
-              <span className={`inline-flex items-center rounded-md border px-2 py-1 text-[10px] font-bold uppercase tracking-[0.16em] ${roleChipClasses}`}>
-                {entry.baseCharacterType}
-              </span>
-              {!isCharacterSwap && pieceLabel === 'Outfit' && (
-                <span className={`inline-flex items-center rounded-md border px-2 py-1 text-[10px] font-bold uppercase tracking-[0.16em] ${getOutfitLinkModeChipClasses(outfitLinkMode)}`}>
-                  {getOutfitLinkModeLabel(outfitLinkMode)}
-                </span>
-              )}
-              {entry.rarity && (
-                <span className="inline-flex items-center rounded-md border px-2 py-1 text-[10px] font-bold uppercase tracking-[0.16em] bg-white/5 text-zinc-200 border-white/10">
-                  {entry.rarity}
-                </span>
-              )}
-            </div>
-            <div className="flex-1">
-              <p className="text-white text-sm font-bold leading-tight">{entry.name}</p>
-              <p className="text-[11px] uppercase tracking-[0.16em] text-zinc-500 mt-1">{entry.baseCharacterName}</p>
-              <p className="text-xs text-zinc-400 mt-2 leading-snug">{collectionLabel}</p>
-              {!isCharacterSwap && boundSlotsLabel && pieceLabel === 'Outfit' && (
-                <p className="text-[11px] text-zinc-500 mt-1">Binds: {boundSlotsLabel}</p>
-              )}
-            </div>
+          <div className="flex flex-1 flex-col gap-1 pt-2">
+            <p className="text-sm font-semibold text-zinc-100 leading-tight">{entry.name}</p>
+            <p className="text-xs" style={{ color: 'var(--dim)' }}>{entry.baseCharacterName}</p>
+            <p className="text-[11px]" style={{ color: 'var(--text-faint)' }}>
+              {entry.rarity ? `${entry.rarity} · ` : ''}{collectionLabel}
+              {!isCharacterSwap && boundSlotsLabel && pieceLabel === 'Outfit' ? ` · Binds: ${boundSlotsLabel}` : ''}
+            </p>
             {focused && (
-              <p className="text-[10px] uppercase tracking-[0.18em] font-bold" style={{ color: accentColor }}>
-                Search Match
+              <p className="text-[10px] uppercase tracking-[0.18em] font-bold" style={{ color: 'var(--link)' }}>
+                Search match
               </p>
-            )}
-            {typeof onOpen === 'function' && (
-              <button
-                onClick={() => onOpen(entry)}
-                className="w-full py-2.5 rounded-xl bg-[var(--panel)] border border-[var(--stroke)] text-[11px] text-white uppercase tracking-[0.18em] transition-colors mt-auto"
-              >
-                Open Base Profile
-              </button>
             )}
           </div>
         </div>
@@ -12206,13 +12176,7 @@
               let renderedCount = 0;
               return windowedGroups.map((group) => (
               <section key={group.label} className="space-y-3">
-                <div className="flex items-center justify-between gap-3">
-                  <div>
-                    <p className="text-[10px] uppercase tracking-widest font-bold text-zinc-500">{group.label}</p>
-                    <p className="text-xs text-zinc-500 mt-1">{roleFilter} cosmetics sorted by rarity.</p>
-                  </div>
-                  <span className="px-2 py-1 rounded-md bg-[var(--panel)] border border-[var(--stroke)] text-[10px] uppercase tracking-wider text-zinc-400">{(groupedByRarity.find((full) => full.label === group.label)?.entries.length ?? group.entries.length)}</span>
-                </div>
+                <h3 className="cx-sub">{group.label} <span style={{ color: 'var(--text-faint)', fontSize: '12px', fontWeight: 400 }}>{(groupedByRarity.find((full) => full.label === group.label)?.entries.length ?? group.entries.length)}</span></h3>
                 <div className="grid grid-cols-2 sm:grid-cols-3 xl:grid-cols-4 gap-3">
                   {group.entries.map((entry) => {
                     const isEager = renderedCount < 16;
