@@ -5549,7 +5549,7 @@
             {result.character && (
               <tr><th scope="row">{role}</th><td>
                 <div className="flex items-center gap-4">
-                  <div className={`w-1 h-16 rounded-full ${role === 'Killer' ? 'bg-zinc-300 shadow-[0_0_10px_rgba(255,255,255,0.3)]' : 'bg-zinc-600 shadow-[0_0_10px_rgba(255,255,255,0.12)]'}`} />
+                  <div className="w-1 h-16" style={{ background: 'var(--accent)' }} />
                   <AssetFrame type={role} imageUrl={result.character.image} />
                   <div className="flex-1">
                     <p className="text-[10px] font-bold uppercase tracking-widest text-zinc-500 mb-1">{role}</p>
@@ -5573,7 +5573,7 @@
                           <p className="text-zinc-500 text-[9px] mt-1 truncate">{perk.owner}</p>
                         </>
                       ) : (
-                        <p className="text-zinc-700 text-xs font-bold uppercase tracking-widest">Empty</p>
+                        <p className="text-xs font-bold uppercase tracking-widest" style={{ color: 'var(--text-faint)' }}>Empty</p>
                       )}
                     </div>
                   </div>
@@ -5583,7 +5583,7 @@
             {role === 'Survivor' && result.item && (
               <tr><th scope="row">Item</th><td>
                 <div className="flex items-center gap-3">
-                  <div className="w-12 h-12 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center overflow-hidden">
+                  <div className="w-12 h-12 border flex items-center justify-center overflow-hidden" style={{ borderColor: 'var(--stroke)' }}>
                     <AssetFrame
                       type="Item"
                       size="fill"
@@ -5602,7 +5602,7 @@
               <tr><th scope="row">{role === 'Killer' ? 'Power Addons' : 'Item Addons'}</th><td>
                 <div className="grid grid-cols-2 gap-3">
                   {result.addons.map((addon, i) => addon && (
-                    <div key={i} className="p-3 rounded-xl bg-white/5 border border-white/5" style={{ boxShadow: getRarityGlow(addon.rarity, settings.rarityGlows !== false) }}>
+                    <div key={i} className="p-3 cx-flatcard" style={{ boxShadow: getRarityGlow(addon.rarity, settings.rarityGlows !== false) }}>
                       <p className="text-white text-sm font-bold" style={{ color: getRarityColor(addon.rarity) }}>{addon.name}</p>
                       <p className="text-zinc-600 text-[10px] mt-1 line-clamp-2">{addon.description}</p>
                     </div>
@@ -5627,16 +5627,20 @@
           <h2 className="cx-sec">Role</h2>
           <table className="cx-wikitable"><tbody>
             <tr><th scope="row">Side</th><td>
-              <div className="flex gap-1 bg-zinc-900/40 p-0.5 rounded-xl border border-white/5 backdrop-blur-md shrink-0">
+              <div className="flex gap-2">
                 <button
+                  type="button"
                   onClick={() => setRole('Survivor')}
-                  className={`flex-1 py-2.5 rounded-lg text-xs font-bold uppercase tracking-wider transition-all ${role === 'Survivor' ? 'bg-sky-600 text-white' : 'text-zinc-500 hover:text-zinc-300'}`}
+                  className={`mode-choice ${role === 'Survivor' ? 'mode-choice--active' : ''} flex-1 py-2.5 text-xs font-bold uppercase tracking-wider`}
+                  aria-pressed={role === 'Survivor'}
                 >
                   Survivor
                 </button>
                 <button
+                  type="button"
                   onClick={() => setRole('Killer')}
-                  className={`flex-1 py-2.5 rounded-lg text-xs font-bold uppercase tracking-wider transition-all ${role === 'Killer' ? 'bg-zinc-100 text-black' : 'text-zinc-500 hover:text-zinc-300'}`}
+                  className={`mode-choice ${role === 'Killer' ? 'mode-choice--active' : ''} flex-1 py-2.5 text-xs font-bold uppercase tracking-wider`}
+                  aria-pressed={role === 'Killer'}
                 >
                   Killer
                 </button>
@@ -5646,23 +5650,23 @@
               <div className="flex flex-wrap gap-1.5">
                 <button
                   onClick={() => setRandomizeCharacter(!randomizeCharacter)}
-                  className={`px-2 py-1.5 rounded-lg text-[10px] font-bold uppercase tracking-wide transition-all border flex items-center gap-1.5 ${randomizeCharacter ? 'bg-white/10 border-white/20 text-white' : 'bg-white/5 border-white/10 text-zinc-500'}`}
+                  className={`cx-togglepill ${randomizeCharacter ? 'cx-togglepill--on' : ''}`}
                 >
-                  <span className={`w-2 h-2 rounded-sm border ${randomizeCharacter ? 'bg-white border-white' : 'border-zinc-600'}`} />
+                  <span className="cx-dot" />
                   Character
                 </button>
                 <button
                   onClick={() => setRandomizePerks(!randomizePerks)}
-                  className={`px-2 py-1.5 rounded-lg text-[10px] font-bold uppercase tracking-wide transition-all border flex items-center gap-1.5 ${randomizePerks ? 'bg-white/10 border-white/20 text-white' : 'bg-white/5 border-white/10 text-zinc-500'}`}
+                  className={`cx-togglepill ${randomizePerks ? 'cx-togglepill--on' : ''}`}
                 >
-                  <span className={`w-2 h-2 rounded-sm border ${randomizePerks ? 'bg-white border-white' : 'border-zinc-600'}`} />
+                  <span className="cx-dot" />
                   Perks
                 </button>
                 <button
                   onClick={() => setRandomizeAddons(!randomizeAddons)}
-                  className={`px-2 py-1.5 rounded-lg text-[10px] font-bold uppercase tracking-wide transition-all border flex items-center gap-1.5 ${randomizeAddons ? 'bg-white/10 border-white/20 text-white' : 'bg-white/5 border-white/10 text-zinc-500'}`}
+                  className={`cx-togglepill ${randomizeAddons ? 'cx-togglepill--on' : ''}`}
                 >
-                  <span className={`w-2 h-2 rounded-sm border ${randomizeAddons ? 'bg-white border-white' : 'border-zinc-600'}`} />
+                  <span className="cx-dot" />
                   Addons
                 </button>
                 {role === 'Survivor' && (
@@ -5672,17 +5676,17 @@
                       setRandomizeItem(newValue);
                       if (!newValue) setRandomizeAddons(false);
                     }}
-                    className={`px-2 py-1.5 rounded-lg text-[10px] font-bold uppercase tracking-wide transition-all border flex items-center gap-1.5 ${randomizeItem ? 'bg-white/10 border-white/20 text-white' : 'bg-white/5 border-white/10 text-zinc-500'}`}
+                    className={`cx-togglepill ${randomizeItem ? 'cx-togglepill--on' : ''}`}
                   >
-                    <span className={`w-2 h-2 rounded-sm border ${randomizeItem ? 'bg-white border-white' : 'border-zinc-600'}`} />
+                    <span className="cx-dot" />
                     Item
                   </button>
                 )}
                 <button
                   onClick={() => setRandomizeOffering(!randomizeOffering)}
-                  className={`px-2 py-1.5 rounded-lg text-[10px] font-bold uppercase tracking-wide transition-all border flex items-center gap-1.5 ${randomizeOffering ? 'bg-white/10 border-white/20 text-white' : 'bg-white/5 border-white/10 text-zinc-500'}`}
+                  className={`cx-togglepill ${randomizeOffering ? 'cx-togglepill--on' : ''}`}
                 >
-                  <span className={`w-2 h-2 rounded-sm border ${randomizeOffering ? 'bg-white border-white' : 'border-zinc-600'}`} />
+                  <span className="cx-dot" />
                   Offering
                 </button>
               </div>
@@ -5700,11 +5704,11 @@
                         <Icons.Lock width={12} height={12} className={lockedChar ? (role === 'Killer' ? 'text-zinc-100' : 'text-zinc-100') : 'text-zinc-500'} />
                         <p className="text-[10px] font-bold uppercase tracking-wider text-zinc-400">Playing As</p>
                         {lockedChar && (
-                          <span className="text-[10px] text-white/80 bg-white/10 px-1.5 py-0.5 rounded-md font-semibold">{lockedChar.name}</span>
+                          <span className="cx-chip text-[10px] font-semibold">{lockedChar.name}</span>
                         )}
                       </div>
                       {lockedChar && (
-                        <button onClick={() => setLockedCharacterId(null)} className="text-[9px] px-1.5 py-0.5 rounded bg-zinc-500/20 text-zinc-100 hover:bg-zinc-500/30 border border-white/25/30 font-bold uppercase">
+                        <button onClick={() => setLockedCharacterId(null)} className="cx-alink text-[10px] font-bold uppercase">
                           Clear
                         </button>
                       )}
@@ -5712,8 +5716,8 @@
                     {!lockedChar ? (
                       <p className="text-zinc-600 text-[10px] mb-2">Lock a specific {role.toLowerCase()} to always play. Perks still come from your owned pool below.</p>
                     ) : (
-                      <div className="flex items-center gap-3 p-2 rounded-xl bg-white/5 border border-white/10">
-                        <div className={`w-12 h-12 rounded-lg overflow-hidden border ${role === 'Killer' ? 'border-white/40' : 'border-white/25'}`}>
+                      <div className="flex items-center gap-3 p-2 cx-flatcard">
+                        <div className="w-12 h-12 overflow-hidden border" style={{ borderColor: 'var(--stroke)' }}>
                           <AssetFrame type={role} imageUrl={lockedChar.image} size="fill" fallbackIcon={<Icons.User width={16} height={16} className="text-zinc-600" />} />
                         </div>
                         <div className="flex-1">
@@ -5731,7 +5735,8 @@
                           <button
                             key={char.id}
                             onClick={() => { setLockedCharacterId(char.id); triggerHaptic('Light'); }}
-                            className="relative aspect-square rounded-lg border border-white/10 transition-all overflow-hidden bg-zinc-900 hover:border-white/30 hover:scale-105"
+                            className="cx-thumbzoom relative aspect-square border transition-all overflow-hidden"
+                            style={{ borderColor: 'var(--stroke)' }}
                             title={`Lock ${char.name}`}
                           >
                             <AssetFrame type={role} imageUrl={char.image} size="fill" fallbackIcon={<Icons.User width={14} height={14} className="text-zinc-600" />} />
@@ -5749,15 +5754,15 @@
             <tr><th scope="row">Owned {role}s</th><td>
               <button
                 onClick={() => setShowOwnedSection(!showOwnedSection)}
-                className="w-full p-3 flex items-center justify-between hover:bg-white/5 transition-colors"
+                className="w-full p-3 flex items-center justify-between"
               >
                 <div className="flex items-center gap-2">
                   <p className="text-[10px] font-bold uppercase tracking-wider text-zinc-400">Owned {role}s</p>
-                  <span className="text-[10px] text-white/60 bg-white/10 px-1.5 py-0.5 rounded-md">{ownedCharacters.size}/{characters.length}</span>
+                  <span className="cx-chip text-[10px]">{ownedCharacters.size}/{characters.length}</span>
                 </div>
                 <div className="flex items-center gap-2">
-                  <button onClick={(e) => { e.stopPropagation(); selectAllCharacters(); }} className="text-[9px] px-1.5 py-0.5 rounded bg-white/5 text-zinc-400 hover:text-white border border-white/10 font-bold uppercase">All</button>
-                  <button onClick={(e) => { e.stopPropagation(); selectNoneCharacters(); }} className="text-[9px] px-1.5 py-0.5 rounded bg-white/5 text-zinc-400 hover:text-white border border-white/10 font-bold uppercase">None</button>
+                  <button onClick={(e) => { e.stopPropagation(); selectAllCharacters(); }} className="cx-alink text-[10px] font-bold uppercase">All</button>
+                  <button onClick={(e) => { e.stopPropagation(); selectNoneCharacters(); }} className="cx-alink text-[10px] font-bold uppercase">None</button>
                   <Icons.ChevronLeft width={14} height={14} className={`text-zinc-400 transition-transform ${showOwnedSection ? '-rotate-90' : 'rotate-90'}`} />
                 </div>
               </button>
@@ -5769,7 +5774,7 @@
                       value={characterSearch}
                       onChange={e => setCharacterSearch(e.target.value)}
                       placeholder="Search..."
-                      className="w-full bg-zinc-800/60 border border-white/10 rounded-lg pl-7 pr-2 py-1.5 text-xs text-white placeholder-zinc-600 focus:outline-none focus:border-white/20"
+                      className="cx-input w-full pl-7 pr-2 py-1.5 text-xs"
                     />
                   </div>
                   <div className="grid grid-cols-6 sm:grid-cols-8 md:grid-cols-10 gap-1.5 max-h-48 overflow-y-auto custom-scrollbar p-1">
@@ -5779,7 +5784,8 @@
                         <button
                           key={char.id}
                           onClick={() => toggleCharacter(char.id)}
-                          className={`relative aspect-square rounded-lg border transition-all overflow-hidden bg-zinc-900 ${isOwned ? (role === 'Killer' ? 'border-white/50 ring-1 ring-white/30' : 'border-white/30 ring-1 ring-white/30') : 'border-white/10 opacity-35 grayscale hover:opacity-60 hover:grayscale-0'}`}
+                          className={`cx-thumbzoom relative aspect-square border transition-all overflow-hidden ${isOwned ? '' : 'opacity-35 grayscale hover:opacity-60 hover:grayscale-0'}`}
+                          style={{ borderColor: isOwned ? 'var(--accent)' : 'var(--stroke)' }}
                           title={char.name}
                         >
                           <AssetFrame
@@ -5789,7 +5795,7 @@
                             fallbackIcon={<Icons.User width={16} height={16} className="text-zinc-600" />}
                           />
                           {isOwned && (
-                            <div className={`absolute top-0.5 right-0.5 w-2 h-2 rounded-full z-10 ${role === 'Killer' ? 'bg-zinc-400' : 'bg-zinc-600'}`} />
+                            <div className="absolute top-0.5 right-0.5 w-2 h-2 rounded-full z-10" style={{ background: 'var(--accent)' }} />
                           )}
                         </button>
                       );
@@ -5803,7 +5809,7 @@
                 <button
                   onClick={rollDice}
                   disabled={isSpinning || (ownedCharacters.size === 0 && !lockedCharacterId)}
-                  className={`w-full py-3 ${role === 'Survivor' ? 'bg-zinc-100 text-black' : 'bg-zinc-100 text-black'} rounded-xl font-bold uppercase tracking-widest text-sm hover:scale-[1.01] active:scale-[0.99] transition-all disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2`}
+                  className="cx-toolbtn cx-toolbtn--primary w-full py-3 uppercase tracking-widest text-sm flex items-center justify-center gap-2"
                 >
                   <Icons.Dices width={18} height={18} className={isSpinning ? 'animate-spin' : ''} />
                   {isSpinning ? 'Consulting Entity...' : lockedCharacterId ? `Randomize as ${characters.find(c => c.id === lockedCharacterId)?.name || role}` : 'Randomize'}
@@ -5830,7 +5836,7 @@
                         alert('Could not prepare this build to share.');
                       }
                     }}
-                    className="w-full py-2 rounded-xl bg-white/5 border border-white/10 text-zinc-300 text-xs font-bold uppercase tracking-wider hover:bg-white/10 transition-colors flex items-center justify-center gap-2"
+                    className="cx-toolbtn cx-toolbtn--quiet w-full py-2 text-xs font-bold uppercase tracking-wider flex items-center justify-center gap-2"
                   >
                     <Icons.Share width={14} height={14} />
                     Share Build
