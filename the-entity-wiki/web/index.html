@@ -5797,7 +5797,9 @@
       return (
         <div className="flex flex-col h-full pt-12 pb-32 px-6 overflow-y-auto custom-scrollbar space-y-4">
           <ViewCrumbs trail={[{ label: 'Main page', onClick: onBack }]} current="Chaos Shuffle" />
-          <Header title="Chaos Shuffle" subtitle="Randomize your fate" onBack={onBack} />
+          <h1 className="cx-title">Chaos Shuffle</h1>
+          <p className="cx-hatnote">Randomize perk combos and loadouts.</p>
+          <div className="cx-metaline">patch {META.gameVersion}</div>
           <h2 className="cx-sec">Role</h2>
           <table className="cx-wikitable"><tbody>
             <tr><th scope="row">Side</th><td>
@@ -8118,20 +8120,17 @@
       return (
         <div className="flex flex-col h-full pt-12 pb-32 px-6 overflow-y-auto custom-scrollbar">
           <ViewCrumbs trail={[{ label: 'Main page', onClick: onBack }]} current="Build & Loadout Lab" />
-          <Header title="Build & Loadout Lab" subtitle="Create, filter, favorite and clone builds" onBack={onBack} />
-          <InfoCallout lines={[
-            'Use New Build to craft a loadout; role, character, perks, and notes live in the form.',
-            'Filters trim the list by role, character, tags, and include/exclude perk text. Reset clears everything.',
-            'Edit or duplicate builds to iterate quickly; marking favorites stars them for Lobby and Match Log linking.'
-          ]} />
+          <h1 className="cx-title">Build &amp; Loadout Lab</h1>
+          <p className="cx-hatnote">Craft, save, favorite and clone builds.</p>
+          <div className="cx-metaline">patch {META.gameVersion}</div>
           <h2 className="cx-sec">Actions</h2>
           <table className="cx-wikitable"><tbody>
             <tr><th scope="row">Builds</th><td>
               <div className="mb-4 flex flex-wrap gap-2 items-center">
                 <button onClick={() => { setEditing(null); setShowForm(true); }} className="px-4 py-2 rounded-xl bg-zinc-100 text-black font-bold text-sm shadow-lg">New Build</button>
-                <GlassButton active={filters.role === 'Killer'} onClick={() => setFilters(f => ({ ...f, role: filters.role === 'Killer' ? 'All' : 'Killer' }))} className="text-xs py-2 px-3">Killer</GlassButton>
-                <GlassButton active={filters.role === 'Survivor'} onClick={() => setFilters(f => ({ ...f, role: filters.role === 'Survivor' ? 'All' : 'Survivor' }))} className="text-xs py-2 px-3">Survivor</GlassButton>
-                <GlassButton onClick={() => setFilters({ role: 'All', character: 'All', tag: 'All', search: '', include: '', exclude: '' })} className="text-xs py-2 px-3">Reset</GlassButton>
+<button type="button" onClick={() =>  setFilters(f => ({ ...f, role: filters.role === 'Killer' ? 'All' : 'Killer' })) } className="px-4 py-2 text-xs rounded-lg border transition-colors {filters.role === 'Killer' ? 'bg-zinc-100 text-black border-zinc-100 font-bold' : 'bg-transparent text-zinc-300 border-white/15 hover:border-white/30'}">Killer</button>
+<button type="button" onClick={() =>  setFilters(f => ({ ...f, role: filters.role === 'Survivor' ? 'All' : 'Survivor' })) } className="px-4 py-2 text-xs rounded-lg border transition-colors {filters.role === 'Survivor' ? 'bg-zinc-100 text-black border-zinc-100 font-bold' : 'bg-transparent text-zinc-300 border-white/15 hover:border-white/30'}">Survivor</button>
+<button type="button" onClick={() =>  setFilters({ role: 'All', character: 'All', tag: 'All', search: '', include: '', exclude: '' }) } className="px-4 py-2 text-xs rounded-lg border transition-colors {false ? 'bg-zinc-100 text-black border-zinc-100 font-bold' : 'bg-transparent text-zinc-300 border-white/15 hover:border-white/30'}">Reset</button>
                 <span className="text-[11px] text-zinc-500 ml-auto uppercase tracking-wider">{filteredBuilds.length} builds</span>
               </div>
             </td></tr>
@@ -8973,55 +8972,6 @@
         ]
     }
 ];
-    const PremadeBuildsView = ({ onBack }) => {
-      const [search, setSearch] = useState('');
-      const filtered = PREMADE_BUILDS.filter(b => {
-        if (!search.trim()) return true;
-        const term = search.toLowerCase();
-        return b.title.toLowerCase().includes(term) || b.perks.some(p => p.toLowerCase().includes(term));
-      });
-      return (
-        <div className="flex flex-col h-full pt-12 pb-32 px-6 overflow-y-auto custom-scrollbar">
-          <ViewCrumbs trail={[{ label: 'Main page', onClick: onBack }]} current="Premade Builds" />
-          <Header title="Premade Builds" subtitle="Ready-to-run perk combos" onBack={onBack} />
-          <div className="sticky top-0 z-20 -mx-6 px-6 pb-4 pointer-events-none">
-            <div className="relative max-w-3xl mx-auto">
-              <div className="absolute inset-0 bg-zinc-500 rounded-3xl blur-2xl opacity-0 transition-opacity duration-500"></div>
-              <div className="relative flex items-center bg-zinc-800/60 backdrop-blur-xl border border-white/10 rounded-3xl p-2 shadow-2xl pointer-events-auto">
-                <div className="pl-4 text-zinc-400"><Icons.Search width={18} height={18} /></div>
-                <input value={search} onChange={e => setSearch(e.target.value)} placeholder="Search builds or perks..." className="w-full bg-transparent text-white p-3 text-sm sm:text-base font-medium placeholder-zinc-600 focus:outline-none" />
-                {search && (
-                  <button onClick={() => setSearch('')} className="p-2 mr-1 rounded-xl bg-white/5 text-zinc-300 hover:text-white hover:bg-white/10 transition-colors">
-                    <Icons.X width={18} height={18} />
-                  </button>
-                )}
-              </div>
-            </div>
-          </div>
-          <div className="pb-32 space-y-4 -mx-6 px-6">
-            {filtered.map((sheet) => (
-              <div key={sheet.title} className="p-4 rounded-3xl bg-zinc-900/40 border border-white/5 backdrop-blur-md">
-                <div className="flex items-center justify-between mb-2">
-                  <div className="inline-flex items-center px-2 py-1 rounded-lg bg-white/5 border border-white/5">
-                    <span className={`w-1.5 h-1.5 rounded-full ${sheet.role === 'Killer' ? 'bg-zinc-400' : 'bg-zinc-600'} mr-2 shadow-[0_0_5px_currentColor]`}></span>
-                    <span className="text-[10px] font-bold uppercase tracking-wider text-zinc-400">{sheet.role}</span>
-                  </div>
-                  <p className="text-xs text-zinc-500 font-bold uppercase tracking-wider">4 perks</p>
-                </div>
-                <h3 className="text-lg font-bold text-white mb-2">{sheet.title}</h3>
-                <div className="flex flex-wrap gap-2 mb-3">
-                  {sheet.perks.map(p => (
-                    <span key={p} className="px-3 py-1 rounded-xl bg-white/5 border border-white/10 text-xs text-white font-semibold">{p}</span>
-                  ))}
-                </div>
-                <p className="text-zinc-400 text-sm leading-relaxed">{sheet.note}</p>
-              </div>
-            ))}
-            {filtered.length === 0 && <div className="text-center text-zinc-500 pt-8">No builds match that search.</div>}
-          </div>
-        </div>
-      );
-    };
     const MatchLogView = ({ onBack, matches = [], setMatches, killers = [], survivors = [], builds = [], maps = [], prefs, setPrefs, onBuildUsed, onOpenAnalytics }) => {
       const lookups = useMemo(() => buildDataLookups({ killers, survivors, builds, maps }), [killers, survivors, builds, maps]);
       const blankForm = (role = prefs?.lastRole || 'Survivor') => ({
@@ -9151,12 +9101,9 @@
       return (
         <div className="flex flex-col h-full pt-12 pb-32 px-6 overflow-y-auto custom-scrollbar">
           <ViewCrumbs trail={[{ label: 'Main page', onClick: onBack }]} current="Match Log" />
-          <Header title="Match Log" subtitle="Log games with saved build and map details" onBack={onBack} />
-          <InfoCallout lines={[
-            'Pick Survivor or Killer, link a saved build, and choose a map so your records stay clear over time.',
-            'Match analytics now live in Progression > Analytics; this screen stays focused on logging, filtering, and editing history.',
-            'Editing a build later does not rewrite older match records because each match keeps its own saved details.'
-          ]} />
+          <h1 className="cx-title">Match Log</h1>
+          <p className="cx-hatnote">Log games with saved build and map details.</p>
+          <div className="cx-metaline">patch {META.gameVersion}</div>
           <h2 className="cx-sec">Log match</h2>
           <table className="cx-wikitable"><tbody>
             <tr><th scope="row">Role</th><td>
@@ -9861,7 +9808,9 @@
         return (
           <div className="flex flex-col h-full pt-12 pb-32 px-6 overflow-y-auto custom-scrollbar">
             <ViewCrumbs trail={[{ label: 'Main page', onClick: onBack }]} current="Wordle" />
-            <Header title="Wordle" subtitle="Test your DBD knowledge" onBack={onBack} />
+            <h1 className="cx-title">Wordle</h1>
+            <p className="cx-hatnote">Test your DBD knowledge — daily and practice modes.</p>
+            <div className="cx-metaline">patch {META.gameVersion}</div>
             <table className="cx-wikitable"><tbody>
               <tr><th scope="row">Status</th><td><div className="text-center text-zinc-400">
                 Wordle data is unavailable right now.
@@ -9873,11 +9822,9 @@
       return (
         <div className="flex flex-col h-full pt-12 pb-32 px-6 overflow-y-auto custom-scrollbar">
           <ViewCrumbs trail={[{ label: 'Main page', onClick: onBack }]} current="Wordle" />
-          <Header title="Wordle" subtitle="Test your DBD knowledge" onBack={onBack} />
-          <InfoCallout lines={[
-            'Daily puzzles reset at midnight.',
-            'Every game-mode also supports practice mode.',
-          ]} />
+          <h1 className="cx-title">Wordle</h1>
+          <p className="cx-hatnote">Test your DBD knowledge — daily and practice modes.</p>
+          <div className="cx-metaline">patch {META.gameVersion}</div>
           <h2 className="cx-sec">Game mode</h2>
           <table className="cx-wikitable"><tbody>
             <tr><th scope="row">Mode</th><td>
@@ -10323,12 +10270,9 @@
       return (
         <div className="flex flex-col h-full pt-12 pb-32 px-6 overflow-y-auto custom-scrollbar">
           <ViewCrumbs trail={[{ label: 'Main page', onClick: onBack }]} current="Progression Hub" />
-          <Header title="Progression Hub" subtitle="Achievements, roster, challenges and analytics" onBack={onBack} />
-          <InfoCallout lines={[
-            'Progression hub: achievements, roster ownership, custom challenges, and match analytics are all stored here.',
-            'Use the tab order controls to rearrange the hub.',
-            'Choosing who you own here and then enabling "Owned Only global filter" in Settings will filter supported views across the website.'
-          ]} />
+          <h1 className="cx-title">Progression Hub</h1>
+          <p className="cx-hatnote">Achievements, roster, challenges and analytics.</p>
+          <div className="cx-metaline">patch {META.gameVersion}</div>
           <h2 className="cx-sec">Hub tabs</h2>
           <table className="cx-wikitable"><tbody>
             <tr><th scope="row">Tabs</th><td>
@@ -10432,10 +10376,6 @@
                 <tr><th scope="row">Favorites</th><td className="text-center"><p className="text-2xl font-bold text-zinc-200">{ownedCharacters.filter(character => progression.characters?.[character.id]?.favorite).length}</p></td></tr>
                 <tr><th scope="row">Teachable Perks Unlocked</th><td className="text-center"><p className="text-2xl font-bold text-zinc-100">{unlockedTeachableTotal}</p></td></tr>
                 <tr><th scope="row">Coverage note</th><td>
-                  <InfoCallout lines={[
-                    'Perks are no longer tracked manually here. Personal perks now unlock from roster prestige.',
-                    'For owned-only filtering and build pools, a character starts contributing their teachable perks at prestige 1.'
-                  ]} />
                 </td></tr>
                 <tr><th scope="row">Role filter</th><td>
                   <div className="flex gap-2 flex-wrap items-center">
@@ -11197,7 +11137,7 @@
                                       {release.maps.map(map => (
                                         <p key={map.name} style={{ margin: '2px 0', color: 'var(--text-soft)' }}>
                                           <span className="font-semibold text-zinc-100">{map.name}</span>
-                                          {map.realm ? <span style={{ color: 'var(--text-faint)' }}> \u2014 {map.realm}</span> : null}
+                                          {map.realm ? <span style={{ color: 'var(--text-faint)' }}> — {map.realm}</span> : null}
                                         </p>
                                       ))}
                                     </div>
@@ -11874,9 +11814,9 @@
           </div>
           <div className="max-w-3xl mx-auto flex flex-wrap justify-center gap-2 mb-4">
             {['All', 'Killer', 'Survivor', 'Universal'].map(opt => (
-              <GlassButton key={opt} active={filterRole === opt} onClick={() => setFilterRole(opt)} className="text-xs py-2 px-3">{opt}</GlassButton>
+<button key={opt} type="button" className="px-4 py-2 text-xs rounded-lg border transition-colors {filterRole === opt ? 'bg-zinc-100 text-black border-zinc-100 font-bold' : 'bg-transparent text-zinc-300 border-white/15 hover:border-white/30'}">{opt}</button>
             ))}
-            <GlassButton active={filterSecret} onClick={() => setFilterSecret(!filterSecret)} className="text-xs py-2 px-3">Secret</GlassButton>
+<button type="button" onClick={() =>  setFilterSecret(!filterSecret) } className="px-4 py-2 text-xs rounded-lg border transition-colors {filterSecret ? 'bg-zinc-100 text-black border-zinc-100 font-bold' : 'bg-transparent text-zinc-300 border-white/15 hover:border-white/30'}">Secret</button>
             <select value={sortBy} onChange={e => setSortBy(e.target.value)} className="themed-select compact text-sm ml-2">
               <option value="rarity">Sort by Rarity</option>
               <option value="name">Sort A-Z</option>
@@ -12191,7 +12131,9 @@
       return (
         <div className="flex flex-col h-full pt-12 pb-32 px-6 overflow-y-auto custom-scrollbar" data-smoke-cosmetics="true">
           <ViewCrumbs trail={[{ label: 'Main page', onClick: onBack }]} current="Cosmetics" />
-          <Header title="Cosmetics" subtitle={`${readyCosmetics.length} cosmetics • ${characterSwapCount} character swaps`} onBack={onBack} />
+          <h1 className="cx-title">Cosmetics</h1>
+          <p className="cx-hatnote">Browse all cosmetics by role, character, and rarity.</p>
+          <div className="cx-metaline">{readyCosmetics.length} cosmetics · {characterSwapCount} character swaps · patch {META.gameVersion}</div>
           {showFullSetPackBanner && (
             <div className="max-w-5xl mx-auto w-full mb-4">
               <div className="p-4 rounded-xl bg-[var(--panel)] border border-[var(--stroke)] space-y-3">
@@ -12240,7 +12182,7 @@
             <div className="flex flex-wrap items-center justify-center gap-2">
               <span className="text-[10px] text-zinc-500 uppercase tracking-[0.18em]">Role</span>
               {['Killer', 'Survivor'].map((role) => (
-                <GlassButton key={role} active={roleFilter === role} onClick={() => setRoleFilter(role)} className="text-xs py-2 px-3">{role}</GlassButton>
+<button key={role} type="button" className="px-4 py-2 text-xs rounded-lg border transition-colors {roleFilter === role ? 'bg-zinc-100 text-black border-zinc-100 font-bold' : 'bg-transparent text-zinc-300 border-white/15 hover:border-white/30'}">{role}</button>
               ))}
             </div>
             <div className="flex flex-wrap items-center justify-center gap-2">
@@ -12681,8 +12623,8 @@
             {activeTab === 'builds' && (
               <div className="space-y-3">
                 <div className="flex flex-wrap gap-2 items-center">
-                  <GlassButton active={buildRole === 'killers'} onClick={() => setBuildRole('killers')} className="text-xs py-2 px-3">Killers</GlassButton>
-                  <GlassButton active={buildRole === 'survivors'} onClick={() => setBuildRole('survivors')} className="text-xs py-2 px-3">Survivors</GlassButton>
+<button type="button" onClick={() =>  setBuildRole('killers') } className="px-4 py-2 text-xs rounded-lg border transition-colors {buildRole === 'killers' ? 'bg-zinc-100 text-black border-zinc-100 font-bold' : 'bg-transparent text-zinc-300 border-white/15 hover:border-white/30'}">Killers</button>
+<button type="button" onClick={() =>  setBuildRole('survivors') } className="px-4 py-2 text-xs rounded-lg border transition-colors {buildRole === 'survivors' ? 'bg-zinc-100 text-black border-zinc-100 font-bold' : 'bg-transparent text-zinc-300 border-white/15 hover:border-white/30'}">Survivors</button>
                   <select value={selectedBuildProfileId} onChange={(event) => setSelectedBuildProfileId(event.target.value)} className="themed-select min-w-[220px] text-xs">
                     {buildProfiles.map((profile) => <option key={profile.id} value={profile.id}>{profile.name}</option>)}
                   </select>
@@ -12749,8 +12691,8 @@
             {activeTab === 'characters' && (
               <div className="space-y-3">
                 <div className="flex flex-wrap gap-2 items-center">
-                  <GlassButton active={characterRole === 'killer'} onClick={() => setCharacterRole('killer')} className="text-xs py-2 px-3">Killers</GlassButton>
-                  <GlassButton active={characterRole === 'survivor'} onClick={() => setCharacterRole('survivor')} className="text-xs py-2 px-3">Survivors</GlassButton>
+<button type="button" onClick={() =>  setCharacterRole('killer') } className="px-4 py-2 text-xs rounded-lg border transition-colors {characterRole === 'killer' ? 'bg-zinc-100 text-black border-zinc-100 font-bold' : 'bg-transparent text-zinc-300 border-white/15 hover:border-white/30'}">Killers</button>
+<button type="button" onClick={() =>  setCharacterRole('survivor') } className="px-4 py-2 text-xs rounded-lg border transition-colors {characterRole === 'survivor' ? 'bg-zinc-100 text-black border-zinc-100 font-bold' : 'bg-transparent text-zinc-300 border-white/15 hover:border-white/30'}">Survivors</button>
                   <input
                     value={characterSearch}
                     onChange={(event) => setCharacterSearch(event.target.value)}
@@ -13183,7 +13125,9 @@
       return (
         <div className="flex flex-col h-full pt-12 pb-32 px-6 overflow-y-auto custom-scrollbar">
           <ViewCrumbs trail={[{ label: 'Main page', onClick: onBack }]} current="Settings" />
-          <Header title="Settings" subtitle="Website preferences" onBack={onBack} />
+          <h1 className="cx-title">Settings</h1>
+          <p className="cx-hatnote">Website preferences and backups.</p>
+          <div className="cx-metaline">patch {META.gameVersion}</div>
           <div className="pb-32 -mx-6 px-6 space-y-4">
             {isMobile && settings.googlePlayCtaHidden === true && (
               <div>
@@ -13670,7 +13614,9 @@
             }} />
             <div className="relative z-10">
               <ViewCrumbs trail={[{ label: 'Main page', onClick: onBack }]} current="The Entity's Offering" />
-              <Header title="The Entity's Offering" subtitle="Prestige Calculator" onBack={onBack} />
+              <h1 className="cx-title">The Entity's Offering</h1>
+              <p className="cx-hatnote">Bloodpoint calculator for prestige goals.</p>
+              <div className="cx-metaline">patch {META.gameVersion}</div>
               <p className="text-zinc-100/80 text-sm italic font-medium tracking-wide text-center mb-4">{getEntityQuote()}</p>
               <h2 className="cx-sec">Prestige inputs</h2>
               <table className="cx-wikitable"><tbody>
@@ -13992,7 +13938,7 @@
           {/* Filter Pills */}
           <div className="max-w-3xl mx-auto flex flex-wrap justify-center gap-2 mb-2 px-4">
             {filters.map(f => (
-              <GlassButton key={f} active={filter === f} onClick={() => setFilter(f)} className="text-xs py-2 px-3">{f}</GlassButton>
+<button key={f} type="button" className="px-4 py-2 text-xs rounded-lg border transition-colors {filter === f ? 'bg-zinc-100 text-black border-zinc-100 font-bold' : 'bg-transparent text-zinc-300 border-white/15 hover:border-white/30'}">{f}</button>
             ))}
           </div>
 
