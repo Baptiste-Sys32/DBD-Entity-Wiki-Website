@@ -1566,6 +1566,9 @@
       color: var(--text-faint);
       border-top: 1px solid var(--stroke);
     }
+    .cx-gloss { margin-top: 14px; font-size: 13.5px; }
+    .cx-gloss dt { font-weight: 700; margin-top: 12px; color: var(--text); }
+    .cx-gloss dd { margin: 2px 0 0 0; color: var(--text-soft); }
     .cx-toc {
       border: 1px solid var(--stroke);
       background: var(--glass-bg);
@@ -7757,39 +7760,33 @@
               </div>
             </div>
           </div>
-          <div className="pb-32 space-y-6">
+          <div className="w-full max-w-[1280px] mx-auto px-[44px] pb-32">
             {realms.length === 0 && (
               <div className="text-center text-zinc-500 mt-12">No map data available.</div>
             )}
-            {realms.map(([realm, realmMaps]) => (
-              <div key={realm} className="p-4 rounded-xl bg-[var(--panel)] border border-[var(--stroke)]">
-                <div className="flex items-center justify-between mb-3">
-                  <h3 className="text-lg font-bold text-white">{realm}</h3>
-                  <span className="text-xs text-zinc-500 font-bold uppercase tracking-wider">{realmMaps.length} maps</span>
-                </div>
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                  {realmMaps.map(mp => {
-                    const hasLayout = MAP_LAYOUTS[mp.name] && MAP_LAYOUTS[mp.name].length > 0;
-                    return (
-                      <div key={mp.id} className="flex items-start gap-3 p-3 rounded-xl bg-[var(--panel)] border border-[var(--stroke)] hover:border-[var(--accent)] transition-colors">
-                        <AssetFrame type="Map" imageUrl={mp.image} fallbackIcon={<Icons.Map width={20} height={20} className="opacity-30" />} />
-                        <div className="flex-1">
-                          <p className="text-white font-bold text-sm">{mp.name}</p>
-                          <p className="text-zinc-500 text-xs mt-1 line-clamp-2 leading-relaxed">{mp.description}</p>
-                          <button
-                            onClick={() => onViewLayout && onViewLayout(mp)}
-                            className="mt-2 px-3 py-1.5 text-xs font-semibold rounded-lg bg-zinc-500/20 text-zinc-100 hover:bg-zinc-500/30 transition-colors flex items-center gap-1"
-                          >
-                            <Icons.Map width={12} height={12} />
-                            {hasLayout ? 'Open Details + Layout' : 'Open Details'}
-                          </button>
-                        </div>
-                      </div>
-                    );
-                  })}
-                </div>
-              </div>
-            ))}
+            {realms.length > 0 && (
+              <table className="cx-wikitable">
+                <thead><tr><th style={{ width: '220px' }}>Realm</th><th>Maps</th></tr></thead>
+                <tbody>
+                  {realms.map(([realm, realmMaps]) => (
+                    <tr key={realm}>
+                      <td><span className="font-semibold text-zinc-100">{realm}</span><small style={{ display: 'block', color: 'var(--text-faint)', fontSize: '11px' }}>{realmMaps.length} map{realmMaps.length === 1 ? '' : 's'}</small></td>
+                      <td>
+                        {realmMaps.map((mp, idx) => {
+                          const hasLayout = MAP_LAYOUTS[mp.name] && MAP_LAYOUTS[mp.name].length > 0;
+                          return (
+                            <span key={mp.id}>
+                              {idx > 0 && <span className="cx-sep" style={{ color: 'var(--text-faint)' }}> · </span>}
+                              <button type="button" className="cx-alink" onClick={() => onViewLayout && onViewLayout(mp)} title={hasLayout ? 'Open details + layout' : 'Open details'}>{mp.name}</button>
+                            </span>
+                          );
+                        })}
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            )}
           </div>
         </div>
       );
@@ -11284,139 +11281,77 @@
                 {/* Timeline line */}
                 <div className="absolute left-2 top-0 bottom-0 w-0.5" style={{ background: `linear-gradient(to bottom, ${accent}60, ${accent}20)` }} />
 
-                {/* Release cards */}
-                <div className="space-y-4">
-                  {releases.map((release, idx) => {
-                    const isExpanded = expandedRelease === release.id;
-                    const badge = getTypeBadge(release.type, release.chapterNumber);
-                    const hasContent = release.killers?.length > 0 || release.survivors?.length > 0 || release.maps?.length > 0;
-
-                    return (
-                      <div key={release.id} className="relative pl-8">
-                        {/* Timeline node dot */}
-                        <div
-                          className="absolute left-0 top-4 w-4 h-4 rounded-full border-2 flex items-center justify-center"
-                          style={isExpanded
-                            ? { backgroundColor: accent, borderColor: accent }
-                            : { backgroundColor: '#09090b', borderColor: '#52525b' }
-                          }
-                        />
-
-                        {/* Release card */}
-                        <div
-                          className="rounded-xl border border-[var(--stroke)] bg-[var(--panel)] transition-colors"
-                          style={isExpanded
-                            ? { backgroundColor: `${accentSoft}60`, borderColor: `${accent}30`, boxShadow: `0 0 20px ${accent}15` }
-                            : { backgroundColor: 'rgba(255,255,255,0.03)', borderColor: 'rgba(255,255,255,0.05)' }
-                          }
-                        >
-                          <button
-                            onClick={() => toggleRelease(release.id)}
-                            className="w-full text-left p-4"
-                          >
-                            <div className="flex items-start justify-between gap-3">
-                              <div className="flex-1 min-w-0">
-                                {/* Badge */}
-                                <span
-                                  className="timeline-release-badge inline-flex px-2 py-0.5 rounded text-[10px] font-bold uppercase tracking-wide mb-2"
-                                  style={{ backgroundColor: `${accent}20`, color: accent }}
-                                >
-                                  {badge.label}
-                                </span>
-
-                                {/* Date */}
-                                <p className="text-xs text-zinc-500 mb-1">{release.displayDate}</p>
-
-                                {/* Name */}
-                                <h3 className="text-lg font-bold text-white leading-tight [font-family:var(--font-display)]">{release.name}</h3>
-
-                                {/* Content count - simple text */}
-                                {hasContent && (
-                                  <p className="text-xs text-zinc-500 mt-1">
-                                    {(release.killers?.length || 0) + (release.survivors?.length || 0)} character{((release.killers?.length || 0) + (release.survivors?.length || 0)) !== 1 ? 's' : ''}
-                                    {release.maps?.length > 0 && ` • ${release.maps.length} map${release.maps.length !== 1 ? 's' : ''}`}
-                                  </p>
-                                )}
-                              </div>
-
-                              {/* Expand indicator */}
-                              {hasContent && (
-                                <Icons.ChevronDown
-                                  width={18}
-                                  height={18}
-                                  className="text-zinc-500 transition-transform mt-1 flex-shrink-0"
-                                  style={isExpanded ? { color: accent, transform: 'rotate(180deg)' } : {}}
-                                />
-                              )}
-                            </div>
-                          </button>
-
-                          {/* Expanded content */}
-                          {isExpanded && hasContent && (
-                            <div className="px-4 pb-4 animate-fadeIn">
-                              {/* Description */}
-                              {release.description && (
-                                <p className="text-sm text-zinc-400 mb-4 leading-relaxed border-t border-white/5 pt-4">{release.description}</p>
-                              )}
-
-                              {/* Killers */}
-                              {release.killers?.length > 0 && (
-                                <div className="mb-4">
-                                  <p className="text-[10px] text-zinc-500 uppercase tracking-wider font-bold mb-2">
-                                    Killers ({release.killers.length})
-                                  </p>
-                                  {release.killers.map(killer => (
-                                    <CharacterRow
-                                      key={killer.id}
-                                      loreChar={killer}
-                                      type="killers"
-                                      charKey={`killer-${killer.id}`}
-                                    />
-                                  ))}
-                                </div>
-                              )}
-
-                              {/* Survivors */}
-                              {release.survivors?.length > 0 && (
-                                <div className="mb-4">
-                                  <p className="text-[10px] text-zinc-500 uppercase tracking-wider font-bold mb-2">
-                                    Survivors ({release.survivors.length})
-                                  </p>
-                                  {release.survivors.map(survivor => (
-                                    <CharacterRow
-                                      key={survivor.id}
-                                      loreChar={survivor}
-                                      type="survivors"
-                                      charKey={`survivor-${survivor.id}`}
-                                    />
-                                  ))}
-                                </div>
-                              )}
-
-                              {/* Maps */}
-                              {release.maps?.length > 0 && (
-                                <div>
-                                  <p className="text-[10px] text-zinc-500 uppercase tracking-wider font-bold mb-2">
-                                    Maps ({release.maps.length})
-                                  </p>
-                                  <div className="space-y-1">
-                                    {release.maps.map(map => (
-                                      <div key={map.name} className="flex items-center gap-3 p-2.5 rounded-xl bg-[var(--panel)] border border-[var(--stroke)]">
-                                        <div>
-                                          <p className="text-white font-medium text-sm">{map.name}</p>
-                                          <p className="text-[11px] text-zinc-500">{map.realm}</p>
-                                        </div>
-                                      </div>
-                                    ))}
-                                  </div>
-                                </div>
-                              )}
-                            </div>
-                          )}
-                        </div>
-                      </div>
-                    );
-                  })}
+                {/* Chronicle table */}
+                <div>
+                  <table className="cx-wikitable">
+                    <thead><tr><th style={{ whiteSpace: 'nowrap', width: '150px' }}>Date</th><th style={{ width: '260px' }}>Release</th><th style={{ width: '110px' }}>Type</th><th>Summary</th></tr></thead>
+                    <tbody>
+                      {releases.map((release, idx) => {
+                        const isExpanded = expandedRelease === release.id;
+                        const badge = getTypeBadge(release.type, release.chapterNumber);
+                        const hasContent = release.killers?.length > 0 || release.survivors?.length > 0 || release.maps?.length > 0;
+                        const charCount = (release.killers?.length || 0) + (release.survivors?.length || 0);
+                        return (
+                          <React.Fragment key={release.id}>
+                            <tr
+                              onClick={() => hasContent && toggleRelease(release.id)}
+                              className={hasContent ? 'cursor-pointer' : undefined}
+                            >
+                              <td style={{ whiteSpace: 'nowrap', color: 'var(--dim)' }}>{release.displayDate}</td>
+                              <td>
+                                <span className="font-semibold text-zinc-100">{release.name}</span>
+                                {release.chapterNumber ? <small style={{ display: 'block', color: 'var(--text-faint)', fontSize: '11px' }}>Chapter {release.chapterNumber}</small> : null}
+                              </td>
+                              <td>{badge.label}</td>
+                              <td>
+                                {hasContent ? (
+                                  <span style={{ color: 'var(--dim)' }}>
+                                    {charCount} character{charCount !== 1 ? 's' : ''}
+                                    {release.maps?.length > 0 ? ` \u00b7 ${release.maps.length} map${release.maps.length !== 1 ? 's' : ''}` : ''}
+                                    {' \u2014 click for details'}
+                                  </span>
+                                ) : (release.description ? <span style={{ color: 'var(--dim)' }}>{String(release.description).slice(0, 160)}{release.description.length > 160 ? '\u2026' : ''}</span> : '\u2014')}
+                              </td>
+                            </tr>
+                            {isExpanded && hasContent && (
+                              <tr className="cx-row-compare">
+                                <td colSpan={4}>
+                                  {release.description && <p style={{ color: 'var(--text-soft)', marginBottom: '12px' }}>{release.description}</p>}
+                                  {release.killers?.length > 0 && (
+                                    <div style={{ marginBottom: '12px' }}>
+                                      <p style={{ fontSize: '10px', textTransform: 'uppercase', letterSpacing: '0.08em', color: 'var(--text-faint)', fontWeight: 700, marginBottom: '6px' }}>Killers ({release.killers.length})</p>
+                                      {release.killers.map(killer => (
+                                        <CharacterRow key={killer.id} loreChar={killer} type="killers" charKey={`killer-${killer.id}`} />
+                                      ))}
+                                    </div>
+                                  )}
+                                  {release.survivors?.length > 0 && (
+                                    <div style={{ marginBottom: '12px' }}>
+                                      <p style={{ fontSize: '10px', textTransform: 'uppercase', letterSpacing: '0.08em', color: 'var(--text-faint)', fontWeight: 700, marginBottom: '6px' }}>Survivors ({release.survivors.length})</p>
+                                      {release.survivors.map(survivor => (
+                                        <CharacterRow key={survivor.id} loreChar={survivor} type="survivors" charKey={`survivor-${survivor.id}`} />
+                                      ))}
+                                    </div>
+                                  )}
+                                  {release.maps?.length > 0 && (
+                                    <div>
+                                      <p style={{ fontSize: '10px', textTransform: 'uppercase', letterSpacing: '0.08em', color: 'var(--text-faint)', fontWeight: 700, marginBottom: '6px' }}>Maps ({release.maps.length})</p>
+                                      {release.maps.map(map => (
+                                        <p key={map.name} style={{ margin: '2px 0', color: 'var(--text-soft)' }}>
+                                          <span className="font-semibold text-zinc-100">{map.name}</span>
+                                          {map.realm ? <span style={{ color: 'var(--text-faint)' }}> \u2014 {map.realm}</span> : null}
+                                        </p>
+                                      ))}
+                                    </div>
+                                  )}
+                                </td>
+                              </tr>
+                            )}
+                          </React.Fragment>
+                        );
+                      })}
+                    </tbody>
+                  </table>
                 </div>
               </div>
             )}
@@ -11568,12 +11503,14 @@
           {/* Main content */}
           <div ref={scrollRef} className="flex-1 overflow-y-auto custom-scrollbar px-6 pb-28 md:pb-8">
             <ViewCrumbs trail={[{ label: 'Main page', onClick: onBack }]} current="Glossary" />
-            <Header title="Glossary" subtitle={`${allTerms.length} terms`} onBack={onBack} />
+            <h1 className="cx-title">Glossary</h1>
+            <p className="cx-hatnote">Community terminology and callouts.</p>
+            <div className="cx-metaline">{allTerms.length} terms · patch {META.gameVersion}</div>
 
             {/* Search bar */}
             <div className="sticky top-0 z-20 -mx-6 px-6 pb-4 pointer-events-none">
               <div className="relative max-w-3xl mx-auto">
-                <div className="relative flex items-center bg-zinc-800/60 backdrop-blur-xl border border-white/10 rounded-3xl p-2 shadow-2xl pointer-events-auto">
+                <div className="relative flex items-center bg-white/5 border border-white/15 rounded-lg p-2 pointer-events-auto">
                   <div className="pl-4 text-zinc-400"><Icons.Search width={18} height={18} /></div>
                   <input
                     value={search}
@@ -11598,27 +11535,17 @@
                 availableLetters.map(letter => (
                   <div key={letter} id={`glossary-${letter}`}>
                     {/* Letter header */}
-                    <div className="sticky top-16 z-10 py-2 -mx-2 px-2 mb-2 backdrop-blur-md">
-                      <div className="flex items-center gap-3">
-                        <span className="text-2xl font-black text-white" style={{ color: 'var(--accent)' }}>{letter}</span>
-                        <div className="flex-1 h-px bg-[var(--stroke)]"></div>
-                        <span className="text-[10px] text-zinc-500 font-bold uppercase tracking-wider">{groupedTerms[letter].length}</span>
-                      </div>
-                    </div>
+                    <h3 className="cx-sub" style={{ borderBottom: '1px solid var(--line-soft)', paddingBottom: '4px' }}>{letter} <span style={{ color: 'var(--text-faint)', fontSize: '12px', fontWeight: 400 }}>{groupedTerms[letter].length}</span></h3>
 
                     {/* Terms for this letter */}
-                    <div className="space-y-2 mb-6">
+                    <dl className="cx-gloss">
                       {groupedTerms[letter].map(item => (
-                        <div key={item.term} className="p-3 rounded-xl bg-[var(--panel)] border border-[var(--stroke)]">
-                          <div className="flex items-start gap-3">
-                            <div className="flex-1">
-                              <p className="text-white text-sm font-bold mb-1">{item.term}</p>
-                              <p className="text-zinc-400 text-xs leading-relaxed">{item.def}</p>
-                            </div>
-                          </div>
-                        </div>
+                        <React.Fragment key={item.term}>
+                          <dt>{item.term}</dt>
+                          <dd>{item.def}</dd>
+                        </React.Fragment>
                       ))}
-                    </div>
+                    </dl>
                   </div>
                 ))
               )}
