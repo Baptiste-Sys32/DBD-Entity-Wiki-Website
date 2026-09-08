@@ -11821,7 +11821,8 @@
 <div className="pb-32 space-y-3 -mx-6 px-6">
             {mode === 'survivor' && (
               filteredItems.length === 0 ? <div className="text-center text-zinc-500 mt-12">No items found.</div> :
-              <table className="cx-wikitable"><tbody>
+              <table className="cx-wikitable">
+                <thead><tr><th>Item</th><th>Rarity</th><th>Effect</th><th aria-hidden="true"></th></tr></thead><tbody>
                 {filteredItems.map(item => {
                   const isExpanded = expandedId === item.id;
                   const itemAddons = getAddonsForItemType(item.itemType);
@@ -11837,22 +11838,22 @@
                       className={`cursor-pointer ${initialTargetType === 'item' && initialTargetId === item.id ? 'border-white/15 shadow-[0_0_0_1px_rgba(34,211,238,0.12)]' : 'border-white/5'}`}
                     >
                       <td className="cx-perkcell">
-                        <div className="w-16 h-16 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center flex-shrink-0 overflow-hidden">
-                          <AssetFrame type="Item" imageUrl={item.image} fallbackIcon={<Icons.Package width={24} height={24} className="text-white/40" />} />
+                        <div className="cx-perkcell-inner">
+                          <div style={{ width: 34, height: 34, overflow: 'hidden', flexShrink: 0, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                            <AssetFrame type="Item" imageUrl={item.image} fallbackIcon={<Icons.Package width={24} height={24} className="text-white/40" />} size="fill" />
+                          </div>
+                          <span>
+                            <span className="font-semibold text-zinc-100">{item.name}</span>
+                            <small>{item.itemType ? item.itemType.charAt(0).toUpperCase() + item.itemType.slice(1) : 'Item'}</small>
+                          </span>
                         </div>
                       </td>
-                      <td className="cx-sec">
-                        <h3 className="text-lg font-bold text-white">{item.name}</h3>
-                        <div className="flex items-center gap-2">
-                          <span className="text-xs text-zinc-500 font-bold uppercase tracking-wider">{item.itemType || 'Item'}</span>
-                          <span className="text-[10px] px-2 py-1 rounded-md bg-white/5 font-bold" style={{ color: getRarityColor(item.rarity) }}>{formatRarity(item.rarity)}</span>
-                        </div>
-                        {item.description && <p className="text-zinc-500 text-xs mt-2 leading-relaxed">{stripHtml(item.description)}</p>}
-                      </td>
-                      <td>
+                      <td className="cx-rarity">{formatRarity(item.rarity)}</td>
+                      <td>{item.description ? stripHtml(item.description) : '\u2014'}</td>
+                      <td className="cx-star">
                         {onToggleFavoriteItem && (
-                          <button onClick={(e) => { e.stopPropagation(); onToggleFavoriteItem(item.id); }} className={`p-1.5 rounded-full transition-colors flex-shrink-0 ${favoriteItems.includes(item.id) ? 'bg-white/10' : 'bg-white/10 hover:bg-white/20'}`}>
-                            <Icons.Star width={16} height={16} className={favoriteItems.includes(item.id) ? 'text-zinc-100 fill-zinc-100' : 'text-zinc-500'} />
+                          <button type="button" onClick={(e) => { e.stopPropagation(); onToggleFavoriteItem(item.id); }} aria-label="Toggle favorite" className={favoriteItems.includes(item.id) ? 'cx-star-on' : undefined}>
+                            {favoriteItems.includes(item.id) ? '\u2605' : '\u2606'}
                           </button>
                         )}
                       </td>
@@ -11860,8 +11861,9 @@
                     {isExpanded && itemAddons.length > 0 && (
                       <tr key={item.id + '-addons'}>
                         <td colSpan={3}>
-                          <p className="text-xs text-zinc-500 font-bold uppercase mb-2">Compatible Addons ({itemAddons.length})</p>
-                          <table className="cx-wikitable"><tbody>
+                          <p className="text-xs text-zinc-500 font-bold uppercase mb-2">Compatible Add-ons ({itemAddons.length})</p>
+                          <table className="cx-wikitable">
+                            <thead><tr><th style={{ paddingLeft: '58px' }}>Add-on</th><th>Rarity</th><th>Effect</th><th aria-hidden="true"></th></tr></thead><tbody>
                             {itemAddons.map(addon => (
                               <tr
                                 key={addon.id}
@@ -11874,23 +11876,20 @@
                                 style={{ boxShadow: getRarityGlow(addon.rarity, settings.rarityGlows !== false) }}
                               >
                                 <td className="cx-perkcell">
-                                  <div className="w-10 h-10 rounded-lg bg-white/5 border border-white/10 flex-shrink-0 overflow-hidden">
-                                    <AssetFrame type="Addon" size="fill" imageUrl={addon.image} fallbackIcon={<Icons.Wrench width={16} height={16} className="text-white/40" />} />
+                                  <div className="cx-perkcell-inner">
+                                    <span>
+                                      <span className="font-semibold text-zinc-100">{addon.name}</span>
+                                    </span>
                                   </div>
                                 </td>
-                                <td className="cx-sec">
-                                  <div className="flex justify-between items-start">
-                                    <p className="text-white text-sm font-bold">{addon.name}</p>
-                                    <div className="flex items-center gap-1 flex-shrink-0">
-                                      {onToggleFavoriteAddon && (
-                                        <button onClick={(e) => { e.stopPropagation(); onToggleFavoriteAddon(addon.id); }} className={`p-1 rounded-full transition-colors ${favoriteAddons.includes(addon.id) ? 'bg-white/10' : 'bg-white/5 hover:bg-white/10'}`}>
-                                          <Icons.Star width={12} height={12} className={favoriteAddons.includes(addon.id) ? 'text-zinc-100 fill-zinc-100' : 'text-zinc-600'} />
-                                        </button>
-                                      )}
-                                      <span className="text-[10px] font-bold ml-1" style={{ color: getRarityColor(addon.rarity) }}>{formatRarity(addon.rarity)}</span>
-                                    </div>
-                                  </div>
-                                  {addon.description && <p className="text-zinc-500 text-xs mt-1">{stripHtml(addon.description)}</p>}
+                                <td className="cx-rarity">{formatRarity(addon.rarity)}</td>
+                                <td style={{ color: 'var(--dim)' }}>{addon.description ? stripHtml(addon.description) : '\u2014'}</td>
+                                <td className="cx-star">
+                                  {onToggleFavoriteAddon && (
+                                    <button type="button" onClick={(e) => { e.stopPropagation(); onToggleFavoriteAddon(addon.id); }} aria-label="Toggle favorite" className={favoriteAddons.includes(addon.id) ? 'cx-star-on' : undefined}>
+                                      {favoriteAddons.includes(addon.id) ? '\u2605' : '\u2606'}
+                                    </button>
+                                  )}
                                 </td>
                               </tr>
                             ))}
@@ -11912,7 +11911,8 @@
             )}
             {mode === 'killer' && (
               filteredKillers.length === 0 ? <div className="text-center text-zinc-500 mt-12">No killers found.</div> :
-              <table className="cx-wikitable"><tbody>
+              <table className="cx-wikitable">
+                <thead><tr><th>Killer</th><th>Add-ons</th><th aria-hidden="true"></th></tr></thead><tbody>
                 {filteredKillers.map(killer => {
                   const isExpanded = expandedId === killer.id;
                   const powerAddons = getAddonsForKiller(killer);
@@ -11928,28 +11928,24 @@
                       className={`cursor-pointer ${initialTargetType === 'addon' && targetAddon?.role === 'killer' && targetKillerAddonHost?.id === killer.id ? 'border-white/15 shadow-[0_0_0_1px_rgba(34,211,238,0.12)]' : 'border-white/5'}`}
                     >
                       <td className="cx-perkcell">
-                        <div className="w-20 h-20 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center flex-shrink-0 overflow-hidden">
-                          <AssetFrame
-                            type="Killer"
-                            size="fill"
-                            imageUrl={killer.image}
-                            fallbackIcon={<Icons.User width={28} height={28} className="text-zinc-500" />}
-                          />
+                        <div className="cx-perkcell-inner">
+                          <div style={{ width: 34, height: 34, overflow: 'hidden', flexShrink: 0, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                            <AssetFrame type="Killer" size="fill" imageUrl={killer.image} fallbackIcon={<Icons.User width={28} height={28} className="text-zinc-500" />} />
+                          </div>
+                          <span>
+                            <span className="font-semibold text-zinc-100">{killer.name}</span>
+                            {killer.realName && killer.realName !== killer.name ? <small>{killer.realName}</small> : null}
+                          </span>
                         </div>
                       </td>
-                      <td className="cx-sec">
-                        <div className="flex items-center justify-between">
-                          <h3 className="text-lg font-bold text-white">{killer.name}</h3>
-                          <span className="text-xs text-zinc-500 font-bold uppercase tracking-wider">{powerAddons.length} addons</span>
-                        </div>
-                        <p className="text-zinc-400 text-sm">{killer.realName || killer.power || ''}</p>
-                      </td>
+                      <td>{powerAddons.length} add-ons</td>
                     </tr>
                     {isExpanded && powerAddons.length > 0 && (
                       <tr key={killer.id + '-addons'}>
                         <td colSpan={2}>
-                          <p className="text-xs text-zinc-500 font-bold uppercase mb-2">Power Addons</p>
-                          <table className="cx-wikitable"><tbody>
+                          <p className="text-xs text-zinc-500 font-bold uppercase mb-2">Power Add-ons</p>
+                          <table className="cx-wikitable">
+                            <thead><tr><th style={{ paddingLeft: '58px' }}>Add-on</th><th>Rarity</th><th>Effect</th><th aria-hidden="true"></th></tr></thead><tbody>
                             {powerAddons.map(addon => (
                               <tr
                                 key={addon.id}
@@ -11962,23 +11958,20 @@
                                 style={{ boxShadow: getRarityGlow(addon.rarity, settings.rarityGlows !== false) }}
                               >
                                 <td className="cx-perkcell">
-                                  <div className="w-10 h-10 rounded-lg bg-white/5 border border-white/10 flex-shrink-0 overflow-hidden">
-                                    <AssetFrame type="Addon" size="fill" imageUrl={addon.image} fallbackIcon={<Icons.Wrench width={16} height={16} className="text-white/40" />} />
+                                  <div className="cx-perkcell-inner">
+                                    <span>
+                                      <span className="font-semibold text-zinc-100">{addon.name}</span>
+                                    </span>
                                   </div>
                                 </td>
-                                <td className="cx-sec">
-                                  <div className="flex justify-between items-start">
-                                    <p className="text-white text-sm font-bold">{addon.name}</p>
-                                    <div className="flex items-center gap-1 flex-shrink-0">
-                                      {onToggleFavoriteAddon && (
-                                        <button onClick={(e) => { e.stopPropagation(); onToggleFavoriteAddon(addon.id); }} className={`p-1 rounded-full transition-colors ${favoriteAddons.includes(addon.id) ? 'bg-white/10' : 'bg-white/5 hover:bg-white/10'}`}>
-                                          <Icons.Star width={12} height={12} className={favoriteAddons.includes(addon.id) ? 'text-zinc-100 fill-zinc-100' : 'text-zinc-600'} />
-                                        </button>
-                                      )}
-                                      <span className="text-[10px] font-bold ml-1" style={{ color: getRarityColor(addon.rarity) }}>{formatRarity(addon.rarity)}</span>
-                                    </div>
-                                  </div>
-                                  {addon.description && <p className="text-zinc-500 text-xs mt-1">{stripHtml(addon.description)}</p>}
+                                <td className="cx-rarity">{formatRarity(addon.rarity)}</td>
+                                <td style={{ color: 'var(--dim)' }}>{addon.description ? stripHtml(addon.description) : '\u2014'}</td>
+                                <td className="cx-star">
+                                  {onToggleFavoriteAddon && (
+                                    <button type="button" onClick={(e) => { e.stopPropagation(); onToggleFavoriteAddon(addon.id); }} aria-label="Toggle favorite" className={favoriteAddons.includes(addon.id) ? 'cx-star-on' : undefined}>
+                                      {favoriteAddons.includes(addon.id) ? '\u2605' : '\u2606'}
+                                    </button>
+                                  )}
                                 </td>
                               </tr>
                             ))}
@@ -12107,7 +12100,8 @@
           </div>
 <div className="pb-32 space-y-3 -mx-6 px-6">
             {filtered.length === 0 && <div className="text-center text-zinc-500 mt-12">No offerings found.</div>}
-            <table className="cx-wikitable"><tbody>
+            <table className="cx-wikitable">
+            <thead><tr><th>Offering</th><th>Role</th><th>Rarity</th><th>Effect</th><th aria-hidden="true"></th></tr></thead><tbody>
             {filtered.map(offering => {
               const isExpanded = expandedId === offering.id;
               return (
@@ -12118,29 +12112,25 @@
                     if (node) offeringRefs.current[offering.id] = node;
                     else delete offeringRefs.current[offering.id];
                   }}
-                  onClick={() => setExpandedId(isExpanded ? null : offering.id)}
-                  className={`cursor-pointer ${initialTargetId === offering.id ? 'border-white/15 shadow-[0_0_0_1px_rgba(34,211,238,0.12)]' : 'border-white/5'}`}
                 >
                   <td className="cx-perkcell">
-                    <div className="w-16 h-16 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center flex-shrink-0 overflow-hidden">
-                      <AssetFrame type="Offering" imageUrl={offering.image} fallbackIcon={<Icons.Flame width={24} height={24} className="text-white/40" />} />
+                    <div className="cx-perkcell-inner">
+                      <div style={{ width: 34, height: 34, overflow: 'hidden', flexShrink: 0, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                        <AssetFrame type="Offering" imageUrl={offering.image} fallbackIcon={<Icons.Flame width={24} height={24} className="text-white/40" />} size="fill" />
+                      </div>
+                      <span>
+                        <span className="font-semibold text-zinc-100">{offering.name}</span>
+                      </span>
                     </div>
                   </td>
-                  <td className="cx-sec">
-                    <div className="flex items-center justify-between mb-1">
-                      <h3 className="text-lg font-bold text-white">{offering.name}</h3>
-                      <div className="flex items-center gap-2">
-                        {onToggleFavoriteOffering && (
-                          <button onClick={(e) => { e.stopPropagation(); onToggleFavoriteOffering(offering.id); }} className={`p-1.5 rounded-full transition-colors ${favoriteOfferings.includes(offering.id) ? 'bg-white/10' : 'bg-white/10 hover:bg-white/20'}`}>
-                            <Icons.Star width={16} height={16} className={favoriteOfferings.includes(offering.id) ? 'text-zinc-100 fill-zinc-100' : 'text-zinc-500'} />
-                          </button>
-                        )}
-                        <span className="text-xs font-bold uppercase tracking-wider" style={{ color: getRoleColor(offering.role) }}>{formatRole(offering.role)}</span>
-                      </div>
-                    </div>
-                    <span className="text-[10px] px-2 py-1 rounded-md bg-white/5 font-bold" style={{ color: getRarityColor(offering.rarity) }}>{formatRarity(offering.rarity)}</span>
-                    {offering.description && (
-                      <p className="text-zinc-400 text-xs mt-3 leading-relaxed">{offering.description}</p>
+                  <td>{formatRole(offering.role)}</td>
+                  <td className="cx-rarity">{formatRarity(offering.rarity)}</td>
+                  <td>{offering.description || '\u2014'}</td>
+                  <td className="cx-star">
+                    {onToggleFavoriteOffering && (
+                      <button type="button" onClick={(e) => { e.stopPropagation(); onToggleFavoriteOffering(offering.id); }} aria-label="Toggle favorite" className={favoriteOfferings.includes(offering.id) ? 'cx-star-on' : undefined}>
+                        {favoriteOfferings.includes(offering.id) ? '\u2605' : '\u2606'}
+                      </button>
                     )}
                   </td>
                 </tr>
