@@ -9520,10 +9520,10 @@
         const guessedKiller = killerCatalog.find(entry => entry.id === guess.id);
         if (!guessedKiller || !target) return null;
         return (
-          <div key={`${guess.id}-${index}`} className="p-3 rounded-2xl bg-zinc-900/60 border border-white/10">
+          <div key={`${guess.id}-${index}`} className="p-3 cx-flatcard">
             <div className="flex items-center justify-between gap-3 mb-2">
               <p className="text-sm font-bold text-white">{guessedKiller.name}</p>
-              <span className={`px-2 py-1 rounded-lg text-[10px] uppercase tracking-wider font-bold ${guess.correct ? 'bg-zinc-100 text-black' : 'bg-white/5 text-zinc-500 border border-white/10'}`}>
+              <span className={`px-2 py-1 border text-[10px] uppercase tracking-wider font-bold ${guess.correct ? 'wl-hit' : 'wl-miss'}`}>
                 {guess.correct ? 'Solved' : 'Wrong'}
               </span>
             </div>
@@ -9536,12 +9536,12 @@
                   ? guessedValue < targetValue ? '↑' : '↓'
                   : '';
                 const palette = exact
-                  ? 'bg-zinc-100 border-zinc-100 text-black'
+                  ? 'wl-hit'
                   : field.key === 'releaseYear'
-                    ? 'bg-white/5 border-white/10 text-zinc-400'
-                    : 'bg-zinc-500/10 border-white/25/20 text-zinc-200';
+                    ? 'wl-miss'
+                    : 'wl-miss--strong';
                 return (
-                  <div key={field.key} className={`p-2 rounded-xl border ${palette}`}>
+                  <div key={field.key} className={`p-2 border ${palette}`}>
                     <p className="text-[10px] uppercase tracking-wider opacity-70 mb-1">{field.label}</p>
                     <p className="text-xs font-semibold">
                       {formatClassicValue(field.key, guessedValue)} {yearHint}
@@ -9582,7 +9582,7 @@
                     type="button"
                     key={modeId}
                     onClick={() => setMode(modeId)}
-                    className={`px-3 py-2 rounded-xl text-xs font-bold uppercase tracking-[0.22em] border transition-all ${mode === modeId ? 'text-white border-white/40 bg-white/10' : 'text-zinc-400 border-white/10 bg-black/20 hover:text-white'}`}
+                    className={`mode-choice px-3 py-2 text-xs font-bold uppercase tracking-[0.22em] ${mode === modeId ? 'mode-choice--active' : ''}`}
                   >
                     {WORLDLE_MODE_META[modeId].label}
                   </button>
@@ -9597,7 +9597,7 @@
                       type="button"
                       key={entry}
                       onClick={() => setQueueType(entry)}
-                      className={`px-3 py-2 rounded-xl text-xs font-bold uppercase tracking-[0.22em] border ${activeQueue === entry ? 'border-white/20 text-zinc-300 bg-white/5' : 'border-white/10 text-zinc-500 bg-black/20'}`}
+                      className={`mode-choice px-3 py-2 text-xs font-bold uppercase tracking-[0.22em] ${activeQueue === entry ? 'mode-choice--active' : ''}`}
                     >
                       {entry === 'daily' ? 'Daily' : 'Practice'}
                     </button>
@@ -9611,7 +9611,7 @@
                   <div className={`flex flex-wrap items-center gap-2 ${isPhoneLayout ? 'mb-1' : ''}`}>
                     <p className="text-[11px] uppercase tracking-[0.28em] text-zinc-500 font-bold">{activeQueue === 'daily' ? 'Daily Puzzle' : 'Practice Queue'}</p>
                     {isPhoneLayout && (
-                      <span className="px-2.5 py-1 rounded-full border border-white/10 bg-black/20 text-[10px] uppercase tracking-[0.22em] text-zinc-300 font-bold">
+                      <span className="cx-chip rounded-full text-[10px] uppercase tracking-[0.22em] font-bold">
                         {compactPuzzleBadge}
                       </span>
                     )}
@@ -9632,7 +9632,7 @@
                 {mode === 'classic' ? (
                   <div className="grid grid-cols-2 gap-2 text-sm">
                     {classicFields.map(field => (
-                      <div key={field.key} className={`p-3 rounded-xl border ${revealedClassicFields[field.key] ? 'bg-white/10 border-white/20' : 'bg-black/25 border-white/5'}`}>
+                      <div key={field.key} className={`p-3 ${revealedClassicFields[field.key] ? 'cx-cell--on' : 'cx-cell'}`}>
                         <p className="text-[10px] uppercase tracking-wider text-zinc-500 mb-1">{field.label}</p>
                         <p className={revealedClassicFields[field.key] ? 'text-zinc-100' : 'text-zinc-300'}>
                           {revealedClassicFields[field.key] ? formatClassicValue(field.key, target[field.key]) : 'Unknown'}
@@ -9645,7 +9645,7 @@
                     {[0, 1, 2].map((index) => {
                       const revealed = index < Math.min(3, 1 + wrongGuesses) || isFinished;
                       return (
-                        <div key={index} className="h-24 rounded-2xl bg-black/25 border border-white/10 flex items-center justify-center text-4xl">
+                        <div key={index} className="cx-cell h-24 flex items-center justify-center text-4xl">
                           {revealed ? (activeEmojiVariant?.displayEmojis?.[index] || '❔') : '❔'}
                         </div>
                       );
@@ -9653,8 +9653,8 @@
                   </div>
                 )}
                 {isFinished && (
-                  <div className={`p-3 rounded-2xl border mt-3 ${session.solved ? 'bg-white/10 border-white/25' : 'bg-white/5 border-white/10'}`}>
-                    <p className="text-[10px] uppercase tracking-[0.22em] font-bold mb-1" style={{ color: session.solved ? '#fafafa' : '#a1a1aa' }}>
+                  <div className={`p-3 border mt-3 ${session.solved ? 'cx-cell--on' : 'cx-cell'}`}>
+                    <p className="text-[10px] uppercase tracking-[0.22em] font-bold mb-1" style={{ color: session.solved ? 'var(--text)' : 'var(--muted)' }}>
                       {session.solved ? 'Solved' : 'Revealed'}
                     </p>
                     <p className="text-lg font-bold text-white">{target.name}</p>
@@ -9665,8 +9665,8 @@
             {(mode === 'survivorPerk' || mode === 'killerPerk') && (
               <tr><th scope="row">Perk</th><td>
                 <div className="grid grid-cols-1 md:grid-cols-[220px,1fr] gap-4 items-center">
-                  <div className="p-4 rounded-2xl bg-black/20 border border-white/10 flex items-center justify-center min-h-[220px]">
-                    <div className="w-32 h-32 rounded-3xl overflow-hidden border border-white/10 bg-zinc-900/70 flex items-center justify-center">
+                  <div className="cx-cell p-4 flex items-center justify-center min-h-[220px]">
+                    <div className="w-32 h-32 overflow-hidden border bg-zinc-900/70 flex items-center justify-center" style={{ borderColor: 'var(--stroke)' }}>
                       <img src={`./${target.image}`} alt="Hidden perk icon" className="w-full h-full object-contain" style={isFinished ? { filter: 'none' } : getPerkRevealStyle()} />
                     </div>
                   </div>
@@ -9682,8 +9682,8 @@
                       </div>
                     </div>
                     {isFinished && (
-                      <div className={`p-3 rounded-2xl border ${session.solved ? 'bg-white/10 border-white/25' : 'bg-white/5 border-white/10'}`}>
-                        <p className="text-[10px] uppercase tracking-[0.22em] font-bold mb-1" style={{ color: session.solved ? '#fafafa' : '#a1a1aa' }}>
+                      <div className={`p-3 border ${session.solved ? 'cx-cell--on' : 'cx-cell'}`}>
+                        <p className="text-[10px] uppercase tracking-[0.22em] font-bold mb-1" style={{ color: session.solved ? 'var(--text)' : 'var(--muted)' }}>
                           {session.solved ? 'Solved' : 'Revealed'}
                         </p>
                         <p className="text-lg font-bold text-white">{target.name}</p>
@@ -9696,8 +9696,8 @@
             {mode === 'teachables' && (
               <tr><th scope="row">Teachables</th><td>
                 <div className="grid grid-cols-1 md:grid-cols-[170px,1fr] gap-4 items-start">
-                  <div className="p-4 rounded-2xl bg-black/20 border border-white/10">
-                    <div className="w-24 h-32 mx-auto rounded-2xl overflow-hidden border border-white/10 bg-zinc-900/70">
+                  <div className="cx-cell p-4">
+                    <div className="w-24 h-32 mx-auto overflow-hidden border bg-zinc-900/70" style={{ borderColor: 'var(--stroke)' }}>
                       <AssetFrame type="Killer" size="fill" imageUrl={target.image} fallbackIcon={<Icons.Sword width={40} height={40} className="text-zinc-600" />} />
                     </div>
                     <p className="text-base font-bold text-white mt-3 text-center">{target.name}</p>
@@ -9708,8 +9708,8 @@
                       {target.teachables.map((perk) => {
                         const solved = solvedIds.includes(perk.id) || isFinished;
                         return (
-                          <div key={perk.id} className={`p-4 rounded-2xl border ${solved ? 'bg-white/10 border-white/25' : 'bg-white/5 border-white/10'}`}>
-                            <div className="w-16 h-16 rounded-xl overflow-hidden bg-black/30 border border-white/10 mb-3">
+                          <div key={perk.id} className={`p-4 ${solved ? 'cx-cell--on' : 'cx-cell'}`}>
+                            <div className="cx-cell w-16 h-16 overflow-hidden mb-3">
                               {solved ? (
                                 <AssetFrame type="Perk" size="fill" imageUrl={perk.image} fallbackIcon={<Icons.BookOpen width={24} height={24} className="text-zinc-600" />} />
                               ) : (
@@ -9722,8 +9722,8 @@
                       })}
                     </div>
                     {isFinished && (
-                      <div className={`p-3 rounded-2xl border ${session.solved ? 'bg-white/10 border-white/25' : 'bg-white/5 border-white/10'}`}>
-                        <p className="text-[10px] uppercase tracking-[0.22em] font-bold mb-1" style={{ color: session.solved ? '#fafafa' : '#a1a1aa' }}>
+                      <div className={`p-3 border ${session.solved ? 'cx-cell--on' : 'cx-cell'}`}>
+                        <p className="text-[10px] uppercase tracking-[0.22em] font-bold mb-1" style={{ color: session.solved ? 'var(--text)' : 'var(--muted)' }}>
                           {session.solved ? 'Solved' : 'Revealed'}
                         </p>
                         <p className="text-sm text-white">Target killer: <span className="font-bold">{target.name}</span></p>
@@ -9759,7 +9759,7 @@
                     autoCapitalize="none"
                     spellCheck={false}
                     enterKeyHint="go"
-                    className="w-full bg-zinc-800/60 border border-white/10 rounded-2xl px-4 py-3 text-sm text-white placeholder-zinc-500"
+                    className="cx-input w-full px-4 py-3 text-sm"
                   />
                   {inputError && <p className="text-xs text-zinc-200 mt-2">{inputError}</p>}
                   {inputNotice && <p className="text-xs text-zinc-200 mt-2">{inputNotice}</p>}
@@ -9770,7 +9770,7 @@
                           type="button"
                           key={option}
                           onClick={() => handleGuessSubmit(option)}
-                          className="px-3 py-2 rounded-xl bg-white/5 border border-white/10 text-zinc-200 text-xs font-semibold hover:bg-white/10"
+                          className="mode-choice px-3 py-2 text-xs font-semibold"
                         >
                           {option}
                         </button>
@@ -9783,15 +9783,15 @@
                   onMouseDown={e => e.preventDefault()}
                   onClick={() => handleGuessSubmit()}
                   disabled={!guessInput.trim() || isFinished}
-                  className="px-5 py-3 rounded-2xl bg-zinc-100 text-black font-bold text-sm disabled:opacity-40 disabled:cursor-not-allowed"
+                  className="cx-toolbtn cx-toolbtn--primary px-5 py-3 text-sm font-bold disabled:opacity-40 disabled:cursor-not-allowed"
                 >
                   Submit
                 </button>
-                <button type="button" onClick={handleGiveUp} disabled={isFinished} className="px-5 py-3 rounded-2xl bg-white/5 border border-white/10 text-zinc-200 font-bold text-sm disabled:opacity-40 disabled:cursor-not-allowed">
+                <button type="button" onClick={handleGiveUp} disabled={isFinished} className="cx-toolbtn cx-toolbtn--quiet px-5 py-3 text-sm font-bold disabled:opacity-40 disabled:cursor-not-allowed">
                   {activeQueue === 'daily' ? 'Reveal' : 'Skip'}
                 </button>
                 {activeQueue === 'practice' && isFinished && (
-                  <button type="button" onClick={advancePractice} className="px-5 py-3 rounded-2xl bg-white/5 border border-white/20 text-zinc-100 font-bold text-sm">
+                  <button type="button" onClick={advancePractice} className="cx-toolbtn cx-toolbtn--quiet px-5 py-3 text-sm font-bold">
                     Next Puzzle
                   </button>
                 )}
@@ -9806,7 +9806,7 @@
               ) : (
                 <div className="space-y-2">
                   {(session.guesses || []).map((guess, index) => (
-                    <div key={`${guess.id || guess.label}-${index}`} className={`p-3 rounded-2xl border ${guess.correct ? 'bg-white/10 border-white/25' : 'bg-white/5 border-white/10'}`}>
+                    <div key={`${guess.id || guess.label}-${index}`} className={`p-3 ${guess.correct ? 'cx-cell--on' : 'cx-cell'}`}>
                       <div className="flex items-center justify-between gap-3">
                         <span className="text-sm font-semibold text-white">{guess.label}</span>
                         <span className={`text-[10px] uppercase tracking-[0.22em] font-bold ${guess.correct ? 'text-zinc-100' : 'text-zinc-500'}`}>
@@ -9823,44 +9823,22 @@
           <h2 className="cx-sec">Statistics</h2>
           <table className="cx-wikitable"><tbody>
             <tr><th scope="row">Stats</th><td>
-              <div className="grid grid-cols-2 gap-3">
-                <div className="p-3 rounded-2xl bg-white/5 border border-white/10 text-center">
-                  <p className="text-2xl font-black text-white">{statsBucket.played}</p>
-                  <p className="text-[10px] uppercase tracking-wider text-zinc-500 mt-1">Played</p>
-                </div>
-                <div className="p-3 rounded-2xl bg-white/5 border border-white/10 text-center">
-                  <p className="text-2xl font-black text-zinc-100">{statsBucket.solved}</p>
-                  <p className="text-[10px] uppercase tracking-wider text-zinc-500 mt-1">Solved</p>
-                </div>
-                <div className="p-3 rounded-2xl bg-white/5 border border-white/10 text-center">
-                  <p className="text-2xl font-black text-zinc-200">{statsBucket.averageGuesses || 0}</p>
-                  <p className="text-[10px] uppercase tracking-wider text-zinc-500 mt-1">Avg Guesses</p>
-                </div>
-                <div className="p-3 rounded-2xl bg-white/5 border border-white/10 text-center">
-                  <p className="text-2xl font-black text-zinc-200">{activeQueue === 'daily' ? statsBucket.bestStreak : historyRows.length}</p>
-                  <p className="text-[10px] uppercase tracking-wider text-zinc-500 mt-1">{activeQueue === 'daily' ? 'Best Streak' : 'Recent Runs'}</p>
-                </div>
-              </div>
-              {activeQueue === 'daily' && (
-                <div className="grid grid-cols-2 gap-3 mt-3">
-                  <div className="p-3 rounded-2xl bg-white/5 border border-white/10 text-center">
-                    <p className="text-xl font-black text-white">{statsBucket.currentStreak}</p>
-                    <p className="text-[10px] uppercase tracking-wider text-zinc-500 mt-1">Current Streak</p>
-                  </div>
-                  <div className="p-3 rounded-2xl bg-white/5 border border-white/10 text-center">
-                    <p className="text-xl font-black text-white">{statsBucket.solved && statsBucket.played ? Math.round((statsBucket.solved / statsBucket.played) * 100) : 0}%</p>
-                    <p className="text-[10px] uppercase tracking-wider text-zinc-500 mt-1">Solve Rate</p>
-                  </div>
-                </div>
-              )}
+              <table className="cx-wikitable" style={{ marginTop: 0 }}><tbody>
+                <tr><th scope="row">Played</th><td>{statsBucket.played}</td></tr>
+                <tr><th scope="row">Solved</th><td>{statsBucket.solved}</td></tr>
+                <tr><th scope="row">Avg Guesses</th><td>{statsBucket.averageGuesses || 0}</td></tr>
+                <tr><th scope="row">{activeQueue === 'daily' ? 'Best Streak' : 'Recent Runs'}</th><td>{activeQueue === 'daily' ? statsBucket.bestStreak : historyRows.length}</td></tr>
+                {activeQueue === 'daily' && <tr><th scope="row">Current Streak</th><td>{statsBucket.currentStreak}</td></tr>}
+                {activeQueue === 'daily' && <tr><th scope="row">Solve Rate</th><td>{statsBucket.solved && statsBucket.played ? Math.round((statsBucket.solved / statsBucket.played) * 100) : 0}%</td></tr>}
+              </tbody></table>
             </td></tr>
             <tr><th scope="row">Histogram</th><td>
               <div className="space-y-2">
                 {Object.entries(statsBucket.histogram || {}).map(([bucket, value]) => (
                   <div key={bucket} className="grid grid-cols-[40px,1fr,28px] items-center gap-2">
                     <span className="text-xs text-zinc-500 font-semibold">{bucket}</span>
-                    <div className="h-2 rounded-full bg-zinc-800 overflow-hidden">
-                      <div className="h-full rounded-full bg-zinc-500" style={{ width: `${((Number(value) || 0) / histogramMax) * 100}%` }} />
+                    <div className="cx-meter">
+                      <div style={{ width: `${((Number(value) || 0) / histogramMax) * 100}%` }} />
                     </div>
                     <span className="text-xs text-zinc-400 text-right">{value}</span>
                   </div>
@@ -9870,13 +9848,13 @@
             <tr><th scope="row">Recent Results (Last 30)</th><td>
               <div className="space-y-2 max-h-80 overflow-y-auto custom-scrollbar">
                 {historyRows.map((row, index) => (
-                  <div key={`${row.completedAt || row.puzzleKey}-${index}`} className="p-3 rounded-2xl bg-white/5 border border-white/10">
+                  <div key={`${row.completedAt || row.puzzleKey}-${index}`} className="p-3 cx-flatcard">
                     <div className="flex items-center justify-between gap-3">
                       <div>
                         <p className="text-sm font-semibold text-white">{row.targetSnapshot?.name || 'Unknown target'}</p>
                         <p className="text-[11px] text-zinc-500 uppercase tracking-wider">{row.puzzleKey} · {row.queue}</p>
                       </div>
-                      <span className={`px-2 py-1 rounded-lg text-[10px] uppercase tracking-[0.22em] font-bold ${row.solved ? 'bg-zinc-100 text-black' : 'bg-white/5 text-zinc-400 border border-white/10'}`}>
+                      <span className={`px-2 py-1 border text-[10px] uppercase tracking-[0.22em] font-bold ${row.solved ? 'wl-hit' : 'wl-miss'}`}>
                         {row.solved ? `${row.guessCount} guesses` : 'Revealed'}
                       </span>
                     </div>
