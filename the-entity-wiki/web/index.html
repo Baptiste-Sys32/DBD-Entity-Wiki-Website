@@ -10981,7 +10981,11 @@
 
                 {fullData && (
                   <button
-                    onClick={(e) => { e.stopPropagation(); openCharacterModal(loreChar, type); }}
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      const full = findCharacterData(loreChar, type);
+                      if (full) setView(type === 'killers' ? 'killer' : 'survivor', { id: full.id });
+                    }}
                     className="mt-4 w-full py-2.5 rounded-xl text-sm font-semibold transition-colors flex items-center justify-center gap-2 border"
                     style={{
                       backgroundColor: `${accent}20`,
