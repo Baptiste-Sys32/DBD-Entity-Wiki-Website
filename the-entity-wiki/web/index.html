@@ -1607,6 +1607,7 @@
     .cx-side-link:hover { color: var(--text); background: var(--ghost-surface); }
     .cx-side-link--active { color: var(--text); font-weight: 700; }
     .cx-side-count { color: var(--text-faint); font-size: 11px; flex-shrink: 0; }
+    .cx-listhead { width: 100%; max-width: 1280px; margin: 0 auto; padding: 26px 44px 0; }
     .mp-welcome { border: 1px solid var(--line); background: var(--panel); padding: 30px 24px; text-align: center; }
     .mp-welcome-title { font-family: var(--font-display); font-size: 30px; font-weight: 700; color: var(--text); margin: 0; line-height: 1.2; }
     .mp-welcome-name { color: var(--link); }
@@ -7465,7 +7466,7 @@
       }, [data, localSearch, effectiveFilter, sortBy, isCharacterList, favoritePerks, isPerkList]);
       return (
         <div ref={scrollRef} className="flex flex-col h-full pt-6 pb-32 overflow-y-auto custom-scrollbar">
-          <div className="cx-article w-full max-w-[1280px] mx-auto" style={{ paddingBottom: '0' }}>
+          <div className="cx-listhead">
             <ViewCrumbs trail={[{ label: 'Main page', onClick: onBack }]} current={type} />
             <h1 className="cx-title">{type}</h1>
             <p className="cx-hatnote">{listHatnote}</p>
@@ -15800,7 +15801,7 @@ const MapLayoutModal = ({ map, onClose, noteValue = '', onNoteChange }) => {
       }, [data, localSearch, effectiveFilter, sortBy, isCharacterList, favoritePerks, isPerkList]);
       return (
         <div ref={scrollRef} className="flex flex-col h-full pt-6 pb-32 overflow-y-auto custom-scrollbar">
-          <div className="cx-article w-full max-w-[1280px] mx-auto" style={{ paddingBottom: '0' }}>
+          <div className="cx-listhead">
             <ViewCrumbs trail={[{ label: 'Main page', onClick: onBack }]} current={type} />
             <h1 className="cx-title">{type}</h1>
             <p className="cx-hatnote">{listHatnote}</p>
