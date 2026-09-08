@@ -1291,6 +1291,9 @@
     :root {
       --link: #6fa8ff;
       --link-visited: #9c86ff;
+      --btn-ink: #101418;
+      --wl-hit: #fafafa;
+      --wl-hit-ink: #101418;
       --cos-name: #d4d4d8;
       --rar-common: #71717a;
       --rar-uncommon: #a1a1aa;
@@ -1304,6 +1307,9 @@
       color-scheme: light;
       --link: #3366cc;
       --link-visited: #6a60b0;
+      --btn-ink: #ffffff;
+      --wl-hit: #3366cc;
+      --wl-hit-ink: #ffffff;
       --cos-name: #202122;
       --rar-common: #72777d;
       --rar-uncommon: #54595d;
@@ -1703,6 +1709,33 @@
     .cx-perkcell-inner > div { overflow: visible !important; }
     .cx-thumbzoom { position: relative; }
     .cx-thumbzoom > * { transition: transform 130ms ease; will-change: transform; }
+    /* ===== Codex tool chrome ===== */
+    .cx-toolbtn { appearance: none; border: 1px solid var(--accent); background: none; color: var(--accent); font: inherit; font-weight: 700; padding: 8px 16px; cursor: pointer; transition: background-color .12s ease, color .12s ease, opacity .12s ease; }
+    .cx-toolbtn:hover { background: var(--surface-hover); }
+    .cx-toolbtn:disabled { opacity: .45; cursor: not-allowed; }
+    .cx-toolbtn--primary { background: var(--accent); color: var(--btn-ink); }
+    .cx-toolbtn--primary:hover { background: var(--accent); filter: brightness(1.06); }
+    .cx-toolbtn--quiet { border-color: var(--stroke); color: var(--muted); }
+    .cx-toolbtn--quiet:hover { color: var(--text); background: var(--ghost-surface); }
+    .cx-input { appearance: none; background: var(--glass-bg); border: 1px solid var(--stroke); color: var(--text); font: inherit; padding: 7px 10px; border-radius: 0; }
+    .cx-input:focus { outline: none; border-color: var(--accent); }
+    .cx-input::placeholder { color: var(--text-faint); }
+    .cx-numinput { appearance: none; text-align: center; background: var(--glass-bg); border: 1px solid var(--stroke); color: var(--text); font: inherit; font-weight: 700; padding: 8px 10px; border-radius: 0; }
+    .cx-numinput:focus { outline: none; border-color: var(--accent); }
+    .cx-chip { display: inline-flex; align-items: center; border: 1px solid var(--stroke); color: var(--text-soft); background: none; padding: 2px 8px; border-radius: 0; }
+    .cx-flatcard { border: 1px solid var(--stroke); background: none; }
+    .cx-well { border: 1px solid var(--stroke); }
+    .cx-meter { height: 10px; background: var(--ghost-surface); border: 1px solid var(--stroke); overflow: hidden; }
+    .cx-meter > div { height: 100%; background: var(--accent); transition: width 1s ease; }
+    .cx-togglepill { display: inline-flex; align-items: center; gap: 6px; padding: 4px 10px; font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: .05em; border: 1px solid var(--stroke); color: var(--muted); background: none; cursor: pointer; }
+    .cx-togglepill--on { border-color: var(--accent); color: var(--text); }
+    .cx-togglepill .cx-dot { width: 8px; height: 8px; border: 1px solid var(--muted); display: inline-block; }
+    .cx-togglepill--on .cx-dot { background: var(--accent); border-color: var(--accent); }
+    .cx-cell { border: 1px solid var(--stroke); }
+    .cx-cell--on { border-color: var(--accent); }
+    .wl-hit { background: var(--wl-hit); border-color: var(--wl-hit); color: var(--wl-hit-ink); }
+    .wl-miss { background: var(--ghost-surface); border-color: var(--stroke); color: var(--muted); }
+    .wl-miss--strong { background: var(--ghost-strong); border-color: var(--ghost-strong); color: var(--text); }
     .cx-thumbzoom:hover { z-index: 6; }
     .cx-thumbzoom:hover > * { transform: scale(2.35); filter: drop-shadow(0 6px 16px rgba(0, 0, 0, 0.35)); }
     .light-mode .cx-thumbzoom:hover > * { filter: drop-shadow(0 3px 10px rgba(0, 0, 0, 0.25)); }
@@ -7507,29 +7540,29 @@
                 value={form.name}
                 onChange={e => setForm(f => ({ ...f, name: e.target.value }))}
                 placeholder="Build name..."
-                className="w-full bg-zinc-800/60 border border-white/10 rounded-xl px-4 py-3 text-lg text-white font-bold placeholder-zinc-500 focus:outline-none focus:border-white/20"
+                className="cx-input w-full px-3 py-2 text-lg font-bold"
               />
             </td></tr>
             <tr><th scope="row">Role</th><td>
               <div className="flex gap-2">
                 <button
                   onClick={() => changeRole('Survivor')}
-                  className="flex-1 sm:flex-none px-4 py-3 rounded-xl text-xs font-bold uppercase tracking-wider transition-all"
-                  style={form.role === 'Survivor' ? { background: '#0a0a0a', border: '2px solid #fafafa', color: '#fafafa', boxShadow: '0 4px 15px rgba(250,250,250,0.2)' } : { background: '#0a0a0a', border: '1px solid rgba(255,255,255,0.1)', color: '#a1a1aa' }}
+                  className={`mode-choice ${form.role === 'Survivor' ? 'mode-choice--active' : ''} flex-1 sm:flex-none px-4 py-3 text-xs font-bold uppercase tracking-wider`}
+                  aria-pressed={form.role === 'Survivor'}
                 >
                   Survivor
                 </button>
                 <button
                   onClick={() => changeRole('Killer')}
-                  className="flex-1 sm:flex-none px-4 py-3 rounded-xl text-xs font-bold uppercase tracking-wider transition-all"
-                  style={form.role === 'Killer' ? { background: '#0a0a0a', border: '2px solid #fafafa', color: '#fafafa', boxShadow: '0 4px 15px rgba(250,250,250,0.2)' } : { background: '#0a0a0a', border: '1px solid rgba(255,255,255,0.1)', color: '#a1a1aa' }}
+                  className={`mode-choice ${form.role === 'Killer' ? 'mode-choice--active' : ''} flex-1 sm:flex-none px-4 py-3 text-xs font-bold uppercase tracking-wider`}
+                  aria-pressed={form.role === 'Killer'}
                 >
                   Killer
                 </button>
                 <button
                   onClick={() => setForm(f => ({ ...f, favorite: !f.favorite }))}
-                  className="px-3 py-2 rounded-xl text-xs font-bold uppercase transition-all"
-                  style={form.favorite ? { background: '#0a0a0a', border: '2px solid #fafafa', color: '#fafafa' } : { background: '#0a0a0a', border: '1px solid rgba(255,255,255,0.1)', color: '#a1a1aa' }}
+                  className={`mode-choice ${form.favorite ? 'mode-choice--active' : ''} px-3 py-2 text-xs font-bold uppercase`}
+                  aria-pressed={form.favorite}
                 >
                   <Icons.Star width={16} height={16} className={form.favorite ? 'fill-zinc-100' : ''} />
                 </button>
@@ -7540,20 +7573,20 @@
                 <span className="text-[11px] uppercase tracking-widest text-zinc-500 font-bold">{form.role}</span>
                 <button
                   onClick={() => setShowCharacterGrid(!showCharacterGrid)}
-                  className="text-[10px] px-2 py-1 rounded-lg bg-white/5 text-zinc-400 hover:text-white border border-white/10 font-bold uppercase tracking-wider"
+                  className="cx-toolbtn cx-toolbtn--quiet text-[10px] px-2 py-1 font-bold uppercase tracking-wider"
                 >
                   {showCharacterGrid ? 'Hide' : 'Select'}
                 </button>
               </div>
               {form.characterName ? (
-                <div className="flex items-center gap-3 p-3 rounded-xl bg-white/5 border border-white/10">
-                  <div className={`w-1 h-12 rounded-full ${form.role === 'Killer' ? 'bg-zinc-400' : 'bg-zinc-600'}`} />
+                <div className="flex items-center gap-3 p-3 cx-flatcard">
+                  <div className="w-1 h-12" style={{ background: 'var(--accent)' }} />
                   <AssetFrame type={form.role} imageUrl={characters.find(c => c.id === form.characterId)?.image} fallbackIcon={<Icons.User width={20} height={20} className="text-zinc-600" />} />
                   <div className="flex-1">
                     <p className="text-white font-bold">{form.characterName}</p>
                     <p className="text-zinc-500 text-xs">Selected {form.role.toLowerCase()}</p>
                   </div>
-                  <button onClick={() => pickCharacter(null)} className="p-2 rounded-lg bg-white/5 text-zinc-400 hover:text-white">
+                  <button onClick={() => pickCharacter(null)} className="cx-toolbtn cx-toolbtn--quiet p-2">
                     <Icons.X width={14} height={14} />
                   </button>
                 </div>
@@ -7561,12 +7594,13 @@
                 <p className="text-zinc-600 text-sm">No character selected (generic build)</p>
               )}
               {showCharacterGrid && (
-                <div className="mt-3 grid grid-cols-5 sm:grid-cols-8 gap-2 max-h-40 overflow-y-auto custom-scrollbar p-2 rounded-xl bg-zinc-900/50">
+                <div className="cx-well mt-3 grid grid-cols-5 sm:grid-cols-8 gap-2 max-h-40 overflow-y-auto custom-scrollbar p-2">
                   {characters.map(char => (
                     <button
                       key={char.id}
                       onClick={() => pickCharacter(char)}
-                      className={`aspect-square rounded-xl border-2 transition-all overflow-hidden ${form.characterId === char.id ? (form.role === 'Killer' ? 'border-white/50 shadow-[0_0_10px_rgba(250,250,250,0.3)]' : 'border-white/25 shadow-[0_0_10px_rgba(255,255,255,0.12)]') : 'border-white/10 hover:border-white/30'}`}
+                      className={`aspect-square border transition-all overflow-hidden ${form.characterId === char.id ? '' : 'opacity-80 hover:opacity-100'}`}
+                      style={form.characterId === char.id ? { borderColor: 'var(--accent)' } : { borderColor: 'var(--stroke)' }}
                       title={char.name}
                     >
                       <div className="w-full h-full bg-zinc-900">
@@ -7585,14 +7619,14 @@
                     value={perkSearch}
                     onChange={e => setPerkSearch(e.target.value)}
                     placeholder="Search..."
-                    className="w-32 bg-zinc-900/60 border border-white/10 rounded-lg px-2 py-1 text-xs text-white placeholder-zinc-600 focus:outline-none"
+                    className="cx-input w-32 px-2 py-1 text-xs"
                   />
                   <span className="text-[10px] text-zinc-600">{perkPool.length} available</span>
                 </div>
               </div>
               <div className="grid grid-cols-2 gap-3">
                 {form.perks.map((perk, idx) => (
-                  <div key={idx} className="p-3 rounded-xl bg-zinc-900/50 border border-white/5">
+                  <div key={idx} className="p-3 cx-flatcard">
                     <p className="text-[10px] uppercase tracking-wider text-zinc-600 font-bold mb-2">Perk {idx + 1}</p>
                     <select
                       value={perk?.id || ''}
@@ -7622,7 +7656,7 @@
                   ))}
                 </select>
                 {form.selectedItem && (
-                  <div className="mt-3 p-3 rounded-xl bg-white/5 border border-white/5 flex items-center gap-3">
+                  <div className="mt-3 p-3 cx-flatcard flex items-center gap-3">
                     <Icons.Package width={20} height={20} className="text-white/60" />
                     <div>
                       <p className="text-white font-semibold text-sm">{form.selectedItem.name}</p>
@@ -7641,7 +7675,7 @@
                   value={addonSearch}
                   onChange={e => setAddonSearch(e.target.value)}
                   placeholder="Search..."
-                  className="w-32 bg-zinc-900/60 border border-white/10 rounded-lg px-2 py-1 text-xs text-white placeholder-zinc-600 focus:outline-none"
+                  className="cx-input w-32 px-2 py-1 text-xs"
                 />
               </div>
               {(form.role === 'Killer' && !form.characterName) || (form.role === 'Survivor' && !form.selectedItem) ? (
@@ -7651,7 +7685,7 @@
               ) : (
                 <div className="grid grid-cols-2 gap-3">
                   {[0, 1].map(slot => (
-                    <div key={slot} className="p-3 rounded-xl bg-zinc-900/50 border border-white/5">
+                    <div key={slot} className="p-3 cx-flatcard">
                       <p className="text-[10px] uppercase tracking-wider text-zinc-600 font-bold mb-2">Addon {slot + 1}</p>
                       <select
                         value={form.selectedAddons[slot]?.id || ''}
@@ -7687,7 +7721,7 @@
                 ))}
               </select>
               {form.selectedOffering && (
-                <div className="mt-3 p-3 rounded-xl bg-white/5 border border-white/5">
+                <div className="mt-3 p-3 cx-flatcard">
                   <p className="text-white font-semibold text-sm">{form.selectedOffering.name}</p>
                   <p className="text-zinc-500 text-xs mt-1 line-clamp-2">{form.selectedOffering.description}</p>
                 </div>
@@ -7698,7 +7732,7 @@
                 value={tagInput}
                 onChange={e => setTagInput(e.target.value)}
                 placeholder="SoloQ, Tryhard, Meme..."
-                className="w-full bg-zinc-800/60 border border-white/10 rounded-xl px-3 py-2 text-sm text-white placeholder-zinc-500"
+                className="cx-input w-full px-3 py-2 text-sm"
               />
             </td></tr>
             <tr><th scope="row">Notes</th><td>
@@ -7707,20 +7741,20 @@
                 onChange={e => setForm(f => ({ ...f, notes: e.target.value }))}
                 rows={2}
                 placeholder="How to run this build..."
-                className="w-full bg-zinc-800/60 border border-white/10 rounded-xl px-3 py-2 text-sm text-white placeholder-zinc-500"
+                className="cx-input w-full px-3 py-2 text-sm"
               />
             </td></tr>
             <tr><th scope="row">Actions</th><td>
               <div className="flex gap-3 justify-end pt-2">
                 <button
                   onClick={onCancel}
-                  className="px-5 py-2.5 rounded-xl text-sm font-bold bg-white/5 text-zinc-300 border border-white/10 hover:text-white hover:bg-white/10 transition-colors"
+                  className="cx-toolbtn cx-toolbtn--quiet px-5 py-2.5 text-sm font-bold"
                 >
                   Cancel
                 </button>
                 <button
                   onClick={handleSave}
-                  className={`px-5 py-2.5 rounded-xl text-sm font-bold text-black shadow-lg transition-all hover:scale-105 ${form.role === 'Killer' ? 'bg-zinc-100' : 'bg-zinc-100'}`}
+                  className="cx-toolbtn cx-toolbtn--primary px-5 py-2.5 text-sm font-bold"
                 >
                   Save Build
                 </button>
@@ -7834,10 +7868,10 @@
           <table className="cx-wikitable"><tbody>
             <tr><th scope="row">Builds</th><td>
               <div className="mb-4 flex flex-wrap gap-2 items-center">
-                <button onClick={() => { setEditing(null); setShowForm(true); }} className="px-4 py-2 rounded-xl bg-zinc-100 text-black font-bold text-sm shadow-lg">New Build</button>
-<button type="button" onClick={() =>  setFilters(f => ({ ...f, role: filters.role === 'Killer' ? 'All' : 'Killer' })) } className="px-4 py-2 text-xs rounded-lg border transition-colors {filters.role === 'Killer' ? 'bg-zinc-100 text-black border-zinc-100 font-bold' : 'bg-transparent text-zinc-300 border-white/15 hover:border-white/30'}">Killer</button>
-<button type="button" onClick={() =>  setFilters(f => ({ ...f, role: filters.role === 'Survivor' ? 'All' : 'Survivor' })) } className="px-4 py-2 text-xs rounded-lg border transition-colors {filters.role === 'Survivor' ? 'bg-zinc-100 text-black border-zinc-100 font-bold' : 'bg-transparent text-zinc-300 border-white/15 hover:border-white/30'}">Survivor</button>
-<button type="button" onClick={() =>  setFilters({ role: 'All', character: 'All', tag: 'All', search: '', include: '', exclude: '' }) } className="px-4 py-2 text-xs rounded-lg border transition-colors {false ? 'bg-zinc-100 text-black border-zinc-100 font-bold' : 'bg-transparent text-zinc-300 border-white/15 hover:border-white/30'}">Reset</button>
+                <button onClick={() => { setEditing(null); setShowForm(true); }} className="cx-toolbtn cx-toolbtn--primary px-4 py-2 text-sm font-bold">New Build</button>
+<button type="button" onClick={() => setFilters(f => ({ ...f, role: filters.role === 'Killer' ? 'All' : 'Killer' }))} className={`mode-choice ${filters.role === 'Killer' ? 'mode-choice--active' : ''} px-4 py-2 text-xs font-bold`}>Killer</button>
+<button type="button" onClick={() => setFilters(f => ({ ...f, role: filters.role === 'Survivor' ? 'All' : 'Survivor' }))} className={`mode-choice ${filters.role === 'Survivor' ? 'mode-choice--active' : ''} px-4 py-2 text-xs font-bold`}>Survivor</button>
+<button type="button" onClick={() => setFilters({ role: 'All', character: 'All', tag: 'All', search: '', include: '', exclude: '' })} className="mode-choice px-4 py-2 text-xs font-bold">Reset</button>
                 <span className="text-[11px] text-zinc-500 ml-auto uppercase tracking-wider">{filteredBuilds.length} builds</span>
               </div>
             </td></tr>
@@ -7845,7 +7879,7 @@
           <h2 className="cx-sec">Filters</h2>
           <table className="cx-wikitable"><tbody>
             <tr><th scope="row">Search</th><td>
-              <input value={filters.search} onChange={e => setFilters(f => ({ ...f, search: e.target.value }))} placeholder="Search name or notes" className="w-full bg-zinc-800/60 border border-white/10 rounded-xl px-3 py-2 text-sm text-white placeholder-zinc-500" />
+              <input value={filters.search} onChange={e => setFilters(f => ({ ...f, search: e.target.value }))} placeholder="Search name or notes" className="cx-input w-full px-3 py-2 text-sm" />
             </td></tr>
             <tr><th scope="row">Role</th><td>
               <select value={filters.role} onChange={e => setFilters(f => ({ ...f, role: e.target.value }))} className="themed-select w-full text-sm">
@@ -7867,10 +7901,10 @@
               </select>
             </td></tr>
             <tr><th scope="row">Include perk</th><td>
-              <input value={filters.include} onChange={e => setFilters(f => ({ ...f, include: e.target.value }))} placeholder="Dead Hard" className="w-full bg-zinc-800/60 border border-white/10 rounded-xl px-3 py-2 text-sm text-white placeholder-zinc-500" />
+              <input value={filters.include} onChange={e => setFilters(f => ({ ...f, include: e.target.value }))} placeholder="Dead Hard" className="cx-input w-full px-3 py-2 text-sm" />
             </td></tr>
             <tr><th scope="row">Exclude perk</th><td>
-              <input value={filters.exclude} onChange={e => setFilters(f => ({ ...f, exclude: e.target.value }))} placeholder="No Mither" className="w-full bg-zinc-800/60 border border-white/10 rounded-xl px-3 py-2 text-sm text-white placeholder-zinc-500" />
+              <input value={filters.exclude} onChange={e => setFilters(f => ({ ...f, exclude: e.target.value }))} placeholder="No Mither" className="cx-input w-full px-3 py-2 text-sm" />
             </td></tr>
           </tbody></table>
           {showForm && (
@@ -7897,7 +7931,7 @@
                 <td>
                   <div className="flex flex-wrap items-center gap-2 justify-between">
                     <div className="flex items-center gap-2">
-                      <span className={`px-2 py-1 rounded-lg text-[10px] font-bold uppercase tracking-widest ${build.role === 'Killer' ? 'bg-white/10 text-zinc-100' : 'bg-white/5 text-zinc-300'}`}>{build.role}</span>
+                      <span className="cx-chip text-[10px] font-bold uppercase tracking-widest">{build.role}</span>
                       {build.characterName && <span className="text-xs text-zinc-400 font-semibold">{build.characterName}</span>}
                       {build.favorite && <span className="text-zinc-200 text-sm">*</span>}
                     </div>
@@ -7906,16 +7940,20 @@
                       {build.createdAt && <span>Created {formatDate(build.createdAt)}</span>}
                     </div>
                   </div>
-                  <div className="flex gap-2 mt-1 flex-wrap">
-                    <button onClick={() => { setEditing(build); setShowForm(true); }} className="text-xs px-3 py-1 rounded-xl bg-white/5 text-white border border-white/10">Edit</button>
-                    <button onClick={() => duplicateBuild(build)} className="text-xs px-3 py-1 rounded-xl bg-white/5 text-zinc-200 border border-white/10">Duplicate</button>
-                    <button onClick={() => { const code = encodeBuild(build); if (code) { navigator.clipboard.writeText(code).then(() => alert('Build share text copied!')).catch(() => alert('Could not copy automatically. Please copy it manually.')); } else { alert('Could not prepare this build to share.'); } }} className="text-xs px-3 py-1 rounded-xl bg-white/5 text-zinc-200 border border-white/20">Share</button>
-                    <button onClick={() => toggleFavorite(build.id)} className="text-xs px-3 py-1 rounded-xl bg-white/5 text-zinc-300 border border-white/20">{build.favorite ? 'Unfavorite' : 'Favorite'}</button>
-                    <button onClick={() => deleteBuild(build.id)} className="text-xs px-3 py-1 rounded-xl bg-white/10 text-zinc-100 border border-white/25">Delete</button>
+                  <div className="mt-1 flex flex-wrap items-center gap-x-1 gap-y-1 text-xs">
+                    <button type="button" className="cx-alink" onClick={() => { setEditing(build); setShowForm(true); }}>Edit</button>
+                    <span style={{ color: 'var(--text-faint)' }}>·</span>
+                    <button type="button" className="cx-alink" onClick={() => duplicateBuild(build)}>Duplicate</button>
+                    <span style={{ color: 'var(--text-faint)' }}>·</span>
+                    <button type="button" className="cx-alink" onClick={() => { const code = encodeBuild(build); if (code) { navigator.clipboard.writeText(code).then(() => alert('Build share text copied!')).catch(() => alert('Could not copy automatically. Please copy it manually.')); } else { alert('Could not prepare this build to share.'); } }}>Share</button>
+                    <span style={{ color: 'var(--text-faint)' }}>·</span>
+                    <button type="button" className="cx-alink" onClick={() => toggleFavorite(build.id)}>{build.favorite ? 'Unfavorite' : 'Favorite'}</button>
+                    <span style={{ color: 'var(--text-faint)' }}>·</span>
+                    <button type="button" className="cx-alink" onClick={() => deleteBuild(build.id)}>Delete</button>
                   </div>
                   <div className="mt-3 flex flex-wrap gap-2">
                     {(build.perks || []).map(p => (
-                      <span key={`${build.id}-${p.id}-${p.name}`} className="px-2 py-1 rounded-xl bg-white/5 border border-white/10 text-[11px] text-white">{p.name}</span>
+                      <span key={`${build.id}-${p.id}-${p.name}`} className="cx-chip text-[11px]">{p.name}</span>
                     ))}
                     {build.perks?.length === 0 && <span className="text-[11px] text-zinc-500">No perks selected</span>}
                   </div>
@@ -7925,7 +7963,7 @@
                     {build.offering && <p><span className="text-zinc-500 uppercase tracking-wider text-[10px] mr-1">Offering</span>{build.offering}</p>}
                   </div>
                   <div className="mt-2 flex flex-wrap gap-2">
-                    {(build.tags || []).map(tag => <span key={tag} className="px-2 py-1 rounded-lg bg-white/5 border border-white/10 text-[10px] font-bold uppercase tracking-wider text-zinc-300">{tag}</span>)}
+                    {(build.tags || []).map(tag => <span key={tag} className="cx-chip text-[10px] font-bold uppercase tracking-wider">{tag}</span>)}
                   </div>
                   {build.notes && <p className="mt-2 text-sm text-zinc-300 leading-relaxed">{build.notes}</p>}
                 </td>
@@ -7944,14 +7982,14 @@
                     <th scope="row">{tpl.title}</th>
                     <td>
                       <div className="flex items-center justify-between mb-1">
-                        <span className={`px-2 py-1 rounded-lg text-[10px] font-bold uppercase tracking-wider ${tpl.role === 'Killer' ? 'bg-white/10 text-zinc-100' : 'bg-white/5 text-zinc-300'}`}>{tpl.role}</span>
+                        <span className="cx-chip text-[10px] font-bold uppercase tracking-wider">{tpl.role}</span>
                         <span className="text-[10px] text-zinc-500 uppercase font-bold">{tpl.perks.length} perks</span>
                       </div>
                       <div className="flex flex-wrap gap-1 mt-2">
-                        {tpl.perks.map(p => <span key={p} className="px-2 py-1 rounded-lg bg-white/5 border border-white/10 text-[11px] text-white">{p}</span>)}
+                        {tpl.perks.map(p => <span key={p} className="cx-chip text-[11px]">{p}</span>)}
                       </div>
                       <p className="text-xs text-zinc-400 mt-2">{tpl.note}</p>
-                      <button onClick={() => cloneTemplate(tpl)} className="mt-3 w-full py-2 rounded-xl bg-white/5 text-sm font-bold text-white border border-white/10 hover:border-white/25/40">Clone into Build</button>
+                      <button onClick={() => cloneTemplate(tpl)} className="cx-toolbtn mt-3 w-full py-2 text-sm font-bold">Clone into Build</button>
                     </td>
                   </tr>
                 ))}
