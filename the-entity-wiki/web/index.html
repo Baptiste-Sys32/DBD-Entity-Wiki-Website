@@ -1568,8 +1568,6 @@
     }
     .wiki-header { background: #000; border-bottom: 1px solid var(--line-soft); height: 56px; }
     .wiki-header #wiki-header-search-slot > * { width: 100%; }
-    .wiki-header .wiki-search-btn { background: var(--panel); border-color: var(--stroke); color: var(--text-soft); padding: 0 16px; height: 40px; font-family: inherit; cursor: pointer; }
-    .wiki-header .wiki-search-btn:hover { color: var(--text); background: var(--ghost-surface); }
     .wiki-header #wiki-header-search-slot .relative { width: 100%; }
     .wiki-header #wiki-header-search-slot .p-2 { padding: 4px 8px !important; background: var(--panel) !important; border-radius: 6px !important; box-shadow: none !important; backdrop-filter: none !important; }
     .wiki-header #wiki-header-search-slot .p-3 { padding: 7px 8px !important; font-size: 13px !important; }
@@ -5196,25 +5194,26 @@
       }, []);
       const hasSearch = !['home'].includes(currentView);
       return (
-        <header className="wiki-header sticky top-0 z-30 flex items-center gap-6 px-4">
-          <button type="button" onClick={() => setView('home')} className="flex items-center gap-2.5 shrink-0" aria-label="Main page">
-            <img src="./assets/favicon.png" alt="" width={34} height={34} />
+        <header className="wiki-header sticky top-0 z-30 flex items-center justify-between gap-4 px-4">
+          <button type="button" onClick={() => setView('home')} className="flex items-center gap-3 shrink-0" aria-label="Main page">
+            <img src="./assets/favicon.png" alt="" width={44} height={44} style={{ transform: 'scale(1.35)' }} />
             <span className="flex flex-col leading-none text-left">
               <span className="text-[15px] font-bold text-[var(--text)]" style={{ fontFamily: 'var(--font-display)', fontWeight: 700 }}>The Entity's Wiki</span>
               <span className="text-[8.5px] uppercase tracking-[0.18em] mt-1" style={{ color: 'var(--text-faint)' }}>Dead by Daylight</span>
             </span>
           </button>
-          <div className="flex items-stretch min-w-0" style={{ width: hasSearch ? '470px' : '0px', opacity: hasSearch ? 1 : 0, pointerEvents: hasSearch ? 'auto' : 'none', overflow: hasSearch ? 'visible' : 'hidden' }}>
-            <div id="wiki-header-search-slot" className="flex items-center flex-1 min-w-0" />
-            <button
-              type="button"
-              className="wiki-search-btn shrink-0 text-sm font-semibold border border-l-0"
-              onClick={() => { const slot = document.getElementById('wiki-header-search-slot'); const input = slot && slot.querySelector('input'); if (input) { input.focus(); input.select(); } }}
-            >
-              Search
-            </button>
-          </div>
-          <div className="flex-1" />
+          <div
+            id="wiki-header-search-slot"
+            className="absolute flex items-center"
+            style={{
+              left: '50%',
+              transform: 'translateX(-50%)',
+              width: hasSearch ? '470px' : '0px',
+              opacity: hasSearch ? 1 : 0,
+              pointerEvents: hasSearch ? 'auto' : 'none',
+              overflow: hasSearch ? 'visible' : 'hidden'
+            }}
+          />
           <button
             type="button"
             onClick={() => setView('settings')}
@@ -5870,7 +5869,7 @@
         </div>
       );
       return (
-        <div className="flex flex-col h-full pt-12 pb-32 px-6 overflow-y-auto custom-scrollbar space-y-4">
+        <div className="flex flex-col h-full pt-6 pb-32 px-6 overflow-y-auto custom-scrollbar space-y-4">
           <ViewCrumbs trail={[{ label: 'Main page', onClick: onBack }]} current="Chaos Shuffle" />
           <h1 className="cx-title">Chaos Shuffle</h1>
           <p className="cx-hatnote">Randomize perk combos and loadouts.</p>
@@ -7444,7 +7443,7 @@
         return result;
       }, [data, localSearch, effectiveFilter, sortBy, isCharacterList, favoritePerks, isPerkList]);
       return (
-        <div ref={scrollRef} className="flex flex-col h-full pt-12 pb-32 overflow-y-auto custom-scrollbar">
+        <div ref={scrollRef} className="flex flex-col h-full pt-6 pb-32 overflow-y-auto custom-scrollbar">
           <div className="cx-article w-full max-w-[1280px] mx-auto" style={{ paddingBottom: '0' }}>
             <ViewCrumbs trail={[{ label: 'Main page', onClick: onBack }]} current={type} />
             <h1 className="cx-title">{type}</h1>
@@ -7672,7 +7671,7 @@
       }, [filteredMaps]);
       const realms = Object.entries(grouped);
       return (
-        <div className="flex flex-col h-full pt-12 pb-32 px-6 overflow-y-auto custom-scrollbar">
+        <div className="flex flex-col h-full pt-6 pb-32 px-6 overflow-y-auto custom-scrollbar">
           <ViewCrumbs trail={[{ label: 'Main page', onClick: onBack }]} current="Realms" />
           <h1 className="cx-title">Realms</h1>
           <p className="cx-hatnote">Maps and locations of the trials, grouped by realm.</p>
@@ -8182,7 +8181,7 @@
         setShowForm(true);
       };
       return (
-        <div className="flex flex-col h-full pt-12 pb-32 px-6 overflow-y-auto custom-scrollbar">
+        <div className="flex flex-col h-full pt-6 pb-32 px-6 overflow-y-auto custom-scrollbar">
           <ViewCrumbs trail={[{ label: 'Main page', onClick: onBack }]} current="Build & Loadout Lab" />
           <h1 className="cx-title">Build &amp; Loadout Lab</h1>
           <p className="cx-hatnote">Craft, save, favorite and clone builds.</p>
@@ -9162,7 +9161,7 @@
         setMatches(prev => prev.filter(match => match.id !== id));
       };
       return (
-        <div className="flex flex-col h-full pt-12 pb-32 px-6 overflow-y-auto custom-scrollbar">
+        <div className="flex flex-col h-full pt-6 pb-32 px-6 overflow-y-auto custom-scrollbar">
           <ViewCrumbs trail={[{ label: 'Main page', onClick: onBack }]} current="Match Log" />
           <h1 className="cx-title">Match Log</h1>
           <p className="cx-hatnote">Log games with saved build and map details.</p>
@@ -9868,7 +9867,7 @@
       const histogramMax = Math.max(1, ...Object.values(statsBucket.histogram || {}).map(value => Number(value) || 0));
       if (!target || activeCatalog.length === 0) {
         return (
-          <div className="flex flex-col h-full pt-12 pb-32 px-6 overflow-y-auto custom-scrollbar">
+          <div className="flex flex-col h-full pt-6 pb-32 px-6 overflow-y-auto custom-scrollbar">
             <ViewCrumbs trail={[{ label: 'Main page', onClick: onBack }]} current="Wordle" />
             <h1 className="cx-title">Wordle</h1>
             <p className="cx-hatnote">Test your DBD knowledge — daily and practice modes.</p>
@@ -9881,7 +9880,7 @@
         );
       }
       return (
-        <div className="flex flex-col h-full pt-12 pb-32 px-6 overflow-y-auto custom-scrollbar">
+        <div className="flex flex-col h-full pt-6 pb-32 px-6 overflow-y-auto custom-scrollbar">
           <ViewCrumbs trail={[{ label: 'Main page', onClick: onBack }]} current="Wordle" />
           <h1 className="cx-title">Wordle</h1>
           <p className="cx-hatnote">Test your DBD knowledge — daily and practice modes.</p>
@@ -10328,7 +10327,7 @@
         completed: (progression.challenges || []).filter(challenge => challenge.status === 'completed').length
       };
       return (
-        <div className="flex flex-col h-full pt-12 pb-32 px-6 overflow-y-auto custom-scrollbar">
+        <div className="flex flex-col h-full pt-6 pb-32 px-6 overflow-y-auto custom-scrollbar">
           <ViewCrumbs trail={[{ label: 'Main page', onClick: onBack }]} current="Progression Hub" />
           <h1 className="cx-title">Progression Hub</h1>
           <p className="cx-hatnote">Achievements, roster, challenges and analytics.</p>
@@ -11344,7 +11343,7 @@
       };
 
       return (
-        <div className="flex h-full pt-12">
+        <div className="flex h-full pt-6">
           {/* Main content */}
           <div ref={scrollRef} className="flex-1 overflow-y-auto custom-scrollbar px-6 pb-28 md:pb-8">
             <ViewCrumbs trail={[{ label: 'Main page', onClick: onBack }]} current="Glossary" />
@@ -11549,7 +11548,7 @@
         return () => window.cancelAnimationFrame(raf);
       }, [initialTargetType, targetItem, targetAddon, targetKillerAddonHost, targetSurvivorAddonHostItem, mode, expandedId, filteredItems, filteredKillers]);
       return (
-        <div className="flex flex-col h-full pt-12 pb-32 px-6 overflow-y-auto custom-scrollbar">
+        <div className="flex flex-col h-full pt-6 pb-32 px-6 overflow-y-auto custom-scrollbar">
           <ViewCrumbs trail={[{ label: 'Main page', onClick: onBack }]} current="Items & Addons" />
           <h1 className="cx-title">Items &amp; Addons</h1>
           <p className="cx-hatnote">Survivor items, Killer powers, and their add-ons.</p>
@@ -11835,7 +11834,7 @@
         return () => window.cancelAnimationFrame(raf);
       }, [targetOffering, expandedId, filtered]);
       return (
-        <div className="flex flex-col h-full pt-12 pb-32 px-6 overflow-y-auto custom-scrollbar">
+        <div className="flex flex-col h-full pt-6 pb-32 px-6 overflow-y-auto custom-scrollbar">
           <ViewCrumbs trail={[{ label: 'Main page', onClick: onBack }]} current="Offerings" />
           <h1 className="cx-title">Offerings</h1>
           <p className="cx-hatnote">Offerings for the Entity, by rarity.</p>
@@ -12134,7 +12133,7 @@
       const errorHelp = formatAssetPackErrorLabel(fullSetPackState.errorLabel);
 
       return (
-        <div className="flex flex-col h-full pt-12 pb-32 px-6 overflow-y-auto custom-scrollbar" data-smoke-cosmetics="true">
+        <div className="flex flex-col h-full pt-6 pb-32 px-6 overflow-y-auto custom-scrollbar" data-smoke-cosmetics="true">
           <ViewCrumbs trail={[{ label: 'Main page', onClick: onBack }]} current="Cosmetics" />
           <h1 className="cx-title">Cosmetics</h1>
           <p className="cx-hatnote">Browse all cosmetics by role, character, and rarity.</p>
@@ -12516,7 +12515,7 @@
       };
 
       return (
-        <div className="flex flex-col h-full pt-12 pb-32 px-6 overflow-y-auto custom-scrollbar">
+        <div className="flex flex-col h-full pt-6 pb-32 px-6 overflow-y-auto custom-scrollbar">
           <ViewCrumbs trail={[{ label: 'Main page', onClick: onBack }]} current="Community Content" />
           <h1 className="cx-title">Community Content</h1>
           <p className="cx-hatnote">Guides, builds, and tierlists from the community.</p>
@@ -12962,7 +12961,7 @@
       );
       const showSection = (tab) => activeTab === 'All' || activeTab === tab;
       return (
-        <div className="flex flex-col h-full pt-12 pb-32 px-6 overflow-y-auto custom-scrollbar">
+        <div className="flex flex-col h-full pt-6 pb-32 px-6 overflow-y-auto custom-scrollbar">
           <ViewCrumbs trail={[{ label: 'Main page', onClick: onBack }]} current="My Favorites" />
           <h1 className="cx-title">My Favorites</h1>
           <p className="cx-hatnote">Your bookmarked killers, survivors, perks, items, add-ons, and offerings.</p>
@@ -13115,7 +13114,7 @@
       }, [refreshBackupPreview]);
       const restorePreview = backupPreview?.payload || null;
       return (
-        <div className="flex flex-col h-full pt-12 pb-32 px-6 overflow-y-auto custom-scrollbar">
+        <div className="flex flex-col h-full pt-6 pb-32 px-6 overflow-y-auto custom-scrollbar">
           <ViewCrumbs trail={[{ label: 'Main page', onClick: onBack }]} current="Settings" />
           <h1 className="cx-title">Settings</h1>
           <p className="cx-hatnote">Website preferences and backups.</p>
@@ -13599,7 +13598,7 @@
         return num.toLocaleString();
       };
       return (
-        <div className="h-full pt-12 pb-32 overflow-y-auto custom-scrollbar">
+        <div className="h-full pt-6 pb-32 overflow-y-auto custom-scrollbar">
           <div className="relative px-6 max-w-2xl md:max-w-5xl mx-auto">
             <div className="fog-layer fixed inset-0 pointer-events-none z-0" style={{
             }} />
@@ -13875,7 +13874,7 @@
       };
 
       return (
-        <div ref={scrollRef} className="flex flex-col h-full pt-12 pb-32 overflow-y-auto custom-scrollbar">
+        <div ref={scrollRef} className="flex flex-col h-full pt-6 pb-32 overflow-y-auto custom-scrollbar">
           <div className="px-6"><ViewCrumbs trail={[{ label: 'Main page', onClick: onBack }]} current={viewMode === 'glossary' ? 'Glossary' : 'Trial Grid'} />
             <h1 className="cx-title">Game Icons</h1>
             <p className="cx-hatnote">Status icons and their meanings, plus a glossary view.</p>
