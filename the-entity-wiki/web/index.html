@@ -1736,6 +1736,7 @@
     .wl-hit { background: var(--wl-hit); border-color: var(--wl-hit); color: var(--wl-hit-ink); }
     .wl-miss { background: var(--ghost-surface); border-color: var(--stroke); color: var(--muted); }
     .wl-miss--strong { background: var(--ghost-strong); border-color: var(--ghost-strong); color: var(--text); }
+    .cx-pooltile:hover { border-color: var(--accent) !important; }
     .cx-thumbzoom:hover { z-index: 6; }
     .cx-thumbzoom:hover > * { transform: scale(2.35); filter: drop-shadow(0 6px 16px rgba(0, 0, 0, 0.35)); }
     .light-mode .cx-thumbzoom:hover > * { filter: drop-shadow(0 3px 10px rgba(0, 0, 0, 0.25)); }
@@ -5735,7 +5736,7 @@
                           <button
                             key={char.id}
                             onClick={() => { setLockedCharacterId(char.id); triggerHaptic('Light'); }}
-                            className="cx-thumbzoom relative aspect-square border transition-all overflow-hidden"
+                            className="cx-pooltile relative aspect-square border transition-all overflow-hidden"
                             style={{ borderColor: 'var(--stroke)' }}
                             title={`Lock ${char.name}`}
                           >
@@ -5784,7 +5785,7 @@
                         <button
                           key={char.id}
                           onClick={() => toggleCharacter(char.id)}
-                          className={`cx-thumbzoom relative aspect-square border transition-all overflow-hidden ${isOwned ? '' : 'opacity-35 grayscale hover:opacity-60 hover:grayscale-0'}`}
+                          className={`cx-pooltile relative aspect-square border transition-all overflow-hidden ${isOwned ? '' : 'opacity-35 grayscale hover:opacity-60 hover:grayscale-0'}`}
                           style={{ borderColor: isOwned ? 'var(--accent)' : 'var(--stroke)' }}
                           title={char.name}
                         >
