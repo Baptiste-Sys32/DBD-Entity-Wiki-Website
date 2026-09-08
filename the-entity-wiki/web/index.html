@@ -1696,6 +1696,12 @@
     table.cx-wikitable td a {
       color: var(--link);
     }
+    .cx-star { width: 40px; text-align: center; vertical-align: middle; white-space: nowrap; }
+    .cx-star button { background: none; border: 0; color: var(--text-faint); font-size: 16px; cursor: pointer; padding: 2px 6px; line-height: 1; font-family: inherit; }
+    .cx-star button:hover { color: var(--text); }
+    .cx-star button.cx-star-on { color: var(--text); }
+    .cx-compare-dot { color: var(--link); font-size: 10px; vertical-align: middle; margin-left: 4px; }
+    table.cx-wikitable tr.cx-row-compare td { background: rgba(111, 168, 255, 0.07); }
     td.cx-perkcell {
       vertical-align: middle;
     }
@@ -5353,7 +5359,7 @@
       );
     };
 
-    const GlassCard = ({ item, category, expanded = false, onToggle, perksForOwner = [], onPerkClick, buildsForOwner = [], onCreateBuild, isInCompare = false, onLongPress, isFavorite = false, onToggleFavorite, onPerkTap, onShowLore, onShowPower, onViewProfile, settings = {} }) => {
+    const GlassCard = ({ item, category, expanded = false, onToggle, perksForOwner = [], onPerkClick, buildsForOwner = [], onCreateBuild, isInCompare = false, onLongPress, isFavorite = false, onToggleFavorite, onPerkTap, onShowLore, onShowPower, onViewProfile, allCharacters = [], settings = {} }) => {
       let subtext = '';
       let accentTone = 'var(--accent)';
       let fallbackIcon = <Icons.Zap width={20} height={20} />;
@@ -7411,7 +7417,7 @@
         </div>
       );
     };
-    const ListView = ({ data, type, filterOptions, activeFilter, setActiveFilter, allPerks = [], setView, onPerkSelect, initialSearch = '', onSearchChange, buildsByOwner = {}, onCreateBuildSeed, onBack, comparePerks = [], onPerkLongPress, favoritePerks = [], onToggleFavorite, onPerkTap, onShowLore, onShowPower, onViewProfile, settings = {} }) => {
+    const ListView = ({ data, type, filterOptions, activeFilter, setActiveFilter, allPerks = [], setView, onPerkSelect, initialSearch = '', onSearchChange, buildsByOwner = {}, onCreateBuildSeed, onBack, comparePerks = [], onPerkLongPress, favoritePerks = [], onToggleFavorite, onPerkTap, onShowLore, onShowPower, onViewProfile, allCharacters = [], settings = {} }) => {
       const scrollRef = useRef(null);
       const [localSearch, setLocalSearch] = useState(initialSearch || '');
       const [sortBy, setSortBy] = useState('name_asc');
@@ -7430,7 +7436,6 @@
         });
         return bucket;
       }, [allPerks]);
-      const [expandedId, setExpandedId] = useState(null);
       const isPerkList = type === 'Perks';
       const isCharacterList = type === 'Killers' || type === 'Survivors';
       const listHatnote = type === 'Killers'
@@ -7441,9 +7446,23 @@
       const effectiveFilter = activeFilter || 'All';
       const updateFilter = (val) => setActiveFilter && setActiveFilter(val);
       const stripThe = (name) => (name || '').replace(/^The\s+/i, '');
-      useEffect(() => {
-        setExpandedId(null);
-      }, [localSearch, effectiveFilter, type]);
+      const charByName = useMemo(() => {
+        const map = new Map();
+        (allCharacters || []).forEach(c => { if (c && c.name) map.set(c.name, c); });
+        return map;
+      }, [allCharacters]);
+      const releaseByChar = useMemo(() => {
+        const map = new Map();
+        if (typeof TIMELINE_DATA !== 'undefined' && TIMELINE_DATA && TIMELINE_DATA.releases) {
+          TIMELINE_DATA.releases.forEach(rel => {
+            [...(rel.killers || []), ...(rel.survivors || [])].forEach(entry => {
+              if (entry && entry.name && !map.has(entry.name)) map.set(entry.name, { name: rel.name, chapterNumber: rel.chapterNumber });
+            });
+          });
+        }
+        return map;
+      }, []);
+      const fmtDiff = (d) => ({ easy: 'Easy', intermediate: 'Intermediate', hard: 'Hard', veryhard: 'Very hard' }[(d || '').toLowerCase()] || d);
       const filtered = useMemo(() => {
         if (!data) return [];
         const term = localSearch.toLowerCase();
@@ -7502,6 +7521,9 @@
             }
           });
         }
+        if (isPerkList) {
+          result = [...result].sort((a, b) => stripThe(a.name).localeCompare(stripThe(b.name)));
+        }
         return result;
       }, [data, localSearch, effectiveFilter, sortBy, isCharacterList, favoritePerks, isPerkList]);
       return (
@@ -7557,42 +7579,39 @@
             )}
           </div>
 <div className="w-full max-w-[1280px] mx-auto px-[44px] pb-32">
-            <table className="cx-wikitable"><tbody>
+            <table className="cx-wikitable">
+            {isCharacterList ? (
+              <thead><tr>
+                <th>Character</th>
+                {type === 'Killers' ? <th>Power</th> : null}
+                <th>Chapter</th>
+                <th>{type === 'Killers' ? 'Movement speed' : 'Difficulty'}</th>
+                <th aria-hidden="true"></th>
+              </tr></thead>
+            ) : (
+              <thead><tr>
+                <th>Perk</th><th>Owner</th><th>Type</th><th>Effect</th><th aria-hidden="true"></th>
+              </tr></thead>
+            )}
+            <tbody>
             {filtered.map(item => {
               const category = type === 'Killers' ? 'Killer' : type === 'Survivors' ? 'Survivor' : 'Perk';
-              const showPerks = category === 'Killer' || category === 'Survivor';
-              const perksForOwner = showPerks ? (perksByOwner[item.name] || []) : [];
-              const relatedBuilds = showPerks ? (buildsByOwner[item.name] || []) : [];
-              const isCharacter = category === 'Killer' || category === 'Survivor';
               const isPerk = category === 'Perk';
-              const subtext = category === 'Killer' ? (item.realName || item.name) : category === 'Survivor' ? item.role : (item.owner || 'Universal');
-              const accentTone = category === 'Killer' ? '#fafafa' : category === 'Survivor' ? '#a1a1aa' : (item.type === 'Killer' ? '#fafafa' : '#a1a1aa');
+              const isCharacter = !isPerk;
               const fallbackIcon = category === 'Killer' ? <Icons.Sword width={24} height={24} className="opacity-20" /> : category === 'Survivor' ? <Icons.Heart width={24} height={24} className="opacity-20" /> : <Icons.BookOpen width={20} height={20} className="opacity-20" />;
-              const isInCompare = category === 'Perk' && comparePerks.some(p => p.id === item.id);
-              const onLongPress = category === 'Perk' && onPerkLongPress ? () => onPerkLongPress(item) : undefined;
+              const isInCompare = isPerk && comparePerks.some(p => p.id === item.id);
               const isFavorite = favoritePerks.includes(item.id);
               const onToggleFavoriteFn = onToggleFavorite ? () => onToggleFavorite(item.id) : undefined;
-              const onPerkTapFn = category === 'Perk' && onPerkTap ? () => onPerkTap(item) : undefined;
-              const onShowLoreFn = showPerks && onShowLore ? () => onShowLore(item) : undefined;
-              const onShowPowerFn = category === 'Killer' && onShowPower ? () => onShowPower(item) : undefined;
-              const onViewProfileFn = showPerks && onViewProfile ? () => onViewProfile(item) : undefined;
-              const onToggleFn = showPerks ? () => setExpandedId(expandedId === item.id ? null : item.id) : undefined;
-              const onPerkClickFn = perk => {
-                onPerkSelect && onPerkSelect(perk.name);
-                setView && setView('perks');
-              };
-              const onCreateBuildFn = showPerks && onCreateBuildSeed ? () => { onCreateBuildSeed({ role: category, characterId: item.id, characterName: item.name }); setView && setView('buildLab'); } : undefined;
-              void relatedBuilds;
-              void onCreateBuildFn;
-              const isExpanded = showPerks && expandedId === item.id;
+              const onPerkTapFn = isPerk && onPerkTap ? () => onPerkTap(item) : undefined;
+              const onViewProfileFn = isCharacter && onViewProfile ? () => onViewProfile(item) : undefined;
               let pressTimer = null;
               let longPressFired = false;
               const handleTouchStart = () => {
-                if (!onLongPress) return;
+                if (!isPerk || !onPerkLongPress) return;
                 longPressFired = false;
                 pressTimer = setTimeout(() => {
                   longPressFired = true;
-                  onLongPress();
+                  onPerkLongPress(item);
                 }, 500);
               };
               const handleTouchEnd = () => {
@@ -7609,168 +7628,84 @@
                 if (onPerkTapFn) onPerkTapFn();
               };
               const handleCharacterClick = () => {
-                if (onViewProfileFn) { onViewProfileFn(); return; }
-                if (onToggleFn) onToggleFn();
+                if (onViewProfileFn) onViewProfileFn();
               };
               if (isCharacter) {
+                const guide = category === 'Killer' ? KILLER_GUIDES[item.name] : null;
+                const stats = category === 'Killer' ? KILLER_STATS[item.name] : null;
+                const rel = releaseByChar.get(item.name);
+                const chapterLabel = rel ? `${rel.name}${rel.chapterNumber ? ` (${rel.chapterNumber})` : ''}` : '\u2014';
                 return (
-                  <React.Fragment key={item.id}>
-                    <tr
-                      onClick={handleCharacterClick}
-                      className={`${isInCompare ? 'ring-2 ring-zinc-500' : ''}`}
-                      style={isExpanded ? { borderColor: accentTone, boxShadow: 'inset 3px 0 0 ' + accentTone } : { boxShadow: 'inset 3px 0 0 ' + accentTone }}
-                    >
-                      <td className="cx-perkcell">
+                  <tr key={item.id} onClick={handleCharacterClick} className={isInCompare ? 'cx-row-compare' : undefined} style={{ cursor: 'pointer' }}>
+                    <td className="cx-perkcell">
+                      <div className="cx-perkcell-inner">
                         <div style={{ width: 34, height: 34, overflow: 'hidden', flexShrink: 0, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                          <AssetFrame type={category} imageUrl={item.image} fallbackIcon={fallbackIcon} />
+                          <AssetFrame type={category} imageUrl={item.image} fallbackIcon={fallbackIcon} size="fill" />
                         </div>
-                      </td>
-                      <td className="cx-sec">
-                        <span className="text-[10px] font-semibold uppercase tracking-wider text-slate-300">{category}</span>
-                        <h3 className="text-lg font-semibold text-white mb-1 tracking-tight">{item.name}</h3>
-                        <p className="text-zinc-400 text-sm font-medium">{subtext}</p>
-                      </td>
-                      <td>
-                        {(isPerk || isCharacter) && onToggleFavoriteFn && (
-                          <button
-                            onClick={(e) => { e.stopPropagation(); onToggleFavoriteFn(); }}
-                            className={`p-1.5 rounded-full transition-colors ${isFavorite ? 'bg-white/10' : 'bg-white/10 hover:bg-white/20'}`}
-                          >
-                            <Icons.Star width={16} height={16} className={isFavorite ? 'text-zinc-100 fill-zinc-100' : 'text-zinc-500'} />
-                          </button>
-                        )}
-                      </td>
-                    </tr>
-                    {isExpanded && (
-                      <tr key={item.id + '-detail'}>
-                        <td colSpan={3}>
-                          {category === 'Killer' && item.power && (
-                            <p className="text-zinc-500 text-xs mt-2 leading-relaxed">{item.power}</p>
-                          )}
-                          {category === 'Killer' && KILLER_STATS[item.name] && (
-                            <div className="flex flex-wrap gap-2 mt-2">
-                              <span className="px-2 py-1 rounded-lg bg-zinc-500/10 border border-white/25/20 text-[10px] font-bold text-zinc-100">
-                                TR: {KILLER_STATS[item.name].terrorRadius}
-                              </span>
-                              <span className="px-2 py-1 rounded-lg bg-zinc-500/10 border border-white/25/20 text-[10px] font-bold text-zinc-100">
-                                Speed: {KILLER_STATS[item.name].speed}
-                              </span>
-                              <span className="px-2 py-1 rounded-lg bg-zinc-500/10 border border-white/25/20 text-[10px] font-bold text-zinc-100">
-                                Height: {KILLER_STATS[item.name].height}
-                              </span>
-                            </div>
-                          )}
-                          {item.description && (
-                            <p className="perk-effect-text text-zinc-300/90 text-xs leading-relaxed font-medium tracking-wide">
-                              <span className="perk-effect-label text-zinc-500 mr-2 uppercase text-[10px] font-bold">Effect</span>
-                              {stripHtml(item.description)}
-                            </p>
-                          )}
-                          {onShowLoreFn && (
-                            <div className="flex gap-2 mt-2">
-                              <button
-                                onClick={(e) => { e.stopPropagation(); onShowLoreFn(); }}
-                                className="flex-1 py-2.5 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 text-zinc-300 text-sm font-semibold transition-colors flex items-center justify-center gap-2"
-                              >
-                                <Icons.BookOpen width={16} height={16} />
-                                Lore
-                              </button>
-                              {category === 'Killer' && item.power && onShowPowerFn && (
-                                <button
-                                  onClick={(e) => { e.stopPropagation(); onShowPowerFn(); }}
-                                  className="flex-1 py-2.5 rounded-xl bg-zinc-500/20 hover:bg-zinc-500/30 border border-white/25/30 text-zinc-100 text-sm font-semibold transition-colors flex items-center justify-center gap-2"
-                                >
-                                  <Icons.Zap width={16} height={16} />
-                                  Power
-                                </button>
-                              )}
-                            </div>
-                          )}
-                          {perksForOwner.length > 0 && (
-                            <div className="mt-2">
-                              <p className="text-zinc-500 text-[10px] font-bold uppercase tracking-widest mb-3">Teachables</p>
-                              <div className="space-y-2">
-                                {perksForOwner.slice(0, 3).map(perk => (
-                                  <button
-                                    key={perk.id}
-                                    onClick={(e) => { e.stopPropagation(); onPerkClickFn && onPerkClickFn(perk); }}
-                                    className="w-full text-left p-3 rounded-xl bg-white/5 border border-white/5 hover:border-white/15 transition-colors flex items-start gap-3"
-                                  >
-                                    <AssetFrame type="Perk" imageUrl={perk.image} fallbackIcon={<Icons.BookOpen width={18} height={18} className="text-white/60" />} />
-                                    <div className="flex-1">
-                                      <p className="text-white text-sm font-bold">{perk.name}</p>
-                                      <PerkDescriptionBlock
-                                        perk={perk}
-                                        settings={settings}
-                                        accentColor={accentTone}
-                                        compactLines={2}
-                                        className="text-zinc-500 text-xs mt-1 leading-relaxed"
-                                      />
-                                    </div>
-                                  </button>
-                                ))}
-                              </div>
-                            </div>
-                          )}
-                        </td>
-                      </tr>
-                    )}
-                  </React.Fragment>
+                        <span>
+                          <button type="button" className="cx-alink" onClick={(e) => { e.stopPropagation(); handleCharacterClick(); }}>{item.name}</button>
+                          {category === 'Killer' && item.realName && item.realName !== item.name ? <small>{item.realName}</small> : null}
+                        </span>
+                      </div>
+                    </td>
+                    {category === 'Killer' ? (
+                      <td>{guide && guide.powerName ? <button type="button" className="cx-alink" onClick={(e) => { e.stopPropagation(); handleCharacterClick(); }}>{guide.powerName}</button> : '\u2014'}</td>
+                    ) : null}
+                    <td>{chapterLabel}</td>
+                    <td>{category === 'Killer' ? (stats && stats.speed ? stats.speed : fmtDiff(item.difficulty)) : fmtDiff(item.difficulty)}</td>
+                    <td className="cx-star">
+                      {onToggleFavoriteFn && (
+                        <button type="button" onClick={(e) => { e.stopPropagation(); onToggleFavoriteFn(); }} aria-label="Toggle favorite" className={isFavorite ? 'cx-star-on' : undefined}>
+                          {isFavorite ? '\u2605' : '\u2606'}
+                        </button>
+                      )}
+                    </td>
+                  </tr>
                 );
               }
+              const ownerChar = charByName.get(item.owner) || null;
+              const isHex = item.name.startsWith('Hex:');
+              const isExhaust = /exhaust/i.test(item.description || '');
+              const typeLabel = `${item.type}${isHex ? ' \u00b7 Hex' : ''}${isExhaust ? ' \u00b7 Exhaustion' : ''}`;
               return (
                 <tr
                   key={item.id}
-                  onClick={isPerk && onPerkTapFn ? handlePerkClick : undefined}
+                  onClick={onPerkTapFn ? handlePerkClick : undefined}
                   onTouchStart={isPerk ? handleTouchStart : undefined}
                   onTouchEnd={isPerk ? handleTouchEnd : undefined}
                   onTouchCancel={isPerk ? handleTouchEnd : undefined}
                   onMouseDown={isPerk ? handleTouchStart : undefined}
                   onMouseUp={isPerk ? handleTouchEnd : undefined}
                   onMouseLeave={isPerk ? handleTouchEnd : undefined}
-                  className={`${onPerkTapFn ? 'cursor-pointer' : ''} ${isInCompare ? 'ring-2 ring-zinc-500' : ''}`}
-                  style={{ boxShadow: 'inset 3px 0 0 ' + accentTone }}
+                  className={`${onPerkTapFn ? 'cursor-pointer' : ''} ${isInCompare ? 'cx-row-compare' : ''}`}
                 >
                   <td className="cx-perkcell">
-                    <div style={{ width: 34, height: 34, overflow: 'hidden', flexShrink: 0, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                      <AssetFrame type={category} imageUrl={item.image} fallbackIcon={fallbackIcon} />
+                    <div className="cx-perkcell-inner">
+                      <div style={{ width: 34, height: 34, overflow: 'hidden', flexShrink: 0, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                        <AssetFrame type={category} imageUrl={item.image} fallbackIcon={fallbackIcon} size="fill" />
+                      </div>
+                      <span>
+                        {onPerkTapFn ? (
+                          <button type="button" className="cx-alink" onClick={(e) => { e.stopPropagation(); onPerkTapFn(); }}>{item.name}</button>
+                        ) : <span className="font-semibold text-zinc-100">{item.name}</span>}
+                        <small>{typeLabel}</small>
+                      </span>
                     </div>
                   </td>
-                  <td className="cx-sec">
-                    <span className="text-[10px] font-semibold uppercase tracking-wider text-slate-300">{category}</span>
-                    <h3 className="text-lg font-semibold text-white mb-1 tracking-tight">{item.name}</h3>
-                    <p className="text-zinc-400 text-sm font-medium">{subtext}</p>
-                    {isPerk && onLongPress && (
-                      <p className="text-zinc-600 text-[10px] mt-1">Long press to compare</p>
-                    )}
-                    {item.description && (
-                      <div className="perk-effect-text text-zinc-300/90 text-xs font-medium tracking-wide">
-                        <span className="perk-effect-label text-zinc-500 mr-2 uppercase text-[10px] font-bold">Effect</span>
-                        <PerkDescriptionBlock
-                          perk={item}
-                          settings={settings}
-                          accentColor={accentTone}
-                          compactLines={3}
-                          className="inline"
-                          lineClassName="leading-relaxed"
-                        />
-                      </div>
-                    )}
-                  </td>
                   <td>
-                    {isInCompare && (
-                      <div className="w-6 h-6 rounded-full bg-zinc-400 flex items-center justify-center mb-2">
-                        <Icons.Check width={14} height={14} className="text-white" />
-                      </div>
-                    )}
-                    {(isPerk || isCharacter) && onToggleFavoriteFn && (
-                      <button
-                        onClick={(e) => { e.stopPropagation(); onToggleFavoriteFn(); }}
-                        className={`p-1.5 rounded-full transition-colors ${isFavorite ? 'bg-white/10' : 'bg-white/10 hover:bg-white/20'}`}
-                      >
-                        <Icons.Star width={16} height={16} className={isFavorite ? 'text-zinc-100 fill-zinc-100' : 'text-zinc-500'} />
+                    {ownerChar ? (
+                      <button type="button" className="cx-alink" onClick={(e) => { e.stopPropagation(); setView && setView((ownerChar.power || ownerChar.type === 'Killer') ? 'killer' : 'survivor', { id: ownerChar.id }); }}>{item.owner}</button>
+                    ) : (item.owner || 'Universal')}
+                  </td>
+                  <td>{item.type}</td>
+                  <td>{item.description ? <PerkDescriptionBlock perk={item} settings={settings} accentColor="var(--link)" className="inline" lineClassName="leading-relaxed" /> : '\u2014'}</td>
+                  <td className="cx-star">
+                    {onToggleFavoriteFn && (
+                      <button type="button" onClick={(e) => { e.stopPropagation(); onToggleFavoriteFn(); }} aria-label="Toggle favorite" className={isFavorite ? 'cx-star-on' : undefined}>
+                        {isFavorite ? '\u2605' : '\u2606'}
                       </button>
                     )}
+                    {isInCompare && <span className="cx-compare-dot" title="In compare">{'\u25cf'}</span>}
                   </td>
                 </tr>
               );
@@ -15758,9 +15693,9 @@ const MapLayoutModal = ({ map, onClose, noteValue = '', onNoteChange }) => {
             );
             return <CharacterArticleView character={article} roleCount={articleList.length} cosmeticFocusId={viewContext.cosmeticId || null} onHome={() => setView('home')} onOpenList={() => setView(isKillerView ? 'killers' : 'survivors')} onOpenTimeline={() => setView('timeline')} onOpenCommunity={() => setView('communityContent')} allPerks={perks} onPerkTap={setSelectedPerk} theme={theme} settings={settings} noteValue={isKillerView ? getEntityNote('killer', article.id) : ''} onNoteChange={(value) => { if (isKillerView) setEntityNote('killer', article.id, value); }} cosmeticsByBaseId={cosmeticsByBaseId} allAddons={addons} />;
           }
-          case 'killers': return <ListView data={visibleKillers} type="Killers" activeFilter="All" setActiveFilter={() => { }} allPerks={perks} setView={setView} onPerkSelect={setPerkSearch} initialSearch={viewContext.search || ''} buildsByOwner={buildsByOwner} onCreateBuildSeed={setBuildSeed} onBack={() => setView('home')} onShowLore={openCharacterArticle} onShowPower={openCharacterArticle} favoritePerks={settings.favoriteKillers || []} onToggleFavorite={(id) => toggleFavorite('Killer', id)} onViewProfile={openCharacterArticle} settings={settings} />;
-          case 'survivors': return <ListView data={visibleSurvivors} type="Survivors" activeFilter="All" setActiveFilter={() => { }} allPerks={perks} setView={setView} onPerkSelect={setPerkSearch} initialSearch={viewContext.search || ''} buildsByOwner={buildsByOwner} onCreateBuildSeed={setBuildSeed} onBack={() => setView('home')} onShowLore={openCharacterArticle} favoritePerks={settings.favoriteSurvivors || []} onToggleFavorite={(id) => toggleFavorite('Survivor', id)} onViewProfile={openCharacterArticle} settings={settings} />;
-          case 'perks': return <ListView data={visiblePerks} type="Perks" filterOptions={['All', 'Survivor', 'Killer', 'Favorites', 'Exhaustion', 'Hex', 'Boon', 'Scourge', 'Obsession', 'Aura', 'Stealth', 'Gen', 'Healing']} activeFilter={perkFilter} setActiveFilter={setPerkFilter} initialSearch={perkSearch} onSearchChange={setPerkSearch} onBack={() => setView('home')} comparePerks={comparePerks} onPerkLongPress={togglePerkCompare} favoritePerks={settings.favoritePerks || []} onToggleFavorite={toggleFavoritePerk} onPerkTap={setSelectedPerk} settings={settings} />;
+          case 'killers': return <ListView allCharacters={[...killers, ...survivors]} data={visibleKillers} type="Killers" activeFilter="All" setActiveFilter={() => { }} allPerks={perks} setView={setView} onPerkSelect={setPerkSearch} initialSearch={viewContext.search || ''} buildsByOwner={buildsByOwner} onCreateBuildSeed={setBuildSeed} onBack={() => setView('home')} onShowLore={openCharacterArticle} onShowPower={openCharacterArticle} favoritePerks={settings.favoriteKillers || []} onToggleFavorite={(id) => toggleFavorite('Killer', id)} onViewProfile={openCharacterArticle} settings={settings} />;
+          case 'survivors': return <ListView allCharacters={[...killers, ...survivors]} data={visibleSurvivors} type="Survivors" activeFilter="All" setActiveFilter={() => { }} allPerks={perks} setView={setView} onPerkSelect={setPerkSearch} initialSearch={viewContext.search || ''} buildsByOwner={buildsByOwner} onCreateBuildSeed={setBuildSeed} onBack={() => setView('home')} onShowLore={openCharacterArticle} favoritePerks={settings.favoriteSurvivors || []} onToggleFavorite={(id) => toggleFavorite('Survivor', id)} onViewProfile={openCharacterArticle} settings={settings} />;
+          case 'perks': return <ListView allCharacters={[...killers, ...survivors]} data={visiblePerks} type="Perks" filterOptions={['All', 'Survivor', 'Killer', 'Favorites', 'Exhaustion', 'Hex', 'Boon', 'Scourge', 'Obsession', 'Aura', 'Stealth', 'Gen', 'Healing']} activeFilter={perkFilter} setActiveFilter={setPerkFilter} initialSearch={perkSearch} onSearchChange={setPerkSearch} onBack={() => setView('home')} comparePerks={comparePerks} onPerkLongPress={togglePerkCompare} favoritePerks={settings.favoritePerks || []} onToggleFavorite={toggleFavoritePerk} onPerkTap={setSelectedPerk} settings={settings} />;
           case 'roulette': return <ChaosShuffleView onBack={() => setView('home')} perks={visiblePerks} killers={visibleKillers} survivors={visibleSurvivors} items={items} addons={visibleAddons} offerings={offerings} settings={settings} ownedOnlyGlobal={settings.ownedOnlyGlobal === true} />;
           case 'realms': return <RealmsView onBack={() => setView('home')} maps={maps} realms={realms} onViewLayout={setLayoutMap} initialSearch={viewContext.search || ''} />;
           case 'glossary': return <GlossaryView onBack={() => setView('home')} />;
