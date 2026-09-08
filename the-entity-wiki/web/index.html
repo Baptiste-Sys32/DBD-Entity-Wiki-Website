@@ -12722,13 +12722,19 @@
       return (
         <div className="flex flex-col h-full pt-12 pb-32 px-6 overflow-y-auto custom-scrollbar">
           <ViewCrumbs trail={[{ label: 'Main page', onClick: onBack }]} current="Community Content" />
-          <Header title="Community Content" subtitle="Guides, builds, and tierlists" onBack={onBack} />
+          <h1 className="cx-title">Community Content</h1>
+          <p className="cx-hatnote">Guides, builds, and tierlists from the community.</p>
+          <div className="cx-metaline">patch {META.gameVersion}</div>
           <div className="max-w-5xl mx-auto w-full pb-32 space-y-4">
             <div className="flex flex-wrap items-center gap-2">
               {tabOptions.map((tab) => (
-                <GlassButton key={tab.id} active={activeTab === tab.id} onClick={() => setActiveTab(tab.id)} className="text-xs py-2 px-3">
+                <button
+                  key={tab.id}
+                  onClick={() => setActiveTab(tab.id)}
+                  className={`px-4 py-2 text-xs rounded-lg border transition-colors ${activeTab === tab.id ? 'bg-zinc-100 text-black border-zinc-100 font-bold' : 'bg-transparent text-zinc-300 border-white/15 hover:border-white/30'}`}
+                >
                   {tab.label}
-                </GlassButton>
+                </button>
               ))}
             </div>
 
@@ -13066,85 +13072,119 @@
       const favAddons = useMemo(() => resolve(settings.favoriteAddons, addons), [settings.favoriteAddons, addons]);
       const favOfferings = useMemo(() => resolve(settings.favoriteOfferings, offerings.filter(o => !o.retired)), [settings.favoriteOfferings, offerings]);
       const totalCount = favKillers.length + favSurvivors.length + favPerks.length + favItems.length + favAddons.length + favOfferings.length;
+      const releaseByChar = useMemo(() => {
+        const map = new Map();
+        if (typeof TIMELINE_DATA !== 'undefined' && TIMELINE_DATA && TIMELINE_DATA.releases) {
+          TIMELINE_DATA.releases.forEach(rel => {
+            [...(rel.killers || []), ...(rel.survivors || [])].forEach(entry => {
+              if (entry && entry.name && !map.has(entry.name)) map.set(entry.name, { name: rel.name, chapterNumber: rel.chapterNumber });
+            });
+          });
+        }
+        return map;
+      }, []);
       const getRarityColor = (rarity) => {
         switch ((rarity || '').toLowerCase()) {
           case 'common': return '#71717a'; case 'uncommon': return '#a1a1aa'; case 'rare': return '#d4d4d8';
           case 'veryrare': return '#e4e4e7'; case 'ultrarare': case 'visceral': return '#fafafa'; case 'event': return '#e4e4e7'; default: return '#71717a';
         }
       };
-      const FavSection = ({ title, items: sectionItems, category, accentColor, renderItem }) => {
+      const FavSection = ({ title, items: sectionItems, columns, renderItem }) => {
         if (sectionItems.length === 0) return null;
         return (
-          <div className="mb-6">
-            <div className="flex items-center gap-2 mb-3 px-1">
-              <span className="text-[10px] font-bold uppercase tracking-[0.2em]" style={{ color: accentColor }}>{title}</span>
-              <span className="text-[10px] text-zinc-600 font-bold">{sectionItems.length}</span>
-            </div>
-            <div className="space-y-2">
-              {sectionItems.map(item => renderItem(item, category))}
-            </div>
+          <div className="mb-8">
+            <h3 className="cx-sub">{title} <span style={{ color: 'var(--text-faint)', fontSize: '12px', fontWeight: 400 }}>{sectionItems.length}</span></h3>
+            <table className="cx-wikitable">
+              <thead><tr>{columns.map((col, idx) => <th key={idx} style={col.width ? { width: col.width } : undefined}>{col.label}</th>)}<th aria-hidden="true" style={{ width: '40px' }}></th></tr></thead>
+              <tbody>
+                {sectionItems.map(item => renderItem(item))}
+              </tbody>
+            </table>
           </div>
         );
       };
-      const CharCard = ({ item, category }) => (
-        <div key={item.id} className="p-3 rounded-xl bg-[var(--panel)] border border-[var(--stroke)] flex items-center gap-3 group">
-          <div className="w-12 h-12 rounded-xl bg-white/5 border border-[var(--stroke)] flex-shrink-0 overflow-hidden">
-            <AssetFrame type={category} size="fill" imageUrl={item.image} fallbackIcon={<Icons.User width={20} height={20} className="text-white/40" />} />
-          </div>
-          <div className="flex-1 min-w-0">
-            <p className="text-white font-bold text-sm truncate">{item.name}</p>
-            <p className="text-zinc-500 text-xs">{item.realName || category}</p>
-          </div>
-          <button onClick={() => setView(category === 'Killer' ? 'killers' : 'survivors', { search: item.name })} className="px-3 py-1.5 rounded-xl bg-[var(--panel)] border border-[var(--stroke)] text-[11px] text-zinc-300 hover:text-white transition-colors mr-1">View</button>
-          <button onClick={() => toggleFavorite(category, item.id)} className="p-1.5 rounded-full bg-white/10 transition-colors hover:bg-white/15">
-            <Icons.Star width={14} height={14} className="text-zinc-100 fill-zinc-100" />
-          </button>
-        </div>
-      );
-      const PerkCard = ({ item }) => (
-        <div key={item.id} className="p-3 rounded-xl bg-[var(--panel)] border border-[var(--stroke)] flex items-center gap-3">
-          <div className="w-10 h-10 rounded-lg bg-white/5 border border-[var(--stroke)] flex-shrink-0 overflow-hidden flex items-center justify-center">
-            <AssetFrame type="Perk" size="fill" imageUrl={item.image} fallbackIcon={<Icons.BookOpen width={16} height={16} className="text-white/40" />} />
-          </div>
-          <div className="flex-1 min-w-0">
-            <p className="text-white font-bold text-sm truncate">{item.name}</p>
-            <p className="text-zinc-500 text-xs truncate">{item.owner || (item.type === 'Killer' ? 'Killer' : 'Survivor')}</p>
-          </div>
-          <button onClick={() => onPerkTap && onPerkTap(item)} className="px-3 py-1.5 rounded-xl bg-[var(--panel)] border border-[var(--stroke)] text-[11px] text-zinc-300 hover:text-white transition-colors mr-1">View</button>
-          <button onClick={() => toggleFavorite('Perk', item.id)} className="p-1.5 rounded-full bg-white/10 transition-colors hover:bg-white/15">
-            <Icons.Star width={14} height={14} className="text-zinc-100 fill-zinc-100" />
-          </button>
-        </div>
-      );
-      const SmallCard = ({ item, category, subtitle }) => (
-        <div key={item.id} className="p-3 rounded-xl bg-[var(--panel)] border border-[var(--stroke)] flex items-center gap-3">
-          <div className="w-10 h-10 rounded-lg bg-white/5 border border-[var(--stroke)] flex-shrink-0 overflow-hidden">
-            <AssetFrame type={category} size="fill" imageUrl={item.image} fallbackIcon={<Icons.Package width={16} height={16} className="text-white/40" />} />
-          </div>
-          <div className="flex-1 min-w-0">
-            <p className="text-white font-bold text-sm truncate">{item.name}</p>
-            <div className="flex items-center gap-2">
-              <span className="text-zinc-500 text-xs">{subtitle}</span>
-              {item.rarity && <span className="text-[10px] font-bold" style={{ color: getRarityColor(item.rarity) }}>{(item.rarity || '').replace('veryrare', 'Very Rare').replace('ultrarare', 'Ultra Rare')}</span>}
+      const charColumns = [{ label: 'Character' }, { label: 'Chapter' }];
+      const CharRow = ({ item, category }) => {
+        const rel = releaseByChar.get(item.name);
+        return (
+          <tr key={item.id} onClick={() => setView(category === 'Killer' ? 'killer' : 'survivor', { id: item.id })} style={{ cursor: 'pointer' }}>
+            <td className="cx-perkcell">
+              <div className="cx-perkcell-inner">
+                <div style={{ width: 34, height: 34, overflow: 'hidden', flexShrink: 0, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                  <AssetFrame type={category} size="fill" imageUrl={item.image} fallbackIcon={<Icons.User width={20} height={20} className="text-white/40" />} />
+                </div>
+                <span>
+                  <span className="font-semibold text-zinc-100">{item.name}</span>
+                  {item.realName && item.realName !== item.name ? <small>{item.realName}</small> : null}
+                </span>
+              </div>
+            </td>
+            <td style={{ color: 'var(--dim)' }}>{rel ? rel.name : '\u2014'}</td>
+            <td className="cx-star">
+              <button type="button" onClick={(e) => { e.stopPropagation(); toggleFavorite(category, item.id); }} aria-label="Remove favorite" className="cx-star-on">{'\u2605'}</button>
+            </td>
+          </tr>
+        );
+      };
+      const perkColumns = [{ label: 'Perk' }, { label: 'Owner' }];
+      const PerkRow = ({ item }) => (
+        <tr key={item.id} onClick={() => onPerkTap && onPerkTap(item)} style={{ cursor: 'pointer' }}>
+          <td className="cx-perkcell">
+            <div className="cx-perkcell-inner">
+              <div style={{ width: 34, height: 34, overflow: 'hidden', flexShrink: 0, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                <AssetFrame type="Perk" size="fill" imageUrl={item.image} fallbackIcon={<Icons.BookOpen width={16} height={16} className="text-white/40" />} />
+              </div>
+              <span>
+                <span className="font-semibold text-zinc-100">{item.name}</span>
+                <small>{item.type} Perk{item.name.startsWith('Hex:') ? ' \u00b7 Hex' : ''}</small>
+              </span>
             </div>
-          </div>
-          <button onClick={() => toggleFavorite(category, item.id)} className="p-1.5 rounded-full bg-white/10 transition-colors hover:bg-white/15">
-            <Icons.Star width={14} height={14} className="text-zinc-100 fill-zinc-100" />
-          </button>
-        </div>
+          </td>
+          <td style={{ color: 'var(--dim)' }}>{item.owner || 'Universal'}</td>
+          <td className="cx-star">
+            <button type="button" onClick={(e) => { e.stopPropagation(); toggleFavorite('Perk', item.id); }} aria-label="Remove favorite" className="cx-star-on">{'\u2605'}</button>
+          </td>
+        </tr>
+      );
+      const smallColumns = [{ label: 'Name' }, { label: 'Type' }, { label: 'Rarity' }];
+      const fmtRaritySm = (r) => (r || '').replace('veryrare', 'Very Rare').replace('ultrarare', 'Ultra Rare');
+      const SmallRow = ({ item, category, subtitle }) => (
+        <tr key={item.id}>
+          <td className="cx-perkcell">
+            <div className="cx-perkcell-inner">
+              <div style={{ width: 34, height: 34, overflow: 'hidden', flexShrink: 0, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                <AssetFrame type={category} size="fill" imageUrl={item.image} fallbackIcon={<Icons.Package width={16} height={16} className="text-white/40" />} />
+              </div>
+              <span>
+                <span className="font-semibold text-zinc-100">{item.name}</span>
+              </span>
+            </div>
+          </td>
+          <td style={{ color: 'var(--dim)' }}>{subtitle}</td>
+          <td className="cx-rarity">{item.rarity ? fmtRaritySm(item.rarity) : '\u2014'}</td>
+          <td className="cx-star">
+            <button type="button" onClick={() => toggleFavorite(category, item.id)} aria-label="Remove favorite" className="cx-star-on">{'\u2605'}</button>
+          </td>
+        </tr>
       );
       const showSection = (tab) => activeTab === 'All' || activeTab === tab;
       return (
         <div className="flex flex-col h-full pt-12 pb-32 px-6 overflow-y-auto custom-scrollbar">
           <ViewCrumbs trail={[{ label: 'Main page', onClick: onBack }]} current="My Favorites" />
-          <Header title="My Favorites" subtitle={totalCount + ' bookmarked'} onBack={onBack} />
-          <div className="max-w-3xl mx-auto flex flex-wrap justify-center gap-2 mb-6">
+          <h1 className="cx-title">My Favorites</h1>
+          <p className="cx-hatnote">Your bookmarked killers, survivors, perks, items, add-ons, and offerings.</p>
+          <div className="cx-metaline">{totalCount} bookmarked · patch {META.gameVersion}</div>
+          <div className="max-w-3xl mx-auto flex flex-wrap justify-center gap-2 mb-6 mt-4">
             {tabs.map(tab => {
               const count = tab === 'All' ? totalCount : tab === 'Killers' ? favKillers.length : tab === 'Survivors' ? favSurvivors.length : tab === 'Perks' ? favPerks.length : tab === 'Items' ? favItems.length : tab === 'Addons' ? favAddons.length : favOfferings.length;
               return (
-                <GlassButton key={tab} active={activeTab === tab} onClick={() => setActiveTab(tab)} className="text-xs py-2 px-3">
+                <button
+                  key={tab}
+                  onClick={() => setActiveTab(tab)}
+                  className={`px-4 py-2 text-xs rounded-lg border transition-colors ${activeTab === tab ? 'bg-zinc-100 text-black border-zinc-100 font-bold' : 'bg-transparent text-zinc-300 border-white/15 hover:border-white/30'}`}
+                >
                   {tab}{count > 0 ? ` (${count})` : ''}
-                </GlassButton>
+                </button>
               );
             })}
           </div>
@@ -13160,12 +13200,12 @@
               </div>
             ) : (
               <div className="animate-in fade-in slide-in-from-bottom-4 duration-500">
-                {showSection('Killers') && <FavSection title="Killers" items={favKillers} category="Killer" accentColor="#fafafa" renderItem={(item) => <CharCard key={item.id} item={item} category="Killer" />} />}
-                {showSection('Survivors') && <FavSection title="Survivors" items={favSurvivors} category="Survivor" accentColor="#a1a1aa" renderItem={(item) => <CharCard key={item.id} item={item} category="Survivor" />} />}
-                {showSection('Perks') && <FavSection title="Perks" items={favPerks} category="Perk" accentColor="#e4e4e7" renderItem={(item) => <PerkCard key={item.id} item={item} />} />}
-                {showSection('Items') && <FavSection title="Items" items={favItems} category="Item" accentColor="#d4d4d8" renderItem={(item) => <SmallCard key={item.id} item={item} category="Item" subtitle={item.itemType || 'Item'} />} />}
-                {showSection('Addons') && <FavSection title="Addons" items={favAddons} category="Addon" accentColor="#a1a1aa" renderItem={(item) => <SmallCard key={item.id} item={item} category="Addon" subtitle={item.killerName || item.itemType || 'Addon'} />} />}
-                {showSection('Offerings') && <FavSection title="Offerings" items={favOfferings} category="Offering" accentColor="#71717a" renderItem={(item) => <SmallCard key={item.id} item={item} category="Offering" subtitle={item.role || 'Universal'} />} />}
+                {showSection('Killers') && <FavSection title="Killers" items={favKillers} category="Killer" columns={charColumns} renderItem={(item) => <CharRow key={item.id} item={item} category="Killer" />} />}
+                {showSection('Survivors') && <FavSection title="Survivors" items={favSurvivors} category="Survivor" columns={charColumns} renderItem={(item) => <CharRow key={item.id} item={item} category="Survivor" />} />}
+                {showSection('Perks') && <FavSection title="Perks" items={favPerks} category="Perk" columns={perkColumns} renderItem={(item) => <PerkRow key={item.id} item={item} />} />}
+                {showSection('Items') && <FavSection title="Items" items={favItems} category="Item" columns={smallColumns} renderItem={(item) => <SmallRow key={item.id} item={item} category="Item" subtitle={item.itemType || 'Item'} />} />}
+                {showSection('Addons') && <FavSection title="Addons" items={favAddons} category="Addon" columns={smallColumns} renderItem={(item) => <SmallRow key={item.id} item={item} category="Addon" subtitle={item.killerName || item.itemType || 'Addon'} />} />}
+                {showSection('Offerings') && <FavSection title="Offerings" items={favOfferings} category="Offering" columns={smallColumns} renderItem={(item) => <SmallRow key={item.id} item={item} category="Offering" subtitle={item.role || 'Universal'} />} />}
               </div>
             )}
           </div>
@@ -14042,7 +14082,11 @@
 
       return (
         <div ref={scrollRef} className="flex flex-col h-full pt-12 pb-32 overflow-y-auto custom-scrollbar">
-          <div className="px-6"><ViewCrumbs trail={[{ label: 'Main page', onClick: onBack }]} current={viewMode === 'glossary' ? 'Glossary' : 'Trial Grid'} /><Header title="Game Icons" subtitle={viewMode === 'glossary' ? 'Glossary' : 'Trial Grid'} onBack={onBack} onScrollTop={scrollToTop} /></div>
+          <div className="px-6"><ViewCrumbs trail={[{ label: 'Main page', onClick: onBack }]} current={viewMode === 'glossary' ? 'Glossary' : 'Trial Grid'} />
+            <h1 className="cx-title">Game Icons</h1>
+            <p className="cx-hatnote">Status icons and their meanings, plus a glossary view.</p>
+            <div className="cx-metaline">{viewMode === 'glossary' ? 'Glossary' : 'Trial Grid'} · patch {META.gameVersion}</div>
+          </div>
 
           {/* Mode Toggle */}
           <div className="px-6 mb-3">
