@@ -5809,7 +5809,6 @@
           <ViewCrumbs trail={[{ label: 'Main page', onClick: onBack }]} current="Chaos Shuffle" />
           <h1 className="cx-title">Chaos Shuffle</h1>
           <p className="cx-hatnote">Randomize perk combos and loadouts.</p>
-          <div className="cx-metaline">patch {META.gameVersion}</div>
           <h2 className="cx-sec">Role</h2>
           <table className="cx-wikitable"><tbody>
             <tr><th scope="row">Side</th><td>
@@ -7033,8 +7032,6 @@
               <div className="cx-article">
                 <nav className="cx-crumbs" aria-label="Breadcrumb">Main Page</nav>
                 <h1 className="cx-title">Main Page</h1>
-                <p className="cx-hatnote">The community reference for Dead by Daylight. Start with the featured article, or browse the archive by category.</p>
-                <p className="cx-metaline">{killers.length} Killers · {survivors.length} Survivors · {visiblePerks.length} Perks · {items.length} Items · {addons.length} Add-ons · {offerings.filter((offering) => !offering.retired).length} Offerings · {new Set(maps.map((m) => m.realm)).size} Realms</p>
                 <nav className="cx-toc" aria-label="Contents">
                   <p className="cx-toc-title">Contents</p>
                   <ol>
@@ -7387,7 +7384,6 @@
             <ViewCrumbs trail={[{ label: 'Main page', onClick: onBack }]} current={type} />
             <h1 className="cx-title">{type}</h1>
             <p className="cx-hatnote">{listHatnote}</p>
-            <div className="cx-metaline">{data.length} {type.toLowerCase()} · patch {META.gameVersion}</div>
           </div>
           <div className="sticky top-0 z-20 px-6 pb-4 pt-1 pointer-events-none">
             <div className="relative mb-3 max-w-3xl mx-auto pointer-events-auto">
@@ -7617,7 +7613,6 @@
           <ViewCrumbs trail={[{ label: 'Main page', onClick: onBack }]} current="Realms" />
           <h1 className="cx-title">Realms</h1>
           <p className="cx-hatnote">Maps and locations of the trials, grouped by realm.</p>
-          <div className="cx-metaline">{maps.length} maps · patch {META.gameVersion}</div>
           <div className="sticky top-0 z-20 -mx-6 px-6 pb-4 pointer-events-none">
             <div className="relative max-w-3xl mx-auto">
               <div className="absolute inset-0 bg-transparent rounded-xl blur-2xl opacity-0 transition-opacity duration-500"></div>
@@ -8130,7 +8125,6 @@
           <ViewCrumbs trail={[{ label: 'Main page', onClick: onBack }]} current="Build & Loadout Lab" />
           <h1 className="cx-title">Build &amp; Loadout Lab</h1>
           <p className="cx-hatnote">Craft, save, favorite and clone builds.</p>
-          <div className="cx-metaline">patch {META.gameVersion}</div>
           <h2 className="cx-sec">Actions</h2>
           <table className="cx-wikitable"><tbody>
             <tr><th scope="row">Builds</th><td>
@@ -9111,7 +9105,6 @@
           <ViewCrumbs trail={[{ label: 'Main page', onClick: onBack }]} current="Match Log" />
           <h1 className="cx-title">Match Log</h1>
           <p className="cx-hatnote">Log games with saved build and map details.</p>
-          <div className="cx-metaline">patch {META.gameVersion}</div>
           <h2 className="cx-sec">Log match</h2>
           <table className="cx-wikitable"><tbody>
             <tr><th scope="row">Role</th><td>
@@ -9818,7 +9811,6 @@
             <ViewCrumbs trail={[{ label: 'Main page', onClick: onBack }]} current="Wordle" />
             <h1 className="cx-title">Wordle</h1>
             <p className="cx-hatnote">Test your DBD knowledge — daily and practice modes.</p>
-            <div className="cx-metaline">patch {META.gameVersion}</div>
             <table className="cx-wikitable"><tbody>
               <tr><th scope="row">Status</th><td><div className="text-center text-zinc-400">
                 Wordle data is unavailable right now.
@@ -9832,7 +9824,6 @@
           <ViewCrumbs trail={[{ label: 'Main page', onClick: onBack }]} current="Wordle" />
           <h1 className="cx-title">Wordle</h1>
           <p className="cx-hatnote">Test your DBD knowledge — daily and practice modes.</p>
-          <div className="cx-metaline">patch {META.gameVersion}</div>
           <h2 className="cx-sec">Game mode</h2>
           <table className="cx-wikitable"><tbody>
             <tr><th scope="row">Mode</th><td>
@@ -10280,7 +10271,6 @@
           <ViewCrumbs trail={[{ label: 'Main page', onClick: onBack }]} current="Progression Hub" />
           <h1 className="cx-title">Progression Hub</h1>
           <p className="cx-hatnote">Achievements, roster, challenges and analytics.</p>
-          <div className="cx-metaline">patch {META.gameVersion}</div>
           <h2 className="cx-sec">Hub tabs</h2>
           <table className="cx-wikitable"><tbody>
             <tr><th scope="row">Tabs</th><td>
@@ -11013,12 +11003,6 @@
             <ViewCrumbs trail={[{ label: 'Main page', onClick: onBack }]} current="Chronicle" />
             <h1 className="cx-title">Chronicle</h1>
             <p className="cx-hatnote">Releases from June 2016 to the present, most recent first.</p>
-            <div className="cx-metaline">
-              {releases.length === allReleases.length
-                ? `${releases.length} releases · June 2016 to present`
-                : `${releases.length} of ${allReleases.length} releases`
-              } · patch {META.gameVersion}
-            </div>
 
             {/* Search bar */}
             <div className="relative mb-4">
@@ -11307,7 +11291,6 @@
             <ViewCrumbs trail={[{ label: 'Main page', onClick: onBack }]} current="Glossary" />
             <h1 className="cx-title">Glossary</h1>
             <p className="cx-hatnote">Community terminology and callouts.</p>
-            <div className="cx-metaline">{allTerms.length} terms · patch {META.gameVersion}</div>
 
             {/* Search bar */}
             <div className="sticky top-0 z-20 -mx-6 px-6 pb-4 pointer-events-none">
@@ -11513,7 +11496,6 @@
           <ViewCrumbs trail={[{ label: 'Main page', onClick: onBack }]} current="Items & Addons" />
           <h1 className="cx-title">Items &amp; Addons</h1>
           <p className="cx-hatnote">Survivor items, Killer powers, and their add-ons.</p>
-          <div className="cx-metaline">{mode === 'survivor' ? bloodwebItems.length + ' items' : killers.length + ' killers'} · patch {META.gameVersion}</div>
           <div className="sticky top-0 z-20 -mx-6 px-6 pb-4 pointer-events-none">
             <div className="relative max-w-3xl mx-auto">
               <div className="relative flex items-center bg-zinc-800/60 backdrop-blur-xl border border-white/10 rounded-3xl p-2 shadow-2xl pointer-events-auto">
@@ -11802,7 +11784,6 @@
           <ViewCrumbs trail={[{ label: 'Main page', onClick: onBack }]} current="Offerings" />
           <h1 className="cx-title">Offerings</h1>
           <p className="cx-hatnote">Offerings for the Entity, by rarity.</p>
-          <div className="cx-metaline">{active.length} offerings · patch {META.gameVersion}</div>
           <div className="sticky top-0 z-20 -mx-6 px-6 pb-4 pointer-events-none">
             <div className="relative max-w-3xl mx-auto">
               <div className="relative flex items-center bg-zinc-800/60 backdrop-blur-xl border border-white/10 rounded-3xl p-2 shadow-2xl pointer-events-auto">
@@ -12104,7 +12085,6 @@
           <ViewCrumbs trail={[{ label: 'Main page', onClick: onBack }]} current="Cosmetics" />
           <h1 className="cx-title">Cosmetics</h1>
           <p className="cx-hatnote">Browse all cosmetics by role, character, and rarity.</p>
-          <div className="cx-metaline">{readyCosmetics.length} cosmetics · {characterSwapCount} character swaps · patch {META.gameVersion}</div>
           {showFullSetPackBanner && (
             <div className="max-w-5xl mx-auto w-full mb-4">
               <div className="p-4 rounded-xl bg-[var(--panel)] border border-[var(--stroke)] space-y-3">
@@ -12489,7 +12469,6 @@
           <ViewCrumbs trail={[{ label: 'Main page', onClick: onBack }]} current="Community Content" />
           <h1 className="cx-title">Community Content</h1>
           <p className="cx-hatnote">Guides, builds, and tierlists from the community.</p>
-          <div className="cx-metaline">patch {META.gameVersion}</div>
           <div className="max-w-5xl mx-auto w-full pb-32 space-y-4">
             <div className="flex flex-wrap items-center gap-2">
               {tabOptions.map((tab) => (
@@ -12936,7 +12915,6 @@
           <ViewCrumbs trail={[{ label: 'Main page', onClick: onBack }]} current="My Favorites" />
           <h1 className="cx-title">My Favorites</h1>
           <p className="cx-hatnote">Your bookmarked killers, survivors, perks, items, add-ons, and offerings.</p>
-          <div className="cx-metaline">{totalCount} bookmarked · patch {META.gameVersion}</div>
           <div className="max-w-3xl mx-auto flex flex-wrap justify-center gap-2 mb-6 mt-4">
             {tabs.map(tab => {
               const count = tab === 'All' ? totalCount : tab === 'Killers' ? favKillers.length : tab === 'Survivors' ? favSurvivors.length : tab === 'Perks' ? favPerks.length : tab === 'Items' ? favItems.length : tab === 'Addons' ? favAddons.length : favOfferings.length;
@@ -13090,7 +13068,6 @@
           <ViewCrumbs trail={[{ label: 'Main page', onClick: onBack }]} current="Settings" />
           <h1 className="cx-title">Settings</h1>
           <p className="cx-hatnote">Website preferences and backups.</p>
-          <div className="cx-metaline">patch {META.gameVersion}</div>
           <div className="pb-32 -mx-6 px-6 space-y-4">
             {isMobile && settings.googlePlayCtaHidden === true && (
               <div>
@@ -13579,7 +13556,6 @@
               <ViewCrumbs trail={[{ label: 'Main page', onClick: onBack }]} current="The Entity's Offering" />
               <h1 className="cx-title">The Entity's Offering</h1>
               <p className="cx-hatnote">Bloodpoint calculator for prestige goals.</p>
-              <div className="cx-metaline">patch {META.gameVersion}</div>
               <p className="text-zinc-100/80 text-sm italic font-medium tracking-wide text-center mb-4">{getEntityQuote()}</p>
               <h2 className="cx-sec">Prestige inputs</h2>
               <table className="cx-wikitable"><tbody>
@@ -13852,7 +13828,6 @@
           <div className="px-6"><ViewCrumbs trail={[{ label: 'Main page', onClick: onBack }]} current={viewMode === 'glossary' ? 'Glossary' : 'Trial Grid'} />
             <h1 className="cx-title">Game Icons</h1>
             <p className="cx-hatnote">Status icons and their meanings, plus a glossary view.</p>
-            <div className="cx-metaline">{viewMode === 'glossary' ? 'Glossary' : 'Trial Grid'} · patch {META.gameVersion}</div>
           </div>
 
           {/* Mode Toggle */}
@@ -14345,18 +14320,8 @@ const MapLayoutModal = ({ map, onClose, noteValue = '', onNoteChange }) => {
         <p className="cx-hatnote">{children}</p>
       );
     };
-    const MetaLine = ({ updated, editsLabel, onHistory, onTalk }) => {
-      return (
-        <div className="cx-metaline">
-          <span>Last edited {updated}</span>
-          <span className="cx-sep" aria-hidden="true">·</span>
-          <a href="#history">{editsLabel}</a>
-          <span className="cx-sep" aria-hidden="true">·</span>
-          <a href="#history" onClick={onHistory}>page history</a>
-          <span className="cx-sep" aria-hidden="true">·</span>
-          <a href="#talk" onClick={onTalk}>talk</a>
-        </div>
-      );
+    const MetaLine = () => {
+      return null;
     };
     const Infobox = ({ title, sub, image, imageAlt, imageType, rows, note }) => {
       return (
@@ -14646,7 +14611,6 @@ const MapLayoutModal = ({ map, onClose, noteValue = '', onNoteChange }) => {
                 ) : null}
               </p>
             )}
-            <div className="cx-metaline">Last edited {editedLabel} · patch {META.gameVersion} · <button type="button" className="cx-alink" onClick={onOpenTimeline}>page history</button> · <button type="button" className="cx-alink" onClick={onOpenCommunity}>talk</button></div>
 
             <div className="cx-leadgrid">
               <div className="cx-leadmain">
