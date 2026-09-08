@@ -322,38 +322,6 @@
       background: #000000;
     }
 
-    body.full-palette-mode {
-      color-scheme: dark;
-    }
-
-    .full-palette-mode .glass-panel {
-      background: var(--full-panel-bg);
-      border-color: var(--full-panel-border);
-    }
-
-    .full-palette-mode .glass-button {
-      background: var(--full-button-bg);
-      border-color: var(--full-button-border);
-      color: var(--full-button-text);
-    }
-
-    .full-palette-mode .glass-button--active {
-      background: var(--full-button-active-bg);
-      color: var(--accent);
-      border-color: var(--accent);
-    }
-
-    .full-palette-mode .themed-select {
-      background: var(--full-select-bg);
-      color: var(--full-select-text);
-      border-color: var(--full-select-border);
-      box-shadow: var(--full-select-shadow);
-    }
-
-    .full-palette-mode .themed-select:focus {
-      border-color: var(--accent);
-    }
-
     ::selection {
       background: var(--selection-bg);
       color: var(--selection-text);
@@ -818,56 +786,6 @@
       box-shadow: var(--shadow-soft);
     }
 
-    .light-mode .website-topbar,
-    .light-mode .website-topbar .website-brand-mark,
-    .light-mode .website-topbar .text-white,
-    .light-mode .website-topbar .text-slate-100,
-    .light-mode .website-topbar .text-slate-200,
-    .light-mode .website-topbar .text-zinc-300,
-    .light-mode .website-topbar .hover\:text-white:hover {
-      color: #f8fafc !important;
-    }
-
-    .light-mode .website-topbar .text-zinc-400,
-    .light-mode .website-topbar .text-zinc-500 {
-      color: rgba(226, 232, 240, 0.78) !important;
-    }
-
-    .light-mode .website-topbar .bg-white\/5,
-    .light-mode .website-topbar .bg-white\/\[0\.035\],
-    .light-mode .website-topbar .hover\:bg-white\/10:hover {
-      background: rgba(255, 255, 255, 0.055) !important;
-    }
-
-    .light-mode .website-topbar .border-white\/10 {
-      border-color: rgba(255, 255, 255, 0.12) !important;
-    }
-
-    .light-mode .website-sidebar {
-      background:
-        linear-gradient(180deg, rgba(255, 255, 255, 0.76), rgba(248, 250, 252, 0.84)),
-        var(--nav-bg);
-    }
-
-    .light-mode .website-nav-link--active,
-    .light-mode .website-sidebar-search {
-      background: rgba(255, 255, 255, 0.72) !important;
-    }
-
-    .light-mode .website-nav-link--active {
-      box-shadow: inset 2px 0 0 #111827;
-    }
-
-    .light-mode .website-nav-link--active svg {
-      color: #475569 !important;
-      stroke: currentColor !important;
-    }
-
-    .light-mode .website-nav-link:hover,
-    .light-mode .website-sidebar-search:hover {
-      background: rgba(255, 255, 255, 0.86) !important;
-    }
-
     .text-white,
     .text-slate-100,
     .text-slate-200,
@@ -963,23 +881,23 @@
 
     .light-mode .themed-select {
       background-color: #ffffff;
-      color: #0f172a;
-      border-color: rgba(15, 23, 42, 0.14);
-      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.45), 0 10px 28px rgba(15, 23, 42, 0.16);
+      color: #202122;
+      border-color: #a2a9b1;
+      box-shadow: 0 1px 2px rgba(0, 0, 0, 0.08);
       background-image:
-        linear-gradient(145deg, rgba(15, 23, 42, 0.04), rgba(15, 23, 42, 0)),
-        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='18' height='18' viewBox='0 0 24 24' fill='none' stroke='%230f172a' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");
+        linear-gradient(145deg, rgba(0, 24, 73, 0.03), rgba(0, 24, 73, 0)),
+        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='18' height='18' viewBox='0 0 24 24' fill='none' stroke='%23202122' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");
     }
 
     .light-mode .themed-select option,
     .light-mode .themed-select optgroup {
       background-color: #ffffff !important;
-      color: #111827 !important;
+      color: #202122 !important;
     }
 
     .light-mode .themed-select option:checked {
-      background-color: #e5e7eb !important;
-      color: #111827 !important;
+      background-color: #eaecf0 !important;
+      color: #202122 !important;
     }
 
     .oled-mode .themed-select option,
@@ -1010,9 +928,20 @@
     .light-mode .bg-black\/25,
     .light-mode .bg-black\/30,
     .light-mode .bg-black\/40 {
-      background: rgba(255, 255, 255, 0.78) !important;
-      border-color: rgba(15, 23, 42, 0.14) !important;
-      box-shadow: 0 10px 30px rgba(15, 23, 42, 0.08) !important;
+      background: #ffffff !important;
+      border-color: #c8ccd1 !important;
+      box-shadow: 0 1px 2px rgba(0, 0, 0, 0.08) !important;
+    }
+
+    .light-mode .bg-black\/50,
+    .light-mode .bg-black\/70,
+    .light-mode .bg-black\/80,
+    .light-mode .bg-black\/85,
+    .light-mode .bg-black\/90,
+    .light-mode .bg-zinc-950\/70 {
+      background: rgba(255, 255, 255, 0.65) !important;
+      border-color: transparent !important;
+      box-shadow: none !important;
     }
 
     .light-mode .bg-white\/5,
@@ -1023,69 +952,39 @@
     .light-mode .hover\:bg-white\/5:hover,
     .light-mode .hover\:bg-white\/8:hover,
     .light-mode .hover\:bg-white\/10:hover {
-      background: rgba(15, 23, 42, 0.045) !important;
-    }
-
-    .light-mode .home-stat-card,
-    .light-mode .home-tool-card,
-    .light-mode .home-signal-card,
-    .light-mode .home-command-search {
-      background: rgba(255, 255, 255, 0.78) !important;
-      border-color: rgba(15, 23, 42, 0.14) !important;
-    }
-
-    .light-mode .home-command-hero {
-      background: rgba(255, 255, 255, 0.42) !important;
-      border-color: rgba(15, 23, 42, 0.12) !important;
-    }
-
-    .light-mode .home-stat-card svg,
-    .light-mode .home-index-icon svg {
-      color: rgba(15, 23, 42, 0.34) !important;
-      stroke: currentColor;
-    }
-
-    .light-mode .home-portrait-caption {
-      background: linear-gradient(to top, rgba(255, 255, 255, 0.94), rgba(255, 255, 255, 0.74), transparent) !important;
-      border-top: 1px solid rgba(15, 23, 42, 0.08);
-    }
-
-    .light-mode .timeline-release-badge {
-      background: rgba(15, 23, 42, 0.08) !important;
-      color: #334155 !important;
-      border: 1px solid rgba(15, 23, 42, 0.12);
+      background: rgba(0, 24, 73, 0.027) !important;
     }
 
     .light-mode .game-icon-tile,
     .light-mode .game-icon-row {
-      background: rgba(255, 255, 255, 0.82) !important;
-      border-color: rgba(15, 23, 42, 0.14) !important;
-      box-shadow: 0 10px 26px rgba(15, 23, 42, 0.08) !important;
+      background: #f8f9fa !important;
+      border-color: #c8ccd1 !important;
+      box-shadow: 0 1px 2px rgba(0, 0, 0, 0.08) !important;
     }
 
     .light-mode .game-icon-tile:hover,
     .light-mode .game-icon-row:hover {
-      background: rgba(255, 255, 255, 0.94) !important;
-      border-color: rgba(15, 23, 42, 0.22) !important;
+      background: #eaecf0 !important;
+      border-color: #a2a9b1 !important;
     }
 
     .light-mode .game-icon-row [style*="background-color"],
     .light-mode .game-icon-tile [style*="background-color"] {
-      background-color: rgba(15, 23, 42, 0.055) !important;
+      background-color: #eaecf0 !important;
     }
 
     .light-mode .game-icon-category {
-      background: rgba(15, 23, 42, 0.07) !important;
-      color: #334155 !important;
+      background: #eaecf0 !important;
+      color: #202122 !important;
     }
 
     .light-mode .perk-effect-text {
-      color: #334155 !important;
+      color: #202122 !important;
     }
 
     .light-mode .perk-effect-text .text-zinc-500,
     .light-mode .perk-effect-label {
-      color: #64748b !important;
+      color: #54595d !important;
     }
 
     .mode-choice {
@@ -1102,63 +1001,34 @@
     }
 
     .light-mode .mode-choice {
-      background: rgba(255, 255, 255, 0.68);
-      border-color: rgba(15, 23, 42, 0.14);
-      color: #64748b;
+      background: #ffffff;
+      border-color: #c8ccd1;
+      color: #54595d;
     }
 
     .light-mode .mode-choice--active {
-      background: rgba(15, 23, 42, 0.08);
-      border-color: rgba(15, 23, 42, 0.32);
-      color: #111827;
+      background: #eaecf0;
+      border-color: #3366cc;
+      color: #202122;
     }
 
     .light-mode [style*="rgba(255,255,255,0.03)"],
     .light-mode [style*="rgba(255, 255, 255, 0.03)"] {
-      background-color: rgba(255, 255, 255, 0.58) !important;
+      background-color: #f8f9fa !important;
     }
 
     .light-mode [style*="rgba(255,255,255,0.05)"],
     .light-mode [style*="rgba(255, 255, 255, 0.05)"] {
-      border-color: rgba(15, 23, 42, 0.12) !important;
+      border-color: #c8ccd1 !important;
     }
 
     .light-mode [style*="#09090b"] {
-      background-color: #111827 !important;
-      border-color: rgba(15, 23, 42, 0.35) !important;
+      background-color: #ffffff !important;
+      border-color: #c8ccd1 !important;
     }
 
     .light-mode [style*="#a1a1aa"] {
-      color: #64748b !important;
-    }
-
-    .light-mode .text-zinc-300,
-    .light-mode .text-zinc-200 {
-      color: #0e7490 !important;
-    }
-
-    .light-mode .text-zinc-100,
-    .light-mode .text-zinc-100 {
-      color: #047857 !important;
-    }
-
-    .light-mode .text-zinc-200 {
-      color: #a21caf !important;
-    }
-
-    .light-mode .text-zinc-300,
-    .light-mode .text-zinc-200 {
-      color: #b91c1c !important;
-    }
-
-    .light-mode .text-zinc-300,
-    .light-mode .text-zinc-200 {
-      color: #b45309 !important;
-    }
-
-    .light-mode .text-zinc-300,
-    .light-mode .text-zinc-200 {
-      color: #1d4ed8 !important;
+      color: #54595d !important;
     }
 
     .bg-zinc-900\/40,
@@ -1418,8 +1288,36 @@
       --link-visited: #9c86ff;
     }
     body.light-mode {
-      --link: #1d4ed8;
-      --link-visited: #6d28d9;
+      color-scheme: light;
+      --link: #3366cc;
+      --link-visited: #6a60b0;
+    }
+    .light-mode .wiki-header {
+      background: #ffffff;
+    }
+    .light-mode .wiki-header .wiki-search-input,
+    .light-mode .wiki-header input {
+      background: #ffffff;
+      color: #202122;
+      border-color: #a2a9b1;
+    }
+    .light-mode table.cx-wikitable th {
+      background: #eaecf0;
+      color: #101418;
+    }
+    .light-mode .cx-infobox,
+    .light-mode .cx-toc {
+      background: #f8f9fa;
+    }
+    .light-mode .custom-scrollbar::-webkit-scrollbar-thumb {
+      background: #c8ccd1;
+    }
+    .light-mode .skeleton-shimmer {
+      background: linear-gradient(90deg, rgba(0, 24, 73, 0.03) 25%, rgba(0, 24, 73, 0.08) 50%, rgba(0, 24, 73, 0.03) 75%);
+      background-size: 200% 100%;
+    }
+    .light-mode .site-footer {
+      border-top-color: #c8ccd1;
     }
     .website-sidebar img[src*="favicon"] { filter: grayscale(1) brightness(1.6); }
     .launch-logo { filter: grayscale(1) brightness(1.2); }
@@ -2220,259 +2118,6 @@
         "DBD public sources - up-to-date game info"
       ]
     };
-    const THEMES = {
-      blood: {
-        name: "Blood Red",
-        accent: "#ef4444",
-        accentSoft: "#7f1d1d",
-        tileGradient: "linear-gradient(145deg, #0f0f10, #190c0e)",
-        tileBorder: "rgba(127,29,29,0.6)",
-        tileShadow: "0 0 25px rgba(255,59,48,0.25)"
-      },
-      abyss: {
-        name: "Abyss Blue",
-        accent: "#38bdf8",
-        accentSoft: "#0f172a",
-        tileGradient: "linear-gradient(145deg, #0b0d15, #101827)",
-        tileBorder: "rgba(56,189,248,0.4)",
-        tileShadow: "0 0 25px rgba(56,189,248,0.2)"
-      },
-      midnight: {
-        name: "Midnight Navy",
-        accent: "#1d4ed8",
-        accentSoft: "#0a142f",
-        tileGradient: "linear-gradient(145deg, #0b1021, #0f1934)",
-        tileBorder: "rgba(29,78,216,0.45)",
-        tileShadow: "0 0 28px rgba(29,78,216,0.26)"
-      },
-      ember: {
-        name: "Ember",
-        accent: "#f97316",
-        accentSoft: "#1f130a",
-        tileGradient: "linear-gradient(145deg, #120d0a, #1b0f09)",
-        tileBorder: "rgba(249,115,22,0.45)",
-        tileShadow: "0 0 25px rgba(249,115,22,0.25)"
-      },
-      void: {
-        name: "Void Purple",
-        accent: "#7c3aed",
-        accentSoft: "#140a1f",
-        tileGradient: "linear-gradient(145deg, #0f0b14, #150d1c)",
-        tileBorder: "rgba(124,58,237,0.45)",
-        tileShadow: "0 0 25px rgba(124,58,237,0.25)"
-      },
-      rose: {
-        name: "Rose Bloom",
-        accent: "#f472b6",
-        accentSoft: "#2a0f1f",
-        tileGradient: "linear-gradient(145deg, #150912, #20101b)",
-        tileBorder: "rgba(244,114,182,0.5)",
-        tileShadow: "0 0 28px rgba(244,114,182,0.24)"
-      },
-      ghost: {
-        name: "Ghost White",
-        accent: "#fafafa",
-        accentSoft: "rgba(250,250,250,0.14)",
-        tileGradient: "linear-gradient(145deg, #0a0a0a, #121212)",
-        tileBorder: "rgba(255,255,255,0.3)",
-        tileShadow: "0 0 25px rgba(255,255,255,0.15)"
-      },
-      nord: {
-        name: "Nord",
-        accent: "#88C0D0",
-        accentSoft: "#3B4252",
-        tileGradient: "linear-gradient(145deg, #2E3440, #3B4252)",
-        tileBorder: "rgba(136,192,208,0.25)",
-        tileShadow: "0 0 25px rgba(136,192,208,0.12)",
-        palette: {
-          bg01: '#2E3440',
-          bg02: '#3B4252',
-          panel: 'rgba(67, 76, 94, 0.6)',
-          stroke: '#4C566A',
-          chip: 'rgba(136, 192, 208, 0.12)',
-          text: '#ECEFF4',
-          muted: '#D8DEE9',
-          nav: 'rgba(46, 52, 64, 0.95)',
-          glass: '#434C5E',
-          ghost: 'rgba(216, 222, 233, 0.06)',
-          ghostStrong: 'rgba(216, 222, 233, 0.16)',
-          shadowSoft: '0 8px 30px rgba(0, 0, 0, 0.3)',
-          shadowStrong: '0 16px 60px rgba(0, 0, 0, 0.4)',
-          appShellBg: 'linear-gradient(180deg, #2E3440, #3B4252)',
-          ambientGlow: 'radial-gradient(120% 120% at 20% 20%, rgba(136, 192, 208, 0.06), transparent 55%)',
-          ambientOpacity: '0.4',
-          selectionBg: 'rgba(136, 192, 208, 0.25)',
-          selectionText: '#ECEFF4',
-          fullPanelBg: 'rgba(67, 76, 94, 0.5)',
-          fullPanelBorder: 'rgba(136, 192, 208, 0.15)',
-          fullButtonBg: '#3B4252',
-          fullButtonBorder: '#4C566A',
-          fullButtonText: '#D8DEE9',
-          fullButtonActiveBg: '#3B4252',
-          fullSelectBg: '#3B4252',
-          fullSelectBorder: '#4C566A',
-          fullSelectText: '#ECEFF4',
-          fullSelectShadow: 'inset 0 1px 0 rgba(255, 255, 255, 0.02), 0 10px 28px rgba(0, 0, 0, 0.3)',
-          fullSelectFocusRing: 'rgba(136, 192, 208, 0.25)'
-        }
-      },
-      catppuccin: {
-        name: "Catppuccin Macchiato",
-        accent: "#8aadf4",
-        accentSoft: "#363a4f",
-        tileGradient: "linear-gradient(145deg, #1e2030, #24273a)",
-        tileBorder: "rgba(138,173,244,0.32)",
-        tileShadow: "0 0 28px rgba(138,173,244,0.16)",
-        palette: {
-          bg01: '#1e2030',
-          bg02: '#24273a',
-          panel: 'rgba(54, 58, 79, 0.62)',
-          stroke: '#494d64',
-          chip: 'rgba(138, 173, 244, 0.14)',
-          text: '#cad3f5',
-          muted: '#a5adcb',
-          nav: 'rgba(30, 32, 48, 0.95)',
-          glass: '#363a4f',
-          ghost: 'rgba(202, 211, 245, 0.06)',
-          ghostStrong: 'rgba(202, 211, 245, 0.16)',
-          shadowSoft: '0 8px 30px rgba(0, 0, 0, 0.34)',
-          shadowStrong: '0 16px 60px rgba(0, 0, 0, 0.44)',
-          appShellBg: 'linear-gradient(180deg, #1e2030, #24273a)',
-          ambientGlow: 'radial-gradient(120% 120% at 20% 20%, rgba(138, 173, 244, 0.12), transparent 55%)',
-          ambientOpacity: '0.42',
-          selectionBg: 'rgba(138, 173, 244, 0.24)',
-          selectionText: '#cad3f5',
-          fullPanelBg: 'rgba(54, 58, 79, 0.52)',
-          fullPanelBorder: 'rgba(138, 173, 244, 0.14)',
-          fullButtonBg: '#2d3146',
-          fullButtonBorder: '#494d64',
-          fullButtonText: '#a5adcb',
-          fullButtonActiveBg: '#363a4f',
-          fullSelectBg: '#363a4f',
-          fullSelectBorder: '#494d64',
-          fullSelectText: '#cad3f5',
-          fullSelectShadow: 'inset 0 1px 0 rgba(255, 255, 255, 0.02), 0 10px 28px rgba(0, 0, 0, 0.34)',
-          fullSelectFocusRing: 'rgba(138, 173, 244, 0.24)'
-        }
-      },
-      tokyonight: {
-        name: "Tokyo Night",
-        accent: "#7aa2f7",
-        accentSoft: "#2f334d",
-        tileGradient: "linear-gradient(145deg, #16161e, #1a1b26)",
-        tileBorder: "rgba(122,162,247,0.34)",
-        tileShadow: "0 0 30px rgba(122,162,247,0.18)",
-        palette: {
-          bg01: '#16161e',
-          bg02: '#1a1b26',
-          panel: 'rgba(36, 40, 59, 0.62)',
-          stroke: '#414868',
-          chip: 'rgba(122, 162, 247, 0.14)',
-          text: '#c0caf5',
-          muted: '#9aa5ce',
-          nav: 'rgba(22, 22, 30, 0.95)',
-          glass: '#24283b',
-          ghost: 'rgba(192, 202, 245, 0.06)',
-          ghostStrong: 'rgba(192, 202, 245, 0.16)',
-          shadowSoft: '0 8px 30px rgba(0, 0, 0, 0.36)',
-          shadowStrong: '0 16px 60px rgba(0, 0, 0, 0.48)',
-          appShellBg: 'linear-gradient(180deg, #16161e, #1a1b26)',
-          ambientGlow: 'radial-gradient(120% 120% at 20% 20%, rgba(122, 162, 247, 0.12), transparent 55%)',
-          ambientOpacity: '0.44',
-          selectionBg: 'rgba(122, 162, 247, 0.24)',
-          selectionText: '#c0caf5',
-          fullPanelBg: 'rgba(36, 40, 59, 0.54)',
-          fullPanelBorder: 'rgba(122, 162, 247, 0.15)',
-          fullButtonBg: '#1f2335',
-          fullButtonBorder: '#414868',
-          fullButtonText: '#9aa5ce',
-          fullButtonActiveBg: '#24283b',
-          fullSelectBg: '#24283b',
-          fullSelectBorder: '#414868',
-          fullSelectText: '#c0caf5',
-          fullSelectShadow: 'inset 0 1px 0 rgba(255, 255, 255, 0.02), 0 10px 28px rgba(0, 0, 0, 0.36)',
-          fullSelectFocusRing: 'rgba(122, 162, 247, 0.24)'
-        }
-      },
-      everforest: {
-        name: "Everforest",
-        accent: "#7fbbb3",
-        accentSoft: "#2f383c",
-        tileGradient: "linear-gradient(145deg, #272e33, #2d353b)",
-        tileBorder: "rgba(127,187,179,0.3)",
-        tileShadow: "0 0 28px rgba(127,187,179,0.14)",
-        palette: {
-          bg01: '#272e33',
-          bg02: '#2d353b',
-          panel: 'rgba(52, 63, 68, 0.64)',
-          stroke: '#475258',
-          chip: 'rgba(127, 187, 179, 0.13)',
-          text: '#d3c6aa',
-          muted: '#9da9a0',
-          nav: 'rgba(39, 46, 51, 0.95)',
-          glass: '#343f44',
-          ghost: 'rgba(211, 198, 170, 0.06)',
-          ghostStrong: 'rgba(211, 198, 170, 0.15)',
-          shadowSoft: '0 8px 30px rgba(0, 0, 0, 0.34)',
-          shadowStrong: '0 16px 60px rgba(0, 0, 0, 0.44)',
-          appShellBg: 'linear-gradient(180deg, #272e33, #2d353b)',
-          ambientGlow: 'radial-gradient(120% 120% at 20% 20%, rgba(127, 187, 179, 0.1), transparent 55%)',
-          ambientOpacity: '0.4',
-          selectionBg: 'rgba(127, 187, 179, 0.22)',
-          selectionText: '#d3c6aa',
-          fullPanelBg: 'rgba(52, 63, 68, 0.56)',
-          fullPanelBorder: 'rgba(127, 187, 179, 0.13)',
-          fullButtonBg: '#2d353b',
-          fullButtonBorder: '#475258',
-          fullButtonText: '#9da9a0',
-          fullButtonActiveBg: '#343f44',
-          fullSelectBg: '#343f44',
-          fullSelectBorder: '#475258',
-          fullSelectText: '#d3c6aa',
-          fullSelectShadow: 'inset 0 1px 0 rgba(255, 255, 255, 0.02), 0 10px 28px rgba(0, 0, 0, 0.34)',
-          fullSelectFocusRing: 'rgba(127, 187, 179, 0.22)'
-        }
-      },
-      rosepinemoon: {
-        name: "Rosé Pine Moon",
-        accent: "#c4a7e7",
-        accentSoft: "#393552",
-        tileGradient: "linear-gradient(145deg, #232136, #2a273f)",
-        tileBorder: "rgba(196,167,231,0.32)",
-        tileShadow: "0 0 28px rgba(196,167,231,0.16)",
-        palette: {
-          bg01: '#232136',
-          bg02: '#2a273f',
-          panel: 'rgba(57, 53, 82, 0.62)',
-          stroke: '#44415a',
-          chip: 'rgba(196, 167, 231, 0.14)',
-          text: '#e0def4',
-          muted: '#908caa',
-          nav: 'rgba(35, 33, 54, 0.95)',
-          glass: '#393552',
-          ghost: 'rgba(224, 222, 244, 0.06)',
-          ghostStrong: 'rgba(224, 222, 244, 0.16)',
-          shadowSoft: '0 8px 30px rgba(0, 0, 0, 0.34)',
-          shadowStrong: '0 16px 60px rgba(0, 0, 0, 0.44)',
-          appShellBg: 'linear-gradient(180deg, #232136, #2a273f)',
-          ambientGlow: 'radial-gradient(120% 120% at 20% 20%, rgba(196, 167, 231, 0.11), transparent 55%)',
-          ambientOpacity: '0.42',
-          selectionBg: 'rgba(196, 167, 231, 0.22)',
-          selectionText: '#e0def4',
-          fullPanelBg: 'rgba(57, 53, 82, 0.56)',
-          fullPanelBorder: 'rgba(196, 167, 231, 0.14)',
-          fullButtonBg: '#2f2b45',
-          fullButtonBorder: '#44415a',
-          fullButtonText: '#908caa',
-          fullButtonActiveBg: '#393552',
-          fullSelectBg: '#393552',
-          fullSelectBorder: '#44415a',
-          fullSelectText: '#e0def4',
-          fullSelectShadow: 'inset 0 1px 0 rgba(255, 255, 255, 0.02), 0 10px 28px rgba(0, 0, 0, 0.34)',
-          fullSelectFocusRing: 'rgba(196, 167, 231, 0.22)'
-        }
-      }
-    };
     const COLOR_MODES = {
       dark: {
         bg01: '#07090f',
@@ -2487,22 +2132,36 @@
         ghost: 'rgba(255, 255, 255, 0.05)',
         ghostStrong: 'rgba(255, 255, 255, 0.16)',
         shadowSoft: '0 8px 30px rgba(0, 0, 0, 0.35)',
-        shadowStrong: '0 16px 60px rgba(0, 0, 0, 0.45)'
+        shadowStrong: '0 16px 60px rgba(0, 0, 0, 0.45)',
+        appShellBg: 'linear-gradient(180deg, #07090f, #10141f)',
+        ambientGlow: 'radial-gradient(120% 120% at 20% 20%, rgba(56, 189, 248, 0.08), transparent 55%)',
+        ambientOpacity: '0.35',
+        selectionBg: 'rgba(56, 189, 248, 0.2)',
+        selectionText: '#ffffff',
+        accent: '#fafafa',
+        accentSoft: 'rgba(250, 250, 250, 0.14)'
       },
       light: {
-        bg01: '#f7f8fb',
-        bg02: '#e9edf4',
-        panel: 'rgba(255, 255, 255, 0.84)',
-        stroke: 'rgba(15, 23, 42, 0.14)',
-        chip: 'rgba(15, 23, 42, 0.06)',
-        text: '#111827',
-        muted: '#64748b',
-        nav: 'rgba(255, 255, 255, 0.88)',
-        glass: 'rgba(255, 255, 255, 0.72)',
-        ghost: 'rgba(15, 23, 42, 0.055)',
-        ghostStrong: 'rgba(15, 23, 42, 0.18)',
-        shadowSoft: '0 10px 34px rgba(15, 23, 42, 0.10)',
-        shadowStrong: '0 20px 64px rgba(15, 23, 42, 0.16)'
+        bg01: '#ffffff',
+        bg02: '#ffffff',
+        panel: '#ffffff',
+        stroke: '#c8ccd1',
+        chip: '#f8f9fa',
+        text: '#202122',
+        muted: '#54595d',
+        nav: '#ffffff',
+        glass: '#f8f9fa',
+        ghost: 'rgba(0, 24, 73, 0.027)',
+        ghostStrong: 'rgba(0, 24, 73, 0.082)',
+        shadowSoft: '0 1px 3px rgba(0, 0, 0, 0.08)',
+        shadowStrong: '0 4px 16px rgba(0, 0, 0, 0.16)',
+        appShellBg: '#ffffff',
+        ambientGlow: 'none',
+        ambientOpacity: '0',
+        selectionBg: 'rgba(51, 102, 204, 0.22)',
+        selectionText: '#202122',
+        accent: '#3366cc',
+        accentSoft: 'rgba(51, 102, 204, 0.12)'
       },
       oled: {
         bg01: '#000000',
@@ -2517,7 +2176,14 @@
         ghost: 'rgba(233, 225, 210, 0.04)',
         ghostStrong: 'rgba(233, 225, 210, 0.14)',
         shadowSoft: '0 8px 30px rgba(0, 0, 0, 0.5)',
-        shadowStrong: '0 16px 60px rgba(0, 0, 0, 0.6)'
+        shadowStrong: '0 16px 60px rgba(0, 0, 0, 0.6)',
+        appShellBg: '#000000',
+        ambientGlow: 'radial-gradient(120% 120% at 20% 0%, rgba(250, 250, 250, 0.035), transparent 55%)',
+        ambientOpacity: '0.3',
+        selectionBg: 'rgba(56, 189, 248, 0.2)',
+        selectionText: '#ffffff',
+        accent: '#fafafa',
+        accentSoft: 'rgba(250, 250, 250, 0.14)'
       }
     };
     const stripHtml = (text) => {
@@ -2680,27 +2346,6 @@
       { id: 'glossary', label: 'Glossary' },
       { id: 'prestige', label: 'Prestige' },
     ];
-    const ALL_HOME_TILES = [
-      { id: 'killers', label: 'Killers', icon: 'Sword', desc: 'All killers, real names & teachables' },
-      { id: 'survivors', label: 'Survivors', icon: 'Heart', desc: 'Roster with their teachables' },
-      { id: 'perks', label: 'Perk Finder', icon: 'BookOpen', desc: 'Search perks with role filters' },
-      { id: 'buildLab', label: 'Build Lab', icon: 'Wrench', desc: 'Craft and save loadouts' },
-      { id: 'favorites', label: 'My Favorites', icon: 'Star', desc: 'All your bookmarked content' },
-      { id: 'progression', label: 'Progression Hub', icon: 'Target', desc: 'Achievements, roster, challenges and analytics' },
-      { id: 'communityContent', label: 'Community Content', icon: 'MessageCircle', desc: 'Otz tierlists, builds, and character intel' },
-      { id: 'cosmetics', label: 'Cosmetics', icon: 'Shirt', desc: 'Browse all cosmetics by role, character, and rarity' },
-      { id: 'worldle', label: 'Wordle', icon: 'Notepad', desc: 'Daily and practice DBD guessing games' },
-      { id: 'matches', label: 'Match Log', icon: 'List', desc: 'Track matches & notes' },
-      { id: 'prestige', label: "Entity's Offering", icon: 'Droplet', desc: 'BP calculator for prestiges' },
-      { id: 'roulette', label: 'Chaos Shuffle', icon: 'Dices', desc: 'Randomize perk combos' },
-      { id: 'realms', label: 'Realms', icon: 'Map', desc: 'Browse maps & realms' },
-      { id: 'items', label: 'Items & Addons', icon: 'Package', desc: 'Survivor items with addons' },
-      { id: 'offerings', label: 'Offerings', icon: 'Flame', desc: 'All offerings by rarity' },
-      { id: 'glossary', label: 'Glossary', icon: 'GraduationCap', desc: 'Terminology and tips' },
-      { id: 'gameIcons', label: 'Game Icons', icon: 'Zap', desc: 'Status effects, HUD & more' },
-      { id: 'import', label: 'Import Build', icon: 'Import', desc: 'Paste a shared build text' },
-      { id: 'timeline', label: 'Lore Timeline', icon: 'Clock', desc: 'DBD history from 2016 to now' },
-    ];
     const NAV_ICON_MAP = {
       home: 'Search',
       perks: 'BookOpen',
@@ -2723,6 +2368,17 @@
       settings: 'Gear',
       timeline: 'Clock',
     };
+    const MAIN_PAGE_TOOLS = {
+      buildLab: { id: 'buildLab', label: 'Build Lab', desc: 'Craft and save loadouts' },
+      roulette: { id: 'roulette', label: 'Chaos Shuffle', desc: 'Randomize perk combos' },
+      worldle: { id: 'worldle', label: 'Wordle', desc: 'Daily and practice DBD guessing games' },
+      prestige: { id: 'prestige', label: "Entity's Offering", desc: 'BP calculator for prestiges' },
+      matches: { id: 'matches', label: 'Match Log', desc: 'Track matches & notes' },
+      progression: { id: 'progression', label: 'Progression Hub', desc: 'Achievements, roster, challenges and analytics' },
+      favorites: { id: 'favorites', label: 'My Favorites', desc: 'All your bookmarked content' },
+      import: { id: 'import', label: 'Import Build', desc: 'Paste a shared build text' },
+      settings: { id: 'settings', label: 'Settings', desc: 'Preferences and backups' }
+    };
     const WEBSITE_NAV_SECTIONS = [
       { label: 'Characters', ids: ['killers', 'survivors'] },
       { label: 'Loadout', ids: ['perks', 'items', 'offerings', 'cosmetics'] },
@@ -2731,20 +2387,12 @@
       { label: 'Tracking', ids: ['progression', 'matches', 'favorites'] },
       { label: 'Community', ids: ['communityContent', 'settings'] }
     ];
+    const NAV_EXTRA_LABELS = { gameIcons: 'Game Icons', import: 'Import Build' };
     const getNavDisplayLabel = (id) => {
       if (id === 'home') return 'Search';
       if (id === 'settings') return 'Settings';
       if (id === 'timeline') return 'Chronicle';
-      return (
-        ALL_HOME_TILES.find((tile) => tile.id === id)?.label ||
-        ALL_NAV_OPTIONS.find((option) => option.id === id)?.label ||
-        id
-      );
-    };
-    const getNavDescription = (id) => {
-      if (id === 'home') return 'Global lookup';
-      if (id === 'settings') return 'Preferences and backups';
-      return ALL_HOME_TILES.find((tile) => tile.id === id)?.desc || '';
+      return NAV_EXTRA_LABELS[id] || ALL_NAV_OPTIONS.find((option) => option.id === id)?.label || id;
     };
     const RARITY_GLOWS = {
       common: 'rgba(255,255,255,0.10)',
@@ -2763,8 +2411,6 @@
     };
     const DEFAULT_SETTINGS = {
       settingsVersion: 2,
-      themePreference: 'manual',
-      manualTheme: 'ghost',
       colorMode: 'oled',
       fontSize: 'default',
       perkDescriptionMode: 'post95',
@@ -2776,7 +2422,6 @@
       progressionTabOrder: [...PROGRESSION_TABS],
       navItemsCustomized: false,
       navItems: ['perks', 'killers', 'survivors'],
-      homeTiles: ALL_HOME_TILES.map(tile => tile.id),
       favoritePerks: [],
       favoriteKillers: [],
       favoriteSurvivors: [],
@@ -2784,7 +2429,6 @@
       favoriteAddons: [],
       favoriteOfferings: []
     };
-    const LEGACY_DEFAULT_HOME_TILES = ['killers', 'survivors', 'perks', 'buildLab', 'favorites', 'progression', 'communityContent', 'cosmetics', 'worldle', 'matches', 'roulette', 'realms', 'glossary', 'import', 'timeline'];
     const DEFAULT_PROGRESSION = {
       characters: {},
       perks: {},
@@ -3050,26 +2694,19 @@
       const next = raw && typeof raw === 'object' ? raw : {};
       const rest = { ...next };
       delete rest.highContrast;
-      const homeTileIds = [...new Set(ALL_HOME_TILES.map(tile => tile.id))];
       const navOptionIds = ALL_NAV_OPTIONS.map(opt => opt.id);
       const normalizedNavItems = rest.navItemsCustomized === true
         ? ensureOrderedSubset(rest.navItems, navOptionIds, DEFAULT_SETTINGS.navItems)
         : [...DEFAULT_SETTINGS.navItems];
-      const normalizedHomeTiles = ensureOrderedFullSet(rest.homeTiles, homeTileIds, DEFAULT_SETTINGS.homeTiles);
       const needsDefaultMigration = rest.settingsVersion !== DEFAULT_SETTINGS.settingsVersion;
-      const hadLegacyDefaultHomeTiles = Array.isArray(rest.homeTiles)
-        && rest.homeTiles.length === LEGACY_DEFAULT_HOME_TILES.length
-        && rest.homeTiles.every((id, index) => id === LEGACY_DEFAULT_HOME_TILES[index]);
       return {
         ...DEFAULT_SETTINGS,
         ...rest,
         settingsVersion: DEFAULT_SETTINGS.settingsVersion,
-        manualTheme: needsDefaultMigration && (!rest.manualTheme || rest.manualTheme === 'blood') ? DEFAULT_SETTINGS.manualTheme : rest.manualTheme,
         perkDescriptionMode: needsDefaultMigration && (!rest.perkDescriptionMode || rest.perkDescriptionMode === 'legacy') ? DEFAULT_SETTINGS.perkDescriptionMode : rest.perkDescriptionMode,
         ownedOnlyGlobal: Boolean(rest.ownedOnlyGlobal),
         navItemsCustomized: rest.navItemsCustomized === true,
         navItems: normalizedNavItems,
-        homeTiles: needsDefaultMigration && hadLegacyDefaultHomeTiles ? DEFAULT_SETTINGS.homeTiles : normalizedHomeTiles,
         progressionTabOrder: ensureOrderedFullSet(rest.progressionTabOrder, PROGRESSION_TABS, DEFAULT_SETTINGS.progressionTabOrder),
       };
     };
@@ -6144,7 +5781,7 @@
         </div>
       );
     };
-    const HomeView = ({ setView, data, theme, builds = [], maps = [], challenges = [], setBuildSeed, perks = [], setBuilds, customHomeTiles = [], items = [], addons = [], offerings = [], cosmeticsCatalog = { characterSwaps: [], fullSets: [] }, allCharacters = [], onOpenCharacterProfile, settings = {} }) => {
+    const HomeView = ({ setView, data, theme, builds = [], maps = [], challenges = [], setBuildSeed, perks = [], setBuilds, items = [], addons = [], offerings = [], cosmeticsCatalog = { characterSwaps: [], fullSets: [] }, allCharacters = [], onOpenCharacterProfile, settings = {} }) => {
       const { killers = [], survivors = [] } = data || {};
       const [searchTerm, setSearchTerm] = useState('');
       const deferredSearchTerm = useDeferredValue(searchTerm);
@@ -6763,51 +6400,6 @@
       }, [deferredSearchTerm, data, builds, maps, challenges, items, addons, offerings, searchableCosmetics]);
       const visiblePerks = data?.perks || perks || [];
       const readyCosmeticCount = searchableCosmetics.length;
-      const favoriteEntries = useMemo(() => {
-        const byId = (list = []) => {
-          const map = {};
-          list.forEach((entry) => {
-            if (entry?.id) map[entry.id] = entry;
-          });
-          return map;
-        };
-        const killerMap = byId(killers);
-        const survivorMap = byId(survivors);
-        const perkMap = byId(visiblePerks);
-        const itemMap = byId(items);
-        const addonMap = byId(addons);
-        const offeringMap = byId(offerings);
-        const collect = (ids = [], map, category, view) => (ids || [])
-          .map(id => map[id] ? { ...map[id], favoriteCategory: category, favoriteView: view } : null)
-          .filter(Boolean);
-        return [
-          ...collect(settings.favoriteKillers, killerMap, 'Killer', 'killers'),
-          ...collect(settings.favoriteSurvivors, survivorMap, 'Survivor', 'survivors'),
-          ...collect(settings.favoritePerks, perkMap, 'Perk', 'perks'),
-          ...collect(settings.favoriteItems, itemMap, 'Item', 'items'),
-          ...collect(settings.favoriteAddons, addonMap, 'Addon', 'items'),
-          ...collect(settings.favoriteOfferings, offeringMap, 'Offering', 'offerings'),
-        ];
-      }, [settings, killers, survivors, visiblePerks, items, addons, offerings]);
-      const favoriteCount = favoriteEntries.length;
-      const homeStats = [
-        { label: 'Killers', value: killers.length, icon: 'Sword', view: 'killers' },
-        { label: 'Survivors', value: survivors.length, icon: 'Heart', view: 'survivors' },
-        { label: 'Perks', value: visiblePerks.length, icon: 'BookOpen', view: 'perks' },
-        { label: 'Favorites', value: favoriteCount, icon: 'Star', view: 'favorites' },
-      ];
-      const orderedTiles = useMemo(() => {
-        const tileOrder = customHomeTiles.length > 0 ? customHomeTiles : ALL_HOME_TILES.map(t => t.id);
-        return tileOrder
-          .map(id => ALL_HOME_TILES.find(t => t.id === id))
-          .filter(Boolean);
-      }, [customHomeTiles]);
-      const primaryTiles = orderedTiles.slice(0, 6);
-      const secondaryTiles = orderedTiles.slice(6);
-      const heroCharacters = useMemo(() => {
-        const picks = [killers[0], survivors[0], killers[1], survivors[1]].filter(Boolean);
-        return picks.slice(0, 4);
-      }, [killers, survivors]);
       return (
         <div ref={pullRef} {...pullHandlers} className="relative flex flex-col h-full px-4 sm:px-6 pt-6 sm:pt-8 pb-32 overflow-y-auto custom-scrollbar">
           <PullIndicator pullDistance={pullDistance} threshold={80} isRefreshing={isRefreshing} />
@@ -7179,7 +6771,7 @@
                   <table className="cx-wikitable">
                     <thead><tr><th style={{ width: '220px' }}>Tool</th><th>Purpose</th></tr></thead>
                     <tbody>
-                      {['buildLab', 'roulette', 'worldle', 'prestige', 'matches', 'progression', 'favorites', 'import', 'settings'].map((id) => ALL_HOME_TILES.find((tile) => tile.id === id) || (id === 'settings' ? { id: 'settings', label: 'Settings', desc: 'Preferences and backups' } : null) || (id === 'import' ? { id: 'import', label: 'Import Build', desc: 'Paste a shared build text into your lab' } : null)).filter(Boolean).map((tile) => {
+                      {['buildLab', 'roulette', 'worldle', 'prestige', 'matches', 'progression', 'favorites', 'import', 'settings'].map((id) => MAIN_PAGE_TOOLS[id]).filter(Boolean).map((tile) => {
                         const openTile = () => {
                           if (tile.id === 'import') {
                             setShowImportModal(true);
@@ -13077,18 +12669,6 @@
         [next[index], next[target]] = [next[target], next[index]];
         updateSetting('navItems', next);
       };
-      const orderedHomeTiles = useMemo(
-        () => ensureOrderedFullSet(settings.homeTiles, ALL_HOME_TILES.map(tile => tile.id), DEFAULT_SETTINGS.homeTiles),
-        [settings.homeTiles]
-      );
-      const moveHomeTile = (id, direction) => {
-        const index = orderedHomeTiles.indexOf(id);
-        const target = index + direction;
-        if (index < 0 || target < 0 || target >= orderedHomeTiles.length) return;
-        const next = [...orderedHomeTiles];
-        [next[index], next[target]] = [next[target], next[index]];
-        updateSetting('homeTiles', ensureOrderedFullSet(next, ALL_HOME_TILES.map(tile => tile.id), DEFAULT_SETTINGS.homeTiles));
-      };
       const favoriteCounts = {
         favoritePerks: (settings.favoritePerks || []).length,
         favoriteKillers: (settings.favoriteKillers || []).length,
@@ -13167,25 +12747,16 @@
               <tr><th scope="row">Game Update / Data Updated</th><td><span className="text-white font-semibold">{META.gameVersion} / {META.lastSynced}</span></td></tr>
               <tr><th scope="row">Legal</th><td><SiteLegalFooter className="mt-3" /></td></tr>
             </tbody></table>
-            <h2 className="cx-sec">Theme</h2>
+            <h2 className="cx-sec">Appearance</h2>
             <table className="cx-wikitable"><tbody>
-              <tr><th scope="row">Theme source</th><td>
-                <select value={settings.themePreference || 'manual'} onChange={e => updateSetting('themePreference', e.target.value)} className="themed-select w-full text-sm">
-                  <option value="manual">Manual</option>
-                  <option value="killer">Killer</option>
-                  <option value="survivor">Survivor</option>
-                  <option value="neutral">Neutral</option>
-                </select>
-                <p className="text-[11px] text-zinc-500 mt-1 leading-relaxed">Manual uses the theme grid below. Killer, Survivor, and Neutral follow the current role context.</p>
-              </td></tr>
-              <tr><th scope="row">Appearance</th><td>
+              <tr><th scope="row">Color</th><td>
                 <div className="grid grid-cols-3 gap-1.5">
                   {[
                     { id: 'dark', label: 'Dark' },
                     { id: 'oled', label: 'OLED' },
                     { id: 'light', label: 'Light' }
                   ].map((mode) => {
-                    const isActive = (settings.colorMode || 'dark') === mode.id;
+                    const isActive = (settings.colorMode || 'oled') === mode.id;
                     return (
                       <button
                         key={mode.id}
@@ -13200,33 +12771,16 @@
                   })}
                 </div>
               </td></tr>
-              <tr><th scope="row">Font Size</th><td>
+              <tr><th scope="row">Text size</th><td>
                 <select value={settings.fontSize} onChange={e => updateSetting('fontSize', e.target.value)} className="themed-select w-full text-sm">
                   <option value="small">Small</option>
-                  <option value="default">Default</option>
+                  <option value="default">Standard</option>
                   <option value="large">Large</option>
                 </select>
               </td></tr>
-              {settings.themePreference === 'manual' && (
-                <tr><th scope="row">Manual theme</th><td>
-                  <div className="grid grid-cols-1 sm:grid-cols-3 gap-2">
-                    {Object.entries(THEMES).map(([key, val]) => (
-                      <button
-                        key={key}
-                        onClick={() => updateSetting('manualTheme', key)}
-                        className={`p-3 rounded-2xl border text-left transition-all ${settings.manualTheme === key ? 'bg-white/10 text-white' : 'bg-white/5 text-zinc-300 hover:border-white/20'}`}
-                        style={{ background: val.tileGradient, boxShadow: val.tileShadow, borderColor: settings.manualTheme === key ? val.accent : val.tileBorder }}
-                      >
-                        <p className="text-sm font-bold">{val.name}</p>
-                        <p className="text-[11px] text-zinc-400 mt-1 flex items-center gap-2">
-                          {val.palette ? 'Full Palette' : 'Accent'}
-                          <span className="inline-flex w-3 h-3 rounded-full border border-white/20" style={{ backgroundColor: val.accent }}></span>
-                        </p>
-                      </button>
-                    ))}
-                  </div>
-                </td></tr>
-              )}
+            </tbody></table>
+            <h2 className="cx-sec">Features</h2>
+            <table className="cx-wikitable"><tbody>
               <tr><th scope="row">Show template builds in Build Lab</th><td>
                 <SettingsToggleRow
                   checked={settings.showTemplates}
@@ -13280,26 +12834,6 @@
                     </button>
                   ))}
                 </div>
-              </td></tr>
-            </tbody></table>
-            <h2 className="cx-sec">Home tiles</h2>
-            <table className="cx-wikitable"><tbody>
-              <tr><th scope="row">Order ({orderedHomeTiles.length} tiles)</th><td>
-                <div className="space-y-1">
-                  {orderedHomeTiles.map((id, index) => {
-                    const tile = ALL_HOME_TILES.find(t => t.id === id);
-                    return (
-                      <div key={id} className="flex items-center gap-2 p-2 rounded-xl bg-white/5 border border-white/10">
-                        <span className="text-sm font-semibold text-white">{tile?.label || id}</span>
-                        <div className="ml-auto flex gap-1">
-                          <button type="button" onClick={() => moveHomeTile(id, -1)} disabled={index === 0} className="w-7 h-7 rounded-lg bg-white/5 text-zinc-400 hover:text-white disabled:opacity-30 disabled:cursor-not-allowed" aria-label={`Move ${tile?.label || id} up`}>↑</button>
-                          <button type="button" onClick={() => moveHomeTile(id, 1)} disabled={index === orderedHomeTiles.length - 1} className="w-7 h-7 rounded-lg bg-white/5 text-zinc-400 hover:text-white disabled:opacity-30 disabled:cursor-not-allowed" aria-label={`Move ${tile?.label || id} down`}>↓</button>
-                        </div>
-                      </div>
-                    );
-                  })}
-                </div>
-                <button type="button" onClick={() => updateSetting('homeTiles', DEFAULT_SETTINGS.homeTiles)} className="mt-2 px-3 py-2 rounded-xl bg-white/5 border border-white/10 text-xs font-bold text-zinc-300 hover:text-white hover:bg-white/10 transition-colors">Reset tile order</button>
               </td></tr>
             </tbody></table>
             <h2 className="cx-sec">Favorites</h2>
@@ -15133,98 +14667,38 @@ const MapLayoutModal = ({ map, onClose, noteValue = '', onNoteChange }) => {
         setup();
         return () => { if (listenerHandle?.remove) listenerHandle.remove(); };
       }, []);
-      const themeKey = useMemo(() => {
-        switch (settings.themePreference) {
-          case 'killer': return 'blood';
-          case 'survivor': return 'abyss';
-          case 'neutral': return 'ember';
-          case 'manual': return settings.manualTheme || 'blood';
-          default: return matchPrefs?.lastRole === 'Killer' ? 'blood' : 'abyss';
-        }
-      }, [settings, matchPrefs?.lastRole]);
-      const theme = THEMES[themeKey] || THEMES.blood;
+      const theme = useMemo(() => {
+        const palette = COLOR_MODES[settings.colorMode] || COLOR_MODES.oled;
+        return { accent: palette.accent, accentSoft: palette.accentSoft };
+      }, [settings.colorMode]);
       useEffect(() => {
         const rootEl = document.documentElement;
-        const hasFullPalette = !!theme.palette;
-        const palette = hasFullPalette ? theme.palette : (COLOR_MODES[settings.colorMode] || COLOR_MODES.dark);
-        const isLight = !hasFullPalette && settings.colorMode === 'light';
-        const panel = palette.panel;
-        const stroke = palette.stroke;
-        const chip = palette.chip;
-        const text = palette.text;
-        const muted = palette.muted;
-        const navBg = palette.nav;
-        const glassBg = palette.glass;
-        const ghost = palette.ghost;
-        const ghostStrong = palette.ghostStrong;
-        const shadowSoft = palette.shadowSoft;
-        const shadowStrong = palette.shadowStrong;
-        const appShellBg = hasFullPalette
-          ? (palette.appShellBg || `linear-gradient(180deg, ${palette.bg01}, ${palette.bg02})`)
-          : `linear-gradient(180deg, ${palette.bg01}, ${palette.bg02})`;
-        const ambientGlow = hasFullPalette
-          ? (palette.ambientGlow || 'radial-gradient(120% 120% at 20% 20%, rgba(255,255,255,0.08), transparent 55%)')
-          : 'radial-gradient(120% 120% at 20% 20%, rgba(56, 189, 248, 0.08), transparent 55%)';
-        const ambientOpacity = hasFullPalette ? (palette.ambientOpacity || '0.35') : '0.35';
-        const selectionBg = hasFullPalette ? (palette.selectionBg || 'rgba(56, 189, 248, 0.2)') : 'rgba(56, 189, 248, 0.2)';
-        const selectionText = hasFullPalette ? (palette.selectionText || text) : '#ffffff';
-        const fullPanelBg = hasFullPalette ? (palette.fullPanelBg || panel) : panel;
-        const fullPanelBorder = hasFullPalette ? (palette.fullPanelBorder || stroke) : stroke;
-        const fullButtonBg = hasFullPalette ? (palette.fullButtonBg || glassBg) : glassBg;
-        const fullButtonBorder = hasFullPalette ? (palette.fullButtonBorder || stroke) : stroke;
-        const fullButtonText = hasFullPalette ? (palette.fullButtonText || muted) : muted;
-        const fullButtonActiveBg = hasFullPalette ? (palette.fullButtonActiveBg || glassBg) : (isLight ? 'rgba(15, 23, 42, 0.065)' : glassBg);
-        const fullSelectBg = hasFullPalette ? (palette.fullSelectBg || glassBg) : glassBg;
-        const fullSelectBorder = hasFullPalette ? (palette.fullSelectBorder || stroke) : stroke;
-        const fullSelectText = hasFullPalette ? (palette.fullSelectText || text) : text;
-        const fullSelectShadow = hasFullPalette
-          ? (palette.fullSelectShadow || 'inset 0 1px 0 rgba(255,255,255,0.03), 0 10px 28px rgba(0,0,0,0.35)')
-          : (isLight
-            ? 'inset 0 1px 0 rgba(255,255,255,0.45), 0 10px 28px rgba(15, 23, 42, 0.16)'
-            : 'inset 0 1px 0 rgba(255,255,255,0.03), 0 10px 28px rgba(0,0,0,0.35)');
-        const fullSelectFocusRing = hasFullPalette ? (palette.fullSelectFocusRing || 'rgba(56, 189, 248, 0.25)') : 'rgba(56, 189, 248, 0.25)';
+        const palette = COLOR_MODES[settings.colorMode] || COLOR_MODES.oled;
         rootEl.style.setProperty('--bg-01', palette.bg01);
         rootEl.style.setProperty('--bg-02', palette.bg02);
-        rootEl.style.setProperty('--panel', panel);
-        rootEl.style.setProperty('--stroke', stroke);
-        rootEl.style.setProperty('--chip', chip);
-        rootEl.style.setProperty('--text', text);
-        rootEl.style.setProperty('--muted', muted);
-        rootEl.style.setProperty('--nav-bg', navBg);
-        rootEl.style.setProperty('--glass-bg', glassBg);
-        rootEl.style.setProperty('--ghost-surface', ghost);
-        rootEl.style.setProperty('--ghost-strong', ghostStrong);
-        rootEl.style.setProperty('--shadow-soft', shadowSoft);
-        rootEl.style.setProperty('--shadow-strong', shadowStrong);
-        rootEl.style.setProperty('--site-shell-bg', appShellBg);
-        rootEl.style.setProperty('--ambient-glow', ambientGlow);
-        rootEl.style.setProperty('--ambient-opacity', ambientOpacity);
-        rootEl.style.setProperty('--selection-bg', selectionBg);
-        rootEl.style.setProperty('--selection-text', selectionText);
-        const effectiveAccent = (isLight && theme.accent === '#ffffff') ? '#0f172a' : theme.accent;
-        const effectiveAccentSoft = (isLight && theme.accent === '#ffffff') ? '#e2e8f0' : theme.accentSoft;
-        rootEl.style.setProperty('--accent', effectiveAccent);
-        rootEl.style.setProperty('--accent-soft', effectiveAccentSoft);
-        rootEl.style.setProperty('--tile-border', theme.tileBorder);
-        rootEl.style.setProperty('--tile-shadow', theme.tileShadow);
-        rootEl.style.setProperty('--tile-gradient', theme.tileGradient);
-        rootEl.style.setProperty('--full-panel-bg', fullPanelBg);
-        rootEl.style.setProperty('--full-panel-border', fullPanelBorder);
-        rootEl.style.setProperty('--full-button-bg', fullButtonBg);
-        rootEl.style.setProperty('--full-button-border', fullButtonBorder);
-        rootEl.style.setProperty('--full-button-text', fullButtonText);
-        rootEl.style.setProperty('--full-button-active-bg', fullButtonActiveBg);
-        rootEl.style.setProperty('--full-select-bg', fullSelectBg);
-        rootEl.style.setProperty('--full-select-border', fullSelectBorder);
-        rootEl.style.setProperty('--full-select-text', fullSelectText);
-        rootEl.style.setProperty('--full-select-shadow', fullSelectShadow);
-        rootEl.style.setProperty('--full-select-focus-ring', fullSelectFocusRing);
+        rootEl.style.setProperty('--panel', palette.panel);
+        rootEl.style.setProperty('--stroke', palette.stroke);
+        rootEl.style.setProperty('--chip', palette.chip);
+        rootEl.style.setProperty('--text', palette.text);
+        rootEl.style.setProperty('--muted', palette.muted);
+        rootEl.style.setProperty('--nav-bg', palette.nav);
+        rootEl.style.setProperty('--glass-bg', palette.glass);
+        rootEl.style.setProperty('--ghost-surface', palette.ghost);
+        rootEl.style.setProperty('--ghost-strong', palette.ghostStrong);
+        rootEl.style.setProperty('--shadow-soft', palette.shadowSoft);
+        rootEl.style.setProperty('--shadow-strong', palette.shadowStrong);
+        rootEl.style.setProperty('--site-shell-bg', palette.appShellBg);
+        rootEl.style.setProperty('--ambient-glow', palette.ambientGlow);
+        rootEl.style.setProperty('--ambient-opacity', palette.ambientOpacity);
+        rootEl.style.setProperty('--selection-bg', palette.selectionBg);
+        rootEl.style.setProperty('--selection-text', palette.selectionText);
+        rootEl.style.setProperty('--accent', palette.accent);
+        rootEl.style.setProperty('--accent-soft', palette.accentSoft);
         const fontSize = settings.fontSize === 'small' ? '14px' : settings.fontSize === 'large' ? '18px' : '16px';
         rootEl.style.fontSize = fontSize;
-        document.body.classList.toggle('light-mode', !hasFullPalette && settings.colorMode === 'light');
-        document.body.classList.toggle('oled-mode', !hasFullPalette && settings.colorMode === 'oled');
-        document.body.classList.toggle('full-palette-mode', hasFullPalette);
-      }, [theme, themeKey, settings.fontSize, settings.colorMode]);
+        document.body.classList.toggle('light-mode', settings.colorMode === 'light');
+        document.body.classList.toggle('oled-mode', settings.colorMode === 'oled');
+      }, [settings.colorMode, settings.fontSize]);
       const liveLookups = useMemo(() => buildDataLookups({ killers, survivors, perks, maps, builds }), [killers, survivors, perks, maps, builds]);
       const ownedState = useMemo(() => resolveOwnedState({ progression, killers, survivors, perks }), [progression, killers, survivors, perks]);
       const visibleKillers = useMemo(() => settings.ownedOnlyGlobal ? killers.filter(killer => ownedState.isCharacterOwned(killer.id)) : killers, [settings.ownedOnlyGlobal, killers, ownedState]);
@@ -15360,7 +14834,7 @@ const MapLayoutModal = ({ map, onClose, noteValue = '', onNoteChange }) => {
       };
       const renderContent = () => {
         switch (currentView) {
-          case 'home': return <HomeView setView={setView} data={{ killers: visibleKillers, survivors: visibleSurvivors, perks: visiblePerks }} theme={theme} builds={builds} maps={maps} challenges={progression?.challenges || []} setBuildSeed={setBuildSeed} perks={visiblePerks} customHomeTiles={DEFAULT_SETTINGS.homeTiles} items={items} addons={visibleAddons} offerings={offerings} cosmeticsCatalog={cosmeticsCatalogForDisplay} allCharacters={[...killers, ...survivors]} onOpenCharacterProfile={openCharacterArticle} settings={settings} />;
+          case 'home': return <HomeView setView={setView} data={{ killers: visibleKillers, survivors: visibleSurvivors, perks: visiblePerks }} theme={theme} builds={builds} maps={maps} challenges={progression?.challenges || []} setBuildSeed={setBuildSeed} perks={visiblePerks} items={items} addons={visibleAddons} offerings={offerings} cosmeticsCatalog={cosmeticsCatalogForDisplay} allCharacters={[...killers, ...survivors]} onOpenCharacterProfile={openCharacterArticle} settings={settings} />;
           case 'progression':
             return (
               <ProgressionView
@@ -15437,7 +14911,7 @@ const MapLayoutModal = ({ map, onClose, noteValue = '', onNoteChange }) => {
           case 'timeline': return <TimelineView onBack={() => setView('home')} setView={setView} killers={killers} survivors={survivors} theme={theme} />;
           case 'settings': return <SettingsView onBack={() => setView('home')} settings={settings} setSettings={setSettings} backupSummary={websiteBackupSummary} onCopyBackup={copyWebsiteBackup} onDownloadBackup={downloadWebsiteBackup} onRestoreBackup={restoreWebsiteBackup} isMobile={device.isMobile} />;
           case 'favorites': return <FavoritesView onBack={() => setView('home')} settings={settings} killers={killers} survivors={survivors} perks={perks} items={items} addons={addons} offerings={offerings} toggleFavorite={toggleFavorite} setView={setView} onPerkTap={setSelectedPerk} />;
-          default: return <HomeView setView={setView} data={{ killers: visibleKillers, survivors: visibleSurvivors, perks: visiblePerks }} theme={theme} builds={builds} maps={maps} challenges={progression?.challenges || []} setBuildSeed={setBuildSeed} perks={visiblePerks} customHomeTiles={DEFAULT_SETTINGS.homeTiles} items={items} addons={visibleAddons} offerings={offerings} cosmeticsCatalog={cosmeticsCatalogForDisplay} allCharacters={[...killers, ...survivors]} onOpenCharacterProfile={openCharacterArticle} settings={settings} />;
+          default: return <HomeView setView={setView} data={{ killers: visibleKillers, survivors: visibleSurvivors, perks: visiblePerks }} theme={theme} builds={builds} maps={maps} challenges={progression?.challenges || []} setBuildSeed={setBuildSeed} perks={visiblePerks} items={items} addons={visibleAddons} offerings={offerings} cosmeticsCatalog={cosmeticsCatalogForDisplay} allCharacters={[...killers, ...survivors]} onOpenCharacterProfile={openCharacterArticle} settings={settings} />;
         }
       };
       return (
