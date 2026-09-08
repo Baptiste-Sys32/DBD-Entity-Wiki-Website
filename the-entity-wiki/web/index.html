@@ -1566,7 +1566,12 @@
       color: var(--text-faint);
       border-top: 1px solid var(--stroke);
     }
-    .website-sidebar.cx-side { width: 212px; padding: 22px 16px 0; border-right: 1px solid var(--line-soft); background: #000; }
+    .website-sidebar.cx-side { width: 212px; padding: 16px 14px 0; border-right: 1px solid var(--line-soft); background: #000; }
+    .cx-side-mainpage { margin-bottom: 4px; }
+    .website-sidebar.cx-side .play-store-footer { padding: 10px 6px 8px; }
+    .website-sidebar.cx-side .play-store-eyebrow { font-size: 9px; letter-spacing: .18em; }
+    .website-sidebar.cx-side .google-play-badge { width: 108px; }
+    .website-sidebar.cx-side .play-store-footer .mt-2 { margin-top: 6px; }
     .cx-side-head { padding-bottom: 6px; }
     .cx-side-logo { display: flex; gap: 10px; align-items: center; cursor: pointer; }
     .cx-side-logo b { font-size: 13.5px; font-weight: 700; letter-spacing: .01em; line-height: 1.2; color: var(--text); display: block; }
@@ -2987,7 +2992,7 @@
         const hasRoute = ['view', 'search', 'mode', 'tab', 'targetId', 'targetType', 'profileId', 'cosmeticId'].some((key) => params.has(key));
         const view = params.get('view') || 'home';
         const context = {};
-        ['search', 'mode', 'tab', 'targetId', 'targetType', 'id', 'cosmeticId'].forEach((key) => {
+        ['search', 'mode', 'tab', 'targetId', 'targetType', 'id', 'cosmeticId', 'scroll'].forEach((key) => {
           const value = params.get(key);
           if (value) context[key] = value;
         });
@@ -3047,7 +3052,7 @@
       const allowedViews = new Set(['home', 'settings', 'killer', 'survivor', ...ALL_NAV_OPTIONS.map(option => option.id)]);
       const context = next.context && typeof next.context === 'object' && !Array.isArray(next.context) ? next.context : {};
       const normalizedContext = {};
-      ['search', 'mode', 'tab', 'targetId', 'targetType', 'id', 'cosmeticId'].forEach((key) => {
+      ['search', 'mode', 'tab', 'targetId', 'targetType', 'id', 'cosmeticId', 'scroll'].forEach((key) => {
         if (context[key]) normalizedContext[key] = String(context[key]);
       });
       return {
@@ -5252,10 +5257,6 @@
         return (
           <aside className="website-sidebar cx-side relative z-10 hidden md:flex h-full shrink-0 flex-col">
             <div className="cx-side-head">
-              <div className="cx-side-logo" onClick={() => setView('home')} role="button" tabIndex={0} onKeyDown={(e) => { if (e.key === 'Enter') setView('home'); }}>
-                <img src="./assets/favicon.png" alt="" width={30} height={30} />
-                <b>The Entity's Wiki<small>Dead by Daylight</small></b>
-              </div>
               <button
                 className="cx-side-search"
                 onClick={() => { setView('home'); window.setTimeout(() => { const el = document.getElementById('home-search-input'); if (el) { el.focus(); el.select(); } }, 350); }}
@@ -5265,6 +5266,12 @@
               </button>
             </div>
             <nav className="website-sidebar-scroll flex-1 overflow-y-auto cx-side-nav">
+              <button
+                onClick={() => setView('home')}
+                className={`cx-side-link ${currentView === 'home' ? 'cx-side-link--active' : ''} cx-side-mainpage`}
+              >
+                <span className="truncate">Main page</span>
+              </button>
               {WEBSITE_NAV_SECTIONS.map((section) => (
                 <div key={section.label}>
                   <h5 className="cx-side-h5">{section.label}</h5>
@@ -7019,53 +7026,12 @@
                 <nav className="cx-toc" aria-label="Contents">
                   <p className="cx-toc-title">Contents</p>
                   <ol>
-                    <li><a href="#featured" style={{ color: 'var(--link)' }}>Featured article</a></li>
                     <li><a href="#news" style={{ color: 'var(--link)' }}>Latest releases</a></li>
                     <li><a href="#browse" style={{ color: 'var(--link)' }}>Browse by category</a></li>
                     <li><a href="#tools" style={{ color: 'var(--link)' }}>Tools</a></li>
                     <li><a href="#shelf" style={{ color: 'var(--link)' }}>Quick tools</a></li>
                   </ol>
                 </nav>
-
-                <section id="featured" aria-label="Featured article">
-                  <h2 className="cx-sec">Featured article</h2>
-                  {(() => {
-                    const chronological = (typeof TIMELINE_DATA !== 'undefined' && TIMELINE_DATA && typeof TIMELINE_DATA.getChronological === 'function') ? TIMELINE_DATA.getChronological() : [];
-                    const latestRelease = chronological.length > 0 ? chronological[chronological.length - 1] : null;
-                    if (!latestRelease) {
-                      return null;
-                    }
-                    const releaseKillerEntry = latestRelease.killers && latestRelease.killers.length > 0 ? latestRelease.killers[0] : null;
-                    const databaseKillers = (typeof DATABASE !== 'undefined' && DATABASE && DATABASE.killers) ? DATABASE.killers : [];
-                    const featuredKiller = releaseKillerEntry ? (killers.find((killer) => killer.name === releaseKillerEntry.name) || killers.find((killer) => killer.name && String(killer.name).toLowerCase() === String(releaseKillerEntry.name || '').toLowerCase()) || databaseKillers.find((killer) => killer.name === releaseKillerEntry.name) || null) : null;
-                    const loreExcerpt = featuredKiller && featuredKiller.lore ? (String(featuredKiller.lore).slice(0, 180) + '…') : (releaseKillerEntry && releaseKillerEntry.fogEntry ? releaseKillerEntry.fogEntry : (latestRelease.description || ''));
-                    const powerExcerpt = featuredKiller && featuredKiller.power ? String(featuredKiller.power).split('\n\n')[0] : '';
-                    const featuredName = featuredKiller ? featuredKiller.name : (releaseKillerEntry ? releaseKillerEntry.name : latestRelease.name);
-                    return (
-                      <div>
-                        <p className="cx-hatnote">From {latestRelease.name}{latestRelease.chapterNumber ? ', Chapter ' + latestRelease.chapterNumber : ''} ({latestRelease.displayDate}). See the full chronicle in the timeline.</p>
-                        <div className="cx-leadgrid">
-                          <div>
-                            <p><b>{featuredName}</b> is the featured Killer. {loreExcerpt}</p>
-                            {powerExcerpt ? (<p>Power: {powerExcerpt}</p>) : null}
-                            <div className="mt-3 flex flex-wrap gap-2">
-                              <button type="button" className="cx-alink" onClick={() => { if (featuredKiller && onOpenCharacterProfile) { onOpenCharacterProfile(featuredKiller); } }}>Open profile</button>
-                              <span className="cx-sep" style={{ color: 'var(--text-faint)' }}> · </span>
-                              <button type="button" className="cx-alink" onClick={() => setView('timeline')}>Open timeline</button>
-                            </div>
-                          </div>
-                          <aside className="cx-infobox" aria-label="Featured Killer portrait">
-                            <div className="w-full overflow-hidden">
-                              <AssetFrame type="Killer" imageUrl={featuredKiller ? featuredKiller.image : undefined} fallbackIcon={<Icons.User width={24} height={24} className="text-zinc-600" />} />
-                            </div>
-                            <p className="mt-2 text-sm text-white font-black">{featuredName}</p>
-                            <p className="text-[11px] text-zinc-500 uppercase tracking-wider">{latestRelease.name} · {latestRelease.displayDate}</p>
-                          </aside>
-                        </div>
-                      </div>
-                    );
-                  })()}
-                </section>
 
                 <section id="news" aria-label="Latest releases">
                   <h2 className="cx-sec">Latest releases</h2>
@@ -7462,7 +7428,7 @@
                 <th>Character</th>
                 {type === 'Killers' ? <th>Power</th> : null}
                 <th>Chapter</th>
-                <th>{type === 'Killers' ? 'Movement speed' : 'Difficulty'}</th>
+                <th>{type === 'Killers' ? 'Movement speed' : 'Teachables'}</th>
                 <th aria-hidden="true"></th>
               </tr></thead>
             ) : (
@@ -7529,7 +7495,25 @@
                       <td>{guide && guide.powerName ? <button type="button" className="cx-alink" onClick={(e) => { e.stopPropagation(); handleCharacterClick(); }}>{guide.powerName}</button> : '\u2014'}</td>
                     ) : null}
                     <td>{chapterLabel}</td>
-                    <td>{category === 'Killer' ? (stats && stats.speed ? stats.speed : fmtDiff(item.difficulty)) : fmtDiff(item.difficulty)}</td>
+                    <td>
+                      {category === 'Killer'
+                        ? (stats && stats.speed ? stats.speed : fmtDiff(item.difficulty))
+                        : (perksByOwner[item.name] && perksByOwner[item.name].length > 0
+                          ? perksByOwner[item.name].map((perk, perkIdx) => (
+                            <span key={perk.id}>
+                              {perkIdx > 0 && <span style={{ color: 'var(--text-faint)' }}> · </span>}
+                              <button
+                                type="button"
+                                className="cx-alink"
+                                onClick={(e) => { e.stopPropagation(); setView && setView('survivor', { id: item.id, scroll: 'perks' }); }}
+                                title={`Open ${item.name} \u2014 ${perk.name}`}
+                              >
+                                {perk.name}
+                              </button>
+                            </span>
+                          ))
+                          : '\u2014')}
+                    </td>
                     <td className="cx-star">
                       {onToggleFavoriteFn && (
                         <button type="button" onClick={(e) => { e.stopPropagation(); onToggleFavoriteFn(); }} aria-label="Toggle favorite" className={isFavorite ? 'cx-star-on' : undefined}>
@@ -14602,7 +14586,7 @@ const MapLayoutModal = ({ map, onClose, noteValue = '', onNoteChange }) => {
       );
     };
 
-    const CharacterArticleView = ({ character, roleCount = 0, onHome, onOpenList, onOpenTimeline, onOpenCommunity, allPerks = [], onPerkTap, theme, settings = {}, noteValue = '', onNoteChange, cosmeticsByBaseId = {}, allAddons = [], cosmeticFocusId = null }) => {
+    const CharacterArticleView = ({ character, roleCount = 0, onHome, onOpenList, onOpenTimeline, onOpenCommunity, allPerks = [], onPerkTap, theme, settings = {}, noteValue = '', onNoteChange, cosmeticsByBaseId = {}, allAddons = [], cosmeticFocusId = null, scrollSection = null }) => {
       if (!character) return null;
       const isKiller = character.type === 'Killer' || character.power;
       const roleNoun = isKiller ? 'Killer' : 'Survivor';
@@ -14680,6 +14664,14 @@ const MapLayoutModal = ({ map, onClose, noteValue = '', onNoteChange }) => {
       useEffect(() => {
         if (scrollRef.current) scrollRef.current.scrollTop = 0;
       }, [character.id]);
+      useEffect(() => {
+        if (!scrollSection) return undefined;
+        const timer = window.setTimeout(() => {
+          const node = sectionEls.current[scrollSection];
+          if (node && node.scrollIntoView) node.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }, 300);
+        return () => window.clearTimeout(timer);
+      }, [scrollSection, character.id]);
       useEffect(() => {
         if (!focusedCosmeticId || !cosmeticsSectionRef.current) return undefined;
         const timer = window.setTimeout(() => {
@@ -15526,7 +15518,7 @@ const MapLayoutModal = ({ map, onClose, noteValue = '', onNoteChange }) => {
                 </div>
               </div>
             );
-            return <CharacterArticleView character={article} roleCount={articleList.length} cosmeticFocusId={viewContext.cosmeticId || null} onHome={() => setView('home')} onOpenList={() => setView(isKillerView ? 'killers' : 'survivors')} onOpenTimeline={() => setView('timeline')} onOpenCommunity={() => setView('communityContent')} allPerks={perks} onPerkTap={setSelectedPerk} theme={theme} settings={settings} noteValue={isKillerView ? getEntityNote('killer', article.id) : ''} onNoteChange={(value) => { if (isKillerView) setEntityNote('killer', article.id, value); }} cosmeticsByBaseId={cosmeticsByBaseId} allAddons={addons} />;
+            return <CharacterArticleView character={article} roleCount={articleList.length} cosmeticFocusId={viewContext.cosmeticId || null} scrollSection={viewContext.scroll || null} onHome={() => setView('home')} onOpenList={() => setView(isKillerView ? 'killers' : 'survivors')} onOpenTimeline={() => setView('timeline')} onOpenCommunity={() => setView('communityContent')} allPerks={perks} onPerkTap={setSelectedPerk} theme={theme} settings={settings} noteValue={isKillerView ? getEntityNote('killer', article.id) : ''} onNoteChange={(value) => { if (isKillerView) setEntityNote('killer', article.id, value); }} cosmeticsByBaseId={cosmeticsByBaseId} allAddons={addons} />;
           }
           case 'killers': return <ListView allCharacters={[...killers, ...survivors]} data={visibleKillers} type="Killers" activeFilter="All" setActiveFilter={() => { }} allPerks={perks} setView={setView} onPerkSelect={setPerkSearch} initialSearch={viewContext.search || ''} buildsByOwner={buildsByOwner} onCreateBuildSeed={setBuildSeed} onBack={() => setView('home')} onShowLore={openCharacterArticle} onShowPower={openCharacterArticle} favoritePerks={settings.favoriteKillers || []} onToggleFavorite={(id) => toggleFavorite('Killer', id)} onViewProfile={openCharacterArticle} settings={settings} />;
           case 'survivors': return <ListView allCharacters={[...killers, ...survivors]} data={visibleSurvivors} type="Survivors" activeFilter="All" setActiveFilter={() => { }} allPerks={perks} setView={setView} onPerkSelect={setPerkSearch} initialSearch={viewContext.search || ''} buildsByOwner={buildsByOwner} onCreateBuildSeed={setBuildSeed} onBack={() => setView('home')} onShowLore={openCharacterArticle} favoritePerks={settings.favoriteSurvivors || []} onToggleFavorite={(id) => toggleFavorite('Survivor', id)} onViewProfile={openCharacterArticle} settings={settings} />;
