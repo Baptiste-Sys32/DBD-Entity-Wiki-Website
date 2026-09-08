@@ -5242,10 +5242,6 @@
         const timer = window.setTimeout(() => {
           const root = document.querySelector('[data-smoke-view]');
           if (!root) return;
-          const candidates = [root, ...Array.from(root.querySelectorAll('.overflow-y-auto'))]
-            .filter((el) => el.classList.contains('overflow-y-auto'));
-          const scroller = candidates.sort((a, b) => b.scrollHeight - a.scrollHeight)[0];
-          if (!scroller || scroller.scrollHeight <= scroller.clientHeight + 50) return;
           const locale = (typeof navigator !== 'undefined' && (navigator.language || '').toLowerCase().startsWith('fr')) ? 'fr' : 'en';
           const href = (PLAY_STORE_LINKS[locale] || PLAY_STORE_LINKS.en);
           const badge = (GOOGLE_PLAY_BADGES[locale] || GOOGLE_PLAY_BADGES.en);
@@ -5261,6 +5257,15 @@
               <a href="./privacy-policy.html#disclaimer">Legal &amp; Disclaimer</a>
               <span>Community data &copy; Otzdarva</span>
             </div>`;
+          const article = root.querySelector('.cx-article');
+          if (article) {
+            article.appendChild(div);
+            return;
+          }
+          const candidates = [root, ...Array.from(root.querySelectorAll('.overflow-y-auto'))]
+            .filter((el) => el.classList.contains('overflow-y-auto'));
+          const scroller = candidates.sort((a, b) => b.scrollHeight - a.scrollHeight)[0];
+          if (!scroller || scroller.scrollHeight <= scroller.clientHeight + 50) return;
           scroller.appendChild(div);
           return;
         }, 60);
@@ -7140,7 +7145,7 @@
               <div className="cx-article">
                 <div className="mp-welcome">
                   <p className="mp-welcome-title">Welcome to <span className="mp-welcome-name">The Entity's Wiki</span>,</p>
-                  <p className="mp-welcome-sub">the free DBD encyclopedia that anyone can edit.</p>
+                  <p className="mp-welcome-sub">The free DBD encyclopedia.</p>
                 </div>
 
                 <section id="browse" aria-label="Browse by category">
