@@ -795,6 +795,11 @@
       color: var(--text) !important;
     }
 
+    .text-zinc-100,
+    .text-zinc-200 {
+      color: var(--text) !important;
+    }
+
     .text-white\/80,
     .text-white\/70,
     .text-zinc-300 {
@@ -1286,11 +1291,31 @@
     :root {
       --link: #6fa8ff;
       --link-visited: #9c86ff;
+      --cos-name: #d4d4d8;
+      --rar-common: #71717a;
+      --rar-uncommon: #a1a1aa;
+      --rar-rare: #d4d4d8;
+      --rar-veryrare: #e4e4e7;
+      --rar-ultrarare: #fafafa;
+      --rar-visceral: #fafafa;
+      --rar-event: #e4e4e7;
     }
     body.light-mode {
       color-scheme: light;
       --link: #3366cc;
       --link-visited: #6a60b0;
+      --cos-name: #202122;
+      --rar-common: #72777d;
+      --rar-uncommon: #54595d;
+      --rar-rare: #202122;
+      --rar-veryrare: #202122;
+      --rar-ultrarare: #202122;
+      --rar-visceral: #202122;
+      --rar-event: #54595d;
+    }
+    .light-mode .website-sidebar.cx-side {
+      background: #f8f9fa;
+      border-right-color: #a2a9b1;
     }
     .light-mode .wiki-header {
       background: #ffffff;
@@ -5433,14 +5458,14 @@
       };
       const getRarityColor = (rarity) => {
         switch ((rarity || '').toLowerCase()) {
-          case 'common': return '#71717a';
-          case 'uncommon': return '#a1a1aa';
-          case 'rare': return '#d4d4d8';
-          case 'veryrare': return '#e4e4e7';
-          case 'ultrarare': return '#fafafa';
-          case 'visceral': return '#fafafa';
-          case 'event': return '#e4e4e7';
-          default: return '#71717a';
+          case 'common': return 'var(--rar-common)';
+          case 'uncommon': return 'var(--rar-uncommon)';
+          case 'rare': return 'var(--rar-rare)';
+          case 'veryrare': return 'var(--rar-veryrare)';
+          case 'ultrarare': return 'var(--rar-ultrarare)';
+          case 'visceral': return 'var(--rar-visceral)';
+          case 'event': return 'var(--rar-event)';
+          default: return 'var(--rar-common)';
         }
       };
       const rollDiceRef = useRef(null);
@@ -5907,14 +5932,14 @@
 
       const getRarityColor = (rarity) => {
         switch ((rarity || '').toLowerCase()) {
-          case 'common': return '#71717a';
-          case 'uncommon': return '#a1a1aa';
-          case 'rare': return '#d4d4d8';
-          case 'veryrare': return '#e4e4e7';
-          case 'ultrarare': return '#fafafa';
-          case 'visceral': return '#fafafa';
-          case 'event': return '#e4e4e7';
-          default: return '#71717a';
+          case 'common': return 'var(--rar-common)';
+          case 'uncommon': return 'var(--rar-uncommon)';
+          case 'rare': return 'var(--rar-rare)';
+          case 'veryrare': return 'var(--rar-veryrare)';
+          case 'ultrarare': return 'var(--rar-ultrarare)';
+          case 'visceral': return 'var(--rar-visceral)';
+          case 'event': return 'var(--rar-event)';
+          default: return 'var(--rar-common)';
         }
       };
 
@@ -6681,7 +6706,7 @@
                     );
                   }
                   if (item.category === 'GameIcon') {
-                    const categoryColors = { health: '#e4e4e7', buff: '#d4d4d8', debuff: '#71717a', killer: '#fafafa', activity: '#a1a1aa' };
+                    const categoryColors = { health: 'var(--rar-veryrare)', buff: 'var(--rar-rare)', debuff: 'var(--rar-common)', killer: 'var(--rar-ultrarare)', activity: 'var(--rar-uncommon)' };
                     const color = categoryColors[item.category] || '#a1a1aa';
                     return wrapBest(
                       <div key={item.id || item.name} className="p-3 rounded-2xl bg-zinc-900/60 border border-white/10 flex items-center gap-3">
@@ -7339,14 +7364,14 @@
       const getRarityOrder = (r) => RARITY_ORDER[(r || '').toLowerCase()] || 0;
       const getRarityColor = (rarity) => {
         switch ((rarity || '').toLowerCase()) {
-          case 'common': return '#71717a';
-          case 'uncommon': return '#a1a1aa';
-          case 'rare': return '#d4d4d8';
-          case 'veryrare': return '#e4e4e7';
-          case 'ultrarare': return '#fafafa';
-          case 'visceral': return '#fafafa';
-          case 'event': return '#e4e4e7';
-          default: return '#71717a';
+          case 'common': return 'var(--rar-common)';
+          case 'uncommon': return 'var(--rar-uncommon)';
+          case 'rare': return 'var(--rar-rare)';
+          case 'veryrare': return 'var(--rar-veryrare)';
+          case 'ultrarare': return 'var(--rar-ultrarare)';
+          case 'visceral': return 'var(--rar-visceral)';
+          case 'event': return 'var(--rar-event)';
+          default: return 'var(--rar-common)';
         }
       };
       const formatRarity = (rarity) => {
@@ -9146,7 +9171,7 @@
               { label: 'Overall Win Rate', value: `${overallWinRate}%`, color: overallWinRate >= 50 ? '#fafafa' : '#a1a1aa' },
               { label: 'Survivor Win Rate', value: `${survivorWinRate}%`, color: '#a1a1aa' },
               { label: 'Killer Win Rate', value: `${killerWinRate}%`, color: '#fafafa' },
-              { label: 'Perk Coverage', value: `${perkSnapshotMatches}/${filteredMatches.length || 0}`, color: '#d4d4d8' }
+              { label: 'Perk Coverage', value: `${perkSnapshotMatches}/${filteredMatches.length || 0}`, color: 'var(--rar-rare)' }
             ].map((card) => (
               <div key={card.label} className="p-4 rounded-2xl bg-zinc-900/60 border border-white/10 text-center">
                 <p className="text-2xl font-bold" style={{ color: card.color }}>{card.value}</p>
@@ -10101,8 +10126,8 @@
               <h2 className="cx-sec">Challenges</h2>
               <table className="cx-wikitable"><tbody>
                 <tr><th scope="row">planned</th><td className="text-center"><p className="text-2xl font-bold" style={{ color: '#a1a1aa' }}>{challengeCounts.planned}</p></td></tr>
-                <tr><th scope="row">active</th><td className="text-center"><p className="text-2xl font-bold" style={{ color: '#d4d4d8' }}>{challengeCounts.active}</p></td></tr>
-                <tr><th scope="row">completed</th><td className="text-center"><p className="text-2xl font-bold" style={{ color: '#d4d4d8' }}>{challengeCounts.completed}</p></td></tr>
+                <tr><th scope="row">active</th><td className="text-center"><p className="text-2xl font-bold" style={{ color: 'var(--rar-rare)' }}>{challengeCounts.active}</p></td></tr>
+                <tr><th scope="row">completed</th><td className="text-center"><p className="text-2xl font-bold" style={{ color: 'var(--rar-rare)' }}>{challengeCounts.completed}</p></td></tr>
                 <tr><th scope="row">New Challenge</th><td>
                   <div className="space-y-2">
                     <input value={challengeDraft.name} onChange={e => setChallengeDraft(draft => ({ ...draft, name: e.target.value }))} placeholder="Name" className="w-full bg-zinc-800/60 border border-white/10 rounded-xl px-3 py-2 text-sm text-white placeholder-zinc-500" />
@@ -11043,14 +11068,14 @@
       const getRarityOrder = (r) => RARITY_ORDER[(r || '').toLowerCase()] || 0;
       const getRarityColor = (rarity) => {
         switch ((rarity || '').toLowerCase()) {
-          case 'common': return '#71717a';
-          case 'uncommon': return '#a1a1aa';
-          case 'rare': return '#d4d4d8';
-          case 'veryrare': return '#e4e4e7';
-          case 'ultrarare': return '#fafafa';
-          case 'visceral': return '#fafafa';
-          case 'event': return '#e4e4e7';
-          default: return '#71717a';
+          case 'common': return 'var(--rar-common)';
+          case 'uncommon': return 'var(--rar-uncommon)';
+          case 'rare': return 'var(--rar-rare)';
+          case 'veryrare': return 'var(--rar-veryrare)';
+          case 'ultrarare': return 'var(--rar-ultrarare)';
+          case 'visceral': return 'var(--rar-visceral)';
+          case 'event': return 'var(--rar-event)';
+          default: return 'var(--rar-common)';
         }
       };
       const formatRarity = (rarity) => {
@@ -11385,14 +11410,14 @@
       const getRarityOrder = (r) => RARITY_ORDER[(r || '').toLowerCase()] || 0;
       const getRarityColor = (rarity) => {
         switch ((rarity || '').toLowerCase()) {
-          case 'common': return '#71717a';
-          case 'uncommon': return '#a1a1aa';
-          case 'rare': return '#d4d4d8';
-          case 'veryrare': return '#e4e4e7';
-          case 'ultrarare': return '#fafafa';
-          case 'visceral': return '#fafafa';
-          case 'event': return '#e4e4e7';
-          default: return '#71717a';
+          case 'common': return 'var(--rar-common)';
+          case 'uncommon': return 'var(--rar-uncommon)';
+          case 'rare': return 'var(--rar-rare)';
+          case 'veryrare': return 'var(--rar-veryrare)';
+          case 'ultrarare': return 'var(--rar-ultrarare)';
+          case 'visceral': return 'var(--rar-visceral)';
+          case 'event': return 'var(--rar-event)';
+          default: return 'var(--rar-common)';
         }
       };
       const formatRarity = (rarity) => {
@@ -11583,7 +11608,7 @@
         : 'bg-white/5 text-zinc-300 border-white/10';
       const badgeStyle = {
         borderColor: `${accentColor}30`,
-        color: focused ? accentColor : '#d4d4d8',
+        color: focused ? accentColor : 'var(--cos-name)',
         backgroundColor: focused ? `${accentColor}16` : 'rgba(255,255,255,0.04)'
       };
       return (
