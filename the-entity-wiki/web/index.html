@@ -7133,14 +7133,13 @@
             <h1 className="cx-title">{type}</h1>
             <p className="cx-hatnote">{listHatnote}</p>
           </div>
-          <WikiHeaderSearchPortal><div className="relative mb-3 max-w-3xl mx-auto pointer-events-auto">
-              <div className="absolute inset-0 bg-zinc-500 rounded-3xl blur-2xl opacity-0 transition-opacity duration-500"></div>
-              <div className="relative flex items-center bg-white/5 border border-white/15 rounded-lg p-2">
-                <div className="pl-4 text-zinc-400"><Icons.Search width={18} height={18} /></div>
-                <input type="text" placeholder={`Filter ${type}...`} className="w-full bg-transparent text-white p-3 text-sm sm:text-base font-medium placeholder-zinc-600 focus:outline-none" value={localSearch} onChange={e => { setLocalSearch(e.target.value); onSearchChange && onSearchChange(e.target.value); }} />
-                {localSearch && <button onClick={() => { setLocalSearch(''); onSearchChange && onSearchChange(''); }} className="p-2 mr-1 rounded-xl bg-white/5 text-zinc-300 hover:text-white hover:bg-white/10 transition-colors"><Icons.X width={18} height={18} /></button>}
-              </div>
-            </div></WikiHeaderSearchPortal>
+          <WikiHeaderSearchPortal>
+            <div className="absolute left-4 top-1/2 -translate-y-1/2 text-zinc-500">
+              <Icons.Search width={18} height={18} />
+            </div>
+            <input type="text" placeholder={`Filter ${type}...`} className="w-full bg-[var(--panel)] border border-[var(--stroke)] rounded-xl py-3 pl-12 pr-10 text-white placeholder-zinc-600 text-sm focus:outline-none" value={localSearch} onChange={e => { setLocalSearch(e.target.value); onSearchChange && onSearchChange(e.target.value); }} />
+            {localSearch && <button onClick={() => { setLocalSearch(''); onSearchChange && onSearchChange(''); }} className="absolute right-3 top-1/2 -translate-y-1/2 p-1.5 rounded-lg bg-white/5 text-zinc-400 hover:text-white transition-colors"><Icons.X width={14} height={14} /></button>}
+          </WikiHeaderSearchPortal>
           {isCharacterList && (
             <div className="max-w-3xl mx-auto flex justify-center gap-2 mb-2 px-6">
               <select value={sortBy} onChange={e => setSortBy(e.target.value)} className="themed-select compact text-sm">
@@ -7359,14 +7358,13 @@
           <ViewCrumbs trail={[{ label: 'Main page', onClick: onBack }]} current="Realms" />
           <h1 className="cx-title">Realms</h1>
           <p className="cx-hatnote">Maps and locations of the trials, grouped by realm.</p>
-          <WikiHeaderSearchPortal><div className="relative max-w-3xl mx-auto">
-              <div className="absolute inset-0 bg-transparent rounded-xl blur-2xl opacity-0 transition-opacity duration-500"></div>
-              <div className="relative flex items-center bg-[var(--panel)] border border-[var(--stroke)] rounded-xl p-2 pointer-events-auto">
-                <div className="pl-4 text-zinc-400"><Icons.Search width={18} height={18} /></div>
-                <input value={mapSearch} onChange={e => setMapSearch(e.target.value)} placeholder="Search maps..." className="w-full bg-transparent text-white p-3 text-sm sm:text-base font-medium placeholder-zinc-600 focus:outline-none" />
-                {mapSearch && <button onClick={() => setMapSearch('')} className="p-2 mr-1 rounded-xl border border-[var(--stroke)] text-zinc-300 hover:text-white transition-colors"><Icons.X width={18} height={18} /></button>}
-              </div>
-            </div></WikiHeaderSearchPortal>
+          <WikiHeaderSearchPortal>
+            <div className="absolute left-4 top-1/2 -translate-y-1/2 text-zinc-500">
+              <Icons.Search width={18} height={18} />
+            </div>
+            <input value={mapSearch} onChange={e => setMapSearch(e.target.value)} placeholder="Search maps..." className="w-full bg-[var(--panel)] border border-[var(--stroke)] rounded-xl py-3 pl-12 pr-10 text-white placeholder-zinc-600 text-sm focus:outline-none" />
+            {mapSearch && <button onClick={() => setMapSearch('')} className="absolute right-3 top-1/2 -translate-y-1/2 p-1.5 rounded-lg bg-white/5 text-zinc-400 hover:text-white transition-colors"><Icons.X width={14} height={14} /></button>}
+          </WikiHeaderSearchPortal>
           <div className="w-full max-w-[1280px] mx-auto px-[44px] pb-32 overflow-x-auto shrink-0">
             {realms.length === 0 && (
               <div className="text-center text-zinc-500 mt-12">No map data available.</div>
@@ -7587,7 +7585,7 @@
               {form.characterName ? (
                 <div className="flex items-center gap-3 p-3 cx-flatcard">
                   <div className="w-1 h-12" style={{ background: 'var(--accent)' }} />
-                  <AssetFrame type={form.role} imageUrl={characters.find(c => c.id === form.characterId)?.image} fallbackIcon={<Icons.User width={20} height={20} className="text-zinc-600" />} />
+                  <AssetFrame type={form.role} size="large" imageUrl={characters.find(c => c.id === form.characterId)?.image} fallbackIcon={<Icons.User width={20} height={20} className="text-zinc-600" />} />
                   <div className="flex-1">
                     <p className="text-white font-bold">{form.characterName}</p>
                     <p className="text-zinc-500 text-xs">Selected {form.role.toLowerCase()}</p>
@@ -7605,7 +7603,7 @@
                     <button
                       key={char.id}
                       onClick={() => pickCharacter(char)}
-                      className={`aspect-square border transition-all overflow-hidden ${form.characterId === char.id ? '' : 'opacity-80 hover:opacity-100'}`}
+                      className={`aspect-[3/4] border transition-all overflow-hidden ${form.characterId === char.id ? '' : 'opacity-80 hover:opacity-100'}`}
                       style={form.characterId === char.id ? { borderColor: 'var(--accent)' } : { borderColor: 'var(--stroke)' }}
                       title={char.name}
                     >
@@ -10040,13 +10038,21 @@
                 <tr><th scope="row">Completion</th><td className="text-center"><p className="text-2xl font-bold text-zinc-100">{DBD_ACHIEVEMENTS.length ? Math.round((completedCount / DBD_ACHIEVEMENTS.length) * 100) : 0}%</p></td></tr>
                 <tr><th scope="row">Remaining</th><td className="text-center"><p className="text-2xl font-bold text-zinc-200">{DBD_ACHIEVEMENTS.length - completedCount}</p></td></tr>
                 <tr><th scope="row">Search</th><td>
-                  <input
-                    type="text"
-                    value={achievementSearch}
-                    onChange={e => setAchievementSearch(e.target.value)}
-                    placeholder="Search achievements by name or description..."
-                    className="w-full bg-zinc-800/60 border border-white/10 rounded-xl px-3 py-2 text-sm text-white placeholder-zinc-500"
-                  />
+                  <div className="relative">
+                    <div className="absolute left-4 top-1/2 -translate-y-1/2 text-zinc-500"><Icons.Search width={18} height={18} /></div>
+                    <input
+                      type="text"
+                      value={achievementSearch}
+                      onChange={e => setAchievementSearch(e.target.value)}
+                      placeholder="Search achievements by name or description..."
+                      className="w-full bg-[var(--panel)] border border-[var(--stroke)] rounded-xl py-3 pl-12 pr-10 text-white placeholder-zinc-600 text-sm focus:outline-none"
+                    />
+                    {achievementSearch && (
+                      <button onClick={() => setAchievementSearch('')} className="absolute right-3 top-1/2 -translate-y-1/2 p-1.5 rounded-lg bg-white/5 text-zinc-400 hover:text-white transition-colors">
+                        <Icons.X width={14} height={14} />
+                      </button>
+                    )}
+                  </div>
                 </td></tr>
                 <tr><th scope="row">Sort</th><td>
                   <select value={achievementSort} onChange={e => setAchievementSort(e.target.value)} className="themed-select w-full text-sm">
@@ -11018,22 +11024,13 @@
             <p className="cx-hatnote">Community terminology and callouts.</p>
 
             {/* Search bar */}
-            <WikiHeaderSearchPortal><div className="relative max-w-3xl mx-auto">
-                <div className="relative flex items-center bg-white/5 border border-white/15 rounded-lg p-2 pointer-events-auto">
-                  <div className="pl-4 text-zinc-400"><Icons.Search width={18} height={18} /></div>
-                  <input
-                    value={search}
-                    onChange={e => setSearch(e.target.value)}
-                    placeholder="Search terms..."
-                    className="w-full bg-transparent text-white p-3 text-sm font-medium placeholder-zinc-600 focus:outline-none"
-                  />
-                  {search && (
-                    <button onClick={() => setSearch('')} className="p-2 mr-1 rounded-xl bg-white/5 text-zinc-300 hover:text-white hover:bg-white/10 transition-colors">
-                      <Icons.X width={18} height={18} />
-                    </button>
-                  )}
-                </div>
-              </div></WikiHeaderSearchPortal>
+            <WikiHeaderSearchPortal>
+            <div className="absolute left-4 top-1/2 -translate-y-1/2 text-zinc-500">
+              <Icons.Search width={18} height={18} />
+            </div>
+            <input value={search} onChange={e => setSearch(e.target.value)} placeholder="Search terms..." className="w-full bg-[var(--panel)] border border-[var(--stroke)] rounded-xl py-3 pl-12 pr-10 text-white placeholder-zinc-600 text-sm focus:outline-none" />
+            {search && <button onClick={() => setSearch('')} className="absolute right-3 top-1/2 -translate-y-1/2 p-1.5 rounded-lg bg-white/5 text-zinc-400 hover:text-white transition-colors"><Icons.X width={14} height={14} /></button>}
+          </WikiHeaderSearchPortal>
 
             {/* Dictionary entries */}
             <div className="pb-8 pr-8">
@@ -11219,17 +11216,13 @@
           <ViewCrumbs trail={[{ label: 'Main page', onClick: onBack }]} current="Items & Addons" />
           <h1 className="cx-title">Items &amp; Addons</h1>
           <p className="cx-hatnote">Survivor items, Killer powers, and their add-ons.</p>
-          <WikiHeaderSearchPortal><div className="relative max-w-3xl mx-auto">
-              <div className="relative flex items-center bg-zinc-800/60 backdrop-blur-xl border border-white/10 rounded-3xl p-2 shadow-2xl pointer-events-auto">
-                <div className="pl-4 text-zinc-400"><Icons.Search width={18} height={18} /></div>
-                <input value={search} onChange={e => setSearch(e.target.value)} placeholder="Search..." className="w-full bg-transparent text-white p-3 text-sm font-medium placeholder-zinc-600 focus:outline-none" />
-                {search && (
-                  <button onClick={() => setSearch('')} className="p-2 mr-1 rounded-xl bg-white/5 text-zinc-300 hover:text-white hover:bg-white/10 transition-colors">
-                    <Icons.X width={18} height={18} />
-                  </button>
-                )}
-              </div>
-            </div></WikiHeaderSearchPortal>
+          <WikiHeaderSearchPortal>
+            <div className="absolute left-4 top-1/2 -translate-y-1/2 text-zinc-500">
+              <Icons.Search width={18} height={18} />
+            </div>
+            <input value={search} onChange={e => setSearch(e.target.value)} placeholder="Search..." className="w-full bg-[var(--panel)] border border-[var(--stroke)] rounded-xl py-3 pl-12 pr-10 text-white placeholder-zinc-600 text-sm focus:outline-none" />
+            {search && <button onClick={() => setSearch('')} className="absolute right-3 top-1/2 -translate-y-1/2 p-1.5 rounded-lg bg-white/5 text-zinc-400 hover:text-white transition-colors"><Icons.X width={14} height={14} /></button>}
+          </WikiHeaderSearchPortal>
           <div className="max-w-3xl mx-auto flex flex-wrap justify-center gap-2 mb-4">
             <button onClick={() => { setMode('survivor'); setExpandedId(null); }} className={"px-4 py-2 rounded-xl text-xs uppercase tracking-wider transition-all " + (mode === 'survivor' ? 'bg-zinc-100 text-black border border-zinc-100' : 'bg-white/5 text-zinc-400 border border-white/10')}>
               Survivor Items
@@ -11505,17 +11498,13 @@
           <ViewCrumbs trail={[{ label: 'Main page', onClick: onBack }]} current="Offerings" />
           <h1 className="cx-title">Offerings</h1>
           <p className="cx-hatnote">Offerings for the Entity, by rarity.</p>
-          <WikiHeaderSearchPortal><div className="relative max-w-3xl mx-auto">
-              <div className="relative flex items-center bg-zinc-800/60 backdrop-blur-xl border border-white/10 rounded-3xl p-2 shadow-2xl pointer-events-auto">
-                <div className="pl-4 text-zinc-400"><Icons.Search width={18} height={18} /></div>
-                <input value={search} onChange={e => setSearch(e.target.value)} placeholder="Search..." className="w-full bg-transparent text-white p-3 text-sm font-medium placeholder-zinc-600 focus:outline-none" />
-                {search && (
-                  <button onClick={() => setSearch('')} className="p-2 mr-1 rounded-xl bg-white/5 text-zinc-300 hover:text-white hover:bg-white/10 transition-colors">
-                    <Icons.X width={18} height={18} />
-                  </button>
-                )}
-              </div>
-            </div></WikiHeaderSearchPortal>
+          <WikiHeaderSearchPortal>
+            <div className="absolute left-4 top-1/2 -translate-y-1/2 text-zinc-500">
+              <Icons.Search width={18} height={18} />
+            </div>
+            <input value={search} onChange={e => setSearch(e.target.value)} placeholder="Search..." className="w-full bg-[var(--panel)] border border-[var(--stroke)] rounded-xl py-3 pl-12 pr-10 text-white placeholder-zinc-600 text-sm focus:outline-none" />
+            {search && <button onClick={() => setSearch('')} className="absolute right-3 top-1/2 -translate-y-1/2 p-1.5 rounded-lg bg-white/5 text-zinc-400 hover:text-white transition-colors"><Icons.X width={14} height={14} /></button>}
+          </WikiHeaderSearchPortal>
           <div className="max-w-3xl mx-auto flex flex-wrap justify-center gap-2 mb-4">
             {['All', 'Killer', 'Survivor', 'Universal'].map(opt => (
 <button key={opt} type="button" className="px-4 py-2 text-xs rounded-lg border transition-colors {filterRole === opt ? 'bg-zinc-100 text-black border-zinc-100 font-bold' : 'bg-transparent text-zinc-300 border-white/15 hover:border-white/30'}">{opt}</button>
@@ -11830,22 +11819,13 @@
               </div>
             </div>
           )}
-          <WikiHeaderSearchPortal><div className="relative max-w-5xl mx-auto pointer-events-auto">
-              <div className="relative flex items-center bg-[var(--panel)] border border-[var(--stroke)] rounded-xl p-2">
-                <div className="pl-4 text-zinc-400"><Icons.Search width={18} height={18} /></div>
-                <input
-                  value={search}
-                  onChange={(e) => setSearch(e.target.value)}
-                  placeholder="Search cosmetics, rarity, piece type, or character..."
-                  className="w-full bg-transparent text-white p-3 text-sm font-medium placeholder-zinc-600 focus:outline-none"
-                />
-                {search && (
-                  <button onClick={() => setSearch('')} className="p-2 mr-1 rounded-xl border border-[var(--stroke)] text-zinc-300 hover:text-white transition-colors">
-                    <Icons.X width={18} height={18} />
-                  </button>
-                )}
-              </div>
-            </div></WikiHeaderSearchPortal>
+          <WikiHeaderSearchPortal>
+            <div className="absolute left-4 top-1/2 -translate-y-1/2 text-zinc-500">
+              <Icons.Search width={18} height={18} />
+            </div>
+            <input value={search} onChange={(e) => setSearch(e.target.value)} placeholder="Search cosmetics, rarity, piece type, or character..." className="w-full bg-[var(--panel)] border border-[var(--stroke)] rounded-xl py-3 pl-12 pr-10 text-white placeholder-zinc-600 text-sm focus:outline-none" />
+            {search && <button onClick={() => setSearch('')} className="absolute right-3 top-1/2 -translate-y-1/2 p-1.5 rounded-lg bg-white/5 text-zinc-400 hover:text-white transition-colors"><Icons.X width={14} height={14} /></button>}
+          </WikiHeaderSearchPortal>
           <div className="max-w-5xl mx-auto space-y-3 mb-4">
             <div className="flex flex-wrap items-center justify-center gap-2">
               <span className="text-[10px] text-zinc-500 uppercase tracking-[0.18em]">Role</span>
@@ -13502,32 +13482,23 @@
           </div>
 
           {/* Sticky Search + Filters (both modes) */}
-          <WikiHeaderSearchPortal><div className="relative mb-3 max-w-3xl mx-auto pointer-events-auto">
-              <div className="relative flex items-center bg-[var(--panel)] border border-[var(--stroke)] rounded-xl p-2">
-                <div className="pl-4 text-zinc-400"><Icons.Search width={18} height={18} /></div>
-                <input
-                  type="text"
-                  placeholder={viewMode === 'grid' ? 'Filter icons...' : 'Search icons...'}
-                  className="w-full bg-transparent text-white p-3 text-sm font-medium placeholder-zinc-600 focus:outline-none"
-                  value={search}
-                  onChange={e => setSearch(e.target.value)}
-                />
-                {search && (
-                  <button onClick={() => setSearch('')} className="p-2 mr-1 rounded-xl border border-[var(--stroke)] text-zinc-300 hover:text-white transition-colors">
-                    <Icons.X width={18} height={18} />
-                  </button>
-                )}
-              </div>
-            </div></WikiHeaderSearchPortal>
+          <WikiHeaderSearchPortal>
+            <div className="absolute left-4 top-1/2 -translate-y-1/2 text-zinc-500">
+              <Icons.Search width={18} height={18} />
+            </div>
+            <input type="text" placeholder={viewMode === 'grid' ? 'Filter icons...' : 'Search icons...'} className="w-full bg-[var(--panel)] border border-[var(--stroke)] rounded-xl py-3 pl-12 pr-10 text-white placeholder-zinc-600 text-sm focus:outline-none" value={search} onChange={e => setSearch(e.target.value)} />
+            {search && <button onClick={() => setSearch('')} className="absolute right-3 top-1/2 -translate-y-1/2 p-1.5 rounded-lg bg-white/5 text-zinc-400 hover:text-white transition-colors"><Icons.X width={14} height={14} /></button>}
+          </WikiHeaderSearchPortal>
 
           {/* Filter Pills */}
           <div className="max-w-3xl mx-auto flex flex-wrap justify-center gap-2 mb-2 px-4">
             {filters.map(f => (
-<button key={f} type="button" className="px-4 py-2 text-xs rounded-lg border transition-colors {filter === f ? 'bg-zinc-100 text-black border-zinc-100 font-bold' : 'bg-transparent text-zinc-300 border-white/15 hover:border-white/30'}">{f}</button>
+              <button key={f} type="button" onClick={() => setFilter(f)} className={`mode-choice px-4 py-2 text-xs font-bold ${filter === f ? 'mode-choice--active' : ''}`}>{f}</button>
             ))}
           </div>
 
-          {/* =================== TRIAL GRID MODE =================== */}
+          {/* =================== LIST BODY (persistent wrapper) =================== */}
+          <div>
           {viewMode === 'grid' && (
             <div className="px-4 pb-32">
               {filter !== 'All' && (
@@ -13662,6 +13633,7 @@
               )}
             </div>
           )}
+          </div>
 
           {/* Flashcard Modal (Trial Grid) */}
           {flashcardIcon && <FlashcardModal icon={flashcardIcon} onClose={() => setFlashcardIcon(null)} />}
