@@ -1579,6 +1579,9 @@
     .cx-side-link:hover { color: var(--text); background: var(--ghost-surface); }
     .cx-side-link--active { color: var(--text); font-weight: 700; }
     .cx-side-count { color: var(--text-faint); font-size: 11px; flex-shrink: 0; }
+    .cx-linkcols { margin-top: 14px; columns: 3; column-gap: 36px; font-size: 13.5px; }
+    .cx-linkcols > div { break-inside: avoid; padding: 3px 0; }
+    .cx-cnt { color: var(--text-faint); font-size: 11.5px; }
     .cx-gloss { margin-top: 14px; font-size: 13.5px; }
     .cx-gloss dt { font-weight: 700; margin-top: 12px; color: var(--text); }
     .cx-gloss dd { margin: 2px 0 0 0; color: var(--text-soft); }
@@ -6676,39 +6679,12 @@
       return (
         <div ref={pullRef} {...pullHandlers} className="relative flex flex-col h-full px-4 sm:px-6 pt-6 sm:pt-8 pb-32 overflow-y-auto custom-scrollbar">
           <PullIndicator pullDistance={pullDistance} threshold={80} isRefreshing={isRefreshing} />
-          <div className={`home-command transition-opacity duration-300 ${searchTerm ? 'opacity-90' : 'opacity-100'}`}>
-            <div className="home-command-hero rounded-xl p-4 sm:p-5">
-              <div className="relative z-10 flex flex-col lg:flex-row lg:items-end justify-between gap-5">
-                <div className="min-w-0">
-                  <p className="text-[10px] font-black uppercase tracking-[0.28em] text-zinc-500">Home</p>
-                  <h1 className="mt-2 text-2xl sm:text-3xl font-black text-white tracking-tight">The Entity's Wiki</h1>
-                  <p className="mt-2 max-w-2xl text-sm leading-relaxed text-zinc-400">
-                    Your all in one place for Dead By Daylight.
-                  </p>
-                </div>
-                <div className="home-stat-grid min-w-0">
-                  {homeStats.map((stat) => {
-                    const StatIcon = Icons[stat.icon] || Icons.Zap;
-                    return (
-                      <button key={stat.label} onClick={() => setView(stat.view)} className="home-stat-card rounded-lg px-3 py-2.5 text-left hover:bg-white/[0.04] transition-colors">
-                        <div className="flex items-center justify-between gap-2">
-                          <span className="text-[8px] uppercase tracking-[0.12em] text-zinc-500 font-black">{stat.label}</span>
-                          <StatIcon width={12} height={12} style={{ color: theme.accent }} />
-                        </div>
-                        <span className="mt-1.5 block text-xl font-black text-white">{stat.value}</span>
-                      </button>
-                    );
-                  })}
-                </div>
-              </div>
-            </div>
-          </div>
           <div className="px-0 sm:px-6 pb-4 pt-4 pointer-events-none">
             <div className="relative max-w-3xl mx-auto pointer-events-auto">
               <div className="absolute inset-0 bg-zinc-500 rounded-3xl blur-2xl opacity-0 transition-opacity duration-500"></div>
               <div className="relative flex items-center bg-white/5 border border-white/15 rounded-lg p-2">
                 <div className="pl-4 text-zinc-400"><Icons.Search width={18} height={18} /></div>
-                <input type="text" className="w-full bg-transparent text-white p-3 text-sm sm:text-base font-medium placeholder-zinc-600 focus:outline-none" placeholder="Search perks, killers, maps, builds..." value={searchTerm} onChange={(e) => setSearchTerm(e.target.value)} />
+                <input type="text" className="w-full bg-transparent text-white p-3 text-sm sm:text-base font-medium placeholder-zinc-600 focus:outline-none" id="home-search-input" placeholder="Search perks, killers, maps, builds..." value={searchTerm} onChange={(e) => setSearchTerm(e.target.value)} />
                 {searchTerm && <button onClick={() => setSearchTerm('')} className="p-2 mr-1 rounded-xl bg-white/5 text-zinc-300 hover:text-white hover:bg-white/10 transition-colors"><Icons.X width={18} height={18} /></button>}
               </div>
             </div>
@@ -7047,7 +7023,7 @@
                     <li><a href="#news" style={{ color: 'var(--link)' }}>Latest releases</a></li>
                     <li><a href="#browse" style={{ color: 'var(--link)' }}>Browse by category</a></li>
                     <li><a href="#tools" style={{ color: 'var(--link)' }}>Tools</a></li>
-                    <li><a href="#shelf" style={{ color: 'var(--link)' }}>Shelf</a></li>
+                    <li><a href="#shelf" style={{ color: 'var(--link)' }}>Quick tools</a></li>
                   </ol>
                 </nav>
 
@@ -7073,8 +7049,9 @@
                             <p><b>{featuredName}</b> is the featured Killer. {loreExcerpt}</p>
                             {powerExcerpt ? (<p>Power: {powerExcerpt}</p>) : null}
                             <div className="mt-3 flex flex-wrap gap-2">
-                              <button onClick={() => { if (featuredKiller && onOpenCharacterProfile) { onOpenCharacterProfile(featuredKiller); } }} className="px-3 py-1.5 rounded-lg bg-white/5 border border-white/10 text-[11px] text-white">Open profile</button>
-                              <button onClick={() => setView('timeline')} className="px-3 py-1.5 rounded-lg bg-white/5 border border-white/10 text-[11px] text-white">Open timeline</button>
+                              <button type="button" className="cx-alink" onClick={() => { if (featuredKiller && onOpenCharacterProfile) { onOpenCharacterProfile(featuredKiller); } }}>Open profile</button>
+                              <span className="cx-sep" style={{ color: 'var(--text-faint)' }}> · </span>
+                              <button type="button" className="cx-alink" onClick={() => setView('timeline')}>Open timeline</button>
                             </div>
                           </div>
                           <aside className="cx-infobox" aria-label="Featured Killer portrait">
@@ -7124,178 +7101,72 @@
 
                 <section id="browse" aria-label="Browse by category">
                   <h2 className="cx-sec">Browse by category</h2>
-                  <div className="grid grid-cols-2 lg:grid-cols-3 gap-2">
-                    <button onClick={() => setView('killers')} className="rounded-xl border border-white/10 bg-white/[0.02] p-4 text-left hover:bg-white/[0.05] transition-colors">
-                      <span className="block text-sm font-black text-white">Killers</span>
-                      <span className="mt-1 block text-xl font-black text-white">{killers.length}</span>
-                      <span className="block text-[11px] text-zinc-500">Open roster</span>
-                    </button>
-                    <button onClick={() => setView('survivors')} className="rounded-xl border border-white/10 bg-white/[0.02] p-4 text-left hover:bg-white/[0.05] transition-colors">
-                      <span className="block text-sm font-black text-white">Survivors</span>
-                      <span className="mt-1 block text-xl font-black text-white">{survivors.length}</span>
-                      <span className="block text-[11px] text-zinc-500">Open roster</span>
-                    </button>
-                    <button onClick={() => setView('perks')} className="rounded-xl border border-white/10 bg-white/[0.02] p-4 text-left hover:bg-white/[0.05] transition-colors">
-                      <span className="block text-sm font-black text-white">Perks</span>
-                      <span className="mt-1 block text-xl font-black text-white">{visiblePerks.length}</span>
-                      <span className="block text-[11px] text-zinc-500">Open perk finder</span>
-                    </button>
-                    <button onClick={() => setView('items', { mode: 'killer' })} className="rounded-xl border border-white/10 bg-white/[0.02] p-4 text-left hover:bg-white/[0.05] transition-colors">
-                      <span className="block text-sm font-black text-white">Add-ons</span>
-                      <span className="mt-1 block text-xl font-black text-white">{addons.length}</span>
-                      <span className="block text-[11px] text-zinc-500">Open killer add-ons</span>
-                    </button>
-                    <button onClick={() => setView('items', { mode: 'survivor' })} className="rounded-xl border border-white/10 bg-white/[0.02] p-4 text-left hover:bg-white/[0.05] transition-colors">
-                      <span className="block text-sm font-black text-white">Items</span>
-                      <span className="mt-1 block text-xl font-black text-white">{items.length}</span>
-                      <span className="block text-[11px] text-zinc-500">Open survivor items</span>
-                    </button>
-                    <button onClick={() => setView('offerings')} className="rounded-xl border border-white/10 bg-white/[0.02] p-4 text-left hover:bg-white/[0.05] transition-colors">
-                      <span className="block text-sm font-black text-white">Offerings</span>
-                      <span className="mt-1 block text-xl font-black text-white">{offerings.filter((offering) => !offering.retired).length}</span>
-                      <span className="block text-[11px] text-zinc-500">Open offerings</span>
-                    </button>
-                    <button onClick={() => setView('realms')} className="rounded-xl border border-white/10 bg-white/[0.02] p-4 text-left hover:bg-white/[0.05] transition-colors">
-                      <span className="block text-sm font-black text-white">Realms</span>
-                      <span className="mt-1 block text-xl font-black text-white">{new Set(maps.map((m) => m.realm)).size}</span>
-                      <span className="block text-[11px] text-zinc-500">Open realms</span>
-                    </button>
+                  <div className="cx-linkcols">
+                    {[
+                      { label: 'Killers', count: killers.length, open: () => setView('killers') },
+                      { label: 'Survivors', count: survivors.length, open: () => setView('survivors') },
+                      { label: 'Perk Finder', count: visiblePerks.length, open: () => setView('perks') },
+                      { label: 'Items & Addons', count: items.length, open: () => setView('items', { mode: 'survivor' }) },
+                      { label: 'Add-ons', count: addons.length, open: () => setView('items', { mode: 'killer' }) },
+                      { label: 'Offerings', count: offerings.filter((offering) => !offering.retired).length, open: () => setView('offerings') },
+                      { label: 'Cosmetics', count: (cosmeticsCatalog.fullSets || []).length + (cosmeticsCatalog.characterSwaps || []).length, open: () => setView('cosmetics') },
+                      { label: 'Realms', count: new Set(maps.map((m) => m.realm)).size, open: () => setView('realms') },
+                      { label: 'Chronicle', count: (typeof TIMELINE_DATA !== 'undefined' && TIMELINE_DATA.releases) ? TIMELINE_DATA.releases.length : 0, open: () => setView('timeline') },
+                      { label: 'Glossary', count: GLOSSARY.reduce((n, sec) => n + sec.items.length, 0), open: () => setView('glossary') },
+                      { label: 'My Favorites', count: null, open: () => setView('favorites') },
+                      { label: 'Community Content', count: null, open: () => setView('communityContent') },
+                    ].map((entry) => (
+                      <div key={entry.label}>
+                        <button type="button" className="cx-alink" onClick={entry.open}>{entry.label}</button>
+                        {typeof entry.count === 'number' && entry.count > 0 ? <span className="cx-cnt"> {entry.count}</span> : null}
+                      </div>
+                    ))}
                   </div>
                 </section>
 
                 <section id="tools" aria-label="Tools directory">
                   <h2 className="cx-sec">Tools</h2>
-                  <div className="divide-y divide-white/[0.07] border-y border-white/[0.08]">
-                    {['buildLab', 'roulette', 'worldle', 'prestige', 'matches', 'settings'].map((id) => ALL_HOME_TILES.find((tile) => tile.id === id) || (id === 'settings' ? { id: 'settings', label: 'Settings', icon: 'Gear', desc: 'Preferences and backups' } : null)).filter(Boolean).map((tile) => {
-                      const TileIcon = Icons[tile.icon] || Icons.Zap;
-                      const openTile = () => {
-                        if (tile.id === 'import') {
-                          setShowImportModal(true);
-                          return;
-                        }
-                        setView(tile.id);
-                      };
-                      return (
-                        <button key={tile.id} onClick={openTile} className="group w-full py-3.5 text-left flex items-center gap-4 hover:bg-white/[0.025] transition-colors">
-                          <span className="home-tool-icon w-9 h-9 shrink-0 rounded-lg flex items-center justify-center"><TileIcon width={17} height={17} /></span>
-                          <span className="min-w-0 flex-1">
-                            <span className="block text-sm font-black text-white truncate">{tile.label}</span>
-                            <span className="mt-0.5 block text-xs text-zinc-500 truncate">{tile.desc}</span>
-                          </span>
-                          <Icons.ChevronRight width={17} height={17} className="shrink-0 text-zinc-700 group-hover:text-white transition-colors" />
-                        </button>
-                      );
-                    })}
-                  </div>
-                  <h3>All modules</h3>
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-5 border-t border-white/[0.08]">
-                    {['killers', 'survivors', 'perks', 'favorites', 'progression', 'communityContent', 'cosmetics', 'realms', 'items', 'offerings', 'glossary', 'gameIcons', 'import', 'timeline'].map((id) => ALL_HOME_TILES.find((tile) => tile.id === id)).filter(Boolean).map((tile) => {
-                      const TileIcon = Icons[tile.icon] || Icons.Zap;
-                      const openTile = () => {
-                        if (tile.id === 'import') {
-                          setShowImportModal(true);
-                          return;
-                        }
-                        setView(tile.id);
-                      };
-                      return (
-                        <button
-                          key={tile.id}
-                          onClick={openTile}
-                          className="group py-3 border-b border-white/[0.07] text-left flex items-center gap-3 hover:bg-white/[0.025] transition-colors"
-                        >
-                          <span className="text-zinc-500 group-hover:text-white transition-colors"><TileIcon width={16} height={16} /></span>
-                          <span className="min-w-0 flex-1">
-                            <span className="block text-sm font-bold text-white truncate">{tile.label}</span>
-                            <span className="block text-[11px] text-zinc-600 truncate">{tile.desc}</span>
-                          </span>
-                        </button>
-                      );
-                    })}
-                  </div>
+                  <table className="cx-wikitable">
+                    <thead><tr><th style={{ width: '220px' }}>Tool</th><th>Purpose</th></tr></thead>
+                    <tbody>
+                      {['buildLab', 'roulette', 'worldle', 'prestige', 'matches', 'progression', 'favorites', 'import', 'settings'].map((id) => ALL_HOME_TILES.find((tile) => tile.id === id) || (id === 'settings' ? { id: 'settings', label: 'Settings', desc: 'Preferences and backups' } : null) || (id === 'import' ? { id: 'import', label: 'Import Build', desc: 'Paste a shared build text into your lab' } : null)).filter(Boolean).map((tile) => {
+                        const openTile = () => {
+                          if (tile.id === 'import') {
+                            setShowImportModal(true);
+                            return;
+                          }
+                          setView(tile.id);
+                        };
+                        return (
+                          <tr key={tile.id} onClick={openTile} style={{ cursor: 'pointer' }}>
+                            <td><button type="button" className="cx-alink" onClick={(e) => { e.stopPropagation(); openTile(); }}>{tile.label}</button></td>
+                            <td style={{ color: 'var(--text-soft)' }}>{tile.desc}</td>
+                          </tr>
+                        );
+                      })}
+                    </tbody>
+                  </table>
                 </section>
 
                 <section id="shelf" aria-label="Shelf">
-                  <h2 className="cx-sec">Shelf</h2>
-                  <div className="space-y-4">
-                    <section className="home-signal-card rounded-xl overflow-hidden">
-                      <div className="px-4 py-3 border-b border-white/[0.08] flex items-center justify-between gap-3">
-                        <div>
-                          <p className="text-[10px] uppercase tracking-[0.22em] text-zinc-500 font-black">Quick Chaos Shuffle</p>
-                          <h3 className="mt-1 text-base font-black text-white">Random killer</h3>
-                        </div>
-                        <button onClick={() => setView('roulette')} className="text-[11px] font-black uppercase tracking-widest text-zinc-500 hover:text-white">Open</button>
-                      </div>
-                      <div className="p-4">
-                        <button
-                          onClick={() => {
-                            if (quickKiller && onOpenCharacterProfile) {
-                              onOpenCharacterProfile(quickKiller);
-                            }
-                          }}
-                          className="home-portrait-card w-full rounded-lg overflow-hidden relative min-h-[190px]"
-                        >
-                          {quickKiller ? (
-                            <AssetFrame
-                              type="Killer"
-                              imageUrl={quickKiller.image}
-                              size="fill"
-                              fallbackIcon={<Icons.User width={24} height={24} className="text-zinc-600" />}
-                            />
-                          ) : (
-                            <div className="absolute inset-0 flex flex-col items-center justify-center gap-3 text-zinc-600">
-                              <Icons.Dices width={34} height={34} />
-                              <span className="text-xs font-black uppercase tracking-widest">No roll yet</span>
-                            </div>
-                          )}
-                          <div className="home-portrait-caption absolute inset-x-0 bottom-0 p-3">
-                            <p className="text-[10px] text-zinc-500 font-black uppercase tracking-widest">Killer pick</p>
-                            <p className="text-sm text-white font-black truncate">{quickKiller?.name || 'Roll a killer'}</p>
-                          </div>
-                        </button>
-                        <div className="mt-3 grid grid-cols-2 gap-2">
-                          <button onClick={rollQuickKiller} className="px-3 py-2.5 rounded-lg border border-white/10 bg-white/[0.035] text-sm font-bold text-white hover:bg-white/[0.06] transition-colors flex items-center justify-center gap-2">
-                            <Icons.Dices width={16} height={16} /> Roll
-                          </button>
-                          <button onClick={() => setView('roulette')} className="px-3 py-2.5 rounded-lg border border-white/10 bg-white/[0.02] text-sm font-bold text-zinc-300 hover:text-white hover:bg-white/[0.05] transition-colors">
-                            Full shuffle
-                          </button>
-                        </div>
-                      </div>
-                    </section>
-
-                    <button onClick={() => setView('worldle')} className="home-signal-card rounded-xl p-4 w-full text-left hover:bg-white/[0.035] transition-colors">
-                      <div className="flex items-center justify-between gap-3">
-                        <div>
-                          <p className="text-[10px] uppercase tracking-[0.22em] text-zinc-500 font-black">Daily Worldle</p>
-                          <h3 className="mt-1 text-lg font-black text-white">Today&apos;s puzzle</h3>
-                          <p className="mt-1 text-xs text-zinc-500">Guess today&apos;s DBD Wordle.</p>
-                        </div>
-                        <Icons.Notepad width={22} height={22} style={{ color: theme.accent }} />
-                      </div>
-                    </button>
-
-                    <section className="home-signal-card rounded-xl p-4">
-                      <div className="flex items-center justify-between gap-3">
-                        <p className="text-[10px] uppercase tracking-[0.22em] text-zinc-500 font-black">Favorites</p>
-                        <button onClick={() => setView('favorites')} className="text-[11px] font-black uppercase tracking-widest text-zinc-500 hover:text-white">Open</button>
-                      </div>
-                      <div className="mt-3 divide-y divide-white/[0.07]">
-                        {favoriteEntries.slice(0, 4).map((entry) => (
-                          <button key={`${entry.favoriteCategory}-${entry.id}`} onClick={() => setView(entry.favoriteView)} className="w-full py-2.5 text-left hover:bg-white/[0.025] transition-colors">
-                            <span className="block text-sm text-white font-bold truncate">{entry.name}</span>
-                            <span className="block text-[11px] text-zinc-500 truncate">{entry.favoriteCategory}</span>
-                          </button>
-                        ))}
-                        {favoriteEntries.length === 0 && (
-                          <button onClick={() => setView('favorites')} className="w-full py-2.5 text-left hover:bg-white/[0.025] transition-colors">
-                            <span className="block text-sm text-white font-bold">No favorites yet</span>
-                            <span className="block text-[11px] text-zinc-500">Favorite perks, characters, items, addons, or offerings to show them here.</span>
-                          </button>
-                        )}
-                      </div>
-                    </section>
-                  </div>
+                  <h2 className="cx-sec">Quick tools</h2>
+                  <table className="cx-wikitable">
+                    <thead><tr><th style={{ width: '220px' }}>Action</th><th>Description</th></tr></thead>
+                    <tbody>
+                      <tr onClick={() => setView('roulette')} style={{ cursor: 'pointer' }}>
+                        <td><button type="button" className="cx-alink" onClick={(e) => { e.stopPropagation(); setView('roulette'); }}>Quick Chaos Shuffle</button></td>
+                        <td style={{ color: 'var(--text-soft)' }}>Roll a random killer and loadout in the Chaos Shuffle.</td>
+                      </tr>
+                      <tr onClick={() => setView('worldle')} style={{ cursor: 'pointer' }}>
+                        <td><button type="button" className="cx-alink" onClick={(e) => { e.stopPropagation(); setView('worldle'); }}>Daily Wordle</button></td>
+                        <td style={{ color: 'var(--text-soft)' }}>Guess today&apos;s DBD puzzle.</td>
+                      </tr>
+                      <tr onClick={() => setView('favorites')} style={{ cursor: 'pointer' }}>
+                        <td><button type="button" className="cx-alink" onClick={(e) => { e.stopPropagation(); setView('favorites'); }}>My Favorites</button></td>
+                        <td style={{ color: 'var(--text-soft)' }}>Jump to your bookmarked content{favoriteEntries.length > 0 ? ` (${favoriteEntries.length} saved)` : ''}.</td>
+                      </tr>
+                    </tbody>
+                  </table>
                 </section>
 
                 <nav className="cx-cats" aria-label="Categories">
