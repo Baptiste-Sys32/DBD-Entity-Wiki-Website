@@ -5731,7 +5731,7 @@
                       </div>
                     )}
                     {!lockedChar && (
-                      <div className="grid grid-cols-6 sm:grid-cols-8 gap-1.5 mt-2 max-h-32 overflow-y-auto custom-scrollbar">
+                      <div className="grid grid-cols-8 sm:grid-cols-10 gap-1.5 mt-2 max-h-32 overflow-y-auto custom-scrollbar">
                         {characters.map(char => (
                           <button
                             key={char.id}
@@ -5778,7 +5778,7 @@
                       className="cx-input w-full pl-7 pr-2 py-1.5 text-xs"
                     />
                   </div>
-                  <div className="grid grid-cols-6 sm:grid-cols-8 md:grid-cols-10 gap-1.5 max-h-48 overflow-y-auto custom-scrollbar p-1">
+                  <div className="grid grid-cols-8 sm:grid-cols-10 md:grid-cols-12 gap-1.5 max-h-80 overflow-y-auto custom-scrollbar p-1">
                     {filteredCharacters.map(char => {
                       const isOwned = ownedCharacters.has(char.id);
                       return (
