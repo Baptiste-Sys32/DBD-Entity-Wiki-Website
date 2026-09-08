@@ -1496,6 +1496,7 @@
     .site-footer-legal a { color: var(--text-faint); }
     .site-footer-legal a:hover { color: var(--text); text-decoration: underline; }
     .wiki-header { background: #000; border-bottom: 1px solid var(--line-soft); height: 64px; }
+    .light-mode .wiki-header .wiki-logo-img { filter: invert(1); }
     .wiki-header #wiki-header-search-slot > * { width: 100%; }
     .wiki-header #wiki-header-search-slot .relative { width: 100%; }
     .wiki-header #wiki-header-search-slot .p-2 { padding: 4px 8px !important; background: var(--panel) !important; border-radius: 6px !important; box-shadow: none !important; backdrop-filter: none !important; }
@@ -1700,6 +1701,11 @@
       display: block;
     }
     .cx-perkcell-inner > div { overflow: visible !important; }
+    .cx-thumbzoom { position: relative; }
+    .cx-thumbzoom > * { transition: transform 130ms ease; will-change: transform; }
+    .cx-thumbzoom:hover { z-index: 6; }
+    .cx-thumbzoom:hover > * { transform: scale(2.35); filter: drop-shadow(0 6px 16px rgba(0, 0, 0, 0.35)); }
+    .light-mode .cx-thumbzoom:hover > * { filter: drop-shadow(0 3px 10px rgba(0, 0, 0, 0.25)); }
     .cx-perkcell-inner img[src*="IconPerks"] { transform: scale(1.32); }
     .cx-perkcell-inner a {
       color: var(--link);
@@ -4869,7 +4875,7 @@
       return (
         <header className="wiki-header sticky top-0 z-30 flex items-center justify-between gap-4 px-4">
           <button type="button" onClick={() => setView('home')} className="flex items-center gap-3 shrink-0" aria-label="Main page">
-            <img src="./assets/favicon.png" alt="" width={52} height={52} style={{ transform: 'scale(1.5)' }} />
+            <img src="./assets/wiki-logo.png" alt="" width={100} height={42} className="wiki-logo-img" style={{ objectFit: 'contain' }} />
             <span className="flex flex-col leading-none text-left">
               <span className="text-[15px] font-bold text-[var(--text)]" style={{ fontFamily: 'var(--font-display)', fontWeight: 700 }}>The Entity's Wiki</span>
               <span className="text-[8.5px] uppercase tracking-[0.18em] mt-1" style={{ color: 'var(--text-faint)' }}>Dead by Daylight</span>
@@ -7191,7 +7197,7 @@
                   <tr key={item.id} onClick={handleCharacterClick} className={isInCompare ? 'cx-row-compare' : undefined} style={{ cursor: 'pointer' }}>
                     <td className="cx-perkcell">
                       <div className="cx-perkcell-inner">
-                        <div style={{ width: 44, height: 44, overflow: 'hidden', flexShrink: 0, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                        <div className="cx-thumbzoom" style={{ width: 44, height: 44, overflow: 'hidden', flexShrink: 0, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                           <AssetFrame type={category} imageUrl={item.image} fallbackIcon={fallbackIcon} size="fill" />
                         </div>
                         <span>
