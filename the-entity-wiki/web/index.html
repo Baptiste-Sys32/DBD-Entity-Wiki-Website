@@ -1566,12 +1566,17 @@
       color: var(--text-faint);
       border-top: 1px solid var(--stroke);
     }
-    .website-sidebar.cx-side { width: 212px; padding: 16px 14px 0; border-right: 1px solid var(--line-soft); background: #000; }
+    .website-sidebar.cx-side { width: 212px; padding: 16px 14px 0; border-right: 1px solid rgba(234, 234, 234, 0.45); background: #000; }
+    .cx-side-nav { scrollbar-width: none; }
+    .cx-side-nav::-webkit-scrollbar { display: none; }
+    .cx-side-nav::-webkit-scrollbar-thumb { background: transparent; }
     .cx-side-mainpage { margin-bottom: 4px; }
-    .website-sidebar.cx-side .play-store-footer { padding: 10px 6px 8px; }
-    .website-sidebar.cx-side .play-store-eyebrow { font-size: 9px; letter-spacing: .18em; }
-    .website-sidebar.cx-side .google-play-badge { width: 108px; }
-    .website-sidebar.cx-side .play-store-footer .mt-2 { margin-top: 6px; }
+    .website-sidebar.cx-side .play-store-footer { padding: 8px 4px 6px; }
+    .website-sidebar.cx-side .play-store-eyebrow { font-size: 8px; letter-spacing: .16em; color: var(--text-faint); }
+    .website-sidebar.cx-side .google-play-badge { width: 96px; }
+    .website-sidebar.cx-side .play-store-footer .mt-2 { margin-top: 4px; }
+    .website-sidebar.cx-side .text-\[9\.5px\] { font-size: 8.5px !important; color: var(--text-faint); }
+    .website-sidebar.cx-side footer, .website-sidebar.cx-side .text-\[11px\] { font-size: 9.5px !important; }
     .cx-side-head { padding-bottom: 6px; }
     .cx-side-logo { display: flex; gap: 10px; align-items: center; cursor: pointer; }
     .cx-side-logo b { font-size: 13.5px; font-weight: 700; letter-spacing: .01em; line-height: 1.2; color: var(--text); display: block; }
@@ -1735,11 +1740,13 @@
       align-items: center;
     }
     .cx-perkcell-inner img {
-      width: 34px;
-      height: 34px;
+      width: 44px;
+      height: 44px;
       object-fit: contain;
       display: block;
     }
+    .cx-perkcell-inner > div { overflow: visible !important; }
+    .cx-perkcell-inner img[src*="IconPerks"] { transform: scale(1.32); }
     .cx-perkcell-inner a {
       color: var(--link);
       font-weight: 600;
@@ -7484,7 +7491,7 @@
                   <tr key={item.id} onClick={handleCharacterClick} className={isInCompare ? 'cx-row-compare' : undefined} style={{ cursor: 'pointer' }}>
                     <td className="cx-perkcell">
                       <div className="cx-perkcell-inner">
-                        <div style={{ width: 34, height: 34, overflow: 'hidden', flexShrink: 0, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                        <div style={{ width: 44, height: 44, overflow: 'hidden', flexShrink: 0, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                           <AssetFrame type={category} imageUrl={item.image} fallbackIcon={fallbackIcon} size="fill" />
                         </div>
                         <span>
@@ -7544,7 +7551,7 @@
                 >
                   <td className="cx-perkcell">
                     <div className="cx-perkcell-inner">
-                      <div style={{ width: 34, height: 34, overflow: 'hidden', flexShrink: 0, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                      <div style={{ width: 44, height: 44, overflow: 'hidden', flexShrink: 0, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                         <AssetFrame type={category} imageUrl={item.image} fallbackIcon={fallbackIcon} size="fill" />
                       </div>
                       <span>
@@ -11564,7 +11571,7 @@
                     >
                       <td className="cx-perkcell">
                         <div className="cx-perkcell-inner">
-                          <div style={{ width: 34, height: 34, overflow: 'hidden', flexShrink: 0, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                          <div style={{ width: 44, height: 44, overflow: 'hidden', flexShrink: 0, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                             <AssetFrame type="Item" imageUrl={item.image} fallbackIcon={<Icons.Package width={24} height={24} className="text-white/40" />} size="fill" />
                           </div>
                           <span>
@@ -11654,7 +11661,7 @@
                     >
                       <td className="cx-perkcell">
                         <div className="cx-perkcell-inner">
-                          <div style={{ width: 34, height: 34, overflow: 'hidden', flexShrink: 0, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                          <div style={{ width: 44, height: 44, overflow: 'hidden', flexShrink: 0, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                             <AssetFrame type="Killer" size="fill" imageUrl={killer.image} fallbackIcon={<Icons.User width={28} height={28} className="text-zinc-500" />} />
                           </div>
                           <span>
@@ -11840,7 +11847,7 @@
                 >
                   <td className="cx-perkcell">
                     <div className="cx-perkcell-inner">
-                      <div style={{ width: 34, height: 34, overflow: 'hidden', flexShrink: 0, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                      <div style={{ width: 44, height: 44, overflow: 'hidden', flexShrink: 0, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                         <AssetFrame type="Offering" imageUrl={offering.image} fallbackIcon={<Icons.Flame width={24} height={24} className="text-white/40" />} size="fill" />
                       </div>
                       <span>
@@ -12910,7 +12917,7 @@
           <tr key={item.id} onClick={() => setView(category === 'Killer' ? 'killer' : 'survivor', { id: item.id })} style={{ cursor: 'pointer' }}>
             <td className="cx-perkcell">
               <div className="cx-perkcell-inner">
-                <div style={{ width: 34, height: 34, overflow: 'hidden', flexShrink: 0, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                <div style={{ width: 44, height: 44, overflow: 'hidden', flexShrink: 0, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                   <AssetFrame type={category} size="fill" imageUrl={item.image} fallbackIcon={<Icons.User width={20} height={20} className="text-white/40" />} />
                 </div>
                 <span>
@@ -12931,7 +12938,7 @@
         <tr key={item.id} onClick={() => onPerkTap && onPerkTap(item)} style={{ cursor: 'pointer' }}>
           <td className="cx-perkcell">
             <div className="cx-perkcell-inner">
-              <div style={{ width: 34, height: 34, overflow: 'hidden', flexShrink: 0, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+              <div style={{ width: 44, height: 44, overflow: 'hidden', flexShrink: 0, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                 <AssetFrame type="Perk" size="fill" imageUrl={item.image} fallbackIcon={<Icons.BookOpen width={16} height={16} className="text-white/40" />} />
               </div>
               <span>
@@ -12952,7 +12959,7 @@
         <tr key={item.id}>
           <td className="cx-perkcell">
             <div className="cx-perkcell-inner">
-              <div style={{ width: 34, height: 34, overflow: 'hidden', flexShrink: 0, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+              <div style={{ width: 44, height: 44, overflow: 'hidden', flexShrink: 0, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                 <AssetFrame type={category} size="fill" imageUrl={item.image} fallbackIcon={<Icons.Package width={16} height={16} className="text-white/40" />} />
               </div>
               <span>
