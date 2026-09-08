@@ -1566,6 +1566,19 @@
       color: var(--text-faint);
       border-top: 1px solid var(--stroke);
     }
+    .website-sidebar.cx-side { width: 212px; padding: 22px 16px 0; border-right: 1px solid var(--line-soft); background: #000; }
+    .cx-side-head { padding-bottom: 6px; }
+    .cx-side-logo { display: flex; gap: 10px; align-items: center; cursor: pointer; }
+    .cx-side-logo b { font-size: 13.5px; font-weight: 700; letter-spacing: .01em; line-height: 1.2; color: var(--text); display: block; }
+    .cx-side-logo small { display: block; font-size: 9px; color: var(--text-faint); letter-spacing: .16em; text-transform: uppercase; font-weight: 400; }
+    .cx-side-search { margin-top: 14px; width: 100%; display: flex; gap: 8px; align-items: center; border: 1px solid var(--stroke); background: var(--panel); padding: 7px 10px; color: var(--muted); font-size: 12px; cursor: pointer; text-align: left; }
+    .cx-side-search:hover { color: var(--text); }
+    .cx-side-nav { padding-top: 4px; }
+    .cx-side-h5 { font-family: inherit; font-size: 10px; letter-spacing: .22em; text-transform: uppercase; color: var(--text-faint); margin: 20px 0 6px; padding-bottom: 4px; border-bottom: 1px solid var(--line-soft); font-weight: 400; }
+    .cx-side-link { display: flex; justify-content: space-between; align-items: center; gap: 8px; width: 100%; font-size: 13px; color: var(--muted); padding: 3px 8px; border-radius: 3px; text-align: left; background: none; border: 0; cursor: pointer; }
+    .cx-side-link:hover { color: var(--text); background: var(--ghost-surface); }
+    .cx-side-link--active { color: var(--text); font-weight: 700; }
+    .cx-side-count { color: var(--text-faint); font-size: 11px; flex-shrink: 0; }
     .cx-gloss { margin-top: 14px; font-size: 13.5px; }
     .cx-gloss dt { font-weight: 700; margin-top: 12px; color: var(--text); }
     .cx-gloss dd { margin: 2px 0 0 0; color: var(--text-soft); }
@@ -2665,15 +2678,17 @@
       timeline: 'Clock',
     };
     const WEBSITE_NAV_SECTIONS = [
-      { label: 'Archive', ids: ['home', 'killers', 'survivors', 'perks', 'realms', 'items', 'offerings', 'cosmetics'] },
-      { label: 'Tools', ids: ['buildLab', 'roulette', 'worldle', 'prestige', 'gameIcons'] },
+      { label: 'Characters', ids: ['killers', 'survivors'] },
+      { label: 'Loadout', ids: ['perks', 'items', 'offerings', 'cosmetics'] },
+      { label: 'World', ids: ['realms', 'timeline', 'glossary', 'gameIcons'] },
+      { label: 'Tools', ids: ['buildLab', 'roulette', 'worldle', 'prestige'] },
       { label: 'Tracking', ids: ['progression', 'matches', 'favorites'] },
-      { label: 'Community', ids: ['communityContent', 'timeline', 'glossary'] },
-      { label: 'Data', ids: ['settings'] }
+      { label: 'Community', ids: ['communityContent', 'settings'] }
     ];
     const getNavDisplayLabel = (id) => {
       if (id === 'home') return 'Search';
       if (id === 'settings') return 'Settings';
+      if (id === 'timeline') return 'Chronicle';
       return (
         ALL_HOME_TILES.find((tile) => tile.id === id)?.label ||
         ALL_NAV_OPTIONS.find((option) => option.id === id)?.label ||
@@ -5232,61 +5247,49 @@
         : 'flex items-center gap-1 justify-center w-full';
       if (!isMobile) {
         return (
-          <aside className="website-sidebar relative z-10 hidden md:flex h-full shrink-0 flex-col">
-            <div className="px-5 pt-5 pb-4 border-b border-white/10">
-              <div className="flex items-center gap-3">
+          <aside className="website-sidebar cx-side relative z-10 hidden md:flex h-full shrink-0 flex-col">
+            <div className="cx-side-head">
+              <div className="cx-side-logo" onClick={() => setView('home')} role="button" tabIndex={0} onKeyDown={(e) => { if (e.key === 'Enter') setView('home'); }}>
                 <img src="./assets/favicon.png" alt="" width={30} height={30} />
-                <div className="min-w-0">
-                  <p className="text-[15px] leading-tight text-[var(--text)] truncate" style={{ fontFamily: 'var(--font-display)', fontWeight: 600 }}>The Entity's Wiki</p>
-                  <p className="text-[9px] uppercase tracking-[0.3em] text-zinc-500" style={{ fontFamily: 'var(--mono-fallback, ui-monospace, monospace)' }}>Dead by Daylight</p>
-                </div>
+                <b>The Entity's Wiki<small>Dead by Daylight</small></b>
               </div>
-              <button onClick={() => setView('home')} className="website-sidebar-search mt-4 w-full rounded-3xl p-2 text-left transition-colors flex items-center gap-3">
-                <span className="pl-2 text-zinc-400"><Icons.Search width={18} height={18} /></span>
-                <span className="min-w-0">
-                  <span className="block text-sm text-white font-bold truncate">Global search</span>
-                  <span className="block text-[11px] text-zinc-500 truncate">Everything in one query</span>
-                </span>
+              <button
+                className="cx-side-search"
+                onClick={() => { setView('home'); window.setTimeout(() => { const el = document.getElementById('home-search-input'); if (el) { el.focus(); el.select(); } }, 350); }}
+              >
+                <Icons.Search width={14} height={14} />
+                <span>Search the wiki…</span>
               </button>
             </div>
-            <nav className="website-sidebar-scroll flex-1 overflow-y-auto px-3 py-4 space-y-5">
+            <nav className="website-sidebar-scroll flex-1 overflow-y-auto cx-side-nav">
               {WEBSITE_NAV_SECTIONS.map((section) => (
-                <div key={section.label} className="space-y-2">
-                  <p className="website-nav-section-title px-3">{section.label}</p>
-                  <div className="space-y-1">
-                    {section.ids.map((id) => {
-                      const IconComponent = Icons[NAV_ICON_MAP[id]] || Icons.Zap;
-                      const isActive = currentView === id;
-                      const count = navCounts[id];
-                      return (
-                        <button
-                          key={id}
-                          onClick={() => setView(id)}
-                          onDoubleClick={() => id === 'perks' && onPerksReset?.()}
-                          className={`website-nav-link ${isActive ? 'website-nav-link--active' : ''} w-full rounded-xl px-3 py-2.5 text-left transition-all duration-200 flex items-center gap-3`}
-                        >
-                          <IconComponent width={17} height={17} strokeWidth={isActive ? 2.4 : 2} style={isActive ? { color: theme.accent } : {}} />
-                          <span className="min-w-0 flex-1">
-                            <span className="block text-sm font-bold truncate">{getNavDisplayLabel(id)}</span>
-                            <span className="block text-[11px] text-zinc-500 truncate">{getNavDescription(id)}</span>
-                          </span>
-                          {typeof count === 'number' && count > 0 && (
-                            <span className="shrink-0 text-[10px] text-zinc-600" style={{ fontFamily: 'var(--mono-fallback, ui-monospace, monospace)' }}>{count}</span>
-                          )}
-                        </button>
-                      );
-                    })}
-                  </div>
+                <div key={section.label}>
+                  <h5 className="cx-side-h5">{section.label}</h5>
+                  {section.ids.map((id) => {
+                    const isActive = currentView === id;
+                    const count = navCounts[id];
+                    return (
+                      <button
+                        key={id}
+                        onClick={() => setView(id)}
+                        onDoubleClick={() => id === 'perks' && onPerksReset?.()}
+                        className={`cx-side-link ${isActive ? 'cx-side-link--active' : ''}`}
+                      >
+                        <span className="truncate">{getNavDisplayLabel(id)}</span>
+                        {typeof count === 'number' && count > 0 ? <span className="cx-side-count">{count}</span> : null}
+                      </button>
+                    );
+                  })}
                 </div>
               ))}
             </nav>
-            <div className="px-5 py-3 border-t border-white/10">
+            <div className="px-4 py-3 border-t border-white/10">
               <p className="text-[9.5px] text-zinc-600" style={{ fontFamily: 'var(--mono-fallback, ui-monospace, monospace)', letterSpacing: '0.12em', textTransform: 'uppercase' }}>
                 Patch {META.gameVersion} · synced {META.lastSynced}
               </p>
             </div>
             <PlayStoreFooter />
-            <SiteLegalFooter className="px-5 pb-4" />
+            <SiteLegalFooter className="px-4 pb-4" />
           </aside>
         );
       }
@@ -15681,7 +15684,7 @@ const MapLayoutModal = ({ map, onClose, noteValue = '', onNoteChange }) => {
           onTouchStart={handleTouchStart}
           onTouchEnd={handleTouchEnd}
         >
-          <WebsiteHeader currentView={currentView} setView={setView} titleOverride={(currentView === 'killer' || currentView === 'survivor') && viewContext.id && allCharactersById.get(viewContext.id) ? allCharactersById.get(viewContext.id).name : null} />
+          {device.isMobile && <WebsiteHeader currentView={currentView} setView={setView} titleOverride={(currentView === 'killer' || currentView === 'survivor') && viewContext.id && allCharactersById.get(viewContext.id) ? allCharactersById.get(viewContext.id).name : null} />}
           <div className="website-workspace relative z-10 flex-1 min-h-0 flex">
             {!device.isMobile && <Navigation currentView={currentView} setView={setView} theme={theme} isMobile={false} onPerksReset={() => setPerkSearch('')} customNavItems={DEFAULT_SETTINGS.navItems} />}
             <main ref={mainRef} className="website-main relative flex-1 min-w-0 overflow-hidden"><div key={currentView} className="view-transition h-full">{renderContent()}</div></main>
