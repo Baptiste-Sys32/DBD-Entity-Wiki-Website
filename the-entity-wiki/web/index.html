@@ -7360,10 +7360,13 @@
           if (term && !(realm.name || '').toLowerCase().includes(term) && realmMaps.length === 0) return;
           out.push({ key: realm.id, name: realm.name, realm, maps: realmMaps });
         });
+        const placedIds = new Set();
+        out.forEach(row => row.maps.forEach(mp => placedIds.add(mp.id)));
         const dbNames = new Set((dbRealms || []).map(r => (r.name || '').trim().toLowerCase()));
         const seenOther = new Set();
         const other = [];
         matched.forEach(mp => {
+          if (placedIds.has(mp.id)) return;
           const rname = (mp.realm || 'Unknown Realm').trim();
           if (dbNames.has(rname.toLowerCase())) return;
           const key = (mp.name || '').trim().toLowerCase();
@@ -14105,7 +14108,27 @@ const MapLayoutModal = ({ map, onClose, noteValue = '', onNoteChange }) => {
       );
     };
 
-    const ReleaseArticleView = ({ release, releases = [], realms = [], killers = [], survivors = [], onHome, onOpenList, onOpenCharacter, onOpenRelease, onOpenRealm, scrollSection = null }) => {
+    const normRealmName = (v) => (v || '').trim().toLowerCase().replace(/^the\s+/, '');
+    const ImageLightbox = ({ src, alt, onClose }) => {
+      useEffect(() => {
+        const onKey = (e) => { if (e.key === 'Escape' && onClose) onClose(); };
+        window.addEventListener('keydown', onKey);
+        return () => window.removeEventListener('keydown', onKey);
+      }, [onClose]);
+      if (!src) return null;
+      return (
+        <div className="fixed inset-0 z-[100] flex items-center justify-center p-4" style={{ background: 'rgba(0,0,0,0.85)' }} onClick={onClose} role="dialog" aria-label={alt || 'Image preview'}>
+          <div className="relative w-full max-w-5xl" onClick={e => e.stopPropagation()}>
+            <img src={src} alt={alt || ''} style={{ display: 'block', width: '100%', maxHeight: '86vh', objectFit: 'contain' }} />
+            <div className="flex items-center justify-between mt-2">
+              <p className="text-sm font-semibold" style={{ color: '#fafafa' }}>{alt}</p>
+              <button type="button" onClick={onClose} className="cx-alink" style={{ color: '#fafafa' }}>Close</button>
+            </div>
+          </div>
+        </div>
+      );
+    };
+    const ReleaseArticleView = ({ release, releases = [], realms = [], maps = [], killers = [], survivors = [], onHome, onOpenList, onOpenCharacter, onOpenRelease, onOpenRealm, scrollSection = null }) => {
       const scrollRef = useRef(null);
       const sectionEls = useRef({});
       const norm = (v) => (v || '').trim().toLowerCase();
@@ -14119,9 +14142,25 @@ const MapLayoutModal = ({ map, onClose, noteValue = '', onNoteChange }) => {
       const survivorRows = useMemo(() => (release.survivors || []).map(sv => ({
         entry: sv, full: (survivors || []).find(c => c.name === sv.name) || null,
       })), [release, survivors]);
-      const mapRows = useMemo(() => (release.maps || []).map(m => ({
-        entry: m, realm: (realms || []).find(r => norm(r.name) === norm(m.realm)) || null,
-      })), [release, realms]);
+      const mapRows = useMemo(() => {
+        const byMapName = new Map();
+        (maps || []).forEach(mp => {
+          const k = norm(mp.name);
+          if (k && !byMapName.has(k)) byMapName.set(k, mp);
+        });
+        const realmByDbMapId = new Map();
+        (realms || []).forEach(r => (r.maps || []).forEach(id => {
+          if (!realmByDbMapId.has(id)) realmByDbMapId.set(id, r);
+        }));
+        return (release.maps || []).map(m => {
+          let realm = (realms || []).find(r => normRealmName(r.name) === normRealmName(m.realm)) || null;
+          if (!realm) {
+            const hit = byMapName.get(norm(m.name));
+            if (hit) realm = realmByDbMapId.get(hit.id) || (realms || []).find(r => normRealmName(r.name) === normRealmName(hit.realm)) || null;
+          }
+          return { entry: m, realm };
+        });
+      }, [release, realms, maps]);
       const typeLabel = release.type === 'base' ? 'Base game' : release.type === 'chapter' ? (release.chapterNumber ? `Chapter ${release.chapterNumber}` : 'Chapter') : 'Paragraph';
       const licensed = [...(release.killers || []), ...(release.survivors || [])].some(c => c.licensed === true);
       const charCount = killerRows.length + survivorRows.length;
@@ -14291,9 +14330,12 @@ const MapLayoutModal = ({ map, onClose, noteValue = '', onNoteChange }) => {
           return true;
         });
       }, [realm, mapsById]);
-      const matchedReleases = useMemo(() => (releases || []).filter(rel => (rel.maps || []).some(m =>
-        norm(m.realm) === norm(realm.name) || realmMaps.some(rm => norm(rm.name) === norm(m.name))
-      )), [releases, realm, realmMaps]);
+      const matchedReleases = useMemo(() => {
+        const realmMapNames = new Set(realmMaps.map(rm => norm(rm.name)));
+        return (releases || []).filter(rel => (rel.maps || []).some(m =>
+          normRealmName(m.realm) === normRealmName(realm.name) || realmMapNames.has(norm(m.name))
+        ));
+      }, [releases, realm, realmMaps]);
       const alongside = useMemo(() => {
         const out = { killers: [], survivors: [] };
         const seenK = new Set();
@@ -14324,6 +14366,7 @@ const MapLayoutModal = ({ map, onClose, noteValue = '', onNoteChange }) => {
         });
         return [...set].sort();
       }, [matchedReleases]);
+      const [previewMap, setPreviewMap] = useState(null);
       const tocEntries = [
         { id: 'overview', label: 'Overview' },
         ...(realmMaps.length > 0 ? [{ id: 'maps', label: 'Maps' }] : []),
@@ -14408,11 +14451,16 @@ const MapLayoutModal = ({ map, onClose, noteValue = '', onNoteChange }) => {
               <section id="maps" ref={setSectionRef('maps')}>
                 <h2 className="cx-sec">Maps</h2>
                 <table className="cx-wikitable">
-                  <thead><tr><th style={{ width: '220px' }}>Map</th><th>Description</th></tr></thead>
+                  <thead><tr><th style={{ width: '320px' }}>Map</th><th>Description</th></tr></thead>
                   <tbody>
                     {realmMaps.map((mp) => (
                       <tr key={mp.id}>
-                        <td><button type="button" className="cx-alink font-semibold" onClick={() => onViewLayout && onViewLayout(mp)}>{mp.name}</button></td>
+                        <td>
+                          <button type="button" onClick={() => setPreviewMap(mp)} style={{ display: 'block', width: '100%', maxWidth: '320px', padding: 0, border: 0, background: 'none', cursor: 'zoom-in' }} aria-label={`Preview ${mp.name}`}>
+                            <img src={`./${mp.image}`} alt={mp.name} loading="lazy" style={{ display: 'block', width: '100%' }} />
+                          </button>
+                          <button type="button" className="cx-alink font-semibold" style={{ marginTop: '6px' }} onClick={() => onViewLayout && onViewLayout(mp)}>{mp.name}</button>
+                        </td>
                         <td style={{ color: 'var(--text-soft)' }}>{mp.description || '—'}</td>
                       </tr>
                     ))}
@@ -14473,6 +14521,7 @@ const MapLayoutModal = ({ map, onClose, noteValue = '', onNoteChange }) => {
                 <span key={y}><span className="cx-sep"> · </span>{y} releases</span>
               ))}
             </div>
+            {previewMap && <ImageLightbox src={`./${previewMap.image}`} alt={previewMap.name} onClose={() => setPreviewMap(null)} />}
           </div>
         </div>
       );
@@ -15341,7 +15390,7 @@ const MapLayoutModal = ({ map, onClose, noteValue = '', onNoteChange }) => {
                 </div>
               </div>
             );
-            return <ReleaseArticleView release={release} releases={TIMELINE_DATA.releases} realms={realms} killers={killers} survivors={survivors} perks={perks} onHome={() => setView('home')} onOpenList={() => setView('timeline')} onOpenCharacter={openCharacterArticle} onOpenRelease={openReleaseArticle} onOpenRealm={openRealmArticle} scrollSection={viewContext.scroll || null} />;
+            return <ReleaseArticleView release={release} releases={TIMELINE_DATA.releases} realms={realms} killers={killers} survivors={survivors} perks={perks} maps={maps} onHome={() => setView('home')} onOpenList={() => setView('timeline')} onOpenCharacter={openCharacterArticle} onOpenRelease={openReleaseArticle} onOpenRealm={openRealmArticle} scrollSection={viewContext.scroll || null} />;
           }
           case 'killers': return <ListView allCharacters={[...killers, ...survivors]} data={visibleKillers} type="Killers" activeFilter="All" setActiveFilter={() => { }} allPerks={perks} setView={setView} onPerkSelect={setPerkSearch} initialSearch={viewContext.search || ''} buildsByOwner={buildsByOwner} onCreateBuildSeed={setBuildSeed} onBack={() => setView('home')} onShowLore={openCharacterArticle} onShowPower={openCharacterArticle} favoritePerks={settings.favoriteKillers || []} onToggleFavorite={(id) => toggleFavorite('Killer', id)} onViewProfile={openCharacterArticle} settings={settings} />;
           case 'survivors': return <ListView allCharacters={[...killers, ...survivors]} data={visibleSurvivors} type="Survivors" activeFilter="All" setActiveFilter={() => { }} allPerks={perks} setView={setView} onPerkSelect={setPerkSearch} initialSearch={viewContext.search || ''} buildsByOwner={buildsByOwner} onCreateBuildSeed={setBuildSeed} onBack={() => setView('home')} onShowLore={openCharacterArticle} favoritePerks={settings.favoriteSurvivors || []} onToggleFavorite={(id) => toggleFavorite('Survivor', id)} onViewProfile={openCharacterArticle} settings={settings} />;
