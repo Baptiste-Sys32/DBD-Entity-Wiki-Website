@@ -7202,12 +7202,12 @@
                       <small>{typeLabel}</small>
                     </div>
                   </td>
-                  <td>
+                  <td style={{ textAlign: 'center', verticalAlign: 'middle' }}>
                     {ownerChar ? (
                       <button type="button" className="cx-alink" onClick={(e) => { e.stopPropagation(); setView && setView((ownerChar.power || ownerChar.type === 'Killer') ? 'killer' : 'survivor', { id: ownerChar.id }); }}>{item.owner}</button>
                     ) : (item.owner || 'Universal')}
                   </td>
-                  <td>{item.type}</td>
+                  <td style={{ textAlign: 'center', verticalAlign: 'middle' }}>{item.type}</td>
                   <td>{item.description ? <PerkDescriptionBlock perk={item} settings={settings} accentColor="var(--link)" className="inline" lineClassName="leading-relaxed" /> : '\u2014'}</td>
                   <td className="cx-star">
                     {onToggleFavoriteFn && (
