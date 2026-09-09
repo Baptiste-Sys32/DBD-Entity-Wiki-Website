@@ -153,6 +153,7 @@ def main():
     timeline = load_json(TIMELINE_PATH)
     realm = database["realms"][0]
     release = timeline["releases"][0]
+    perk = database["perks"][0]
     killer = database["killers"][0]
     addon = next(entry for entry in database["addons"] if entry.get("role") == "killer")
     offering = next(entry for entry in database["offerings"] if not entry.get("retired"))
@@ -220,6 +221,15 @@ def main():
                 state["smokeView"] == "release" or (_ for _ in ()).throw(RuntimeError(f"release-profile: expected release, found {state['smokeView']}")),
                 state["smokeProfile"] == release["id"] or (_ for _ in ()).throw(RuntimeError("release-profile: article did not render")),
                 release["name"] in state["text"] or (_ for _ in ()).throw(RuntimeError("release-profile: missing title")),
+            ),
+        },
+        {
+            "label": "perk-profile",
+            "params": {"view": "perk", "id": perk["id"]},
+            "check": lambda state: (
+                state["smokeView"] == "perk" or (_ for _ in ()).throw(RuntimeError(f"perk-profile: expected perk, found {state['smokeView']}")),
+                state["smokeProfile"] == perk["id"] or (_ for _ in ()).throw(RuntimeError("perk-profile: article did not render")),
+                perk["name"] in state["text"] or (_ for _ in ()).throw(RuntimeError("perk-profile: missing title")),
             ),
         },
         {

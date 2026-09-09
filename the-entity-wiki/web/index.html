@@ -1159,15 +1159,6 @@
         opacity: 1;
       }
     }
-
-    .bottom-sheet-backdrop {
-      animation: fadeIn 0.2s ease-out;
-    }
-
-    .bottom-sheet-content {
-      animation: slideUp 0.3s ease-out;
-    }
-
     /* Entity Calculator Animations */
     @keyframes tendrilPulse {
 
@@ -2789,7 +2780,7 @@
     };
     const normalizeUiState = (raw) => {
       const next = raw && typeof raw === 'object' && !Array.isArray(raw) ? raw : {};
-      const allowedViews = new Set(['home', 'settings', 'killer', 'survivor', 'realm', 'release', ...ALL_NAV_OPTIONS.map(option => option.id)]);
+      const allowedViews = new Set(['home', 'settings', 'killer', 'survivor', 'realm', 'release', 'perk', ...ALL_NAV_OPTIONS.map(option => option.id)]);
       const context = next.context && typeof next.context === 'object' && !Array.isArray(next.context) ? next.context : {};
       const normalizedContext = {};
       ['search', 'mode', 'tab', 'targetId', 'targetType', 'id', 'cosmeticId', 'scroll'].forEach((key) => {
@@ -3833,114 +3824,6 @@
               <path d="M21 12a9 9 0 1 1-9-9c2.52 0 4.93 1 6.74 2.74L21 8" />
               <path d="M21 3v5h-5" />
             </svg>
-          </div>
-        </div>
-      );
-    };
-    const BottomSheet = ({ isOpen, onClose, perk, settings = {}, noteValue = '', onNoteChange }) => {
-      const [dragY, setDragY] = useState(0);
-      const [isDragging, setIsDragging] = useState(false);
-      const startYRef = useRef(0);
-      if (!isOpen || !perk) return null;
-      const handleTouchStart = (e) => {
-        startYRef.current = e.touches[0].clientY;
-        setIsDragging(true);
-      };
-      const handleTouchMove = (e) => {
-        if (!isDragging) return;
-        const diff = e.touches[0].clientY - startYRef.current;
-        if (diff > 0) setDragY(diff);
-      };
-      const handleTouchEnd = () => {
-        setIsDragging(false);
-        if (dragY > 100) {
-          onClose();
-        }
-        setDragY(0);
-      };
-      const accentColor = perk.type === 'Killer' ? '#fafafa' : '#a1a1aa';
-      return (
-        <div
-          className="fixed inset-0 z-50 flex items-end justify-center bottom-sheet-backdrop"
-          style={{ backgroundColor: 'rgba(0,0,0,0.6)' }}
-          onClick={onClose}
-        >
-          <div
-            className="w-full max-w-lg bg-zinc-900 rounded-t-3xl p-6 pb-10 bottom-sheet-content"
-            style={{
-              maxHeight: '85vh',
-              transform: `translateY(${dragY}px)`,
-              transition: isDragging ? 'none' : 'transform 0.2s ease-out'
-            }}
-            onClick={e => e.stopPropagation()}
-            onTouchStart={handleTouchStart}
-            onTouchMove={handleTouchMove}
-            onTouchEnd={handleTouchEnd}
-          >
-            {/* Drag handle */}
-            <div className="flex justify-center mb-4">
-              <div className="w-12 h-1.5 rounded-full bg-zinc-600"></div>
-            </div>
-            {/* Perk header */}
-            <div className="flex items-start gap-4 mb-4">
-              <div className="w-16 h-16 rounded-xl overflow-hidden bg-white/5 border border-white/10 flex-shrink-0 flex items-center justify-center">
-                <AssetFrame
-                  type="Perk"
-                  size="fill"
-                  imageUrl={perk.image}
-                  fallbackIcon={<Icons.Zap width={24} height={24} className="text-zinc-600" />}
-                />
-              </div>
-              <div className="flex-1">
-                <div className="inline-flex items-center px-2 py-1 rounded-md bg-white/5 mb-2">
-                  <span className="w-1.5 h-1.5 rounded-full mr-2" style={{ backgroundColor: accentColor }}></span>
-                  <span className="text-[10px] font-semibold uppercase tracking-wider text-slate-300">{perk.type} Perk</span>
-                </div>
-                <h2 className="text-xl font-bold text-white">{perk.name}</h2>
-                {perk.owner && <p className="text-sm text-zinc-400 mt-1">{perk.owner}</p>}
-              </div>
-            </div>
-            {/* Perk description */}
-            <div className="overflow-y-auto" style={{ maxHeight: 'calc(85vh - 200px)' }}>
-              <PerkDescriptionBlock
-                perk={perk}
-                settings={settings}
-                accentColor={accentColor}
-                className="text-zinc-300 text-sm"
-                lineClassName="leading-relaxed"
-              />
-
-              {/* Synergy suggestions */}
-              {PERK_SYNERGIES[perk.name] && (
-                <div className="mt-4 pt-4 border-t border-white/10">
-                  <div className="flex items-center gap-2 mb-3">
-                    <Icons.Zap width={14} height={14} style={{ color: accentColor }} />
-                    <span className="text-[11px] uppercase tracking-wider font-bold" style={{ color: accentColor }}>Works Well With</span>
-                  </div>
-                  <div className="flex flex-wrap gap-2">
-                    {PERK_SYNERGIES[perk.name].map(synergy => (
-                      <span
-                        key={synergy}
-                        className="px-3 py-1.5 rounded-xl text-xs font-semibold border"
-                        style={{
-                          background: '#0a0a0a',
-                          borderColor: `${accentColor}40`,
-                          color: accentColor
-                        }}
-                      >
-                        {synergy}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-              )}
-              <NotesEditor
-                title="Perk Notes"
-                value={noteValue}
-                onChange={onNoteChange}
-                placeholder="Matchups, builds, or reminders for this perk..."
-              />
-            </div>
           </div>
         </div>
       );
@@ -14139,6 +14022,123 @@ const MapLayoutModal = ({ map, onClose, noteValue = '', onNoteChange }) => {
         </div>
       );
     };
+    const PerkArticleView = ({ perk, perks = [], killers = [], survivors = [], onHome, onOpenList, onOpenCharacter, onOpenPerk, noteValue = '', onNoteChange, settings = {}, scrollSection = null }) => {
+      const scrollRef = useRef(null);
+      const sectionEls = useRef({});
+      const ownerChar = useMemo(() => {
+        const all = [...(killers || []), ...(survivors || [])];
+        return all.find(c => c.name === perk.owner) || null;
+      }, [perk, killers, survivors]);
+      const synergies = useMemo(() => {
+        const names = (typeof PERK_SYNERGIES !== 'undefined' && PERK_SYNERGIES[perk.name]) || [];
+        return names.map(n => ({ name: n, full: (perks || []).find(x => x.name === n) || null }));
+      }, [perk, perks]);
+      const isHex = (perk.name || '').startsWith('Hex:');
+      const isExhaust = /exhaust/i.test(perk.description || '');
+      const tags = [...(isHex ? ['Hex'] : []), ...(isExhaust ? ['Exhaustion'] : [])];
+      const tocEntries = [
+        { id: 'overview', label: 'Overview' },
+        ...(synergies.length > 0 ? [{ id: 'synergies', label: 'Works Well With' }] : []),
+        { id: 'notes', label: 'Notes' },
+      ];
+      const scrollToSection = (id) => {
+        const node = sectionEls.current[id];
+        if (node && node.scrollIntoView) node.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      };
+      const setSectionRef = (id) => (node) => {
+        if (node) sectionEls.current[id] = node;
+        else delete sectionEls.current[id];
+      };
+      useEffect(() => {
+        if (scrollRef.current) scrollRef.current.scrollTop = 0;
+      }, [perk.id]);
+      useEffect(() => {
+        if (!scrollSection) return undefined;
+        const timer = window.setTimeout(() => {
+          const node = sectionEls.current[scrollSection];
+          if (node && node.scrollIntoView) node.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }, 300);
+        return () => window.clearTimeout(timer);
+      }, [scrollSection, perk.id]);
+      return (
+        <div className="flex flex-col h-full overflow-y-auto custom-scrollbar" ref={scrollRef}>
+          <div className="cx-article w-full max-w-[1280px] mx-auto min-h-full" data-smoke-profile={perk.id}>
+            <ViewCrumbs
+              trail={[{ label: 'Main page', onClick: onHome }, { label: 'Perks', onClick: onOpenList }]}
+              current={perk.name}
+            />
+            <h1 className="cx-title">{perk.name}</h1>
+            {ownerChar ? (
+              <p className="cx-hatnote">For the owner of this perk, see <button type="button" className="cx-alink" onClick={() => onOpenCharacter && onOpenCharacter(ownerChar)}>{ownerChar.name}</button>.</p>
+            ) : null}
+            <div className="cx-leadgrid">
+              <div className="cx-leadmain">
+                <p><b>{perk.name}</b> is a {(perk.type || '').toLowerCase()} perk in <i>Dead by Daylight</i>{ownerChar ? <span> belonging to <button type="button" className="cx-alink" onClick={() => onOpenCharacter && onOpenCharacter(ownerChar)}>{perk.owner}</button></span> : <span> available to all Survivors</span>}.</p>
+                <nav className="cx-toc" aria-label="Contents">
+                  <p className="cx-toc-title">Contents</p>
+                  <ol>
+                    {tocEntries.map((entry) => (
+                      <li key={entry.id}>
+                        <button type="button" className="cx-alink" onClick={() => scrollToSection(entry.id)}>{entry.label}</button>
+                      </li>
+                    ))}
+                  </ol>
+                </nav>
+              </div>
+              <aside className="cx-infobox" aria-label={`${perk.name} infobox`}>
+                <p className="cx-ib-title">{perk.name}</p>
+                <p className="cx-ib-sub">{perk.type} Perk</p>
+                <div className="cx-ib-media" style={{ width: '100%', aspectRatio: '1 / 1' }}>
+                  <AssetFrame type="Perk" imageUrl={perk.image} size="fill" fallbackIcon={<Icons.BookOpen width={40} height={40} className="text-zinc-500" />} />
+                </div>
+                <table>
+                  <tbody>
+                    <tr><th>Owner</th><td>{ownerChar ? (
+                      <button type="button" className="cx-alink" onClick={() => onOpenCharacter && onOpenCharacter(ownerChar)}>{perk.owner}</button>
+                    ) : (perk.owner || 'Universal')}</td></tr>
+                    <tr><th>Type</th><td>{perk.type}</td></tr>
+                  </tbody>
+                </table>
+              </aside>
+            </div>
+            <section id="overview" ref={setSectionRef('overview')}>
+              <h2 className="cx-sec">Overview</h2>
+              <PerkDescriptionBlock perk={perk} settings={settings} accentColor="var(--link)" />
+            </section>
+            {synergies.length > 0 && (
+              <section id="synergies" ref={setSectionRef('synergies')}>
+                <h2 className="cx-sec">Works Well With</h2>
+                <div className="flex flex-wrap gap-2">
+                  {synergies.map((s) => s.full ? (
+                    <button key={s.name} type="button" className="cx-chip text-xs font-semibold" style={{ cursor: 'pointer' }} onClick={() => onOpenPerk && onOpenPerk(s.full)}>{s.name}</button>
+                  ) : (
+                    <span key={s.name} className="cx-chip text-xs font-semibold">{s.name}</span>
+                  ))}
+                </div>
+              </section>
+            )}
+            <section id="notes" ref={setSectionRef('notes')}>
+              <h2 className="cx-sec">Notes</h2>
+              <NotesEditor
+                title="Perk Notes"
+                value={noteValue}
+                onChange={onNoteChange}
+                placeholder="Matchups, builds, or reminders for this perk..."
+              />
+            </section>
+            <div className="cx-cats">
+              <span>Categories:</span>
+              <button type="button" className="cx-alink" onClick={onOpenList}>Perks</button>
+              <span><span className="cx-sep"> · </span>{perk.type} Perks</span>
+              {tags.map((t) => (
+                <span key={t}><span className="cx-sep"> · </span>{t} Perks</span>
+              ))}
+            </div>
+          </div>
+        </div>
+      );
+    };
+
     const ReleaseArticleView = ({ release, releases = [], realms = [], maps = [], killers = [], survivors = [], onHome, onOpenList, onOpenCharacter, onOpenRelease, onOpenRealm, scrollSection = null }) => {
       const scrollRef = useRef(null);
       const sectionEls = useRef({});
@@ -14931,7 +14931,6 @@ const MapLayoutModal = ({ map, onClose, noteValue = '', onNoteChange }) => {
       const [buildSeed, setBuildSeed] = useState(null);
       const [comparePerks, setComparePerks] = useState([]);
       const [showCompareModal, setShowCompareModal] = useState(false);
-      const [selectedPerk, setSelectedPerk] = useState(null);
       const [previewPerk, setPreviewPerk] = useState(null);
       const [layoutMap, setLayoutMap] = useState(null);
       const [cosmeticsFullSetPackState, setCosmeticsFullSetPackState] = useState(() => defaultCosmeticsFullSetPackState());
@@ -15004,6 +15003,10 @@ const MapLayoutModal = ({ map, onClose, noteValue = '', onNoteChange }) => {
       const openReleaseArticle = useCallback((release) => {
         if (!release) return;
         setView('release', { id: release.id });
+      }, []);
+      const openPerkArticle = useCallback((perk) => {
+        if (!perk) return;
+        setView('perk', { id: perk.id });
       }, []);
       const openCosmeticProfile = useCallback((cosmetic) => {
         if (!cosmetic) return;
@@ -15265,7 +15268,6 @@ const MapLayoutModal = ({ map, onClose, noteValue = '', onNoteChange }) => {
         setNotes(restoredNotes);
         setWorldleState(restoredWorldle);
         setMatchPrefs(restoredPrefs);
-        setSelectedPerk(null);
         setLayoutMap(null);
         setBuildSeed(null);
         setComparePerks([]);
@@ -15277,7 +15279,7 @@ const MapLayoutModal = ({ map, onClose, noteValue = '', onNoteChange }) => {
         [settings.navItems]
       );
       const navOrder = ['home', ...activeMobileNavItems, 'settings'];
-      const isAnyOverlayOpen = !!(layoutMap || selectedPerk || previewPerk || showCompareModal);
+      const isAnyOverlayOpen = !!(layoutMap || previewPerk || showCompareModal);
       const handleTouchStart = (e) => {
         if (!e.touches || e.touches.length !== 1) {
           touchStartRef.current = null;
@@ -15376,7 +15378,7 @@ const MapLayoutModal = ({ map, onClose, noteValue = '', onNoteChange }) => {
                 </div>
               </div>
             );
-            return <CharacterArticleView character={article} roleCount={articleList.length} cosmeticFocusId={viewContext.cosmeticId || null} scrollSection={viewContext.scroll || null} onHome={() => setView('home')} onOpenList={() => setView(isKillerView ? 'killers' : 'survivors')} onOpenTimeline={() => setView('timeline')} onOpenCommunity={() => setView('communityContent')} allPerks={perks} onPerkTap={setSelectedPerk} theme={theme} settings={settings} noteValue={isKillerView ? getEntityNote('killer', article.id) : ''} onNoteChange={(value) => { if (isKillerView) setEntityNote('killer', article.id, value); }} cosmeticsByBaseId={cosmeticsByBaseId} allAddons={addons} />;
+            return <CharacterArticleView character={article} roleCount={articleList.length} cosmeticFocusId={viewContext.cosmeticId || null} scrollSection={viewContext.scroll || null} onHome={() => setView('home')} onOpenList={() => setView(isKillerView ? 'killers' : 'survivors')} onOpenTimeline={() => setView('timeline')} onOpenCommunity={() => setView('communityContent')} allPerks={perks} onPerkTap={openPerkArticle} theme={theme} settings={settings} noteValue={isKillerView ? getEntityNote('killer', article.id) : ''} onNoteChange={(value) => { if (isKillerView) setEntityNote('killer', article.id, value); }} cosmeticsByBaseId={cosmeticsByBaseId} allAddons={addons} />;
           }
           case 'realm': {
             const realm = (realms || []).find(r => r.id === viewContext.id) || null;
@@ -15404,9 +15406,22 @@ const MapLayoutModal = ({ map, onClose, noteValue = '', onNoteChange }) => {
             );
             return <ReleaseArticleView release={release} releases={TIMELINE_DATA.releases} realms={realms} killers={killers} survivors={survivors} perks={perks} maps={maps} onHome={() => setView('home')} onOpenList={() => setView('timeline')} onOpenCharacter={openCharacterArticle} onOpenRelease={openReleaseArticle} onOpenRealm={openRealmArticle} scrollSection={viewContext.scroll || null} />;
           }
+          case 'perk': {
+            const perk = (perks || []).find(x => x.id === viewContext.id) || null;
+            if (!perk) return (
+              <div className="flex flex-col h-full overflow-y-auto custom-scrollbar">
+                <div className="cx-article w-full max-w-[1280px] mx-auto min-h-full">
+                  <h1 className="cx-title">Unknown article</h1>
+                  <p className="cx-hatnote">The requested perk could not be found.</p>
+                  <p><button type="button" className="cx-alink" onClick={() => setView('home')}>Return to the Main page</button>.</p>
+                </div>
+              </div>
+            );
+            return <PerkArticleView perk={perk} perks={perks} killers={killers} survivors={survivors} onHome={() => setView('home')} onOpenList={() => setView('perks')} onOpenCharacter={openCharacterArticle} onOpenPerk={openPerkArticle} noteValue={getEntityNote('perk', perk.id)} onNoteChange={(value) => setEntityNote('perk', perk.id, value)} settings={settings} scrollSection={viewContext.scroll || null} />;
+          }
           case 'killers': return <ListView allCharacters={[...killers, ...survivors]} data={visibleKillers} type="Killers" activeFilter="All" setActiveFilter={() => { }} allPerks={perks} setView={setView} onPerkSelect={setPerkSearch} initialSearch={viewContext.search || ''} buildsByOwner={buildsByOwner} onCreateBuildSeed={setBuildSeed} onBack={() => setView('home')} onShowLore={openCharacterArticle} onShowPower={openCharacterArticle} favoritePerks={settings.favoriteKillers || []} onToggleFavorite={(id) => toggleFavorite('Killer', id)} onViewProfile={openCharacterArticle} settings={settings} />;
           case 'survivors': return <ListView allCharacters={[...killers, ...survivors]} data={visibleSurvivors} type="Survivors" activeFilter="All" setActiveFilter={() => { }} allPerks={perks} setView={setView} onPerkSelect={setPerkSearch} initialSearch={viewContext.search || ''} buildsByOwner={buildsByOwner} onCreateBuildSeed={setBuildSeed} onBack={() => setView('home')} onShowLore={openCharacterArticle} favoritePerks={settings.favoriteSurvivors || []} onToggleFavorite={(id) => toggleFavorite('Survivor', id)} onViewProfile={openCharacterArticle} settings={settings} />;
-          case 'perks': return <ListView allCharacters={[...killers, ...survivors]} data={visiblePerks} type="Perks" filterOptions={['All', 'Survivor', 'Killer', 'Favorites', 'Exhaustion', 'Hex', 'Boon', 'Scourge', 'Obsession', 'Aura', 'Stealth', 'Gen', 'Healing']} activeFilter={perkFilter} setActiveFilter={setPerkFilter} initialSearch={perkSearch} onSearchChange={setPerkSearch} onBack={() => setView('home')} comparePerks={comparePerks} onPerkLongPress={togglePerkCompare} favoritePerks={settings.favoritePerks || []} onToggleFavorite={toggleFavoritePerk} onPerkTap={setSelectedPerk} onPerkPreview={setPreviewPerk} settings={settings} />;
+          case 'perks': return <ListView allCharacters={[...killers, ...survivors]} data={visiblePerks} type="Perks" filterOptions={['All', 'Survivor', 'Killer', 'Favorites', 'Exhaustion', 'Hex', 'Boon', 'Scourge', 'Obsession', 'Aura', 'Stealth', 'Gen', 'Healing']} activeFilter={perkFilter} setActiveFilter={setPerkFilter} initialSearch={perkSearch} onSearchChange={setPerkSearch} onBack={() => setView('home')} comparePerks={comparePerks} onPerkLongPress={togglePerkCompare} favoritePerks={settings.favoritePerks || []} onToggleFavorite={toggleFavoritePerk} onPerkTap={openPerkArticle} onPerkPreview={setPreviewPerk} settings={settings} />;
           case 'roulette': return <ChaosShuffleView onBack={() => setView('home')} perks={visiblePerks} killers={visibleKillers} survivors={visibleSurvivors} items={items} addons={visibleAddons} offerings={offerings} settings={settings} ownedOnlyGlobal={settings.ownedOnlyGlobal === true} />;
           case 'realms': return <RealmsView onBack={() => setView('home')} maps={maps} realms={realms} onViewLayout={setLayoutMap} onOpenRealm={openRealmArticle} initialSearch={viewContext.search || ''} />;
           case 'glossary': return <GlossaryView onBack={() => setView('home')} />;
@@ -15419,7 +15434,7 @@ const MapLayoutModal = ({ map, onClose, noteValue = '', onNoteChange }) => {
             return <CommunityContentView onBack={() => setView('home')} communityContent={communityContent} />;
           case 'timeline': return <TimelineView onBack={() => setView('home')} setView={setView} killers={killers} survivors={survivors} theme={theme} />;
           case 'settings': return <SettingsView onBack={() => setView('home')} settings={settings} setSettings={setSettings} backupSummary={websiteBackupSummary} onCopyBackup={copyWebsiteBackup} onDownloadBackup={downloadWebsiteBackup} onRestoreBackup={restoreWebsiteBackup} isMobile={device.isMobile} />;
-          case 'favorites': return <FavoritesView onBack={() => setView('home')} settings={settings} killers={killers} survivors={survivors} perks={perks} items={items} addons={addons} offerings={offerings} toggleFavorite={toggleFavorite} setView={setView} onPerkTap={setSelectedPerk} />;
+          case 'favorites': return <FavoritesView onBack={() => setView('home')} settings={settings} killers={killers} survivors={survivors} perks={perks} items={items} addons={addons} offerings={offerings} toggleFavorite={toggleFavorite} setView={setView} onPerkTap={openPerkArticle} />;
           default: return <HomeView setView={setView} data={{ killers: visibleKillers, survivors: visibleSurvivors, perks: visiblePerks }} theme={theme} builds={builds} maps={maps} challenges={progression?.challenges || []} setBuildSeed={setBuildSeed} perks={visiblePerks} items={items} addons={visibleAddons} offerings={offerings} cosmeticsCatalog={cosmeticsCatalogForDisplay} allCharacters={[...killers, ...survivors]} onOpenCharacterProfile={openCharacterArticle} settings={settings} />;
         }
       };
@@ -15433,7 +15448,7 @@ const MapLayoutModal = ({ map, onClose, noteValue = '', onNoteChange }) => {
         >
           {!device.isMobile && <WikiHeader currentView={currentView} setView={setView} />}
           <SiteFooter currentView={currentView} />
-          {device.isMobile && <WebsiteHeader currentView={currentView} setView={setView} titleOverride={(currentView === 'killer' || currentView === 'survivor') && viewContext.id && allCharactersById.get(viewContext.id) ? allCharactersById.get(viewContext.id).name : (currentView === 'realm' && viewContext.id && (realms || []).find(r => r.id === viewContext.id) ? (realms || []).find(r => r.id === viewContext.id).name : (currentView === 'release' && viewContext.id && (TIMELINE_DATA.releases || []).find(r => r.id === viewContext.id) ? (TIMELINE_DATA.releases || []).find(r => r.id === viewContext.id).name : null))} />}
+          {device.isMobile && <WebsiteHeader currentView={currentView} setView={setView} titleOverride={(currentView === 'killer' || currentView === 'survivor') && viewContext.id && allCharactersById.get(viewContext.id) ? allCharactersById.get(viewContext.id).name : (currentView === 'realm' && viewContext.id && (realms || []).find(r => r.id === viewContext.id) ? (realms || []).find(r => r.id === viewContext.id).name : (currentView === 'release' && viewContext.id && (TIMELINE_DATA.releases || []).find(r => r.id === viewContext.id) ? (TIMELINE_DATA.releases || []).find(r => r.id === viewContext.id).name : (currentView === 'perk' && viewContext.id && (perks || []).find(x => x.id === viewContext.id) ? (perks || []).find(x => x.id === viewContext.id).name : null)))} />}
           <div className="website-workspace relative z-10 flex-1 min-h-0 flex">
             {!device.isMobile && <Navigation currentView={currentView} setView={setView} theme={theme} isMobile={false} onPerksReset={() => setPerkSearch('')} customNavItems={DEFAULT_SETTINGS.navItems} />}
             <main ref={mainRef} className="website-main relative flex-1 min-w-0 overflow-hidden"><div key={currentView} className="view-transition h-full">{renderContent()}</div></main>
@@ -15481,14 +15496,6 @@ const MapLayoutModal = ({ map, onClose, noteValue = '', onNoteChange }) => {
               onClose={() => setPreviewPerk(null)}
             />
           )}
-          <BottomSheet
-            isOpen={selectedPerk !== null}
-            onClose={() => setSelectedPerk(null)}
-            perk={selectedPerk}
-            settings={settings}
-            noteValue={getEntityNote('perk', selectedPerk?.id)}
-            onNoteChange={(value) => setEntityNote('perk', selectedPerk?.id, value)}
-          />
         </div>
       );
     };
