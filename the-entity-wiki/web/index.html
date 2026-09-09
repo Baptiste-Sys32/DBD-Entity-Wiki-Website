@@ -2161,9 +2161,9 @@
       }
     };
     const META = {
-      siteVersion: "5.34.0",
-      gameVersion: "10.1.0",
-      lastSynced: "September 6, 2026",
+      siteVersion: "5.34.1",
+      gameVersion: "10.1.1",
+      lastSynced: "September 9, 2026",
       contact: {
         email: "hexplosions.happen@gmail.com",
         discord: "hexplosions_happen"
@@ -8529,7 +8529,7 @@
             },
             {
                 "term": "Unhook",
-                "def": "Rescue someone from hook."
+                "def": "Rescue someone from hook. Under current protections this also grants Endurance, Haste, and Elusive."
             },
             {
                 "term": "Rehook",
@@ -8646,6 +8646,107 @@
             {
                 "term": "EGC",
                 "def": "Endgame Collapse; timer after gates powered and opened or hatch closed."
+            }
+        ]
+    },
+    {
+        "section": "Status Effects & Mechanics",
+        "items": [
+            {
+                "term": "Exhausted",
+                "def": "Status that blocks Exhaustion perks until it recovers over time."
+            },
+            {
+                "term": "Haste",
+                "def": "Movement speed boost shown as a percentage, e.g. Sprint Burst's 50% Haste."
+            },
+            {
+                "term": "Endurance",
+                "def": "Takes a protection hit instead of going down; granted by unhooks and various perks."
+            },
+            {
+                "term": "Broken",
+                "def": "Cannot be healed; usually long-duration, e.g. after unhooking yourself with Deliverance."
+            },
+            {
+                "term": "Exposed",
+                "def": "Vulnerable: the next damage puts you into Dying State regardless of health."
+            },
+            {
+                "term": "Hindered",
+                "def": "Movement speed penalty shown as a percentage."
+            },
+            {
+                "term": "Undetectable",
+                "def": "Hides your Terror Radius, Red Stain, and aura reads from Survivors."
+            },
+            {
+                "term": "Oblivious",
+                "def": "Suppresses the Killer's Terror Radius and aura reads for you."
+            },
+            {
+                "term": "Blindness",
+                "def": "Suppresses all aura reading for you."
+            },
+            {
+                "term": "Deep Wound",
+                "def": "A draining bleed timer; mend yourself or get healed before it empties or you go down."
+            },
+            {
+                "term": "Hemorrhage",
+                "def": "Bleed-out and healing regression happen faster."
+            },
+            {
+                "term": "Mangled",
+                "def": "Healing you takes longer than normal."
+            },
+            {
+                "term": "Elusive",
+                "def": "Your Aura stays hidden from the Killer; granted by unhook protections and while standing on Light Marks."
+            },
+            {
+                "term": "Heresy",
+                "def": "Status inflicted by The Judgment's Divine Light or by taunting It; Heretics face special generator Skill Checks where good results cost progress. Repent at a Shrine of Judgment to cleanse it."
+            },
+            {
+                "term": "Heretic",
+                "def": "A Survivor carrying Heresy."
+            },
+            {
+                "term": "Exile",
+                "def": "The Judgment's secondary ability: exiles dying Heretics to a separate space. Counts as a hook state but ignores hook perks; others can Pray at an active Shrine to rescue them."
+            },
+            {
+                "term": "Shrine of Judgment",
+                "def": "Map objects for The Judgment's Heresy loop: Repent at one to cleanse Heresy over time; Pray at an active (red) one to rescue Exiled Survivors. The two closest activate on Exile."
+            },
+            {
+                "term": "Divine Light",
+                "def": "The Judgment's aimed beam (Will of the Gods): longer control means shorter cast delay and longer duration, 6s cooldown; near-misses reveal Survivors with Killer Instinct."
+            },
+            {
+                "term": "Will of the Gods",
+                "def": "The Judgment's Killer power."
+            },
+            {
+                "term": "Light Marks",
+                "def": "Glowing marks the Killer leaves while you are in their Terror Radius (Cross-Examination); standing on one grants Elusive. They last 10 seconds."
+            },
+            {
+                "term": "Searcher\u2019s Pendant",
+                "def": "Limited item given on entering Exile; aim it at Exiled Souls to extend unhook protections."
+            },
+            {
+                "term": "Repent",
+                "def": "Channel at a Shrine of Judgment to deplete Heresy over time."
+            },
+            {
+                "term": "Pray",
+                "def": "Channel at an active Shrine of Judgment to rescue an Exiled Survivor."
+            },
+            {
+                "term": "Boon Totem",
+                "def": "A totem blessed with a Boon perk, projecting its effects in a radius (Boon: Steadfast merges all your Boons into one)."
             }
         ]
     }
