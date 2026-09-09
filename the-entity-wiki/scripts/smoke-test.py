@@ -20,6 +20,7 @@ ROOT = pathlib.Path(__file__).resolve().parent.parent
 WEB_ROOT = ROOT / "web"
 DATABASE_PATH = ROOT / "content" / "database.json"
 COSMETICS_PATH = ROOT / "content" / "cosmetics.json"
+TIMELINE_PATH = ROOT / "content" / "timeline.json"
 CHROME_BIN = os.environ.get("CHROME_BIN", "google-chrome")
 DEBUG_PORT = 9223
 
@@ -149,6 +150,9 @@ async def run_scenario(base_url, scenario):
 def main():
     database = load_json(DATABASE_PATH)
     cosmetics = load_json(COSMETICS_PATH)
+    timeline = load_json(TIMELINE_PATH)
+    realm = database["realms"][0]
+    release = timeline["releases"][0]
     killer = database["killers"][0]
     addon = next(entry for entry in database["addons"] if entry.get("role") == "killer")
     offering = next(entry for entry in database["offerings"] if not entry.get("retired"))
@@ -198,6 +202,24 @@ def main():
             "check": lambda state: (
                 state["smokeView"] == "offerings" or (_ for _ in ()).throw(RuntimeError(f"offerings-target: expected offerings, found {state['smokeView']}")),
                 state["smokeTarget"] or (_ for _ in ()).throw(RuntimeError("offerings-target: target highlight missing")),
+            ),
+        },
+        {
+            "label": "realm-profile",
+            "params": {"view": "realm", "id": realm["id"]},
+            "check": lambda state: (
+                state["smokeView"] == "realm" or (_ for _ in ()).throw(RuntimeError(f"realm-profile: expected realm, found {state['smokeView']}")),
+                state["smokeProfile"] == realm["id"] or (_ for _ in ()).throw(RuntimeError("realm-profile: article did not render")),
+                realm["name"] in state["text"] or (_ for _ in ()).throw(RuntimeError("realm-profile: missing title")),
+            ),
+        },
+        {
+            "label": "release-profile",
+            "params": {"view": "release", "id": release["id"]},
+            "check": lambda state: (
+                state["smokeView"] == "release" or (_ for _ in ()).throw(RuntimeError(f"release-profile: expected release, found {state['smokeView']}")),
+                state["smokeProfile"] == release["id"] or (_ for _ in ()).throw(RuntimeError("release-profile: article did not render")),
+                release["name"] in state["text"] or (_ for _ in ()).throw(RuntimeError("release-profile: missing title")),
             ),
         },
         {
