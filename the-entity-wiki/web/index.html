@@ -7018,7 +7018,7 @@
         </div>
       );
     };
-    const ListView = ({ data, type, filterOptions, activeFilter, setActiveFilter, allPerks = [], setView, onPerkSelect, initialSearch = '', onSearchChange, buildsByOwner = {}, onCreateBuildSeed, onBack, comparePerks = [], onPerkLongPress, favoritePerks = [], onToggleFavorite, onPerkTap, onShowLore, onShowPower, onViewProfile, allCharacters = [], settings = {} }) => {
+    const ListView = ({ data, type, filterOptions, activeFilter, setActiveFilter, allPerks = [], setView, onPerkSelect, initialSearch = '', onSearchChange, buildsByOwner = {}, onCreateBuildSeed, onBack, comparePerks = [], onPerkLongPress, favoritePerks = [], onToggleFavorite, onPerkTap, onPerkPreview, onShowLore, onShowPower, onViewProfile, allCharacters = [], settings = {} }) => {
       const scrollRef = useRef(null);
       const [localSearch, setLocalSearch] = useState(initialSearch || '');
       const [sortBy, setSortBy] = useState('name_asc');
@@ -7296,9 +7296,17 @@
                 >
                   <td className="cx-perkcell">
                     <div className="cx-perkimg">
-                      <div className="cx-imgbox">
-                        <AssetFrame type={category} imageUrl={item.image} fallbackIcon={fallbackIcon} size="fill" />
-                      </div>
+                      {onPerkPreview && item.image ? (
+                        <button type="button" onClick={(e) => { e.stopPropagation(); onPerkPreview(item); }} style={{ padding: 0, border: 0, background: 'none', cursor: 'zoom-in' }} aria-label={`Preview ${item.name}`}>
+                          <div className="cx-imgbox">
+                            <AssetFrame type={category} imageUrl={item.image} fallbackIcon={fallbackIcon} size="fill" />
+                          </div>
+                        </button>
+                      ) : (
+                        <div className="cx-imgbox">
+                          <AssetFrame type={category} imageUrl={item.image} fallbackIcon={fallbackIcon} size="fill" />
+                        </div>
+                      )}
                       {onPerkTapFn ? (
                         <button type="button" className="cx-alink" onClick={(e) => { e.stopPropagation(); onPerkTapFn(); }}>{item.name}</button>
                       ) : <span className="font-semibold text-zinc-100">{item.name}</span>}
@@ -14109,7 +14117,7 @@ const MapLayoutModal = ({ map, onClose, noteValue = '', onNoteChange }) => {
     };
 
     const normRealmName = (v) => (v || '').trim().toLowerCase().replace(/^the\s+/, '');
-    const ImageLightbox = ({ src, alt, onClose }) => {
+    const ImageLightbox = ({ src, alt, meta, fit, onClose }) => {
       useEffect(() => {
         const onKey = (e) => { if (e.key === 'Escape' && onClose) onClose(); };
         window.addEventListener('keydown', onKey);
@@ -14119,10 +14127,13 @@ const MapLayoutModal = ({ map, onClose, noteValue = '', onNoteChange }) => {
       return (
         <div className="fixed inset-0 z-[100] flex items-center justify-center p-4" style={{ background: 'rgba(0,0,0,0.85)' }} onClick={onClose} role="dialog" aria-label={alt || 'Image preview'}>
           <div className="relative w-full max-w-5xl" onClick={e => e.stopPropagation()}>
-            <img src={src} alt={alt || ''} style={{ display: 'block', width: '100%', maxHeight: '86vh', objectFit: 'contain' }} />
-            <div className="flex items-center justify-between mt-2">
-              <p className="text-sm font-semibold" style={{ color: '#fafafa' }}>{alt}</p>
-              <button type="button" onClick={onClose} className="cx-alink" style={{ color: '#fafafa' }}>Close</button>
+            <img src={src} alt={alt || ''} style={fit === 'icon' ? { display: 'block', width: '100%', maxWidth: '320px', margin: '0 auto' } : { display: 'block', width: '100%', maxHeight: '86vh', objectFit: 'contain' }} />
+            <div className="flex items-center justify-between gap-4 mt-2">
+              <div className="min-w-0">
+                <p className="text-sm font-semibold" style={{ color: '#fafafa' }}>{alt}</p>
+                {meta ? <p className="text-xs mt-0.5" style={{ color: 'rgba(250,250,250,0.65)' }}>{meta}</p> : null}
+              </div>
+              <button type="button" onClick={onClose} className="cx-alink shrink-0" style={{ color: '#fafafa' }}>Close</button>
             </div>
           </div>
         </div>
@@ -14921,6 +14932,7 @@ const MapLayoutModal = ({ map, onClose, noteValue = '', onNoteChange }) => {
       const [comparePerks, setComparePerks] = useState([]);
       const [showCompareModal, setShowCompareModal] = useState(false);
       const [selectedPerk, setSelectedPerk] = useState(null);
+      const [previewPerk, setPreviewPerk] = useState(null);
       const [layoutMap, setLayoutMap] = useState(null);
       const [cosmeticsFullSetPackState, setCosmeticsFullSetPackState] = useState(() => defaultCosmeticsFullSetPackState());
       const [cosmeticsAssetRevision, setCosmeticsAssetRevision] = useState(() => getCosmeticsFullSetResolutionRevision());
@@ -15265,7 +15277,7 @@ const MapLayoutModal = ({ map, onClose, noteValue = '', onNoteChange }) => {
         [settings.navItems]
       );
       const navOrder = ['home', ...activeMobileNavItems, 'settings'];
-      const isAnyOverlayOpen = !!(layoutMap || selectedPerk || showCompareModal);
+      const isAnyOverlayOpen = !!(layoutMap || selectedPerk || previewPerk || showCompareModal);
       const handleTouchStart = (e) => {
         if (!e.touches || e.touches.length !== 1) {
           touchStartRef.current = null;
@@ -15394,7 +15406,7 @@ const MapLayoutModal = ({ map, onClose, noteValue = '', onNoteChange }) => {
           }
           case 'killers': return <ListView allCharacters={[...killers, ...survivors]} data={visibleKillers} type="Killers" activeFilter="All" setActiveFilter={() => { }} allPerks={perks} setView={setView} onPerkSelect={setPerkSearch} initialSearch={viewContext.search || ''} buildsByOwner={buildsByOwner} onCreateBuildSeed={setBuildSeed} onBack={() => setView('home')} onShowLore={openCharacterArticle} onShowPower={openCharacterArticle} favoritePerks={settings.favoriteKillers || []} onToggleFavorite={(id) => toggleFavorite('Killer', id)} onViewProfile={openCharacterArticle} settings={settings} />;
           case 'survivors': return <ListView allCharacters={[...killers, ...survivors]} data={visibleSurvivors} type="Survivors" activeFilter="All" setActiveFilter={() => { }} allPerks={perks} setView={setView} onPerkSelect={setPerkSearch} initialSearch={viewContext.search || ''} buildsByOwner={buildsByOwner} onCreateBuildSeed={setBuildSeed} onBack={() => setView('home')} onShowLore={openCharacterArticle} favoritePerks={settings.favoriteSurvivors || []} onToggleFavorite={(id) => toggleFavorite('Survivor', id)} onViewProfile={openCharacterArticle} settings={settings} />;
-          case 'perks': return <ListView allCharacters={[...killers, ...survivors]} data={visiblePerks} type="Perks" filterOptions={['All', 'Survivor', 'Killer', 'Favorites', 'Exhaustion', 'Hex', 'Boon', 'Scourge', 'Obsession', 'Aura', 'Stealth', 'Gen', 'Healing']} activeFilter={perkFilter} setActiveFilter={setPerkFilter} initialSearch={perkSearch} onSearchChange={setPerkSearch} onBack={() => setView('home')} comparePerks={comparePerks} onPerkLongPress={togglePerkCompare} favoritePerks={settings.favoritePerks || []} onToggleFavorite={toggleFavoritePerk} onPerkTap={setSelectedPerk} settings={settings} />;
+          case 'perks': return <ListView allCharacters={[...killers, ...survivors]} data={visiblePerks} type="Perks" filterOptions={['All', 'Survivor', 'Killer', 'Favorites', 'Exhaustion', 'Hex', 'Boon', 'Scourge', 'Obsession', 'Aura', 'Stealth', 'Gen', 'Healing']} activeFilter={perkFilter} setActiveFilter={setPerkFilter} initialSearch={perkSearch} onSearchChange={setPerkSearch} onBack={() => setView('home')} comparePerks={comparePerks} onPerkLongPress={togglePerkCompare} favoritePerks={settings.favoritePerks || []} onToggleFavorite={toggleFavoritePerk} onPerkTap={setSelectedPerk} onPerkPreview={setPreviewPerk} settings={settings} />;
           case 'roulette': return <ChaosShuffleView onBack={() => setView('home')} perks={visiblePerks} killers={visibleKillers} survivors={visibleSurvivors} items={items} addons={visibleAddons} offerings={offerings} settings={settings} ownedOnlyGlobal={settings.ownedOnlyGlobal === true} />;
           case 'realms': return <RealmsView onBack={() => setView('home')} maps={maps} realms={realms} onViewLayout={setLayoutMap} onOpenRealm={openRealmArticle} initialSearch={viewContext.search || ''} />;
           case 'glossary': return <GlossaryView onBack={() => setView('home')} />;
@@ -15460,6 +15472,15 @@ const MapLayoutModal = ({ map, onClose, noteValue = '', onNoteChange }) => {
             />
           )}
           {/* Bottom Sheet for perk details */}
+          {previewPerk && (
+            <ImageLightbox
+              src={`./${previewPerk.image}`}
+              alt={previewPerk.name}
+              meta={[previewPerk.owner, previewPerk.type].filter(Boolean).join(' · ')}
+              fit="icon"
+              onClose={() => setPreviewPerk(null)}
+            />
+          )}
           <BottomSheet
             isOpen={selectedPerk !== null}
             onClose={() => setSelectedPerk(null)}
