@@ -1700,6 +1700,10 @@
       object-fit: contain;
       display: block;
     }
+    .cx-offerings-table .cx-perkcell-inner img {
+      width: 64px;
+      height: 64px;
+    }
     .cx-perkcell-inner > div { overflow: visible !important; }
     .cx-thumbzoom { position: relative; }
     .cx-thumbzoom > * { transition: transform 130ms ease; will-change: transform; }
@@ -11561,8 +11565,8 @@
           </div>
 <div className="pb-32 space-y-3 -mx-6 px-6">
             {filtered.length === 0 && <div className="text-center text-zinc-500 mt-12">No offerings found.</div>}
-            <table className="cx-wikitable">
-            <thead><tr><th>Offering</th><th>Role</th><th>Rarity</th><th>Effect</th><th aria-hidden="true"></th></tr></thead><tbody>
+            <table className="cx-wikitable cx-offerings-table" style={{ tableLayout: 'fixed', width: '100%' }}>
+            <thead><tr><th style={{ width: '300px' }}>Offering</th><th style={{ width: '90px' }}>Role</th><th style={{ width: '100px' }}>Rarity</th><th>Effect</th><th aria-hidden="true" style={{ width: '40px' }}></th></tr></thead><tbody>
             {filtered.map(offering => {
               const isExpanded = expandedId === offering.id;
               return (
@@ -11576,17 +11580,17 @@
                 >
                   <td className="cx-perkcell">
                     <div className="cx-perkcell-inner">
-                      <div style={{ width: 44, height: 44, overflow: 'hidden', flexShrink: 0, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                        <AssetFrame type="Offering" imageUrl={offering.image} fallbackIcon={<Icons.Flame width={24} height={24} className="text-white/40" />} size="fill" />
+                      <div style={{ width: 64, height: 64, overflow: 'hidden', flexShrink: 0, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                        <AssetFrame type="Offering" imageUrl={offering.image} fallbackIcon={<Icons.Flame width={24} height={24} className="text-white/40" />} size="fill" imageLoading="lazy" />
                       </div>
                       <span>
                         <span className="font-semibold text-zinc-100">{offering.name}</span>
                       </span>
                     </div>
                   </td>
-                  <td>{formatRole(offering.role)}</td>
-                  <td className="cx-rarity">{formatRarity(offering.rarity)}</td>
-                  <td>{offering.description || '\u2014'}</td>
+                  <td style={{ whiteSpace: 'nowrap' }}>{formatRole(offering.role)}</td>
+                  <td className="cx-rarity" style={{ whiteSpace: 'nowrap' }}>{formatRarity(offering.rarity)}</td>
+                  <td style={{ overflowWrap: 'break-word', wordBreak: 'break-word' }}>{offering.description || '\u2014'}</td>
                   <td className="cx-star">
                     {onToggleFavoriteOffering && (
                       <button type="button" onClick={(e) => { e.stopPropagation(); onToggleFavoriteOffering(offering.id); }} aria-label="Toggle favorite" className={favoriteOfferings.includes(offering.id) ? 'cx-star-on' : undefined}>
