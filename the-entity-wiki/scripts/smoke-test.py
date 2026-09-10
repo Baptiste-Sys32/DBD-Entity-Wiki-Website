@@ -20,6 +20,7 @@ ROOT = pathlib.Path(__file__).resolve().parent.parent
 WEB_ROOT = ROOT / "web"
 DATABASE_PATH = ROOT / "content" / "database.json"
 COSMETICS_PATH = ROOT / "content" / "cosmetics.json"
+TIMELINE_PATH = ROOT / "content" / "timeline.json"
 CHROME_BIN = os.environ.get("CHROME_BIN", "google-chrome")
 DEBUG_PORT = 9223
 
@@ -149,6 +150,10 @@ async def run_scenario(base_url, scenario):
 def main():
     database = load_json(DATABASE_PATH)
     cosmetics = load_json(COSMETICS_PATH)
+    timeline = load_json(TIMELINE_PATH)
+    realm = database["realms"][0]
+    release = timeline["releases"][0]
+    perk = database["perks"][0]
     killer = database["killers"][0]
     addon = next(entry for entry in database["addons"] if entry.get("role") == "killer")
     offering = next(entry for entry in database["offerings"] if not entry.get("retired"))
@@ -201,19 +206,47 @@ def main():
             ),
         },
         {
-            "label": "killer-profile",
-            "params": {"view": "killers", "profileId": killer["id"]},
+            "label": "realm-profile",
+            "params": {"view": "realm", "id": realm["id"]},
             "check": lambda state: (
-                state["smokeView"] == "killers" or (_ for _ in ()).throw(RuntimeError(f"killer-profile: expected killers, found {state['smokeView']}")),
-                state["smokeProfile"] == killer["id"] or (_ for _ in ()).throw(RuntimeError("killer-profile: modal did not open")),
+                state["smokeView"] == "realm" or (_ for _ in ()).throw(RuntimeError(f"realm-profile: expected realm, found {state['smokeView']}")),
+                state["smokeProfile"] == realm["id"] or (_ for _ in ()).throw(RuntimeError("realm-profile: article did not render")),
+                realm["name"] in state["text"] or (_ for _ in ()).throw(RuntimeError("realm-profile: missing title")),
+            ),
+        },
+        {
+            "label": "release-profile",
+            "params": {"view": "release", "id": release["id"]},
+            "check": lambda state: (
+                state["smokeView"] == "release" or (_ for _ in ()).throw(RuntimeError(f"release-profile: expected release, found {state['smokeView']}")),
+                state["smokeProfile"] == release["id"] or (_ for _ in ()).throw(RuntimeError("release-profile: article did not render")),
+                release["name"] in state["text"] or (_ for _ in ()).throw(RuntimeError("release-profile: missing title")),
+            ),
+        },
+        {
+            "label": "perk-profile",
+            "params": {"view": "perk", "id": perk["id"]},
+            "check": lambda state: (
+                state["smokeView"] == "perk" or (_ for _ in ()).throw(RuntimeError(f"perk-profile: expected perk, found {state['smokeView']}")),
+                state["smokeProfile"] == perk["id"] or (_ for _ in ()).throw(RuntimeError("perk-profile: article did not render")),
+                perk["name"] in state["text"] or (_ for _ in ()).throw(RuntimeError("perk-profile: missing title")),
+            ),
+        },
+        {
+            "label": "killer-profile",
+            "params": {"view": "killer", "id": killer["id"]},
+            "check": lambda state: (
+                state["smokeView"] == "killer" or (_ for _ in ()).throw(RuntimeError(f"killer-profile: expected killer, found {state['smokeView']}")),
+                state["smokeProfile"] == killer["id"] or (_ for _ in ()).throw(RuntimeError("killer-profile: article did not render")),
+                killer["name"] in state["text"] or (_ for _ in ()).throw(RuntimeError("killer-profile: missing title")),
             ),
         },
         {
             "label": "survivor-profile-cosmetic",
-            "params": {"view": "survivors", "profileId": cosmetic["baseCharacterId"], "cosmeticId": cosmetic["id"]},
+            "params": {"view": "survivor", "id": cosmetic["baseCharacterId"], "cosmeticId": cosmetic["id"]},
             "check": lambda state: (
-                state["smokeView"] == "survivors" or (_ for _ in ()).throw(RuntimeError(f"survivor-profile-cosmetic: expected survivors, found {state['smokeView']}")),
-                state["smokeProfile"] == cosmetic["baseCharacterId"] or (_ for _ in ()).throw(RuntimeError("survivor-profile-cosmetic: profile modal missing")),
+                state["smokeView"] == "survivor" or (_ for _ in ()).throw(RuntimeError(f"survivor-profile-cosmetic: expected survivor, found {state['smokeView']}")),
+                state["smokeProfile"] == cosmetic["baseCharacterId"] or (_ for _ in ()).throw(RuntimeError("survivor-profile-cosmetic: article missing")),
                 state["smokeTarget"] or (_ for _ in ()).throw(RuntimeError("survivor-profile-cosmetic: focused cosmetic missing")),
             ),
         },

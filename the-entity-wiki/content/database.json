@@ -1186,7 +1186,7 @@
       "type": "Killer",
       "description": "Those whose lives are intertwined in darkness are destined to suffer together.\n\nWhen a Survivor heals another Survivor, the healer Survivor screams and activates Deathbound. While they are at least 12/8/4 meters apart, the healer Survivor sees the aura of the Survivor they healed and suffers from the Oblivious status effect. Deathbound lasts until the healer loses a health state.\n\nOblivious prevents Survivors from hearing or being affected by the Killer's Terror Radius.",
       "image": "dbd_images/perks/IconPerks_deathbound.png",
-      "descriptionPost95": "Whenever a Survivor finishes healing another, they scream. Then, until they take damage, while they are at least 12/8/4m away from that Survivor: - They gain Oblivious. - They see that Survivor's Aura."
+      "descriptionPost95": "Whenever a Survivor finishes healing another Survivor, the Healer screams. This applies to a single Survivor at a time. Then, until the Healer takes damage, while they are at least 12/8/4m away from the healed Survivor: - The Healer gains Oblivious. - The Healer sees the Aura of the healed Survivor."
     },
     {
       "id": "3ae77ce7-8f08-419c-b6f7-c972fc47b184",
@@ -2258,7 +2258,7 @@
       "type": "Survivor",
       "description": "It is inconceivable to leave someone behind. Once the exit gates are powered, you gain the following effects:\n\n- 50/75/100% bonus action speed when healing and unhooking other Survivors.\n- When unhooking a Survivor, increase the Haste they gain by 10%.\n- The auras of all other Survivors are revealed to you.\n\nHaste increases Survivor movement speed.",
       "image": "dbd_images/perks/IconPerks_noOneLeftBehind.png",
-      "descriptionPost95": "When all Generators are completed: - You heal 50/75/100% faster. - You unhook other Survivors 50/75/100% faster. - Whenever you unhook a Survivor, they gain 10% more Haste. - You see the Auras of other Survivors."
+      "descriptionPost95": "When all Generators are completed: - You heal other Survivors 50/75/100% faster. - You unhook other Survivors 50/75/100% faster. - Whenever you unhook a Survivor, they gain 10% more Haste. - You see the Auras of other Survivors."
     },
     {
       "id": "8adf88bc-7a4d-400d-9bdb-917d37d01ed2",
@@ -2431,12 +2431,12 @@
     },
     {
       "id": "6ea657a2-8dc3-49fd-8066-6503b13c5cf9",
-      "name": "Repressed Alliance ",
+      "name": "Repressed Alliance",
       "owner": "Cheryl Mason",
       "type": "Survivor",
       "description": "You’re accustomed to being hunted by malicious forces, and you’ve begun using it to your advantage.\n\nRepressed Alliance activates after repairing generators for a total of 55/50/45 seconds.\n\nWhen repairing a generator while the perk is active, press the Active Ability Button 1 to call upon The Entity to block the generator for 30 seconds. The perk deactivates.\n\nThis interaction is not available if other Survivors are repairing the generator.\n\nAffected generators will be revealed by a white aura to all Survivors.",
       "image": "dbd_images/perks/IconPerks_repressedAlliance.png",
-      "descriptionPost95": "After repairing Generators for 55/50/45s, while repairing a Generator alone, use Active Ability Button 1 to block that generator for 15s."
+      "descriptionPost95": "After repairing Generators for 40/35/30s, while repairing a Generator alone, use Active Ability Button 1 to block that generator for 15s."
     },
     {
       "id": "8e3bbf89-2207-4bdd-8878-9a14409adf97",
@@ -3470,7 +3470,7 @@
       "type": "Survivor",
       "description": "You look over your friends even in dire situations.\n\nYou and Survivors within 16 meters recover 44/55/66% faster from the Blindness, Broken, Exhausted, Exposed, Hemorrhage, Hindered, Mangled and Oblivious status effects.\n\nSurvivors can only be affected by one Vigil's effect at a time.\n\nOnce out of range, this effect persists for 15 seconds.",
       "image": "dbd_images/perks/IconPerks_vigil.png",
-      "descriptionPost95": "All Survivors within 16m of you: - Lose Blindness 30/35/40% faster. - Lose Broken 30/35/40% faster. - Lose Exhausted 30/35/40% faster. - Lose Exposed 30/35/40% faster. - Lose Hemorrhage 30/35/40% faster. - Lose Hindered 30/35/40% faster. - Lose Mangled 30/35/40% faster. - Lose Oblivious 30/35/40% faster. After they leave your range, this ends after 15s."
+      "descriptionPost95": "All Survivors within 16m of you: - Lose Blindness 20/25/30% faster. - Lose Broken 20/25/30% faster. - Lose Exhausted 20/25/30% faster. - Lose Exposed 20/25/30% faster. - Lose Hemorrhage 20/25/30% faster. - Lose Hindered 20/25/30% faster. - Lose Mangled 20/25/30% faster. - Lose Oblivious 20/25/30% faster. After they leave your range, this ends after 15s."
     },
     {
       "id": "05d826d9-af67-4cf9-a5db-05e348d22a12",
