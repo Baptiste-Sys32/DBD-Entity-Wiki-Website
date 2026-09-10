@@ -781,6 +781,43 @@
       }
     }
 
+    /* ===== Responsive tiers (mobile-first foundations) =====
+       Tier 1 phones: (max-width: 480px)
+       Tier 2 narrow: (min-width: 481px) and (max-width: 860px) — portrait tablets, narrow windows */
+    /* Reclaim wasted side padding on list views */
+    @media (max-width: 860px) {
+      .cx-listhead { padding: 20px 24px 0; }
+      .cx-listwrap { padding-left: 24px !important; padding-right: 24px !important; }
+    }
+    @media (max-width: 480px) {
+      .cx-listhead { padding: 16px 16px 0; }
+      .cx-listwrap { padding-left: 16px !important; padding-right: 16px !important; }
+    }
+    /* Table compression baseline (scroll wrappers arrive in Phase 1) */
+    @media (max-width: 480px) {
+      table.cx-wikitable { font-size: 12.5px; }
+      table.cx-wikitable th { padding: 6px 8px; font-size: 12px; }
+      table.cx-wikitable td { padding: 6px 8px; }
+      .cx-perkcell-inner { gap: 8px; }
+    }
+    /* Touch: hover-zoom thumbnails become tap targets (lightboxes already handle tap) */
+    @media (hover: none) {
+      .cx-thumbzoom:hover { z-index: auto; }
+      .cx-thumbzoom:hover > * { transform: none; filter: none; }
+    }
+    /* Prestige: big animated figure + 3-up mode buttons */
+    @media (max-width: 480px) {
+      .blood-text { font-size: 34px !important; overflow-wrap: anywhere; }
+    }
+    /* Bottom nav: start-align so first items never clip when overflowing */
+    @media (max-width: 480px) {
+      .nav-shell .nav-scroll { justify-content: flex-start; }
+    }
+    /* Header search slot: never exceed the viewport on narrow screens */
+    @media (max-width: 860px) {
+      #wiki-header-search-slot { max-width: calc(100vw - 190px); }
+    }
+
     .light-mode {
       color-scheme: light;
     }
@@ -7393,7 +7430,7 @@
               </div>
             )}
           </div>
-<div className="w-full max-w-[1280px] mx-auto px-[44px] pb-32 overflow-x-auto shrink-0">
+<div className="cx-listwrap w-full max-w-[1280px] mx-auto px-[44px] pb-32 overflow-x-auto shrink-0">
             <table className="cx-wikitable">
             {isCharacterList ? (
               <thead><tr>
@@ -7620,7 +7657,7 @@
           
             </div>
           </WikiHeaderSearchPortal>
-          <div className="w-full max-w-[1280px] mx-auto px-[44px] pb-32 overflow-x-auto shrink-0">
+          <div className="cx-listwrap w-full max-w-[1280px] mx-auto px-[44px] pb-32 overflow-x-auto shrink-0">
             {rows.length === 0 && (
               <div className="text-center text-zinc-500 mt-12">No map data available.</div>
             )}
