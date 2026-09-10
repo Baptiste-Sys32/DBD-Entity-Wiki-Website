@@ -12259,6 +12259,18 @@
         </div>
       );
     };
+    const COMMUNITY_LINKS = [
+      { label: 'NightLight', context: 'Pick rates, escape stats, Shrine of Secrets tracker and codes. Link-out only.', url: 'https://nightlight.gg/', sourceType: 'stats' },
+      { label: 'DBDVault', context: 'Build creator, curated creator builds, meta per patch, tier lists and codes. Link-out only.', url: 'https://www.dbdvault.com/', sourceType: 'builds' },
+      { label: 'DBDBuilds.gg', context: 'Searchable curated killer and survivor loadout library. Link-out only.', url: 'https://dbdbuilds.gg/', sourceType: 'builds' },
+      { label: 'DBDHub.me', context: 'Community builds with votes, perk stats, randomizer and patch notes. Link-out only.', url: 'https://dbdhub.me/', sourceType: 'builds' },
+      { label: 'Official DBD Discord', context: 'News, LFG, strategy discussion and events. Invite link-out only.', url: 'https://discord.com/invite/deadbydaylight', sourceType: 'community' },
+      { label: 'r/deadbydaylight New-Player Guide', context: 'Reddit sidebar resources and weekly megathreads. Link-out only.', url: 'https://www.reddit.com/r/deadbydaylight/wiki/new-player-guide', sourceType: 'community' },
+      { label: 'TierMaker DBD', context: 'Community killer, survivor and perk tier-list templates with voting. Link-out only.', url: 'https://tiermaker.com/categories/dead-by-daylight', sourceType: 'tierlists' },
+      { label: 'Hens333 (YouTube)', context: 'Meta builds, SoloQ experiments and event coverage. Link-out only.', url: 'https://www.youtube.com/c/hens333', sourceType: 'video' },
+      { label: 'SpookyLoopz (YouTube)', context: 'High-level killer guides and decision-making demos. Link-out only.', url: 'https://www.youtube.com/@SpookyLoopz', sourceType: 'video' },
+      { label: 'DBDGuide', context: 'Codes, perk tier lists and counter guides. Link-out only.', url: 'https://dbdguide.com/', sourceType: 'guides' }
+    ];
     const CommunityContentView = ({ onBack, communityContent }) => {
       const [activeTab, setActiveTab] = useState('addons');
       const [addonSearch, setAddonSearch] = useState('');
@@ -12286,7 +12298,8 @@
         { id: 'characters', label: 'Character Intel' },
         { id: 'academy', label: 'Academy' },
         { id: 'tierlists', label: 'Tierlists' },
-        { id: 'guideVault', label: 'Guide Vault' }
+        { id: 'guideVault', label: 'Guide Vault' },
+        { id: 'links', label: 'Community Links' }
       ];
 
       const addonKillers = useMemo(
@@ -12855,6 +12868,23 @@
                     <div className="p-4 rounded-xl bg-[var(--panel)] border border-[var(--stroke)] text-zinc-500 text-sm">No guide vault entries match the current filters.</div>
                   )}
                 </div>
+              </div>
+            )}
+
+            {activeTab === 'links' && (
+              <div className="space-y-2">
+                {COMMUNITY_LINKS.map((entry) => (
+                  <div key={entry.url} className="p-3 rounded-xl bg-[var(--panel)] border border-[var(--stroke)]">
+                    <div className="flex flex-wrap items-center justify-between gap-2">
+                      <p className="text-sm text-white font-semibold">{entry.label}</p>
+                      <span className="px-2 py-0.5 rounded-md bg-white/5 border border-white/10 text-[10px] uppercase tracking-wider text-zinc-400">{entry.sourceType || 'resource'}</span>
+                    </div>
+                    {entry.context && <p className="text-xs text-zinc-300 mt-2 leading-relaxed break-words whitespace-normal">{entry.context}</p>}
+                    <a href={entry.url} target="_blank" rel="noreferrer" className="inline-flex mt-2 px-3 py-1.5 rounded-xl bg-[var(--panel)] border border-[var(--stroke)] text-[11px] text-zinc-300 hover:text-white transition-colors">
+                      Open Resource
+                    </a>
+                  </div>
+                ))}
               </div>
             )}
 
