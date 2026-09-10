@@ -783,7 +783,7 @@
 
     /* ===== Responsive tiers (mobile-first foundations) =====
        Tier 1 phones: (max-width: 480px)
-       Tier 2 narrow: (min-width: 481px) and (max-width: 860px) — portrait tablets, narrow windows */
+       Tier 2 narrow: (min-width: 481px) and (max-width: 860px) - portrait tablets, narrow windows */
     /* Reclaim wasted side padding on list views */
     @media (max-width: 860px) {
       .cx-listhead { padding: 20px 24px 0; }
@@ -817,7 +817,7 @@
     @media (max-width: 860px) {
       #wiki-header-search-slot { max-width: calc(100vw - 190px); }
     }
-    /* Phase 1 — tables: normal flow + sticky headers; fixed/dense tables get explicit scrollers */
+    /* Phase 1 - tables: normal flow + sticky headers; fixed/dense tables get explicit scrollers */
     @media (max-width: 860px) {
       table.cx-wikitable > thead > tr > th {
         position: sticky;
@@ -829,22 +829,22 @@
       .cx-tablewrap > table.cx-wikitable { min-width: 560px; }
       .cx-tablewrap > table.cx-wikitable > thead > tr > th { position: static; }
     }
-    /* Phase 3 — collapsible article sections (Minerva-style, narrow tier only) */
+    /* Phase 3 - collapsible article sections (Minerva-style, narrow tier only) */
     .cx-sec--toggle { cursor: pointer; display: flex; align-items: center; gap: 8px; }
     .cx-sec--toggle .cx-sec-title { flex: 1; min-width: 0; }
     .cx-sec--toggle .cx-sec-ind { font-size: 13px; color: var(--link); flex-shrink: 0; }
     .cx-sec--toggle:focus-visible { outline: 2px solid var(--link); outline-offset: 2px; }
-    /* Phase 3 — article anatomy on phones */
+    /* Phase 3 - article anatomy on phones */
     @media (max-width: 480px) {
       .cx-linkcols { columns: 1; }
       .cx-toc { max-width: 100%; }
       .cx-infobox td { overflow-wrap: break-word; }
     }
-    /* Phase 4 — narrow tier: restore side infobox where there is room (Minerva ≥720px float) */
+    /* Phase 4 - narrow tier: restore side infobox where there is room (Minerva ≥720px float) */
     @media (min-width: 720px) and (max-width: 860px) {
       .cx-article .cx-leadgrid { grid-template-columns: 1fr 280px; gap: 24px; }
     }
-    /* Phase 2 — hamburger drawer (Minerva-style navigation drawer) */
+    /* Phase 2 - hamburger drawer (Minerva-style navigation drawer) */
     .cx-hamb {
       width: 44px; height: 44px; flex-shrink: 0;
       display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 5px;
@@ -6711,7 +6711,7 @@
           // Role
           if (!context.role && (t === 'killer' || t === 'survivor')) {
             context.role = t;
-            // Don't mark as used — might be both a role and category
+            // Don't mark as used - might be both a role and category
           }
         }
 
@@ -14969,7 +14969,7 @@ const MapLayoutModal = ({ map, onClose, noteValue = '', onNoteChange }) => {
                     </div>
                   </div>
                 </td>
-                <td style={{ color: 'var(--text-soft)' }}>{row.entry.fogEntry || '—'}</td>
+                <td style={{ color: 'var(--text-soft)' }}>{row.entry.fogEntry || '-'}</td>
               </tr>
             ))}
           </tbody>
@@ -15214,7 +15214,7 @@ const MapLayoutModal = ({ map, onClose, noteValue = '', onNoteChange }) => {
                           </button>
                           <button type="button" className="cx-alink font-semibold" style={{ marginTop: '6px' }} onClick={() => onViewLayout && onViewLayout(mp)}>{mp.name}</button>
                         </td>
-                        <td style={{ color: 'var(--text-soft)' }}>{mp.description || '—'}</td>
+                        <td style={{ color: 'var(--text-soft)' }}>{mp.description || '-'}</td>
                       </tr>
                     ))}
                   </tbody>
@@ -15234,7 +15234,7 @@ const MapLayoutModal = ({ map, onClose, noteValue = '', onNoteChange }) => {
                         ) : (
                           <span className="font-semibold">{row.entry.name}</span>
                         )}{row.entry.realName ? <small style={{ display: 'block', color: 'var(--text-faint)', fontSize: '11px' }}>{row.entry.realName}</small> : null}</td>
-                        <td style={{ color: 'var(--text-soft)' }}>{row.entry.fogEntry || '—'}</td>
+                        <td style={{ color: 'var(--text-soft)' }}>{row.entry.fogEntry || '-'}</td>
                       </tr>
                     ))}
                   </tbody>
