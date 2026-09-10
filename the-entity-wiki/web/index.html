@@ -11651,10 +11651,10 @@
                     </tr>
                     {isExpanded && itemAddons.length > 0 && (
                       <tr key={item.id + '-addons'}>
-                        <td colSpan={3}>
+                        <td colSpan={4}>
                           <p className="text-xs text-zinc-500 font-bold uppercase mb-2">Compatible Add-ons ({itemAddons.length})</p>
                           <table className="cx-wikitable">
-                            <thead><tr><th style={{ paddingLeft: '58px' }}>Add-on</th><th>Rarity</th><th>Effect</th><th aria-hidden="true"></th></tr></thead><tbody>
+                            <thead><tr><th style={{ paddingLeft: '58px', whiteSpace: 'nowrap' }}>Add-on</th><th style={{ width: '76px' }}>Image</th><th>Rarity</th><th>Effect</th><th aria-hidden="true"></th></tr></thead><tbody>
                             {itemAddons.map(addon => (
                               <tr
                                 key={addon.id}
@@ -11664,13 +11664,13 @@
                                   else delete addonRefs.current[addon.id];
                                 }}
                                 className={`${initialTargetType === 'addon' && initialTargetId === addon.id ? 'bg-white/5 border-white/15' : 'bg-white/5 border-white/5'}`}
-                                style={{ boxShadow: getRarityGlow(addon.rarity, settings.rarityGlows !== false) }}
                               >
                                 <td className="cx-perkcell">
-                                  <div className="cx-perkcell-inner">
-                                    <span>
-                                      <span className="font-semibold text-zinc-100">{addon.name}</span>
-                                    </span>
+                                  <span><span className="font-semibold text-zinc-100">{addon.name}</span></span>
+                                </td>
+                                <td>
+                                  <div style={{ width: 44, height: 44, overflow: 'hidden', flexShrink: 0, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                                    <AssetFrame type="Addon" imageUrl={addon.image} fallbackIcon={<Icons.Package width={24} height={24} className="text-white/40" />} size="fill" imageLoading="lazy" />
                                   </div>
                                 </td>
                                 <td className="cx-rarity">{formatRarity(addon.rarity)}</td>
@@ -11690,7 +11690,7 @@
                     )}
                     {isExpanded && itemAddons.length === 0 && (
                       <tr key={item.id + '-noaddons'}>
-                        <td colSpan={3}>
+                        <td colSpan={4}>
                           <p className="text-zinc-600 text-xs">No addons for this item type.</p>
                         </td>
                       </tr>
@@ -11703,7 +11703,7 @@
             {mode === 'killer' && (
               filteredKillers.length === 0 ? <div className="text-center text-zinc-500 mt-12">No killers found.</div> :
               <table className="cx-wikitable">
-                <thead><tr><th>Killer</th><th>Add-ons</th><th aria-hidden="true"></th></tr></thead><tbody>
+                <thead><tr><th>Killer</th><th>Add-ons</th></tr></thead><tbody>
                 {filteredKillers.map(killer => {
                   const isExpanded = expandedId === killer.id;
                   const powerAddons = getAddonsForKiller(killer);
@@ -11736,7 +11736,7 @@
                         <td colSpan={2}>
                           <p className="text-xs text-zinc-500 font-bold uppercase mb-2">Power Add-ons</p>
                           <table className="cx-wikitable">
-                            <thead><tr><th style={{ paddingLeft: '58px' }}>Add-on</th><th>Rarity</th><th>Effect</th><th aria-hidden="true"></th></tr></thead><tbody>
+                            <thead><tr><th style={{ paddingLeft: '58px', whiteSpace: 'nowrap' }}>Add-on</th><th style={{ width: '76px' }}>Image</th><th>Rarity</th><th>Effect</th><th aria-hidden="true"></th></tr></thead><tbody>
                             {powerAddons.map(addon => (
                               <tr
                                 key={addon.id}
@@ -11746,13 +11746,13 @@
                                   else delete addonRefs.current[addon.id];
                                 }}
                                 className={`${initialTargetType === 'addon' && initialTargetId === addon.id ? 'bg-white/5 border-white/15' : 'bg-white/5 border-white/5'}`}
-                                style={{ boxShadow: getRarityGlow(addon.rarity, settings.rarityGlows !== false) }}
                               >
                                 <td className="cx-perkcell">
-                                  <div className="cx-perkcell-inner">
-                                    <span>
-                                      <span className="font-semibold text-zinc-100">{addon.name}</span>
-                                    </span>
+                                  <span><span className="font-semibold text-zinc-100">{addon.name}</span></span>
+                                </td>
+                                <td>
+                                  <div style={{ width: 44, height: 44, overflow: 'hidden', flexShrink: 0, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                                    <AssetFrame type="Addon" imageUrl={addon.image} fallbackIcon={<Icons.Package width={24} height={24} className="text-white/40" />} size="fill" imageLoading="lazy" />
                                   </div>
                                 </td>
                                 <td className="cx-rarity">{formatRarity(addon.rarity)}</td>
