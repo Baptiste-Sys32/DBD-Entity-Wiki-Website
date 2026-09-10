@@ -829,8 +829,16 @@
       .cx-tablewrap > table.cx-wikitable { min-width: 560px; }
       .cx-tablewrap > table.cx-wikitable > thead > tr > th { position: static; }
     }
+    /* Phase 3 — collapsible article sections (Minerva-style, narrow tier only) */
+    .cx-sec--toggle { cursor: pointer; display: flex; align-items: center; gap: 8px; }
+    .cx-sec--toggle .cx-sec-title { flex: 1; min-width: 0; }
+    .cx-sec--toggle .cx-sec-ind { font-size: 13px; color: var(--link); flex-shrink: 0; }
+    .cx-sec--toggle:focus-visible { outline: 2px solid var(--link); outline-offset: 2px; }
+    /* Phase 3 — article anatomy on phones */
     @media (max-width: 480px) {
-      th.cx-sortth > button { min-height: 44px; }
+      .cx-linkcols { columns: 1; }
+      .cx-toc { max-width: 100%; }
+      .cx-infobox td { overflow-wrap: break-word; }
     }
     /* Phase 2 — hamburger drawer (Minerva-style navigation drawer) */
     .cx-hamb {
@@ -14696,6 +14704,59 @@ const MapLayoutModal = ({ map, onClose, noteValue = '', onNoteChange }) => {
         </div>
       );
     };
+    const useNarrowTier = () => {
+      const [narrow, setNarrow] = useState(() => typeof window !== 'undefined' && window.matchMedia('(max-width: 860px)').matches);
+      useEffect(() => {
+        const mq = window.matchMedia('(max-width: 860px)');
+        const onChange = (e) => setNarrow(e.matches);
+        if (mq.addEventListener) mq.addEventListener('change', onChange);
+        else mq.addListener(onChange);
+        return () => {
+          if (mq.removeEventListener) mq.removeEventListener('change', onChange);
+          else mq.removeListener(onChange);
+        };
+      }, []);
+      return narrow;
+    };
+    const CxSection = ({ id, view, setRef, title, children, collapsible = true }) => {
+      const narrow = useNarrowTier();
+      const storeKey = `cx-sec:${view}:${id}`;
+      const [open, setOpen] = useState(() => {
+        try {
+          const saved = window.localStorage.getItem(storeKey);
+          return saved === null ? true : saved === '1';
+        } catch (e) { return true; }
+      });
+      useEffect(() => {
+        const expand = (e) => { if (e && e.detail === id) setOpen(true); };
+        window.addEventListener('cx-expand-section', expand);
+        return () => window.removeEventListener('cx-expand-section', expand);
+      }, [id]);
+      const toggle = () => setOpen((prev) => {
+        const next = !prev;
+        try { window.localStorage.setItem(storeKey, next ? '1' : '0'); } catch (e) {}
+        return next;
+      });
+      if (!narrow || !collapsible) {
+        return (<section id={id} ref={setRef(id)}><h2 className="cx-sec">{title}</h2>{children}</section>);
+      }
+      return (
+        <section id={id} ref={setRef(id)}>
+          <h2
+            className="cx-sec cx-sec--toggle"
+            role="button"
+            tabIndex={0}
+            aria-expanded={open}
+            onClick={toggle}
+            onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); toggle(); } }}
+          >
+            <span className="cx-sec-title">{title}</span>
+            <span className="cx-sec-ind" aria-hidden="true">{open ? '▾' : '▸'}</span>
+          </h2>
+          {open ? children : null}
+        </section>
+      );
+    };
     const PerkArticleView = ({ perk, perks = [], killers = [], survivors = [], onHome, onOpenList, onOpenCharacter, onOpenPerk, noteValue = '', onNoteChange, settings = {}, scrollSection = null }) => {
       const scrollRef = useRef(null);
       const sectionEls = useRef({});
@@ -14716,8 +14777,11 @@ const MapLayoutModal = ({ map, onClose, noteValue = '', onNoteChange }) => {
         { id: 'notes', label: 'Notes' },
       ];
       const scrollToSection = (id) => {
-        const node = sectionEls.current[id];
-        if (node && node.scrollIntoView) node.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        try { window.dispatchEvent(new CustomEvent('cx-expand-section', { detail: id })); } catch (e) {}
+        window.setTimeout(() => {
+          const node = sectionEls.current[id];
+          if (node && node.scrollIntoView) node.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }, 60);
       };
       const setSectionRef = (id) => (node) => {
         if (node) sectionEls.current[id] = node;
@@ -14728,6 +14792,7 @@ const MapLayoutModal = ({ map, onClose, noteValue = '', onNoteChange }) => {
       }, [perk.id]);
       useEffect(() => {
         if (!scrollSection) return undefined;
+        try { window.dispatchEvent(new CustomEvent('cx-expand-section', { detail: scrollSection })); } catch (e) {}
         const timer = window.setTimeout(() => {
           const node = sectionEls.current[scrollSection];
           if (node && node.scrollIntoView) node.scrollIntoView({ behavior: 'smooth', block: 'start' });
@@ -14775,13 +14840,11 @@ const MapLayoutModal = ({ map, onClose, noteValue = '', onNoteChange }) => {
                 </table>
               </aside>
             </div>
-            <section id="overview" ref={setSectionRef('overview')}>
-              <h2 className="cx-sec">Overview</h2>
+            <CxSection id="overview" view="perk" setRef={setSectionRef} title="Overview" collapsible={false}>
               <PerkDescriptionBlock perk={perk} settings={settings} accentColor="var(--link)" />
-            </section>
+            </CxSection>
             {synergies.length > 0 && (
-              <section id="synergies" ref={setSectionRef('synergies')}>
-                <h2 className="cx-sec">Works Well With</h2>
+              <CxSection id="synergies" view="perk" setRef={setSectionRef} title="Works Well With">
                 <div className="flex flex-wrap gap-2">
                   {synergies.map((s) => s.full ? (
                     <button key={s.name} type="button" className="cx-chip text-xs font-semibold" style={{ cursor: 'pointer' }} onClick={() => onOpenPerk && onOpenPerk(s.full)}>{s.name}</button>
@@ -14789,17 +14852,16 @@ const MapLayoutModal = ({ map, onClose, noteValue = '', onNoteChange }) => {
                     <span key={s.name} className="cx-chip text-xs font-semibold">{s.name}</span>
                   ))}
                 </div>
-              </section>
+              </CxSection>
             )}
-            <section id="notes" ref={setSectionRef('notes')}>
-              <h2 className="cx-sec">Notes</h2>
+            <CxSection id="notes" view="perk" setRef={setSectionRef} title="Notes">
               <NotesEditor
                 title="Perk Notes"
                 value={noteValue}
                 onChange={onNoteChange}
                 placeholder="Matchups, builds, or reminders for this perk..."
               />
-            </section>
+            </CxSection>
             <div className="cx-cats">
               <span>Categories:</span>
               <button type="button" className="cx-alink" onClick={onOpenList}>Perks</button>
@@ -14857,8 +14919,11 @@ const MapLayoutModal = ({ map, onClose, noteValue = '', onNoteChange }) => {
         ...(mapRows.length > 0 ? [{ id: 'maps', label: mapRows.length > 1 ? 'New Maps' : 'New Map' }] : []),
       ];
       const scrollToSection = (id) => {
-        const node = sectionEls.current[id];
-        if (node && node.scrollIntoView) node.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        try { window.dispatchEvent(new CustomEvent('cx-expand-section', { detail: id })); } catch (e) {}
+        window.setTimeout(() => {
+          const node = sectionEls.current[id];
+          if (node && node.scrollIntoView) node.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }, 60);
       };
       const setSectionRef = (id) => (node) => {
         if (node) sectionEls.current[id] = node;
@@ -14869,6 +14934,7 @@ const MapLayoutModal = ({ map, onClose, noteValue = '', onNoteChange }) => {
       }, [release.id]);
       useEffect(() => {
         if (!scrollSection) return undefined;
+        try { window.dispatchEvent(new CustomEvent('cx-expand-section', { detail: scrollSection })); } catch (e) {}
         const timer = window.setTimeout(() => {
           const node = sectionEls.current[scrollSection];
           if (node && node.scrollIntoView) node.scrollIntoView({ behavior: 'smooth', block: 'start' });
@@ -14943,25 +15009,21 @@ const MapLayoutModal = ({ map, onClose, noteValue = '', onNoteChange }) => {
                 </table>
               </aside>
             </div>
-            <section id="overview" ref={setSectionRef('overview')}>
-              <h2 className="cx-sec">Overview</h2>
+            <CxSection id="overview" view="release" setRef={setSectionRef} title="Overview" collapsible={false}>
               <p>{release.description || `${release.name} was released on ${release.displayDate}.`}</p>
-            </section>
+            </CxSection>
             {killerRows.length > 0 && (
-              <section id="killers" ref={setSectionRef('killers')}>
-                <h2 className="cx-sec">{killerRows.length > 1 ? 'New Killers' : 'New Killer'}</h2>
+              <CxSection id="killers" view="release" setRef={setSectionRef} title={killerRows.length > 1 ? 'New Killers' : 'New Killer'}>
                 {renderCharTable(killerRows)}
-              </section>
+              </CxSection>
             )}
             {survivorRows.length > 0 && (
-              <section id="survivors" ref={setSectionRef('survivors')}>
-                <h2 className="cx-sec">{survivorRows.length > 1 ? 'New Survivors' : 'New Survivor'}</h2>
+              <CxSection id="survivors" view="release" setRef={setSectionRef} title={survivorRows.length > 1 ? 'New Survivors' : 'New Survivor'}>
                 {renderCharTable(survivorRows)}
-              </section>
+              </CxSection>
             )}
             {mapRows.length > 0 && (
-              <section id="maps" ref={setSectionRef('maps')}>
-                <h2 className="cx-sec">{mapRows.length > 1 ? 'New Maps' : 'New Map'}</h2>
+              <CxSection id="maps" view="release" setRef={setSectionRef} title={mapRows.length > 1 ? 'New Maps' : 'New Map'}>
                 <table className="cx-wikitable">
                   <thead><tr><th style={{ width: '220px' }}>Map</th><th>Realm</th></tr></thead>
                   <tbody>
@@ -14977,7 +15039,7 @@ const MapLayoutModal = ({ map, onClose, noteValue = '', onNoteChange }) => {
                     ))}
                   </tbody>
                 </table>
-              </section>
+              </CxSection>
             )}
             <div className="flex justify-between gap-2 mt-6">
               {prev ? <button type="button" className="cx-alink" onClick={() => onOpenRelease && onOpenRelease(prev)}>← {prev.name}</button> : <span />}
@@ -15060,8 +15122,11 @@ const MapLayoutModal = ({ map, onClose, noteValue = '', onNoteChange }) => {
         { id: 'notes', label: 'Notes' },
       ];
       const scrollToSection = (id) => {
-        const node = sectionEls.current[id];
-        if (node && node.scrollIntoView) node.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        try { window.dispatchEvent(new CustomEvent('cx-expand-section', { detail: id })); } catch (e) {}
+        window.setTimeout(() => {
+          const node = sectionEls.current[id];
+          if (node && node.scrollIntoView) node.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }, 60);
       };
       const setSectionRef = (id) => (node) => {
         if (node) sectionEls.current[id] = node;
@@ -15072,6 +15137,7 @@ const MapLayoutModal = ({ map, onClose, noteValue = '', onNoteChange }) => {
       }, [realm.id]);
       useEffect(() => {
         if (!scrollSection) return undefined;
+        try { window.dispatchEvent(new CustomEvent('cx-expand-section', { detail: scrollSection })); } catch (e) {}
         const timer = window.setTimeout(() => {
           const node = sectionEls.current[scrollSection];
           if (node && node.scrollIntoView) node.scrollIntoView({ behavior: 'smooth', block: 'start' });
@@ -15126,15 +15192,13 @@ const MapLayoutModal = ({ map, onClose, noteValue = '', onNoteChange }) => {
                 </table>
               </aside>
             </div>
-            <section id="overview" ref={setSectionRef('overview')}>
-              <h2 className="cx-sec">Overview</h2>
+            <CxSection id="overview" view="realm" setRef={setSectionRef} title="Overview" collapsible={false}>
               <p>{realm.name} is one of the realms of the Entity's world in <i>Dead by Daylight</i>. It contains {mapCount} playable map{mapCount === 1 ? '' : 's'}{matchedReleases.length > 0 ? <span>, first appearing alongside {matchedReleases.map((rel, idx) => (
                 <span key={rel.id}>{idx > 0 && ', '}<button type="button" className="cx-alink" onClick={() => onOpenRelease && onOpenRelease(rel)}>{rel.name}</button></span>
               ))}</span> : null}.</p>
-            </section>
+            </CxSection>
             {realmMaps.length > 0 && (
-              <section id="maps" ref={setSectionRef('maps')}>
-                <h2 className="cx-sec">Maps</h2>
+              <CxSection id="maps" view="realm" setRef={setSectionRef} title="Maps">
                 <table className="cx-wikitable">
                   <thead><tr><th style={{ width: '320px' }}>Map</th><th>Description</th></tr></thead>
                   <tbody>
@@ -15151,11 +15215,10 @@ const MapLayoutModal = ({ map, onClose, noteValue = '', onNoteChange }) => {
                     ))}
                   </tbody>
                 </table>
-              </section>
+              </CxSection>
             )}
             {alongsideRows.length > 0 && (
-              <section id="characters" ref={setSectionRef('characters')}>
-                <h2 className="cx-sec">Introduced alongside</h2>
+              <CxSection id="characters" view="realm" setRef={setSectionRef} title="Introduced alongside">
                 <p className="cx-hatnote">Killers and Survivors introduced in the same releases as this realm's maps - not necessarily native to it.</p>
                 <table className="cx-wikitable">
                   <thead><tr><th style={{ width: '220px' }}>Character</th><th>How they entered the Fog</th></tr></thead>
@@ -15172,11 +15235,10 @@ const MapLayoutModal = ({ map, onClose, noteValue = '', onNoteChange }) => {
                     ))}
                   </tbody>
                 </table>
-              </section>
+              </CxSection>
             )}
             {matchedReleases.length > 0 && (
-              <section id="chronicle" ref={setSectionRef('chronicle')}>
-                <h2 className="cx-sec">Chronicle</h2>
+              <CxSection id="chronicle" view="realm" setRef={setSectionRef} title="Chronicle">
                 <table className="cx-wikitable">
                   <thead><tr><th style={{ width: '220px' }}>Release</th><th>Date</th></tr></thead>
                   <tbody>
@@ -15188,17 +15250,16 @@ const MapLayoutModal = ({ map, onClose, noteValue = '', onNoteChange }) => {
                     ))}
                   </tbody>
                 </table>
-              </section>
+              </CxSection>
             )}
-            <section id="notes" ref={setSectionRef('notes')}>
-              <h2 className="cx-sec">Notes</h2>
+            <CxSection id="notes" view="realm" setRef={setSectionRef} title="Notes">
               <NotesEditor
                 title="Realm Notes"
                 value={noteValue}
                 onChange={onNoteChange}
                 placeholder="Loop routes, tile notes, or personal reminders for this realm..."
               />
-            </section>
+            </CxSection>
             <div className="cx-cats">
               <span>Categories:</span>
               <button type="button" className="cx-alink" onClick={onOpenList}>Realms</button>
@@ -15292,8 +15353,11 @@ const MapLayoutModal = ({ map, onClose, noteValue = '', onNoteChange }) => {
       const fogEntry = release && release.entry.fogEntry ? release.entry.fogEntry : '';
       const releaseDesc = release ? release.description : '';
       const scrollToSection = (id) => {
-        const node = sectionEls.current[id];
-        if (node && node.scrollIntoView) node.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        try { window.dispatchEvent(new CustomEvent('cx-expand-section', { detail: id })); } catch (e) {}
+        window.setTimeout(() => {
+          const node = sectionEls.current[id];
+          if (node && node.scrollIntoView) node.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }, 60);
       };
       const setSectionRef = (id) => (node) => {
         if (node) sectionEls.current[id] = node;
@@ -15304,6 +15368,7 @@ const MapLayoutModal = ({ map, onClose, noteValue = '', onNoteChange }) => {
       }, [character.id]);
       useEffect(() => {
         if (!scrollSection) return undefined;
+        try { window.dispatchEvent(new CustomEvent('cx-expand-section', { detail: scrollSection })); } catch (e) {}
         const timer = window.setTimeout(() => {
           const node = sectionEls.current[scrollSection];
           if (node && node.scrollIntoView) node.scrollIntoView({ behavior: 'smooth', block: 'start' });
@@ -15429,18 +15494,16 @@ const MapLayoutModal = ({ map, onClose, noteValue = '', onNoteChange }) => {
               </aside>
             </div>
 
-            <section id="overview" ref={setSectionRef('overview')}>
-              <h2 className="cx-sec">Overview</h2>
+            <CxSection id="overview" view="character" setRef={setSectionRef} title="Overview" collapsible={false}>
               {fogEntry ? <p>{fogEntry}</p> : null}
               {character.power ? <p>{String(character.power).split('\n\n')[0]}</p> : null}
               {!isKiller && (
                 <p>Difficulty: <b>{fmtDiff(character.difficulty)}</b>. Teaches {teachables.length} personal perk{teachables.length === 1 ? '' : 's'}. See <button type="button" className="cx-alink" onClick={() => scrollToSection('perks')}>perks</button> for full descriptions.</p>
               )}
-            </section>
+            </CxSection>
 
             {isKiller && character.power && (
-              <section id="power" ref={setSectionRef('power')}>
-                <h2 className="cx-sec">Power: {guide?.powerName || 'Power'}</h2>
+              <CxSection id="power" view="character" setRef={setSectionRef} title={`Power: ${guide?.powerName || 'Power'}`}>
                 {guide && guide.tldr && (<p><b>TL;DR: </b>{guide.tldr}</p>)}
                 {guide && guide.powerBlurb && (<p>{guide.powerBlurb}</p>)}
                 {String(character.power).split('\n\n').map((para, idx) => <p key={idx}>{para}</p>)}
@@ -15466,12 +15529,11 @@ const MapLayoutModal = ({ map, onClose, noteValue = '', onNoteChange }) => {
                 {guide && guide.sources && guide.sources.length > 0 && (
                   <p style={{ color: 'var(--text-faint)', fontSize: '12px' }}>Guide sources: {guide.sources.map((s, i) => (<span key={i}>{i > 0 ? ' · ' : ''}<a href={s} target="_blank" rel="noreferrer">{guideSourceLabel(s)}</a></span>))} (verified Patch {guide.verifiedPatch || '10.1.1'}). See Settings for the full source list.</p>
                 )}
-              </section>
+              </CxSection>
             )}
 
             {teachables.length > 0 && (
-              <section id="perks" ref={setSectionRef('perks')}>
-                <h2 className="cx-sec">{character.name}'s Perks</h2>
+              <CxSection id="perks" view="character" setRef={setSectionRef} title={`${character.name}'s Perks`}>
                 <table className="cx-wikitable">
                   <caption>Table: the {teachables.length} teachable Perk{teachables.length === 1 ? '' : 's'} of {character.name}</caption>
                   <thead><tr><th style={{ width: '280px' }}>Perk</th><th>Effect</th></tr></thead>
@@ -15492,12 +15554,11 @@ const MapLayoutModal = ({ map, onClose, noteValue = '', onNoteChange }) => {
                     ))}
                   </tbody>
                 </table>
-              </section>
+              </CxSection>
             )}
 
             {killerAddons.length > 0 && (
-              <section id="addons" ref={setSectionRef('addons')}>
-                <h2 className="cx-sec">Add-ons</h2>
+              <CxSection id="addons" view="character" setRef={setSectionRef} title="Add-ons">
                 <table className="cx-wikitable">
                   <caption>Table: the {killerAddons.length} Add-ons of {guide?.powerName || 'this power'}</caption>
                   <thead><tr><th style={{ width: '250px' }}>Add-on</th><th>Rarity</th><th>Effect</th></tr></thead>
@@ -15516,26 +15577,23 @@ const MapLayoutModal = ({ map, onClose, noteValue = '', onNoteChange }) => {
                     })}
                   </tbody>
                 </table>
-              </section>
+              </CxSection>
             )}
 
             {character.lore && (
-              <section id="lore" ref={setSectionRef('lore')}>
-                <h2 className="cx-sec">Lore</h2>
+              <CxSection id="lore" view="character" setRef={setSectionRef} title="Lore">
                 {String(character.lore).split('\n\n').map((para, idx) => <p key={idx}>{para}</p>)}
-              </section>
+              </CxSection>
             )}
 
             {releaseDesc && (
-              <section id="chronicle" ref={setSectionRef('chronicle')}>
-                <h2 className="cx-sec">Chronicle</h2>
+              <CxSection id="chronicle" view="character" setRef={setSectionRef} title="Chronicle">
                 <p>{character.name} entered the fog on <b>{releaseDate}</b> with {chapterNumber ? <span>CHAPTER {chapterNumber}: </span> : null}<button type="button" className="cx-alink" onClick={onOpenTimeline}>{releaseChapter}</button>, {releaseDesc.charAt(0).toLowerCase() + releaseDesc.slice(1)}</p>
-              </section>
+              </CxSection>
             )}
 
             {cosmeticsEntries.length > 0 && (
-              <section id="cosmetics" ref={setSectionRef('cosmetics')}>
-                <h2 className="cx-sec">Cosmetics</h2>
+              <CxSection id="cosmetics" view="character" setRef={setSectionRef} title="Cosmetics">
                 <div
                   ref={cosmeticsSectionRef}
                   data-smoke-cosmetics={character.id}
@@ -15554,19 +15612,18 @@ const MapLayoutModal = ({ map, onClose, noteValue = '', onNoteChange }) => {
                     </div>
                   ))}
                 </div>
-              </section>
+              </CxSection>
             )}
 
             {isKiller && (
-              <section id="notes" ref={setSectionRef('notes')}>
-                <h2 className="cx-sec">Notes</h2>
+              <CxSection id="notes" view="character" setRef={setSectionRef} title="Notes">
                 <NotesEditor
                   title="Killer Notes"
                   value={noteValue}
                   onChange={onNoteChange}
                   placeholder="Matchups, addon ideas, macro notes, or personal reminders for this killer..."
                 />
-              </section>
+              </CxSection>
             )}
 
             <div className="cx-cats">
