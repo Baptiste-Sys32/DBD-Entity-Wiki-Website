@@ -840,6 +840,10 @@
       .cx-toc { max-width: 100%; }
       .cx-infobox td { overflow-wrap: break-word; }
     }
+    /* Phase 4 — narrow tier: restore side infobox where there is room (Minerva ≥720px float) */
+    @media (min-width: 720px) and (max-width: 860px) {
+      .cx-article .cx-leadgrid { grid-template-columns: 1fr 280px; gap: 24px; }
+    }
     /* Phase 2 — hamburger drawer (Minerva-style navigation drawer) */
     .cx-hamb {
       width: 44px; height: 44px; flex-shrink: 0;
