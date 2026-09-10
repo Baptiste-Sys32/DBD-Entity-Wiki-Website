@@ -24,6 +24,7 @@
     "verify:data-contracts": "node scripts/verify-data-contracts.js",
     "release:summary": "node scripts/generate-release-summary.js",
     "build:data": "node scripts/build-data.js",
+    "build:sitemap": "node scripts/build-sitemap.js",
     "check:data": "node scripts/normalize-images.js --check && node scripts/build-data.js --check && node scripts/audit-cosmetics.js && node scripts/verify-teachables.js && node scripts/verify-perk-descriptions.js && node scripts/verify-data-contracts.js",
     "test": "echo \"Error: no test specified\" && exit 1",
     "test:smoke": "python3 scripts/smoke-test.py",

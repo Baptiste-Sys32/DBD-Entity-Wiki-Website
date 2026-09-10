@@ -4,63 +4,180 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Privacy Policy - The Entity's Wiki</title>
+  <meta name="description" content="Privacy Policy for The Entity's Wiki, a free fan-made Dead by Daylight database. No accounts, no tracking, no ads - your data stays on your device.">
+  <link rel="canonical" href="https://entity-wiki.pages.dev/privacy-policy.html">
+  <meta name="theme-color" content="#0e0d0c">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="The Entity's Wiki">
+  <meta property="og:title" content="Privacy Policy - The Entity's Wiki">
+  <meta property="og:description" content="No accounts, no tracking, no ads. How The Entity's Wiki handles your data.">
+  <meta property="og:url" content="https://entity-wiki.pages.dev/privacy-policy.html">
+  <meta property="og:image" content="https://entity-wiki.pages.dev/assets/og-cover.png">
+  <link rel="icon" type="image/png" href="./assets/favicon.png">
   <style>
-    body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; max-width: 800px; margin: 0 auto; padding: 2rem; line-height: 1.7; color: #1a1a1a; background: #fafafa; }
-    h1 { font-size: 1.8rem; border-bottom: 2px solid #38bdf8; padding-bottom: 0.5rem; }
-    h2 { font-size: 1.3rem; margin-top: 2rem; color: #334155; }
-    p, li { color: #475569; }
-    a { color: #38bdf8; }
-    .updated { color: #94a3b8; font-size: 0.9rem; }
+    :root {
+      --page: #0e0d0c;
+      --panel: #191715;
+      --stroke: rgba(232, 229, 223, 0.14);
+      --text: #e8e5df;
+      --soft: #b5afa4;
+      --faint: #8f8a80;
+      --link: #6fa8ff;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      background: var(--page);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      line-height: 1.7;
+      font-size: 15.5px;
+    }
+    .site-head {
+      border-bottom: 1px solid var(--stroke);
+      background: #050505;
+    }
+    .site-head-inner {
+      max-width: 880px;
+      margin: 0 auto;
+      padding: 12px 20px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .site-head-inner img { width: 100px; height: auto; display: block; }
+    .site-head-inner .brand { font-family: Georgia, "Times New Roman", serif; font-weight: 700; font-size: 17px; }
+    .site-head-inner .brand small { display: block; font-family: inherit; font-weight: 400; font-size: 10px; letter-spacing: 0.22em; color: var(--faint); }
+    .site-head-inner .back { margin-left: auto; font-size: 13px; }
+    a { color: var(--link); }
+    a:hover { text-decoration: underline; }
+    main {
+      max-width: 880px;
+      margin: 0 auto;
+      padding: 28px 20px 80px;
+    }
+    .crumbs { font-size: 12.5px; color: var(--faint); margin-bottom: 6px; }
+    .crumbs a { text-decoration: none; }
+    h1 {
+      font-family: Georgia, "Times New Roman", serif;
+      font-weight: 700;
+      font-size: 34px;
+      line-height: 1.2;
+      margin: 0 0 4px;
+    }
+    .hatnote { color: var(--faint); font-style: italic; font-size: 13.5px; margin: 0 0 20px; }
+    .updated { color: var(--faint); font-size: 13px; }
+    .toc {
+      border: 1px solid var(--stroke);
+      background: var(--panel);
+      padding: 12px 18px;
+      font-size: 13.5px;
+      margin: 22px 0 8px;
+    }
+    .toc p { margin: 0 0 6px; font-weight: 700; font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--soft); }
+    .toc ol { margin: 0; padding-left: 20px; }
+    .toc li { margin: 2px 0; }
+    .toc a { text-decoration: none; }
+    h2 {
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 21px;
+      margin: 34px 0 8px;
+      padding-bottom: 6px;
+      border-bottom: 1px solid var(--stroke);
+    }
+    p { margin: 10px 0; color: var(--text); }
+    li { margin: 4px 0; color: var(--text); }
+    strong { color: #fff; }
+    .cats {
+      margin-top: 40px;
+      border: 1px solid var(--stroke);
+      padding: 12px 16px;
+      font-size: 12.5px;
+      color: var(--faint);
+    }
+    @media (max-width: 560px) {
+      h1 { font-size: 27px; }
+      main { padding: 20px 14px 64px; }
+    }
   </style>
 </head>
 <body>
-  <h1>Privacy Policy</h1>
-  <p class="updated">Last updated: September 6, 2026</p>
+  <header class="site-head">
+    <div class="site-head-inner">
+      <img src="./assets/wiki-logo.png" alt="The Entity's Wiki logo">
+      <span class="brand">The Entity's Wiki<small>DEAD BY DAYLIGHT</small></span>
+      <a class="back" href="./index.html">&larr; Main page</a>
+    </div>
+  </header>
+  <main>
+    <p class="crumbs"><a href="./index.html">Main page</a> &rsaquo; Privacy Policy</p>
+    <h1>Privacy Policy</h1>
+    <p class="hatnote">How this fan-made Dead by Daylight companion handles your data.</p>
+    <p class="updated">Last updated: September 6, 2026</p>
 
-  <p><strong>The Entity's Wiki</strong> is a free, fan-made companion for Dead by Daylight, available as a website and as an Android application. Your privacy is important to us. This policy explains what data the website and the app collect, use, and share.</p>
+    <nav class="toc" aria-label="Contents">
+      <p>Contents</p>
+      <ol>
+        <li><a href="#collect">Information We Collect</a></li>
+        <li><a href="#device">Data Stored on Your Device</a></li>
+        <li><a href="#internet">Internet Access</a></li>
+        <li><a href="#third-party">Third-Party Services</a></li>
+        <li><a href="#children">Children's Privacy</a></li>
+        <li><a href="#sharing">Sharing and Disclosure</a></li>
+        <li><a href="#build-sharing">Build Sharing</a></li>
+        <li><a href="#changes">Changes to This Policy</a></li>
+        <li><a href="#contact">Contact</a></li>
+        <li><a href="#disclaimer">Disclaimer</a></li>
+      </ol>
+    </nav>
 
-  <h2>1. Information We Collect</h2>
-  <p><strong>We do not collect any personal information.</strong></p>
-  <p>There is no account, login, or registration. No personal data - including your name, email address, location, or device identifiers - is collected by us, transmitted to us, or stored on any server we control.</p>
-  <p>We do not run analytics, advertising, tracking, or crash-reporting services on the website or in the app.</p>
+    <p><strong>The Entity's Wiki</strong> is a free, fan-made companion for Dead by Daylight, available as a website and as an Android application. Your privacy is important to us. This policy explains what data the website and the app collect, use, and share.</p>
 
-  <h2>2. Data Stored on Your Device</h2>
-  <p>Both the website and the app store the following data locally on your device using your browser's local storage (or the app's local storage):</p>
-  <ul>
-    <li>Saved builds and loadouts you create</li>
-    <li>Match log entries you record</li>
-    <li>Prestige and progression tracking data</li>
-    <li>Settings and preferences, such as theme and navigation layout</li>
-    <li>Wordle-style game progress</li>
-  </ul>
-  <p>This data never leaves your device. It is not uploaded, synced, or shared with any server. Clearing your browser data or uninstalling the app deletes it.</p>
-  <p>Note for website visitors in private/incognito browsing modes or with storage quotas exceeded: saved data may not persist, and the site will show a warning when a save fails.</p>
+    <h2 id="collect">1. Information We Collect</h2>
+    <p><strong>We do not collect any personal information.</strong></p>
+    <p>There is no account, login, or registration. No personal data - including your name, email address, location, or device identifiers - is collected by us, transmitted to us, or stored on any server we control.</p>
+    <p>We do not run analytics, advertising, tracking, or crash-reporting services on the website or in the app.</p>
 
-  <h2>3. Internet Access</h2>
-  <p><strong>The website</strong> requires an internet connection to load. Game data, images, and content are delivered as static files from Cloudflare Pages (and may be served from Cloudflare's CDN). The website also displays community content (for example, tier lists and guides) that references publicly available resources from otzdarva.com; when you view that content, your browser requests images or pages directly from those third-party origins. Cloudflare and those third parties may receive your IP address and standard request headers as with any website visit. We do not control and are not responsible for third-party privacy practices.</p>
-  <p><strong>The Android app</strong> does not require an internet connection to function. All game data, images, and content are bundled within the app itself.</p>
+    <h2 id="device">2. Data Stored on Your Device</h2>
+    <p>Both the website and the app store the following data locally on your device using your browser's local storage (or the app's local storage):</p>
+    <ul>
+      <li>Saved builds and loadouts you create</li>
+      <li>Match log entries you record</li>
+      <li>Prestige and progression tracking data</li>
+      <li>Settings and preferences, such as theme and navigation layout</li>
+      <li>Wordle-style game progress</li>
+    </ul>
+    <p>This data never leaves your device. It is not uploaded, synced, or shared with any server. Clearing your browser data or uninstalling the app deletes it.</p>
+    <p>Note for website visitors in private/incognito browsing modes or with storage quotas exceeded: saved data may not persist, and the site will show a warning when a save fails.</p>
 
-  <h2>4. Third-Party Services</h2>
-  <p>We do not integrate any third-party analytics, advertising, tracking, or crash-reporting services. The website is hosted on Cloudflare Pages; the app is distributed through Google Play, whose own privacy practices apply to the store and its services.</p>
+    <h2 id="internet">3. Internet Access</h2>
+    <p><strong>The website</strong> requires an internet connection to load. Game data, images, and content are delivered as static files from Cloudflare Pages (and may be served from Cloudflare's CDN). The website also displays community content (for example, tier lists and guides) that references publicly available resources from otzdarva.com; when you view that content, your browser requests images or pages directly from those third-party origins. Cloudflare and those third parties may receive your IP address and standard request headers as with any website visit. We do not control and are not responsible for third-party privacy practices.</p>
+    <p><strong>The Android app</strong> does not require an internet connection to function. All game data, images, and content are bundled within the app itself.</p>
 
-  <h2>5. Children's Privacy</h2>
-  <p>We do not knowingly collect any personal information from anyone, including children under 13. Since no data is collected by us at all, there is no risk of children's data being gathered by us.</p>
+    <h2 id="third-party">4. Third-Party Services</h2>
+    <p>We do not integrate any third-party analytics, advertising, tracking, or crash-reporting services. The website is hosted on Cloudflare Pages; the app is distributed through Google Play, whose own privacy practices apply to the store and its services.</p>
 
-  <h2>6. Sharing and Disclosure</h2>
-  <p>Since we do not collect any data, there is no data to share, sell, or disclose to any third parties.</p>
+    <h2 id="children">5. Children's Privacy</h2>
+    <p>We do not knowingly collect any personal information from anyone, including children under 13. Since no data is collected by us at all, there is no risk of children's data being gathered by us.</p>
 
-  <h2>7. Build Sharing</h2>
-  <p>The app and website allow you to generate shareable build codes. These codes are plain text strings that encode loadout information, such as perks, items, add-ons, and offerings. Sharing a build code is entirely at your discretion. Nothing is automatically shared or transmitted anywhere.</p>
+    <h2 id="sharing">6. Sharing and Disclosure</h2>
+    <p>Since we do not collect any data, there is no data to share, sell, or disclose to any third parties.</p>
 
-  <h2>8. Changes to This Policy</h2>
-  <p>We may update this Privacy Policy from time to time. Any changes will be reflected by updating the "Last updated" date at the top of this page. We encourage you to review this policy periodically.</p>
+    <h2 id="build-sharing">7. Build Sharing</h2>
+    <p>The app and website allow you to generate shareable build codes. These codes are plain text strings that encode loadout information, such as perks, items, add-ons, and offerings. Sharing a build code is entirely at your discretion. Nothing is automatically shared or transmitted anywhere.</p>
 
-  <h2>9. Contact</h2>
-  <p>If you have any questions or concerns about this Privacy Policy, please contact us at:</p>
-  <p><strong>Email:</strong> baptistedeparday@gmail.com</p>
+    <h2 id="changes">8. Changes to This Policy</h2>
+    <p>We may update this Privacy Policy from time to time. Any changes will be reflected by updating the "Last updated" date at the top of this page. We encourage you to review this policy periodically.</p>
 
-  <h2 id="disclaimer">10. Disclaimer</h2>
-  <p>The Entity's Wiki is a fan-made project and is not affiliated with, endorsed by, or connected to Behaviour Interactive Inc. Dead by Daylight and all related characters, names, and imagery are trademarks of Behaviour Interactive Inc.</p>
-  <p>Community content (tier lists, builds, and guides) is sourced from Otzdarva and used with attribution.</p>
+    <h2 id="contact">9. Contact</h2>
+    <p>If you have any questions or concerns about this Privacy Policy, please contact us at:</p>
+    <p><strong>Email:</strong> baptistedeparday@gmail.com</p>
+
+    <h2 id="disclaimer">10. Disclaimer</h2>
+    <p>The Entity's Wiki is a fan-made project and is not affiliated with, endorsed by, or connected to Behaviour Interactive Inc. Dead by Daylight and all related characters, names, and imagery are trademarks of Behaviour Interactive Inc.</p>
+    <p>Community content (tier lists, builds, and guides) is sourced from Otzdarva and used with attribution.</p>
+
+    <div class="cats"><span>Categories:</span> <a href="./index.html">Main page</a> &middot; Site policies</div>
+  </main>
 </body>
 </html>

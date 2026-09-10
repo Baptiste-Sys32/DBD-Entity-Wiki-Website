@@ -18,6 +18,17 @@
   <meta name="twitter:title" content="The Entity's Wiki - Dead by Daylight Database">
   <meta name="twitter:description" content="Killers, survivors, perks, add-ons, cosmetics, builds, tier lists and lore for Dead by Daylight - a free fan-made companion.">
   <meta name="twitter:image" content="https://entity-wiki.pages.dev/assets/og-cover.png">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "The Entity's Wiki",
+    "alternateName": "DBD Entity Wiki",
+    "url": "https://entity-wiki.pages.dev/",
+    "description": "Free fan-made Dead by Daylight database: killers, survivors, perks, add-ons, items, offerings, maps, cosmetics, builds, tier lists and lore.",
+    "inLanguage": "en"
+  }
+  </script>
   <link rel="icon" type="image/png" href="./assets/favicon.png">
   <script src="./vendor/react.production.min.js"></script>
   <script src="./vendor/react-dom.production.min.js"></script>
@@ -15441,6 +15452,37 @@ const MapLayoutModal = ({ map, onClose, noteValue = '', onNoteChange }) => {
           window.Capacitor.Plugins.App.exitApp();
         }
       };
+      useEffect(() => {
+        try {
+          const suffix = " - The Entity's Wiki";
+          const viewLabels = {
+            killers: 'Killers', survivors: 'Survivors', perks: 'Perks', items: 'Items & Addons',
+            offerings: 'Offerings', realms: 'Realms', timeline: 'Timeline', glossary: 'Glossary',
+            gameIcons: 'Game Icons', cosmetics: 'Cosmetics', communityContent: 'Community',
+            settings: 'Settings', builds: 'Builds', buildLab: 'Build Lab', roulette: 'Shuffle',
+            worldle: 'Wordle', prestige: 'Prestige', progression: 'Progression', matches: 'Matches',
+            favorites: 'Favorites'
+          };
+          let title = "The Entity's Wiki - Dead by Daylight Database";
+          const id = viewContext.id;
+          if (id) {
+            const pools = [killers, survivors, perks, maps, realms, items, offerings];
+            let entry = null;
+            for (const pool of pools) {
+              entry = (pool || []).find(e => e && e.id === id) || null;
+              if (entry) break;
+            }
+            if (!entry && typeof TIMELINE_DATA !== 'undefined' && TIMELINE_DATA && TIMELINE_DATA.releases) {
+              entry = TIMELINE_DATA.releases.find(r => r && r.id === id) || null;
+            }
+            if (entry && entry.name) title = `${entry.name}${suffix}`;
+            else if (viewLabels[currentView]) title = `${viewLabels[currentView]}${suffix}`;
+          } else if (viewLabels[currentView]) {
+            title = `${viewLabels[currentView]}${suffix}`;
+          }
+          document.title = title;
+        } catch (e) { /* keep default title */ }
+      }, [currentView, viewContext]);
       const [perkFilter, setPerkFilter] = useState(initialUiState.perkFilter || 'All');
       const [perkSearch, setPerkSearch] = useState(initialUiState.perkSearch || '');
       const [buildSeed, setBuildSeed] = useState(null);
