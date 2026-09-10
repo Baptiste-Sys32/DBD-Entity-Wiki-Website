@@ -1676,6 +1676,12 @@
     .cx-star button { background: none; border: 0; color: var(--text-faint); font-size: 16px; cursor: pointer; padding: 2px 6px; line-height: 1; font-family: inherit; }
     .cx-star button:hover { color: var(--text); }
     .cx-star button.cx-star-on { color: var(--text); }
+    th.cx-sortth { padding: 0; }
+    th.cx-sortth > button { display: flex; align-items: center; gap: 6px; width: 100%; background: none; border: 0; margin: 0; padding: 8px 12px; font: inherit; font-weight: 600; font-size: 13px; color: var(--text); cursor: pointer; text-align: left; }
+    th.cx-sortth > button:hover { color: var(--link); }
+    .cx-sortdir { font-size: 10px; color: var(--link); line-height: 1; }
+    th.cx-sortth > button .cx-sortdir--hint { color: var(--text-faint); opacity: 0; }
+    th.cx-sortth > button:hover .cx-sortdir--hint { opacity: 1; }
     .cx-compare-dot { color: var(--link); font-size: 10px; vertical-align: middle; margin-left: 4px; }
     table.cx-wikitable tr.cx-row-compare td { background: rgba(111, 168, 255, 0.07); }
     td.cx-perkcell {
@@ -7172,10 +7178,37 @@
         </div>
       );
     };
+    const SortTh = ({ label, sortKey, activeKey, dir, defaultDir = 'asc', onSort }) => {
+      const isActive = activeKey === sortKey;
+      const shownDir = isActive ? dir : defaultDir;
+      return (
+        <th className="cx-sortth" aria-sort={isActive ? (dir === 'asc' ? 'ascending' : 'descending') : 'none'}>
+          <button
+            type="button"
+            onClick={() => onSort(sortKey, defaultDir)}
+            aria-label={`Sort by ${label}${isActive ? (dir === 'asc' ? ' (ascending)' : ' (descending)') : ''}`}
+            title={`Sort by ${label}`}
+          >
+            <span>{label}</span>
+            {isActive
+              ? <span className="cx-sortdir" aria-hidden="true">{dir === 'asc' ? '▲' : '▼'}</span>
+              : <span className="cx-sortdir cx-sortdir--hint" aria-hidden="true">{defaultDir === 'asc' ? '▲' : '▼'}</span>}
+          </button>
+        </th>
+      );
+    };
     const ListView = ({ data, type, filterOptions, activeFilter, setActiveFilter, allPerks = [], setView, onPerkSelect, initialSearch = '', onSearchChange, buildsByOwner = {}, onCreateBuildSeed, onBack, comparePerks = [], onPerkLongPress, favoritePerks = [], onToggleFavorite, onPerkTap, onPerkPreview, onShowLore, onShowPower, onViewProfile, allCharacters = [], settings = {} }) => {
       const scrollRef = useRef(null);
       const [localSearch, setLocalSearch] = useState(initialSearch || '');
-      const [sortBy, setSortBy] = useState('name_asc');
+      const DEFAULT_SORT = { key: 'name', dir: 'asc' };
+      const [sort, setSort] = useState(DEFAULT_SORT);
+      const handleSort = (key, defaultDir) => {
+        setSort(prev => {
+          if (prev.key !== key) return { key, dir: defaultDir };
+          if (prev.dir === defaultDir) return { key, dir: defaultDir === 'asc' ? 'desc' : 'asc' };
+          return DEFAULT_SORT.key === key ? { ...DEFAULT_SORT } : { key: DEFAULT_SORT.key, dir: DEFAULT_SORT.dir };
+        });
+      };
       const scrollToTop = () => {
         scrollRef.current?.scrollTo({ top: 0, behavior: 'smooth' });
       };
@@ -7257,22 +7290,46 @@
           return searchMatch && filterMatch;
         });
         if (isCharacterList) {
+          const dirMul = sort.dir === 'asc' ? 1 : -1;
+          const getPowerName = (item) => {
+            const g = item && item.name && typeof KILLER_GUIDES !== 'undefined' ? KILLER_GUIDES[item.name] : null;
+            return (g && g.powerName) || '';
+          };
+          const getSpeedNum = (item) => {
+            const s = item && item.name && typeof KILLER_STATS !== 'undefined' && KILLER_STATS[item.name] ? KILLER_STATS[item.name].speed : '';
+            const m = String(s || '').match(/([\d.]+)/);
+            return m ? parseFloat(m[1]) : null;
+          };
+          const getReleaseKey = (item) => (typeof RELEASE_DATE_MAP !== 'undefined' && RELEASE_DATE_MAP[item.name]) || '';
           result = [...result].sort((a, b) => {
-            switch (sortBy) {
-              case 'name_asc':
-                return stripThe(a.name).localeCompare(stripThe(b.name));
-              case 'name_desc':
-                return stripThe(b.name).localeCompare(stripThe(a.name));
-              case 'realname_asc':
-                return (a.realName || a.name).localeCompare(b.realName || b.name);
-              case 'realname_desc':
-                return (b.realName || b.name).localeCompare(a.realName || a.name);
-              case 'release_asc':
-                return (RELEASE_DATE_MAP[a.name] || '9999').localeCompare(RELEASE_DATE_MAP[b.name] || '9999');
-              case 'release_desc':
-                return (RELEASE_DATE_MAP[b.name] || '0000').localeCompare(RELEASE_DATE_MAP[a.name] || '0000');
+            switch (sort.key) {
+              case 'power': {
+                const pa = getPowerName(a);
+                const pb = getPowerName(b);
+                if (!pa && !pb) return 0;
+                if (!pa) return 1;
+                if (!pb) return -1;
+                return dirMul * pa.localeCompare(pb);
+              }
+              case 'chapter': {
+                const ra = getReleaseKey(a);
+                const rb = getReleaseKey(b);
+                if (!ra && !rb) return 0;
+                if (!ra) return 1;
+                if (!rb) return -1;
+                return dirMul * ra.localeCompare(rb);
+              }
+              case 'speed': {
+                const sa = getSpeedNum(a);
+                const sb = getSpeedNum(b);
+                if (sa === null && sb === null) return 0;
+                if (sa === null) return 1;
+                if (sb === null) return -1;
+                return dirMul * (sa - sb);
+              }
+              case 'name':
               default:
-                return 0;
+                return dirMul * stripThe(a.name).localeCompare(stripThe(b.name));
             }
           });
         }
@@ -7280,7 +7337,7 @@
           result = [...result].sort((a, b) => stripThe(a.name).localeCompare(stripThe(b.name)));
         }
         return result;
-      }, [data, localSearch, effectiveFilter, sortBy, isCharacterList, favoritePerks, isPerkList]);
+      }, [data, localSearch, effectiveFilter, sort, isCharacterList, favoritePerks, isPerkList]);
       return (
         <div ref={scrollRef} className="flex flex-col h-full pt-6 pb-32 overflow-y-auto custom-scrollbar">
           <div className="cx-listhead">
@@ -7300,14 +7357,6 @@
           </WikiHeaderSearchPortal>
           {isCharacterList && (
             <div className="max-w-3xl mx-auto flex justify-center gap-2 mb-2 px-6">
-              <select value={sortBy} onChange={e => setSortBy(e.target.value)} className="themed-select compact text-sm">
-                <option value="name_asc">Name A-Z</option>
-                <option value="name_desc">Name Z-A</option>
-                <option value="realname_asc">Real Name A-Z</option>
-                <option value="realname_desc">Real Name Z-A</option>
-                <option value="release_asc">Release ↑ (Oldest)</option>
-                <option value="release_desc">Release ↓ (Newest)</option>
-              </select>
               <span className="text-[11px] text-zinc-500 uppercase tracking-wider self-center">{filtered.length} {type.toLowerCase()}</span>
             </div>
           )}
@@ -7336,10 +7385,12 @@
             <table className="cx-wikitable">
             {isCharacterList ? (
               <thead><tr>
-                <th>Character</th>
-                {type === 'Killers' ? <th>Power</th> : null}
-                <th>Chapter</th>
-                <th>{type === 'Killers' ? 'Movement speed' : 'Teachables'}</th>
+                <SortTh label="Character" sortKey="name" activeKey={sort.key} dir={sort.dir} defaultDir="asc" onSort={handleSort} />
+                {type === 'Killers' ? <SortTh label="Power" sortKey="power" activeKey={sort.key} dir={sort.dir} defaultDir="asc" onSort={handleSort} /> : null}
+                <SortTh label="Chapter" sortKey="chapter" activeKey={sort.key} dir={sort.dir} defaultDir="asc" onSort={handleSort} />
+                {type === 'Killers'
+                  ? <SortTh label="Movement speed" sortKey="speed" activeKey={sort.key} dir={sort.dir} defaultDir="desc" onSort={handleSort} />
+                  : <th>Teachables</th>}
                 <th aria-hidden="true"></th>
               </tr></thead>
             ) : (
@@ -11390,7 +11441,15 @@
       const [expandedId, setExpandedId] = useState(null);
       const [mode, setMode] = useState(initialMode);
       const [filterType, setFilterType] = useState('All');
-      const [sortBy, setSortBy] = useState('rarity');
+      const DEFAULT_ITEM_SORT = { key: 'rarity', dir: 'desc' };
+      const [itemSort, setItemSort] = useState(DEFAULT_ITEM_SORT);
+      const handleItemSort = (key, defaultDir) => {
+        setItemSort(prev => {
+          if (prev.key !== key) return { key, dir: defaultDir };
+          if (prev.dir === defaultDir) return { key, dir: defaultDir === 'asc' ? 'desc' : 'asc' };
+          return { ...DEFAULT_ITEM_SORT };
+        });
+      };
       const itemCardRefs = useRef({});
       const killerCardRefs = useRef({});
       const addonRefs = useRef({});
@@ -11442,10 +11501,13 @@
           const iAddons = survivorAddons.filter(a => a.itemType === item.itemType);
           return iAddons.some(a => a.name.toLowerCase().includes(term));
         });
-        if (sortBy === 'rarity') result = result.slice().sort((a, b) => getRarityOrder(b.rarity) - getRarityOrder(a.rarity));
-        else if (sortBy === 'name') result = result.slice().sort((a, b) => a.name.localeCompare(b.name));
+        if (itemSort.key === 'rarity') {
+          const dirMul = itemSort.dir === 'asc' ? 1 : -1;
+          result = result.slice().sort((a, b) => dirMul * (getRarityOrder(a.rarity) - getRarityOrder(b.rarity)) || a.name.localeCompare(b.name));
+        }
+        else if (itemSort.key === 'name') result = result.slice().sort((a, b) => (itemSort.dir === 'asc' ? 1 : -1) * a.name.localeCompare(b.name));
         return result;
-      }, [bloodwebItems, survivorAddons, search, filterType, sortBy]);
+      }, [bloodwebItems, survivorAddons, search, filterType, itemSort]);
       const filteredKillers = useMemo(() => {
         const term = search.toLowerCase();
         if (!term) return killers || [];
@@ -11544,10 +11606,6 @@
               <select value={filterType} onChange={e => setFilterType(e.target.value)} className="themed-select compact text-sm">
                 {itemTypes.map(t => <option key={t} value={t}>{t === 'All' ? 'All Types' : t.charAt(0).toUpperCase() + t.slice(1)}</option>)}
               </select>
-              <select value={sortBy} onChange={e => setSortBy(e.target.value)} className="themed-select compact text-sm">
-                <option value="rarity">Sort by Rarity</option>
-                <option value="name">Sort A-Z</option>
-              </select>
               <span className="text-[11px] text-zinc-500 uppercase tracking-wider self-center">{filteredItems.length} items</span>
             </div>
           )}
@@ -11555,7 +11613,7 @@
             {mode === 'survivor' && (
               filteredItems.length === 0 ? <div className="text-center text-zinc-500 mt-12">No items found.</div> :
               <table className="cx-wikitable">
-                <thead><tr><th>Item</th><th>Rarity</th><th>Effect</th><th aria-hidden="true"></th></tr></thead><tbody>
+                <thead><tr><SortTh label="Item" sortKey="name" activeKey={itemSort.key} dir={itemSort.dir} defaultDir="asc" onSort={handleItemSort} /><SortTh label="Rarity" sortKey="rarity" activeKey={itemSort.key} dir={itemSort.dir} defaultDir="desc" onSort={handleItemSort} /><th>Effect</th><th aria-hidden="true"></th></tr></thead><tbody>
                 {filteredItems.map(item => {
                   const isExpanded = expandedId === item.id;
                   const itemAddons = getAddonsForItemType(item.itemType);
