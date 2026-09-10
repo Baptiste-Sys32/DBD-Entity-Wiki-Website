@@ -817,6 +817,21 @@
     @media (max-width: 860px) {
       #wiki-header-search-slot { max-width: calc(100vw - 190px); }
     }
+    /* Phase 1 — tables: normal flow + sticky headers; fixed/dense tables get explicit scrollers */
+    @media (max-width: 860px) {
+      table.cx-wikitable > thead > tr > th {
+        position: sticky;
+        top: 64px;
+        z-index: 3;
+      }
+      .cx-wikitable .cx-wikitable > thead > tr > th { position: static; }
+      .cx-tablewrap { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+      .cx-tablewrap > table.cx-wikitable { min-width: 560px; }
+      .cx-tablewrap > table.cx-wikitable > thead > tr > th { position: static; }
+    }
+    @media (max-width: 480px) {
+      th.cx-sortth > button { min-height: 44px; }
+    }
 
     .light-mode {
       color-scheme: light;
@@ -11201,7 +11216,7 @@
               <div className="relative">
                 {/* Timeline line */}
                 {/* Chronicle table */}
-                <div>
+                <div className="cx-tablewrap">
                   <table className="cx-wikitable">
                     <thead><tr><th style={{ whiteSpace: 'nowrap', width: '150px' }}>Date</th><th style={{ width: '260px' }}>Release</th><th style={{ width: '110px' }}>Type</th><th>Summary</th></tr></thead>
                     <tbody>
@@ -11936,6 +11951,7 @@
           </div>
 <div className="pb-32 space-y-3 -mx-6 px-6">
             {filtered.length === 0 && <div className="text-center text-zinc-500 mt-12">No offerings found.</div>}
+            <div className="cx-tablewrap">
             <table className="cx-wikitable cx-offerings-table" style={{ tableLayout: 'fixed', width: '100%' }}>
             <thead><tr><th style={{ width: '300px' }}>Offering</th><th style={{ width: '90px' }}>Role</th><th style={{ width: '100px' }}>Rarity</th><th>Effect</th><th aria-hidden="true" style={{ width: '40px' }}></th></tr></thead><tbody>
             {filtered.map(offering => {
@@ -11973,6 +11989,7 @@
               );
             })}
             </tbody></table>
+            </div>
           </div>
         </div>
       );
@@ -15891,7 +15908,7 @@ const MapLayoutModal = ({ map, onClose, noteValue = '', onNoteChange }) => {
         if (!start) return;
         if (isAnyOverlayOpen) return;
         const target = e.target;
-        if (target && target.closest && target.closest('input, textarea, select, [data-no-swipe], .overflow-x-auto, .nav-scroll')) return;
+        if (target && target.closest && target.closest('input, textarea, select, [data-no-swipe], table.cx-wikitable, .overflow-x-auto, .nav-scroll')) return;
         const touchEnd = {
           x: e.changedTouches[0].clientX,
           y: e.changedTouches[0].clientY
