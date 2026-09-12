@@ -1,0 +1,66 @@
+name: Content Guardrails
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  guardrails:
+    name: Data gates + parity + smoke
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: the-entity-wiki
+    steps:
+      - name: Check out site repository
+        uses: actions/checkout@v4
+
+      # Peer checkout for parity-check. Works with the default token while both
+      # repos are visible to it; if the app repo is private, add a PAT with
+      # repo scope as APP_CHECKOUT_TOKEN and use it here instead.
+      - name: Check out app repository (parity peer)
+        uses: actions/checkout@v4
+        with:
+          repository: Baptiste-Sys32/DBD-Entity-Wiki-Android
+          path: dbd-app
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install Chrome (smoke test)
+        uses: browser-actions/setup-chrome@latest
+
+      - name: Install JS + Python deps
+        run: |
+          npm ci
+          pip install websockets
+
+      - name: Resolve Chrome binary
+        run: echo "CHROME_BIN=$(which google-chrome || which chrome || which chromium)" >> $GITHUB_ENV
+
+      - name: Data contract gates
+        run: npm run check:data
+
+      - name: Generated bundles up to date
+        run: node scripts/build-data.js --check
+
+      - name: Offline runtime audit
+        run: node scripts/verify-offline-runtime.js
+
+      - name: Smoke test (headless Chrome)
+        run: python3 scripts/smoke-test.py
+
+      - name: Cross-repo parity vs app
+        run: node scripts/parity-check.js --peer ../dbd-app/the-entity-wiki --json review/parity-report.json

@@ -30,6 +30,7 @@
     "test:smoke": "python3 scripts/smoke-test.py",
     "verify:content": "node scripts/normalize-images.js --check && node scripts/audit-cosmetics.js && node scripts/verify-teachables.js && node scripts/verify-perk-descriptions.js && node scripts/verify-data-contracts.js",
     "verify:offline": "node scripts/verify-offline-runtime.js",
+    "parity": "node scripts/parity-check.js",
     "sync": "npx cap sync android",
     "android:prepare-release-assets": "node scripts/prepare-android-release-assets.js",
     "android:copy": "npx cap copy android",
