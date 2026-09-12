@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-10T12:48:41.590Z",
+  "generatedAt": "2026-09-12T09:41:28.310Z",
   "metadata": {
     "scraperVersion": 2,
     "attribution": "Data sourced from Otzdarva web properties. Keep attribution when redistributing.",
@@ -7,47 +7,47 @@
       {
         "id": "home",
         "url": "https://otzdarva.com/",
-        "fetchedAt": "2026-09-10T12:48:41.590Z"
+        "fetchedAt": "2026-09-12T09:41:28.310Z"
       },
       {
         "id": "addonTierlist",
         "url": "https://otz-addon-tierlist.pages.dev/",
-        "fetchedAt": "2026-09-10T12:48:41.590Z"
+        "fetchedAt": "2026-09-12T09:41:28.310Z"
       },
       {
         "id": "buildsHome",
         "url": "https://otzdarva-builds.com/",
-        "fetchedAt": "2026-09-10T12:48:41.590Z"
+        "fetchedAt": "2026-09-12T09:41:28.310Z"
       },
       {
         "id": "buildsData",
         "url": "https://otzdarva-builds.com/data/builds.json",
-        "fetchedAt": "2026-09-10T12:48:41.590Z"
+        "fetchedAt": "2026-09-12T09:41:28.310Z"
       },
       {
         "id": "buildsScrape",
         "url": "https://otzdarva-builds.com/data/scrape.json",
-        "fetchedAt": "2026-09-10T12:48:41.590Z"
+        "fetchedAt": "2026-09-12T09:41:28.310Z"
       },
       {
         "id": "characterInfo",
         "url": "https://otzdarva.com/dbd/character-info",
-        "fetchedAt": "2026-09-10T12:48:41.590Z"
+        "fetchedAt": "2026-09-12T09:41:28.310Z"
       },
       {
         "id": "beginnerGuides",
         "url": "https://otzdarva.com/dbd/beginner-guides",
-        "fetchedAt": "2026-09-10T12:48:41.590Z"
+        "fetchedAt": "2026-09-12T09:41:28.310Z"
       },
       {
         "id": "tierlists",
         "url": "https://otzdarva.com/dbd/tierlists",
-        "fetchedAt": "2026-09-10T12:48:41.590Z"
+        "fetchedAt": "2026-09-12T09:41:28.310Z"
       },
       {
         "id": "killerGuides",
         "url": "https://otzdarva.com/dbd/killer-guides",
-        "fetchedAt": "2026-09-10T12:48:41.590Z"
+        "fetchedAt": "2026-09-12T09:41:28.310Z"
       }
     ],
     "stats": {
