@@ -1,8 +1,11 @@
 #!/usr/bin/env python3
 
-# Generates web/assets/og-cover.png (1200x630 Discord/link embed card).
+# Generates web/assets/og-cover-v2.png (1200x630 Discord/link embed card).
 # Usage: python3 scripts/build-og-cover.py
 # Counts are read from content/database.json so regenerating refreshes them.
+# NOTE: keep the -v2 filename in sync with the og:image/twitter:image meta
+# tags. The versioned name exists to bust Discord's image-proxy cache, which
+# otherwise keeps serving stale bytes under an unchanged URL.
 
 import json
 import math
@@ -14,7 +17,7 @@ ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 WEB = os.path.join(ROOT, 'web')
 BITTER = os.path.join(WEB, 'assets', 'fonts', 'bitter-var.woff2')
 TALLY = os.path.join(WEB, 'assets', 'loading', 'dbd-logo-static.png')
-OUT = os.path.join(WEB, 'assets', 'og-cover.png')
+OUT = os.path.join(WEB, 'assets', 'og-cover-v2.png')
 
 W, H = 1200, 630
 BG = (12, 11, 10)
@@ -100,7 +103,7 @@ def main():
     draw.text((x0, 462), stats, font=font(33, bold=False), fill=DIM)
 
     img.save(OUT)
-    print(f'build-og-cover: wrote assets/og-cover.png ({W}x{H})')
+    print(f'build-og-cover: wrote assets/og-cover-v2.png ({W}x{H})')
 
 
 main()
