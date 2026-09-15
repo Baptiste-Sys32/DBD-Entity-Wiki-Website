@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
 
-# Generates web/assets/og-cover-v2.png (1200x630 Discord/link embed card).
+# Generates web/assets/og-cover-v3.png (1200x630 Discord/link embed card).
 # Usage: python3 scripts/build-og-cover.py
 # Counts are read from content/database.json so regenerating refreshes them.
-# NOTE: keep the -v2 filename in sync with the og:image/twitter:image meta
+# NOTE: keep the -v3 filename in sync with the og:image/twitter:image meta
 # tags. The versioned name exists to bust Discord's image-proxy cache, which
 # otherwise keeps serving stale bytes under an unchanged URL.
 
@@ -17,10 +17,10 @@ ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 WEB = os.path.join(ROOT, 'web')
 BITTER = os.path.join(WEB, 'assets', 'fonts', 'bitter-var.woff2')
 TALLY = os.path.join(WEB, 'assets', 'loading', 'dbd-logo-static.png')
-OUT = os.path.join(WEB, 'assets', 'og-cover-v2.png')
+OUT = os.path.join(WEB, 'assets', 'og-cover-v3.png')
 
 W, H = 1200, 630
-BG = (12, 11, 10)
+BG = (0, 0, 0)
 BONE = (232, 229, 223)
 DIM = (143, 138, 128)
 RED = (224, 45, 35)
@@ -59,22 +59,7 @@ def main():
     img = Image.new('RGB', (W, H), BG)
     draw = ImageDraw.Draw(img)
 
-    # subtle top-to-bottom lift
-    for y in range(H):
-        t = y / H
-        shade = int(12 + 10 * t)
-        draw.line([(0, y), (W, y)], fill=(shade, shade - 1, shade - 2))
-
-    # faint red glow, right side
-    glow = Image.new('L', (W, H), 0)
-    gd = ImageDraw.Draw(glow)
-    gd.ellipse([(W - 620, H - 560), (W + 180, H + 240)], fill=70)
-    glow = glow.filter(ImageFilter.GaussianBlur(120))
-    red_layer = Image.new('RGB', (W, H), RED)
-    img = Image.composite(red_layer, img, glow.point(lambda v: v // 6))
-    draw = ImageDraw.Draw(img)
-
-    # tally mark, right side (autocrop the asset's black padding first).
+    # tally mark, left side (autocrop the asset's black padding first).
     # NOTE: the source art is white-on-black with no alpha, so the red
     # channel doubles as the luminance mask (alpha is fully opaque).
     from PIL import ImageChops
@@ -88,22 +73,20 @@ def main():
     tally = tally_src
     white = Image.new('RGBA', tally.size, (240, 237, 231, 255))
     tally = Image.composite(white, Image.new('RGBA', tally.size, (0, 0, 0, 0)), tally.split()[0])
-    tw = 470
+    tw = 380
     th = int(tally.height * tw / tally.width)
     tally = tally.resize((tw, th), Image.LANCZOS)
-    img.paste(tally, (W - tw - 56, (H - th) // 2 - 10), tally)
+    img.paste(tally, (80, (H - th) // 2), tally)
 
-    # left text block
-    x0 = 80
-    tracked_text(draw, (x0, 118), 'DEAD BY DAYLIGHT  -  FAN-MADE DATABASE', font(30, bold=False), DIM, tracking=4)
-    draw.text((x0, 168), "The Entity's", font=font(100), fill=BONE)
-    draw.text((x0, 282), 'Wiki', font=font(100), fill=BONE)
-    draw.rectangle([(x0, 428), (x0 + 130, 436)], fill=RED)
-    stats = '  -  '.join(f'{n} {label}' for n, label in counts)
-    draw.text((x0, 462), stats, font=font(33, bold=False), fill=DIM)
+    # right text block: name, red rule, fan-made subline
+    x0 = 80 + tw + 70
+    draw.text((x0, 150), "The Entity's", font=font(100), fill=BONE)
+    draw.text((x0, 264), 'Wiki', font=font(100), fill=BONE)
+    draw.rectangle([(x0, 410), (x0 + 130, 418)], fill=RED)
+    tracked_text(draw, (x0, 442), 'FAN-MADE WIKI', font(34, bold=False), DIM, tracking=6)
 
     img.save(OUT)
-    print(f'build-og-cover: wrote assets/og-cover-v2.png ({W}x{H})')
+    print(f'build-og-cover: wrote assets/og-cover-v3.png ({W}x{H})')
 
 
 main()
