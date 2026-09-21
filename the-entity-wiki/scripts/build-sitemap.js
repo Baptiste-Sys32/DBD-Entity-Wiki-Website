@@ -55,7 +55,7 @@ function main() {
     if (release && release.id) add(`${BASE}/?view=release&id=${release.id}`, 'monthly', '0.6');
   });
 
-  add(`${BASE}/privacy-policy.html`, 'yearly', '0.3');
+  add(`${BASE}/privacy-policy`, 'yearly', '0.3');
 
   const lines = [
     '<?xml version="1.0" encoding="UTF-8"?>',
