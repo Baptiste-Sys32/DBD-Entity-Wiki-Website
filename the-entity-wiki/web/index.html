@@ -15685,6 +15685,22 @@ const MapLayoutModal = ({ map, onClose, noteValue = '', onNoteChange }) => {
             title = `${viewLabels[currentView]}${suffix}`;
           }
           document.title = title;
+          /* Self-referencing canonical per deep link so search engines can
+             index ?view= / ?id= pages individually (the sitemap lists these
+             URLs). Volatile params (search, tab, scroll, ...) are stripped
+             so each view/id pair has exactly one canonical URL. */
+          const siteBase = 'https://entity-wiki.pages.dev';
+          let canonical = siteBase + '/';
+          if (currentView && currentView !== 'home') {
+            canonical = siteBase + '/?view=' + encodeURIComponent(currentView);
+            if (id) canonical += '&id=' + encodeURIComponent(id);
+          }
+          const canonicalLink = document.querySelector('link[rel="canonical"]');
+          if (canonicalLink) canonicalLink.setAttribute('href', canonical);
+          const ogUrlTag = document.querySelector('meta[property="og:url"]');
+          if (ogUrlTag) ogUrlTag.setAttribute('content', canonical);
+          const ogTitleTag = document.querySelector('meta[property="og:title"]');
+          if (ogTitleTag) ogTitleTag.setAttribute('content', title);
         } catch (e) { /* keep default title */ }
       }, [currentView, viewContext]);
       const [perkFilter, setPerkFilter] = useState(initialUiState.perkFilter || 'All');
