@@ -87,3 +87,84 @@
       }, []);
       return narrow;
     };
+    const Hatnote = ({ children }) => {
+      if (!children) return null;
+      return (
+        <p className="cx-hatnote">{children}</p>
+      );
+    };
+    const MetaLine = () => {
+      return null;
+    };
+    const Infobox = ({ title, sub, image, imageAlt, imageType, rows, note }) => {
+      return (
+        <aside className="cx-infobox w-full">
+          <div className="cx-ib-title">{title}</div>
+          {sub ? <div className="cx-ib-sub">{sub}</div> : null}
+          {image ? (
+            <div className="cx-ib-media w-full aspect-[3/4] overflow-hidden" title={imageAlt || title}>
+              <AssetFrame type={imageType || "Killer"} imageUrl={image} size="fill" />
+            </div>
+          ) : null}
+          {rows && rows.length > 0 ? (
+            <table>
+              <tbody>
+                {rows.map((row, i) => (
+                  <tr key={i}>
+                    <th scope="row">{row.label}</th>
+                    <td>{row.value}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          ) : null}
+          {note ? <div className="cx-ib-note">{note}</div> : null}
+        </aside>
+      );
+    };
+    const Toc = ({ items }) => {
+      if (!items || items.length === 0) return null;
+      return (
+        <nav className="cx-toc" aria-label="Contents">
+          <div className="cx-toc-title">Contents</div>
+          <ol>
+            {items.map((item) => (
+              <li key={item.id}>
+                <a href={"#" + item.id}>{item.label}</a>
+                {item.children && item.children.length > 0 ? (
+                  <ol>
+                    {item.children.map((child) => (
+                      <li key={child.id} className="cx-l2">
+                        <a href={"#" + child.id}>{child.label}</a>
+                      </li>
+                    ))}
+                  </ol>
+                ) : null}
+              </li>
+            ))}
+          </ol>
+        </nav>
+      );
+    };
+    const CategoryBar = ({ categories }) => {
+      if (!categories || categories.length === 0) return null;
+      return (
+        <div className="cx-cats">
+          <span>Categories:</span>
+          {categories.map((cat, i) => {
+            const label = typeof cat === "string" ? cat : cat.label;
+            const onClick = typeof cat === "string" ? null : (cat.onClick || null);
+            return (
+              <span key={i}>
+                {i > 0 ? <span className="cx-sep" aria-hidden="true">·</span> : null}
+                {onClick ? (
+                  <a href="#" onClick={(e) => { e.preventDefault(); onClick(e); }}>{label}</a>
+                ) : (
+                  <a href="#">{label}</a>
+                )}
+              </span>
+            );
+          })}
+        </div>
+      );
+    };
