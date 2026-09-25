@@ -167,3 +167,16 @@
         default: return r.charAt(0).toUpperCase() + r.slice(1);
       }
     };
+    const ARTICLE_VIEWS = ['killer', 'survivor', 'realm', 'release', 'perk'];
+    const resolveCharacterView = (entity) => ((entity && (entity.type === 'Killer' || entity.power)) ? 'killer' : 'survivor');
+    const SEO_SUFFIX = " - The Entity's Wiki";
+    const SEO_DEFAULT_TITLE = "The Entity's Wiki - Dead by Daylight Database";
+    const SEO_SITE_BASE = 'https://entity-wiki.pages.dev';
+    const SEO_VIEW_LABELS = {
+      killers: 'Killers', survivors: 'Survivors', perks: 'Perks', items: 'Items & Addons',
+      offerings: 'Offerings', realms: 'Realms', timeline: 'Timeline', glossary: 'Glossary',
+      gameIcons: 'Game Icons', cosmetics: 'Cosmetics', communityContent: 'Community',
+      settings: 'Settings', builds: 'Builds', buildLab: 'Build Lab', roulette: 'Shuffle',
+      worldle: 'Wordle', prestige: 'Prestige', progression: 'Progression', matches: 'Matches',
+      favorites: 'Favorites'
+    };

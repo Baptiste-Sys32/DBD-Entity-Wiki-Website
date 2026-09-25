@@ -795,7 +795,7 @@
     };
     const normalizeUiState = (raw) => {
       const next = raw && typeof raw === 'object' && !Array.isArray(raw) ? raw : {};
-      const allowedViews = new Set(['home', 'settings', 'killer', 'survivor', 'realm', 'release', 'perk', ...ALL_NAV_OPTIONS.map(option => option.id)]);
+      const allowedViews = new Set(['home', 'settings', ...ARTICLE_VIEWS, ...ALL_NAV_OPTIONS.map(option => option.id)]);
       const context = next.context && typeof next.context === 'object' && !Array.isArray(next.context) ? next.context : {};
       const normalizedContext = {};
       ['search', 'mode', 'tab', 'targetId', 'targetType', 'id', 'cosmeticId', 'scroll'].forEach((key) => {
@@ -13022,16 +13022,9 @@ const MapLayoutModal = ({ map, onClose, noteValue = '', onNoteChange }) => {
       };
       useEffect(() => {
         try {
-          const suffix = " - The Entity's Wiki";
-          const viewLabels = {
-            killers: 'Killers', survivors: 'Survivors', perks: 'Perks', items: 'Items & Addons',
-            offerings: 'Offerings', realms: 'Realms', timeline: 'Timeline', glossary: 'Glossary',
-            gameIcons: 'Game Icons', cosmetics: 'Cosmetics', communityContent: 'Community',
-            settings: 'Settings', builds: 'Builds', buildLab: 'Build Lab', roulette: 'Shuffle',
-            worldle: 'Wordle', prestige: 'Prestige', progression: 'Progression', matches: 'Matches',
-            favorites: 'Favorites'
-          };
-          let title = "The Entity's Wiki - Dead by Daylight Database";
+          const suffix = SEO_SUFFIX;
+          const viewLabels = SEO_VIEW_LABELS;
+          let title = SEO_DEFAULT_TITLE;
           const id = viewContext.id;
           if (id) {
             const pools = [killers, survivors, perks, maps, realms, items, offerings];
@@ -13053,7 +13046,7 @@ const MapLayoutModal = ({ map, onClose, noteValue = '', onNoteChange }) => {
              index ?view= / ?id= pages individually (the sitemap lists these
              URLs). Volatile params (search, tab, scroll, ...) are stripped
              so each view/id pair has exactly one canonical URL. */
-          const siteBase = 'https://entity-wiki.pages.dev';
+          const siteBase = SEO_SITE_BASE;
           let canonical = siteBase + '/';
           if (currentView && currentView !== 'home') {
             canonical = siteBase + '/?view=' + encodeURIComponent(currentView);
@@ -13135,7 +13128,7 @@ const MapLayoutModal = ({ map, onClose, noteValue = '', onNoteChange }) => {
       }, [readyCosmetics, cosmeticsAssetRevision]);
       const openCharacterArticle = useCallback((character) => {
         if (!character) return;
-        const view = (character.type === 'Killer' || character.power) ? 'killer' : 'survivor';
+        const view = resolveCharacterView(character);
         setView(view, { id: character.id });
       }, []);
       const openRealmArticle = useCallback((realm) => {
@@ -13154,7 +13147,7 @@ const MapLayoutModal = ({ map, onClose, noteValue = '', onNoteChange }) => {
         if (!cosmetic) return;
         const baseCharacter = allCharactersById.get(cosmetic.baseCharacterId);
         if (!baseCharacter) return;
-        const view = (baseCharacter.type === 'Killer' || baseCharacter.power) ? 'killer' : 'survivor';
+        const view = resolveCharacterView(baseCharacter);
         setView(view, { id: baseCharacter.id, cosmeticId: cosmetic.id });
       }, [allCharactersById]);
       const togglePerkCompare = (perk) => {
