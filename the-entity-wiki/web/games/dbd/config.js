@@ -116,3 +116,54 @@
       Perk: 'favoritePerks', Killer: 'favoriteKillers', Survivor: 'favoriteSurvivors',
       Item: 'favoriteItems', Addon: 'favoriteAddons', Offering: 'favoriteOfferings'
     };
+    const PROGRESSION_TABS = ['achievements', 'roster', 'challenges', 'analytics'];
+    const DEFAULT_SETTINGS = {
+      settingsVersion: 2,
+      colorMode: 'oled',
+      fontSize: 'default',
+      perkDescriptionMode: 'post95',
+      showTemplates: true,
+      rarityGlows: true,
+      hapticEnabled: true,
+      ownedOnlyGlobal: false,
+      googlePlayCtaHidden: false,
+      progressionTabOrder: [...PROGRESSION_TABS],
+      navItemsCustomized: false,
+      navItems: ['perks', 'killers', 'survivors'],
+      favoritePerks: [],
+      favoriteKillers: [],
+      favoriteSurvivors: [],
+      favoriteItems: [],
+      favoriteAddons: [],
+      favoriteOfferings: []
+    };
+    const RARITY_ALIASES = {
+      'iri': 'iridescent', 'iridescent': 'iridescent', 'pink': 'iridescent', 'ultra': 'iridescent', 'ultra rare': 'iridescent',
+      'purple': 'veryrare', 'very rare': 'veryrare', 'veryrare': 'veryrare',
+      'green': 'rare', 'rare': 'rare',
+      'yellow': 'uncommon', 'uncommon': 'uncommon',
+      'brown': 'common', 'common': 'common',
+      'event': 'event'
+    };
+    const RARITY_ORDER = { common: 1, uncommon: 2, rare: 3, veryrare: 4, ultrarare: 5, visceral: 6, event: 7 };
+    const getRarityOrder = (r) => RARITY_ORDER[(r || '').toLowerCase()] || 0;
+    const getRarityColor = (rarity) => {
+      switch ((rarity || '').toLowerCase()) {
+        case 'common': return 'var(--rar-common)';
+        case 'uncommon': return 'var(--rar-uncommon)';
+        case 'rare': return 'var(--rar-rare)';
+        case 'veryrare': return 'var(--rar-veryrare)';
+        case 'ultrarare': return 'var(--rar-ultrarare)';
+        case 'visceral': return 'var(--rar-visceral)';
+        case 'event': return 'var(--rar-event)';
+        default: return 'var(--rar-common)';
+      }
+    };
+    const formatRarity = (rarity) => {
+      const r = (rarity || '').toLowerCase();
+      switch (r) {
+        case 'veryrare': return 'Very Rare';
+        case 'ultrarare': return 'Ultra Rare';
+        default: return r.charAt(0).toUpperCase() + r.slice(1);
+      }
+    };
