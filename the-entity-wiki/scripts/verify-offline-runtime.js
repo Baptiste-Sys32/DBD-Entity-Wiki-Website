@@ -15,6 +15,28 @@ const COMMUNITY_CONTENT_DATA_PATH = path.join(WEB_ROOT, 'community-content.js');
 const WORLDLE_DATA_PATH = path.join(WEB_ROOT, 'worldle-data.js');
 const CAPACITOR_CONFIG_PATH = path.join(ROOT, 'capacitor.config.json');
 const ANDROID_MANIFEST_PATH = path.join(ROOT, 'android', 'app', 'src', 'main', 'AndroidManifest.xml');
+const ENGINE_DIR = path.join(WEB_ROOT, 'engine');
+const GAMES_DIR = path.join(WEB_ROOT, 'games');
+
+function listJsRecursive(dir) {
+  if (!fs.existsSync(dir)) return [];
+  return fs.readdirSync(dir, { withFileTypes: true }).flatMap((entry) => {
+    const full = path.join(dir, entry.name);
+    if (entry.isDirectory()) return listJsRecursive(full);
+    return entry.name.endsWith('.js') ? [full] : [];
+  }).sort();
+}
+
+function readWebBundle() {
+  const indexHtml = fs.readFileSync(INDEX_PATH, 'utf8');
+  const extraFiles = [...listJsRecursive(ENGINE_DIR), ...listJsRecursive(GAMES_DIR)];
+  const extraSources = extraFiles.map((full) => ({
+    name: path.relative(WEB_ROOT, full).replace(/\\/g, '/'),
+    code: fs.readFileSync(full, 'utf8'),
+  }));
+  const bundleText = [indexHtml, ...extraSources.map((entry) => entry.code)].join('\n');
+  return { indexHtml, bundleText, extraSources };
+}
 
 const issues = [];
 const warnings = [];
@@ -84,7 +106,7 @@ function normalizeEmojiClueSets(rawSets) {
     .filter(Boolean);
 }
 
-function auditHtml(indexHtml) {
+function auditHtml(indexHtml, extraSources) {
   const externalTagPatterns = [
     { pattern: /<script\b[^>]*\bsrc=["']https?:\/\//i, message: 'External <script> src found in web/index.html.' },
     { pattern: /<link\b(?![^>]*\brel=["']canonical["'])[^>]*\bhref=["']https?:\/\//i, message: 'External <link> href found in web/index.html.' },
@@ -96,21 +118,24 @@ function auditHtml(indexHtml) {
   });
 
   const forbiddenRuntimePatterns = [
-    { pattern: /fonts\.googleapis\.com|fonts\.gstatic\.com|unpkg\.com|cdn\.tailwindcss\.com/i, message: 'Remote CDN or font host reference still present in web/index.html.' },
-    { pattern: /const\s+CDN_BASE\s*=/, message: 'CDN_BASE fallback is still defined in web/index.html.' },
-    { pattern: /\bcdnUrl\s*=/, message: 'A CDN image fallback is still defined in web/index.html.' },
-    { pattern: /const\s+IMAGE_ALIASES\s*=/, message: 'Legacy IMAGE_ALIASES resolver logic is still present in web/index.html.' },
-    { pattern: /const\s+buildPerkCandidates\s*=/, message: 'Legacy buildPerkCandidates resolver logic is still present in web/index.html.' },
-    { pattern: /const\s+buildMapCandidates\s*=/, message: 'Legacy buildMapCandidates resolver logic is still present in web/index.html.' },
+    { pattern: /fonts\.googleapis\.com|fonts\.gstatic\.com|unpkg\.com|cdn\.tailwindcss\.com/i, message: 'Remote CDN or font host reference still present' },
+    { pattern: /const\s+CDN_BASE\s*=/, message: 'CDN_BASE fallback is still defined' },
+    { pattern: /\bcdnUrl\s*=/, message: 'A CDN image fallback is still defined' },
+    { pattern: /const\s+IMAGE_ALIASES\s*=/, message: 'Legacy IMAGE_ALIASES resolver logic is still present' },
+    { pattern: /const\s+buildPerkCandidates\s*=/, message: 'Legacy buildPerkCandidates resolver logic is still present' },
+    { pattern: /const\s+buildMapCandidates\s*=/, message: 'Legacy buildMapCandidates resolver logic is still present' },
     { pattern: /url\.startsWith\((['"])http\1\)/, message: 'AssetFrame still accepts raw http image URLs at runtime.' },
-    { pattern: /\bfetch\s*\(/, message: 'fetch() is present in web/index.html.' },
-    { pattern: /\bXMLHttpRequest\b/, message: 'XMLHttpRequest is present in web/index.html.' },
-    { pattern: /\baxios\b/, message: 'axios is present in web/index.html.' },
-    { pattern: /\bCapacitorHttp\b/, message: 'CapacitorHttp is present in web/index.html.' },
-    { pattern: /serviceWorker\.register\s*\(/, message: 'service worker registration is present in web/index.html.' },
+    { pattern: /\bfetch\s*\(/, message: 'fetch() is present' },
+    { pattern: /\bXMLHttpRequest\b/, message: 'XMLHttpRequest is present' },
+    { pattern: /\baxios\b/, message: 'axios is present' },
+    { pattern: /\bCapacitorHttp\b/, message: 'CapacitorHttp is present' },
+    { pattern: /serviceWorker\.register\s*\(/, message: 'service worker registration is present' },
   ];
   forbiddenRuntimePatterns.forEach(({ pattern, message }) => {
-    if (pattern.test(indexHtml)) fail(message);
+    if (pattern.test(indexHtml)) fail(`${message} in web/index.html.`);
+    extraSources.forEach(({ name, code }) => {
+      if (pattern.test(code)) fail(`${message} in web/${name}.`);
+    });
   });
 }
 
@@ -142,7 +167,7 @@ function auditRoutes(indexHtml) {
   });
 }
 
-function auditRequiredFiles(indexHtml) {
+function auditRequiredFiles(indexHtml, extraSources) {
   const requiredFiles = [
     'web/vendor/react.production.min.js',
     'web/vendor/react-dom.production.min.js',
@@ -180,6 +205,13 @@ function auditRequiredFiles(indexHtml) {
   if (!/<script\s+src=["']community-content\.js["'][^>]*><\/script>/.test(indexHtml)) {
     fail('web/index.html does not load web/community-content.js.');
   }
+
+  extraSources.forEach(({ name }) => {
+    const escaped = name.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+    if (!new RegExp(`<script[^>]*src=["'](\\./)?${escaped}["']`).test(indexHtml)) {
+      fail(`web/index.html does not load web/${name} (engine/game bundle file).`);
+    }
+  });
 }
 
 function auditDatabaseImages(db) {
@@ -318,23 +350,23 @@ function auditOfferingFixes(db) {
 }
 
 function main() {
-  const indexHtml = fs.readFileSync(INDEX_PATH, 'utf8');
+  const { indexHtml, bundleText, extraSources } = readWebBundle();
   const database = parseDatabase();
   const cosmeticsCatalog = parseCosmeticsData();
   const communityContent = parseCommunityContentData();
   const worldleData = parseWorldleData();
-  auditHtml(indexHtml);
+  auditHtml(indexHtml, extraSources);
   auditCapacitorConfig();
   auditAndroidManifest();
-  auditRoutes(indexHtml);
-  auditRequiredFiles(indexHtml);
+  auditRoutes(bundleText);
+  auditRequiredFiles(indexHtml, extraSources);
   auditDatabaseImages(database);
   auditCosmetics(database, cosmeticsCatalog);
   if (!communityContent || typeof communityContent !== 'object') {
     fail('Community content runtime module did not expose a valid COMMUNITY_CONTENT object.');
   }
   auditOfferingFixes(database);
-  auditWorldle(indexHtml, database, worldleData);
+  auditWorldle(bundleText, database, worldleData);
 
   if (warnings.length) {
     console.log('Warnings:');
