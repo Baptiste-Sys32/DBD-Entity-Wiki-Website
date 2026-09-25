@@ -157,6 +157,7 @@
   <script type="text/babel" src="./engine/storage.js"></script>
   <script type="text/babel" src="./engine/device.js"></script>
   <script type="text/babel" src="./engine/shell.js"></script>
+  <script type="text/babel" src="./engine/assets.js"></script>
   <script type="text/babel" src="./engine/articles.js"></script>
   <script type="text/babel" src="./games/dbd/config.js"></script>
   <script type="text/babel">
@@ -1730,12 +1731,7 @@
     /* Moved to ./engine/device.js (wiki engine bundle, loaded above). */
     /* Moved to ./engine/articles.js (wiki engine bundle, loaded above). */
     /* Moved to ./engine/articles.js (wiki engine bundle, loaded above). */
-    const DEFAULT_IMAGES = {
-      Killer: './assets/default-killer.png',
-      Survivor: './assets/default-survivor.png',
-      Perk: './assets/default-perk.svg',
-      Map: './assets/default-map.svg'
-    };
+    /* Moved to ./games/dbd/config.js (DBD adapter, loaded above). */
     const MAP_LAYOUTS = {
       "Coal Tower": [
         { path: "map_layouts_hens/coal_tower.webp", label: "Variation I" },
@@ -2745,35 +2741,21 @@
       const relativePath = normalized.slice('dbd_images/'.length).replace(/^\/+/, '');
       return relativePath ? `${baseUrl}/${relativePath}` : baseUrl;
     };
-    const toLocalImageSource = (url) => {
-      if (!url) return null;
-      const normalized = url.replace(/\\/g, '/').replace(/^\.\//, '');
+    /* Resolvers moved to ./engine/assets.js; DBD pack/R2 hooks below. */
+    const resolveExtraImageSource = (normalized) => {
       if (isCosmeticsFullSetImagePath(normalized)) {
         const packBaseUrl = getCosmeticsFullSetPackBaseUrl();
-        if (packBaseUrl) {
-          return `${packBaseUrl}/${normalized}`;
-        }
+        if (packBaseUrl) return `${packBaseUrl}/${normalized}`;
         const configuredSource = toConfiguredDbdImageSource(normalized);
-        if (configuredSource) {
-          return configuredSource;
-        }
+        if (configuredSource) return configuredSource;
         return isNativeAndroidPlatform() ? null : `./${normalized}`;
       }
-      if (normalized.startsWith('dbd_images/') || normalized.startsWith('assets/')) {
-        const configuredSource = toConfiguredDbdImageSource(normalized);
-        if (configuredSource) {
-          return configuredSource;
-        }
-        return `./${normalized}`;
-      }
-      return null;
+      const configuredSource = toConfiguredDbdImageSource(normalized);
+      if (configuredSource) return configuredSource;
+      return undefined;
     };
-    const resolveAppImageSource = async (url) => {
-      if (!url) return null;
-      const normalized = String(url).replace(/\\/g, '/').replace(/^\.\//, '');
-      if (!isCosmeticsFullSetImagePath(normalized)) {
-        return toLocalImageSource(normalized);
-      }
+    const resolveAsyncImageSource = async (normalized) => {
+      if (!isCosmeticsFullSetImagePath(normalized)) return undefined;
       if (!isNativeAndroidPlatform()) {
         return `./${normalized}`;
       }
@@ -2793,7 +2775,6 @@
                 : resolvedPath;
             }
           } catch (error) {
-            // Fall through to any direct file-path resolution that may already exist.
           }
         }
         const packBaseUrl = getCosmeticsFullSetPackBaseUrl();
@@ -2806,129 +2787,8 @@
       }
       return resolved;
     };
-    const getPreloadedImageCache = () => {
-      if (!(window.__entityPreloadedImages instanceof Set)) {
-        window.__entityPreloadedImages = new Set();
-      }
-      return window.__entityPreloadedImages;
-    };
-    const preloadResolvedImage = async (imageUrl, assetRevision = 0) => {
-      if (!imageUrl || navigator.connection?.saveData) return;
-      const cache = getPreloadedImageCache();
-      const cacheKey = `${assetRevision}:${String(imageUrl)}`;
-      if (cache.has(cacheKey)) return;
-      cache.add(cacheKey);
-      const source = await resolveAppImageSource(imageUrl);
-      if (!source) return;
-      await new Promise((resolve) => {
-        const img = new Image();
-        img.decoding = 'async';
-        img.onload = () => resolve();
-        img.onerror = () => resolve();
-        img.src = source;
-        if (typeof img.decode === 'function') {
-          img.decode().then(resolve).catch(resolve);
-        }
-      });
-    };
-    const preloadImageBatch = (imageUrls = [], assetRevision = 0, limit = 16) => {
-      const urls = [...new Set((imageUrls || []).filter(Boolean))].slice(0, limit);
-      if (urls.length === 0) return () => {};
-      let cancelled = false;
-      const run = async () => {
-        for (const url of urls) {
-          if (cancelled) return;
-          await preloadResolvedImage(url, assetRevision);
-        }
-      };
-      const idleId = typeof window.requestIdleCallback === 'function'
-        ? window.requestIdleCallback(run, { timeout: 1200 })
-        : window.setTimeout(run, 250);
-      return () => {
-        cancelled = true;
-        if (typeof window.cancelIdleCallback === 'function') window.cancelIdleCallback(idleId);
-        else window.clearTimeout(idleId);
-      };
-    };
-    const AssetFrame = ({ type, imageUrl, fallbackIcon, size = 'normal', assetRevision = 0, imageLoading = null }) => {
-      const [primarySource, setPrimarySource] = useState(null);
-      const [broken, setBroken] = useState(false);
-      const [loaded, setLoaded] = useState(false);
-      const [sourceIndex, setSourceIndex] = useState(0);
-      const defaultImg = DEFAULT_IMAGES[type];
-      const sources = useMemo(() => {
-        const entries = [];
-        const add = (val) => { if (val && !entries.includes(val)) entries.push(val); };
-        add(primarySource);
-        add(toLocalImageSource(defaultImg));
-        return entries;
-      }, [primarySource, defaultImg]);
-      useEffect(() => {
-        let cancelled = false;
-        setPrimarySource(null);
-        setBroken(false);
-        setLoaded(false);
-        setSourceIndex(0);
-        const resolveSource = async () => {
-          const nextSource = await resolveAppImageSource(imageUrl);
-          if (!cancelled) {
-            setPrimarySource(nextSource);
-          }
-        };
-        resolveSource();
-        return () => {
-          cancelled = true;
-        };
-      }, [imageUrl, type, assetRevision]);
-      const isDiamond = type === 'Perk';
-      const handleError = () => {
-        const next = sourceIndex + 1;
-        if (next < sources.length) {
-          setSourceIndex(next);
-        } else {
-          setBroken(true);
-        }
-      };
-      const handleLoad = () => {
-        setLoaded(true);
-      };
-      const src = broken ? null : sources[sourceIndex];
-      let containerClass = isDiamond ? 'w-16 h-16 rotate-45 m-2 rounded-lg' : 'w-16 h-20 rounded-xl';
-      let imgClass = isDiamond ? '-rotate-45 scale-125' : '';
-      if (size === 'large') {
-        containerClass = isDiamond ? 'w-24 h-24 rotate-45 m-4 rounded-xl' : 'w-24 h-32 rounded-2xl';
-      } else if (size === 'fill') {
-        containerClass = 'w-full h-full rounded-none';
-        imgClass = '';
-      }
-      const baseClasses = size === 'fill'
-        ? `relative flex items-center justify-center overflow-hidden ${containerClass}`
-        : `relative flex items-center justify-center bg-zinc-950/50 border border-white/10 overflow-hidden shrink-0 ${containerClass}`;
-      const objectFit = (type === 'Addon' || type === 'Item' || type === 'Offering' || type === 'Power' || type === 'GameIcon') ? 'object-contain' : 'object-cover';
-      return (
-        <div className={baseClasses}>
-          {/* Skeleton shimmer while loading */}
-          {!loaded && !broken && src && (
-            <div className={`absolute inset-0 skeleton-shimmer ${isDiamond ? '' : 'rounded-xl'}`}></div>
-          )}
-          {src && !broken ? (
-            <img
-              src={src}
-              alt={type}
-              loading={imageLoading || undefined}
-              className={`w-full h-full ${objectFit} ${imgClass} ${loaded ? 'opacity-100' : 'opacity-0'} transition-opacity duration-300`}
-              onError={handleError}
-              onLoad={handleLoad}
-            />
-          ) : (
-            <div className={`flex items-center justify-center w-full h-full text-zinc-700 ${isDiamond && size !== 'fill' ? '-rotate-45' : ''}`}>
-              {fallbackIcon ? fallbackIcon : <Icons.Image width={size === 'large' ? 32 : 20} height={size === 'large' ? 32 : 20} />}
-            </div>
-          )}
-          <div className="absolute inset-0 pointer-events-none" style={{ boxShadow: 'inset 0 0 10px rgba(0,0,0,0.5)' }}></div>
-        </div>
-      );
-    };
+    /* Moved to ./engine/assets.js (wiki engine bundle, loaded above). */
+    /* Moved to ./engine/assets.js (wiki engine bundle, loaded above). */
     /* Moved to ./engine/shell.js (wiki engine bundle, loaded above). */
     const WikiHeader = ({ currentView, setView }) => {
       useEffect(() => {
@@ -11944,65 +11804,10 @@ const MapLayoutModal = ({ map, onClose, noteValue = '', onNoteChange }) => {
     /* infobox as an Infobox props object, categories as a CategoryBar array. */
     /* Section pattern for children: section with id, h2.cx-sec with label plus */
     /* button.cx-edit, anchors as plain href="#id" links. */
-    const Hatnote = ({ children }) => {
-      if (!children) return null;
-      return (
-        <p className="cx-hatnote">{children}</p>
-      );
-    };
-    const MetaLine = () => {
-      return null;
-    };
-    const Infobox = ({ title, sub, image, imageAlt, imageType, rows, note }) => {
-      return (
-        <aside className="cx-infobox w-full">
-          <div className="cx-ib-title">{title}</div>
-          {sub ? <div className="cx-ib-sub">{sub}</div> : null}
-          {image ? (
-            <div className="cx-ib-media w-full aspect-[3/4] overflow-hidden" title={imageAlt || title}>
-              <AssetFrame type={imageType || "Killer"} imageUrl={image} size="fill" />
-            </div>
-          ) : null}
-          {rows && rows.length > 0 ? (
-            <table>
-              <tbody>
-                {rows.map((row, i) => (
-                  <tr key={i}>
-                    <th scope="row">{row.label}</th>
-                    <td>{row.value}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          ) : null}
-          {note ? <div className="cx-ib-note">{note}</div> : null}
-        </aside>
-      );
-    };
-    const Toc = ({ items }) => {
-      if (!items || items.length === 0) return null;
-      return (
-        <nav className="cx-toc" aria-label="Contents">
-          <div className="cx-toc-title">Contents</div>
-          <ol>
-            {items.map((item) => (
-              <li key={item.id}>
-                <a href={"#" + item.id}>{item.label}</a>
-                {item.children && item.children.length > 0 ? (
-                  <ol>
-                    {item.children.map((child) => (
-                      <li key={child.id} className="cx-l2">
-                        <a href={"#" + child.id}>{child.label}</a>
-                      </li>
-                    ))}
-                  </ol>
-                ) : null}
-              </li>
-            ))}
-          </ol>
-        </nav>
-      );
-    };
+    /* Moved to ./engine/articles.js (wiki engine bundle, loaded above). */
+    /* Moved to ./engine/articles.js (wiki engine bundle, loaded above). */
+    /* Moved to ./engine/articles.js (wiki engine bundle, loaded above). */
+    /* Moved to ./engine/articles.js (wiki engine bundle, loaded above). */
     const WikiTable = ({ caption, headers, rows }) => {
       return (
         <table className="cx-wikitable w-full">
@@ -12032,28 +11837,7 @@ const MapLayoutModal = ({ map, onClose, noteValue = '', onNoteChange }) => {
         </table>
       );
     };
-    const CategoryBar = ({ categories }) => {
-      if (!categories || categories.length === 0) return null;
-      return (
-        <div className="cx-cats">
-          <span>Categories:</span>
-          {categories.map((cat, i) => {
-            const label = typeof cat === "string" ? cat : cat.label;
-            const onClick = typeof cat === "string" ? null : (cat.onClick || null);
-            return (
-              <span key={i}>
-                {i > 0 ? <span className="cx-sep" aria-hidden="true">·</span> : null}
-                {onClick ? (
-                  <a href="#" onClick={(e) => { e.preventDefault(); onClick(e); }}>{label}</a>
-                ) : (
-                  <a href="#">{label}</a>
-                )}
-              </span>
-            );
-          })}
-        </div>
-      );
-    };
+    /* Moved to ./engine/articles.js (wiki engine bundle, loaded above). */
     /* Moved to ./engine/articles.js (wiki engine bundle, loaded above). */
 
     const normRealmName = (v) => (v || '').trim().toLowerCase().replace(/^the\s+/, '');

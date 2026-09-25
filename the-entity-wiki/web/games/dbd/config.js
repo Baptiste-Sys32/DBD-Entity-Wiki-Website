@@ -180,3 +180,10 @@
       worldle: 'Wordle', prestige: 'Prestige', progression: 'Progression', matches: 'Matches',
       favorites: 'Favorites'
     };
+    const DEFAULT_IMAGES = {
+      Killer: './assets/default-killer.png',
+      Survivor: './assets/default-survivor.png',
+      Perk: './assets/default-perk.svg',
+      Map: './assets/default-map.svg'
+    };
+    const IMAGE_LOCAL_PREFIXES = ['dbd_images/', 'assets/'];
