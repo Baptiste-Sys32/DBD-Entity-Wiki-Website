@@ -2844,6 +2844,7 @@
       useEffect(() => {
         if (typeof window === 'undefined') return undefined;
         if (!window.matchMedia('(min-width: 768px)').matches) return undefined;
+        if (currentView === 'home') return undefined;
         const timer = window.setTimeout(() => {
           const root = document.querySelector('[data-smoke-view]');
           if (!root) return;
@@ -2880,6 +2881,24 @@
         };
       }, [currentView]);
       return null;
+    };
+    const SiteFooterContent = () => {
+      const locale = (typeof navigator !== 'undefined' && (navigator.language || '').toLowerCase().startsWith('fr')) ? 'fr' : 'en';
+      const href = (PLAY_STORE_LINKS[locale] || PLAY_STORE_LINKS.en);
+      const badge = (GOOGLE_PLAY_BADGES[locale] || GOOGLE_PLAY_BADGES.en);
+      return (
+        <div className="site-footer">
+          <p className="site-footer-eyebrow">Get the app</p>
+          <a href={href} target="_blank" rel="noopener noreferrer" aria-label="Get it on Google Play">
+            <img src={badge} alt="Get it on Google Play" className="site-footer-badge" loading="lazy" />
+          </a>
+          <div className="site-footer-legal">
+            <a href="./privacy-policy">Privacy Policy</a>
+            <a href="./privacy-policy#disclaimer">Legal &amp; Disclaimer</a>
+            <span>Community data &copy; Otzdarva</span>
+          </div>
+        </div>
+      );
     };
     const WebsiteHeader = ({ currentView, setView, titleOverride, onOpenDrawer }) => {
       const headerTitle = currentView === 'home' ? 'Search' : (titleOverride || getNavDisplayLabel(currentView));
@@ -3168,10 +3187,6 @@
           <div className="absolute left-0 top-0 bottom-0 w-1" style={{ background: accentTone, opacity: 0.6 }}></div>
           <div className="relative z-10 flex items-start gap-3">
             <div className="flex-1 py-1">
-              <div className="inline-flex items-center px-2 py-1 rounded-md chip mb-2">
-                <span className="w-1.5 h-1.5 rounded-full mr-2" style={{ backgroundColor: accentTone }}></span>
-                <span className="text-[10px] font-semibold uppercase tracking-wider text-slate-300">{category}</span>
-              </div>
               <h3 className="text-lg font-semibold text-white mb-1 tracking-tight">{item.name}</h3>
               <p className="text-zinc-400 text-sm font-medium">{subtext}</p>
               {/* Show power description when expanded for killers */}
@@ -4503,7 +4518,7 @@
                     </div>
                   ) : el;
                   if (['Killer', 'Survivor', 'Perk'].includes(item.category)) {
-                    return wrapBest(<GlassCard key={item.id || Math.random()} item={item} category={item.category} />);
+                    return wrapBest(<GlassCard key={item.id || Math.random()} item={item} category={item.category} settings={settings} />);
                   }
                   if (item.category === 'Cosmetic') {
                     return wrapBest(
@@ -4665,6 +4680,7 @@
                   }
                   return null;
                 }) : <div className="text-center mt-12 text-zinc-600"><p className="font-medium text-sm">No results found.</p></div>}
+                <SiteFooterContent />
               </div>
             ) : (
               <div className="cx-article">
@@ -4768,6 +4784,7 @@
                   <span> · </span>
                   <button onClick={() => setView('glossary')} style={{ color: 'var(--link)' }}>Glossary</button>
                 </nav>
+                <SiteFooterContent />
               </div>
             )}
           </div>
