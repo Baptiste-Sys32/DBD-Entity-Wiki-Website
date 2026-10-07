@@ -1,8 +1,8 @@
 /* DBD game adapter - registries consumed by the wiki engine (nav options, sections, browse shortlist, favorites, links, meta). Loaded as text/babel after engine/, before the game bundle. */
     const META = {
       siteVersion: "5.34.2",
-      gameVersion: "10.1.2",
-      lastSynced: "September 12, 2026",
+      gameVersion: "10.2.0",
+      lastSynced: "October 7, 2026",
       contact: {
         email: "hexplosions.happen@gmail.com",
         discord: "hexplosions_happen"
