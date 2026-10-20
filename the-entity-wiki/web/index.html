@@ -3998,8 +3998,119 @@
         'firecracker': 'firecracker', 'firecrackers': 'firecracker'
       };
 
-      // Stop words to ignore during token matching
-      const STOP_WORDS = new Set(['the', 'a', 'an', 'that', 'this', 'with', 'for', 'and', 'but', 'or', 'of', 'to', 'in', 'on', 'is', 'it', 'has', 'his', 'her', 'its']);
+      // Stop words to ignore during token matching (articles, question words, command filler)
+      const STOP_WORDS = new Set(['the', 'a', 'an', 'that', 'this', 'with', 'for', 'and', 'but', 'or', 'of', 'to', 'in', 'on', 'is', 'it', 'has', 'his', 'her', 'its', 'your', 'you', 'yours', 'within', 'during', 'what', 'which', 'who', 'whom', 'when', 'where', 'why', 'how', 'show', 'shows', 'give', 'gives', 'find', 'finds', 'list', 'lists', 'tell', 'tells', 'me', 'my', 'are', 'was', 'were', 'be', 'been', 'being', 'do', 'does', 'did', 'done', 'can', 'could', 'should', 'would', 'will', 'shall', 'may', 'might', 'must', 'get', 'gets', 'best', 'good', 'top', 'all', 'any', 'some', 'there', 'their', 'they', 'them', 'then', 'than', 'too', 'just', 'like', 'want', 'wants', 'need', 'needs', 'use', 'uses', 'used', 'using', 'way', 'ways', 'kind', 'kinds', 'thing', 'things', 'much', 'many', 'more', 'most', 'other', 'such', 'same', 'each', 'every', 'both', 'also', 'even', 'ever', 'always', 'often', 'really', 'quite', 'please', 'vs', 'versus', 'per', 'about', 'around']);
+
+      // Player slang → canonical description words (keys are stems; see stemWord).
+      // Lets sentence queries like "perks that help heal" or "slow down generators" land.
+      const MECHANIC_SYNONYMS = {
+        'gen': ['generator'],
+        'heal': ['heal', 'recover', 'mend'],
+        'mend': ['mend', 'heal'],
+        'recover': ['recover', 'heal'],
+        'hook': ['hook', 'unhook'],
+        'unhook': ['unhook', 'hook', 'rescue'],
+        'save': ['unhook', 'rescue'],
+        'aura': ['aura', 'reveal'],
+        'info': ['aura', 'reveal'],
+        'pallet': ['pallet'],
+        'vault': ['vault'],
+        'chas': ['chase'],
+        'loop': ['loop', 'tile'],
+        'totem': ['totem'],
+        'dull': ['totem'],
+        'boon': ['boon', 'totem'],
+        'bless': ['bless', 'boon'],
+        'gate': ['gate', 'exit'],
+        'exit': ['exit', 'gate'],
+        'hatch': ['hatch'],
+        'terror': ['terror', 'radius'],
+        'tr': ['terror', 'radius'],
+        'blind': ['blind'],
+        'haste': ['haste', 'speed'],
+        'speed': ['speed', 'haste'],
+        'slow': ['slow', 'hinder'],
+        'hinder': ['hinder', 'slow'],
+        'exhaust': ['exhaust'],
+        'broken': ['broken'],
+        'mangl': ['mangl'],
+        'undetectabl': ['undetectabl'],
+        'stealth': ['undetectabl', 'sneak'],
+        'collaps': ['collaps'],
+        'endgam': ['endgam', 'collaps'],
+        'regression': ['regression', 'kick'],
+        'repair': ['repair'],
+        'runn': ['run'],
+        'stunn': ['stun'],
+        'dropp': ['drop'],
+        'trapp': ['trap'],
+        'stopp': ['stop'],
+        'grabb': ['grab']
+      };
+
+      // Negation markers: the next meaningful token is excluded, not searched
+      // ("perks that are not hex", "addons without hindered")
+      const NEGATION_WORDS = new Set(['not', 'no', 'without', 'except', 'excluding', 'exclude']);
+
+      // Light stemmer so inflections meet ("generators" ↔ "generator", "chasing" ↔ "chase").
+      // Applied to BOTH query tokens and description words, so both sides always agree.
+      const stemWord = (w) => {
+        if (!w || w.length <= 2) return w;
+        if (w.endsWith('ies') && w.length > 5) return w.slice(0, -3) + 'y';
+        if (w.endsWith('ness') && w.length > 7) return w.slice(0, -4);
+        if (w.endsWith('ing') && w.length > 6) {
+          const base = w.slice(0, -3);
+          if (base.length >= 4) return base;
+          return w;
+        }
+        if (w.endsWith('ed') && w.length > 4) {
+          const base = w.slice(0, -2);
+          if (base.length >= 2) return base;
+          return w;
+        }
+        if (w.endsWith('oes') && w.length > 4) return w.slice(0, -2);
+        // Strip plural -es only when the base takes -es (box→boxes); a vowel before
+        // -ses means plain -s plural (nurse→nurses, horse→horses), handled below.
+        if (/[^aeiou](s|x|z|ch|sh)es$/.test(w) && w.length > 5) return w.slice(0, -2);
+        if (w.endsWith('s') && w.length > 4 && !/(ss|us|is)$/.test(w)) return w.slice(0, -1);
+        if (w.endsWith('e') && w.length > 4 && /[^aeiou]$/.test(w.slice(0, -1)) && !w.endsWith('ee')) return w.slice(0, -1);
+        return w;
+      };
+
+      // Bounded Levenshtein distance (early exit past max) for typo tolerance
+      const editDistance = (a, b, max) => {
+        if (Math.abs(a.length - b.length) > max) return max + 1;
+        let prev = new Array(b.length + 1);
+        let cur = new Array(b.length + 1);
+        for (let j = 0; j <= b.length; j++) prev[j] = j;
+        for (let i = 1; i <= a.length; i++) {
+          cur[0] = i;
+          let rowMin = i;
+          for (let j = 1; j <= b.length; j++) {
+            cur[j] = Math.min(prev[j] + 1, cur[j - 1] + 1, prev[j - 1] + (a[i - 1] === b[j - 1] ? 0 : 1));
+            if (cur[j] < rowMin) rowMin = cur[j];
+          }
+          if (rowMin > max) return max + 1;
+          const tmp = prev; prev = cur; cur = tmp;
+        }
+        return prev[b.length];
+      };
+
+      // Best lookup value within typo range (distance 1, or 2 for tokens of 7+ chars).
+      // Short tokens must not resolve to a SHORTER key: 'ruin' is a real word,
+      // not a typo of 'rin'. Dropped-letter typos ('nuse' → 'nurse') still work
+      // because the key is longer than the token.
+      const fuzzyLookup = (token, lookup) => {
+        const max = token.length >= 7 ? 2 : 1;
+        let bestVal = null;
+        let bestDist = max + 1;
+        for (const key of Object.keys(lookup)) {
+          if (token.length <= 5 && key.length < token.length) continue;
+          const d = editDistance(token, key, max);
+          if (d < bestDist) { bestDist = d; bestVal = lookup[key]; }
+        }
+        return bestDist <= max ? bestVal : null;
+      };
 
       // Build killer lookup from data (handles "nurse" → "The Nurse", "sally" → "The Nurse", etc.)
       const buildKillerLookup = () => {
@@ -4041,30 +4152,65 @@
         const nameLower = (item.name || item.term || '').toLowerCase();
         const descLower = ((item._category === 'Perk' ? getPerkSearchDescription(item) : (item.description || item.def || item.power || '')) || '').toLowerCase();
 
+        // Stemmed word index of the description: word-boundary matching kills
+        // false positives from raw substring ("axe" no longer matches "tax",
+        // "tr" no longer matches every word containing "tr").
+        const descWords = descLower.match(/[a-z0-9]+/g) || [];
+        const descStems = descWords.map(stemWord);
+        const descStemSet = new Set(descStems);
+
+        // ── Negation: excluded terms bury the item ──
+        if (context.excluded && context.excluded.length > 0) {
+          for (const ex of context.excluded) {
+            if (nameLower.includes(ex.raw)
+              || descStemSet.has(ex.stem)
+              || (item._category || '').toLowerCase() === ex.raw) {
+              score -= 60;
+              break;
+            }
+          }
+        }
+
         // ── Exact full-query substring match in name (classic search behavior) ──
         const fullQuery = tokens.join(' ');
-        if (nameLower === fullQuery) score += 100;
-        else if (nameLower.includes(fullQuery)) score += 50;
-
-        // ── Per-token name matching ──
-        let nameTokenHits = 0;
-        for (const t of tokens) {
-          if (nameLower.includes(t)) nameTokenHits++;
+        if (fullQuery) {
+          if (nameLower === fullQuery) score += 100;
+          else if (nameLower.includes(fullQuery)) score += 50;
         }
-        if (nameTokenHits > 0) score += nameTokenHits * 8;
-        if (nameTokenHits === tokens.length) score += 15; // all tokens in name
 
-        // ── Killer name match ──
+        // ── Per-token name matching (exact + typo-tolerant fuzzy fallback) ──
+        const nameWords = nameLower.match(/[a-z0-9]+/g) || [nameLower];
+        let exactHits = 0;
+        let fuzzyHits = 0;
+        for (const t of tokens) {
+          if (nameLower.includes(t)) { exactHits++; continue; }
+          if (t.length >= 4) {
+            const max = t.length >= 7 ? 2 : 1;
+            let best = max + 1;
+            for (const w of nameWords) {
+              // Same guard as fuzzyLookup: short tokens don't match shorter words
+              if (t.length <= 5 && w.length < t.length) continue;
+              const d = editDistance(t, w, max);
+              if (d < best) best = d;
+            }
+            if (best <= max) fuzzyHits++;
+          }
+        }
+        const nameTokenHits = exactHits + fuzzyHits;
+        if (nameTokenHits > 0) score += exactHits * 8 + fuzzyHits * 5;
+        if (tokens.length > 0 && nameTokenHits === tokens.length) score += 15; // all tokens in name
+
+        // ── Killer name match (naming the exact character is top intent) ──
         if (context.killerName) {
           if (item.killerName === context.killerName) score += 20;
           if (item.owner === context.killerName) score += 20;
-          if ((item.name || '') === context.killerName) score += 25;
+          if ((item.name || '') === context.killerName) score += 50;
         }
 
-        // ── Survivor name match ──
+        // ── Survivor name match (naming the exact character is top intent) ──
         if (context.survivorName) {
           if (item.owner === context.survivorName) score += 20;
-          if ((item.name || '') === context.survivorName) score += 25;
+          if ((item.name || '') === context.survivorName) score += 50;
         }
 
         // ── Rarity match ──
@@ -4090,26 +4236,59 @@
           if (item.role === context.role) score += 5;
         }
 
-        // ── Alias match (perks) ──
+        // ── Alias match (perks, cosmetics): exact alias === full query is strong,
+        // a substring mention is weak. Counted once — some entries carry 7+
+        // aliases and per-alias stacking drowned out exact character matches.
         if (item.aliases) {
+          let aliasFullBonus = 0;
+          let aliasTokenBonus = 0;
           for (const alias of item.aliases) {
             const aliasLower = alias.toLowerCase();
-            if (aliasLower.includes(fullQuery)) score += 40;
+            if (fullQuery && aliasLower === fullQuery) aliasFullBonus = Math.max(aliasFullBonus, 40);
+            else if (fullQuery && aliasLower.includes(fullQuery)) aliasFullBonus = Math.max(aliasFullBonus, 15);
             for (const t of context.descTokens) {
-              if (aliasLower.includes(t)) score += 5;
+              if (t.length >= 2 && aliasLower.includes(t)) aliasTokenBonus += 5;
             }
           }
+          score += aliasFullBonus + Math.min(aliasTokenBonus, 10);
         }
 
-        // ── Description token matching (for leftover "meaning" words) ──
+        // ── Description token matching: word-boundary on stems (primary) ──
+        // Query and text are both stemmed, so "generators" meets "generator"
+        // and "chasing" meets "chase". A weak substring fallback preserves
+        // recall for anything the stemmer misses, without its old noise weight.
+        const matchedPositions = new Set();
         let descHits = 0;
         for (const t of context.descTokens) {
-          if (descLower.includes(t)) descHits++;
+          let matched = false;
+          for (let i = 0; i < descStems.length; i++) {
+            const w = descStems[i];
+            if (w === t || (t.length >= 4 && w.startsWith(t))) { matched = true; matchedPositions.add(i); break; }
+          }
+          if (matched) { descHits++; continue; }
+          if (t.length >= 3 && descLower.includes(t)) score += 1;
         }
-        if (context.descTokens.length > 0 && descHits > 0) {
+        if (descHits > 0) {
           score += descHits * 4;
           // Bonus for matching most description tokens
           if (descHits >= context.descTokens.length * 0.7) score += 8;
+        }
+
+        // ── Synonym matches (player slang expanded in parseSmartQuery) ──
+        if (context.synTokens && context.synTokens.length > 0) {
+          let synHits = 0;
+          for (const t of context.synTokens) {
+            if (descStemSet.has(t)) synHits++;
+          }
+          if (synHits > 0) score += Math.min(synHits, 4) * 2;
+        }
+
+        // ── Proximity bonus: query words appearing close together mean more ──
+        if (matchedPositions.size >= 2) {
+          const pos = [...matchedPositions].sort((a, b) => a - b);
+          let minGap = Infinity;
+          for (let i = 1; i < pos.length; i++) minGap = Math.min(minGap, pos[i] - pos[i - 1]);
+          if (minGap <= 8) score += 10;
         }
 
         // ── Power field match (killers) ──
@@ -4153,7 +4332,8 @@
 
       // Parse the search query into structured context
       const parseSmartQuery = (rawQuery) => {
-        const tokens = rawQuery.toLowerCase().split(/\s+/).filter(t => t.length > 0);
+        // Strip edge punctuation so "repair?", "(hex)" and '"ruin"' match cleanly
+        const tokens = rawQuery.toLowerCase().split(/\s+/).map(t => t.replace(/^[^\p{L}\p{N}]+|[^\p{L}\p{N}]+$/gu, '')).filter(t => t.length > 0);
         const meaningfulTokens = tokens.filter(t => !STOP_WORDS.has(t) && t.length > 1);
 
         const context = {
@@ -4163,14 +4343,40 @@
           category: null,
           role: null,
           itemType: null,
-          descTokens: []
+          descTokens: [],
+          synTokens: [],
+          excluded: []
         };
 
         const usedTokens = new Set();
 
+        // Negation first ("not hex", "addons without hindered"): the next
+        // meaningful token is excluded. Combo-aware so "not very rare" still
+        // detects the "very rare" rarity instead of excluding "very".
+        for (let i = 0; i < meaningfulTokens.length; i++) {
+          const t = meaningfulTokens[i];
+          if (!NEGATION_WORDS.has(t) || usedTokens.has(t)) continue;
+          let target = null;
+          for (let j = i + 1; j < meaningfulTokens.length; j++) {
+            const cand = meaningfulTokens[j];
+            if (STOP_WORDS.has(cand) || NEGATION_WORDS.has(cand) || usedTokens.has(cand)) continue;
+            const nxt = meaningfulTokens[j + 1];
+            const pair = nxt ? cand + ' ' + nxt : null;
+            if (pair && (killerLookup[pair] || survivorLookup[pair] || RARITY_ALIASES[pair])) continue;
+            target = cand;
+            break;
+          }
+          usedTokens.add(t);
+          if (target) {
+            usedTokens.add(target);
+            context.excluded.push({ raw: target, stem: stemWord(target) });
+          }
+        }
+
         // Multi-word detection for two-word killer names (e.g., "pig" resolves fine, but check combos)
         for (let i = 0; i < meaningfulTokens.length; i++) {
           const t = meaningfulTokens[i];
+          if (usedTokens.has(t)) continue;
           const twoWord = i + 1 < meaningfulTokens.length ? t + ' ' + meaningfulTokens[i + 1] : null;
 
           // Check two-word combos first
@@ -4198,18 +4404,26 @@
         for (const t of meaningfulTokens) {
           if (usedTokens.has(t)) continue;
 
-          // Killer name
-          if (!context.killerName && killerLookup[t]) {
-            context.killerName = killerLookup[t];
-            usedTokens.add(t);
-            continue;
+          // Killer name (exact, then typo-tolerant fuzzy fallback)
+          if (!context.killerName) {
+            const exact = killerLookup[t];
+            const fuzzy = !exact && t.length >= 4 ? fuzzyLookup(t, killerLookup) : null;
+            if (exact || fuzzy) {
+              context.killerName = exact || fuzzy;
+              usedTokens.add(t);
+              continue;
+            }
           }
 
-          // Survivor name
-          if (!context.survivorName && survivorLookup[t]) {
-            context.survivorName = survivorLookup[t];
-            usedTokens.add(t);
-            continue;
+          // Survivor name (exact, then typo-tolerant fuzzy fallback)
+          if (!context.survivorName) {
+            const exact = survivorLookup[t];
+            const fuzzy = !exact && t.length >= 4 ? fuzzyLookup(t, survivorLookup) : null;
+            if (exact || fuzzy) {
+              context.survivorName = exact || fuzzy;
+              usedTokens.add(t);
+              continue;
+            }
           }
 
           // Rarity
@@ -4240,8 +4454,19 @@
           }
         }
 
-        // Remaining meaningful tokens become description search words
-        context.descTokens = meaningfulTokens.filter(t => !usedTokens.has(t) && !STOP_WORDS.has(t));
+        // Remaining meaningful tokens become description search words (stemmed so
+        // inflections meet), expanded with player-slang synonyms at lower weight
+        const leftover = meaningfulTokens.filter(t => !usedTokens.has(t) && !STOP_WORDS.has(t));
+        context.descTokens = [...new Set(leftover.map(stemWord))];
+        for (const t of leftover) {
+          const key = stemWord(t);
+          const syns = MECHANIC_SYNONYMS[key];
+          if (!syns) continue;
+          for (const s of syns) {
+            const ss = stemWord(s);
+            if (ss !== key && !context.descTokens.includes(ss) && !context.synTokens.includes(ss)) context.synTokens.push(ss);
+          }
+        }
 
         return { tokens: meaningfulTokens, context };
       };
