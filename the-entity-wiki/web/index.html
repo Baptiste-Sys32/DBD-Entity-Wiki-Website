@@ -37,6 +37,13 @@
   <script src="./vendor/react.production.min.js"></script>
   <script src="./vendor/react-dom.production.min.js"></script>
   <script src="./vendor/babel.min.js"></script>
+  <script>
+    // Keep JSX and newer-syntax transforms, without compiling every script to ES5.
+    // Module-capable browsers are the compatibility baseline; no bundler is required.
+    Babel.registerPreset('wiki', {
+      presets: [[Babel.availablePresets.env, { targets: { esmodules: true }, modules: false }], Babel.availablePresets.react]
+    });
+  </script>
   <script src="./vendor/tailwindcss.min.js"></script>
   <script>
     /* Codex palette remap: warm bone-gray zinc/slate scales + Codex red.
@@ -151,16 +158,16 @@
       };
     })();
   </script>
-  <script type="text/babel" src="./engine/icons.js"></script>
-  <script type="text/babel" src="./engine/core.js"></script>
-  <script type="text/babel" src="./engine/theme.js"></script>
-  <script type="text/babel" src="./engine/storage.js"></script>
-  <script type="text/babel" src="./engine/device.js"></script>
-  <script type="text/babel" src="./engine/shell.js"></script>
-  <script type="text/babel" src="./engine/assets.js"></script>
-  <script type="text/babel" src="./engine/articles.js"></script>
-  <script type="text/babel" src="./games/dbd/config.js"></script>
-  <script type="text/babel">
+  <script type="text/babel" data-presets="wiki" src="./engine/icons.js"></script>
+  <script type="text/babel" data-presets="wiki" src="./engine/core.js"></script>
+  <script type="text/babel" data-presets="wiki" src="./engine/theme.js"></script>
+  <script type="text/babel" data-presets="wiki" src="./engine/storage.js"></script>
+  <script type="text/babel" data-presets="wiki" src="./engine/device.js"></script>
+  <script type="text/babel" data-presets="wiki" src="./engine/shell.js"></script>
+  <script type="text/babel" data-presets="wiki" src="./engine/assets.js"></script>
+  <script type="text/babel" data-presets="wiki" src="./engine/articles.js"></script>
+  <script type="text/babel" data-presets="wiki" src="./games/dbd/config.js"></script>
+  <script type="text/babel" data-presets="wiki">
     const { useState, useEffect, useMemo, useRef, useCallback, useDeferredValue } = React;
     /* Moved to ./engine/core.js (wiki engine bundle, loaded above). */
     /* Icons moved to ./engine/icons.js (wiki engine bundle, loaded above). */
@@ -3785,25 +3792,24 @@
       };
 
       const findKiller = (query) => {
-        const q = query.toLowerCase().replace(/^the\s+/, '').trim();
+        const q = query.toLowerCase().trim().replace(/^the(?:\s+|$)/, '');
         if (!q) return null;
-        return killers.find(k =>
-          k.name.toLowerCase().replace(/^the\s+/, '') === q ||
-          k.name.toLowerCase().includes(q) ||
-          k.name.toLowerCase().replace(/^the\s+/, '').includes(q)
-        );
+        const exactName = killerLookup[q];
+        if (exactName) return killers.find(killer => killer.name === exactName) || null;
+        const candidates = killers.filter(killer => killer.name.toLowerCase().includes(q));
+        return candidates.length === 1 ? candidates[0] : null;
       };
 
       const findItemType = (query) => {
         const q = query.toLowerCase().trim();
-        const typeMap = {
+        const typeMap = Object.assign(Object.create(null), {
           'medkit': 'medkit', 'med-kit': 'medkit', 'med kit': 'medkit',
           'flashlight': 'flashlight', 'torch': 'flashlight',
           'toolbox': 'toolbox', 'tool box': 'toolbox', 'tool': 'toolbox',
           'key': 'key', 'keys': 'key',
           'map': 'map', 'maps': 'map',
           'firecracker': 'firecracker', 'firecrackers': 'firecracker'
-        };
+        });
         return typeMap[q] || null;
       };
 
@@ -3879,8 +3885,8 @@
 
       // Handle random: prefix in search
       useEffect(() => {
-        if (searchTerm.toLowerCase().startsWith('random:')) {
-          const query = searchTerm.slice(7).trim();
+        if (searchTerm.trim().toLowerCase().startsWith('random:')) {
+          const query = searchTerm.trim().slice(7).trim();
           if (query) {
             const result = processRandomCommand(query);
             setRandomResult(result);
@@ -3895,7 +3901,7 @@
 
       const rerollRandom = () => {
         if (randomResult) {
-          const query = searchTerm.slice(7).trim();
+          const query = searchTerm.trim().slice(7).trim();
           const newResult = processRandomCommand(query);
           setRandomResult(newResult);
         }
@@ -3970,10 +3976,11 @@
       // ── Smart Search Engine ──
       // Rarity aliases: maps common DBD slang to internal rarity values
     /* Moved to ./games/dbd/config.js (DBD adapter, loaded above). */
+      const rarityAliases = Object.assign(Object.create(null), RARITY_ALIASES);
       const IRIDESCENT_RARITIES = ['ultrarare', 'visceral'];
 
       // Category trigger words
-      const CATEGORY_TRIGGERS = {
+      const CATEGORY_TRIGGERS = Object.assign(Object.create(null), {
         'addon': 'Addon', 'add-on': 'Addon', 'addons': 'Addon', 'add-ons': 'Addon',
         'perk': 'Perk', 'perks': 'Perk',
         'offering': 'Offering', 'offerings': 'Offering',
@@ -3987,23 +3994,23 @@
         'challenge': 'Challenge', 'challenges': 'Challenge',
         'chapter': 'Chapter',
         'legendary': 'Cosmetic', 'cosmetic': 'Cosmetic', 'cosmetics': 'Cosmetic'
-      };
+      });
 
       // Item type aliases
-      const ITEM_TYPE_ALIASES = {
+      const ITEM_TYPE_ALIASES = Object.assign(Object.create(null), {
         'medkit': 'medkit', 'med-kit': 'medkit', 'med kit': 'medkit', 'medkits': 'medkit',
         'flashlight': 'flashlight', 'torch': 'flashlight', 'flashlights': 'flashlight',
         'toolbox': 'toolbox', 'tool box': 'toolbox', 'toolboxes': 'toolbox',
         'key': 'key', 'keys': 'key',
         'firecracker': 'firecracker', 'firecrackers': 'firecracker'
-      };
+      });
 
       // Stop words to ignore during token matching (articles, question words, command filler)
       const STOP_WORDS = new Set(['the', 'a', 'an', 'that', 'this', 'with', 'for', 'and', 'but', 'or', 'of', 'to', 'in', 'on', 'is', 'it', 'has', 'his', 'her', 'its', 'your', 'you', 'yours', 'within', 'during', 'what', 'which', 'who', 'whom', 'when', 'where', 'why', 'how', 'show', 'shows', 'give', 'gives', 'find', 'finds', 'list', 'lists', 'tell', 'tells', 'me', 'my', 'are', 'was', 'were', 'be', 'been', 'being', 'do', 'does', 'did', 'done', 'can', 'could', 'should', 'would', 'will', 'shall', 'may', 'might', 'must', 'get', 'gets', 'best', 'good', 'top', 'all', 'any', 'some', 'there', 'their', 'they', 'them', 'then', 'than', 'too', 'just', 'like', 'want', 'wants', 'need', 'needs', 'use', 'uses', 'used', 'using', 'way', 'ways', 'kind', 'kinds', 'thing', 'things', 'much', 'many', 'more', 'most', 'other', 'such', 'same', 'each', 'every', 'both', 'also', 'even', 'ever', 'always', 'often', 'really', 'quite', 'please', 'vs', 'versus', 'per', 'about', 'around']);
 
       // Player slang → canonical description words (keys are stems; see stemWord).
       // Lets sentence queries like "perks that help heal" or "slow down generators" land.
-      const MECHANIC_SYNONYMS = {
+      const MECHANIC_SYNONYMS = Object.assign(Object.create(null), {
         'gen': ['generator'],
         'heal': ['heal', 'recover', 'mend'],
         'mend': ['mend', 'heal'],
@@ -4046,7 +4053,7 @@
         'trapp': ['trap'],
         'stopp': ['stop'],
         'grabb': ['grab']
-      };
+      });
 
       // Negation markers: the next meaningful token is excluded, not searched
       // ("perks that are not hex", "addons without hindered")
@@ -4076,6 +4083,11 @@
         if (w.endsWith('e') && w.length > 4 && /[^aeiou]$/.test(w.slice(0, -1)) && !w.endsWith('ee')) return w.slice(0, -1);
         return w;
       };
+
+      // Mechanic words belong in descriptions; do not run proper-name typo matching on them.
+      const mechanicStems = useMemo(() => new Set([
+        ...Object.keys(MECHANIC_SYNONYMS), ...Object.values(MECHANIC_SYNONYMS).flat()
+      ].map(stemWord)), []);
 
       // Bounded Levenshtein distance (early exit past max) for typo tolerance
       const editDistance = (a, b, max) => {
@@ -4114,7 +4126,7 @@
 
       // Build killer lookup from data (handles "nurse" → "The Nurse", "sally" → "The Nurse", etc.)
       const buildKillerLookup = () => {
-        const lookup = {};
+        const lookup = Object.create(null);
         (data.killers || []).forEach(k => {
           const name = k.name.toLowerCase();
           const shortName = name.replace(/^the\s+/, '');
@@ -4133,7 +4145,7 @@
 
       // Build survivor lookup
       const buildSurvivorLookup = () => {
-        const lookup = {};
+        const lookup = Object.create(null);
         (data.survivors || []).forEach(s => {
           const name = s.name.toLowerCase();
           lookup[name] = s.name;
@@ -4149,51 +4161,29 @@
       // Score a single item against parsed search context
       const scoreItem = (item, tokens, context) => {
         let score = 0;
-        const nameLower = (item.name || item.term || '').toLowerCase();
-        const descLower = ((item._category === 'Perk' ? getPerkSearchDescription(item) : (item.description || item.def || item.power || '')) || '').toLowerCase();
-
-        // Stemmed word index of the description: word-boundary matching kills
-        // false positives from raw substring ("axe" no longer matches "tax",
-        // "tr" no longer matches every word containing "tr").
-        const descWords = descLower.match(/[a-z0-9]+/g) || [];
-        const descStems = descWords.map(stemWord);
-        const descStemSet = new Set(descStems);
-
-        // ── Negation: excluded terms bury the item ──
-        if (context.excluded && context.excluded.length > 0) {
-          for (const ex of context.excluded) {
-            if (nameLower.includes(ex.raw)
-              || descStemSet.has(ex.stem)
-              || (item._category || '').toLowerCase() === ex.raw) {
-              score -= 60;
-              break;
-            }
-          }
-        }
+        const { nameLower, descLower, descPositions, nameWords } = item._search;
 
         // ── Exact full-query substring match in name (classic search behavior) ──
-        const fullQuery = tokens.join(' ');
+        const fullQuery = context.fullQuery;
         if (fullQuery) {
           if (nameLower === fullQuery) score += 100;
           else if (nameLower.includes(fullQuery)) score += 50;
         }
 
         // ── Per-token name matching (exact + typo-tolerant fuzzy fallback) ──
-        const nameWords = nameLower.match(/[a-z0-9]+/g) || [nameLower];
         let exactHits = 0;
         let fuzzyHits = 0;
         for (const t of tokens) {
           if (nameLower.includes(t)) { exactHits++; continue; }
-          if (t.length >= 4) {
+          if (context.fuzzyNameTokens.has(t)) {
             const max = t.length >= 7 ? 2 : 1;
-            let best = max + 1;
-            for (const w of nameWords) {
-              // Same guard as fuzzyLookup: short tokens don't match shorter words
-              if (t.length <= 5 && w.length < t.length) continue;
-              const d = editDistance(t, w, max);
-              if (d < best) best = d;
-            }
-            if (best <= max) fuzzyHits++;
+            let matches = context.fuzzyNameMatches.get(t);
+            if (!matches) { matches = new Map(); context.fuzzyNameMatches.set(t, matches); }
+            if (nameWords.some(word => {
+              if (t.length <= 5 && word.length < t.length) return false;
+              if (!matches.has(word)) matches.set(word, editDistance(t, word, max) <= max);
+              return matches.get(word);
+            })) fuzzyHits++;
           }
         }
         const nameTokenHits = exactHits + fuzzyHits;
@@ -4240,16 +4230,18 @@
         // ── Alias match (perks, cosmetics): exact alias === full query is strong,
         // a substring mention is weak. Counted once — some entries carry 7+
         // aliases and per-alias stacking drowned out exact character matches.
-        if (item.aliases) {
-          let aliasFullBonus = 0;
+        const { aliases, aliasText } = item._search;
+        if (aliases.length) {
+          const aliasFullBonus = fullQuery && aliases.includes(fullQuery) ? 40
+            : fullQuery && aliasText.includes(fullQuery) ? 15 : 0;
           let aliasTokenBonus = 0;
-          for (const alias of item.aliases) {
-            const aliasLower = alias.toLowerCase();
-            if (fullQuery && aliasLower === fullQuery) aliasFullBonus = Math.max(aliasFullBonus, 40);
-            else if (fullQuery && aliasLower.includes(fullQuery)) aliasFullBonus = Math.max(aliasFullBonus, 15);
-            for (const t of context.descTokens) {
-              if (t.length >= 2 && aliasLower.includes(t)) aliasTokenBonus += 5;
+          for (const token of context.descTokens) {
+            if (token.length < 2 || !aliasText.includes(token)) continue;
+            for (const alias of aliases) {
+              if (alias.includes(token)) aliasTokenBonus += 5;
+              if (aliasTokenBonus >= 10) break;
             }
+            if (aliasTokenBonus >= 10) break;
           }
           score += aliasFullBonus + Math.min(aliasTokenBonus, 10);
         }
@@ -4261,12 +4253,12 @@
         const matchedPositions = new Set();
         let descHits = 0;
         for (const t of context.descTokens) {
-          let matched = false;
-          for (let i = 0; i < descStems.length; i++) {
-            const w = descStems[i];
-            if (w === t || (t.length >= 4 && w.startsWith(t))) { matched = true; matchedPositions.add(i); break; }
+          let firstPosition = Infinity;
+          for (const word of context.matchingDescStems.get(t) || []) {
+            const position = descPositions.get(word);
+            if (position !== undefined && position < firstPosition) firstPosition = position;
           }
-          if (matched) { descHits++; continue; }
+          if (firstPosition !== Infinity) { descHits++; matchedPositions.add(firstPosition); continue; }
           if (t.length >= 3 && descLower.includes(t)) score += 1;
         }
         if (descHits > 0) {
@@ -4279,7 +4271,7 @@
         if (context.synTokens && context.synTokens.length > 0) {
           let synHits = 0;
           for (const t of context.synTokens) {
-            if (descStemSet.has(t)) synHits++;
+            if (descPositions.has(t)) synHits++;
           }
           if (synHits > 0) score += Math.min(synHits, 4) * 2;
         }
@@ -4300,24 +4292,10 @@
           }
         }
 
-        // ── Tags match (builds, challenges) ──
-        if (item.tags) {
-          for (const tag of item.tags) {
-            const tagLower = tag.toLowerCase();
-            for (const t of tokens) {
-              if (tagLower.includes(t)) score += 6;
-            }
-          }
-        }
-
-        // ── Build perks match ──
-        if (item.perks && Array.isArray(item.perks)) {
-          for (const p of item.perks) {
-            const perkNameLower = (p.name || '').toLowerCase();
-            for (const t of tokens) {
-              if (perkNameLower.includes(t)) score += 5;
-            }
-          }
+        // Each query token earns at most one tag/perk bonus per item.
+        for (const token of tokens) {
+          if ((item.tags || []).some(tag => tag.toLowerCase().includes(token))) score += 6;
+          if (Array.isArray(item.perks) && item.perks.some(perk => (perk.name || '').toLowerCase().includes(token))) score += 5;
         }
 
         // ── Realm match (maps) ──
@@ -4346,32 +4324,23 @@
           itemType: null,
           descTokens: [],
           synTokens: [],
-          excluded: []
+          excluded: [],
+          fuzzyNameMatches: new Map()
         };
 
         const usedTokens = new Set();
 
-        // Negation first ("not hex", "addons without hindered"): the next
-        // meaningful token is excluded. Combo-aware so "not very rare" still
-        // detects the "very rare" rarity instead of excluding "very".
+        // Consume the entire excluded phrase, including compound rarities and names.
         for (let i = 0; i < meaningfulTokens.length; i++) {
-          const t = meaningfulTokens[i];
-          if (!NEGATION_WORDS.has(t) || usedTokens.has(t)) continue;
-          let target = null;
-          for (let j = i + 1; j < meaningfulTokens.length; j++) {
-            const cand = meaningfulTokens[j];
-            if (STOP_WORDS.has(cand) || NEGATION_WORDS.has(cand) || usedTokens.has(cand)) continue;
-            const nxt = meaningfulTokens[j + 1];
-            const pair = nxt ? cand + ' ' + nxt : null;
-            if (pair && (killerLookup[pair] || survivorLookup[pair] || RARITY_ALIASES[pair])) continue;
-            target = cand;
-            break;
-          }
-          usedTokens.add(t);
-          if (target) {
-            usedTokens.add(target);
-            context.excluded.push({ raw: target, stem: stemWord(target) });
-          }
+          const token = meaningfulTokens[i];
+          if (!NEGATION_WORDS.has(token) || usedTokens.has(token)) continue;
+          usedTokens.add(token);
+          const next = meaningfulTokens[i + 1];
+          if (!next) continue;
+          const pair = meaningfulTokens.slice(i + 1, i + 3).join(' ');
+          const raw = rarityAliases[pair] || killerLookup[pair] || survivorLookup[pair] ? pair : next;
+          raw.split(' ').forEach(part => usedTokens.add(part));
+          context.excluded.push({ raw, stem: stemWord(raw), rarity: rarityAliases[raw] || null });
         }
 
         // Multi-word detection for two-word killer names (e.g., "pig" resolves fine, but check combos)
@@ -4385,17 +4354,17 @@
             context.killerName = killerLookup[twoWord];
             usedTokens.add(t);
             usedTokens.add(meaningfulTokens[i + 1]);
-            break;
+            continue;
           }
           if (twoWord && survivorLookup[twoWord]) {
             context.survivorName = survivorLookup[twoWord];
             usedTokens.add(t);
             usedTokens.add(meaningfulTokens[i + 1]);
-            break;
+            continue;
           }
           // Check rarity combos like "very rare", "ultra rare"
-          if (twoWord && RARITY_ALIASES[twoWord]) {
-            context.rarity = RARITY_ALIASES[twoWord];
+          if (twoWord && rarityAliases[twoWord]) {
+            context.rarity = rarityAliases[twoWord];
             usedTokens.add(t);
             usedTokens.add(meaningfulTokens[i + 1]);
           }
@@ -4405,10 +4374,32 @@
         for (const t of meaningfulTokens) {
           if (usedTokens.has(t)) continue;
 
+          if (t === 'killer' || t === 'survivor' || t === 'killers' || t === 'survivors') {
+            context.role = t.startsWith('killer') ? 'killer' : 'survivor';
+            if (!context.category) context.category = t.startsWith('killer') ? 'Killer' : 'Survivor';
+            usedTokens.add(t);
+            continue;
+          }
+          if (CATEGORY_TRIGGERS[t]) {
+            if (!context.category || ['Killer', 'Survivor'].includes(context.category)) context.category = CATEGORY_TRIGGERS[t];
+            usedTokens.add(t);
+            continue;
+          }
+          if (rarityAliases[t]) {
+            context.rarity = rarityAliases[t];
+            usedTokens.add(t);
+            continue;
+          }
+          if (ITEM_TYPE_ALIASES[t]) {
+            context.itemType = ITEM_TYPE_ALIASES[t];
+            usedTokens.add(t);
+            continue;
+          }
+
           // Killer name (exact, then typo-tolerant fuzzy fallback)
           if (!context.killerName) {
             const exact = killerLookup[t];
-            const fuzzy = !exact && t.length >= 4 ? fuzzyLookup(t, killerLookup) : null;
+            const fuzzy = !exact && !mechanicStems.has(stemWord(t)) && t.length >= 4 ? fuzzyLookup(t, killerLookup) : null;
             if (exact || fuzzy) {
               context.killerName = exact || fuzzy;
               usedTokens.add(t);
@@ -4419,39 +4410,12 @@
           // Survivor name (exact, then typo-tolerant fuzzy fallback)
           if (!context.survivorName) {
             const exact = survivorLookup[t];
-            const fuzzy = !exact && t.length >= 4 ? fuzzyLookup(t, survivorLookup) : null;
+            const fuzzy = !exact && !mechanicStems.has(stemWord(t)) && t.length >= 4 ? fuzzyLookup(t, survivorLookup) : null;
             if (exact || fuzzy) {
               context.survivorName = exact || fuzzy;
               usedTokens.add(t);
               continue;
             }
-          }
-
-          // Rarity
-          if (!context.rarity && RARITY_ALIASES[t]) {
-            context.rarity = RARITY_ALIASES[t];
-            usedTokens.add(t);
-            continue;
-          }
-
-          // Category
-          if (!context.category && CATEGORY_TRIGGERS[t]) {
-            context.category = CATEGORY_TRIGGERS[t];
-            usedTokens.add(t);
-            continue;
-          }
-
-          // Item type
-          if (!context.itemType && ITEM_TYPE_ALIASES[t]) {
-            context.itemType = ITEM_TYPE_ALIASES[t];
-            usedTokens.add(t);
-            continue;
-          }
-
-          // Role
-          if (!context.role && (t === 'killer' || t === 'survivor')) {
-            context.role = t;
-            // Don't mark as used - might be both a role and category
           }
         }
 
@@ -4469,29 +4433,13 @@
           }
         }
 
-        return { tokens: meaningfulTokens, context };
+        context.characterIntent = !context.category && !context.rarity && !context.itemType
+          && !leftover.length && !context.excluded.length && !!(context.killerName || context.survivorName);
+        return { tokens: [...new Set(meaningfulTokens.filter(token => !NEGATION_WORDS.has(token)
+          && !context.excluded.some(ex => ex.raw.split(' ').includes(token))))], context };
       };
 
-      useEffect(() => {
-        if (!deferredSearchTerm.trim()) {
-          setResults([]);
-          return;
-        }
-
-        const parseSearch = (input) => {
-          const prefixes = ['killers:', 'survivors:', 'perks:', 'builds:', 'maps:', 'items:', 'addons:', 'offerings:', 'glossary:', 'icons:', 'challenges:', 'chapter:', 'legendary:', 'cosmetics:'];
-          const lowerInput = input.toLowerCase();
-          for (const prefix of prefixes) {
-            if (lowerInput.startsWith(prefix)) {
-              return { filter: prefix.slice(0, -1), term: input.slice(prefix.length).trim().toLowerCase() };
-            }
-          }
-          return { filter: null, term: input.toLowerCase() };
-        };
-
-        const { filter, term } = parseSearch(deferredSearchTerm);
-        const shouldSearch = (category) => !filter || filter === category.toLowerCase();
-
+      const searchIndex = useMemo(() => {
         // ── Build flat list of all searchable items ──
         const allItems = [];
         // Filter out unresolved localization entries (@# prefixed) and disabled content
@@ -4502,42 +4450,26 @@
           return true;
         };
 
-        if (shouldSearch('killers') && data.killers) {
+        if (data.killers) {
           data.killers.forEach(k => allItems.push({ ...k, _category: 'Killer' }));
         }
-        if (shouldSearch('survivors') && data.survivors) {
+        if (data.survivors) {
           data.survivors.forEach(s => allItems.push({ ...s, _category: 'Survivor' }));
         }
-        if (shouldSearch('perks') && data.perks) {
+        if (data.perks) {
           data.perks.forEach(p => allItems.push({ ...p, _category: 'Perk' }));
         }
-        if (shouldSearch('builds')) {
-          builds.forEach(b => allItems.push({ ...b, _category: 'Build' }));
-        }
-        if (shouldSearch('maps')) {
-          maps.forEach(m => allItems.push({ ...m, _category: 'Map' }));
-        }
-        if (shouldSearch('challenges')) {
-          (challenges || []).forEach(ch => allItems.push({ ...ch, _category: 'Challenge' }));
-        }
-        if (shouldSearch('items')) {
-          items.filter(isValidEntry).forEach(i => allItems.push({ ...i, _category: 'Item' }));
-        }
-        if (shouldSearch('addons')) {
-          addons.filter(isValidEntry).forEach(a => allItems.push({ ...a, _category: 'Addon' }));
-        }
-        if (shouldSearch('offerings')) {
-          offerings.filter(o => !o.retired).forEach(o => allItems.push({ ...o, _category: 'Offering' }));
-        }
-        if (shouldSearch('icons')) {
-          GAME_ICONS.forEach(icon => allItems.push({ ...icon, _category: 'GameIcon', name: icon.name }));
-        }
-        if (shouldSearch('glossary')) {
-          GLOSSARY.forEach(section => {
-            section.items.forEach(item => allItems.push({ ...item, _category: 'Glossary', name: item.term, section: section.section }));
-          });
-        }
-        if (shouldSearch('chapter') && typeof TIMELINE_DATA !== 'undefined' && TIMELINE_DATA.releases) {
+        builds.forEach(b => allItems.push({ ...b, _category: 'Build' }));
+        maps.forEach(m => allItems.push({ ...m, _category: 'Map' }));
+        (challenges || []).forEach(ch => allItems.push({ ...ch, _category: 'Challenge' }));
+        items.filter(isValidEntry).forEach(i => allItems.push({ ...i, _category: 'Item' }));
+        addons.filter(isValidEntry).forEach(a => allItems.push({ ...a, _category: 'Addon' }));
+        offerings.filter(o => !o.retired).forEach(o => allItems.push({ ...o, _category: 'Offering' }));
+        GAME_ICONS.forEach(icon => allItems.push({ ...icon, _category: 'GameIcon', name: icon.name }));
+        GLOSSARY.forEach(section => {
+          section.items.forEach(item => allItems.push({ ...item, _category: 'Glossary', name: item.term, section: section.section }));
+        });
+        if (typeof TIMELINE_DATA !== 'undefined' && TIMELINE_DATA.releases) {
           const allReleases = TIMELINE_DATA.getChronological();
           allReleases.forEach(release => allItems.push({
             ...release,
@@ -4547,30 +4479,97 @@
             displayDate: release.displayDate
           }));
         }
-        if (shouldSearch('legendary') || shouldSearch('cosmetics')) {
-          searchableCosmetics.forEach((cosmetic) => allItems.push({
-            ...cosmetic,
-            _category: 'Cosmetic',
-            description: cosmetic.isCharacterSwap
-              ? `Character swaps outfit for ${cosmetic.baseCharacterName}`
-              : `${cosmetic.collectionName || cosmetic.sourceBucket || cosmetic.rarity || 'Cosmetic'} ${cosmetic.pieceType || 'cosmetic'} for ${cosmetic.baseCharacterName}${cosmetic.bindSummary ? ` (${cosmetic.bindSummary})` : ''}`
-          }));
+        searchableCosmetics.forEach((cosmetic) => allItems.push({
+          ...cosmetic,
+          _category: 'Cosmetic',
+          description: cosmetic.isCharacterSwap
+            ? `Character swaps outfit for ${cosmetic.baseCharacterName}`
+            : `${cosmetic.collectionName || cosmetic.sourceBucket || cosmetic.rarity || 'Cosmetic'} ${cosmetic.pieceType || 'cosmetic'} for ${cosmetic.baseCharacterName}${cosmetic.bindSummary ? ` (${cosmetic.bindSummary})` : ''}`
+        }));
+
+        return allItems.map(item => {
+          const nameLower = (item.name || item.term || '').toLowerCase();
+          const descLower = String(item._category === 'Perk' ? getPerkSearchDescription(item) : (item.description || item.def || item.power || '')).toLowerCase();
+          const descStems = (descLower.match(/[a-z0-9]+/g) || []).map(stemWord);
+          const descPositions = new Map();
+          descStems.forEach((word, index) => { if (!descPositions.has(word)) descPositions.set(word, index); });
+          const aliases = (item.aliases || []).map(alias => alias.toLowerCase());
+          return { ...item, _search: { nameLower, descLower, descPositions, aliases, aliasText: aliases.join('\0'), nameWords: nameLower.match(/[a-z0-9]+/g) || [nameLower] } };
+        });
+      }, [data.killers, data.survivors, data.perks, builds, maps, challenges, items, addons, offerings, searchableCosmetics]);
+
+      const descriptionVocabulary = useMemo(() => [...new Set(searchIndex.flatMap(item => [...item._search.descPositions.keys()]))], [searchIndex]);
+
+      useEffect(() => {
+        if (!deferredSearchTerm.trim() || deferredSearchTerm.trim().toLowerCase().startsWith('random:')) {
+          setResults([]);
+          return;
         }
 
+        const parseSearch = (input) => {
+          const prefixes = ['killers:', 'survivors:', 'perks:', 'builds:', 'maps:', 'items:', 'addons:', 'offerings:', 'glossary:', 'icons:', 'challenges:', 'chapter:', 'legendary:', 'cosmetics:'];
+          input = input.trim();
+          const lowerInput = input.toLowerCase();
+          for (const prefix of prefixes) {
+            if (lowerInput.startsWith(prefix)) {
+              return { filter: prefix.slice(0, -1), term: input.slice(prefix.length).trim().toLowerCase() };
+            }
+          }
+          return { filter: null, term: input.toLowerCase() };
+        };
+
+        const { filter, term } = parseSearch(deferredSearchTerm);
+        const categoryByPrefix = { killers: 'Killer', survivors: 'Survivor', perks: 'Perk', builds: 'Build', maps: 'Map', items: 'Item', addons: 'Addon', offerings: 'Offering', glossary: 'Glossary', icons: 'GameIcon', challenges: 'Challenge', chapter: 'Chapter', legendary: 'Cosmetic', cosmetics: 'Cosmetic' };
+
         // ── Smart score every item ──
-        const { tokens, context } = parseSmartQuery(filter ? term : deferredSearchTerm);
-        const scored = allItems
+        const queryText = (filter ? term : deferredSearchTerm).trim().toLowerCase();
+        let { tokens, context } = parseSmartQuery(queryText);
+        // Within a scoped content search, killer/survivor describe role.
+        if (filter && !['killers', 'survivors'].includes(filter) && ['Killer', 'Survivor'].includes(context.category)) context.category = null;
+        // Exact catalog titles can contain command words (Sole Survivor, No Mither).
+        // Preserve them before interpreting those words as filters or negation.
+        if (searchIndex.some(item => item._search.nameLower === queryText)
+          && (queryText.includes(' ') || !CATEGORY_TRIGGERS[queryText])) {
+          tokens = queryText.split(/\s+/);
+          context = { ...context, category: null, role: null, itemType: null, rarity: null, excluded: [], descTokens: [], synTokens: [] };
+        }
+        if (!tokens.length && !filter && !context.excluded.length) {
+          setResults([]);
+          return;
+        }
+        context.fullQuery = tokens.join(' ');
+        context.fuzzyNameTokens = new Set(tokens.filter(token => token.length >= 4 && !mechanicStems.has(stemWord(token))));
+        // Resolve description prefixes once per query, then use constant-time position lookups.
+        context.matchingDescStems = new Map(context.descTokens.map(token => [token,
+          descriptionVocabulary.filter(word => word === token || (token.length >= 4 && word.startsWith(token)))
+        ]));
+        const matchesRarity = (item, rarity) => rarity === 'iridescent'
+          ? IRIDESCENT_RARITIES.includes((item.rarity || '').toLowerCase()) : (item.rarity || '').toLowerCase() === rarity;
+        const scored = searchIndex
+          .filter(item => (!filter || item._category === categoryByPrefix[filter])
+            && (!context.category || item._category === context.category)
+            && (!context.itemType || item.itemType === context.itemType)
+            && (!context.rarity || matchesRarity(item, context.rarity))
+            && (!context.role || (item.role || item.type || item.baseCharacterType || item._category).toLowerCase() === context.role)
+            && !context.excluded.some(ex => ex.rarity ? matchesRarity(item, ex.rarity)
+              : item._search.nameLower.includes(ex.raw) || item._search.descPositions.has(ex.stem)
+                || (item._category || '').toLowerCase() === (CATEGORY_TRIGGERS[ex.raw] || ex.raw).toLowerCase()))
           .map(item => {
-            const s = scoreItem(item, tokens, context);
+            const s = filter && !term ? 1 : scoreItem(item, tokens, context);
             return s > 0 ? { ...item, category: item._category, _score: s } : null;
           })
           .filter(Boolean);
 
         // Sort by score descending, then alphabetically as tiebreaker
-        scored.sort((a, b) => b._score - a._score || (a.name || '').localeCompare(b.name || ''));
+        // A bare character name means the entity, even when a cosmetic has that exact name.
+        // Explicit cosmetic/category terms disable this priority.
+        const characterPriority = item => context.characterIntent && (
+          (item._category === 'Killer' && item.name === context.killerName)
+          || (item._category === 'Survivor' && item.name === context.survivorName)) ? 1 : 0;
+        scored.sort((a, b) => characterPriority(b) - characterPriority(a) || b._score - a._score || (a.name || '').localeCompare(b.name || ''));
 
         setResults(scored.slice(0, 50));
-      }, [deferredSearchTerm, data, builds, maps, challenges, items, addons, offerings, searchableCosmetics]);
+      }, [deferredSearchTerm, searchIndex, descriptionVocabulary, killerLookup, survivorLookup]);
       const visiblePerks = data?.perks || perks || [];
       const readyCosmeticCount = searchableCosmetics.length;
       return (
@@ -13161,17 +13160,18 @@ const MapLayoutModal = ({ map, onClose, noteValue = '', onNoteChange }) => {
       const readyFullSets = useMemo(() => cosmeticsCatalogForDisplay.fullSets.filter((entry) => entry.status === 'ready'), [cosmeticsCatalogForDisplay]);
       const readyCosmetics = useMemo(() => [...readyCharacterSwaps, ...readyFullSets], [readyCharacterSwaps, readyFullSets]);
       useEffect(() => {
+        if (currentView !== 'cosmetics') return undefined;
         const firstVisibleCosmetics = sortCosmeticsByRarity(
           readyCosmetics.filter((entry) => entry.baseCharacterType === 'Killer')
         )
           .slice(0, 16)
           .map((entry) => entry.image);
         return preloadImageBatch(firstVisibleCosmetics, cosmeticsAssetRevision, 16);
-      }, [readyCosmetics, cosmeticsAssetRevision]);
+      }, [currentView, readyCosmetics, cosmeticsAssetRevision]);
       const openCharacterArticle = useCallback((character) => {
         if (!character) return;
         const view = resolveCharacterView(character);
-        setView(view, { id: character.id });
+        setView(view, { id: character.id, ...(character.cosmeticFocusId ? { cosmeticId: character.cosmeticFocusId } : {}) });
       }, []);
       const openRealmArticle = useCallback((realm) => {
         if (!realm) return;

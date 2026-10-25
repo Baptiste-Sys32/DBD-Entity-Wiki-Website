@@ -1,0 +1,6194 @@
+{
+  "before": {
+    "1": {
+      "load": {
+        "rootMs": 7099.800000000745,
+        "paints": [
+          {
+            "name": "first-paint",
+            "ms": 748
+          },
+          {
+            "name": "first-contentful-paint",
+            "ms": 780
+          }
+        ],
+        "tasks": [
+          {
+            "start": 337.7000000011176,
+            "ms": 229
+          },
+          {
+            "start": 568.4000000003725,
+            "ms": 163
+          },
+          {
+            "start": 808,
+            "ms": 310
+          },
+          {
+            "start": 1119,
+            "ms": 220
+          },
+          {
+            "start": 1340.0999999996275,
+            "ms": 135
+          },
+          {
+            "start": 1476.0999999996275,
+            "ms": 71
+          },
+          {
+            "start": 1548.300000000745,
+            "ms": 5517
+          },
+          {
+            "start": 7068.300000000745,
+            "ms": 74
+          },
+          {
+            "start": 7218.800000000745,
+            "ms": 188
+          }
+        ],
+        "resources": [
+          {
+            "name": "vendor/react.production.min.js",
+            "bytes": 10751,
+            "ms": 29
+          },
+          {
+            "name": "vendor/react-dom.production.min.js",
+            "bytes": 131835,
+            "ms": 34.80000000074506
+          },
+          {
+            "name": "vendor/babel.min.js",
+            "bytes": 2921550,
+            "ms": 93
+          },
+          {
+            "name": "vendor/tailwindcss.min.js",
+            "bytes": 407279,
+            "ms": 53.5
+          },
+          {
+            "name": "engine/engine.css",
+            "bytes": 57266,
+            "ms": 24.799999998882413
+          },
+          {
+            "name": "assets/loading/dbd-logo-static.png",
+            "bytes": 12469,
+            "ms": 40.5
+          },
+          {
+            "name": "data.js",
+            "bytes": 1450743,
+            "ms": 62.80000000074506
+          },
+          {
+            "name": "lore.js",
+            "bytes": 64103,
+            "ms": 54.399999998509884
+          },
+          {
+            "name": "cosmetics.js",
+            "bytes": 5645878,
+            "ms": 165.5
+          },
+          {
+            "name": "community-content.js",
+            "bytes": 2324002,
+            "ms": 164.30000000074506
+          },
+          {
+            "name": "worldle-data.js",
+            "bytes": 22742,
+            "ms": 212.90000000037253
+          },
+          {
+            "name": "engine/icons.js",
+            "bytes": 18450,
+            "ms": 9
+          },
+          {
+            "name": "engine/core.js",
+            "bytes": 1465,
+            "ms": 8.5
+          },
+          {
+            "name": "engine/theme.js",
+            "bytes": 3130,
+            "ms": 7.099999999627471
+          },
+          {
+            "name": "engine/storage.js",
+            "bytes": 1604,
+            "ms": 12.299999998882413
+          },
+          {
+            "name": "engine/device.js",
+            "bytes": 5116,
+            "ms": 5.900000000372529
+          },
+          {
+            "name": "engine/shell.js",
+            "bytes": 8335,
+            "ms": 9.200000001117587
+          },
+          {
+            "name": "engine/assets.js",
+            "bytes": 6741,
+            "ms": 12.199999999254942
+          },
+          {
+            "name": "engine/articles.js",
+            "bytes": 7744,
+            "ms": 14.5
+          },
+          {
+            "name": "games/dbd/config.js",
+            "bytes": 8643,
+            "ms": 15.200000001117587
+          },
+          {
+            "name": "assets/favicon.png",
+            "bytes": 974,
+            "ms": 10.599999999627471
+          },
+          {
+            "name": "assets/wiki-logo.png",
+            "bytes": 12522,
+            "ms": 3.900000000372529
+          },
+          {
+            "name": "assets/r6-badge.png",
+            "bytes": 1476,
+            "ms": 3.399999998509884
+          },
+          {
+            "name": "assets/fonts/bitter-var.woff2",
+            "bytes": 34072,
+            "ms": 3
+          },
+          {
+            "name": "intl/en_us/badges/static/images/badges/en_badge_web_generic.png",
+            "bytes": 0,
+            "ms": 67.79999999888241
+          },
+          {
+            "name": "dbd_images/cosmetics/full_sets/the-animatronic--activated-springlocks--body--k40-body01.png",
+            "bytes": 156228,
+            "ms": 3.099999999627471
+          },
+          {
+            "name": "dbd_images/cosmetics/full_sets/the-lich--afterthought-dagger--weapon--k36-w01.png",
+            "bytes": 52227,
+            "ms": 2.5
+          },
+          {
+            "name": "dbd_images/cosmetics/full_sets/the-first--alternate-dimension--head--k42-head01.png",
+            "bytes": 128809,
+            "ms": 2.299999998882413
+          },
+          {
+            "name": "dbd_images/cosmetics/full_sets/the-hag--ashen-claws--weapon--ha-claw01.png",
+            "bytes": 22537,
+            "ms": 2.099999999627471
+          },
+          {
+            "name": "dbd_images/cosmetics/full_sets/the-cannibal--athleteface--head--ca-headmt01.png",
+            "bytes": 143662,
+            "ms": 3.5
+          },
+          {
+            "name": "dbd_images/cosmetics/full_sets/the-wraith--azarov-s-axe--weapon--wraith-weapon01.png",
+            "bytes": 50282,
+            "ms": 2
+          },
+          {
+            "name": "dbd_images/cosmetics/full_sets/the-plague--babylonian-silk-robe--body--mk-body01.png",
+            "bytes": 93320,
+            "ms": 3.400000000372529
+          },
+          {
+            "name": "dbd_images/cosmetics/full_sets/the-demogorgon--barbarous-claw--weapon--qk-w01.png",
+            "bytes": 70786,
+            "ms": 2.599999999627471
+          },
+          {
+            "name": "dbd_images/cosmetics/full_sets/the-ghoul--battle-gear--weapon--k39-weapon01.png",
+            "bytes": 102191,
+            "ms": 2.400000000372529
+          },
+          {
+            "name": "dbd_images/cosmetics/full_sets/the-ghoul--black-shorts--body--k39-body01.png",
+            "bytes": 49942,
+            "ms": 2.599999999627471
+          },
+          {
+            "name": "dbd_images/cosmetics/full_sets/the-twins--blade-of-marseille--weapon--k22-w01.png",
+            "bytes": 85482,
+            "ms": 3.199999999254942
+          },
+          {
+            "name": "dbd_images/cosmetics/full_sets/the-lich--blade-of-mayhem--weapon--k36-w01-01.png",
+            "bytes": 50986,
+            "ms": 3.200000001117587
+          },
+          {
+            "name": "dbd_images/cosmetics/full_sets/the-blight--bonebuster--weapon--yk-w01.png",
+            "bytes": 264062,
+            "ms": 5.099999999627471
+          },
+          {
+            "name": "dbd_images/cosmetics/full_sets/the-nurse--bonesaw--weapon--nurse-weapon01.png",
+            "bytes": 44536,
+            "ms": 2.599999999627471
+          },
+          {
+            "name": "dbd_images/cosmetics/full_sets/the-shape--boogeyman-mask--head--mm-head01.png",
+            "bytes": 64291,
+            "ms": 2.300000000745058
+          },
+          {
+            "name": "dbd_images/cosmetics/full_sets/the-huntress--broad-axe--weapon--be-w01.png",
+            "bytes": 51782,
+            "ms": 4.5
+          }
+        ]
+      },
+      "search": [
+        {
+          "query": "dwight",
+          "ms": 133.30000000074506,
+          "results": [
+            {
+              "id": "dwight-fairfield--dwight--head--d-head01",
+              "name": "Dwight",
+              "category": "Cosmetic",
+              "score": 163,
+              "rarity": "Common"
+            },
+            {
+              "id": "c1ad4f3a-3f31-47f6-ae66-7ba2746a1423",
+              "name": "Dwight Fairfield",
+              "category": "Survivor",
+              "score": 123,
+              "role": "Survivor"
+            },
+            {
+              "id": "dwight-fairfield--bloody-dwight--head--d-head01-p01",
+              "name": "Bloody Dwight",
+              "category": "Cosmetic",
+              "score": 88,
+              "rarity": "Rare"
+            },
+            {
+              "id": "dwight-fairfield--dearest-dwight--outfit--df-outfit-040",
+              "name": "Dearest Dwight",
+              "category": "Cosmetic",
+              "score": 88,
+              "rarity": "Very Rare"
+            },
+            {
+              "id": "dwight-fairfield--dwight-cubed--body--df-torso03-02",
+              "name": "Dwight Cubed",
+              "category": "Cosmetic",
+              "score": 88,
+              "rarity": "Uncommon"
+            },
+            {
+              "id": "dwight-fairfield--dwight-unknown--outfit--df-outfit-021",
+              "name": "Dwight Unknown",
+              "category": "Cosmetic",
+              "score": 88,
+              "rarity": "Very Rare"
+            },
+            {
+              "id": "dwight-fairfield--dwight-in-a-box--outfit--df-outfit-013",
+              "name": "Dwight-in-a-Box",
+              "category": "Cosmetic",
+              "score": 88,
+              "rarity": "Very Rare"
+            },
+            {
+              "id": "dwight-fairfield--dwight-s-mask--head--df-head019",
+              "name": "Dwight's Mask",
+              "category": "Cosmetic",
+              "score": 88,
+              "rarity": "Event"
+            }
+          ]
+        },
+        {
+          "query": "nurse",
+          "ms": 107.5,
+          "results": [
+            {
+              "id": "3191f632-4d35-4464-8c2d-db185d06209f",
+              "name": "The Nurse",
+              "category": "Killer",
+              "score": 123
+            },
+            {
+              "id": "54944810-74fa-4452-8c18-6508af885055",
+              "name": "A Nurse's Calling",
+              "category": "Perk",
+              "score": 93,
+              "role": "Killer"
+            },
+            {
+              "id": "the-nurse--bloody-nurse--body--nurse-body01-p01",
+              "name": "Bloody Nurse",
+              "category": "Cosmetic",
+              "score": 88,
+              "rarity": "Rare"
+            },
+            {
+              "id": "the-spirit--bubble-head-nurse",
+              "name": "Bubble Head Nurse",
+              "category": "Cosmetic",
+              "score": 88,
+              "rarity": "Legendary"
+            },
+            {
+              "id": "the-nurse--classic-nurses-outfit--body--nurse-body01",
+              "name": "Classic Nurses Outfit",
+              "category": "Cosmetic",
+              "score": 88,
+              "rarity": "Common"
+            },
+            {
+              "id": "the-nurse--legacy-nurse-2--head--nr-head01-lp01",
+              "name": "Legacy Nurse 2",
+              "category": "Cosmetic",
+              "score": 88,
+              "rarity": "Very Rare"
+            },
+            {
+              "id": "the-nurse--legacy-nurse-3--body--nr-body01-lp01",
+              "name": "Legacy Nurse 3",
+              "category": "Cosmetic",
+              "score": 88,
+              "rarity": "Very Rare"
+            },
+            {
+              "id": "the-nurse--legacy-nurse-i--weapon--nr-bonesaw01-lp01",
+              "name": "Legacy Nurse I",
+              "category": "Cosmetic",
+              "score": 88,
+              "rarity": "Very Rare"
+            }
+          ]
+        },
+        {
+          "query": "trapper",
+          "ms": 108,
+          "results": [
+            {
+              "id": "7a34f0fb-fe18-4854-ab5d-47f89a210051",
+              "name": "The Trapper",
+              "category": "Killer",
+              "score": 123
+            },
+            {
+              "id": "4e0d3786-2c31-481d-b172-eb9940ddc4b6",
+              "name": "Trapper Bag",
+              "category": "Addon",
+              "score": 93,
+              "rarity": "rare",
+              "itemType": null,
+              "role": "killer"
+            },
+            {
+              "id": "1a956e25-3c4a-42e2-a910-25e2d1a46492",
+              "name": "Trapper Gloves",
+              "category": "Addon",
+              "score": 93,
+              "rarity": "common",
+              "itemType": null,
+              "role": "killer"
+            },
+            {
+              "id": "b28a1318-f9c3-4987-9007-e7a203f33253",
+              "name": "Trapper Sack",
+              "category": "Addon",
+              "score": 93,
+              "rarity": "veryrare",
+              "itemType": null,
+              "role": "killer"
+            },
+            {
+              "id": "the-trapper--best-new-trapper-mask--head--tr-head01-cva",
+              "name": "Best New Trapper Mask",
+              "category": "Cosmetic",
+              "score": 88,
+              "rarity": "Very Rare"
+            },
+            {
+              "id": "the-trapper--legacy-trapper-1--weapon--tr-machete01-lp01",
+              "name": "Legacy Trapper 1",
+              "category": "Cosmetic",
+              "score": 88,
+              "rarity": "Very Rare"
+            },
+            {
+              "id": "the-trapper--legacy-trapper-2--body--tr-body01-lp01",
+              "name": "Legacy Trapper 2",
+              "category": "Cosmetic",
+              "score": 88,
+              "rarity": "Very Rare"
+            },
+            {
+              "id": "the-trapper--legacy-trapper-3--head--tr-head01-lp01",
+              "name": "Legacy Trapper 3",
+              "category": "Cosmetic",
+              "score": 88,
+              "rarity": "Very Rare"
+            }
+          ]
+        },
+        {
+          "query": "spirit",
+          "ms": 105.59999999962747,
+          "results": [
+            {
+              "id": "the-spirit--the-spirit--head--hk-head01",
+              "name": "The Spirit",
+              "category": "Cosmetic",
+              "score": 138,
+              "rarity": "Common"
+            },
+            {
+              "id": "c5b56576-0afb-4f1e-ac73-bac5bd3ee9a0",
+              "name": "The Spirit",
+              "category": "Killer",
+              "score": 123
+            },
+            {
+              "id": "434be009-2075-4c07-89cc-2a5f757e2361",
+              "name": "Spirit Fury",
+              "category": "Perk",
+              "score": 93,
+              "role": "Killer"
+            },
+            {
+              "id": "the-spirit--bloody-spirit--head--hk-head01-p01",
+              "name": "Bloody Spirit",
+              "category": "Cosmetic",
+              "score": 88,
+              "rarity": "Rare"
+            },
+            {
+              "id": "the-dredge--half-spirits-torments",
+              "name": "Half Spirits' Torments",
+              "category": "Cosmetic",
+              "score": 88,
+              "rarity": "Legendary"
+            },
+            {
+              "id": "the-spirit--spirit-s-mask--head--hk-head015",
+              "name": "Spirit's Mask",
+              "category": "Cosmetic",
+              "score": 88,
+              "rarity": "Event"
+            },
+            {
+              "id": "b83c0eb3-e7d5-4cd6-a41f-a840c224bf47",
+              "name": "\"All Seeing\" - Spirit",
+              "category": "Addon",
+              "score": 73,
+              "rarity": "visceral",
+              "itemType": null,
+              "role": "killer"
+            },
+            {
+              "id": "d03e92ab-1e88-4331-9f48-1074344c2483",
+              "name": "Calm Spirit",
+              "category": "Perk",
+              "score": 73,
+              "role": "Survivor"
+            }
+          ]
+        },
+        {
+          "query": "trapper mask",
+          "ms": 137,
+          "results": [
+            {
+              "id": "the-trapper--best-new-trapper-mask--head--tr-head01-cva",
+              "name": "Best New Trapper Mask",
+              "category": "Cosmetic",
+              "score": 101,
+              "rarity": "Very Rare"
+            },
+            {
+              "id": "7a34f0fb-fe18-4854-ab5d-47f89a210051",
+              "name": "The Trapper",
+              "category": "Killer",
+              "score": 58
+            },
+            {
+              "id": "the-trapper--trapper-s-mask--head--tr-mask014",
+              "name": "Trapper's Mask",
+              "category": "Cosmetic",
+              "score": 36,
+              "rarity": "Event"
+            },
+            {
+              "id": "4e0d3786-2c31-481d-b172-eb9940ddc4b6",
+              "name": "Trapper Bag",
+              "category": "Addon",
+              "score": 28,
+              "rarity": "rare",
+              "itemType": null,
+              "role": "killer"
+            },
+            {
+              "id": "1a956e25-3c4a-42e2-a910-25e2d1a46492",
+              "name": "Trapper Gloves",
+              "category": "Addon",
+              "score": 28,
+              "rarity": "common",
+              "itemType": null,
+              "role": "killer"
+            },
+            {
+              "id": "b28a1318-f9c3-4987-9007-e7a203f33253",
+              "name": "Trapper Sack",
+              "category": "Addon",
+              "score": 28,
+              "rarity": "veryrare",
+              "itemType": null,
+              "role": "killer"
+            },
+            {
+              "id": "301c9881-53a7-4b5f-99a4-479e5954129a",
+              "name": "4-Coil Spring Kit",
+              "category": "Addon",
+              "score": 20,
+              "rarity": "uncommon",
+              "itemType": null,
+              "role": "killer"
+            },
+            {
+              "id": "d74b2d10-d629-4b25-aea6-5e8a3117cbc1",
+              "name": "Agitation",
+              "category": "Perk",
+              "score": 20,
+              "role": "Killer"
+            }
+          ]
+        },
+        {
+          "query": "purple toolbox addons",
+          "ms": 133.7000000011176,
+          "results": [
+            {
+              "id": "d3ce0ce5-9f7d-4337-85ab-8c3095c16a5b",
+              "name": "Alex's Toolbox",
+              "category": "Item",
+              "score": 38,
+              "rarity": "veryrare",
+              "itemType": "toolbox",
+              "role": "survivor"
+            },
+            {
+              "id": "032e1e59-70b9-495a-b04b-9cbe139562ac",
+              "name": "Engineer's Toolbox",
+              "category": "Item",
+              "score": 38,
+              "rarity": "veryrare",
+              "itemType": "toolbox",
+              "role": "survivor"
+            },
+            {
+              "id": "668c5f3f-30f3-4652-8206-108d04245ed1",
+              "name": "\"All Seeing\" - Blood",
+              "category": "Addon",
+              "score": 25,
+              "rarity": "veryrare",
+              "itemType": null,
+              "role": "killer"
+            },
+            {
+              "id": "2bebeb54-adaa-47c2-a5bc-03c7c4b7ebab",
+              "name": "\"Bad Man's\" Last Breath",
+              "category": "Addon",
+              "score": 25,
+              "rarity": "veryrare",
+              "itemType": null,
+              "role": "killer"
+            },
+            {
+              "id": "20ecec63-1583-422d-adbd-8b8ef3616bb9",
+              "name": "\"Calm\" - Carter's Notes",
+              "category": "Addon",
+              "score": 25,
+              "rarity": "veryrare",
+              "itemType": null,
+              "role": "killer"
+            },
+            {
+              "id": "5120c5d2-4d05-4317-9d9f-4b131fe47e3c",
+              "name": "\"Discipline\" - Carter's Notes",
+              "category": "Addon",
+              "score": 25,
+              "rarity": "veryrare",
+              "itemType": null,
+              "role": "killer"
+            },
+            {
+              "id": "26d68d70-8707-46b1-9b1e-462901ce9e29",
+              "name": "\"Order\" - Carter's Notes",
+              "category": "Addon",
+              "score": 25,
+              "rarity": "veryrare",
+              "itemType": null,
+              "role": "killer"
+            },
+            {
+              "id": "f1176042-d6b4-4d4d-9dbe-e2da25a8f9cf",
+              "name": "\"Restraint\" - Carter's Notes",
+              "category": "Addon",
+              "score": 25,
+              "rarity": "veryrare",
+              "itemType": null,
+              "role": "killer"
+            }
+          ]
+        },
+        {
+          "query": "green toolbox addons",
+          "ms": 138.69999999925494,
+          "results": [
+            {
+              "id": "eb8597b2-7862-45ed-bedb-a76baeae5ada",
+              "name": "Grip Wrench",
+              "category": "Addon",
+              "score": 40,
+              "rarity": "rare",
+              "itemType": "toolbox",
+              "role": "survivor"
+            },
+            {
+              "id": "c0a38f21-07f6-43a6-afa1-2f9f960eab22",
+              "name": "Hacksaw",
+              "category": "Addon",
+              "score": 40,
+              "rarity": "rare",
+              "itemType": "toolbox",
+              "role": "survivor"
+            },
+            {
+              "id": "b49d529c-4e2b-47d6-8e2f-771d9f781ebe",
+              "name": "Commodious Toolbox",
+              "category": "Item",
+              "score": 38,
+              "rarity": "rare",
+              "itemType": "toolbox",
+              "role": "survivor"
+            },
+            {
+              "id": "d0999acd-8309-4204-9187-1093d92f7015",
+              "name": "Mechanic's Toolbox",
+              "category": "Item",
+              "score": 38,
+              "rarity": "rare",
+              "itemType": "toolbox",
+              "role": "survivor"
+            },
+            {
+              "id": "639e3987-9f03-45fc-b9e2-1bed0a34f9e9",
+              "name": "\"Blind Warrior\" - White",
+              "category": "Addon",
+              "score": 25,
+              "rarity": "rare",
+              "itemType": null,
+              "role": "killer"
+            },
+            {
+              "id": "d966f00d-c649-434a-b921-8f95c4b39ef0",
+              "name": "\"Blink\" - White",
+              "category": "Addon",
+              "score": 25,
+              "rarity": "rare",
+              "itemType": null,
+              "role": "killer"
+            },
+            {
+              "id": "78b3dcd5-6d44-4ea8-b55a-432ddbbe9dce",
+              "name": "\"Discipline\" - Class III",
+              "category": "Addon",
+              "score": 25,
+              "rarity": "rare",
+              "itemType": null,
+              "role": "killer"
+            },
+            {
+              "id": "bfc8a72b-cc39-463b-b0ae-c6915b376a34",
+              "name": "\"Restraint\" - Class III",
+              "category": "Addon",
+              "score": 25,
+              "rarity": "rare",
+              "itemType": null,
+              "role": "killer"
+            }
+          ]
+        },
+        {
+          "query": "purple toolbox items",
+          "ms": 129.2000000011176,
+          "results": [
+            {
+              "id": "d3ce0ce5-9f7d-4337-85ab-8c3095c16a5b",
+              "name": "Alex's Toolbox",
+              "category": "Item",
+              "score": 48,
+              "rarity": "veryrare",
+              "itemType": "toolbox",
+              "role": "survivor"
+            },
+            {
+              "id": "032e1e59-70b9-495a-b04b-9cbe139562ac",
+              "name": "Engineer's Toolbox",
+              "category": "Item",
+              "score": 48,
+              "rarity": "veryrare",
+              "itemType": "toolbox",
+              "role": "survivor"
+            },
+            {
+              "id": "99257865-ae77-4e3d-a39c-fcbc9bba8c07",
+              "name": "Anniversary Toolbox",
+              "category": "Item",
+              "score": 33,
+              "rarity": "common",
+              "itemType": "toolbox",
+              "role": "survivor"
+            },
+            {
+              "id": "b49d529c-4e2b-47d6-8e2f-771d9f781ebe",
+              "name": "Commodious Toolbox",
+              "category": "Item",
+              "score": 33,
+              "rarity": "rare",
+              "itemType": "toolbox",
+              "role": "survivor"
+            },
+            {
+              "id": "aee3b7c6-81fe-427d-b364-32e1d3b1960d",
+              "name": "Festive Toolbox",
+              "category": "Item",
+              "score": 33,
+              "rarity": "common",
+              "itemType": "toolbox",
+              "role": "survivor"
+            },
+            {
+              "id": "0761c75d-74ca-481f-a511-a15de8b55566",
+              "name": "Masquerade Toolbox",
+              "category": "Item",
+              "score": 33,
+              "rarity": "common",
+              "itemType": "toolbox",
+              "role": "survivor"
+            },
+            {
+              "id": "d0999acd-8309-4204-9187-1093d92f7015",
+              "name": "Mechanic's Toolbox",
+              "category": "Item",
+              "score": 33,
+              "rarity": "rare",
+              "itemType": "toolbox",
+              "role": "survivor"
+            },
+            {
+              "id": "0260a60e-f516-44d1-ab8c-fdff374a2019",
+              "name": "Toolbox",
+              "category": "Item",
+              "score": 33,
+              "rarity": "uncommon",
+              "itemType": "toolbox",
+              "role": "survivor"
+            }
+          ]
+        },
+        {
+          "query": "killer perks",
+          "ms": 112.79999999888241,
+          "results": [
+            {
+              "id": "a40f11d4-fb82-476f-a112-a2a07b89e8da",
+              "name": "The Animatronic",
+              "category": "Killer",
+              "score": 25
+            },
+            {
+              "id": "10ae434f-ee93-49cb-afc6-e8463c770292",
+              "name": "The Artist",
+              "category": "Killer",
+              "score": 25
+            },
+            {
+              "id": "4877fe2e-8a1a-4631-afd5-13d9cc648676",
+              "name": "The Blight",
+              "category": "Killer",
+              "score": 25
+            },
+            {
+              "id": "f1b3dc5b-28ff-4aab-82fa-82cf2bd246a1",
+              "name": "The Cannibal",
+              "category": "Killer",
+              "score": 25
+            },
+            {
+              "id": "278e5980-4f69-42a6-89e0-fed2afe0f5ed",
+              "name": "The Cenobite",
+              "category": "Killer",
+              "score": 25
+            },
+            {
+              "id": "a104f32b-5307-4f8b-b14f-08bae99b1cfe",
+              "name": "The Clown",
+              "category": "Killer",
+              "score": 25
+            },
+            {
+              "id": "8e662ce3-1cb2-4487-935f-60dc0f6183a0",
+              "name": "The Dark Lord",
+              "category": "Killer",
+              "score": 25
+            },
+            {
+              "id": "9f75c81a-dd7f-4773-be24-38e8336a12f2",
+              "name": "The Deathslinger",
+              "category": "Killer",
+              "score": 25
+            }
+          ]
+        },
+        {
+          "query": "survivor perks",
+          "ms": 110.09999999962747,
+          "results": [
+            {
+              "id": "a40f11d4-fb82-476f-a112-a2a07b89e8da",
+              "name": "The Animatronic",
+              "category": "Killer",
+              "score": 15
+            },
+            {
+              "id": "10ae434f-ee93-49cb-afc6-e8463c770292",
+              "name": "The Artist",
+              "category": "Killer",
+              "score": 15
+            },
+            {
+              "id": "4877fe2e-8a1a-4631-afd5-13d9cc648676",
+              "name": "The Blight",
+              "category": "Killer",
+              "score": 15
+            },
+            {
+              "id": "f1b3dc5b-28ff-4aab-82fa-82cf2bd246a1",
+              "name": "The Cannibal",
+              "category": "Killer",
+              "score": 15
+            },
+            {
+              "id": "278e5980-4f69-42a6-89e0-fed2afe0f5ed",
+              "name": "The Cenobite",
+              "category": "Killer",
+              "score": 15
+            },
+            {
+              "id": "a104f32b-5307-4f8b-b14f-08bae99b1cfe",
+              "name": "The Clown",
+              "category": "Killer",
+              "score": 15
+            },
+            {
+              "id": "8e662ce3-1cb2-4487-935f-60dc0f6183a0",
+              "name": "The Dark Lord",
+              "category": "Killer",
+              "score": 15
+            },
+            {
+              "id": "9f75c81a-dd7f-4773-be24-38e8336a12f2",
+              "name": "The Deathslinger",
+              "category": "Killer",
+              "score": 15
+            }
+          ]
+        },
+        {
+          "query": "perks survivor healing",
+          "ms": 149.7999999988824,
+          "results": [
+            {
+              "id": "10340736-3601-4bdd-a5b4-d23295644ab9",
+              "name": "Reactive Healing",
+              "category": "Perk",
+              "score": 49,
+              "role": "Survivor"
+            },
+            {
+              "id": "c24fad8b-31ea-4aa8-843b-bb9a0fcae4d2",
+              "name": "Buckle Up",
+              "category": "Perk",
+              "score": 43,
+              "role": "Survivor"
+            },
+            {
+              "id": "cf0536f5-62ba-4b43-9b95-ef1dd75080fc",
+              "name": "Conviction",
+              "category": "Perk",
+              "score": 43,
+              "role": "Survivor"
+            },
+            {
+              "id": "14839c0f-159c-49d0-a34e-6c66627bb814",
+              "name": "Made for This",
+              "category": "Perk",
+              "score": 43,
+              "role": "Survivor"
+            },
+            {
+              "id": "8adf88bc-7a4d-400d-9bdb-917d37d01ed2",
+              "name": "No Mither",
+              "category": "Perk",
+              "score": 43,
+              "role": "Survivor"
+            },
+            {
+              "id": "d1858747-451d-45e7-a643-34e9370a08b5",
+              "name": "We're Gonna Live Forever",
+              "category": "Perk",
+              "score": 43,
+              "role": "Survivor"
+            },
+            {
+              "id": "akc-perk-001-aplaceforus",
+              "name": "A Place For Us",
+              "category": "Perk",
+              "score": 41,
+              "role": "Survivor"
+            },
+            {
+              "id": "584cbabe-a12f-4183-b7d0-a9143fe985e6",
+              "name": "Autodidact",
+              "category": "Perk",
+              "score": 41,
+              "role": "Survivor"
+            }
+          ]
+        },
+        {
+          "query": "perks:survivor healing",
+          "ms": 40.5,
+          "results": [
+            {
+              "id": "c3216a0e-b763-4857-88d7-2c6260beb9ad",
+              "name": "Boon: Circle of Healing",
+              "category": "Perk",
+              "score": 20,
+              "role": "Survivor"
+            },
+            {
+              "id": "10340736-3601-4bdd-a5b4-d23295644ab9",
+              "name": "Reactive Healing",
+              "category": "Perk",
+              "score": 20,
+              "role": "Survivor"
+            },
+            {
+              "id": "a4f2f09a-1fef-4fb6-97d3-b4256b9d159a",
+              "name": "Invocation: Weaving Spiders",
+              "category": "Perk",
+              "score": 17,
+              "role": "Survivor"
+            },
+            {
+              "id": "04c95215-eb62-4457-bb56-078c7897c043",
+              "name": "Soul Guard",
+              "category": "Perk",
+              "score": 16,
+              "role": "Survivor"
+            },
+            {
+              "id": "c24fad8b-31ea-4aa8-843b-bb9a0fcae4d2",
+              "name": "Buckle Up",
+              "category": "Perk",
+              "score": 14,
+              "role": "Survivor"
+            },
+            {
+              "id": "cf0536f5-62ba-4b43-9b95-ef1dd75080fc",
+              "name": "Conviction",
+              "category": "Perk",
+              "score": 14,
+              "role": "Survivor"
+            },
+            {
+              "id": "14839c0f-159c-49d0-a34e-6c66627bb814",
+              "name": "Made for This",
+              "category": "Perk",
+              "score": 14,
+              "role": "Survivor"
+            },
+            {
+              "id": "8adf88bc-7a4d-400d-9bdb-917d37d01ed2",
+              "name": "No Mither",
+              "category": "Perk",
+              "score": 14,
+              "role": "Survivor"
+            }
+          ]
+        },
+        {
+          "query": "addons:killer",
+          "ms": 13.399999998509884,
+          "results": [
+            {
+              "id": "2f841628-3d78-46f7-bf21-50f34a64d32b",
+              "name": "Killer Doll",
+              "category": "Addon",
+              "score": 73,
+              "rarity": "rare",
+              "itemType": null,
+              "role": "killer"
+            }
+          ]
+        },
+        {
+          "query": "dark lord very rare addons",
+          "ms": 145.09999999962747,
+          "results": [
+            {
+              "id": "8e662ce3-1cb2-4487-935f-60dc0f6183a0",
+              "name": "The Dark Lord",
+              "category": "Killer",
+              "score": 66
+            },
+            {
+              "id": "the-dark-lord--the-dark-lord--head--k37-head01",
+              "name": "The Dark Lord",
+              "category": "Cosmetic",
+              "score": 66,
+              "rarity": "Common"
+            },
+            {
+              "id": "fb37b6a1-b05e-4b4e-afb5-a35bcd7c267e",
+              "name": "Force of Echo",
+              "category": "Addon",
+              "score": 45,
+              "rarity": "rare",
+              "itemType": null,
+              "role": "killer"
+            },
+            {
+              "id": "2f841628-3d78-46f7-bf21-50f34a64d32b",
+              "name": "Killer Doll",
+              "category": "Addon",
+              "score": 45,
+              "rarity": "rare",
+              "itemType": null,
+              "role": "killer"
+            },
+            {
+              "id": "ace3b9bd-6ec7-478f-b910-1edbb56600c0",
+              "name": "Pocket Watch",
+              "category": "Addon",
+              "score": 45,
+              "rarity": "rare",
+              "itemType": null,
+              "role": "killer"
+            },
+            {
+              "id": "413117eb-4b3a-45fa-89b7-83177fa46225",
+              "name": "Sunglasses",
+              "category": "Addon",
+              "score": 45,
+              "rarity": "rare",
+              "itemType": null,
+              "role": "killer"
+            },
+            {
+              "id": "3323bfad-adfc-42f3-ae3c-0fff3dfe783a",
+              "name": "Sylph Feather",
+              "category": "Addon",
+              "score": 45,
+              "rarity": "rare",
+              "itemType": null,
+              "role": "killer"
+            },
+            {
+              "id": "78b3dcd5-6d44-4ea8-b55a-432ddbbe9dce",
+              "name": "\"Discipline\" - Class III",
+              "category": "Addon",
+              "score": 37,
+              "rarity": "rare",
+              "itemType": null,
+              "role": "killer"
+            }
+          ]
+        },
+        {
+          "query": "not very rare addons",
+          "ms": 137.59999999962747,
+          "results": [
+            {
+              "id": "20ecec63-1583-422d-adbd-8b8ef3616bb9",
+              "name": "\"Calm\" - Carter's Notes",
+              "category": "Addon",
+              "score": 33,
+              "rarity": "veryrare",
+              "itemType": null,
+              "role": "killer"
+            },
+            {
+              "id": "5120c5d2-4d05-4317-9d9f-4b131fe47e3c",
+              "name": "\"Discipline\" - Carter's Notes",
+              "category": "Addon",
+              "score": 33,
+              "rarity": "veryrare",
+              "itemType": null,
+              "role": "killer"
+            },
+            {
+              "id": "26d68d70-8707-46b1-9b1e-462901ce9e29",
+              "name": "\"Order\" - Carter's Notes",
+              "category": "Addon",
+              "score": 33,
+              "rarity": "veryrare",
+              "itemType": null,
+              "role": "killer"
+            },
+            {
+              "id": "f1176042-d6b4-4d4d-9dbe-e2da25a8f9cf",
+              "name": "\"Restraint\" - Carter's Notes",
+              "category": "Addon",
+              "score": 33,
+              "rarity": "veryrare",
+              "itemType": null,
+              "role": "killer"
+            },
+            {
+              "id": "f5bf3bcb-2677-432e-8b32-e7ae31e2df0c",
+              "name": "Broken Recovery Coin",
+              "category": "Addon",
+              "score": 33,
+              "rarity": "veryrare",
+              "itemType": null,
+              "role": "killer"
+            },
+            {
+              "id": "3b4d0dd9-56cd-4ba0-9ec0-85311897ea13",
+              "name": "Depth Gauge Rake",
+              "category": "Addon",
+              "score": 30,
+              "rarity": "veryrare",
+              "itemType": null,
+              "role": "killer"
+            },
+            {
+              "id": "668c5f3f-30f3-4652-8206-108d04245ed1",
+              "name": "\"All Seeing\" - Blood",
+              "category": "Addon",
+              "score": 25,
+              "rarity": "veryrare",
+              "itemType": null,
+              "role": "killer"
+            },
+            {
+              "id": "2bebeb54-adaa-47c2-a5bc-03c7c4b7ebab",
+              "name": "\"Bad Man's\" Last Breath",
+              "category": "Addon",
+              "score": 25,
+              "rarity": "veryrare",
+              "itemType": null,
+              "role": "killer"
+            }
+          ]
+        },
+        {
+          "query": "perks not hex",
+          "ms": 109.60000000149012,
+          "results": [
+            {
+              "id": "9afcff9d-4930-4fde-914c-32455214afa2",
+              "name": "Ghost Notes",
+              "category": "Perk",
+              "score": 18,
+              "role": "Survivor"
+            },
+            {
+              "id": "b0971322-cb09-45f5-bc4b-4d0a1d64574b",
+              "name": "This Is Not Happening",
+              "category": "Perk",
+              "score": 18,
+              "role": "Survivor"
+            },
+            {
+              "id": "54944810-74fa-4452-8c18-6508af885055",
+              "name": "A Nurse's Calling",
+              "category": "Perk",
+              "score": 10,
+              "role": "Killer"
+            },
+            {
+              "id": "akc-perk-001-aplaceforus",
+              "name": "A Place For Us",
+              "category": "Perk",
+              "score": 10,
+              "role": "Survivor"
+            },
+            {
+              "id": "08198d7f-1561-4cf3-b112-7969f8aebc32",
+              "name": "Ace in the Hole",
+              "category": "Perk",
+              "score": 10,
+              "role": "Survivor"
+            },
+            {
+              "id": "6e0523a9-0f3f-4329-87c6-01500e72b054",
+              "name": "Adrenaline",
+              "category": "Perk",
+              "score": 10,
+              "role": "Survivor"
+            },
+            {
+              "id": "19fce903-4735-4332-b609-becf90bfb9c8",
+              "name": "Aftercare",
+              "category": "Perk",
+              "score": 10,
+              "role": "Survivor"
+            },
+            {
+              "id": "d74b2d10-d629-4b25-aea6-5e8a3117cbc1",
+              "name": "Agitation",
+              "category": "Perk",
+              "score": 10,
+              "role": "Killer"
+            }
+          ]
+        },
+        {
+          "query": "Sole Survivor",
+          "ms": 135.09999999962747,
+          "results": [
+            {
+              "id": "b761a0e2-a9a3-476f-9c81-ca0f0b6e8dc4",
+              "name": "Sole Survivor",
+              "category": "Perk",
+              "score": 176,
+              "role": "Survivor"
+            },
+            {
+              "id": "b2534c28-3d51-4066-9dde-fa0a28bbde7b",
+              "name": "Smelly Inner Soles",
+              "category": "Addon",
+              "score": 20,
+              "rarity": "rare",
+              "itemType": null,
+              "role": "killer"
+            },
+            {
+              "id": "mikaela-reid--blood-soaked-camisole--body--s28-torso01-p01",
+              "name": "Blood-Soaked Camisole",
+              "category": "Cosmetic",
+              "score": 13,
+              "rarity": "Rare"
+            },
+            {
+              "id": "mikaela-reid--crescent-camisole--body--s28-torso01-04",
+              "name": "Crescent Camisole",
+              "category": "Cosmetic",
+              "score": 13,
+              "rarity": "Uncommon"
+            },
+            {
+              "id": "mikaela-reid--ochre-camisole--body--s28-torso01",
+              "name": "Ochre Camisole",
+              "category": "Cosmetic",
+              "score": 13,
+              "rarity": "Common"
+            },
+            {
+              "id": "the-houndmaster--solemn-torment--outfit--k38-outfit-009",
+              "name": "Solemn Torment",
+              "category": "Cosmetic",
+              "score": 13,
+              "rarity": "Very Rare"
+            },
+            {
+              "id": "a830c003-9631-4722-91b6-f3ae0c3cfafe",
+              "name": "Ace Visconti",
+              "category": "Survivor",
+              "score": 10,
+              "role": "Survivor"
+            },
+            {
+              "id": "0f520f0b-07c1-4218-8334-e89d954b20b6",
+              "name": "Ada Wong",
+              "category": "Survivor",
+              "score": 10,
+              "role": "Survivor"
+            }
+          ]
+        },
+        {
+          "query": "No Mither",
+          "ms": 120,
+          "results": [
+            {
+              "id": "8adf88bc-7a4d-400d-9bdb-917d37d01ed2",
+              "name": "No Mither",
+              "category": "Perk",
+              "score": 71,
+              "role": "Survivor"
+            },
+            {
+              "id": "20ecec63-1583-422d-adbd-8b8ef3616bb9",
+              "name": "\"Calm\" - Carter's Notes",
+              "category": "Addon",
+              "score": 8,
+              "rarity": "veryrare",
+              "itemType": null,
+              "role": "killer"
+            },
+            {
+              "id": "5120c5d2-4d05-4317-9d9f-4b131fe47e3c",
+              "name": "\"Discipline\" - Carter's Notes",
+              "category": "Addon",
+              "score": 8,
+              "rarity": "veryrare",
+              "itemType": null,
+              "role": "killer"
+            },
+            {
+              "id": "26d68d70-8707-46b1-9b1e-462901ce9e29",
+              "name": "\"Order\" - Carter's Notes",
+              "category": "Addon",
+              "score": 8,
+              "rarity": "veryrare",
+              "itemType": null,
+              "role": "killer"
+            },
+            {
+              "id": "f1176042-d6b4-4d4d-9dbe-e2da25a8f9cf",
+              "name": "\"Restraint\" - Carter's Notes",
+              "category": "Addon",
+              "score": 8,
+              "rarity": "veryrare",
+              "itemType": null,
+              "role": "killer"
+            },
+            {
+              "id": "the-dredge--a-house-not-a-home--outfit--k28-outfit-022",
+              "name": "A House Not A Home",
+              "category": "Cosmetic",
+              "score": 8,
+              "rarity": "Very Rare"
+            },
+            {
+              "id": "the-unknown--abnormal-being--body--k35-body01-p01",
+              "name": "Abnormal Being",
+              "category": "Cosmetic",
+              "score": 8,
+              "rarity": "Rare"
+            },
+            {
+              "id": "the-doctor--adreno-head--head--do-head010",
+              "name": "Adreno-Head",
+              "category": "Cosmetic",
+              "score": 8,
+              "rarity": "Rare"
+            }
+          ]
+        },
+        {
+          "query": "No One Left Behind",
+          "ms": 147.69999999925494,
+          "results": [
+            {
+              "id": "f68aed3b-e8dc-478b-91eb-0fb05a73cb87",
+              "name": "No One Left Behind",
+              "category": "Perk",
+              "score": 91,
+              "role": "Survivor"
+            },
+            {
+              "id": "jake-park--biker-s-boots--legs--jp-legs05",
+              "name": "Biker's Boots",
+              "category": "Cosmetic",
+              "score": 36,
+              "rarity": "Uncommon"
+            },
+            {
+              "id": "dwight-fairfield--bullshifters-shirt--body--df-torso05",
+              "name": "Bullshifters Shirt",
+              "category": "Cosmetic",
+              "score": 36,
+              "rarity": "Uncommon"
+            },
+            {
+              "id": "claudette-morel--golden-rings--head--cm-head05",
+              "name": "Golden Rings",
+              "category": "Cosmetic",
+              "score": 36,
+              "rarity": "Uncommon"
+            },
+            {
+              "id": "jake-park--hell-s-legion--body--jp-torso05",
+              "name": "Hell's Legion",
+              "category": "Cosmetic",
+              "score": 36,
+              "rarity": "Uncommon"
+            },
+            {
+              "id": "dwight-fairfield--mechanic-s-coveralls--legs--df-legs05",
+              "name": "Mechanic's Coveralls",
+              "category": "Cosmetic",
+              "score": 36,
+              "rarity": "Uncommon"
+            },
+            {
+              "id": "claudette-morel--producer-jeans--legs--cm-legs05",
+              "name": "Producer Jeans",
+              "category": "Cosmetic",
+              "score": 36,
+              "rarity": "Uncommon"
+            },
+            {
+              "id": "meg-thomas--rolled-up-jeans-sneakers--legs--mt-legs05",
+              "name": "Rolled Up Jeans & Sneakers",
+              "category": "Cosmetic",
+              "score": 36,
+              "rarity": "Uncommon"
+            }
+          ]
+        },
+        {
+          "query": "aura",
+          "ms": 132.09999999962747,
+          "results": [
+            {
+              "id": "e3b0a01c-fde7-4d6e-a7c8-7f9420ae0ad8",
+              "name": "Restaurant Menu",
+              "category": "Addon",
+              "score": 73,
+              "rarity": "common",
+              "itemType": null,
+              "role": "killer"
+            },
+            {
+              "id": "fbdc181e-3a2f-4950-bc7f-63d2ff81b451",
+              "name": "SCREECH COBBLER",
+              "category": "Offering",
+              "score": 20,
+              "rarity": "common",
+              "role": "points"
+            },
+            {
+              "id": "8e662ce3-1cb2-4487-935f-60dc0f6183a0",
+              "name": "The Dark Lord",
+              "category": "Killer",
+              "score": 15
+            },
+            {
+              "id": "114736cd-6f78-4d86-88fd-58351384195a",
+              "name": "The Mastermind",
+              "category": "Killer",
+              "score": 15
+            },
+            {
+              "id": "c991df44-f218-40ab-ab99-60cefb3c161f",
+              "name": "The Xenomorph",
+              "category": "Killer",
+              "score": 15
+            },
+            {
+              "id": "668c5f3f-30f3-4652-8206-108d04245ed1",
+              "name": "\"All Seeing\" - Blood",
+              "category": "Addon",
+              "score": 14,
+              "rarity": "veryrare",
+              "itemType": null,
+              "role": "killer"
+            },
+            {
+              "id": "f1176042-d6b4-4d4d-9dbe-e2da25a8f9cf",
+              "name": "\"Restraint\" - Carter's Notes",
+              "category": "Addon",
+              "score": 14,
+              "rarity": "veryrare",
+              "itemType": null,
+              "role": "killer"
+            },
+            {
+              "id": "1ecfb587-2dca-4615-8cc0-79922393400a",
+              "name": "\"Restraint\" - Class II",
+              "category": "Addon",
+              "score": 14,
+              "rarity": "uncommon",
+              "itemType": null,
+              "role": "killer"
+            }
+          ]
+        },
+        {
+          "query": "icons:exausted",
+          "ms": 0.8000000007450581,
+          "results": [
+            {
+              "id": "exhausted",
+              "name": "Exhausted",
+              "category": "GameIcon",
+              "score": 20,
+              "role": "debuff"
+            }
+          ]
+        },
+        {
+          "query": "perks:",
+          "ms": 46.40000000037253,
+          "results": []
+        },
+        {
+          "query": "the",
+          "ms": 106.59999999962747,
+          "results": []
+        },
+        {
+          "query": "aura reveal generator healing chase hex boon",
+          "ms": 175.90000000037253,
+          "results": [
+            {
+              "id": "c3216a0e-b763-4857-88d7-2c6260beb9ad",
+              "name": "Boon: Circle of Healing",
+              "category": "Perk",
+              "score": 56,
+              "role": "Survivor"
+            },
+            {
+              "id": "46445e8e-69b9-40d0-8820-1423d545643f",
+              "name": "Boon: Illumination",
+              "category": "Perk",
+              "score": 36,
+              "role": "Survivor"
+            },
+            {
+              "id": "3b04e69f-2975-481b-9cc0-5eb5eafd81e1",
+              "name": "Hex: Face the Darkness",
+              "category": "Perk",
+              "score": 36,
+              "role": "Killer"
+            },
+            {
+              "id": "2af0cb82-accc-4ab6-9078-13cbfa89586c",
+              "name": "Hex: No One Escapes Death",
+              "category": "Perk",
+              "score": 36,
+              "role": "Killer"
+            },
+            {
+              "id": "697ab247-b1e1-4eea-90c5-47c1fa8de821",
+              "name": "Hex: Overture of Doom",
+              "category": "Perk",
+              "score": 36,
+              "role": "Killer"
+            },
+            {
+              "id": "s54p03-boon-steadfast",
+              "name": "Boon: Steadfast",
+              "category": "Perk",
+              "score": 32,
+              "role": "Survivor"
+            },
+            {
+              "id": "st2-perk-003-hexhivemind",
+              "name": "Hex: Hive Mind",
+              "category": "Perk",
+              "score": 32,
+              "role": "Killer"
+            },
+            {
+              "id": "f7d9b1df-b8c2-4280-9b97-8dde8987e521",
+              "name": "Hex: Plaything",
+              "category": "Perk",
+              "score": 32,
+              "role": "Killer"
+            }
+          ]
+        }
+      ]
+    },
+    "4": {
+      "load": {
+        "rootMs": 29109.700000001118,
+        "paints": [
+          {
+            "name": "first-paint",
+            "ms": 792
+          },
+          {
+            "name": "first-contentful-paint",
+            "ms": 876
+          }
+        ],
+        "tasks": [
+          {
+            "start": 240.90000000037253,
+            "ms": 182
+          },
+          {
+            "start": 433,
+            "ms": 326
+          },
+          {
+            "start": 779.2000000011176,
+            "ms": 66
+          },
+          {
+            "start": 921.9000000003725,
+            "ms": 53
+          },
+          {
+            "start": 985.8000000007451,
+            "ms": 60
+          },
+          {
+            "start": 1083.800000000745,
+            "ms": 703
+          },
+          {
+            "start": 1791,
+            "ms": 417
+          },
+          {
+            "start": 2256.60000000149,
+            "ms": 57
+          },
+          {
+            "start": 2314.60000000149,
+            "ms": 499
+          },
+          {
+            "start": 2819.2000000011176,
+            "ms": 378
+          },
+          {
+            "start": 3201.800000000745,
+            "ms": 25804
+          },
+          {
+            "start": 29028.10000000149,
+            "ms": 243
+          },
+          {
+            "start": 29331.60000000149,
+            "ms": 718
+          },
+          {
+            "start": 30226.400000000373,
+            "ms": 57
+          }
+        ],
+        "resources": [
+          {
+            "name": "vendor/react.production.min.js",
+            "bytes": 10751,
+            "ms": 3.800000000745058
+          },
+          {
+            "name": "vendor/react-dom.production.min.js",
+            "bytes": 131835,
+            "ms": 11
+          },
+          {
+            "name": "vendor/babel.min.js",
+            "bytes": 2921550,
+            "ms": 48.5
+          },
+          {
+            "name": "vendor/tailwindcss.min.js",
+            "bytes": 407279,
+            "ms": 15
+          },
+          {
+            "name": "engine/engine.css",
+            "bytes": 57266,
+            "ms": 6.900000000372529
+          },
+          {
+            "name": "assets/loading/dbd-logo-static.png",
+            "bytes": 12469,
+            "ms": 8.600000001490116
+          },
+          {
+            "name": "data.js",
+            "bytes": 1450743,
+            "ms": 27.90000000037253
+          },
+          {
+            "name": "lore.js",
+            "bytes": 64103,
+            "ms": 27.300000000745058
+          },
+          {
+            "name": "cosmetics.js",
+            "bytes": 5645878,
+            "ms": 160.19999999925494
+          },
+          {
+            "name": "community-content.js",
+            "bytes": 2324002,
+            "ms": 112.59999999962747
+          },
+          {
+            "name": "worldle-data.js",
+            "bytes": 22742,
+            "ms": 340.09999999962747
+          },
+          {
+            "name": "engine/icons.js",
+            "bytes": 18450,
+            "ms": 4.599999999627471
+          },
+          {
+            "name": "engine/core.js",
+            "bytes": 1465,
+            "ms": 4.399999998509884
+          },
+          {
+            "name": "engine/theme.js",
+            "bytes": 3130,
+            "ms": 4.099999999627471
+          },
+          {
+            "name": "engine/storage.js",
+            "bytes": 1604,
+            "ms": 7.299999998882413
+          },
+          {
+            "name": "engine/device.js",
+            "bytes": 5116,
+            "ms": 9.300000000745058
+          },
+          {
+            "name": "engine/shell.js",
+            "bytes": 8335,
+            "ms": 14.700000001117587
+          },
+          {
+            "name": "engine/assets.js",
+            "bytes": 6741,
+            "ms": 14.400000000372529
+          },
+          {
+            "name": "engine/articles.js",
+            "bytes": 7744,
+            "ms": 13.699999999254942
+          },
+          {
+            "name": "games/dbd/config.js",
+            "bytes": 8643,
+            "ms": 12.699999999254942
+          },
+          {
+            "name": "assets/fonts/bitter-var.woff2",
+            "bytes": 34072,
+            "ms": 3
+          },
+          {
+            "name": "intl/en_us/badges/static/images/badges/en_badge_web_generic.png",
+            "bytes": 0,
+            "ms": 24.199999999254942
+          }
+        ]
+      },
+      "search": [
+        {
+          "query": "dwight",
+          "ms": 565.8000000007451,
+          "results": [
+            {
+              "id": "dwight-fairfield--dwight--head--d-head01",
+              "name": "Dwight",
+              "category": "Cosmetic",
+              "score": 163,
+              "rarity": "Common"
+            },
+            {
+              "id": "c1ad4f3a-3f31-47f6-ae66-7ba2746a1423",
+              "name": "Dwight Fairfield",
+              "category": "Survivor",
+              "score": 123,
+              "role": "Survivor"
+            },
+            {
+              "id": "dwight-fairfield--bloody-dwight--head--d-head01-p01",
+              "name": "Bloody Dwight",
+              "category": "Cosmetic",
+              "score": 88,
+              "rarity": "Rare"
+            },
+            {
+              "id": "dwight-fairfield--dearest-dwight--outfit--df-outfit-040",
+              "name": "Dearest Dwight",
+              "category": "Cosmetic",
+              "score": 88,
+              "rarity": "Very Rare"
+            },
+            {
+              "id": "dwight-fairfield--dwight-cubed--body--df-torso03-02",
+              "name": "Dwight Cubed",
+              "category": "Cosmetic",
+              "score": 88,
+              "rarity": "Uncommon"
+            },
+            {
+              "id": "dwight-fairfield--dwight-unknown--outfit--df-outfit-021",
+              "name": "Dwight Unknown",
+              "category": "Cosmetic",
+              "score": 88,
+              "rarity": "Very Rare"
+            },
+            {
+              "id": "dwight-fairfield--dwight-in-a-box--outfit--df-outfit-013",
+              "name": "Dwight-in-a-Box",
+              "category": "Cosmetic",
+              "score": 88,
+              "rarity": "Very Rare"
+            },
+            {
+              "id": "dwight-fairfield--dwight-s-mask--head--df-head019",
+              "name": "Dwight's Mask",
+              "category": "Cosmetic",
+              "score": 88,
+              "rarity": "Event"
+            }
+          ]
+        },
+        {
+          "query": "nurse",
+          "ms": 492,
+          "results": [
+            {
+              "id": "3191f632-4d35-4464-8c2d-db185d06209f",
+              "name": "The Nurse",
+              "category": "Killer",
+              "score": 123
+            },
+            {
+              "id": "54944810-74fa-4452-8c18-6508af885055",
+              "name": "A Nurse's Calling",
+              "category": "Perk",
+              "score": 93,
+              "role": "Killer"
+            },
+            {
+              "id": "the-nurse--bloody-nurse--body--nurse-body01-p01",
+              "name": "Bloody Nurse",
+              "category": "Cosmetic",
+              "score": 88,
+              "rarity": "Rare"
+            },
+            {
+              "id": "the-spirit--bubble-head-nurse",
+              "name": "Bubble Head Nurse",
+              "category": "Cosmetic",
+              "score": 88,
+              "rarity": "Legendary"
+            },
+            {
+              "id": "the-nurse--classic-nurses-outfit--body--nurse-body01",
+              "name": "Classic Nurses Outfit",
+              "category": "Cosmetic",
+              "score": 88,
+              "rarity": "Common"
+            },
+            {
+              "id": "the-nurse--legacy-nurse-2--head--nr-head01-lp01",
+              "name": "Legacy Nurse 2",
+              "category": "Cosmetic",
+              "score": 88,
+              "rarity": "Very Rare"
+            },
+            {
+              "id": "the-nurse--legacy-nurse-3--body--nr-body01-lp01",
+              "name": "Legacy Nurse 3",
+              "category": "Cosmetic",
+              "score": 88,
+              "rarity": "Very Rare"
+            },
+            {
+              "id": "the-nurse--legacy-nurse-i--weapon--nr-bonesaw01-lp01",
+              "name": "Legacy Nurse I",
+              "category": "Cosmetic",
+              "score": 88,
+              "rarity": "Very Rare"
+            }
+          ]
+        },
+        {
+          "query": "trapper",
+          "ms": 497.90000000037253,
+          "results": [
+            {
+              "id": "7a34f0fb-fe18-4854-ab5d-47f89a210051",
+              "name": "The Trapper",
+              "category": "Killer",
+              "score": 123
+            },
+            {
+              "id": "4e0d3786-2c31-481d-b172-eb9940ddc4b6",
+              "name": "Trapper Bag",
+              "category": "Addon",
+              "score": 93,
+              "rarity": "rare",
+              "itemType": null,
+              "role": "killer"
+            },
+            {
+              "id": "1a956e25-3c4a-42e2-a910-25e2d1a46492",
+              "name": "Trapper Gloves",
+              "category": "Addon",
+              "score": 93,
+              "rarity": "common",
+              "itemType": null,
+              "role": "killer"
+            },
+            {
+              "id": "b28a1318-f9c3-4987-9007-e7a203f33253",
+              "name": "Trapper Sack",
+              "category": "Addon",
+              "score": 93,
+              "rarity": "veryrare",
+              "itemType": null,
+              "role": "killer"
+            },
+            {
+              "id": "the-trapper--best-new-trapper-mask--head--tr-head01-cva",
+              "name": "Best New Trapper Mask",
+              "category": "Cosmetic",
+              "score": 88,
+              "rarity": "Very Rare"
+            },
+            {
+              "id": "the-trapper--legacy-trapper-1--weapon--tr-machete01-lp01",
+              "name": "Legacy Trapper 1",
+              "category": "Cosmetic",
+              "score": 88,
+              "rarity": "Very Rare"
+            },
+            {
+              "id": "the-trapper--legacy-trapper-2--body--tr-body01-lp01",
+              "name": "Legacy Trapper 2",
+              "category": "Cosmetic",
+              "score": 88,
+              "rarity": "Very Rare"
+            },
+            {
+              "id": "the-trapper--legacy-trapper-3--head--tr-head01-lp01",
+              "name": "Legacy Trapper 3",
+              "category": "Cosmetic",
+              "score": 88,
+              "rarity": "Very Rare"
+            }
+          ]
+        },
+        {
+          "query": "spirit",
+          "ms": 463.90000000037253,
+          "results": [
+            {
+              "id": "the-spirit--the-spirit--head--hk-head01",
+              "name": "The Spirit",
+              "category": "Cosmetic",
+              "score": 138,
+              "rarity": "Common"
+            },
+            {
+              "id": "c5b56576-0afb-4f1e-ac73-bac5bd3ee9a0",
+              "name": "The Spirit",
+              "category": "Killer",
+              "score": 123
+            },
+            {
+              "id": "434be009-2075-4c07-89cc-2a5f757e2361",
+              "name": "Spirit Fury",
+              "category": "Perk",
+              "score": 93,
+              "role": "Killer"
+            },
+            {
+              "id": "the-spirit--bloody-spirit--head--hk-head01-p01",
+              "name": "Bloody Spirit",
+              "category": "Cosmetic",
+              "score": 88,
+              "rarity": "Rare"
+            },
+            {
+              "id": "the-dredge--half-spirits-torments",
+              "name": "Half Spirits' Torments",
+              "category": "Cosmetic",
+              "score": 88,
+              "rarity": "Legendary"
+            },
+            {
+              "id": "the-spirit--spirit-s-mask--head--hk-head015",
+              "name": "Spirit's Mask",
+              "category": "Cosmetic",
+              "score": 88,
+              "rarity": "Event"
+            },
+            {
+              "id": "b83c0eb3-e7d5-4cd6-a41f-a840c224bf47",
+              "name": "\"All Seeing\" - Spirit",
+              "category": "Addon",
+              "score": 73,
+              "rarity": "visceral",
+              "itemType": null,
+              "role": "killer"
+            },
+            {
+              "id": "d03e92ab-1e88-4331-9f48-1074344c2483",
+              "name": "Calm Spirit",
+              "category": "Perk",
+              "score": 73,
+              "role": "Survivor"
+            }
+          ]
+        },
+        {
+          "query": "trapper mask",
+          "ms": 501.59999999962747,
+          "results": [
+            {
+              "id": "the-trapper--best-new-trapper-mask--head--tr-head01-cva",
+              "name": "Best New Trapper Mask",
+              "category": "Cosmetic",
+              "score": 101,
+              "rarity": "Very Rare"
+            },
+            {
+              "id": "7a34f0fb-fe18-4854-ab5d-47f89a210051",
+              "name": "The Trapper",
+              "category": "Killer",
+              "score": 58
+            },
+            {
+              "id": "the-trapper--trapper-s-mask--head--tr-mask014",
+              "name": "Trapper's Mask",
+              "category": "Cosmetic",
+              "score": 36,
+              "rarity": "Event"
+            },
+            {
+              "id": "4e0d3786-2c31-481d-b172-eb9940ddc4b6",
+              "name": "Trapper Bag",
+              "category": "Addon",
+              "score": 28,
+              "rarity": "rare",
+              "itemType": null,
+              "role": "killer"
+            },
+            {
+              "id": "1a956e25-3c4a-42e2-a910-25e2d1a46492",
+              "name": "Trapper Gloves",
+              "category": "Addon",
+              "score": 28,
+              "rarity": "common",
+              "itemType": null,
+              "role": "killer"
+            },
+            {
+              "id": "b28a1318-f9c3-4987-9007-e7a203f33253",
+              "name": "Trapper Sack",
+              "category": "Addon",
+              "score": 28,
+              "rarity": "veryrare",
+              "itemType": null,
+              "role": "killer"
+            },
+            {
+              "id": "301c9881-53a7-4b5f-99a4-479e5954129a",
+              "name": "4-Coil Spring Kit",
+              "category": "Addon",
+              "score": 20,
+              "rarity": "uncommon",
+              "itemType": null,
+              "role": "killer"
+            },
+            {
+              "id": "d74b2d10-d629-4b25-aea6-5e8a3117cbc1",
+              "name": "Agitation",
+              "category": "Perk",
+              "score": 20,
+              "role": "Killer"
+            }
+          ]
+        },
+        {
+          "query": "purple toolbox addons",
+          "ms": 514.4000000003725,
+          "results": [
+            {
+              "id": "d3ce0ce5-9f7d-4337-85ab-8c3095c16a5b",
+              "name": "Alex's Toolbox",
+              "category": "Item",
+              "score": 38,
+              "rarity": "veryrare",
+              "itemType": "toolbox",
+              "role": "survivor"
+            },
+            {
+              "id": "032e1e59-70b9-495a-b04b-9cbe139562ac",
+              "name": "Engineer's Toolbox",
+              "category": "Item",
+              "score": 38,
+              "rarity": "veryrare",
+              "itemType": "toolbox",
+              "role": "survivor"
+            },
+            {
+              "id": "668c5f3f-30f3-4652-8206-108d04245ed1",
+              "name": "\"All Seeing\" - Blood",
+              "category": "Addon",
+              "score": 25,
+              "rarity": "veryrare",
+              "itemType": null,
+              "role": "killer"
+            },
+            {
+              "id": "2bebeb54-adaa-47c2-a5bc-03c7c4b7ebab",
+              "name": "\"Bad Man's\" Last Breath",
+              "category": "Addon",
+              "score": 25,
+              "rarity": "veryrare",
+              "itemType": null,
+              "role": "killer"
+            },
+            {
+              "id": "20ecec63-1583-422d-adbd-8b8ef3616bb9",
+              "name": "\"Calm\" - Carter's Notes",
+              "category": "Addon",
+              "score": 25,
+              "rarity": "veryrare",
+              "itemType": null,
+              "role": "killer"
+            },
+            {
+              "id": "5120c5d2-4d05-4317-9d9f-4b131fe47e3c",
+              "name": "\"Discipline\" - Carter's Notes",
+              "category": "Addon",
+              "score": 25,
+              "rarity": "veryrare",
+              "itemType": null,
+              "role": "killer"
+            },
+            {
+              "id": "26d68d70-8707-46b1-9b1e-462901ce9e29",
+              "name": "\"Order\" - Carter's Notes",
+              "category": "Addon",
+              "score": 25,
+              "rarity": "veryrare",
+              "itemType": null,
+              "role": "killer"
+            },
+            {
+              "id": "f1176042-d6b4-4d4d-9dbe-e2da25a8f9cf",
+              "name": "\"Restraint\" - Carter's Notes",
+              "category": "Addon",
+              "score": 25,
+              "rarity": "veryrare",
+              "itemType": null,
+              "role": "killer"
+            }
+          ]
+        },
+        {
+          "query": "green toolbox addons",
+          "ms": 505.19999999925494,
+          "results": [
+            {
+              "id": "eb8597b2-7862-45ed-bedb-a76baeae5ada",
+              "name": "Grip Wrench",
+              "category": "Addon",
+              "score": 40,
+              "rarity": "rare",
+              "itemType": "toolbox",
+              "role": "survivor"
+            },
+            {
+              "id": "c0a38f21-07f6-43a6-afa1-2f9f960eab22",
+              "name": "Hacksaw",
+              "category": "Addon",
+              "score": 40,
+              "rarity": "rare",
+              "itemType": "toolbox",
+              "role": "survivor"
+            },
+            {
+              "id": "b49d529c-4e2b-47d6-8e2f-771d9f781ebe",
+              "name": "Commodious Toolbox",
+              "category": "Item",
+              "score": 38,
+              "rarity": "rare",
+              "itemType": "toolbox",
+              "role": "survivor"
+            },
+            {
+              "id": "d0999acd-8309-4204-9187-1093d92f7015",
+              "name": "Mechanic's Toolbox",
+              "category": "Item",
+              "score": 38,
+              "rarity": "rare",
+              "itemType": "toolbox",
+              "role": "survivor"
+            },
+            {
+              "id": "639e3987-9f03-45fc-b9e2-1bed0a34f9e9",
+              "name": "\"Blind Warrior\" - White",
+              "category": "Addon",
+              "score": 25,
+              "rarity": "rare",
+              "itemType": null,
+              "role": "killer"
+            },
+            {
+              "id": "d966f00d-c649-434a-b921-8f95c4b39ef0",
+              "name": "\"Blink\" - White",
+              "category": "Addon",
+              "score": 25,
+              "rarity": "rare",
+              "itemType": null,
+              "role": "killer"
+            },
+            {
+              "id": "78b3dcd5-6d44-4ea8-b55a-432ddbbe9dce",
+              "name": "\"Discipline\" - Class III",
+              "category": "Addon",
+              "score": 25,
+              "rarity": "rare",
+              "itemType": null,
+              "role": "killer"
+            },
+            {
+              "id": "bfc8a72b-cc39-463b-b0ae-c6915b376a34",
+              "name": "\"Restraint\" - Class III",
+              "category": "Addon",
+              "score": 25,
+              "rarity": "rare",
+              "itemType": null,
+              "role": "killer"
+            }
+          ]
+        },
+        {
+          "query": "purple toolbox items",
+          "ms": 479.59999999962747,
+          "results": [
+            {
+              "id": "d3ce0ce5-9f7d-4337-85ab-8c3095c16a5b",
+              "name": "Alex's Toolbox",
+              "category": "Item",
+              "score": 48,
+              "rarity": "veryrare",
+              "itemType": "toolbox",
+              "role": "survivor"
+            },
+            {
+              "id": "032e1e59-70b9-495a-b04b-9cbe139562ac",
+              "name": "Engineer's Toolbox",
+              "category": "Item",
+              "score": 48,
+              "rarity": "veryrare",
+              "itemType": "toolbox",
+              "role": "survivor"
+            },
+            {
+              "id": "99257865-ae77-4e3d-a39c-fcbc9bba8c07",
+              "name": "Anniversary Toolbox",
+              "category": "Item",
+              "score": 33,
+              "rarity": "common",
+              "itemType": "toolbox",
+              "role": "survivor"
+            },
+            {
+              "id": "b49d529c-4e2b-47d6-8e2f-771d9f781ebe",
+              "name": "Commodious Toolbox",
+              "category": "Item",
+              "score": 33,
+              "rarity": "rare",
+              "itemType": "toolbox",
+              "role": "survivor"
+            },
+            {
+              "id": "aee3b7c6-81fe-427d-b364-32e1d3b1960d",
+              "name": "Festive Toolbox",
+              "category": "Item",
+              "score": 33,
+              "rarity": "common",
+              "itemType": "toolbox",
+              "role": "survivor"
+            },
+            {
+              "id": "0761c75d-74ca-481f-a511-a15de8b55566",
+              "name": "Masquerade Toolbox",
+              "category": "Item",
+              "score": 33,
+              "rarity": "common",
+              "itemType": "toolbox",
+              "role": "survivor"
+            },
+            {
+              "id": "d0999acd-8309-4204-9187-1093d92f7015",
+              "name": "Mechanic's Toolbox",
+              "category": "Item",
+              "score": 33,
+              "rarity": "rare",
+              "itemType": "toolbox",
+              "role": "survivor"
+            },
+            {
+              "id": "0260a60e-f516-44d1-ab8c-fdff374a2019",
+              "name": "Toolbox",
+              "category": "Item",
+              "score": 33,
+              "rarity": "uncommon",
+              "itemType": "toolbox",
+              "role": "survivor"
+            }
+          ]
+        },
+        {
+          "query": "killer perks",
+          "ms": 586.0999999996275,
+          "results": [
+            {
+              "id": "a40f11d4-fb82-476f-a112-a2a07b89e8da",
+              "name": "The Animatronic",
+              "category": "Killer",
+              "score": 25
+            },
+            {
+              "id": "10ae434f-ee93-49cb-afc6-e8463c770292",
+              "name": "The Artist",
+              "category": "Killer",
+              "score": 25
+            },
+            {
+              "id": "4877fe2e-8a1a-4631-afd5-13d9cc648676",
+              "name": "The Blight",
+              "category": "Killer",
+              "score": 25
+            },
+            {
+              "id": "f1b3dc5b-28ff-4aab-82fa-82cf2bd246a1",
+              "name": "The Cannibal",
+              "category": "Killer",
+              "score": 25
+            },
+            {
+              "id": "278e5980-4f69-42a6-89e0-fed2afe0f5ed",
+              "name": "The Cenobite",
+              "category": "Killer",
+              "score": 25
+            },
+            {
+              "id": "a104f32b-5307-4f8b-b14f-08bae99b1cfe",
+              "name": "The Clown",
+              "category": "Killer",
+              "score": 25
+            },
+            {
+              "id": "8e662ce3-1cb2-4487-935f-60dc0f6183a0",
+              "name": "The Dark Lord",
+              "category": "Killer",
+              "score": 25
+            },
+            {
+              "id": "9f75c81a-dd7f-4773-be24-38e8336a12f2",
+              "name": "The Deathslinger",
+              "category": "Killer",
+              "score": 25
+            }
+          ]
+        },
+        {
+          "query": "survivor perks",
+          "ms": 505,
+          "results": [
+            {
+              "id": "a40f11d4-fb82-476f-a112-a2a07b89e8da",
+              "name": "The Animatronic",
+              "category": "Killer",
+              "score": 15
+            },
+            {
+              "id": "10ae434f-ee93-49cb-afc6-e8463c770292",
+              "name": "The Artist",
+              "category": "Killer",
+              "score": 15
+            },
+            {
+              "id": "4877fe2e-8a1a-4631-afd5-13d9cc648676",
+              "name": "The Blight",
+              "category": "Killer",
+              "score": 15
+            },
+            {
+              "id": "f1b3dc5b-28ff-4aab-82fa-82cf2bd246a1",
+              "name": "The Cannibal",
+              "category": "Killer",
+              "score": 15
+            },
+            {
+              "id": "278e5980-4f69-42a6-89e0-fed2afe0f5ed",
+              "name": "The Cenobite",
+              "category": "Killer",
+              "score": 15
+            },
+            {
+              "id": "a104f32b-5307-4f8b-b14f-08bae99b1cfe",
+              "name": "The Clown",
+              "category": "Killer",
+              "score": 15
+            },
+            {
+              "id": "8e662ce3-1cb2-4487-935f-60dc0f6183a0",
+              "name": "The Dark Lord",
+              "category": "Killer",
+              "score": 15
+            },
+            {
+              "id": "9f75c81a-dd7f-4773-be24-38e8336a12f2",
+              "name": "The Deathslinger",
+              "category": "Killer",
+              "score": 15
+            }
+          ]
+        },
+        {
+          "query": "perks survivor healing",
+          "ms": 616.5,
+          "results": [
+            {
+              "id": "10340736-3601-4bdd-a5b4-d23295644ab9",
+              "name": "Reactive Healing",
+              "category": "Perk",
+              "score": 49,
+              "role": "Survivor"
+            },
+            {
+              "id": "c24fad8b-31ea-4aa8-843b-bb9a0fcae4d2",
+              "name": "Buckle Up",
+              "category": "Perk",
+              "score": 43,
+              "role": "Survivor"
+            },
+            {
+              "id": "cf0536f5-62ba-4b43-9b95-ef1dd75080fc",
+              "name": "Conviction",
+              "category": "Perk",
+              "score": 43,
+              "role": "Survivor"
+            },
+            {
+              "id": "14839c0f-159c-49d0-a34e-6c66627bb814",
+              "name": "Made for This",
+              "category": "Perk",
+              "score": 43,
+              "role": "Survivor"
+            },
+            {
+              "id": "8adf88bc-7a4d-400d-9bdb-917d37d01ed2",
+              "name": "No Mither",
+              "category": "Perk",
+              "score": 43,
+              "role": "Survivor"
+            },
+            {
+              "id": "d1858747-451d-45e7-a643-34e9370a08b5",
+              "name": "We're Gonna Live Forever",
+              "category": "Perk",
+              "score": 43,
+              "role": "Survivor"
+            },
+            {
+              "id": "akc-perk-001-aplaceforus",
+              "name": "A Place For Us",
+              "category": "Perk",
+              "score": 41,
+              "role": "Survivor"
+            },
+            {
+              "id": "584cbabe-a12f-4183-b7d0-a9143fe985e6",
+              "name": "Autodidact",
+              "category": "Perk",
+              "score": 41,
+              "role": "Survivor"
+            }
+          ]
+        },
+        {
+          "query": "perks:survivor healing",
+          "ms": 482.2000000011176,
+          "results": [
+            {
+              "id": "c3216a0e-b763-4857-88d7-2c6260beb9ad",
+              "name": "Boon: Circle of Healing",
+              "category": "Perk",
+              "score": 20,
+              "role": "Survivor"
+            },
+            {
+              "id": "10340736-3601-4bdd-a5b4-d23295644ab9",
+              "name": "Reactive Healing",
+              "category": "Perk",
+              "score": 20,
+              "role": "Survivor"
+            },
+            {
+              "id": "a4f2f09a-1fef-4fb6-97d3-b4256b9d159a",
+              "name": "Invocation: Weaving Spiders",
+              "category": "Perk",
+              "score": 17,
+              "role": "Survivor"
+            },
+            {
+              "id": "04c95215-eb62-4457-bb56-078c7897c043",
+              "name": "Soul Guard",
+              "category": "Perk",
+              "score": 16,
+              "role": "Survivor"
+            },
+            {
+              "id": "c24fad8b-31ea-4aa8-843b-bb9a0fcae4d2",
+              "name": "Buckle Up",
+              "category": "Perk",
+              "score": 14,
+              "role": "Survivor"
+            },
+            {
+              "id": "cf0536f5-62ba-4b43-9b95-ef1dd75080fc",
+              "name": "Conviction",
+              "category": "Perk",
+              "score": 14,
+              "role": "Survivor"
+            },
+            {
+              "id": "14839c0f-159c-49d0-a34e-6c66627bb814",
+              "name": "Made for This",
+              "category": "Perk",
+              "score": 14,
+              "role": "Survivor"
+            },
+            {
+              "id": "8adf88bc-7a4d-400d-9bdb-917d37d01ed2",
+              "name": "No Mither",
+              "category": "Perk",
+              "score": 14,
+              "role": "Survivor"
+            }
+          ]
+        },
+        {
+          "query": "addons:killer",
+          "ms": 64.90000000037253,
+          "results": [
+            {
+              "id": "2f841628-3d78-46f7-bf21-50f34a64d32b",
+              "name": "Killer Doll",
+              "category": "Addon",
+              "score": 73,
+              "rarity": "rare",
+              "itemType": null,
+              "role": "killer"
+            }
+          ]
+        },
+        {
+          "query": "dark lord very rare addons",
+          "ms": 599.5999999996275,
+          "results": [
+            {
+              "id": "8e662ce3-1cb2-4487-935f-60dc0f6183a0",
+              "name": "The Dark Lord",
+              "category": "Killer",
+              "score": 66
+            },
+            {
+              "id": "the-dark-lord--the-dark-lord--head--k37-head01",
+              "name": "The Dark Lord",
+              "category": "Cosmetic",
+              "score": 66,
+              "rarity": "Common"
+            },
+            {
+              "id": "fb37b6a1-b05e-4b4e-afb5-a35bcd7c267e",
+              "name": "Force of Echo",
+              "category": "Addon",
+              "score": 45,
+              "rarity": "rare",
+              "itemType": null,
+              "role": "killer"
+            },
+            {
+              "id": "2f841628-3d78-46f7-bf21-50f34a64d32b",
+              "name": "Killer Doll",
+              "category": "Addon",
+              "score": 45,
+              "rarity": "rare",
+              "itemType": null,
+              "role": "killer"
+            },
+            {
+              "id": "ace3b9bd-6ec7-478f-b910-1edbb56600c0",
+              "name": "Pocket Watch",
+              "category": "Addon",
+              "score": 45,
+              "rarity": "rare",
+              "itemType": null,
+              "role": "killer"
+            },
+            {
+              "id": "413117eb-4b3a-45fa-89b7-83177fa46225",
+              "name": "Sunglasses",
+              "category": "Addon",
+              "score": 45,
+              "rarity": "rare",
+              "itemType": null,
+              "role": "killer"
+            },
+            {
+              "id": "3323bfad-adfc-42f3-ae3c-0fff3dfe783a",
+              "name": "Sylph Feather",
+              "category": "Addon",
+              "score": 45,
+              "rarity": "rare",
+              "itemType": null,
+              "role": "killer"
+            },
+            {
+              "id": "78b3dcd5-6d44-4ea8-b55a-432ddbbe9dce",
+              "name": "\"Discipline\" - Class III",
+              "category": "Addon",
+              "score": 37,
+              "rarity": "rare",
+              "itemType": null,
+              "role": "killer"
+            }
+          ]
+        },
+        {
+          "query": "not very rare addons",
+          "ms": 523.5,
+          "results": [
+            {
+              "id": "20ecec63-1583-422d-adbd-8b8ef3616bb9",
+              "name": "\"Calm\" - Carter's Notes",
+              "category": "Addon",
+              "score": 33,
+              "rarity": "veryrare",
+              "itemType": null,
+              "role": "killer"
+            },
+            {
+              "id": "5120c5d2-4d05-4317-9d9f-4b131fe47e3c",
+              "name": "\"Discipline\" - Carter's Notes",
+              "category": "Addon",
+              "score": 33,
+              "rarity": "veryrare",
+              "itemType": null,
+              "role": "killer"
+            },
+            {
+              "id": "26d68d70-8707-46b1-9b1e-462901ce9e29",
+              "name": "\"Order\" - Carter's Notes",
+              "category": "Addon",
+              "score": 33,
+              "rarity": "veryrare",
+              "itemType": null,
+              "role": "killer"
+            },
+            {
+              "id": "f1176042-d6b4-4d4d-9dbe-e2da25a8f9cf",
+              "name": "\"Restraint\" - Carter's Notes",
+              "category": "Addon",
+              "score": 33,
+              "rarity": "veryrare",
+              "itemType": null,
+              "role": "killer"
+            },
+            {
+              "id": "f5bf3bcb-2677-432e-8b32-e7ae31e2df0c",
+              "name": "Broken Recovery Coin",
+              "category": "Addon",
+              "score": 33,
+              "rarity": "veryrare",
+              "itemType": null,
+              "role": "killer"
+            },
+            {
+              "id": "3b4d0dd9-56cd-4ba0-9ec0-85311897ea13",
+              "name": "Depth Gauge Rake",
+              "category": "Addon",
+              "score": 30,
+              "rarity": "veryrare",
+              "itemType": null,
+              "role": "killer"
+            },
+            {
+              "id": "668c5f3f-30f3-4652-8206-108d04245ed1",
+              "name": "\"All Seeing\" - Blood",
+              "category": "Addon",
+              "score": 25,
+              "rarity": "veryrare",
+              "itemType": null,
+              "role": "killer"
+            },
+            {
+              "id": "2bebeb54-adaa-47c2-a5bc-03c7c4b7ebab",
+              "name": "\"Bad Man's\" Last Breath",
+              "category": "Addon",
+              "score": 25,
+              "rarity": "veryrare",
+              "itemType": null,
+              "role": "killer"
+            }
+          ]
+        },
+        {
+          "query": "perks not hex",
+          "ms": 529.1999999992549,
+          "results": [
+            {
+              "id": "9afcff9d-4930-4fde-914c-32455214afa2",
+              "name": "Ghost Notes",
+              "category": "Perk",
+              "score": 18,
+              "role": "Survivor"
+            },
+            {
+              "id": "b0971322-cb09-45f5-bc4b-4d0a1d64574b",
+              "name": "This Is Not Happening",
+              "category": "Perk",
+              "score": 18,
+              "role": "Survivor"
+            },
+            {
+              "id": "54944810-74fa-4452-8c18-6508af885055",
+              "name": "A Nurse's Calling",
+              "category": "Perk",
+              "score": 10,
+              "role": "Killer"
+            },
+            {
+              "id": "akc-perk-001-aplaceforus",
+              "name": "A Place For Us",
+              "category": "Perk",
+              "score": 10,
+              "role": "Survivor"
+            },
+            {
+              "id": "08198d7f-1561-4cf3-b112-7969f8aebc32",
+              "name": "Ace in the Hole",
+              "category": "Perk",
+              "score": 10,
+              "role": "Survivor"
+            },
+            {
+              "id": "6e0523a9-0f3f-4329-87c6-01500e72b054",
+              "name": "Adrenaline",
+              "category": "Perk",
+              "score": 10,
+              "role": "Survivor"
+            },
+            {
+              "id": "19fce903-4735-4332-b609-becf90bfb9c8",
+              "name": "Aftercare",
+              "category": "Perk",
+              "score": 10,
+              "role": "Survivor"
+            },
+            {
+              "id": "d74b2d10-d629-4b25-aea6-5e8a3117cbc1",
+              "name": "Agitation",
+              "category": "Perk",
+              "score": 10,
+              "role": "Killer"
+            }
+          ]
+        },
+        {
+          "query": "Sole Survivor",
+          "ms": 485.7999999988824,
+          "results": [
+            {
+              "id": "b761a0e2-a9a3-476f-9c81-ca0f0b6e8dc4",
+              "name": "Sole Survivor",
+              "category": "Perk",
+              "score": 176,
+              "role": "Survivor"
+            },
+            {
+              "id": "b2534c28-3d51-4066-9dde-fa0a28bbde7b",
+              "name": "Smelly Inner Soles",
+              "category": "Addon",
+              "score": 20,
+              "rarity": "rare",
+              "itemType": null,
+              "role": "killer"
+            },
+            {
+              "id": "mikaela-reid--blood-soaked-camisole--body--s28-torso01-p01",
+              "name": "Blood-Soaked Camisole",
+              "category": "Cosmetic",
+              "score": 13,
+              "rarity": "Rare"
+            },
+            {
+              "id": "mikaela-reid--crescent-camisole--body--s28-torso01-04",
+              "name": "Crescent Camisole",
+              "category": "Cosmetic",
+              "score": 13,
+              "rarity": "Uncommon"
+            },
+            {
+              "id": "mikaela-reid--ochre-camisole--body--s28-torso01",
+              "name": "Ochre Camisole",
+              "category": "Cosmetic",
+              "score": 13,
+              "rarity": "Common"
+            },
+            {
+              "id": "the-houndmaster--solemn-torment--outfit--k38-outfit-009",
+              "name": "Solemn Torment",
+              "category": "Cosmetic",
+              "score": 13,
+              "rarity": "Very Rare"
+            },
+            {
+              "id": "a830c003-9631-4722-91b6-f3ae0c3cfafe",
+              "name": "Ace Visconti",
+              "category": "Survivor",
+              "score": 10,
+              "role": "Survivor"
+            },
+            {
+              "id": "0f520f0b-07c1-4218-8334-e89d954b20b6",
+              "name": "Ada Wong",
+              "category": "Survivor",
+              "score": 10,
+              "role": "Survivor"
+            }
+          ]
+        },
+        {
+          "query": "No Mither",
+          "ms": 440.19999999925494,
+          "results": [
+            {
+              "id": "8adf88bc-7a4d-400d-9bdb-917d37d01ed2",
+              "name": "No Mither",
+              "category": "Perk",
+              "score": 71,
+              "role": "Survivor"
+            },
+            {
+              "id": "20ecec63-1583-422d-adbd-8b8ef3616bb9",
+              "name": "\"Calm\" - Carter's Notes",
+              "category": "Addon",
+              "score": 8,
+              "rarity": "veryrare",
+              "itemType": null,
+              "role": "killer"
+            },
+            {
+              "id": "5120c5d2-4d05-4317-9d9f-4b131fe47e3c",
+              "name": "\"Discipline\" - Carter's Notes",
+              "category": "Addon",
+              "score": 8,
+              "rarity": "veryrare",
+              "itemType": null,
+              "role": "killer"
+            },
+            {
+              "id": "26d68d70-8707-46b1-9b1e-462901ce9e29",
+              "name": "\"Order\" - Carter's Notes",
+              "category": "Addon",
+              "score": 8,
+              "rarity": "veryrare",
+              "itemType": null,
+              "role": "killer"
+            },
+            {
+              "id": "f1176042-d6b4-4d4d-9dbe-e2da25a8f9cf",
+              "name": "\"Restraint\" - Carter's Notes",
+              "category": "Addon",
+              "score": 8,
+              "rarity": "veryrare",
+              "itemType": null,
+              "role": "killer"
+            },
+            {
+              "id": "the-dredge--a-house-not-a-home--outfit--k28-outfit-022",
+              "name": "A House Not A Home",
+              "category": "Cosmetic",
+              "score": 8,
+              "rarity": "Very Rare"
+            },
+            {
+              "id": "the-unknown--abnormal-being--body--k35-body01-p01",
+              "name": "Abnormal Being",
+              "category": "Cosmetic",
+              "score": 8,
+              "rarity": "Rare"
+            },
+            {
+              "id": "the-doctor--adreno-head--head--do-head010",
+              "name": "Adreno-Head",
+              "category": "Cosmetic",
+              "score": 8,
+              "rarity": "Rare"
+            }
+          ]
+        },
+        {
+          "query": "No One Left Behind",
+          "ms": 528.5,
+          "results": [
+            {
+              "id": "f68aed3b-e8dc-478b-91eb-0fb05a73cb87",
+              "name": "No One Left Behind",
+              "category": "Perk",
+              "score": 91,
+              "role": "Survivor"
+            },
+            {
+              "id": "jake-park--biker-s-boots--legs--jp-legs05",
+              "name": "Biker's Boots",
+              "category": "Cosmetic",
+              "score": 36,
+              "rarity": "Uncommon"
+            },
+            {
+              "id": "dwight-fairfield--bullshifters-shirt--body--df-torso05",
+              "name": "Bullshifters Shirt",
+              "category": "Cosmetic",
+              "score": 36,
+              "rarity": "Uncommon"
+            },
+            {
+              "id": "claudette-morel--golden-rings--head--cm-head05",
+              "name": "Golden Rings",
+              "category": "Cosmetic",
+              "score": 36,
+              "rarity": "Uncommon"
+            },
+            {
+              "id": "jake-park--hell-s-legion--body--jp-torso05",
+              "name": "Hell's Legion",
+              "category": "Cosmetic",
+              "score": 36,
+              "rarity": "Uncommon"
+            },
+            {
+              "id": "dwight-fairfield--mechanic-s-coveralls--legs--df-legs05",
+              "name": "Mechanic's Coveralls",
+              "category": "Cosmetic",
+              "score": 36,
+              "rarity": "Uncommon"
+            },
+            {
+              "id": "claudette-morel--producer-jeans--legs--cm-legs05",
+              "name": "Producer Jeans",
+              "category": "Cosmetic",
+              "score": 36,
+              "rarity": "Uncommon"
+            },
+            {
+              "id": "meg-thomas--rolled-up-jeans-sneakers--legs--mt-legs05",
+              "name": "Rolled Up Jeans & Sneakers",
+              "category": "Cosmetic",
+              "score": 36,
+              "rarity": "Uncommon"
+            }
+          ]
+        },
+        {
+          "query": "aura",
+          "ms": 496.19999999925494,
+          "results": [
+            {
+              "id": "e3b0a01c-fde7-4d6e-a7c8-7f9420ae0ad8",
+              "name": "Restaurant Menu",
+              "category": "Addon",
+              "score": 73,
+              "rarity": "common",
+              "itemType": null,
+              "role": "killer"
+            },
+            {
+              "id": "fbdc181e-3a2f-4950-bc7f-63d2ff81b451",
+              "name": "SCREECH COBBLER",
+              "category": "Offering",
+              "score": 20,
+              "rarity": "common",
+              "role": "points"
+            },
+            {
+              "id": "8e662ce3-1cb2-4487-935f-60dc0f6183a0",
+              "name": "The Dark Lord",
+              "category": "Killer",
+              "score": 15
+            },
+            {
+              "id": "114736cd-6f78-4d86-88fd-58351384195a",
+              "name": "The Mastermind",
+              "category": "Killer",
+              "score": 15
+            },
+            {
+              "id": "c991df44-f218-40ab-ab99-60cefb3c161f",
+              "name": "The Xenomorph",
+              "category": "Killer",
+              "score": 15
+            },
+            {
+              "id": "668c5f3f-30f3-4652-8206-108d04245ed1",
+              "name": "\"All Seeing\" - Blood",
+              "category": "Addon",
+              "score": 14,
+              "rarity": "veryrare",
+              "itemType": null,
+              "role": "killer"
+            },
+            {
+              "id": "f1176042-d6b4-4d4d-9dbe-e2da25a8f9cf",
+              "name": "\"Restraint\" - Carter's Notes",
+              "category": "Addon",
+              "score": 14,
+              "rarity": "veryrare",
+              "itemType": null,
+              "role": "killer"
+            },
+            {
+              "id": "1ecfb587-2dca-4615-8cc0-79922393400a",
+              "name": "\"Restraint\" - Class II",
+              "category": "Addon",
+              "score": 14,
+              "rarity": "uncommon",
+              "itemType": null,
+              "role": "killer"
+            }
+          ]
+        },
+        {
+          "query": "icons:exausted",
+          "ms": 4.300000000745058,
+          "results": [
+            {
+              "id": "exhausted",
+              "name": "Exhausted",
+              "category": "GameIcon",
+              "score": 20,
+              "role": "debuff"
+            }
+          ]
+        },
+        {
+          "query": "perks:",
+          "ms": 148.40000000037253,
+          "results": []
+        },
+        {
+          "query": "the",
+          "ms": 444.09999999962747,
+          "results": []
+        },
+        {
+          "query": "aura reveal generator healing chase hex boon",
+          "ms": 707.4000000003725,
+          "results": [
+            {
+              "id": "c3216a0e-b763-4857-88d7-2c6260beb9ad",
+              "name": "Boon: Circle of Healing",
+              "category": "Perk",
+              "score": 56,
+              "role": "Survivor"
+            },
+            {
+              "id": "46445e8e-69b9-40d0-8820-1423d545643f",
+              "name": "Boon: Illumination",
+              "category": "Perk",
+              "score": 36,
+              "role": "Survivor"
+            },
+            {
+              "id": "3b04e69f-2975-481b-9cc0-5eb5eafd81e1",
+              "name": "Hex: Face the Darkness",
+              "category": "Perk",
+              "score": 36,
+              "role": "Killer"
+            },
+            {
+              "id": "2af0cb82-accc-4ab6-9078-13cbfa89586c",
+              "name": "Hex: No One Escapes Death",
+              "category": "Perk",
+              "score": 36,
+              "role": "Killer"
+            },
+            {
+              "id": "697ab247-b1e1-4eea-90c5-47c1fa8de821",
+              "name": "Hex: Overture of Doom",
+              "category": "Perk",
+              "score": 36,
+              "role": "Killer"
+            },
+            {
+              "id": "s54p03-boon-steadfast",
+              "name": "Boon: Steadfast",
+              "category": "Perk",
+              "score": 32,
+              "role": "Survivor"
+            },
+            {
+              "id": "st2-perk-003-hexhivemind",
+              "name": "Hex: Hive Mind",
+              "category": "Perk",
+              "score": 32,
+              "role": "Killer"
+            },
+            {
+              "id": "f7d9b1df-b8c2-4280-9b97-8dde8987e521",
+              "name": "Hex: Plaything",
+              "category": "Perk",
+              "score": 32,
+              "role": "Killer"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "after": {
+    "1": {
+      "load": {
+        "rootMs": 3313.5999999996275,
+        "paints": [
+          {
+            "name": "first-paint",
+            "ms": 324
+          },
+          {
+            "name": "first-contentful-paint",
+            "ms": 324
+          }
+        ],
+        "tasks": [
+          {
+            "start": 230.69999999925494,
+            "ms": 65
+          },
+          {
+            "start": 350.90000000037253,
+            "ms": 250
+          },
+          {
+            "start": 637.5,
+            "ms": 2487
+          },
+          {
+            "start": 3125.9000000003725,
+            "ms": 221
+          }
+        ],
+        "resources": [
+          {
+            "name": "vendor/react.production.min.js",
+            "bytes": 10751,
+            "ms": 7.900000000372529
+          },
+          {
+            "name": "vendor/react-dom.production.min.js",
+            "bytes": 131835,
+            "ms": 9.200000001117587
+          },
+          {
+            "name": "vendor/babel.min.js",
+            "bytes": 2921550,
+            "ms": 52.100000001490116
+          },
+          {
+            "name": "vendor/tailwindcss.min.js",
+            "bytes": 407279,
+            "ms": 21.59999999962747
+          },
+          {
+            "name": "engine/engine.css",
+            "bytes": 57266,
+            "ms": 6.400000000372529
+          },
+          {
+            "name": "assets/loading/dbd-logo-static.png",
+            "bytes": 12469,
+            "ms": 13.699999999254942
+          },
+          {
+            "name": "data.js",
+            "bytes": 1450743,
+            "ms": 34.80000000074506
+          },
+          {
+            "name": "lore.js",
+            "bytes": 64103,
+            "ms": 23.90000000037253
+          },
+          {
+            "name": "community-content.js",
+            "bytes": 2324002,
+            "ms": 74.5
+          },
+          {
+            "name": "cosmetics.js",
+            "bytes": 5645878,
+            "ms": 97.30000000074506
+          },
+          {
+            "name": "worldle-data.js",
+            "bytes": 22742,
+            "ms": 126.39999999850988
+          },
+          {
+            "name": "engine/icons.js",
+            "bytes": 18450,
+            "ms": 13.700000001117587
+          },
+          {
+            "name": "engine/core.js",
+            "bytes": 1465,
+            "ms": 8.899999998509884
+          },
+          {
+            "name": "engine/theme.js",
+            "bytes": 3130,
+            "ms": 11.199999999254942
+          },
+          {
+            "name": "engine/storage.js",
+            "bytes": 1604,
+            "ms": 12.5
+          },
+          {
+            "name": "engine/device.js",
+            "bytes": 5116,
+            "ms": 12
+          },
+          {
+            "name": "engine/shell.js",
+            "bytes": 8335,
+            "ms": 12.599999999627471
+          },
+          {
+            "name": "engine/assets.js",
+            "bytes": 6741,
+            "ms": 13.800000000745058
+          },
+          {
+            "name": "engine/articles.js",
+            "bytes": 7744,
+            "ms": 16.199999999254942
+          },
+          {
+            "name": "games/dbd/config.js",
+            "bytes": 8643,
+            "ms": 15.599999999627471
+          },
+          {
+            "name": "assets/wiki-logo.png",
+            "bytes": 12522,
+            "ms": 2.900000000372529
+          },
+          {
+            "name": "assets/r6-badge.png",
+            "bytes": 1476,
+            "ms": 8.099999999627471
+          },
+          {
+            "name": "assets/fonts/bitter-var.woff2",
+            "bytes": 34072,
+            "ms": 2.799999998882413
+          },
+          {
+            "name": "intl/en_us/badges/static/images/badges/en_badge_web_generic.png",
+            "bytes": 0,
+            "ms": 22.5
+          }
+        ]
+      },
+      "search": [
+        {
+          "query": "dwight",
+          "ms": 27.799999998882413,
+          "results": [
+            {
+              "id": "c1ad4f3a-3f31-47f6-ae66-7ba2746a1423",
+              "name": "Dwight Fairfield",
+              "category": "Survivor",
+              "score": 123,
+              "role": "Survivor"
+            },
+            {
+              "id": "dwight-fairfield--dwight--head--d-head01",
+              "name": "Dwight",
+              "category": "Cosmetic",
+              "score": 163,
+              "rarity": "Common"
+            },
+            {
+              "id": "dwight-fairfield--bloody-dwight--head--d-head01-p01",
+              "name": "Bloody Dwight",
+              "category": "Cosmetic",
+              "score": 88,
+              "rarity": "Rare"
+            },
+            {
+              "id": "dwight-fairfield--dearest-dwight--outfit--df-outfit-040",
+              "name": "Dearest Dwight",
+              "category": "Cosmetic",
+              "score": 88,
+              "rarity": "Very Rare"
+            },
+            {
+              "id": "dwight-fairfield--dwight-cubed--body--df-torso03-02",
+              "name": "Dwight Cubed",
+              "category": "Cosmetic",
+              "score": 88,
+              "rarity": "Uncommon"
+            },
+            {
+              "id": "dwight-fairfield--dwight-unknown--outfit--df-outfit-021",
+              "name": "Dwight Unknown",
+              "category": "Cosmetic",
+              "score": 88,
+              "rarity": "Very Rare"
+            },
+            {
+              "id": "dwight-fairfield--dwight-in-a-box--outfit--df-outfit-013",
+              "name": "Dwight-in-a-Box",
+              "category": "Cosmetic",
+              "score": 88,
+              "rarity": "Very Rare"
+            },
+            {
+              "id": "dwight-fairfield--dwight-s-mask--head--df-head019",
+              "name": "Dwight's Mask",
+              "category": "Cosmetic",
+              "score": 88,
+              "rarity": "Event"
+            }
+          ]
+        },
+        {
+          "query": "nurse",
+          "ms": 14.400000000372529,
+          "results": [
+            {
+              "id": "3191f632-4d35-4464-8c2d-db185d06209f",
+              "name": "The Nurse",
+              "category": "Killer",
+              "score": 123
+            },
+            {
+              "id": "54944810-74fa-4452-8c18-6508af885055",
+              "name": "A Nurse's Calling",
+              "category": "Perk",
+              "score": 93,
+              "role": "Killer"
+            },
+            {
+              "id": "the-nurse--bloody-nurse--body--nurse-body01-p01",
+              "name": "Bloody Nurse",
+              "category": "Cosmetic",
+              "score": 88,
+              "rarity": "Rare"
+            },
+            {
+              "id": "the-spirit--bubble-head-nurse",
+              "name": "Bubble Head Nurse",
+              "category": "Cosmetic",
+              "score": 88,
+              "rarity": "Legendary"
+            },
+            {
+              "id": "the-nurse--classic-nurses-outfit--body--nurse-body01",
+              "name": "Classic Nurses Outfit",
+              "category": "Cosmetic",
+              "score": 88,
+              "rarity": "Common"
+            },
+            {
+              "id": "the-nurse--legacy-nurse-2--head--nr-head01-lp01",
+              "name": "Legacy Nurse 2",
+              "category": "Cosmetic",
+              "score": 88,
+              "rarity": "Very Rare"
+            },
+            {
+              "id": "the-nurse--legacy-nurse-3--body--nr-body01-lp01",
+              "name": "Legacy Nurse 3",
+              "category": "Cosmetic",
+              "score": 88,
+              "rarity": "Very Rare"
+            },
+            {
+              "id": "the-nurse--legacy-nurse-i--weapon--nr-bonesaw01-lp01",
+              "name": "Legacy Nurse I",
+              "category": "Cosmetic",
+              "score": 88,
+              "rarity": "Very Rare"
+            }
+          ]
+        },
+        {
+          "query": "trapper",
+          "ms": 15.399999998509884,
+          "results": [
+            {
+              "id": "7a34f0fb-fe18-4854-ab5d-47f89a210051",
+              "name": "The Trapper",
+              "category": "Killer",
+              "score": 123
+            },
+            {
+              "id": "4e0d3786-2c31-481d-b172-eb9940ddc4b6",
+              "name": "Trapper Bag",
+              "category": "Addon",
+              "score": 93,
+              "rarity": "rare",
+              "itemType": null,
+              "role": "killer"
+            },
+            {
+              "id": "1a956e25-3c4a-42e2-a910-25e2d1a46492",
+              "name": "Trapper Gloves",
+              "category": "Addon",
+              "score": 93,
+              "rarity": "common",
+              "itemType": null,
+              "role": "killer"
+            },
+            {
+              "id": "b28a1318-f9c3-4987-9007-e7a203f33253",
+              "name": "Trapper Sack",
+              "category": "Addon",
+              "score": 93,
+              "rarity": "veryrare",
+              "itemType": null,
+              "role": "killer"
+            },
+            {
+              "id": "the-trapper--best-new-trapper-mask--head--tr-head01-cva",
+              "name": "Best New Trapper Mask",
+              "category": "Cosmetic",
+              "score": 88,
+              "rarity": "Very Rare"
+            },
+            {
+              "id": "the-trapper--legacy-trapper-1--weapon--tr-machete01-lp01",
+              "name": "Legacy Trapper 1",
+              "category": "Cosmetic",
+              "score": 88,
+              "rarity": "Very Rare"
+            },
+            {
+              "id": "the-trapper--legacy-trapper-2--body--tr-body01-lp01",
+              "name": "Legacy Trapper 2",
+              "category": "Cosmetic",
+              "score": 88,
+              "rarity": "Very Rare"
+            },
+            {
+              "id": "the-trapper--legacy-trapper-3--head--tr-head01-lp01",
+              "name": "Legacy Trapper 3",
+              "category": "Cosmetic",
+              "score": 88,
+              "rarity": "Very Rare"
+            }
+          ]
+        },
+        {
+          "query": "spirit",
+          "ms": 10.5,
+          "results": [
+            {
+              "id": "c5b56576-0afb-4f1e-ac73-bac5bd3ee9a0",
+              "name": "The Spirit",
+              "category": "Killer",
+              "score": 123
+            },
+            {
+              "id": "the-spirit--the-spirit--head--hk-head01",
+              "name": "The Spirit",
+              "category": "Cosmetic",
+              "score": 138,
+              "rarity": "Common"
+            },
+            {
+              "id": "434be009-2075-4c07-89cc-2a5f757e2361",
+              "name": "Spirit Fury",
+              "category": "Perk",
+              "score": 93,
+              "role": "Killer"
+            },
+            {
+              "id": "the-spirit--bloody-spirit--head--hk-head01-p01",
+              "name": "Bloody Spirit",
+              "category": "Cosmetic",
+              "score": 88,
+              "rarity": "Rare"
+            },
+            {
+              "id": "the-dredge--half-spirits-torments",
+              "name": "Half Spirits' Torments",
+              "category": "Cosmetic",
+              "score": 88,
+              "rarity": "Legendary"
+            },
+            {
+              "id": "the-spirit--spirit-s-mask--head--hk-head015",
+              "name": "Spirit's Mask",
+              "category": "Cosmetic",
+              "score": 88,
+              "rarity": "Event"
+            },
+            {
+              "id": "b83c0eb3-e7d5-4cd6-a41f-a840c224bf47",
+              "name": "\"All Seeing\" - Spirit",
+              "category": "Addon",
+              "score": 73,
+              "rarity": "visceral",
+              "itemType": null,
+              "role": "killer"
+            },
+            {
+              "id": "d03e92ab-1e88-4331-9f48-1074344c2483",
+              "name": "Calm Spirit",
+              "category": "Perk",
+              "score": 73,
+              "role": "Survivor"
+            }
+          ]
+        },
+        {
+          "query": "trapper mask",
+          "ms": 19.199999999254942,
+          "results": [
+            {
+              "id": "the-trapper--best-new-trapper-mask--head--tr-head01-cva",
+              "name": "Best New Trapper Mask",
+              "category": "Cosmetic",
+              "score": 101,
+              "rarity": "Very Rare"
+            },
+            {
+              "id": "7a34f0fb-fe18-4854-ab5d-47f89a210051",
+              "name": "The Trapper",
+              "category": "Killer",
+              "score": 58
+            },
+            {
+              "id": "the-trapper--trapper-s-mask--head--tr-mask014",
+              "name": "Trapper's Mask",
+              "category": "Cosmetic",
+              "score": 36,
+              "rarity": "Event"
+            },
+            {
+              "id": "4e0d3786-2c31-481d-b172-eb9940ddc4b6",
+              "name": "Trapper Bag",
+              "category": "Addon",
+              "score": 28,
+              "rarity": "rare",
+              "itemType": null,
+              "role": "killer"
+            },
+            {
+              "id": "1a956e25-3c4a-42e2-a910-25e2d1a46492",
+              "name": "Trapper Gloves",
+              "category": "Addon",
+              "score": 28,
+              "rarity": "common",
+              "itemType": null,
+              "role": "killer"
+            },
+            {
+              "id": "b28a1318-f9c3-4987-9007-e7a203f33253",
+              "name": "Trapper Sack",
+              "category": "Addon",
+              "score": 28,
+              "rarity": "veryrare",
+              "itemType": null,
+              "role": "killer"
+            },
+            {
+              "id": "301c9881-53a7-4b5f-99a4-479e5954129a",
+              "name": "4-Coil Spring Kit",
+              "category": "Addon",
+              "score": 20,
+              "rarity": "uncommon",
+              "itemType": null,
+              "role": "killer"
+            },
+            {
+              "id": "d74b2d10-d629-4b25-aea6-5e8a3117cbc1",
+              "name": "Agitation",
+              "category": "Perk",
+              "score": 20,
+              "role": "Killer"
+            }
+          ]
+        },
+        {
+          "query": "purple toolbox addons",
+          "ms": 1.6000000014901161,
+          "results": []
+        },
+        {
+          "query": "green toolbox addons",
+          "ms": 1.700000001117587,
+          "results": [
+            {
+              "id": "eb8597b2-7862-45ed-bedb-a76baeae5ada",
+              "name": "Grip Wrench",
+              "category": "Addon",
+              "score": 40,
+              "rarity": "rare",
+              "itemType": "toolbox",
+              "role": "survivor"
+            },
+            {
+              "id": "c0a38f21-07f6-43a6-afa1-2f9f960eab22",
+              "name": "Hacksaw",
+              "category": "Addon",
+              "score": 40,
+              "rarity": "rare",
+              "itemType": "toolbox",
+              "role": "survivor"
+            }
+          ]
+        },
+        {
+          "query": "purple toolbox items",
+          "ms": 1.300000000745058,
+          "results": [
+            {
+              "id": "d3ce0ce5-9f7d-4337-85ab-8c3095c16a5b",
+              "name": "Alex's Toolbox",
+              "category": "Item",
+              "score": 48,
+              "rarity": "veryrare",
+              "itemType": "toolbox",
+              "role": "survivor"
+            },
+            {
+              "id": "032e1e59-70b9-495a-b04b-9cbe139562ac",
+              "name": "Engineer's Toolbox",
+              "category": "Item",
+              "score": 48,
+              "rarity": "veryrare",
+              "itemType": "toolbox",
+              "role": "survivor"
+            }
+          ]
+        },
+        {
+          "query": "killer perks",
+          "ms": 3,
+          "results": [
+            {
+              "id": "54944810-74fa-4452-8c18-6508af885055",
+              "name": "A Nurse's Calling",
+              "category": "Perk",
+              "score": 15,
+              "role": "Killer"
+            },
+            {
+              "id": "d74b2d10-d629-4b25-aea6-5e8a3117cbc1",
+              "name": "Agitation",
+              "category": "Perk",
+              "score": 15,
+              "role": "Killer"
+            },
+            {
+              "id": "b6940536-9372-455f-abb3-14dccba26a0e",
+              "name": "Alien Instinct",
+              "category": "Perk",
+              "score": 15,
+              "role": "Killer"
+            },
+            {
+              "id": "178688f3-64ba-4e06-85a4-2ec75c3fb211",
+              "name": "All-Shaking Thunder",
+              "category": "Perk",
+              "score": 15,
+              "role": "Killer"
+            },
+            {
+              "id": "2e5382d0-70a2-4143-b270-4743bfa0d516",
+              "name": "Awakened Awareness",
+              "category": "Perk",
+              "score": 15,
+              "role": "Killer"
+            },
+            {
+              "id": "de13a977-5ff0-4cc2-8c5c-0278013da721",
+              "name": "Bamboozle",
+              "category": "Perk",
+              "score": 15,
+              "role": "Killer"
+            },
+            {
+              "id": "b075b4a0-0fcc-4ac8-8ce2-ff46553d6092",
+              "name": "Barbecue & Chili",
+              "category": "Perk",
+              "score": 15,
+              "role": "Killer"
+            },
+            {
+              "id": "320a2bcb-b84e-424a-95e0-b12e47201b7c",
+              "name": "Batteries Included",
+              "category": "Perk",
+              "score": 15,
+              "role": "Killer"
+            }
+          ]
+        },
+        {
+          "query": "survivor perks",
+          "ms": 2,
+          "results": [
+            {
+              "id": "b761a0e2-a9a3-476f-9c81-ca0f0b6e8dc4",
+              "name": "Sole Survivor",
+              "category": "Perk",
+              "score": 23,
+              "role": "Survivor"
+            },
+            {
+              "id": "akc-perk-001-aplaceforus",
+              "name": "A Place For Us",
+              "category": "Perk",
+              "score": 15,
+              "role": "Survivor"
+            },
+            {
+              "id": "08198d7f-1561-4cf3-b112-7969f8aebc32",
+              "name": "Ace in the Hole",
+              "category": "Perk",
+              "score": 15,
+              "role": "Survivor"
+            },
+            {
+              "id": "6e0523a9-0f3f-4329-87c6-01500e72b054",
+              "name": "Adrenaline",
+              "category": "Perk",
+              "score": 15,
+              "role": "Survivor"
+            },
+            {
+              "id": "19fce903-4735-4332-b609-becf90bfb9c8",
+              "name": "Aftercare",
+              "category": "Perk",
+              "score": 15,
+              "role": "Survivor"
+            },
+            {
+              "id": "7c61d214-5247-405b-80d6-2ddf7e9d7ad1",
+              "name": "Alert",
+              "category": "Perk",
+              "score": 15,
+              "role": "Survivor"
+            },
+            {
+              "id": "321407ec-ba71-49f7-8d2b-c38c4930c11b",
+              "name": "Any Means Necessary",
+              "category": "Perk",
+              "score": 15,
+              "role": "Survivor"
+            },
+            {
+              "id": "13db6264-2bc8-4252-9e56-8cc6955720d4",
+              "name": "Apocalyptic Ingenuity",
+              "category": "Perk",
+              "score": 15,
+              "role": "Survivor"
+            }
+          ]
+        },
+        {
+          "query": "perks survivor healing",
+          "ms": 2.900000000372529,
+          "results": [
+            {
+              "id": "c3216a0e-b763-4857-88d7-2c6260beb9ad",
+              "name": "Boon: Circle of Healing",
+              "category": "Perk",
+              "score": 35,
+              "role": "Survivor"
+            },
+            {
+              "id": "10340736-3601-4bdd-a5b4-d23295644ab9",
+              "name": "Reactive Healing",
+              "category": "Perk",
+              "score": 35,
+              "role": "Survivor"
+            },
+            {
+              "id": "04c95215-eb62-4457-bb56-078c7897c043",
+              "name": "Soul Guard",
+              "category": "Perk",
+              "score": 31,
+              "role": "Survivor"
+            },
+            {
+              "id": "c24fad8b-31ea-4aa8-843b-bb9a0fcae4d2",
+              "name": "Buckle Up",
+              "category": "Perk",
+              "score": 29,
+              "role": "Survivor"
+            },
+            {
+              "id": "cf0536f5-62ba-4b43-9b95-ef1dd75080fc",
+              "name": "Conviction",
+              "category": "Perk",
+              "score": 29,
+              "role": "Survivor"
+            },
+            {
+              "id": "14839c0f-159c-49d0-a34e-6c66627bb814",
+              "name": "Made for This",
+              "category": "Perk",
+              "score": 29,
+              "role": "Survivor"
+            },
+            {
+              "id": "8adf88bc-7a4d-400d-9bdb-917d37d01ed2",
+              "name": "No Mither",
+              "category": "Perk",
+              "score": 29,
+              "role": "Survivor"
+            },
+            {
+              "id": "fc4a9248-90ab-4fe5-8631-88862be4f784",
+              "name": "Plot Twist",
+              "category": "Perk",
+              "score": 29,
+              "role": "Survivor"
+            }
+          ]
+        },
+        {
+          "query": "perks:survivor healing",
+          "ms": 2.599999999627471,
+          "results": [
+            {
+              "id": "c3216a0e-b763-4857-88d7-2c6260beb9ad",
+              "name": "Boon: Circle of Healing",
+              "category": "Perk",
+              "score": 25,
+              "role": "Survivor"
+            },
+            {
+              "id": "10340736-3601-4bdd-a5b4-d23295644ab9",
+              "name": "Reactive Healing",
+              "category": "Perk",
+              "score": 25,
+              "role": "Survivor"
+            },
+            {
+              "id": "04c95215-eb62-4457-bb56-078c7897c043",
+              "name": "Soul Guard",
+              "category": "Perk",
+              "score": 21,
+              "role": "Survivor"
+            },
+            {
+              "id": "c24fad8b-31ea-4aa8-843b-bb9a0fcae4d2",
+              "name": "Buckle Up",
+              "category": "Perk",
+              "score": 19,
+              "role": "Survivor"
+            },
+            {
+              "id": "cf0536f5-62ba-4b43-9b95-ef1dd75080fc",
+              "name": "Conviction",
+              "category": "Perk",
+              "score": 19,
+              "role": "Survivor"
+            },
+            {
+              "id": "14839c0f-159c-49d0-a34e-6c66627bb814",
+              "name": "Made for This",
+              "category": "Perk",
+              "score": 19,
+              "role": "Survivor"
+            },
+            {
+              "id": "8adf88bc-7a4d-400d-9bdb-917d37d01ed2",
+              "name": "No Mither",
+              "category": "Perk",
+              "score": 19,
+              "role": "Survivor"
+            },
+            {
+              "id": "fc4a9248-90ab-4fe5-8631-88862be4f784",
+              "name": "Plot Twist",
+              "category": "Perk",
+              "score": 19,
+              "role": "Survivor"
+            }
+          ]
+        },
+        {
+          "query": "addons:killer",
+          "ms": 6.599999999627471,
+          "results": [
+            {
+              "id": "2f841628-3d78-46f7-bf21-50f34a64d32b",
+              "name": "Killer Doll",
+              "category": "Addon",
+              "score": 78,
+              "rarity": "rare",
+              "itemType": null,
+              "role": "killer"
+            },
+            {
+              "id": "668c5f3f-30f3-4652-8206-108d04245ed1",
+              "name": "\"All Seeing\" - Blood",
+              "category": "Addon",
+              "score": 5,
+              "rarity": "veryrare",
+              "itemType": null,
+              "role": "killer"
+            },
+            {
+              "id": "b83c0eb3-e7d5-4cd6-a41f-a840c224bf47",
+              "name": "\"All Seeing\" - Spirit",
+              "category": "Addon",
+              "score": 5,
+              "rarity": "visceral",
+              "itemType": null,
+              "role": "killer"
+            },
+            {
+              "id": "2bebeb54-adaa-47c2-a5bc-03c7c4b7ebab",
+              "name": "\"Bad Man's\" Last Breath",
+              "category": "Addon",
+              "score": 5,
+              "rarity": "veryrare",
+              "itemType": null,
+              "role": "killer"
+            },
+            {
+              "id": "b408e442-80ca-424b-bca8-1823425d6fd8",
+              "name": "\"Blind Warrior\" - Mud",
+              "category": "Addon",
+              "score": 5,
+              "rarity": "uncommon",
+              "itemType": null,
+              "role": "killer"
+            },
+            {
+              "id": "639e3987-9f03-45fc-b9e2-1bed0a34f9e9",
+              "name": "\"Blind Warrior\" - White",
+              "category": "Addon",
+              "score": 5,
+              "rarity": "rare",
+              "itemType": null,
+              "role": "killer"
+            },
+            {
+              "id": "b3e53313-b914-4762-a6c6-0bf50d5c4e04",
+              "name": "\"Blink\" - Mud",
+              "category": "Addon",
+              "score": 5,
+              "rarity": "uncommon",
+              "itemType": null,
+              "role": "killer"
+            },
+            {
+              "id": "d966f00d-c649-434a-b921-8f95c4b39ef0",
+              "name": "\"Blink\" - White",
+              "category": "Addon",
+              "score": 5,
+              "rarity": "rare",
+              "itemType": null,
+              "role": "killer"
+            }
+          ]
+        },
+        {
+          "query": "dark lord very rare addons",
+          "ms": 2.5,
+          "results": [
+            {
+              "id": "4dc03cdb-344c-4b66-99af-47e2cb3fe4f2",
+              "name": "Cube of Zoe",
+              "category": "Addon",
+              "score": 45,
+              "rarity": "veryrare",
+              "itemType": null,
+              "role": "killer"
+            },
+            {
+              "id": "4a5514aa-9552-4b95-9d2d-905db68c6520",
+              "name": "Lapis Lazuli",
+              "category": "Addon",
+              "score": 45,
+              "rarity": "veryrare",
+              "itemType": null,
+              "role": "killer"
+            },
+            {
+              "id": "7017c984-5131-4f92-8660-86a3ef6ff256",
+              "name": "Medusa\u2019s Hair",
+              "category": "Addon",
+              "score": 45,
+              "rarity": "veryrare",
+              "itemType": null,
+              "role": "killer"
+            },
+            {
+              "id": "36db781b-ea30-4e71-96d9-33b28ed21549",
+              "name": "Warg\u2019s Fang",
+              "category": "Addon",
+              "score": 45,
+              "rarity": "veryrare",
+              "itemType": null,
+              "role": "killer"
+            },
+            {
+              "id": "f5bf3bcb-2677-432e-8b32-e7ae31e2df0c",
+              "name": "Broken Recovery Coin",
+              "category": "Addon",
+              "score": 33,
+              "rarity": "veryrare",
+              "itemType": null,
+              "role": "killer"
+            },
+            {
+              "id": "fc84337f-6f85-45dd-b8ac-75670f54ff6d",
+              "name": "Dark Sunglasses",
+              "category": "Addon",
+              "score": 33,
+              "rarity": "veryrare",
+              "itemType": null,
+              "role": "killer"
+            },
+            {
+              "id": "3b4d0dd9-56cd-4ba0-9ec0-85311897ea13",
+              "name": "Depth Gauge Rake",
+              "category": "Addon",
+              "score": 30,
+              "rarity": "veryrare",
+              "itemType": null,
+              "role": "killer"
+            },
+            {
+              "id": "668c5f3f-30f3-4652-8206-108d04245ed1",
+              "name": "\"All Seeing\" - Blood",
+              "category": "Addon",
+              "score": 25,
+              "rarity": "veryrare",
+              "itemType": null,
+              "role": "killer"
+            }
+          ]
+        },
+        {
+          "query": "not very rare addons",
+          "ms": 6.200000001117587,
+          "results": [
+            {
+              "id": "b83c0eb3-e7d5-4cd6-a41f-a840c224bf47",
+              "name": "\"All Seeing\" - Spirit",
+              "category": "Addon",
+              "score": 10,
+              "rarity": "visceral",
+              "itemType": null,
+              "role": "killer"
+            },
+            {
+              "id": "b408e442-80ca-424b-bca8-1823425d6fd8",
+              "name": "\"Blind Warrior\" - Mud",
+              "category": "Addon",
+              "score": 10,
+              "rarity": "uncommon",
+              "itemType": null,
+              "role": "killer"
+            },
+            {
+              "id": "639e3987-9f03-45fc-b9e2-1bed0a34f9e9",
+              "name": "\"Blind Warrior\" - White",
+              "category": "Addon",
+              "score": 10,
+              "rarity": "rare",
+              "itemType": null,
+              "role": "killer"
+            },
+            {
+              "id": "b3e53313-b914-4762-a6c6-0bf50d5c4e04",
+              "name": "\"Blink\" - Mud",
+              "category": "Addon",
+              "score": 10,
+              "rarity": "uncommon",
+              "itemType": null,
+              "role": "killer"
+            },
+            {
+              "id": "d966f00d-c649-434a-b921-8f95c4b39ef0",
+              "name": "\"Blink\" - White",
+              "category": "Addon",
+              "score": 10,
+              "rarity": "rare",
+              "itemType": null,
+              "role": "killer"
+            },
+            {
+              "id": "fa974a6f-909d-4f01-9cf9-e82bb8c4f460",
+              "name": "\"Calm\" - Class I",
+              "category": "Addon",
+              "score": 10,
+              "rarity": "common",
+              "itemType": null,
+              "role": "killer"
+            },
+            {
+              "id": "2d15209b-da79-4fe3-9924-aa53ae05cef6",
+              "name": "\"Calm\" - Class II",
+              "category": "Addon",
+              "score": 10,
+              "rarity": "uncommon",
+              "itemType": null,
+              "role": "killer"
+            },
+            {
+              "id": "a7e1072f-c797-446f-a0ee-8f74d4775721",
+              "name": "\"Discipline\" - Class II",
+              "category": "Addon",
+              "score": 10,
+              "rarity": "uncommon",
+              "itemType": null,
+              "role": "killer"
+            }
+          ]
+        },
+        {
+          "query": "perks not hex",
+          "ms": 2.400000000372529,
+          "results": [
+            {
+              "id": "54944810-74fa-4452-8c18-6508af885055",
+              "name": "A Nurse's Calling",
+              "category": "Perk",
+              "score": 10,
+              "role": "Killer"
+            },
+            {
+              "id": "akc-perk-001-aplaceforus",
+              "name": "A Place For Us",
+              "category": "Perk",
+              "score": 10,
+              "role": "Survivor"
+            },
+            {
+              "id": "08198d7f-1561-4cf3-b112-7969f8aebc32",
+              "name": "Ace in the Hole",
+              "category": "Perk",
+              "score": 10,
+              "role": "Survivor"
+            },
+            {
+              "id": "6e0523a9-0f3f-4329-87c6-01500e72b054",
+              "name": "Adrenaline",
+              "category": "Perk",
+              "score": 10,
+              "role": "Survivor"
+            },
+            {
+              "id": "19fce903-4735-4332-b609-becf90bfb9c8",
+              "name": "Aftercare",
+              "category": "Perk",
+              "score": 10,
+              "role": "Survivor"
+            },
+            {
+              "id": "d74b2d10-d629-4b25-aea6-5e8a3117cbc1",
+              "name": "Agitation",
+              "category": "Perk",
+              "score": 10,
+              "role": "Killer"
+            },
+            {
+              "id": "7c61d214-5247-405b-80d6-2ddf7e9d7ad1",
+              "name": "Alert",
+              "category": "Perk",
+              "score": 10,
+              "role": "Survivor"
+            },
+            {
+              "id": "b6940536-9372-455f-abb3-14dccba26a0e",
+              "name": "Alien Instinct",
+              "category": "Perk",
+              "score": 10,
+              "role": "Killer"
+            }
+          ]
+        },
+        {
+          "query": "Sole Survivor",
+          "ms": 13.599999999627471,
+          "results": [
+            {
+              "id": "b761a0e2-a9a3-476f-9c81-ca0f0b6e8dc4",
+              "name": "Sole Survivor",
+              "category": "Perk",
+              "score": 171,
+              "role": "Survivor"
+            },
+            {
+              "name": "Baby Survivor / Dweet",
+              "category": "Glossary",
+              "score": 8
+            },
+            {
+              "id": "mikaela-reid--blood-soaked-camisole--body--s28-torso01-p01",
+              "name": "Blood-Soaked Camisole",
+              "category": "Cosmetic",
+              "score": 8,
+              "rarity": "Rare"
+            },
+            {
+              "id": "ellen-ripley--cat-survivor--outfit--s39-outfit-011",
+              "name": "Cat Survivor",
+              "category": "Cosmetic",
+              "score": 8,
+              "rarity": "Very Rare"
+            },
+            {
+              "id": "the-huntress--cold-wasteland-survivor--outfit--be-outfit-009",
+              "name": "Cold Wasteland Survivor",
+              "category": "Cosmetic",
+              "score": 8,
+              "rarity": "Very Rare"
+            },
+            {
+              "id": "mikaela-reid--crescent-camisole--body--s28-torso01-04",
+              "name": "Crescent Camisole",
+              "category": "Cosmetic",
+              "score": 8,
+              "rarity": "Uncommon"
+            },
+            {
+              "id": "mikaela-reid--ochre-camisole--body--s28-torso01",
+              "name": "Ochre Camisole",
+              "category": "Cosmetic",
+              "score": 8,
+              "rarity": "Common"
+            },
+            {
+              "id": "b2534c28-3d51-4066-9dde-fa0a28bbde7b",
+              "name": "Smelly Inner Soles",
+              "category": "Addon",
+              "score": 8,
+              "rarity": "rare",
+              "itemType": null,
+              "role": "killer"
+            }
+          ]
+        },
+        {
+          "query": "No Mither",
+          "ms": 9,
+          "results": [
+            {
+              "id": "8adf88bc-7a4d-400d-9bdb-917d37d01ed2",
+              "name": "No Mither",
+              "category": "Perk",
+              "score": 131,
+              "role": "Survivor"
+            },
+            {
+              "id": "20ecec63-1583-422d-adbd-8b8ef3616bb9",
+              "name": "\"Calm\" - Carter's Notes",
+              "category": "Addon",
+              "score": 8,
+              "rarity": "veryrare",
+              "itemType": null,
+              "role": "killer"
+            },
+            {
+              "id": "5120c5d2-4d05-4317-9d9f-4b131fe47e3c",
+              "name": "\"Discipline\" - Carter's Notes",
+              "category": "Addon",
+              "score": 8,
+              "rarity": "veryrare",
+              "itemType": null,
+              "role": "killer"
+            },
+            {
+              "id": "26d68d70-8707-46b1-9b1e-462901ce9e29",
+              "name": "\"Order\" - Carter's Notes",
+              "category": "Addon",
+              "score": 8,
+              "rarity": "veryrare",
+              "itemType": null,
+              "role": "killer"
+            },
+            {
+              "id": "f1176042-d6b4-4d4d-9dbe-e2da25a8f9cf",
+              "name": "\"Restraint\" - Carter's Notes",
+              "category": "Addon",
+              "score": 8,
+              "rarity": "veryrare",
+              "itemType": null,
+              "role": "killer"
+            },
+            {
+              "id": "the-dredge--a-house-not-a-home--outfit--k28-outfit-022",
+              "name": "A House Not A Home",
+              "category": "Cosmetic",
+              "score": 8,
+              "rarity": "Very Rare"
+            },
+            {
+              "id": "the-unknown--abnormal-being--body--k35-body01-p01",
+              "name": "Abnormal Being",
+              "category": "Cosmetic",
+              "score": 8,
+              "rarity": "Rare"
+            },
+            {
+              "id": "the-doctor--adreno-head--head--do-head010",
+              "name": "Adreno-Head",
+              "category": "Cosmetic",
+              "score": 8,
+              "rarity": "Rare"
+            }
+          ]
+        },
+        {
+          "query": "No One Left Behind",
+          "ms": 14.700000001117587,
+          "results": [
+            {
+              "id": "f68aed3b-e8dc-478b-91eb-0fb05a73cb87",
+              "name": "No One Left Behind",
+              "category": "Perk",
+              "score": 147,
+              "role": "Survivor"
+            },
+            {
+              "id": "2af0cb82-accc-4ab6-9078-13cbfa89586c",
+              "name": "Hex: No One Escapes Death",
+              "category": "Perk",
+              "score": 16,
+              "role": "Killer"
+            },
+            {
+              "id": "10e9bfd6-f002-4cd5-8b9f-88cbc88e3b52",
+              "name": "Left Behind",
+              "category": "Perk",
+              "score": 16,
+              "role": "Survivor"
+            },
+            {
+              "id": "left-behind",
+              "name": "Left Behind",
+              "category": "Chapter",
+              "score": 16,
+              "role": "paragraph"
+            },
+            {
+              "id": "e8229df8-9955-4f2e-a1f2-6bb1578872b2",
+              "name": "None Are Free",
+              "category": "Perk",
+              "score": 16,
+              "role": "Killer"
+            },
+            {
+              "id": "the-wraith--unknown-backbone--weapon--tw-w009-01",
+              "name": "Unknown Backbone",
+              "category": "Cosmetic",
+              "score": 16,
+              "rarity": "Very Rare"
+            },
+            {
+              "id": "the-xenomorph--xenomorph-clone",
+              "name": "Xenomorph Clone",
+              "category": "Cosmetic",
+              "score": 16,
+              "rarity": "Costume"
+            },
+            {
+              "id": "20ecec63-1583-422d-adbd-8b8ef3616bb9",
+              "name": "\"Calm\" - Carter's Notes",
+              "category": "Addon",
+              "score": 8,
+              "rarity": "veryrare",
+              "itemType": null,
+              "role": "killer"
+            }
+          ]
+        },
+        {
+          "query": "aura",
+          "ms": 14.599999999627471,
+          "results": [
+            {
+              "id": "e3b0a01c-fde7-4d6e-a7c8-7f9420ae0ad8",
+              "name": "Restaurant Menu",
+              "category": "Addon",
+              "score": 73,
+              "rarity": "common",
+              "itemType": null,
+              "role": "killer"
+            },
+            {
+              "id": "fbdc181e-3a2f-4950-bc7f-63d2ff81b451",
+              "name": "SCREECH COBBLER",
+              "category": "Offering",
+              "score": 20,
+              "rarity": "common",
+              "role": "points"
+            },
+            {
+              "id": "8e662ce3-1cb2-4487-935f-60dc0f6183a0",
+              "name": "The Dark Lord",
+              "category": "Killer",
+              "score": 15
+            },
+            {
+              "id": "114736cd-6f78-4d86-88fd-58351384195a",
+              "name": "The Mastermind",
+              "category": "Killer",
+              "score": 15
+            },
+            {
+              "id": "c991df44-f218-40ab-ab99-60cefb3c161f",
+              "name": "The Xenomorph",
+              "category": "Killer",
+              "score": 15
+            },
+            {
+              "id": "668c5f3f-30f3-4652-8206-108d04245ed1",
+              "name": "\"All Seeing\" - Blood",
+              "category": "Addon",
+              "score": 14,
+              "rarity": "veryrare",
+              "itemType": null,
+              "role": "killer"
+            },
+            {
+              "id": "f1176042-d6b4-4d4d-9dbe-e2da25a8f9cf",
+              "name": "\"Restraint\" - Carter's Notes",
+              "category": "Addon",
+              "score": 14,
+              "rarity": "veryrare",
+              "itemType": null,
+              "role": "killer"
+            },
+            {
+              "id": "1ecfb587-2dca-4615-8cc0-79922393400a",
+              "name": "\"Restraint\" - Class II",
+              "category": "Addon",
+              "score": 14,
+              "rarity": "uncommon",
+              "itemType": null,
+              "role": "killer"
+            }
+          ]
+        },
+        {
+          "query": "icons:exausted",
+          "ms": 2,
+          "results": [
+            {
+              "id": "exhausted",
+              "name": "Exhausted",
+              "category": "GameIcon",
+              "score": 20,
+              "role": "debuff"
+            }
+          ]
+        },
+        {
+          "query": "perks:",
+          "ms": 2.599999999627471,
+          "results": [
+            {
+              "id": "54944810-74fa-4452-8c18-6508af885055",
+              "name": "A Nurse's Calling",
+              "category": "Perk",
+              "score": 1,
+              "role": "Killer"
+            },
+            {
+              "id": "akc-perk-001-aplaceforus",
+              "name": "A Place For Us",
+              "category": "Perk",
+              "score": 1,
+              "role": "Survivor"
+            },
+            {
+              "id": "08198d7f-1561-4cf3-b112-7969f8aebc32",
+              "name": "Ace in the Hole",
+              "category": "Perk",
+              "score": 1,
+              "role": "Survivor"
+            },
+            {
+              "id": "6e0523a9-0f3f-4329-87c6-01500e72b054",
+              "name": "Adrenaline",
+              "category": "Perk",
+              "score": 1,
+              "role": "Survivor"
+            },
+            {
+              "id": "19fce903-4735-4332-b609-becf90bfb9c8",
+              "name": "Aftercare",
+              "category": "Perk",
+              "score": 1,
+              "role": "Survivor"
+            },
+            {
+              "id": "d74b2d10-d629-4b25-aea6-5e8a3117cbc1",
+              "name": "Agitation",
+              "category": "Perk",
+              "score": 1,
+              "role": "Killer"
+            },
+            {
+              "id": "7c61d214-5247-405b-80d6-2ddf7e9d7ad1",
+              "name": "Alert",
+              "category": "Perk",
+              "score": 1,
+              "role": "Survivor"
+            },
+            {
+              "id": "b6940536-9372-455f-abb3-14dccba26a0e",
+              "name": "Alien Instinct",
+              "category": "Perk",
+              "score": 1,
+              "role": "Killer"
+            }
+          ]
+        },
+        {
+          "query": "the",
+          "ms": 0.3999999985098839,
+          "results": []
+        },
+        {
+          "query": "aura reveal generator healing chase hex boon",
+          "ms": 30.5,
+          "results": [
+            {
+              "id": "c3216a0e-b763-4857-88d7-2c6260beb9ad",
+              "name": "Boon: Circle of Healing",
+              "category": "Perk",
+              "score": 56,
+              "role": "Survivor"
+            },
+            {
+              "id": "46445e8e-69b9-40d0-8820-1423d545643f",
+              "name": "Boon: Illumination",
+              "category": "Perk",
+              "score": 36,
+              "role": "Survivor"
+            },
+            {
+              "id": "3b04e69f-2975-481b-9cc0-5eb5eafd81e1",
+              "name": "Hex: Face the Darkness",
+              "category": "Perk",
+              "score": 36,
+              "role": "Killer"
+            },
+            {
+              "id": "2af0cb82-accc-4ab6-9078-13cbfa89586c",
+              "name": "Hex: No One Escapes Death",
+              "category": "Perk",
+              "score": 36,
+              "role": "Killer"
+            },
+            {
+              "id": "697ab247-b1e1-4eea-90c5-47c1fa8de821",
+              "name": "Hex: Overture of Doom",
+              "category": "Perk",
+              "score": 36,
+              "role": "Killer"
+            },
+            {
+              "id": "s54p03-boon-steadfast",
+              "name": "Boon: Steadfast",
+              "category": "Perk",
+              "score": 32,
+              "role": "Survivor"
+            },
+            {
+              "id": "st2-perk-003-hexhivemind",
+              "name": "Hex: Hive Mind",
+              "category": "Perk",
+              "score": 32,
+              "role": "Killer"
+            },
+            {
+              "id": "f7d9b1df-b8c2-4280-9b97-8dde8987e521",
+              "name": "Hex: Plaything",
+              "category": "Perk",
+              "score": 32,
+              "role": "Killer"
+            }
+          ]
+        }
+      ]
+    },
+    "4": {
+      "load": {
+        "rootMs": 14508.300000000745,
+        "paints": [
+          {
+            "name": "first-paint",
+            "ms": 692
+          },
+          {
+            "name": "first-contentful-paint",
+            "ms": 744
+          }
+        ],
+        "tasks": [
+          {
+            "start": 212,
+            "ms": 169
+          },
+          {
+            "start": 391.5,
+            "ms": 281
+          },
+          {
+            "start": 882.2000000011176,
+            "ms": 448
+          },
+          {
+            "start": 1333.9000000003725,
+            "ms": 87
+          },
+          {
+            "start": 1509.5,
+            "ms": 385
+          },
+          {
+            "start": 1896.300000000745,
+            "ms": 162
+          },
+          {
+            "start": 2060.2000000011176,
+            "ms": 186
+          },
+          {
+            "start": 2248.800000000745,
+            "ms": 11504
+          },
+          {
+            "start": 13769.800000000745,
+            "ms": 871
+          },
+          {
+            "start": 14698.200000001118,
+            "ms": 81
+          }
+        ],
+        "resources": [
+          {
+            "name": "vendor/react.production.min.js",
+            "bytes": 10751,
+            "ms": 6.599999999627471
+          },
+          {
+            "name": "vendor/react-dom.production.min.js",
+            "bytes": 131835,
+            "ms": 8.799999998882413
+          },
+          {
+            "name": "vendor/babel.min.js",
+            "bytes": 2921550,
+            "ms": 42.09999999962747
+          },
+          {
+            "name": "vendor/tailwindcss.min.js",
+            "bytes": 407279,
+            "ms": 13.699999999254942
+          },
+          {
+            "name": "engine/engine.css",
+            "bytes": 57266,
+            "ms": 4
+          },
+          {
+            "name": "assets/loading/dbd-logo-static.png",
+            "bytes": 12469,
+            "ms": 10.300000000745058
+          },
+          {
+            "name": "data.js",
+            "bytes": 1450743,
+            "ms": 31.5
+          },
+          {
+            "name": "lore.js",
+            "bytes": 64103,
+            "ms": 29
+          },
+          {
+            "name": "cosmetics.js",
+            "bytes": 5645878,
+            "ms": 122.19999999925494
+          },
+          {
+            "name": "community-content.js",
+            "bytes": 2324002,
+            "ms": 96.20000000111759
+          },
+          {
+            "name": "worldle-data.js",
+            "bytes": 22742,
+            "ms": 307.7000000011176
+          },
+          {
+            "name": "engine/icons.js",
+            "bytes": 18450,
+            "ms": 2.700000001117587
+          },
+          {
+            "name": "engine/core.js",
+            "bytes": 1465,
+            "ms": 2.5
+          },
+          {
+            "name": "engine/theme.js",
+            "bytes": 3130,
+            "ms": 4.200000001117587
+          },
+          {
+            "name": "engine/storage.js",
+            "bytes": 1604,
+            "ms": 5.5
+          },
+          {
+            "name": "engine/device.js",
+            "bytes": 5116,
+            "ms": 6.900000000372529
+          },
+          {
+            "name": "engine/shell.js",
+            "bytes": 8335,
+            "ms": 5.399999998509884
+          },
+          {
+            "name": "engine/assets.js",
+            "bytes": 6741,
+            "ms": 4.600000001490116
+          },
+          {
+            "name": "engine/articles.js",
+            "bytes": 7744,
+            "ms": 3.900000000372529
+          },
+          {
+            "name": "games/dbd/config.js",
+            "bytes": 8643,
+            "ms": 5
+          },
+          {
+            "name": "assets/fonts/bitter-var.woff2",
+            "bytes": 34072,
+            "ms": 2.300000000745058
+          },
+          {
+            "name": "intl/en_us/badges/static/images/badges/en_badge_web_generic.png",
+            "bytes": 0,
+            "ms": 43.19999999925494
+          }
+        ]
+      },
+      "search": [
+        {
+          "query": "dwight",
+          "ms": 66.19999999925494,
+          "results": [
+            {
+              "id": "c1ad4f3a-3f31-47f6-ae66-7ba2746a1423",
+              "name": "Dwight Fairfield",
+              "category": "Survivor",
+              "score": 123,
+              "role": "Survivor"
+            },
+            {
+              "id": "dwight-fairfield--dwight--head--d-head01",
+              "name": "Dwight",
+              "category": "Cosmetic",
+              "score": 163,
+              "rarity": "Common"
+            },
+            {
+              "id": "dwight-fairfield--bloody-dwight--head--d-head01-p01",
+              "name": "Bloody Dwight",
+              "category": "Cosmetic",
+              "score": 88,
+              "rarity": "Rare"
+            },
+            {
+              "id": "dwight-fairfield--dearest-dwight--outfit--df-outfit-040",
+              "name": "Dearest Dwight",
+              "category": "Cosmetic",
+              "score": 88,
+              "rarity": "Very Rare"
+            },
+            {
+              "id": "dwight-fairfield--dwight-cubed--body--df-torso03-02",
+              "name": "Dwight Cubed",
+              "category": "Cosmetic",
+              "score": 88,
+              "rarity": "Uncommon"
+            },
+            {
+              "id": "dwight-fairfield--dwight-unknown--outfit--df-outfit-021",
+              "name": "Dwight Unknown",
+              "category": "Cosmetic",
+              "score": 88,
+              "rarity": "Very Rare"
+            },
+            {
+              "id": "dwight-fairfield--dwight-in-a-box--outfit--df-outfit-013",
+              "name": "Dwight-in-a-Box",
+              "category": "Cosmetic",
+              "score": 88,
+              "rarity": "Very Rare"
+            },
+            {
+              "id": "dwight-fairfield--dwight-s-mask--head--df-head019",
+              "name": "Dwight's Mask",
+              "category": "Cosmetic",
+              "score": 88,
+              "rarity": "Event"
+            }
+          ]
+        },
+        {
+          "query": "nurse",
+          "ms": 50.600000001490116,
+          "results": [
+            {
+              "id": "3191f632-4d35-4464-8c2d-db185d06209f",
+              "name": "The Nurse",
+              "category": "Killer",
+              "score": 123
+            },
+            {
+              "id": "54944810-74fa-4452-8c18-6508af885055",
+              "name": "A Nurse's Calling",
+              "category": "Perk",
+              "score": 93,
+              "role": "Killer"
+            },
+            {
+              "id": "the-nurse--bloody-nurse--body--nurse-body01-p01",
+              "name": "Bloody Nurse",
+              "category": "Cosmetic",
+              "score": 88,
+              "rarity": "Rare"
+            },
+            {
+              "id": "the-spirit--bubble-head-nurse",
+              "name": "Bubble Head Nurse",
+              "category": "Cosmetic",
+              "score": 88,
+              "rarity": "Legendary"
+            },
+            {
+              "id": "the-nurse--classic-nurses-outfit--body--nurse-body01",
+              "name": "Classic Nurses Outfit",
+              "category": "Cosmetic",
+              "score": 88,
+              "rarity": "Common"
+            },
+            {
+              "id": "the-nurse--legacy-nurse-2--head--nr-head01-lp01",
+              "name": "Legacy Nurse 2",
+              "category": "Cosmetic",
+              "score": 88,
+              "rarity": "Very Rare"
+            },
+            {
+              "id": "the-nurse--legacy-nurse-3--body--nr-body01-lp01",
+              "name": "Legacy Nurse 3",
+              "category": "Cosmetic",
+              "score": 88,
+              "rarity": "Very Rare"
+            },
+            {
+              "id": "the-nurse--legacy-nurse-i--weapon--nr-bonesaw01-lp01",
+              "name": "Legacy Nurse I",
+              "category": "Cosmetic",
+              "score": 88,
+              "rarity": "Very Rare"
+            }
+          ]
+        },
+        {
+          "query": "trapper",
+          "ms": 57.30000000074506,
+          "results": [
+            {
+              "id": "7a34f0fb-fe18-4854-ab5d-47f89a210051",
+              "name": "The Trapper",
+              "category": "Killer",
+              "score": 123
+            },
+            {
+              "id": "4e0d3786-2c31-481d-b172-eb9940ddc4b6",
+              "name": "Trapper Bag",
+              "category": "Addon",
+              "score": 93,
+              "rarity": "rare",
+              "itemType": null,
+              "role": "killer"
+            },
+            {
+              "id": "1a956e25-3c4a-42e2-a910-25e2d1a46492",
+              "name": "Trapper Gloves",
+              "category": "Addon",
+              "score": 93,
+              "rarity": "common",
+              "itemType": null,
+              "role": "killer"
+            },
+            {
+              "id": "b28a1318-f9c3-4987-9007-e7a203f33253",
+              "name": "Trapper Sack",
+              "category": "Addon",
+              "score": 93,
+              "rarity": "veryrare",
+              "itemType": null,
+              "role": "killer"
+            },
+            {
+              "id": "the-trapper--best-new-trapper-mask--head--tr-head01-cva",
+              "name": "Best New Trapper Mask",
+              "category": "Cosmetic",
+              "score": 88,
+              "rarity": "Very Rare"
+            },
+            {
+              "id": "the-trapper--legacy-trapper-1--weapon--tr-machete01-lp01",
+              "name": "Legacy Trapper 1",
+              "category": "Cosmetic",
+              "score": 88,
+              "rarity": "Very Rare"
+            },
+            {
+              "id": "the-trapper--legacy-trapper-2--body--tr-body01-lp01",
+              "name": "Legacy Trapper 2",
+              "category": "Cosmetic",
+              "score": 88,
+              "rarity": "Very Rare"
+            },
+            {
+              "id": "the-trapper--legacy-trapper-3--head--tr-head01-lp01",
+              "name": "Legacy Trapper 3",
+              "category": "Cosmetic",
+              "score": 88,
+              "rarity": "Very Rare"
+            }
+          ]
+        },
+        {
+          "query": "spirit",
+          "ms": 51.80000000074506,
+          "results": [
+            {
+              "id": "c5b56576-0afb-4f1e-ac73-bac5bd3ee9a0",
+              "name": "The Spirit",
+              "category": "Killer",
+              "score": 123
+            },
+            {
+              "id": "the-spirit--the-spirit--head--hk-head01",
+              "name": "The Spirit",
+              "category": "Cosmetic",
+              "score": 138,
+              "rarity": "Common"
+            },
+            {
+              "id": "434be009-2075-4c07-89cc-2a5f757e2361",
+              "name": "Spirit Fury",
+              "category": "Perk",
+              "score": 93,
+              "role": "Killer"
+            },
+            {
+              "id": "the-spirit--bloody-spirit--head--hk-head01-p01",
+              "name": "Bloody Spirit",
+              "category": "Cosmetic",
+              "score": 88,
+              "rarity": "Rare"
+            },
+            {
+              "id": "the-dredge--half-spirits-torments",
+              "name": "Half Spirits' Torments",
+              "category": "Cosmetic",
+              "score": 88,
+              "rarity": "Legendary"
+            },
+            {
+              "id": "the-spirit--spirit-s-mask--head--hk-head015",
+              "name": "Spirit's Mask",
+              "category": "Cosmetic",
+              "score": 88,
+              "rarity": "Event"
+            },
+            {
+              "id": "b83c0eb3-e7d5-4cd6-a41f-a840c224bf47",
+              "name": "\"All Seeing\" - Spirit",
+              "category": "Addon",
+              "score": 73,
+              "rarity": "visceral",
+              "itemType": null,
+              "role": "killer"
+            },
+            {
+              "id": "d03e92ab-1e88-4331-9f48-1074344c2483",
+              "name": "Calm Spirit",
+              "category": "Perk",
+              "score": 73,
+              "role": "Survivor"
+            }
+          ]
+        },
+        {
+          "query": "trapper mask",
+          "ms": 90.30000000074506,
+          "results": [
+            {
+              "id": "the-trapper--best-new-trapper-mask--head--tr-head01-cva",
+              "name": "Best New Trapper Mask",
+              "category": "Cosmetic",
+              "score": 101,
+              "rarity": "Very Rare"
+            },
+            {
+              "id": "7a34f0fb-fe18-4854-ab5d-47f89a210051",
+              "name": "The Trapper",
+              "category": "Killer",
+              "score": 58
+            },
+            {
+              "id": "the-trapper--trapper-s-mask--head--tr-mask014",
+              "name": "Trapper's Mask",
+              "category": "Cosmetic",
+              "score": 36,
+              "rarity": "Event"
+            },
+            {
+              "id": "4e0d3786-2c31-481d-b172-eb9940ddc4b6",
+              "name": "Trapper Bag",
+              "category": "Addon",
+              "score": 28,
+              "rarity": "rare",
+              "itemType": null,
+              "role": "killer"
+            },
+            {
+              "id": "1a956e25-3c4a-42e2-a910-25e2d1a46492",
+              "name": "Trapper Gloves",
+              "category": "Addon",
+              "score": 28,
+              "rarity": "common",
+              "itemType": null,
+              "role": "killer"
+            },
+            {
+              "id": "b28a1318-f9c3-4987-9007-e7a203f33253",
+              "name": "Trapper Sack",
+              "category": "Addon",
+              "score": 28,
+              "rarity": "veryrare",
+              "itemType": null,
+              "role": "killer"
+            },
+            {
+              "id": "301c9881-53a7-4b5f-99a4-479e5954129a",
+              "name": "4-Coil Spring Kit",
+              "category": "Addon",
+              "score": 20,
+              "rarity": "uncommon",
+              "itemType": null,
+              "role": "killer"
+            },
+            {
+              "id": "d74b2d10-d629-4b25-aea6-5e8a3117cbc1",
+              "name": "Agitation",
+              "category": "Perk",
+              "score": 20,
+              "role": "Killer"
+            }
+          ]
+        },
+        {
+          "query": "purple toolbox addons",
+          "ms": 4.599999999627471,
+          "results": []
+        },
+        {
+          "query": "green toolbox addons",
+          "ms": 6,
+          "results": [
+            {
+              "id": "eb8597b2-7862-45ed-bedb-a76baeae5ada",
+              "name": "Grip Wrench",
+              "category": "Addon",
+              "score": 40,
+              "rarity": "rare",
+              "itemType": "toolbox",
+              "role": "survivor"
+            },
+            {
+              "id": "c0a38f21-07f6-43a6-afa1-2f9f960eab22",
+              "name": "Hacksaw",
+              "category": "Addon",
+              "score": 40,
+              "rarity": "rare",
+              "itemType": "toolbox",
+              "role": "survivor"
+            }
+          ]
+        },
+        {
+          "query": "purple toolbox items",
+          "ms": 9,
+          "results": [
+            {
+              "id": "d3ce0ce5-9f7d-4337-85ab-8c3095c16a5b",
+              "name": "Alex's Toolbox",
+              "category": "Item",
+              "score": 48,
+              "rarity": "veryrare",
+              "itemType": "toolbox",
+              "role": "survivor"
+            },
+            {
+              "id": "032e1e59-70b9-495a-b04b-9cbe139562ac",
+              "name": "Engineer's Toolbox",
+              "category": "Item",
+              "score": 48,
+              "rarity": "veryrare",
+              "itemType": "toolbox",
+              "role": "survivor"
+            }
+          ]
+        },
+        {
+          "query": "killer perks",
+          "ms": 11.200000001117587,
+          "results": [
+            {
+              "id": "54944810-74fa-4452-8c18-6508af885055",
+              "name": "A Nurse's Calling",
+              "category": "Perk",
+              "score": 15,
+              "role": "Killer"
+            },
+            {
+              "id": "d74b2d10-d629-4b25-aea6-5e8a3117cbc1",
+              "name": "Agitation",
+              "category": "Perk",
+              "score": 15,
+              "role": "Killer"
+            },
+            {
+              "id": "b6940536-9372-455f-abb3-14dccba26a0e",
+              "name": "Alien Instinct",
+              "category": "Perk",
+              "score": 15,
+              "role": "Killer"
+            },
+            {
+              "id": "178688f3-64ba-4e06-85a4-2ec75c3fb211",
+              "name": "All-Shaking Thunder",
+              "category": "Perk",
+              "score": 15,
+              "role": "Killer"
+            },
+            {
+              "id": "2e5382d0-70a2-4143-b270-4743bfa0d516",
+              "name": "Awakened Awareness",
+              "category": "Perk",
+              "score": 15,
+              "role": "Killer"
+            },
+            {
+              "id": "de13a977-5ff0-4cc2-8c5c-0278013da721",
+              "name": "Bamboozle",
+              "category": "Perk",
+              "score": 15,
+              "role": "Killer"
+            },
+            {
+              "id": "b075b4a0-0fcc-4ac8-8ce2-ff46553d6092",
+              "name": "Barbecue & Chili",
+              "category": "Perk",
+              "score": 15,
+              "role": "Killer"
+            },
+            {
+              "id": "320a2bcb-b84e-424a-95e0-b12e47201b7c",
+              "name": "Batteries Included",
+              "category": "Perk",
+              "score": 15,
+              "role": "Killer"
+            }
+          ]
+        },
+        {
+          "query": "survivor perks",
+          "ms": 9.900000000372529,
+          "results": [
+            {
+              "id": "b761a0e2-a9a3-476f-9c81-ca0f0b6e8dc4",
+              "name": "Sole Survivor",
+              "category": "Perk",
+              "score": 23,
+              "role": "Survivor"
+            },
+            {
+              "id": "akc-perk-001-aplaceforus",
+              "name": "A Place For Us",
+              "category": "Perk",
+              "score": 15,
+              "role": "Survivor"
+            },
+            {
+              "id": "08198d7f-1561-4cf3-b112-7969f8aebc32",
+              "name": "Ace in the Hole",
+              "category": "Perk",
+              "score": 15,
+              "role": "Survivor"
+            },
+            {
+              "id": "6e0523a9-0f3f-4329-87c6-01500e72b054",
+              "name": "Adrenaline",
+              "category": "Perk",
+              "score": 15,
+              "role": "Survivor"
+            },
+            {
+              "id": "19fce903-4735-4332-b609-becf90bfb9c8",
+              "name": "Aftercare",
+              "category": "Perk",
+              "score": 15,
+              "role": "Survivor"
+            },
+            {
+              "id": "7c61d214-5247-405b-80d6-2ddf7e9d7ad1",
+              "name": "Alert",
+              "category": "Perk",
+              "score": 15,
+              "role": "Survivor"
+            },
+            {
+              "id": "321407ec-ba71-49f7-8d2b-c38c4930c11b",
+              "name": "Any Means Necessary",
+              "category": "Perk",
+              "score": 15,
+              "role": "Survivor"
+            },
+            {
+              "id": "13db6264-2bc8-4252-9e56-8cc6955720d4",
+              "name": "Apocalyptic Ingenuity",
+              "category": "Perk",
+              "score": 15,
+              "role": "Survivor"
+            }
+          ]
+        },
+        {
+          "query": "perks survivor healing",
+          "ms": 11.700000001117587,
+          "results": [
+            {
+              "id": "c3216a0e-b763-4857-88d7-2c6260beb9ad",
+              "name": "Boon: Circle of Healing",
+              "category": "Perk",
+              "score": 35,
+              "role": "Survivor"
+            },
+            {
+              "id": "10340736-3601-4bdd-a5b4-d23295644ab9",
+              "name": "Reactive Healing",
+              "category": "Perk",
+              "score": 35,
+              "role": "Survivor"
+            },
+            {
+              "id": "04c95215-eb62-4457-bb56-078c7897c043",
+              "name": "Soul Guard",
+              "category": "Perk",
+              "score": 31,
+              "role": "Survivor"
+            },
+            {
+              "id": "c24fad8b-31ea-4aa8-843b-bb9a0fcae4d2",
+              "name": "Buckle Up",
+              "category": "Perk",
+              "score": 29,
+              "role": "Survivor"
+            },
+            {
+              "id": "cf0536f5-62ba-4b43-9b95-ef1dd75080fc",
+              "name": "Conviction",
+              "category": "Perk",
+              "score": 29,
+              "role": "Survivor"
+            },
+            {
+              "id": "14839c0f-159c-49d0-a34e-6c66627bb814",
+              "name": "Made for This",
+              "category": "Perk",
+              "score": 29,
+              "role": "Survivor"
+            },
+            {
+              "id": "8adf88bc-7a4d-400d-9bdb-917d37d01ed2",
+              "name": "No Mither",
+              "category": "Perk",
+              "score": 29,
+              "role": "Survivor"
+            },
+            {
+              "id": "fc4a9248-90ab-4fe5-8631-88862be4f784",
+              "name": "Plot Twist",
+              "category": "Perk",
+              "score": 29,
+              "role": "Survivor"
+            }
+          ]
+        },
+        {
+          "query": "perks:survivor healing",
+          "ms": 13.100000001490116,
+          "results": [
+            {
+              "id": "c3216a0e-b763-4857-88d7-2c6260beb9ad",
+              "name": "Boon: Circle of Healing",
+              "category": "Perk",
+              "score": 25,
+              "role": "Survivor"
+            },
+            {
+              "id": "10340736-3601-4bdd-a5b4-d23295644ab9",
+              "name": "Reactive Healing",
+              "category": "Perk",
+              "score": 25,
+              "role": "Survivor"
+            },
+            {
+              "id": "04c95215-eb62-4457-bb56-078c7897c043",
+              "name": "Soul Guard",
+              "category": "Perk",
+              "score": 21,
+              "role": "Survivor"
+            },
+            {
+              "id": "c24fad8b-31ea-4aa8-843b-bb9a0fcae4d2",
+              "name": "Buckle Up",
+              "category": "Perk",
+              "score": 19,
+              "role": "Survivor"
+            },
+            {
+              "id": "cf0536f5-62ba-4b43-9b95-ef1dd75080fc",
+              "name": "Conviction",
+              "category": "Perk",
+              "score": 19,
+              "role": "Survivor"
+            },
+            {
+              "id": "14839c0f-159c-49d0-a34e-6c66627bb814",
+              "name": "Made for This",
+              "category": "Perk",
+              "score": 19,
+              "role": "Survivor"
+            },
+            {
+              "id": "8adf88bc-7a4d-400d-9bdb-917d37d01ed2",
+              "name": "No Mither",
+              "category": "Perk",
+              "score": 19,
+              "role": "Survivor"
+            },
+            {
+              "id": "fc4a9248-90ab-4fe5-8631-88862be4f784",
+              "name": "Plot Twist",
+              "category": "Perk",
+              "score": 19,
+              "role": "Survivor"
+            }
+          ]
+        },
+        {
+          "query": "addons:killer",
+          "ms": 27.5,
+          "results": [
+            {
+              "id": "2f841628-3d78-46f7-bf21-50f34a64d32b",
+              "name": "Killer Doll",
+              "category": "Addon",
+              "score": 78,
+              "rarity": "rare",
+              "itemType": null,
+              "role": "killer"
+            },
+            {
+              "id": "668c5f3f-30f3-4652-8206-108d04245ed1",
+              "name": "\"All Seeing\" - Blood",
+              "category": "Addon",
+              "score": 5,
+              "rarity": "veryrare",
+              "itemType": null,
+              "role": "killer"
+            },
+            {
+              "id": "b83c0eb3-e7d5-4cd6-a41f-a840c224bf47",
+              "name": "\"All Seeing\" - Spirit",
+              "category": "Addon",
+              "score": 5,
+              "rarity": "visceral",
+              "itemType": null,
+              "role": "killer"
+            },
+            {
+              "id": "2bebeb54-adaa-47c2-a5bc-03c7c4b7ebab",
+              "name": "\"Bad Man's\" Last Breath",
+              "category": "Addon",
+              "score": 5,
+              "rarity": "veryrare",
+              "itemType": null,
+              "role": "killer"
+            },
+            {
+              "id": "b408e442-80ca-424b-bca8-1823425d6fd8",
+              "name": "\"Blind Warrior\" - Mud",
+              "category": "Addon",
+              "score": 5,
+              "rarity": "uncommon",
+              "itemType": null,
+              "role": "killer"
+            },
+            {
+              "id": "639e3987-9f03-45fc-b9e2-1bed0a34f9e9",
+              "name": "\"Blind Warrior\" - White",
+              "category": "Addon",
+              "score": 5,
+              "rarity": "rare",
+              "itemType": null,
+              "role": "killer"
+            },
+            {
+              "id": "b3e53313-b914-4762-a6c6-0bf50d5c4e04",
+              "name": "\"Blink\" - Mud",
+              "category": "Addon",
+              "score": 5,
+              "rarity": "uncommon",
+              "itemType": null,
+              "role": "killer"
+            },
+            {
+              "id": "d966f00d-c649-434a-b921-8f95c4b39ef0",
+              "name": "\"Blink\" - White",
+              "category": "Addon",
+              "score": 5,
+              "rarity": "rare",
+              "itemType": null,
+              "role": "killer"
+            }
+          ]
+        },
+        {
+          "query": "dark lord very rare addons",
+          "ms": 11.300000000745058,
+          "results": [
+            {
+              "id": "4dc03cdb-344c-4b66-99af-47e2cb3fe4f2",
+              "name": "Cube of Zoe",
+              "category": "Addon",
+              "score": 45,
+              "rarity": "veryrare",
+              "itemType": null,
+              "role": "killer"
+            },
+            {
+              "id": "4a5514aa-9552-4b95-9d2d-905db68c6520",
+              "name": "Lapis Lazuli",
+              "category": "Addon",
+              "score": 45,
+              "rarity": "veryrare",
+              "itemType": null,
+              "role": "killer"
+            },
+            {
+              "id": "7017c984-5131-4f92-8660-86a3ef6ff256",
+              "name": "Medusa\u2019s Hair",
+              "category": "Addon",
+              "score": 45,
+              "rarity": "veryrare",
+              "itemType": null,
+              "role": "killer"
+            },
+            {
+              "id": "36db781b-ea30-4e71-96d9-33b28ed21549",
+              "name": "Warg\u2019s Fang",
+              "category": "Addon",
+              "score": 45,
+              "rarity": "veryrare",
+              "itemType": null,
+              "role": "killer"
+            },
+            {
+              "id": "f5bf3bcb-2677-432e-8b32-e7ae31e2df0c",
+              "name": "Broken Recovery Coin",
+              "category": "Addon",
+              "score": 33,
+              "rarity": "veryrare",
+              "itemType": null,
+              "role": "killer"
+            },
+            {
+              "id": "fc84337f-6f85-45dd-b8ac-75670f54ff6d",
+              "name": "Dark Sunglasses",
+              "category": "Addon",
+              "score": 33,
+              "rarity": "veryrare",
+              "itemType": null,
+              "role": "killer"
+            },
+            {
+              "id": "3b4d0dd9-56cd-4ba0-9ec0-85311897ea13",
+              "name": "Depth Gauge Rake",
+              "category": "Addon",
+              "score": 30,
+              "rarity": "veryrare",
+              "itemType": null,
+              "role": "killer"
+            },
+            {
+              "id": "668c5f3f-30f3-4652-8206-108d04245ed1",
+              "name": "\"All Seeing\" - Blood",
+              "category": "Addon",
+              "score": 25,
+              "rarity": "veryrare",
+              "itemType": null,
+              "role": "killer"
+            }
+          ]
+        },
+        {
+          "query": "not very rare addons",
+          "ms": 22.40000000037253,
+          "results": [
+            {
+              "id": "b83c0eb3-e7d5-4cd6-a41f-a840c224bf47",
+              "name": "\"All Seeing\" - Spirit",
+              "category": "Addon",
+              "score": 10,
+              "rarity": "visceral",
+              "itemType": null,
+              "role": "killer"
+            },
+            {
+              "id": "b408e442-80ca-424b-bca8-1823425d6fd8",
+              "name": "\"Blind Warrior\" - Mud",
+              "category": "Addon",
+              "score": 10,
+              "rarity": "uncommon",
+              "itemType": null,
+              "role": "killer"
+            },
+            {
+              "id": "639e3987-9f03-45fc-b9e2-1bed0a34f9e9",
+              "name": "\"Blind Warrior\" - White",
+              "category": "Addon",
+              "score": 10,
+              "rarity": "rare",
+              "itemType": null,
+              "role": "killer"
+            },
+            {
+              "id": "b3e53313-b914-4762-a6c6-0bf50d5c4e04",
+              "name": "\"Blink\" - Mud",
+              "category": "Addon",
+              "score": 10,
+              "rarity": "uncommon",
+              "itemType": null,
+              "role": "killer"
+            },
+            {
+              "id": "d966f00d-c649-434a-b921-8f95c4b39ef0",
+              "name": "\"Blink\" - White",
+              "category": "Addon",
+              "score": 10,
+              "rarity": "rare",
+              "itemType": null,
+              "role": "killer"
+            },
+            {
+              "id": "fa974a6f-909d-4f01-9cf9-e82bb8c4f460",
+              "name": "\"Calm\" - Class I",
+              "category": "Addon",
+              "score": 10,
+              "rarity": "common",
+              "itemType": null,
+              "role": "killer"
+            },
+            {
+              "id": "2d15209b-da79-4fe3-9924-aa53ae05cef6",
+              "name": "\"Calm\" - Class II",
+              "category": "Addon",
+              "score": 10,
+              "rarity": "uncommon",
+              "itemType": null,
+              "role": "killer"
+            },
+            {
+              "id": "a7e1072f-c797-446f-a0ee-8f74d4775721",
+              "name": "\"Discipline\" - Class II",
+              "category": "Addon",
+              "score": 10,
+              "rarity": "uncommon",
+              "itemType": null,
+              "role": "killer"
+            }
+          ]
+        },
+        {
+          "query": "perks not hex",
+          "ms": 9.099999999627471,
+          "results": [
+            {
+              "id": "54944810-74fa-4452-8c18-6508af885055",
+              "name": "A Nurse's Calling",
+              "category": "Perk",
+              "score": 10,
+              "role": "Killer"
+            },
+            {
+              "id": "akc-perk-001-aplaceforus",
+              "name": "A Place For Us",
+              "category": "Perk",
+              "score": 10,
+              "role": "Survivor"
+            },
+            {
+              "id": "08198d7f-1561-4cf3-b112-7969f8aebc32",
+              "name": "Ace in the Hole",
+              "category": "Perk",
+              "score": 10,
+              "role": "Survivor"
+            },
+            {
+              "id": "6e0523a9-0f3f-4329-87c6-01500e72b054",
+              "name": "Adrenaline",
+              "category": "Perk",
+              "score": 10,
+              "role": "Survivor"
+            },
+            {
+              "id": "19fce903-4735-4332-b609-becf90bfb9c8",
+              "name": "Aftercare",
+              "category": "Perk",
+              "score": 10,
+              "role": "Survivor"
+            },
+            {
+              "id": "d74b2d10-d629-4b25-aea6-5e8a3117cbc1",
+              "name": "Agitation",
+              "category": "Perk",
+              "score": 10,
+              "role": "Killer"
+            },
+            {
+              "id": "7c61d214-5247-405b-80d6-2ddf7e9d7ad1",
+              "name": "Alert",
+              "category": "Perk",
+              "score": 10,
+              "role": "Survivor"
+            },
+            {
+              "id": "b6940536-9372-455f-abb3-14dccba26a0e",
+              "name": "Alien Instinct",
+              "category": "Perk",
+              "score": 10,
+              "role": "Killer"
+            }
+          ]
+        },
+        {
+          "query": "Sole Survivor",
+          "ms": 56.90000000037253,
+          "results": [
+            {
+              "id": "b761a0e2-a9a3-476f-9c81-ca0f0b6e8dc4",
+              "name": "Sole Survivor",
+              "category": "Perk",
+              "score": 171,
+              "role": "Survivor"
+            },
+            {
+              "name": "Baby Survivor / Dweet",
+              "category": "Glossary",
+              "score": 8
+            },
+            {
+              "id": "mikaela-reid--blood-soaked-camisole--body--s28-torso01-p01",
+              "name": "Blood-Soaked Camisole",
+              "category": "Cosmetic",
+              "score": 8,
+              "rarity": "Rare"
+            },
+            {
+              "id": "ellen-ripley--cat-survivor--outfit--s39-outfit-011",
+              "name": "Cat Survivor",
+              "category": "Cosmetic",
+              "score": 8,
+              "rarity": "Very Rare"
+            },
+            {
+              "id": "the-huntress--cold-wasteland-survivor--outfit--be-outfit-009",
+              "name": "Cold Wasteland Survivor",
+              "category": "Cosmetic",
+              "score": 8,
+              "rarity": "Very Rare"
+            },
+            {
+              "id": "mikaela-reid--crescent-camisole--body--s28-torso01-04",
+              "name": "Crescent Camisole",
+              "category": "Cosmetic",
+              "score": 8,
+              "rarity": "Uncommon"
+            },
+            {
+              "id": "mikaela-reid--ochre-camisole--body--s28-torso01",
+              "name": "Ochre Camisole",
+              "category": "Cosmetic",
+              "score": 8,
+              "rarity": "Common"
+            },
+            {
+              "id": "b2534c28-3d51-4066-9dde-fa0a28bbde7b",
+              "name": "Smelly Inner Soles",
+              "category": "Addon",
+              "score": 8,
+              "rarity": "rare",
+              "itemType": null,
+              "role": "killer"
+            }
+          ]
+        },
+        {
+          "query": "No Mither",
+          "ms": 40,
+          "results": [
+            {
+              "id": "8adf88bc-7a4d-400d-9bdb-917d37d01ed2",
+              "name": "No Mither",
+              "category": "Perk",
+              "score": 131,
+              "role": "Survivor"
+            },
+            {
+              "id": "20ecec63-1583-422d-adbd-8b8ef3616bb9",
+              "name": "\"Calm\" - Carter's Notes",
+              "category": "Addon",
+              "score": 8,
+              "rarity": "veryrare",
+              "itemType": null,
+              "role": "killer"
+            },
+            {
+              "id": "5120c5d2-4d05-4317-9d9f-4b131fe47e3c",
+              "name": "\"Discipline\" - Carter's Notes",
+              "category": "Addon",
+              "score": 8,
+              "rarity": "veryrare",
+              "itemType": null,
+              "role": "killer"
+            },
+            {
+              "id": "26d68d70-8707-46b1-9b1e-462901ce9e29",
+              "name": "\"Order\" - Carter's Notes",
+              "category": "Addon",
+              "score": 8,
+              "rarity": "veryrare",
+              "itemType": null,
+              "role": "killer"
+            },
+            {
+              "id": "f1176042-d6b4-4d4d-9dbe-e2da25a8f9cf",
+              "name": "\"Restraint\" - Carter's Notes",
+              "category": "Addon",
+              "score": 8,
+              "rarity": "veryrare",
+              "itemType": null,
+              "role": "killer"
+            },
+            {
+              "id": "the-dredge--a-house-not-a-home--outfit--k28-outfit-022",
+              "name": "A House Not A Home",
+              "category": "Cosmetic",
+              "score": 8,
+              "rarity": "Very Rare"
+            },
+            {
+              "id": "the-unknown--abnormal-being--body--k35-body01-p01",
+              "name": "Abnormal Being",
+              "category": "Cosmetic",
+              "score": 8,
+              "rarity": "Rare"
+            },
+            {
+              "id": "the-doctor--adreno-head--head--do-head010",
+              "name": "Adreno-Head",
+              "category": "Cosmetic",
+              "score": 8,
+              "rarity": "Rare"
+            }
+          ]
+        },
+        {
+          "query": "No One Left Behind",
+          "ms": 59.30000000074506,
+          "results": [
+            {
+              "id": "f68aed3b-e8dc-478b-91eb-0fb05a73cb87",
+              "name": "No One Left Behind",
+              "category": "Perk",
+              "score": 147,
+              "role": "Survivor"
+            },
+            {
+              "id": "2af0cb82-accc-4ab6-9078-13cbfa89586c",
+              "name": "Hex: No One Escapes Death",
+              "category": "Perk",
+              "score": 16,
+              "role": "Killer"
+            },
+            {
+              "id": "10e9bfd6-f002-4cd5-8b9f-88cbc88e3b52",
+              "name": "Left Behind",
+              "category": "Perk",
+              "score": 16,
+              "role": "Survivor"
+            },
+            {
+              "id": "left-behind",
+              "name": "Left Behind",
+              "category": "Chapter",
+              "score": 16,
+              "role": "paragraph"
+            },
+            {
+              "id": "e8229df8-9955-4f2e-a1f2-6bb1578872b2",
+              "name": "None Are Free",
+              "category": "Perk",
+              "score": 16,
+              "role": "Killer"
+            },
+            {
+              "id": "the-wraith--unknown-backbone--weapon--tw-w009-01",
+              "name": "Unknown Backbone",
+              "category": "Cosmetic",
+              "score": 16,
+              "rarity": "Very Rare"
+            },
+            {
+              "id": "the-xenomorph--xenomorph-clone",
+              "name": "Xenomorph Clone",
+              "category": "Cosmetic",
+              "score": 16,
+              "rarity": "Costume"
+            },
+            {
+              "id": "20ecec63-1583-422d-adbd-8b8ef3616bb9",
+              "name": "\"Calm\" - Carter's Notes",
+              "category": "Addon",
+              "score": 8,
+              "rarity": "veryrare",
+              "itemType": null,
+              "role": "killer"
+            }
+          ]
+        },
+        {
+          "query": "aura",
+          "ms": 40.70000000111759,
+          "results": [
+            {
+              "id": "e3b0a01c-fde7-4d6e-a7c8-7f9420ae0ad8",
+              "name": "Restaurant Menu",
+              "category": "Addon",
+              "score": 73,
+              "rarity": "common",
+              "itemType": null,
+              "role": "killer"
+            },
+            {
+              "id": "fbdc181e-3a2f-4950-bc7f-63d2ff81b451",
+              "name": "SCREECH COBBLER",
+              "category": "Offering",
+              "score": 20,
+              "rarity": "common",
+              "role": "points"
+            },
+            {
+              "id": "8e662ce3-1cb2-4487-935f-60dc0f6183a0",
+              "name": "The Dark Lord",
+              "category": "Killer",
+              "score": 15
+            },
+            {
+              "id": "114736cd-6f78-4d86-88fd-58351384195a",
+              "name": "The Mastermind",
+              "category": "Killer",
+              "score": 15
+            },
+            {
+              "id": "c991df44-f218-40ab-ab99-60cefb3c161f",
+              "name": "The Xenomorph",
+              "category": "Killer",
+              "score": 15
+            },
+            {
+              "id": "668c5f3f-30f3-4652-8206-108d04245ed1",
+              "name": "\"All Seeing\" - Blood",
+              "category": "Addon",
+              "score": 14,
+              "rarity": "veryrare",
+              "itemType": null,
+              "role": "killer"
+            },
+            {
+              "id": "f1176042-d6b4-4d4d-9dbe-e2da25a8f9cf",
+              "name": "\"Restraint\" - Carter's Notes",
+              "category": "Addon",
+              "score": 14,
+              "rarity": "veryrare",
+              "itemType": null,
+              "role": "killer"
+            },
+            {
+              "id": "1ecfb587-2dca-4615-8cc0-79922393400a",
+              "name": "\"Restraint\" - Class II",
+              "category": "Addon",
+              "score": 14,
+              "rarity": "uncommon",
+              "itemType": null,
+              "role": "killer"
+            }
+          ]
+        },
+        {
+          "query": "icons:exausted",
+          "ms": 6.600000001490116,
+          "results": [
+            {
+              "id": "exhausted",
+              "name": "Exhausted",
+              "category": "GameIcon",
+              "score": 20,
+              "role": "debuff"
+            }
+          ]
+        },
+        {
+          "query": "perks:",
+          "ms": 8.699999999254942,
+          "results": [
+            {
+              "id": "54944810-74fa-4452-8c18-6508af885055",
+              "name": "A Nurse's Calling",
+              "category": "Perk",
+              "score": 1,
+              "role": "Killer"
+            },
+            {
+              "id": "akc-perk-001-aplaceforus",
+              "name": "A Place For Us",
+              "category": "Perk",
+              "score": 1,
+              "role": "Survivor"
+            },
+            {
+              "id": "08198d7f-1561-4cf3-b112-7969f8aebc32",
+              "name": "Ace in the Hole",
+              "category": "Perk",
+              "score": 1,
+              "role": "Survivor"
+            },
+            {
+              "id": "6e0523a9-0f3f-4329-87c6-01500e72b054",
+              "name": "Adrenaline",
+              "category": "Perk",
+              "score": 1,
+              "role": "Survivor"
+            },
+            {
+              "id": "19fce903-4735-4332-b609-becf90bfb9c8",
+              "name": "Aftercare",
+              "category": "Perk",
+              "score": 1,
+              "role": "Survivor"
+            },
+            {
+              "id": "d74b2d10-d629-4b25-aea6-5e8a3117cbc1",
+              "name": "Agitation",
+              "category": "Perk",
+              "score": 1,
+              "role": "Killer"
+            },
+            {
+              "id": "7c61d214-5247-405b-80d6-2ddf7e9d7ad1",
+              "name": "Alert",
+              "category": "Perk",
+              "score": 1,
+              "role": "Survivor"
+            },
+            {
+              "id": "b6940536-9372-455f-abb3-14dccba26a0e",
+              "name": "Alien Instinct",
+              "category": "Perk",
+              "score": 1,
+              "role": "Killer"
+            }
+          ]
+        },
+        {
+          "query": "the",
+          "ms": 1.900000000372529,
+          "results": []
+        },
+        {
+          "query": "aura reveal generator healing chase hex boon",
+          "ms": 119.59999999962747,
+          "results": [
+            {
+              "id": "c3216a0e-b763-4857-88d7-2c6260beb9ad",
+              "name": "Boon: Circle of Healing",
+              "category": "Perk",
+              "score": 56,
+              "role": "Survivor"
+            },
+            {
+              "id": "46445e8e-69b9-40d0-8820-1423d545643f",
+              "name": "Boon: Illumination",
+              "category": "Perk",
+              "score": 36,
+              "role": "Survivor"
+            },
+            {
+              "id": "3b04e69f-2975-481b-9cc0-5eb5eafd81e1",
+              "name": "Hex: Face the Darkness",
+              "category": "Perk",
+              "score": 36,
+              "role": "Killer"
+            },
+            {
+              "id": "2af0cb82-accc-4ab6-9078-13cbfa89586c",
+              "name": "Hex: No One Escapes Death",
+              "category": "Perk",
+              "score": 36,
+              "role": "Killer"
+            },
+            {
+              "id": "697ab247-b1e1-4eea-90c5-47c1fa8de821",
+              "name": "Hex: Overture of Doom",
+              "category": "Perk",
+              "score": 36,
+              "role": "Killer"
+            },
+            {
+              "id": "s54p03-boon-steadfast",
+              "name": "Boon: Steadfast",
+              "category": "Perk",
+              "score": 32,
+              "role": "Survivor"
+            },
+            {
+              "id": "st2-perk-003-hexhivemind",
+              "name": "Hex: Hive Mind",
+              "category": "Perk",
+              "score": 32,
+              "role": "Killer"
+            },
+            {
+              "id": "f7d9b1df-b8c2-4280-9b97-8dde8987e521",
+              "name": "Hex: Plaything",
+              "category": "Perk",
+              "score": 32,
+              "role": "Killer"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "assertions": {
+    "passed": true,
+    "queries": 24,
+    "characterNames": 98,
+    "inputAndNavigation": true
+  },
+  "transpileBenchmark": [
+    {
+      "presets": [
+        "env",
+        "react"
+      ],
+      "samplesMs": [
+        4638,
+        4644.800000000745,
+        4885.799999998882
+      ],
+      "outputBytes": 912189
+    },
+    {
+      "presets": [
+        "wiki"
+      ],
+      "samplesMs": [
+        1838.6000000014901,
+        1668.5,
+        1606.5
+      ],
+      "outputBytes": 832765
+    }
+  ]
+}

@@ -81,8 +81,12 @@ function main() {
   lines.push(`Portrait exceptions: ${portraitExceptions.length}`);
   portraitExceptions.forEach((entry) => lines.push(`- ${entry.baseCharacterName} -> ${entry.name} | ${entry.assetProvenance}`));
 
-  writeFileAtomic(AUDIT_PATH, `${lines.join('\n')}\n`, 'utf8');
-  console.log(`audit-cosmetics: wrote ${AUDIT_PATH}`);
+  const output = `${lines.join('\n')}\n`;
+  const previous = fs.existsSync(AUDIT_PATH) ? fs.readFileSync(AUDIT_PATH, 'utf8') : '';
+  const withoutTimestamp = text => text.replace(/^Generated: .*$/m, 'Generated: DATE');
+  const changed = withoutTimestamp(previous) !== withoutTimestamp(output);
+  if (changed) writeFileAtomic(AUDIT_PATH, output, 'utf8');
+  console.log(`audit-cosmetics: ${changed ? 'wrote' : 'unchanged'} ${AUDIT_PATH}`);
   console.log(`audit-cosmetics: ready=${readyCount} blocked=${blockedCount}`);
 }
 

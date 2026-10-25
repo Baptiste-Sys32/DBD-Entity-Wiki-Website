@@ -1,0 +1,300 @@
+{
+  "databaseMaps": 57,
+  "uniqueMapNames": 47,
+  "layoutKeys": 51,
+  "uniqueReferencedPaths": 59,
+  "uncovered": [],
+  "directories": [
+    {
+      "name": "map_layouts",
+      "files": 69,
+      "bytes": 1564322,
+      "referencedFiles": 2,
+      "referencedBytes": 12000,
+      "unreferencedPaths": [
+        "map_layouts/azarovs-resting-place.webp",
+        "map_layouts/azarovsrestingplaceoutline.png",
+        "map_layouts/badhampreschoolivoutline.png",
+        "map_layouts/badhampreschooloutline.png",
+        "map_layouts/badhampreschoolvoutline.png",
+        "map_layouts/blood-lodge.webp",
+        "map_layouts/coal-tower-ii.webp",
+        "map_layouts/coal-tower.webp",
+        "map_layouts/coaltoweroutline.png",
+        "map_layouts/dead-dawg-saloon.webp",
+        "map_layouts/dead-sands.webp",
+        "map_layouts/deaddawgsaloonoutline.png",
+        "map_layouts/disturbedwardoutline.png",
+        "map_layouts/eyrie-of-crows.webp",
+        "map_layouts/eyrieofcrowsoutline.png",
+        "map_layouts/family-residence-ii.webp",
+        "map_layouts/family-residence.webp",
+        "map_layouts/familyresidenceoutline.png",
+        "map_layouts/fathercampbellschapeloutline.png",
+        "map_layouts/fractured-cowshed.webp",
+        "map_layouts/gardenofjoyoutline.png",
+        "map_layouts/gas-heaven.webp",
+        "map_layouts/grim-pantry.webp",
+        "map_layouts/grimpantryoutline.png",
+        "map_layouts/groaning-storehouse-ii.webp",
+        "map_layouts/groaning-storehouse.webp",
+        "map_layouts/groaningstorehouseoutline.png",
+        "map_layouts/ironworksofmiseryoutline.png",
+        "map_layouts/mothers-dwelling.webp",
+        "map_layouts/mothersdwellingoutline.png",
+        "map_layouts/mountormondresortoutline.png",
+        "map_layouts/ormondlakemineoutline.png",
+        "map_layouts/outlinemothersdwellingv1.png",
+        "map_layouts/outlinethetempleofpurgationv1.png",
+        "map_layouts/outlinethetempleofpurgationv2.png",
+        "map_layouts/pale-rose.webp",
+        "map_layouts/raccooncitypolicestationeastwingoutlinelowerfloor.png",
+        "map_layouts/raccooncitypolicestationeastwingoutlineupperfloor.png",
+        "map_layouts/raccooncitypolicestationoutlinelowerfloor.png",
+        "map_layouts/raccooncitypolicestationoutlineupperfloor.png",
+        "map_layouts/raccooncitypolicestationwestwingoutlinelowerfloor.png",
+        "map_layouts/raccooncitypolicestationwestwingoutlineupperfloor.png",
+        "map_layouts/rotten-fields.webp",
+        "map_layouts/rottenfieldsoutline.png",
+        "map_layouts/rpd-east-wing.webp",
+        "map_layouts/rpd-west-wing.webp",
+        "map_layouts/sanctum-of-wrath-ii.webp",
+        "map_layouts/sanctum-of-wrath.webp",
+        "map_layouts/sanctumofwrathoutline.png",
+        "map_layouts/shelter-woods-ii.webp",
+        "map_layouts/shelter-woods.webp",
+        "map_layouts/shelterwoodsoutline.png",
+        "map_layouts/suffocation-pit-ii.webp",
+        "map_layouts/suffocation-pit.webp",
+        "map_layouts/suffocationpitoutline.png",
+        "map_layouts/temple-of-purgation.webp",
+        "map_layouts/thegameoutlinelowerfloor.png",
+        "map_layouts/thegameoutlineupperfloor.png",
+        "map_layouts/thepaleroseoutline.png",
+        "map_layouts/thethompsonhouseoutline.png",
+        "map_layouts/theundergroundcomplexoutline.png",
+        "map_layouts/torment-creek.webp",
+        "map_layouts/tormentcreekoutline.png",
+        "map_layouts/treatmenttheatreoutline.png",
+        "map_layouts/wreckersyardoutline.png",
+        "map_layouts/wretched-shop.webp",
+        "map_layouts/wretchedshopoutline.png"
+      ]
+    },
+    {
+      "name": "map_layouts_hens",
+      "files": 59,
+      "bytes": 4308108,
+      "referencedFiles": 57,
+      "referencedBytes": 2566428,
+      "unreferencedPaths": [
+        "map_layouts_hens/midwich.gif",
+        "map_layouts_hens/midwich_elementary_school.gif"
+      ]
+    },
+    {
+      "name": "map_layouts_steam",
+      "files": 67,
+      "bytes": 41244589,
+      "referencedFiles": 0,
+      "referencedBytes": 0,
+      "unreferencedPaths": [
+        "map_layouts_steam/steam_map_001_5FE4B4D6.png",
+        "map_layouts_steam/steam_map_002_7D75EF02.png",
+        "map_layouts_steam/steam_map_003_D6FE71EA.png",
+        "map_layouts_steam/steam_map_004_E9D9293C.png",
+        "map_layouts_steam/steam_map_005_A7EB85E0.png",
+        "map_layouts_steam/steam_map_006_D789F2A3.png",
+        "map_layouts_steam/steam_map_007_9027CB9D.png",
+        "map_layouts_steam/steam_map_008_C969DAA3.png",
+        "map_layouts_steam/steam_map_009_B098A93D.png",
+        "map_layouts_steam/steam_map_010_F5952B69.png",
+        "map_layouts_steam/steam_map_011_706CCD99.png",
+        "map_layouts_steam/steam_map_012_C400DDF6.png",
+        "map_layouts_steam/steam_map_013_0652F889.png",
+        "map_layouts_steam/steam_map_014_7A1B9FCB.png",
+        "map_layouts_steam/steam_map_015_1D00AEF1.png",
+        "map_layouts_steam/steam_map_016_92722807.png",
+        "map_layouts_steam/steam_map_017_BDB500D6.png",
+        "map_layouts_steam/steam_map_018_E5C5814B.png",
+        "map_layouts_steam/steam_map_019_F3AB79F4.png",
+        "map_layouts_steam/steam_map_020_A7F17C0A.png",
+        "map_layouts_steam/steam_map_021_C995DF72.png",
+        "map_layouts_steam/steam_map_022_732F0EDA.png",
+        "map_layouts_steam/steam_map_023_DFD9D8E9.png",
+        "map_layouts_steam/steam_map_024_01AB5539.png",
+        "map_layouts_steam/steam_map_025_E72B7A46.png",
+        "map_layouts_steam/steam_map_026_2E7DC9EF.png",
+        "map_layouts_steam/steam_map_027_B194253C.png",
+        "map_layouts_steam/steam_map_028_1EAAEFA7.png",
+        "map_layouts_steam/steam_map_029_2DF0D4EA.png",
+        "map_layouts_steam/steam_map_030_FB8C7903.png",
+        "map_layouts_steam/steam_map_031_D78C6DAE.png",
+        "map_layouts_steam/steam_map_032_FAFE6E26.png",
+        "map_layouts_steam/steam_map_033_4974609A.png",
+        "map_layouts_steam/steam_map_034_6C43E72A.png",
+        "map_layouts_steam/steam_map_035_1069EE7E.png",
+        "map_layouts_steam/steam_map_036_95B0D596.png",
+        "map_layouts_steam/steam_map_037_D6E31480.png",
+        "map_layouts_steam/steam_map_038_BA8138E3.png",
+        "map_layouts_steam/steam_map_039_19F5B2C6.png",
+        "map_layouts_steam/steam_map_040_7A2DC024.png",
+        "map_layouts_steam/steam_map_041_15213A56.png",
+        "map_layouts_steam/steam_map_042_3AC4658E.png",
+        "map_layouts_steam/steam_map_043_0A6814E4.png",
+        "map_layouts_steam/steam_map_044_7B68ED6F.png",
+        "map_layouts_steam/steam_map_045_4F0C54C0.png",
+        "map_layouts_steam/steam_map_046_0FA47F49.png",
+        "map_layouts_steam/steam_map_047_AE200E23.png",
+        "map_layouts_steam/steam_map_048_9506E368.png",
+        "map_layouts_steam/steam_map_049_5CD7F521.png",
+        "map_layouts_steam/steam_map_050_09F368B7.png",
+        "map_layouts_steam/steam_map_051_933675AA.png",
+        "map_layouts_steam/steam_map_052_EB232E80.png",
+        "map_layouts_steam/steam_map_053_30A611B4.png",
+        "map_layouts_steam/steam_map_054_A6E94AA2.png",
+        "map_layouts_steam/steam_map_055_7863010C.png",
+        "map_layouts_steam/steam_map_056_BCFC4583.png",
+        "map_layouts_steam/steam_map_057_4F4B48B6.png",
+        "map_layouts_steam/steam_map_058_D6FE71EA.png",
+        "map_layouts_steam/steam_map_059_EEFD1BF2.png",
+        "map_layouts_steam/steam_map_060_798A1397.png",
+        "map_layouts_steam/steam_map_061_59DD09C2.png",
+        "map_layouts_steam/steam_map_062_1A35386A.png",
+        "map_layouts_steam/steam_map_063_8271C87D.png",
+        "map_layouts_steam/steam_map_064_37CE7C24.png",
+        "map_layouts_steam/steam_map_065_FC961A4E.png",
+        "map_layouts_steam/steam_map_066_039D4ECC.png",
+        "map_layouts_steam/steam_map_067_E1A8822B.png"
+      ]
+    }
+  ],
+  "byteIdenticalGroups": [
+    [
+      "map_layouts/azarovs-resting-place.webp",
+      "map_layouts_hens/azarovs_resting_place.webp"
+    ],
+    [
+      "map_layouts/blood-lodge.webp",
+      "map_layouts_hens/blood_lodge.webp"
+    ],
+    [
+      "map_layouts/coal-tower-ii.webp",
+      "map_layouts_hens/coal_tower_ii.webp"
+    ],
+    [
+      "map_layouts/coal-tower.webp",
+      "map_layouts_hens/coal_tower.webp"
+    ],
+    [
+      "map_layouts/dead-dawg-saloon.webp",
+      "map_layouts_hens/dead_dawg_saloon.webp"
+    ],
+    [
+      "map_layouts/dead-sands.webp",
+      "map_layouts_hens/dead_sands.webp"
+    ],
+    [
+      "map_layouts/eyrie-of-crows.webp",
+      "map_layouts_hens/eyrie_of_crows.webp"
+    ],
+    [
+      "map_layouts/family-residence-ii.webp",
+      "map_layouts_hens/family_residence_ii.webp"
+    ],
+    [
+      "map_layouts/family-residence.webp",
+      "map_layouts_hens/family_residence.webp"
+    ],
+    [
+      "map_layouts/fractured-cowshed.webp",
+      "map_layouts_hens/fractured_cowshed.webp"
+    ],
+    [
+      "map_layouts/gas-heaven.webp",
+      "map_layouts_hens/gas_heaven.webp"
+    ],
+    [
+      "map_layouts/grim-pantry.webp",
+      "map_layouts_hens/grim_pantry.webp"
+    ],
+    [
+      "map_layouts/groaning-storehouse-ii.webp",
+      "map_layouts_hens/groaning_storehouse_ii.webp"
+    ],
+    [
+      "map_layouts/groaning-storehouse.webp",
+      "map_layouts_hens/groaning_storehouse.webp"
+    ],
+    [
+      "map_layouts/mothers-dwelling.webp",
+      "map_layouts_hens/mothers_dwelling.webp"
+    ],
+    [
+      "map_layouts/pale-rose.webp",
+      "map_layouts_hens/pale_rose.webp"
+    ],
+    [
+      "map_layouts/rotten-fields.webp",
+      "map_layouts_hens/rotten_fields.webp"
+    ],
+    [
+      "map_layouts/rpd-east-wing.webp",
+      "map_layouts_hens/rpd_east_wing.webp"
+    ],
+    [
+      "map_layouts/rpd-west-wing.webp",
+      "map_layouts_hens/rpd_west_wing.webp"
+    ],
+    [
+      "map_layouts/sanctum-of-wrath-ii.webp",
+      "map_layouts_hens/sanctum_of_wrath_ii.webp"
+    ],
+    [
+      "map_layouts/sanctum-of-wrath.webp",
+      "map_layouts_hens/sanctum_of_wrath.webp"
+    ],
+    [
+      "map_layouts/shelter-woods-ii.webp",
+      "map_layouts_hens/shelter_woods_ii.webp"
+    ],
+    [
+      "map_layouts/shelter-woods.webp",
+      "map_layouts_hens/shelter_woods.webp"
+    ],
+    [
+      "map_layouts/suffocation-pit-ii.webp",
+      "map_layouts_hens/suffocation_pit_ii.webp"
+    ],
+    [
+      "map_layouts/suffocation-pit.webp",
+      "map_layouts_hens/suffocation_pit.webp"
+    ],
+    [
+      "map_layouts/temple-of-purgation.webp",
+      "map_layouts_hens/temple_of_purgation.webp"
+    ],
+    [
+      "map_layouts/torment-creek.webp",
+      "map_layouts_hens/torment_creek.webp"
+    ],
+    [
+      "map_layouts/wretched-shop.webp",
+      "map_layouts_hens/wretched_shop.webp"
+    ],
+    [
+      "map_layouts_hens/midwich.gif",
+      "map_layouts_hens/midwich_elementary_school.gif"
+    ],
+    [
+      "map_layouts_steam/steam_map_003_D6FE71EA.png",
+      "map_layouts_steam/steam_map_058_D6FE71EA.png"
+    ]
+  ],
+  "decision": {
+    "active": "Hens callouts plus separate legacy Midwich floor plans. All current database maps resolve to existing files.",
+    "retained": "Unreferenced Steam and legacy assets are historical source archives. Retained pending a separate asset cleanup decision; no browser request is made for these by the layout resolver.",
+    "deployment": "The Pages script uploads the entire web directory, so archives increase deployment storage even though they are not requested during browsing.",
+    "sync": "sync-map-layouts.js preserves the first existing file unless --upgrade-legacy is explicitly requested. No source refresh or game-data sync was run."
+  }
+}
