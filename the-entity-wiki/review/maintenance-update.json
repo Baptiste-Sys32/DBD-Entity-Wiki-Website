@@ -1,0 +1,3191 @@
+{
+  "asOf": "2026-11-08",
+  "clientVersion": "10.2.2",
+  "backendVersion": "10.2.2a",
+  "operations": [
+    {
+      "file": "content/database.json",
+      "path": [
+        "perks",
+        {
+          "id": "aaef5753-3c84-4704-bab8-c0acf50f6d72"
+        },
+        "descriptionPost95"
+      ],
+      "source": {
+        "url": "https://forums.bhvr.com/dead-by-daylight/kb/articles/562-10-2-2-bugfix-patch",
+        "patch": "10.2.2",
+        "channel": "live"
+      },
+      "value": "You basic-vault Windows 15/20/25% faster. All basic-attack cooldowns are 10% shorter, including successful, missed and obstructed attacks. Blindness and Pallet stuns last 25% longer.",
+      "before": "You basic-vault Windows 15/20/25% faster. Your missed basic-attack cooldown is 15/20/25% shorter. Whenever you are blinded or Pallet-stunned, the duration is 25% longer."
+    },
+    {
+      "file": "content/killer-guides.json",
+      "path": [
+        "The Executioner",
+        "tldr"
+      ],
+      "source": {
+        "url": "https://steamcommunity.com/games/381210/announcements/detail/692024563197805375",
+        "patch": "10.2.2a",
+        "channel": "live"
+      },
+      "value": "The Executioner is a 4.6 m/s trail killer who spreads Torment to cage survivors far from hooks. Dodge his 16m shockwave, avoid trails, and rescue cages fast before Final Judgment snowballs.",
+      "before": "The Executioner is a 4.6 m/s trail killer who spreads Torment to cage survivors far from hooks. Dodge his 10m shockwave, avoid trails, and rescue cages fast before Final Judgment snowballs."
+    },
+    {
+      "file": "content/killer-guides.json",
+      "path": [
+        "The Executioner",
+        "powerBlurb"
+      ],
+      "source": {
+        "url": "https://steamcommunity.com/games/381210/announcements/detail/692024563197805375",
+        "patch": "10.2.2a",
+        "channel": "live"
+      },
+      "value": "Rites of Judgment lets him carve glowing trails while slowed to 4.2 m/s, using an 8-charge gauge to paint loops and hook zones. Survivors who step on trails gain Torment and trigger Killer Instinct. His Punishment shockwave reaches 16m through low cover and punishes vaults. Trails last 90s. Tormented downs can be caged across the map, and second stage Tormented downs enable Final Judgment. Trail energy recharges at 0.5 charges per second. Entering Rites takes 0.8 seconds; cancelling takes 1.2 seconds.",
+      "before": "Rites of Judgment lets him carve glowing trails while slowed to 4.2 m/s, spending 10 charges to paint loops and hook zones. Survivors who step on trails gain Torment and trigger Killer Instinct. His Punishment shockwave reaches 10m through low cover and punishes vaults. Trails last 90s. Tormented downs can be caged across the map, and second stage Tormented downs enable Final Judgment."
+    },
+    {
+      "file": "content/killer-guides.json",
+      "path": [
+        "The Executioner",
+        "advancedAs"
+      ],
+      "source": {
+        "url": "https://steamcommunity.com/games/381210/announcements/detail/692024563197805375",
+        "patch": "10.2.2a",
+        "channel": "live"
+      },
+      "value": "Open by seeding short trails across shack, main, and the two closest gens, then patrol for first Torment. In chase, drag a line behind you to cut the loop exit while holding Punishment for the vault; survivors who dodge the wave often step on trail. Cage first downs far from grouped survivors to break rescue rhythm and deny flashlight or Dead Hard saves, but hook when Pain Resonance or Pop value wins gens. Run Trail of Torment plus Nowhere to Hide plus Lethal Pursuer for aura chains that make shockwaves easier to land as of 10.1.1.",
+      "before": "Open by seeding short trails across shack, main, and the two closest gens, then patrol for first Torment. In chase, drag a line behind you to cut the loop exit while holding Punishment for the vault; survivors who dodge the wave often step on trail. Cage first downs far from grouped survivors to break rescue rhythm and deny flashlight or Dead Hard saves, but hook when Pain Resonance or Pop value wins gens. Run Trail of Torment plus Nowhere to Hide plus Lethal Pursuer for aura chains that make shockwaves easier to land as of 10.1.1. Save at least 4 charges before committing to a loop so you can wave twice."
+    },
+    {
+      "file": "content/killer-guides.json",
+      "path": [
+        "The Executioner",
+        "verifiedPatch"
+      ],
+      "source": {
+        "url": "https://steamcommunity.com/games/381210/announcements/detail/692024563197805375",
+        "patch": "10.2.2a",
+        "channel": "live"
+      },
+      "value": "10.2.2a",
+      "before": "10.1.1"
+    },
+    {
+      "file": "content/killer-guides.json",
+      "path": [
+        "The Executioner",
+        "sources"
+      ],
+      "source": {
+        "url": "https://steamcommunity.com/games/381210/announcements/detail/692024563197805375",
+        "patch": "10.2.2a",
+        "channel": "live"
+      },
+      "value": [
+        "https://steamcommunity.com/games/381210/announcements/detail/692024563197805375",
+        "https://deadbydaylight.wiki.gg/wiki/The_Executioner",
+        "https://www.reddit.com/r/deadbydaylight/comments/1u2tinh/pyramid_head_strategy/",
+        "https://www.reddit.com/r/deadbydaylight/comments/1htjzjz/need_help_learning_pyramid_head/"
+      ],
+      "before": [
+        "https://deadbydaylight.wiki.gg/wiki/The_Executioner",
+        "https://www.reddit.com/r/deadbydaylight/comments/1u2tinh/pyramid_head_strategy/",
+        "https://www.reddit.com/r/deadbydaylight/comments/1htjzjz/need_help_learning_pyramid_head/"
+      ]
+    },
+    {
+      "file": "content/killer-guides.json",
+      "path": [
+        "The Good Guy",
+        "powerBlurb"
+      ],
+      "source": {
+        "url": "https://steamcommunity.com/games/381210/announcements/detail/692024563197805375",
+        "patch": "10.2.2a",
+        "channel": "live"
+      },
+      "value": "Playtime's Over runs at 4.4 m/s and enters Hidey-Ho for 14 seconds on a 10-second cooldown, gaining Undetectable plus fake footfalls scattered inside 16 meters of survivors. Slice and Dice sprints 8 m/s for 2 seconds with a 0.6-second lunge, and colliding with pallets or windows mid-dash triggers a 0.8-second Scamper through them. Successful dashes recover in 3 seconds while misses recover in 2.25.",
+      "before": "Playtime's Over runs at 4.4 m/s and enters Hidey-Ho for 14 seconds on a 12-second cooldown, gaining Undetectable plus fake footfalls scattered inside 16 meters of survivors. Slice and Dice sprints 8 m/s for 1.8 seconds with a 0.6-second lunge, and colliding with pallets or windows mid-dash triggers a 1-second Scamper through them. Successful dashes recover in 3 seconds while misses recover in 2.25."
+    },
+    {
+      "file": "content/killer-guides.json",
+      "path": [
+        "The Good Guy",
+        "advancedAs"
+      ],
+      "source": {
+        "url": "https://steamcommunity.com/games/381210/announcements/detail/692024563197805375",
+        "patch": "10.2.2a",
+        "channel": "live"
+      },
+      "value": "Chucky wins by tempo, never long chases. Run a hit-and-run shell with stealth and info such as Monitor with Lethal Pursuer and Alien Instinct, wound one survivor, then carry Hidey-Ho pressure to the next gen while they heal. Angle the camera toward your exit lane before charging Slice and Dice, release early into the lunge against jukers, and scamper every dropped pallet rather than kicking it, bring Rat Poison or Jump Rope for chase value, use Strobing Light with Pillow to shrink the 32-meter Terror Radius, and practice shack by scamping the window then dashing before runners reach the pallet. Never dash across open maps from max range where one sidestep wastes the 10-second cycle.",
+      "before": "Chucky wins by tempo, never long chases. Run a hit-and-run shell with stealth and info such as Monitor with Lethal Pursuer and Alien Instinct, wound one survivor, then carry Hidey-Ho pressure to the next gen while they heal. Angle the camera toward your exit lane before charging Slice and Dice, release early into the lunge against jukers, and scamper every dropped pallet rather than kicking it, and as of 10.1.1 the kit is unchanged: bring Rat Poison or Jump Rope for chase value, use Strobing Light with Pillow to shrink the 32-meter Terror Radius, and practice shack by scamping the window then dashing before runners reach the pallet. Never dash across open maps from max range where one sidestep wastes the 12-second cycle."
+    },
+    {
+      "file": "content/killer-guides.json",
+      "path": [
+        "The Good Guy",
+        "verifiedPatch"
+      ],
+      "source": {
+        "url": "https://steamcommunity.com/games/381210/announcements/detail/692024563197805375",
+        "patch": "10.2.2a",
+        "channel": "live"
+      },
+      "value": "10.2.2a",
+      "before": "10.1.1"
+    },
+    {
+      "file": "content/killer-guides.json",
+      "path": [
+        "The Good Guy",
+        "sources"
+      ],
+      "source": {
+        "url": "https://steamcommunity.com/games/381210/announcements/detail/692024563197805375",
+        "patch": "10.2.2a",
+        "channel": "live"
+      },
+      "value": [
+        "https://steamcommunity.com/games/381210/announcements/detail/692024563197805375",
+        "https://deadbydaylight.wiki.gg/wiki/The_Good_Guy",
+        "https://www.reddit.com/r/DeadByDaylightKillers/comments/1uivndo/chuckythe_good_guy_tips/",
+        "https://www.reddit.com/r/DeadByDaylightKillers/comments/1nb3u1g/advice_for_playing_chucky/"
+      ],
+      "before": [
+        "https://deadbydaylight.wiki.gg/wiki/The_Good_Guy",
+        "https://www.reddit.com/r/DeadByDaylightKillers/comments/1uivndo/chuckythe_good_guy_tips/",
+        "https://www.reddit.com/r/DeadByDaylightKillers/comments/1nb3u1g/advice_for_playing_chucky/"
+      ]
+    },
+    {
+      "file": "content/power-mechanics.json",
+      "path": [
+        "b126576a-cf67-45a5-87e5-2533b9646ebc"
+      ],
+      "source": {
+        "url": "https://steamcommunity.com/games/381210/announcements/detail/692024563197805375",
+        "patch": "10.2.2a",
+        "channel": "live"
+      },
+      "value": {
+        "powerName": "Rites of Judgment",
+        "mechanics": [
+          "Punishment of the Damned reaches 16 meters.",
+          "Rites of Judgment has 8 charges and recharges 0.5 charges per second.",
+          "Entering Rites takes 0.8 seconds; cancelling takes 1.2 seconds.",
+          "Punishment starts after 0.25 seconds; segments appear 0.001 seconds apart and last 0.3 seconds."
+        ]
+      }
+    },
+    {
+      "file": "content/power-mechanics.json",
+      "path": [
+        "4f19458e-d265-4eec-9346-07640367d337"
+      ],
+      "source": {
+        "url": "https://steamcommunity.com/games/381210/announcements/detail/692024563197805375",
+        "patch": "10.2.2a",
+        "channel": "live"
+      },
+      "value": {
+        "powerName": "Playtime's Over",
+        "mechanics": [
+          "Hidey-Ho recharges in 10 seconds.",
+          "Slice and Dice can dash for up to 2 seconds.",
+          "Scampering through a vault takes 0.8 seconds."
+        ]
+      }
+    },
+    {
+      "file": "content/glossary.json",
+      "path": [
+        "12",
+        "items"
+      ],
+      "source": {
+        "url": "https://forums.bhvr.com/dead-by-daylight/kb/articles/562-10-2-2-bugfix-patch",
+        "patch": "10.2.2",
+        "channel": "live"
+      },
+      "value": [
+        {
+          "term": "0K / 1K / 2K / 3K / 4K",
+          "def": "Killer kills 0-4 survivors; 4K is a clean win, 2K often treated as a draw."
+        },
+        {
+          "term": "4E / 3E / 2E / 1E / 0E",
+          "def": "Number of survivors escaping."
+        },
+        {
+          "term": "Hatch Escape",
+          "def": "Last survivor escapes via hatch."
+        },
+        {
+          "term": "Gate Escape",
+          "def": "Survivor escapes via an opened exit gate."
+        },
+        {
+          "term": "BP",
+          "def": "Bloodpoints; in-game currency for progression."
+        },
+        {
+          "term": "Pip / Depip",
+          "def": "Gaining or losing progress in grade."
+        },
+        {
+          "term": "Tome / Archives / Rift",
+          "def": "Challenge tracks and battle-pass style progression."
+        },
+        {
+          "term": "Abandon",
+          "def": "Former label for the last-human Survivor leave-trial option. Since 10.2.1, this option is called Surrender."
+        },
+        {
+          "term": "Surrender",
+          "def": "The last human Survivor can Surrender when at least one bot remains. This replaces the former Abandon label. The separate all-Survivors-Dying surrender condition also remains."
+        },
+        {
+          "term": "End Trial",
+          "def": "The Killer can End Trial when every remaining Survivor is a bot. Bots no longer need to be in the Dying State (10.2.1)."
+        },
+        {
+          "term": "Lights Out: Stranger Things (2026)",
+          "def": "Limited-time modifier running November 5-12, 2026, announced with patch 10.2.2."
+        }
+      ],
+      "before": [
+        {
+          "term": "0K / 1K / 2K / 3K / 4K",
+          "def": "Killer kills 0\u20134 survivors; 4K is a clean win, 2K often treated as a draw."
+        },
+        {
+          "term": "4E / 3E / 2E / 1E / 0E",
+          "def": "Number of survivors escaping."
+        },
+        {
+          "term": "Hatch Escape",
+          "def": "Last survivor escapes via hatch."
+        },
+        {
+          "term": "Gate Escape",
+          "def": "Survivor escapes via an opened exit gate."
+        },
+        {
+          "term": "BP",
+          "def": "Bloodpoints; in-game currency for progression."
+        },
+        {
+          "term": "Pip / Depip",
+          "def": "Gaining or losing progress in grade."
+        },
+        {
+          "term": "Tome / Archives / Rift",
+          "def": "Challenge tracks and battle-pass style progression."
+        },
+        {
+          "term": "Abandon",
+          "def": "Leave-trial option when bots ruin the match: the last human Survivor (all others bots), or the Killer (all remaining Survivors bots with at least 1 not Dying). Counts as an MMR draw."
+        },
+        {
+          "term": "Surrender",
+          "def": "Leave-trial option when all Survivors are simultaneously in the Dying State. Survivors count as Surrendered; counts as an MMR loss."
+        },
+        {
+          "term": "End Trial",
+          "def": "Killer option when all remaining Survivors are bots in the Dying State. Remaining bot Survivors are Sacrificed; MMR follows total match results."
+        }
+      ]
+    },
+    {
+      "file": "content/database.json",
+      "path": [
+        "items",
+        {
+          "id": "59d2f094-5fc5-49d2-a732-a9d00873f15a"
+        },
+        "description"
+      ],
+      "source": {
+        "url": "https://deadbydaylight.wiki.gg/wiki/Haunted_by_Daylight_2026",
+        "patch": "Haunted by Daylight 2026",
+        "channel": "live"
+      },
+      "value": "Haunted by Daylight 2026 event item. Survivors start with a reusable Void Crystal. Spend 4 Void Energy to create vision-obscuring smoke, or 8 to place it on a non-regressing Generator for remote repair at 0.8 charges per second for 30 seconds. The Crystal returns after repair completes or the Killer destroys it. While deployed, it cannot be used and Void Energy cannot be collected.",
+      "before": "Cold to the touch, the crystal vibrates from the force contained within.1 charge.\n\nWhen shattered, the Void Crystal releases thick smoke with an expanding radius of up to 4 meters.Survivors within 6 meters of the smoke do not leave scratch marks.The smoke dissipates 8 seconds after reaching it maximum size."
+    },
+    {
+      "file": "content/meta.json",
+      "path": [
+        "gameVersion"
+      ],
+      "source": {
+        "url": "https://forums.bhvr.com/dead-by-daylight/kb/articles/562-10-2-2-bugfix-patch",
+        "patch": "10.2.2",
+        "channel": "live"
+      },
+      "value": "10.2.2",
+      "before": "10.2.0"
+    },
+    {
+      "file": "content/meta.json",
+      "path": [
+        "lastSynced"
+      ],
+      "source": {
+        "url": "https://forums.bhvr.com/dead-by-daylight/kb/articles/562-10-2-2-bugfix-patch",
+        "patch": "10.2.2",
+        "channel": "live"
+      },
+      "value": "November 8, 2026",
+      "before": "October 7, 2026"
+    },
+    {
+      "file": "content/changelog.json",
+      "path": [],
+      "before": [
+        {
+          "version": "5.34.1",
+          "date": "October 7, 2026",
+          "changes": [
+            "UPDATE : Synced to Dead by Daylight 10.2.0 mid-chapter patch notes with 58 perk updates, perk renames (Object of Obsession, Sole Survivor), Nier Automata and Rift Academia cosmetics, and new glossary entries",
+            "UPDATE : Added Survivor Intent System, Abandon, Surrender, and End Trial glossary coverage"
+          ]
+        },
+        {
+          "version": "5.34.0",
+          "date": "September 6, 2026",
+          "changes": [
+            "UPDATE : Synced to Dead by Daylight 10.1.0 with Chapter 41: Chorus of Sin - The Judgment, Aurora Stardotter, six new perks, Will of the Gods power, twenty add-ons, portraits, perk icons, power icon, and latest cosmetics",
+            "UPDATE : Added the Chorus of Sin chapter to the Lore Timeline, including the first community-created chapter release",
+            "FIX : Restored catalog sync pipeline support and resolved the Magnetised Manacles add-on icon (British spelling on the wiki)"
+          ]
+        },
+        {
+          "version": "5.33.0",
+          "date": "June 18, 2026",
+          "changes": [
+            "UPDATE : Synced to Dead by Daylight 10.0.0 with The Slasher, Shane Wiigwaas, new perks, Slasher add-ons, portraits, perk icons, power icon, and latest cosmetics",
+            "UPDATE : Added catalog sync support for new characters, perks, powers, add-ons, and local wiki image assets",
+            "FIX : Added Worldle metadata coverage for The Slasher"
+          ]
+        },
+        {
+          "version": "5.32.0",
+          "date": "May 11, 2026",
+          "changes": [
+            "UPDATE : Added missing Hell Priest cosmetics for The Cenobite",
+            "UPDATE : Added missing Escaped Patient store pieces for The Shape",
+            "FIX : Cosmetic sync now preserves these licensed store pieces during rebuilds"
+          ]
+        },
+        {
+          "version": "5.31.0",
+          "date": "May 1, 2026",
+          "changes": [
+            "FIX : Community Tierlists links open the latest sources",
+            "UPDATE : Updated to game version 9.6.0 with the latest content and changes, including the mid-season patch adjustments"
+          ]
+        },
+        {
+          "version": "5.30.0",
+          "date": "April 30, 2026",
+          "changes": [
+            "UPDATE : Edited scripts to manually read patch notes"
+          ]
+        },
+        {
+          "version": "5.29.0",
+          "date": "April 13, 2026",
+          "changes": [
+            "NEW : Prestige Calculator now lists Character Badge reward tiers",
+            "NEW : Added Community tab with helpful links",
+            "UPDATE : Cosmetics coverage increased to all in-game cosmetics (around 4000 files)",
+            "FIX : New Trickster map now shows up properly in Realms"
+          ]
+        },
+        {
+          "version": "5.28.0",
+          "date": "April 12, 2026",
+          "changes": [
+            "FIX : Submit button now works properly",
+            "FIX : Searching for addons now opens them properly",
+            "NEW : Backup and Restore the app",
+            "NEW : Legendary character browser"
+          ]
+        },
+        {
+          "version": "5.27.0",
+          "date": "April 10, 2026",
+          "changes": [
+            "FIX : Wordle now accepts both legacy and current perk names for bloodweb perks",
+            "FIX : Typing perk categories like Hex, Boon, and Scourge Hook now shows the correct alphabetical suggestions",
+            "FIX : Settings toggles no longer black out part of the screen on mobile",
+            "UPDATE : Added new loading screen tips"
+          ]
+        },
+        {
+          "version": "5.26.0",
+          "date": "April 10, 2026",
+          "changes": [
+            "NEW : Added the full official legendary portrait set for all characters",
+            "NEW : Added four new full-palette themes: Catppuccin Macchiato, Tokyo Night, Everforest, and Rose Pine Moon",
+            "UPDATE : Settings toggles now use better tick boxes and High Contrast mode was removed",
+            "FIX : Build Lab perks are now sorted alphabetically and show updated names"
+          ]
+        },
+        {
+          "version": "5.25.0",
+          "date": "April 8, 2026",
+          "changes": [
+            "NEW : Added a launch screen while the app loads",
+            "UPDATE : Wordle has a better mobile layout, and added a practice mode for Classic and Emoji",
+            "UPDATE : Added more emojis and combinations for Wordle",
+            "FIX : Navigation bar being overloaded with all items at once",
+            "FIX : Removed the perk option from progression"
+          ]
+        },
+        {
+          "version": "5.24.0",
+          "date": "April 8, 2026",
+          "changes": [
+            "NEW : Progression tab overhaul with detailed stats",
+            "NEW : Added Wordle modes for killers, perks, emoji, and teachable-perk guessing",
+            "NEW : Added notes for killers, maps, and perks",
+            "UPDATE : Match analytics now use stored states for characters, builds, perks, and maps instead of relying on live ones",
+            "FIX : Owned-content filtering now applies through the entire app, and offline behavior was improved on Android"
+          ]
+        },
+        {
+          "version": "5.23.0",
+          "date": "March 29, 2026",
+          "changes": [
+            "UPDATE : Added the new All-Kill Comeback content",
+            "FIX : Unified image loading across the app",
+            "FIX : Added missing icons for the few remaining assets that were not included in the initial bundle",
+            "FIX : Removed unnecessary scripts that slowed app loading"
+          ]
+        },
+        {
+          "version": "5.22.0",
+          "date": "March 29, 2026",
+          "changes": [
+            "UPDATE : Offline database refreshed to DBD 9.5.0 All-Kill: Comeback",
+            "NEW : Added Kwon Tae-Young, Sleepless District, and Trickster's Delusion",
+            "UPDATE : Refreshed Trickster, The First, and key perk descriptions to match the latest live text",
+            "UPDATE : Progression tracker and perk references synced with current live perk names"
+          ]
+        },
+        {
+          "version": "5.21.0",
+          "date": "March 3, 2026",
+          "changes": [
+            "FIX : Status bar overlap on larger displays, so the app no longer interferes with the status bar"
+          ]
+        },
+        {
+          "version": "5.20.0",
+          "date": "March 3, 2026",
+          "changes": [
+            "NEW : Full character profile pages \u2014 tap any killer or survivor to see their overview, power, perks, and lore in one place",
+            "NEW : Nord colour scheme added to themes",
+            "NEW : Chaos Shuffle locked pick \u2014 choose a specific character to play while still randomising perks",
+            "NEW : Sort characters by release date (oldest/newest)"
+          ]
+        },
+        {
+          "version": "5.19.0",
+          "date": "March 2, 2026",
+          "changes": [
+            "FIX : Killer real names now displayed correctly throughout the app",
+            "FIX : Michael Myers rework \u2014 updated mechanics and description",
+            "FIX : Legion ability description corrected",
+            "FIX : Perk icons no longer appear tilted/rotated",
+            "NEW : Haptic feedback toggle in settings",
+            "FIX : Android back button now navigates properly instead of closing the app",
+            "NEW : View button on favorite characters links directly to their detail page",
+            "NEW : View button on favorite perks links directly to the perks section",
+            "NEW : Scroll-to-top button on long lists",
+            "FIX : Progression section now uses a distinct target icon instead of the favorites star"
+          ]
+        },
+        {
+          "version": "5.18.0",
+          "date": "February 22, 2026",
+          "changes": [
+            "UPDATE : Synced achievements with Stranger Things 2 update",
+            "FIX : Filter/sort controls scrolling with the content",
+            "FIX : All search bars now match throughout the app",
+            "NEW : Tutorial buttons"
+          ]
+        },
+        {
+          "version": "5.17.0",
+          "date": "February 21, 2026",
+          "changes": [
+            "FIX : Faster startup",
+            "FIX : No more white screens on crash launches",
+            "NEW : Favorites tab to store all types of items"
+          ]
+        },
+        {
+          "version": "5.16.0",
+          "date": "February 21, 2026",
+          "changes": [
+            "NEW : Smart Search - describe what you're looking for like google",
+            "NEW : Search now understands killer names, rarity slang and description keywords"
+          ]
+        },
+        {
+          "version": "5.15.0",
+          "date": "February 20, 2026",
+          "changes": [
+            "UPDATE : Game configuration for patch 9.4.2",
+            "UPDATE : Synced latest data from database",
+            "NEW : Status icons for the HUD",
+            "NEW : All Stranger Things content added",
+            "FIX : Addon images not loading properly"
+          ]
+        },
+        {
+          "version": "5.14.0",
+          "date": "January 4, 2026",
+          "changes": [
+            "NEW : Quick Random command - type 'random:' in search bar for instant addon/offering rolls",
+            "FIX : Number inputs in Prestige Calculator"
+          ]
+        },
+        {
+          "version": "5.13.0",
+          "date": "January 3, 2026",
+          "changes": [
+            "UPDATE : Timeline data updated with accurate chapters",
+            "FIX : Map layout labels",
+            "FIX : Map layouts now display correct labels per map type"
+          ]
+        },
+        {
+          "version": "5.12.0",
+          "date": "January 3, 2026",
+          "changes": [
+            "NEW : Timeline view - scroll through chapters and events in a linear timeline",
+            "UI : Home search bar blur effect to match other views",
+            "FIX : Map layout close button being cut off",
+            "FIX : Character lore button scrolling issue"
+          ]
+        },
+        {
+          "version": "5.11.0",
+          "date": "January 1, 2026",
+          "changes": [
+            "UI : Revamped Match Stats with new tiles",
+            "NEW : Customizable win threshold for killers",
+            "UI : Improvements to filter dropdowns"
+          ]
+        },
+        {
+          "version": "5.10.0",
+          "date": "December 31, 2025",
+          "changes": [
+            "NEW : Perk effect filters - search by Aura, Stealth, Gen, Healing",
+            "NEW : Pull-to-refresh gesture on the home screen",
+            "NEW : Match stats dashboard - overall win rate cards with visual bar charts",
+            "UI : Enhanced character/build/map stats with sorted win rate display"
+          ]
+        },
+        {
+          "version": "5.9.0",
+          "date": "December 30, 2025",
+          "changes": [
+            "FIX : Killer addon image mismatches",
+            "FIX : Retired offerings no longer appear in Chaos Shuffle or global search",
+            "FIX : Chaos Shuffle no longer rolls the same perk twice in a row",
+            "FIX : Prestige calculator now works",
+            "FIX : Perk icons not loading in perk slide-up panel"
+          ]
+        },
+        {
+          "version": "5.8.0",
+          "date": "December 29, 2025",
+          "changes": [
+            "NEW : Entity's Offering - prestige bloodpoint calculator with animated UI",
+            "NEW : Glossary expanded with 18 new terms (techs, slang, perk acronyms)",
+            "FIX : Character selection grid on mobile/tablet"
+          ]
+        },
+        {
+          "version": "5.7.0",
+          "date": "December 28, 2025",
+          "changes": [
+            "FIX : Build sharing",
+            "UI : Navbar now supports up to 6 items with icon-only mode on widescreen",
+            "NEW : Build sharing now supports notes, items and addons",
+            "FIX : Build import"
+          ]
+        },
+        {
+          "version": "5.6.0",
+          "date": "December 28, 2025",
+          "changes": [
+            "NEW : Killer power icons in power description panel",
+            "FIX : Addon search - now correctly opens killer filter for killer addons",
+            "FIX : Lore close button being cut off on mobile",
+            "FIX : Killer stats now properly labeled (TR, Speed, Height)",
+            "FIX : Midwich map GIF not working",
+            "FIX : Removed broken map entry from Backwater Swamp"
+          ]
+        },
+        {
+          "version": "5.5.0",
+          "date": "December 27, 2025",
+          "changes": [
+            "NEW : Killer stats - Terror Radius, Speed, Height",
+            "NEW : Perk synergy suggestions - see what works well with a perk when viewing perk details",
+            "UI : Glossary redesigned as dictionary-style with A-Z sidebar navigation",
+            "UI : Filter buttons restyled to fit app theme"
+          ]
+        },
+        {
+          "version": "5.4.0",
+          "date": "December 25, 2025",
+          "changes": [
+            "NEW : Game Icons view - status icons for every action in game",
+            "NEW : Killer power tips",
+            "NEW : Killer stats - Terror Radius, Movement Speed, and Height for all killers",
+            "UI : Map layouts upgraded",
+            "UI : Perk comparison improved with clear button to exit comparison mode",
+            "FIX : Long press for compare not triggering perk modal"
+          ]
+        },
+        {
+          "version": "5.3.0",
+          "date": "December 23, 2025",
+          "changes": [
+            "NEW : Map layouts - view overhead layouts from Realms (thanks to Hens333)",
+            "FIX : 120+ addon image mismatches or wrong images",
+            "UPDATE : Special Thanks section now credits Hens333 and Steam for map layouts"
+          ]
+        },
+        {
+          "version": "5.2.0",
+          "date": "December 22, 2025",
+          "changes": [
+            "FIX : Various bug fixes"
+          ]
+        },
+        {
+          "version": "5.1.0",
+          "date": "December 21, 2025",
+          "changes": [
+            "NEW : Global search on home screen - search everything at once",
+            "FIX : Offering images not showing up",
+            "FIX : Event item images not loading due to naming conflicts",
+            "FIX : Addon image sizing"
+          ]
+        },
+        {
+          "version": "5.0.0",
+          "date": "December 21, 2025",
+          "changes": [
+            "FIX : Swipe navigation sensitivity",
+            "FIX : Addon cards clipping edges",
+            "UI : Renamed Signature Perks to Teachables",
+            "NEW : Double-tap to expand survivors and killers",
+            "NEW : Favorite perks to keep them at the top",
+            "NEW : Quick perk filters",
+            "NEW : Animated perk icons on hover (works best on PC)"
+          ]
+        },
+        {
+          "version": "4.8.0",
+          "date": "December 21, 2025",
+          "changes": [
+            "Added perk comparison mode"
+          ]
+        },
+        {
+          "version": "4.7.0",
+          "date": "December 21, 2025",
+          "changes": [
+            "Rarity glow effects on addon cards",
+            "Added a loading animation for non cached items",
+            "Animation for page change",
+            "Haptic feedback",
+            "Swipe left/right to navigate between tabs"
+          ]
+        },
+        {
+          "version": "4.6.2",
+          "date": "December 20, 2025",
+          "changes": [
+            "Changelog now shows up properly"
+          ]
+        },
+        {
+          "version": "4.6.1",
+          "date": "December 20, 2025",
+          "changes": [
+            "New app icon update"
+          ]
+        },
+        {
+          "version": "4.6.0",
+          "date": "December 20, 2025",
+          "changes": [
+            "Fixed Chaos Shuffle not clearing items/addons when deselected",
+            "Added auto-deselect for addons when items are deselected (Survivor)",
+            "Fixed item images not loading in Chaos Shuffle results",
+            "Marked The Shape & The Cenobite perks as bloodweb available"
+          ]
+        },
+        {
+          "version": "4.5.1",
+          "date": "December 19, 2025",
+          "changes": [
+            "Fixed character portrait loading in Chaos Shuffle",
+            "Fixed images not scaling depending on resolutions",
+            "Reworked Chaos Shuffle UI",
+            "Added Changelog section in Settings"
+          ]
+        },
+        {
+          "version": "4.5.0",
+          "date": "December 18, 2025",
+          "changes": [
+            "Complete Chaos Shuffle UI overhaul",
+            "Added character, item, addon, and offering randomization",
+            "Collapsible owned characters section",
+            "New UI for the builds section"
+          ]
+        },
+        {
+          "version": "4.4.0",
+          "date": "December 15, 2025",
+          "changes": [
+            "Added missing search bars in certain tiles",
+            "Fixed Secret offerings not refreshing list",
+            "Various UI improvements and bug fixes"
+          ]
+        },
+        {
+          "version": "4.3.0",
+          "date": "December 14, 2025",
+          "changes": [
+            "Data refresh pipeline updated",
+            "Polished code for future updates"
+          ]
+        },
+        {
+          "version": "4.2.0",
+          "date": "December 13, 2025",
+          "changes": [
+            "Added alphabetical sorting filter",
+            "Fixed image naming scheme",
+            "Various stability improvements"
+          ]
+        },
+        {
+          "version": "4.1.0",
+          "date": "December 12, 2025",
+          "changes": [
+            "Implemented UI customization feature",
+            "Customizable navigation bar items",
+            "Rearrangeable home screen tiles"
+          ]
+        },
+        {
+          "version": "4.0.0",
+          "date": "December 11, 2025",
+          "changes": [
+            "Major app overhaul with new design",
+            "Added OLED mode as default theme",
+            "Progression tracker implementation",
+            "Early build sharing system"
+          ]
+        },
+        {
+          "version": "3.0.0",
+          "date": "December 10, 2025",
+          "changes": [
+            "First Android APK release"
+          ]
+        }
+      ],
+      "value": [
+        {
+          "version": "5.34.2",
+          "date": "November 8, 2026",
+          "changes": [
+            "UPDATE : Synced Dead by Daylight 10.2.2, with 10.2.1 feature changes and 10.2.2a backend killer adjustments",
+            "UPDATE : Added 38 Halloween and Stranger Things cosmetic records with local images",
+            "FIX : Canonical guides and glossary now drive the website runtime"
+          ]
+        },
+        {
+          "version": "5.34.1",
+          "date": "October 7, 2026",
+          "changes": [
+            "UPDATE : Synced to Dead by Daylight 10.2.0 mid-chapter patch notes with 58 perk updates, perk renames (Object of Obsession, Sole Survivor), Nier Automata and Rift Academia cosmetics, and new glossary entries",
+            "UPDATE : Added Survivor Intent System, Abandon, Surrender, and End Trial glossary coverage"
+          ]
+        },
+        {
+          "version": "5.34.0",
+          "date": "September 6, 2026",
+          "changes": [
+            "UPDATE : Synced to Dead by Daylight 10.1.0 with Chapter 41: Chorus of Sin - The Judgment, Aurora Stardotter, six new perks, Will of the Gods power, twenty add-ons, portraits, perk icons, power icon, and latest cosmetics",
+            "UPDATE : Added the Chorus of Sin chapter to the Lore Timeline, including the first community-created chapter release",
+            "FIX : Restored catalog sync pipeline support and resolved the Magnetised Manacles add-on icon (British spelling on the wiki)"
+          ]
+        },
+        {
+          "version": "5.33.0",
+          "date": "June 18, 2026",
+          "changes": [
+            "UPDATE : Synced to Dead by Daylight 10.0.0 with The Slasher, Shane Wiigwaas, new perks, Slasher add-ons, portraits, perk icons, power icon, and latest cosmetics",
+            "UPDATE : Added catalog sync support for new characters, perks, powers, add-ons, and local wiki image assets",
+            "FIX : Added Worldle metadata coverage for The Slasher"
+          ]
+        },
+        {
+          "version": "5.32.0",
+          "date": "May 11, 2026",
+          "changes": [
+            "UPDATE : Added missing Hell Priest cosmetics for The Cenobite",
+            "UPDATE : Added missing Escaped Patient store pieces for The Shape",
+            "FIX : Cosmetic sync now preserves these licensed store pieces during rebuilds"
+          ]
+        },
+        {
+          "version": "5.31.0",
+          "date": "May 1, 2026",
+          "changes": [
+            "FIX : Community Tierlists links open the latest sources",
+            "UPDATE : Updated to game version 9.6.0 with the latest content and changes, including the mid-season patch adjustments"
+          ]
+        },
+        {
+          "version": "5.30.0",
+          "date": "April 30, 2026",
+          "changes": [
+            "UPDATE : Edited scripts to manually read patch notes"
+          ]
+        },
+        {
+          "version": "5.29.0",
+          "date": "April 13, 2026",
+          "changes": [
+            "NEW : Prestige Calculator now lists Character Badge reward tiers",
+            "NEW : Added Community tab with helpful links",
+            "UPDATE : Cosmetics coverage increased to all in-game cosmetics (around 4000 files)",
+            "FIX : New Trickster map now shows up properly in Realms"
+          ]
+        },
+        {
+          "version": "5.28.0",
+          "date": "April 12, 2026",
+          "changes": [
+            "FIX : Submit button now works properly",
+            "FIX : Searching for addons now opens them properly",
+            "NEW : Backup and Restore the app",
+            "NEW : Legendary character browser"
+          ]
+        },
+        {
+          "version": "5.27.0",
+          "date": "April 10, 2026",
+          "changes": [
+            "FIX : Wordle now accepts both legacy and current perk names for bloodweb perks",
+            "FIX : Typing perk categories like Hex, Boon, and Scourge Hook now shows the correct alphabetical suggestions",
+            "FIX : Settings toggles no longer black out part of the screen on mobile",
+            "UPDATE : Added new loading screen tips"
+          ]
+        },
+        {
+          "version": "5.26.0",
+          "date": "April 10, 2026",
+          "changes": [
+            "NEW : Added the full official legendary portrait set for all characters",
+            "NEW : Added four new full-palette themes: Catppuccin Macchiato, Tokyo Night, Everforest, and Rose Pine Moon",
+            "UPDATE : Settings toggles now use better tick boxes and High Contrast mode was removed",
+            "FIX : Build Lab perks are now sorted alphabetically and show updated names"
+          ]
+        },
+        {
+          "version": "5.25.0",
+          "date": "April 8, 2026",
+          "changes": [
+            "NEW : Added a launch screen while the app loads",
+            "UPDATE : Wordle has a better mobile layout, and added a practice mode for Classic and Emoji",
+            "UPDATE : Added more emojis and combinations for Wordle",
+            "FIX : Navigation bar being overloaded with all items at once",
+            "FIX : Removed the perk option from progression"
+          ]
+        },
+        {
+          "version": "5.24.0",
+          "date": "April 8, 2026",
+          "changes": [
+            "NEW : Progression tab overhaul with detailed stats",
+            "NEW : Added Wordle modes for killers, perks, emoji, and teachable-perk guessing",
+            "NEW : Added notes for killers, maps, and perks",
+            "UPDATE : Match analytics now use stored states for characters, builds, perks, and maps instead of relying on live ones",
+            "FIX : Owned-content filtering now applies through the entire app, and offline behavior was improved on Android"
+          ]
+        },
+        {
+          "version": "5.23.0",
+          "date": "March 29, 2026",
+          "changes": [
+            "UPDATE : Added the new All-Kill Comeback content",
+            "FIX : Unified image loading across the app",
+            "FIX : Added missing icons for the few remaining assets that were not included in the initial bundle",
+            "FIX : Removed unnecessary scripts that slowed app loading"
+          ]
+        },
+        {
+          "version": "5.22.0",
+          "date": "March 29, 2026",
+          "changes": [
+            "UPDATE : Offline database refreshed to DBD 9.5.0 All-Kill: Comeback",
+            "NEW : Added Kwon Tae-Young, Sleepless District, and Trickster's Delusion",
+            "UPDATE : Refreshed Trickster, The First, and key perk descriptions to match the latest live text",
+            "UPDATE : Progression tracker and perk references synced with current live perk names"
+          ]
+        },
+        {
+          "version": "5.21.0",
+          "date": "March 3, 2026",
+          "changes": [
+            "FIX : Status bar overlap on larger displays, so the app no longer interferes with the status bar"
+          ]
+        },
+        {
+          "version": "5.20.0",
+          "date": "March 3, 2026",
+          "changes": [
+            "NEW : Full character profile pages - tap any killer or survivor to see their overview, power, perks, and lore in one place",
+            "NEW : Nord colour scheme added to themes",
+            "NEW : Chaos Shuffle locked pick - choose a specific character to play while still randomising perks",
+            "NEW : Sort characters by release date (oldest/newest)"
+          ]
+        },
+        {
+          "version": "5.19.0",
+          "date": "March 2, 2026",
+          "changes": [
+            "FIX : Killer real names now displayed correctly throughout the app",
+            "FIX : Michael Myers rework - updated mechanics and description",
+            "FIX : Legion ability description corrected",
+            "FIX : Perk icons no longer appear tilted/rotated",
+            "NEW : Haptic feedback toggle in settings",
+            "FIX : Android back button now navigates properly instead of closing the app",
+            "NEW : View button on favorite characters links directly to their detail page",
+            "NEW : View button on favorite perks links directly to the perks section",
+            "NEW : Scroll-to-top button on long lists",
+            "FIX : Progression section now uses a distinct target icon instead of the favorites star"
+          ]
+        },
+        {
+          "version": "5.18.0",
+          "date": "February 22, 2026",
+          "changes": [
+            "UPDATE : Synced achievements with Stranger Things 2 update",
+            "FIX : Filter/sort controls scrolling with the content",
+            "FIX : All search bars now match throughout the app",
+            "NEW : Tutorial buttons"
+          ]
+        },
+        {
+          "version": "5.17.0",
+          "date": "February 21, 2026",
+          "changes": [
+            "FIX : Faster startup",
+            "FIX : No more white screens on crash launches",
+            "NEW : Favorites tab to store all types of items"
+          ]
+        },
+        {
+          "version": "5.16.0",
+          "date": "February 21, 2026",
+          "changes": [
+            "NEW : Smart Search - describe what you're looking for like google",
+            "NEW : Search now understands killer names, rarity slang and description keywords"
+          ]
+        },
+        {
+          "version": "5.15.0",
+          "date": "February 20, 2026",
+          "changes": [
+            "UPDATE : Game configuration for patch 9.4.2",
+            "UPDATE : Synced latest data from database",
+            "NEW : Status icons for the HUD",
+            "NEW : All Stranger Things content added",
+            "FIX : Addon images not loading properly"
+          ]
+        },
+        {
+          "version": "5.14.0",
+          "date": "January 4, 2026",
+          "changes": [
+            "NEW : Quick Random command - type 'random:' in search bar for instant addon/offering rolls",
+            "FIX : Number inputs in Prestige Calculator"
+          ]
+        },
+        {
+          "version": "5.13.0",
+          "date": "January 3, 2026",
+          "changes": [
+            "UPDATE : Timeline data updated with accurate chapters",
+            "FIX : Map layout labels",
+            "FIX : Map layouts now display correct labels per map type"
+          ]
+        },
+        {
+          "version": "5.12.0",
+          "date": "January 3, 2026",
+          "changes": [
+            "NEW : Timeline view - scroll through chapters and events in a linear timeline",
+            "UI : Home search bar blur effect to match other views",
+            "FIX : Map layout close button being cut off",
+            "FIX : Character lore button scrolling issue"
+          ]
+        },
+        {
+          "version": "5.11.0",
+          "date": "January 1, 2026",
+          "changes": [
+            "UI : Revamped Match Stats with new tiles",
+            "NEW : Customizable win threshold for killers",
+            "UI : Improvements to filter dropdowns"
+          ]
+        },
+        {
+          "version": "5.10.0",
+          "date": "December 31, 2025",
+          "changes": [
+            "NEW : Perk effect filters - search by Aura, Stealth, Gen, Healing",
+            "NEW : Pull-to-refresh gesture on the home screen",
+            "NEW : Match stats dashboard - overall win rate cards with visual bar charts",
+            "UI : Enhanced character/build/map stats with sorted win rate display"
+          ]
+        },
+        {
+          "version": "5.9.0",
+          "date": "December 30, 2025",
+          "changes": [
+            "FIX : Killer addon image mismatches",
+            "FIX : Retired offerings no longer appear in Chaos Shuffle or global search",
+            "FIX : Chaos Shuffle no longer rolls the same perk twice in a row",
+            "FIX : Prestige calculator now works",
+            "FIX : Perk icons not loading in perk slide-up panel"
+          ]
+        },
+        {
+          "version": "5.8.0",
+          "date": "December 29, 2025",
+          "changes": [
+            "NEW : Entity's Offering - prestige bloodpoint calculator with animated UI",
+            "NEW : Glossary expanded with 18 new terms (techs, slang, perk acronyms)",
+            "FIX : Character selection grid on mobile/tablet"
+          ]
+        },
+        {
+          "version": "5.7.0",
+          "date": "December 28, 2025",
+          "changes": [
+            "FIX : Build sharing",
+            "UI : Navbar now supports up to 6 items with icon-only mode on widescreen",
+            "NEW : Build sharing now supports notes, items and addons",
+            "FIX : Build import"
+          ]
+        },
+        {
+          "version": "5.6.0",
+          "date": "December 28, 2025",
+          "changes": [
+            "NEW : Killer power icons in power description panel",
+            "FIX : Addon search - now correctly opens killer filter for killer addons",
+            "FIX : Lore close button being cut off on mobile",
+            "FIX : Killer stats now properly labeled (TR, Speed, Height)",
+            "FIX : Midwich map GIF not working",
+            "FIX : Removed broken map entry from Backwater Swamp"
+          ]
+        },
+        {
+          "version": "5.5.0",
+          "date": "December 27, 2025",
+          "changes": [
+            "NEW : Killer stats - Terror Radius, Speed, Height",
+            "NEW : Perk synergy suggestions - see what works well with a perk when viewing perk details",
+            "UI : Glossary redesigned as dictionary-style with A-Z sidebar navigation",
+            "UI : Filter buttons restyled to fit app theme"
+          ]
+        },
+        {
+          "version": "5.4.0",
+          "date": "December 25, 2025",
+          "changes": [
+            "NEW : Game Icons view - status icons for every action in game",
+            "NEW : Killer power tips",
+            "NEW : Killer stats - Terror Radius, Movement Speed, and Height for all killers",
+            "UI : Map layouts upgraded",
+            "UI : Perk comparison improved with clear button to exit comparison mode",
+            "FIX : Long press for compare not triggering perk modal"
+          ]
+        },
+        {
+          "version": "5.3.0",
+          "date": "December 23, 2025",
+          "changes": [
+            "NEW : Map layouts - view overhead layouts from Realms (thanks to Hens333)",
+            "FIX : 120+ addon image mismatches or wrong images",
+            "UPDATE : Special Thanks section now credits Hens333 and Steam for map layouts"
+          ]
+        },
+        {
+          "version": "5.2.0",
+          "date": "December 22, 2025",
+          "changes": [
+            "FIX : Various bug fixes"
+          ]
+        },
+        {
+          "version": "5.1.0",
+          "date": "December 21, 2025",
+          "changes": [
+            "NEW : Global search on home screen - search everything at once",
+            "FIX : Offering images not showing up",
+            "FIX : Event item images not loading due to naming conflicts",
+            "FIX : Addon image sizing"
+          ]
+        },
+        {
+          "version": "5.0.0",
+          "date": "December 21, 2025",
+          "changes": [
+            "FIX : Swipe navigation sensitivity",
+            "FIX : Addon cards clipping edges",
+            "UI : Renamed Signature Perks to Teachables",
+            "NEW : Double-tap to expand survivors and killers",
+            "NEW : Favorite perks to keep them at the top",
+            "NEW : Quick perk filters",
+            "NEW : Animated perk icons on hover (works best on PC)"
+          ]
+        },
+        {
+          "version": "4.8.0",
+          "date": "December 21, 2025",
+          "changes": [
+            "Added perk comparison mode"
+          ]
+        },
+        {
+          "version": "4.7.0",
+          "date": "December 21, 2025",
+          "changes": [
+            "Rarity glow effects on addon cards",
+            "Added a loading animation for non cached items",
+            "Animation for page change",
+            "Haptic feedback",
+            "Swipe left/right to navigate between tabs"
+          ]
+        },
+        {
+          "version": "4.6.2",
+          "date": "December 20, 2025",
+          "changes": [
+            "Changelog now shows up properly"
+          ]
+        },
+        {
+          "version": "4.6.1",
+          "date": "December 20, 2025",
+          "changes": [
+            "New app icon update"
+          ]
+        },
+        {
+          "version": "4.6.0",
+          "date": "December 20, 2025",
+          "changes": [
+            "Fixed Chaos Shuffle not clearing items/addons when deselected",
+            "Added auto-deselect for addons when items are deselected (Survivor)",
+            "Fixed item images not loading in Chaos Shuffle results",
+            "Marked The Shape & The Cenobite perks as bloodweb available"
+          ]
+        },
+        {
+          "version": "4.5.1",
+          "date": "December 19, 2025",
+          "changes": [
+            "Fixed character portrait loading in Chaos Shuffle",
+            "Fixed images not scaling depending on resolutions",
+            "Reworked Chaos Shuffle UI",
+            "Added Changelog section in Settings"
+          ]
+        },
+        {
+          "version": "4.5.0",
+          "date": "December 18, 2025",
+          "changes": [
+            "Complete Chaos Shuffle UI overhaul",
+            "Added character, item, addon, and offering randomization",
+            "Collapsible owned characters section",
+            "New UI for the builds section"
+          ]
+        },
+        {
+          "version": "4.4.0",
+          "date": "December 15, 2025",
+          "changes": [
+            "Added missing search bars in certain tiles",
+            "Fixed Secret offerings not refreshing list",
+            "Various UI improvements and bug fixes"
+          ]
+        },
+        {
+          "version": "4.3.0",
+          "date": "December 14, 2025",
+          "changes": [
+            "Data refresh pipeline updated",
+            "Polished code for future updates"
+          ]
+        },
+        {
+          "version": "4.2.0",
+          "date": "December 13, 2025",
+          "changes": [
+            "Added alphabetical sorting filter",
+            "Fixed image naming scheme",
+            "Various stability improvements"
+          ]
+        },
+        {
+          "version": "4.1.0",
+          "date": "December 12, 2025",
+          "changes": [
+            "Implemented UI customization feature",
+            "Customizable navigation bar items",
+            "Rearrangeable home screen tiles"
+          ]
+        },
+        {
+          "version": "4.0.0",
+          "date": "December 11, 2025",
+          "changes": [
+            "Major app overhaul with new design",
+            "Added OLED mode as default theme",
+            "Progression tracker implementation",
+            "Early build sharing system"
+          ]
+        },
+        {
+          "version": "3.0.0",
+          "date": "December 10, 2025",
+          "changes": [
+            "First Android APK release"
+          ]
+        }
+      ],
+      "source": {
+        "url": "https://forums.bhvr.com/dead-by-daylight/kb/articles/562-10-2-2-bugfix-patch",
+        "patch": "10.2.2",
+        "channel": "live"
+      }
+    },
+    {
+      "file": "content/cosmetics.json",
+      "path": [
+        "fullSets"
+      ],
+      "append": true,
+      "value": {
+        "id": "the-hillbilly--sugar-rush--outfit--tc-outfit-024",
+        "name": "Sugar Rush",
+        "baseCharacterId": "b49bba2d-2d77-4822-8957-7f90aba820ff",
+        "baseCharacterName": "The Hillbilly",
+        "baseCharacterType": "Killer",
+        "groupKey": "cosmetic",
+        "groupLabel": "Haunted by Daylight 2026",
+        "collectionName": "Tricks and Treats",
+        "image": "./dbd_images/cosmetics/full_sets/the-hillbilly--sugar-rush--outfit--tc-outfit-024.png",
+        "aliases": [
+          "sugar rush",
+          "tricks and treats",
+          "haunted by daylight 2026",
+          "outfit",
+          "the hillbilly",
+          "unlinked",
+          "unlinked outfit"
+        ],
+        "sourceKind": "wiki-collection-page",
+        "sourcePage": "Haunted by Daylight 2026",
+        "assetProvenance": "official-outfit-icon",
+        "status": "ready",
+        "rarity": "Very Rare",
+        "outfitLinkMode": "unlinked",
+        "boundSlots": [],
+        "bindSummary": "Body + Legs + Weapon",
+        "isLinkedSet": false,
+        "isCharacterSwap": false,
+        "pieceType": "Outfit",
+        "sourceBucket": "Haunted by Daylight 2026",
+        "assetFileTitleCandidates": [
+          "File:TC outfit 024.png"
+        ],
+        "description": "He had been strictly forbidden to eat candy, but every Halloween, his mama would toss a single sugar cube through the hole in the wall."
+      },
+      "source": {
+        "url": "https://deadbydaylight.wiki.gg/wiki/Haunted_by_Daylight_2026",
+        "patch": "Haunted by Daylight 2026",
+        "channel": "live"
+      }
+    },
+    {
+      "file": "content/cosmetics.json",
+      "path": [
+        "fullSets"
+      ],
+      "append": true,
+      "value": {
+        "id": "shane-wiigwaas--zombie-esq--outfit--s53-outfit-008",
+        "name": "Zombie, Esq",
+        "baseCharacterId": "bbb83024-f7b6-40cf-b060-5339820478e4",
+        "baseCharacterName": "Shane Wiigwaas",
+        "baseCharacterType": "Survivor",
+        "groupKey": "cosmetic",
+        "groupLabel": "Haunted by Daylight 2026",
+        "collectionName": "Tricks and Treats",
+        "image": "./dbd_images/cosmetics/full_sets/shane-wiigwaas--zombie-esq--outfit--s53-outfit-008.png",
+        "aliases": [
+          "zombie, esq",
+          "tricks and treats",
+          "haunted by daylight 2026",
+          "outfit",
+          "shane wiigwaas",
+          "unlinked",
+          "unlinked outfit"
+        ],
+        "sourceKind": "wiki-collection-page",
+        "sourcePage": "Haunted by Daylight 2026",
+        "assetProvenance": "official-outfit-icon",
+        "status": "ready",
+        "rarity": "Very Rare",
+        "outfitLinkMode": "unlinked",
+        "boundSlots": [],
+        "bindSummary": "Head + Body + Legs",
+        "isLinkedSet": false,
+        "isCharacterSwap": false,
+        "pieceType": "Outfit",
+        "sourceBucket": "Haunted by Daylight 2026",
+        "assetFileTitleCandidates": [
+          "File:S53 outfit 008.png"
+        ],
+        "description": "One of the ranchers invited Shane to a local Halloween party. The only requirement was full commitment to a costume."
+      },
+      "source": {
+        "url": "https://deadbydaylight.wiki.gg/wiki/Haunted_by_Daylight_2026",
+        "patch": "Haunted by Daylight 2026",
+        "channel": "live"
+      }
+    },
+    {
+      "file": "content/cosmetics.json",
+      "path": [
+        "fullSets"
+      ],
+      "append": true,
+      "value": {
+        "id": "the-ghost-face--ghost-face-dia-de-los-muertos--outfit--ok-outfit-018",
+        "name": "Ghost Face Día De Los Muertos",
+        "baseCharacterId": "88da4656-88a7-4642-8557-601f7f09ca7c",
+        "baseCharacterName": "The Ghost Face",
+        "baseCharacterType": "Killer",
+        "groupKey": "cosmetic",
+        "groupLabel": "Haunted by Daylight 2026",
+        "collectionName": "NOVEMBER DAYS",
+        "image": "./dbd_images/cosmetics/full_sets/the-ghost-face--ghost-face-dia-de-los-muertos--outfit--ok-outfit-018.png",
+        "aliases": [
+          "ghost face día de los muertos",
+          "ghost face dia de los muertos",
+          "november days",
+          "haunted by daylight 2026",
+          "outfit",
+          "the ghost face",
+          "unlinked",
+          "unlinked outfit"
+        ],
+        "sourceKind": "wiki-collection-page",
+        "sourcePage": "Haunted by Daylight 2026",
+        "assetProvenance": "official-outfit-icon",
+        "status": "ready",
+        "rarity": "Very Rare",
+        "outfitLinkMode": "unlinked",
+        "boundSlots": [],
+        "bindSummary": "Head + Body + Weapon",
+        "isLinkedSet": false,
+        "isCharacterSwap": false,
+        "pieceType": "Outfit",
+        "sourceBucket": "Haunted by Daylight 2026",
+        "assetFileTitleCandidates": [
+          "File:OK outfit 018.png"
+        ],
+        "description": "The irony was not lost on Jed. Little did the crowd know they were celebrating those long gone, as well as those about to pass."
+      },
+      "source": {
+        "url": "https://deadbydaylight.wiki.gg/wiki/Haunted_by_Daylight_2026",
+        "patch": "Haunted by Daylight 2026",
+        "channel": "live"
+      }
+    },
+    {
+      "file": "content/cosmetics.json",
+      "path": [
+        "fullSets"
+      ],
+      "append": true,
+      "value": {
+        "id": "nea-karlsson--panic-at-prenn--outfit--nk-outfit-039",
+        "name": "Panic At Prenn",
+        "baseCharacterId": "b4ec0d91-e2de-4e9c-ae33-4de1abb11648",
+        "baseCharacterName": "Nea Karlsson",
+        "baseCharacterType": "Survivor",
+        "groupKey": "cosmetic",
+        "groupLabel": "Haunted by Daylight 2026",
+        "collectionName": "Tricks and Treats",
+        "image": "./dbd_images/cosmetics/full_sets/nea-karlsson--panic-at-prenn--outfit--nk-outfit-039.png",
+        "aliases": [
+          "panic at prenn",
+          "tricks and treats",
+          "haunted by daylight 2026",
+          "outfit",
+          "nea karlsson",
+          "unlinked",
+          "unlinked outfit"
+        ],
+        "sourceKind": "wiki-collection-page",
+        "sourcePage": "Haunted by Daylight 2026",
+        "assetProvenance": "official-outfit-icon",
+        "status": "ready",
+        "rarity": "Very Rare",
+        "outfitLinkMode": "unlinked",
+        "boundSlots": [],
+        "bindSummary": "Head + Body + Legs",
+        "isLinkedSet": false,
+        "isCharacterSwap": false,
+        "pieceType": "Outfit",
+        "sourceBucket": "Haunted by Daylight 2026",
+        "assetFileTitleCandidates": [
+          "File:NK outfit 039.png"
+        ],
+        "description": "The Halloween rave was hosted in the ruins of an asylum, where tales of a strangle-happy nurse set an appropriately festive mood."
+      },
+      "source": {
+        "url": "https://deadbydaylight.wiki.gg/wiki/Haunted_by_Daylight_2026",
+        "patch": "Haunted by Daylight 2026",
+        "channel": "live"
+      }
+    },
+    {
+      "file": "content/cosmetics.json",
+      "path": [
+        "fullSets"
+      ],
+      "append": true,
+      "value": {
+        "id": "ace-visconti--sexy-beast--outfit--av-outfit-030",
+        "name": "Sexy Beast",
+        "baseCharacterId": "a830c003-9631-4722-91b6-f3ae0c3cfafe",
+        "baseCharacterName": "Ace Visconti",
+        "baseCharacterType": "Survivor",
+        "groupKey": "cosmetic",
+        "groupLabel": "Haunted by Daylight 2026",
+        "collectionName": "Tricks and Treats",
+        "image": "./dbd_images/cosmetics/full_sets/ace-visconti--sexy-beast--outfit--av-outfit-030.png",
+        "aliases": [
+          "sexy beast",
+          "tricks and treats",
+          "haunted by daylight 2026",
+          "outfit",
+          "ace visconti",
+          "unlinked",
+          "unlinked outfit"
+        ],
+        "sourceKind": "wiki-collection-page",
+        "sourcePage": "Haunted by Daylight 2026",
+        "assetProvenance": "official-outfit-icon",
+        "status": "ready",
+        "rarity": "Very Rare",
+        "outfitLinkMode": "unlinked",
+        "boundSlots": [],
+        "bindSummary": "Head + Body + Legs",
+        "isLinkedSet": false,
+        "isCharacterSwap": false,
+        "pieceType": "Outfit",
+        "sourceBucket": "Haunted by Daylight 2026",
+        "assetFileTitleCandidates": [
+          "File:AV outfit 030.png"
+        ],
+        "description": "Ace fancied himself to be a wolf at the poker table, though he was far more commonly called a river rat."
+      },
+      "source": {
+        "url": "https://deadbydaylight.wiki.gg/wiki/Haunted_by_Daylight_2026",
+        "patch": "Haunted by Daylight 2026",
+        "channel": "live"
+      }
+    },
+    {
+      "file": "content/cosmetics.json",
+      "path": [
+        "fullSets"
+      ],
+      "append": true,
+      "value": {
+        "id": "sable-ward--gothic-ribcage--body--s41-torso024",
+        "name": "Gothic Ribcage",
+        "baseCharacterId": "69703a45-e940-4e72-8499-37c99562aa22",
+        "baseCharacterName": "Sable Ward",
+        "baseCharacterType": "Survivor",
+        "groupKey": "cosmetic",
+        "groupLabel": "Haunted by Daylight 2026",
+        "collectionName": "Tricks and Treats",
+        "image": "./dbd_images/cosmetics/full_sets/sable-ward--gothic-ribcage--body--s41-torso024.png",
+        "aliases": [
+          "gothic ribcage",
+          "tricks and treats",
+          "haunted by daylight 2026",
+          "body",
+          "sable ward",
+          "unlinked",
+          "unlinked outfit"
+        ],
+        "sourceKind": "wiki-collection-page",
+        "sourcePage": "Haunted by Daylight 2026",
+        "assetProvenance": "official-piece-icon",
+        "status": "ready",
+        "rarity": "Rare",
+        "outfitLinkMode": "unlinked",
+        "boundSlots": [],
+        "bindSummary": "",
+        "isLinkedSet": false,
+        "isCharacterSwap": false,
+        "pieceType": "Body",
+        "sourceBucket": "Haunted by Daylight 2026",
+        "assetFileTitleCandidates": [
+          "File:S41 Torso024.png"
+        ],
+        "description": "The bones of a remorseful friend."
+      },
+      "source": {
+        "url": "https://deadbydaylight.wiki.gg/wiki/Haunted_by_Daylight_2026",
+        "patch": "Haunted by Daylight 2026",
+        "channel": "live"
+      }
+    },
+    {
+      "file": "content/cosmetics.json",
+      "path": [
+        "fullSets"
+      ],
+      "append": true,
+      "value": {
+        "id": "jeff-johansen--metalhead-ribcage--body--ks-torso028",
+        "name": "Metalhead Ribcage",
+        "baseCharacterId": "2d1968c2-b430-4df5-9e8e-4b09bb6a5309",
+        "baseCharacterName": "Jeff Johansen",
+        "baseCharacterType": "Survivor",
+        "groupKey": "cosmetic",
+        "groupLabel": "Haunted by Daylight 2026",
+        "collectionName": "Tricks and Treats",
+        "image": "./dbd_images/cosmetics/full_sets/jeff-johansen--metalhead-ribcage--body--ks-torso028.png",
+        "aliases": [
+          "metalhead ribcage",
+          "tricks and treats",
+          "haunted by daylight 2026",
+          "body",
+          "jeff johansen",
+          "unlinked",
+          "unlinked outfit"
+        ],
+        "sourceKind": "wiki-collection-page",
+        "sourcePage": "Haunted by Daylight 2026",
+        "assetProvenance": "official-piece-icon",
+        "status": "ready",
+        "rarity": "Rare",
+        "outfitLinkMode": "unlinked",
+        "boundSlots": [],
+        "bindSummary": "",
+        "isLinkedSet": false,
+        "isCharacterSwap": false,
+        "pieceType": "Body",
+        "sourceBucket": "Haunted by Daylight 2026",
+        "assetFileTitleCandidates": [
+          "File:KS Torso028.png"
+        ],
+        "description": "The bones of a contented artist."
+      },
+      "source": {
+        "url": "https://deadbydaylight.wiki.gg/wiki/Haunted_by_Daylight_2026",
+        "patch": "Haunted by Daylight 2026",
+        "channel": "live"
+      }
+    },
+    {
+      "file": "content/cosmetics.json",
+      "path": [
+        "fullSets"
+      ],
+      "append": true,
+      "value": {
+        "id": "adam-francis--scholastic-ribcage--body--hs-torso033",
+        "name": "Scholastic Ribcage",
+        "baseCharacterId": "9047b38b-c1e4-4e6a-9ea9-325d7c9c0159",
+        "baseCharacterName": "Adam Francis",
+        "baseCharacterType": "Survivor",
+        "groupKey": "cosmetic",
+        "groupLabel": "Haunted by Daylight 2026",
+        "collectionName": "Tricks and Treats",
+        "image": "./dbd_images/cosmetics/full_sets/adam-francis--scholastic-ribcage--body--hs-torso033.png",
+        "aliases": [
+          "scholastic ribcage",
+          "tricks and treats",
+          "haunted by daylight 2026",
+          "body",
+          "adam francis",
+          "unlinked",
+          "unlinked outfit"
+        ],
+        "sourceKind": "wiki-collection-page",
+        "sourcePage": "Haunted by Daylight 2026",
+        "assetProvenance": "official-piece-icon",
+        "status": "ready",
+        "rarity": "Rare",
+        "outfitLinkMode": "unlinked",
+        "boundSlots": [],
+        "bindSummary": "",
+        "isLinkedSet": false,
+        "isCharacterSwap": false,
+        "pieceType": "Body",
+        "sourceBucket": "Haunted by Daylight 2026",
+        "assetFileTitleCandidates": [
+          "File:HS Torso033.png"
+        ],
+        "description": "The bones of an ardent educator."
+      },
+      "source": {
+        "url": "https://deadbydaylight.wiki.gg/wiki/Haunted_by_Daylight_2026",
+        "patch": "Haunted by Daylight 2026",
+        "channel": "live"
+      }
+    },
+    {
+      "file": "content/cosmetics.json",
+      "path": [
+        "fullSets"
+      ],
+      "append": true,
+      "value": {
+        "id": "the-trapper--patchwork-horror--head--tr-mask032",
+        "name": "Patchwork Horror",
+        "baseCharacterId": "7a34f0fb-fe18-4854-ab5d-47f89a210051",
+        "baseCharacterName": "The Trapper",
+        "baseCharacterType": "Killer",
+        "groupKey": "cosmetic",
+        "groupLabel": "Haunted by Daylight 2026",
+        "collectionName": "Tricks and Treats",
+        "image": "./dbd_images/cosmetics/full_sets/the-trapper--patchwork-horror--head--tr-mask032.png",
+        "aliases": [
+          "patchwork horror",
+          "tricks and treats",
+          "haunted by daylight 2026",
+          "head",
+          "the trapper",
+          "unlinked",
+          "unlinked outfit"
+        ],
+        "sourceKind": "wiki-collection-page",
+        "sourcePage": "Haunted by Daylight 2026",
+        "assetProvenance": "official-piece-icon",
+        "status": "ready",
+        "rarity": "Rare",
+        "outfitLinkMode": "unlinked",
+        "boundSlots": [],
+        "bindSummary": "",
+        "isLinkedSet": false,
+        "isCharacterSwap": false,
+        "pieceType": "Head",
+        "sourceBucket": "Haunted by Daylight 2026",
+        "assetFileTitleCandidates": [
+          "File:TR Mask032.png"
+        ],
+        "description": "On Halloween night, it's best to stay out of the basement. You might not make it back upstairs."
+      },
+      "source": {
+        "url": "https://deadbydaylight.wiki.gg/wiki/Haunted_by_Daylight_2026",
+        "patch": "Haunted by Daylight 2026",
+        "channel": "live"
+      }
+    },
+    {
+      "file": "content/cosmetics.json",
+      "path": [
+        "fullSets"
+      ],
+      "append": true,
+      "value": {
+        "id": "the-unknown--scaring-the-crows--head--k35-head020",
+        "name": "Scaring The Crows",
+        "baseCharacterId": "b1367d52-b93a-49f0-b8b3-64c202e12efb",
+        "baseCharacterName": "The Unknown",
+        "baseCharacterType": "Killer",
+        "groupKey": "cosmetic",
+        "groupLabel": "Haunted by Daylight 2026",
+        "collectionName": "Tricks and Treats",
+        "image": "./dbd_images/cosmetics/full_sets/the-unknown--scaring-the-crows--head--k35-head020.png",
+        "aliases": [
+          "scaring the crows",
+          "tricks and treats",
+          "haunted by daylight 2026",
+          "head",
+          "the unknown",
+          "unlinked",
+          "unlinked outfit"
+        ],
+        "sourceKind": "wiki-collection-page",
+        "sourcePage": "Haunted by Daylight 2026",
+        "assetProvenance": "official-piece-icon",
+        "status": "ready",
+        "rarity": "Rare",
+        "outfitLinkMode": "unlinked",
+        "boundSlots": [],
+        "bindSummary": "",
+        "isLinkedSet": false,
+        "isCharacterSwap": false,
+        "pieceType": "Head",
+        "sourceBucket": "Haunted by Daylight 2026",
+        "assetFileTitleCandidates": [
+          "File:K35 Head020.png"
+        ],
+        "description": "Even the birds know better than to fly over Greenville’s fields."
+      },
+      "source": {
+        "url": "https://deadbydaylight.wiki.gg/wiki/Haunted_by_Daylight_2026",
+        "patch": "Haunted by Daylight 2026",
+        "channel": "live"
+      }
+    },
+    {
+      "file": "content/cosmetics.json",
+      "path": [
+        "fullSets"
+      ],
+      "append": true,
+      "value": {
+        "id": "the-singularity--unidentified-frightening-object--head--k32-head016",
+        "name": "Unidentified Frightening Object",
+        "baseCharacterId": "86c73d92-fb78-4bb5-a517-99fe15a72ebb",
+        "baseCharacterName": "The Singularity",
+        "baseCharacterType": "Killer",
+        "groupKey": "cosmetic",
+        "groupLabel": "Haunted by Daylight 2026",
+        "collectionName": "Tricks and Treats",
+        "image": "./dbd_images/cosmetics/full_sets/the-singularity--unidentified-frightening-object--head--k32-head016.png",
+        "aliases": [
+          "unidentified frightening object",
+          "tricks and treats",
+          "haunted by daylight 2026",
+          "head",
+          "the singularity",
+          "unlinked",
+          "unlinked outfit"
+        ],
+        "sourceKind": "wiki-collection-page",
+        "sourcePage": "Haunted by Daylight 2026",
+        "assetProvenance": "official-piece-icon",
+        "status": "ready",
+        "rarity": "Rare",
+        "outfitLinkMode": "unlinked",
+        "boundSlots": [],
+        "bindSummary": "",
+        "isLinkedSet": false,
+        "isCharacterSwap": false,
+        "pieceType": "Head",
+        "sourceBucket": "Haunted by Daylight 2026",
+        "assetFileTitleCandidates": [
+          "File:K32 Head016.png"
+        ],
+        "description": "He's probing for candy."
+      },
+      "source": {
+        "url": "https://deadbydaylight.wiki.gg/wiki/Haunted_by_Daylight_2026",
+        "patch": "Haunted by Daylight 2026",
+        "channel": "live"
+      }
+    },
+    {
+      "file": "content/cosmetics.json",
+      "path": [
+        "fullSets"
+      ],
+      "append": true,
+      "value": {
+        "id": "the-hillbilly--pigging-out--body--tc-torso024",
+        "name": "Pigging Out",
+        "baseCharacterId": "b49bba2d-2d77-4822-8957-7f90aba820ff",
+        "baseCharacterName": "The Hillbilly",
+        "baseCharacterType": "Killer",
+        "groupKey": "cosmetic",
+        "groupLabel": "Haunted by Daylight 2026",
+        "collectionName": "Tricks and Treats",
+        "image": "./dbd_images/cosmetics/full_sets/the-hillbilly--pigging-out--body--tc-torso024.png",
+        "aliases": [
+          "pigging out",
+          "tricks and treats",
+          "haunted by daylight 2026",
+          "body",
+          "the hillbilly",
+          "unlinked",
+          "unlinked outfit"
+        ],
+        "sourceKind": "wiki-collection-page",
+        "sourcePage": "Haunted by Daylight 2026",
+        "assetProvenance": "official-piece-icon",
+        "status": "ready",
+        "rarity": "Very Rare",
+        "outfitLinkMode": "unlinked",
+        "boundSlots": [],
+        "bindSummary": "",
+        "isLinkedSet": false,
+        "isCharacterSwap": false,
+        "pieceType": "Body",
+        "sourceBucket": "Haunted by Daylight 2026",
+        "assetFileTitleCandidates": [
+          "File:TC Torso024.png"
+        ],
+        "description": "After feeding the corpses to the hogs, he held onto a raggedy costume. It reminded him of one of his favorite old commercials."
+      },
+      "source": {
+        "url": "https://deadbydaylight.wiki.gg/wiki/Haunted_by_Daylight_2026",
+        "patch": "Haunted by Daylight 2026",
+        "channel": "live"
+      }
+    },
+    {
+      "file": "content/cosmetics.json",
+      "path": [
+        "fullSets"
+      ],
+      "append": true,
+      "value": {
+        "id": "the-hillbilly--local-legend--legs--tc-legs024",
+        "name": "Local Legend",
+        "baseCharacterId": "b49bba2d-2d77-4822-8957-7f90aba820ff",
+        "baseCharacterName": "The Hillbilly",
+        "baseCharacterType": "Killer",
+        "groupKey": "cosmetic",
+        "groupLabel": "Haunted by Daylight 2026",
+        "collectionName": "Tricks and Treats",
+        "image": "./dbd_images/cosmetics/full_sets/the-hillbilly--local-legend--legs--tc-legs024.png",
+        "aliases": [
+          "local legend",
+          "tricks and treats",
+          "haunted by daylight 2026",
+          "legs",
+          "the hillbilly",
+          "unlinked",
+          "unlinked outfit"
+        ],
+        "sourceKind": "wiki-collection-page",
+        "sourcePage": "Haunted by Daylight 2026",
+        "assetProvenance": "official-piece-icon",
+        "status": "ready",
+        "rarity": "Very Rare",
+        "outfitLinkMode": "unlinked",
+        "boundSlots": [],
+        "bindSummary": "",
+        "isLinkedSet": false,
+        "isCharacterSwap": false,
+        "pieceType": "Legs",
+        "sourceBucket": "Haunted by Daylight 2026",
+        "assetFileTitleCandidates": [
+          "File:TC Legs024.png"
+        ],
+        "description": "Nowadays, the local teens knew better to stop at Coldwind Farm. Not after several of them mysteriously \"fell down the well.\""
+      },
+      "source": {
+        "url": "https://deadbydaylight.wiki.gg/wiki/Haunted_by_Daylight_2026",
+        "patch": "Haunted by Daylight 2026",
+        "channel": "live"
+      }
+    },
+    {
+      "file": "content/cosmetics.json",
+      "path": [
+        "fullSets"
+      ],
+      "append": true,
+      "value": {
+        "id": "the-hillbilly--sweet-justice--weapon--tc-w024",
+        "name": "Sweet Justice",
+        "baseCharacterId": "b49bba2d-2d77-4822-8957-7f90aba820ff",
+        "baseCharacterName": "The Hillbilly",
+        "baseCharacterType": "Killer",
+        "groupKey": "cosmetic",
+        "groupLabel": "Haunted by Daylight 2026",
+        "collectionName": "Tricks and Treats",
+        "image": "./dbd_images/cosmetics/full_sets/the-hillbilly--sweet-justice--weapon--tc-w024.png",
+        "aliases": [
+          "sweet justice",
+          "tricks and treats",
+          "haunted by daylight 2026",
+          "weapon",
+          "the hillbilly",
+          "unlinked",
+          "unlinked outfit"
+        ],
+        "sourceKind": "wiki-collection-page",
+        "sourcePage": "Haunted by Daylight 2026",
+        "assetProvenance": "official-piece-icon",
+        "status": "ready",
+        "rarity": "Very Rare",
+        "outfitLinkMode": "unlinked",
+        "boundSlots": [],
+        "bindSummary": "",
+        "isLinkedSet": false,
+        "isCharacterSwap": false,
+        "pieceType": "Weapon",
+        "sourceBucket": "Haunted by Daylight 2026",
+        "assetFileTitleCandidates": [
+          "File:TC W024.png"
+        ],
+        "description": "He shoved a fistful of sugar cubes into his mouth, crunching them with rotten teeth. Mama would have been rolling in her grave...if she had one."
+      },
+      "source": {
+        "url": "https://deadbydaylight.wiki.gg/wiki/Haunted_by_Daylight_2026",
+        "patch": "Haunted by Daylight 2026",
+        "channel": "live"
+      }
+    },
+    {
+      "file": "content/cosmetics.json",
+      "path": [
+        "fullSets"
+      ],
+      "append": true,
+      "value": {
+        "id": "shane-wiigwaas--braaaaains--head--s53-head008",
+        "name": "Braaaaains",
+        "baseCharacterId": "bbb83024-f7b6-40cf-b060-5339820478e4",
+        "baseCharacterName": "Shane Wiigwaas",
+        "baseCharacterType": "Survivor",
+        "groupKey": "cosmetic",
+        "groupLabel": "Haunted by Daylight 2026",
+        "collectionName": "Tricks and Treats",
+        "image": "./dbd_images/cosmetics/full_sets/shane-wiigwaas--braaaaains--head--s53-head008.png",
+        "aliases": [
+          "braaaaains",
+          "tricks and treats",
+          "haunted by daylight 2026",
+          "head",
+          "shane wiigwaas",
+          "unlinked",
+          "unlinked outfit"
+        ],
+        "sourceKind": "wiki-collection-page",
+        "sourcePage": "Haunted by Daylight 2026",
+        "assetProvenance": "official-piece-icon",
+        "status": "ready",
+        "rarity": "Very Rare",
+        "outfitLinkMode": "unlinked",
+        "boundSlots": [],
+        "bindSummary": "",
+        "isLinkedSet": false,
+        "isCharacterSwap": false,
+        "pieceType": "Head",
+        "sourceBucket": "Haunted by Daylight 2026",
+        "assetFileTitleCandidates": [
+          "File:S53 Head008.png"
+        ],
+        "description": "His grandmother had always called him a “smart cookie.” It was only fitting he was raring to eat some brains."
+      },
+      "source": {
+        "url": "https://deadbydaylight.wiki.gg/wiki/Haunted_by_Daylight_2026",
+        "patch": "Haunted by Daylight 2026",
+        "channel": "live"
+      }
+    },
+    {
+      "file": "content/cosmetics.json",
+      "path": [
+        "fullSets"
+      ],
+      "append": true,
+      "value": {
+        "id": "shane-wiigwaas--tattered-tracksuit--body--s53-torso008",
+        "name": "Tattered Tracksuit",
+        "baseCharacterId": "bbb83024-f7b6-40cf-b060-5339820478e4",
+        "baseCharacterName": "Shane Wiigwaas",
+        "baseCharacterType": "Survivor",
+        "groupKey": "cosmetic",
+        "groupLabel": "Haunted by Daylight 2026",
+        "collectionName": "Tricks and Treats",
+        "image": "./dbd_images/cosmetics/full_sets/shane-wiigwaas--tattered-tracksuit--body--s53-torso008.png",
+        "aliases": [
+          "tattered tracksuit",
+          "tricks and treats",
+          "haunted by daylight 2026",
+          "body",
+          "shane wiigwaas",
+          "unlinked",
+          "unlinked outfit"
+        ],
+        "sourceKind": "wiki-collection-page",
+        "sourcePage": "Haunted by Daylight 2026",
+        "assetProvenance": "official-piece-icon",
+        "status": "ready",
+        "rarity": "Very Rare",
+        "outfitLinkMode": "unlinked",
+        "boundSlots": [],
+        "bindSummary": "",
+        "isLinkedSet": false,
+        "isCharacterSwap": false,
+        "pieceType": "Body",
+        "sourceBucket": "Haunted by Daylight 2026",
+        "assetFileTitleCandidates": [
+          "File:S53 Torso008.png"
+        ],
+        "description": "As he left the venue, he saw a crowd of unfamiliar faces. There were signs of a fistfight, and the scene was already awash in red and blue light."
+      },
+      "source": {
+        "url": "https://deadbydaylight.wiki.gg/wiki/Haunted_by_Daylight_2026",
+        "patch": "Haunted by Daylight 2026",
+        "channel": "live"
+      }
+    },
+    {
+      "file": "content/cosmetics.json",
+      "path": [
+        "fullSets"
+      ],
+      "append": true,
+      "value": {
+        "id": "shane-wiigwaas--striped-shamblers--legs--s53-legs008",
+        "name": "Striped Shamblers",
+        "baseCharacterId": "bbb83024-f7b6-40cf-b060-5339820478e4",
+        "baseCharacterName": "Shane Wiigwaas",
+        "baseCharacterType": "Survivor",
+        "groupKey": "cosmetic",
+        "groupLabel": "Haunted by Daylight 2026",
+        "collectionName": "Tricks and Treats",
+        "image": "./dbd_images/cosmetics/full_sets/shane-wiigwaas--striped-shamblers--legs--s53-legs008.png",
+        "aliases": [
+          "striped shamblers",
+          "tricks and treats",
+          "haunted by daylight 2026",
+          "legs",
+          "shane wiigwaas",
+          "unlinked",
+          "unlinked outfit"
+        ],
+        "sourceKind": "wiki-collection-page",
+        "sourcePage": "Haunted by Daylight 2026",
+        "assetProvenance": "official-piece-icon",
+        "status": "ready",
+        "rarity": "Very Rare",
+        "outfitLinkMode": "unlinked",
+        "boundSlots": [],
+        "bindSummary": "",
+        "isLinkedSet": false,
+        "isCharacterSwap": false,
+        "pieceType": "Legs",
+        "sourceBucket": "Haunted by Daylight 2026",
+        "assetFileTitleCandidates": [
+          "File:S53 Legs008.png"
+        ],
+        "description": "It didn’t matter which town he wound up in. A night of revelry never lasted long."
+      },
+      "source": {
+        "url": "https://deadbydaylight.wiki.gg/wiki/Haunted_by_Daylight_2026",
+        "patch": "Haunted by Daylight 2026",
+        "channel": "live"
+      }
+    },
+    {
+      "file": "content/cosmetics.json",
+      "path": [
+        "fullSets"
+      ],
+      "append": true,
+      "value": {
+        "id": "the-ghost-face--calavera-aqua--head--ok-mask018",
+        "name": "Calavera Aqua",
+        "baseCharacterId": "88da4656-88a7-4642-8557-601f7f09ca7c",
+        "baseCharacterName": "The Ghost Face",
+        "baseCharacterType": "Killer",
+        "groupKey": "cosmetic",
+        "groupLabel": "Haunted by Daylight 2026",
+        "collectionName": "NOVEMBER DAYS",
+        "image": "./dbd_images/cosmetics/full_sets/the-ghost-face--calavera-aqua--head--ok-mask018.png",
+        "aliases": [
+          "calavera aqua",
+          "november days",
+          "haunted by daylight 2026",
+          "head",
+          "the ghost face",
+          "unlinked",
+          "unlinked outfit"
+        ],
+        "sourceKind": "wiki-collection-page",
+        "sourcePage": "Haunted by Daylight 2026",
+        "assetProvenance": "official-piece-icon",
+        "status": "ready",
+        "rarity": "Very Rare",
+        "outfitLinkMode": "unlinked",
+        "boundSlots": [],
+        "bindSummary": "",
+        "isLinkedSet": false,
+        "isCharacterSwap": false,
+        "pieceType": "Head",
+        "sourceBucket": "Haunted by Daylight 2026",
+        "assetFileTitleCandidates": [
+          "File:OK Mask018.png"
+        ],
+        "description": "The sweltering mass wandered the cemetery, entranced by the colorful altars. Jed felt safe behind his mask, his eyes pinned on his next target."
+      },
+      "source": {
+        "url": "https://deadbydaylight.wiki.gg/wiki/Haunted_by_Daylight_2026",
+        "patch": "Haunted by Daylight 2026",
+        "channel": "live"
+      }
+    },
+    {
+      "file": "content/cosmetics.json",
+      "path": [
+        "fullSets"
+      ],
+      "append": true,
+      "value": {
+        "id": "the-ghost-face--charro-fantasmal--body--ok-body018",
+        "name": "Charro Fantasmal",
+        "baseCharacterId": "88da4656-88a7-4642-8557-601f7f09ca7c",
+        "baseCharacterName": "The Ghost Face",
+        "baseCharacterType": "Killer",
+        "groupKey": "cosmetic",
+        "groupLabel": "Haunted by Daylight 2026",
+        "collectionName": "NOVEMBER DAYS",
+        "image": "./dbd_images/cosmetics/full_sets/the-ghost-face--charro-fantasmal--body--ok-body018.png",
+        "aliases": [
+          "charro fantasmal",
+          "november days",
+          "haunted by daylight 2026",
+          "body",
+          "the ghost face",
+          "unlinked",
+          "unlinked outfit"
+        ],
+        "sourceKind": "wiki-collection-page",
+        "sourcePage": "Haunted by Daylight 2026",
+        "assetProvenance": "official-piece-icon",
+        "status": "ready",
+        "rarity": "Very Rare",
+        "outfitLinkMode": "unlinked",
+        "boundSlots": [],
+        "bindSummary": "",
+        "isLinkedSet": false,
+        "isCharacterSwap": false,
+        "pieceType": "Body",
+        "sourceBucket": "Haunted by Daylight 2026",
+        "assetFileTitleCandidates": [
+          "File:OK Body018.png"
+        ],
+        "description": "One or two more slumped over bodies wouldn't surprise anyone. Not until the sun rose the next day, heating their skins for the last time."
+      },
+      "source": {
+        "url": "https://deadbydaylight.wiki.gg/wiki/Haunted_by_Daylight_2026",
+        "patch": "Haunted by Daylight 2026",
+        "channel": "live"
+      }
+    },
+    {
+      "file": "content/cosmetics.json",
+      "path": [
+        "fullSets"
+      ],
+      "append": true,
+      "value": {
+        "id": "the-ghost-face--sugar-skull-blade--weapon--ok-w018",
+        "name": "Sugar Skull Blade",
+        "baseCharacterId": "88da4656-88a7-4642-8557-601f7f09ca7c",
+        "baseCharacterName": "The Ghost Face",
+        "baseCharacterType": "Killer",
+        "groupKey": "cosmetic",
+        "groupLabel": "Haunted by Daylight 2026",
+        "collectionName": "NOVEMBER DAYS",
+        "image": "./dbd_images/cosmetics/full_sets/the-ghost-face--sugar-skull-blade--weapon--ok-w018.png",
+        "aliases": [
+          "sugar skull blade",
+          "november days",
+          "haunted by daylight 2026",
+          "weapon",
+          "the ghost face",
+          "unlinked",
+          "unlinked outfit"
+        ],
+        "sourceKind": "wiki-collection-page",
+        "sourcePage": "Haunted by Daylight 2026",
+        "assetProvenance": "official-piece-icon",
+        "status": "ready",
+        "rarity": "Very Rare",
+        "outfitLinkMode": "unlinked",
+        "boundSlots": [],
+        "bindSummary": "",
+        "isLinkedSet": false,
+        "isCharacterSwap": false,
+        "pieceType": "Weapon",
+        "sourceBucket": "Haunted by Daylight 2026",
+        "assetFileTitleCandidates": [
+          "File:OK W018.png"
+        ],
+        "description": "The painted blade slid in quietly. The gasp couldn't be heard over the music. All he cared about was the loudness of tomorrow's headline anyway."
+      },
+      "source": {
+        "url": "https://deadbydaylight.wiki.gg/wiki/Haunted_by_Daylight_2026",
+        "patch": "Haunted by Daylight 2026",
+        "channel": "live"
+      }
+    },
+    {
+      "file": "content/cosmetics.json",
+      "path": [
+        "fullSets"
+      ],
+      "append": true,
+      "value": {
+        "id": "nea-karlsson--non-conformist--head--nk-head039",
+        "name": "Non-Conformist",
+        "baseCharacterId": "b4ec0d91-e2de-4e9c-ae33-4de1abb11648",
+        "baseCharacterName": "Nea Karlsson",
+        "baseCharacterType": "Survivor",
+        "groupKey": "cosmetic",
+        "groupLabel": "Haunted by Daylight 2026",
+        "collectionName": "Tricks and Treats",
+        "image": "./dbd_images/cosmetics/full_sets/nea-karlsson--non-conformist--head--nk-head039.png",
+        "aliases": [
+          "non-conformist",
+          "tricks and treats",
+          "haunted by daylight 2026",
+          "head",
+          "nea karlsson",
+          "unlinked",
+          "unlinked outfit"
+        ],
+        "sourceKind": "wiki-collection-page",
+        "sourcePage": "Haunted by Daylight 2026",
+        "assetProvenance": "official-piece-icon",
+        "status": "ready",
+        "rarity": "Very Rare",
+        "outfitLinkMode": "unlinked",
+        "boundSlots": [],
+        "bindSummary": "",
+        "isLinkedSet": false,
+        "isCharacterSwap": false,
+        "pieceType": "Head",
+        "sourceBucket": "Haunted by Daylight 2026",
+        "assetFileTitleCandidates": [
+          "File:NK Head039.png"
+        ],
+        "description": "Nea scoured her bins for a costume, a defiant stand against the commodification of her favorite holiday."
+      },
+      "source": {
+        "url": "https://deadbydaylight.wiki.gg/wiki/Haunted_by_Daylight_2026",
+        "patch": "Haunted by Daylight 2026",
+        "channel": "live"
+      }
+    },
+    {
+      "file": "content/cosmetics.json",
+      "path": [
+        "fullSets"
+      ],
+      "append": true,
+      "value": {
+        "id": "nea-karlsson--butterfly-s-flight--body--nk-torso039",
+        "name": "Butterfly's Flight",
+        "baseCharacterId": "b4ec0d91-e2de-4e9c-ae33-4de1abb11648",
+        "baseCharacterName": "Nea Karlsson",
+        "baseCharacterType": "Survivor",
+        "groupKey": "cosmetic",
+        "groupLabel": "Haunted by Daylight 2026",
+        "collectionName": "Tricks and Treats",
+        "image": "./dbd_images/cosmetics/full_sets/nea-karlsson--butterfly-s-flight--body--nk-torso039.png",
+        "aliases": [
+          "butterfly's flight",
+          "tricks and treats",
+          "haunted by daylight 2026",
+          "body",
+          "nea karlsson",
+          "unlinked",
+          "unlinked outfit"
+        ],
+        "sourceKind": "wiki-collection-page",
+        "sourcePage": "Haunted by Daylight 2026",
+        "assetProvenance": "official-piece-icon",
+        "status": "ready",
+        "rarity": "Very Rare",
+        "outfitLinkMode": "unlinked",
+        "boundSlots": [],
+        "bindSummary": "",
+        "isLinkedSet": false,
+        "isCharacterSwap": false,
+        "pieceType": "Body",
+        "sourceBucket": "Haunted by Daylight 2026",
+        "assetFileTitleCandidates": [
+          "File:NK Torso039.png"
+        ],
+        "description": "She finally found the butterfly wings she crafted with her mother, back when they were still on speaking terms."
+      },
+      "source": {
+        "url": "https://deadbydaylight.wiki.gg/wiki/Haunted_by_Daylight_2026",
+        "patch": "Haunted by Daylight 2026",
+        "channel": "live"
+      }
+    },
+    {
+      "file": "content/cosmetics.json",
+      "path": [
+        "fullSets"
+      ],
+      "append": true,
+      "value": {
+        "id": "nea-karlsson--rebel-streak--legs--nk-legs039",
+        "name": "Rebel Streak",
+        "baseCharacterId": "b4ec0d91-e2de-4e9c-ae33-4de1abb11648",
+        "baseCharacterName": "Nea Karlsson",
+        "baseCharacterType": "Survivor",
+        "groupKey": "cosmetic",
+        "groupLabel": "Haunted by Daylight 2026",
+        "collectionName": "Tricks and Treats",
+        "image": "./dbd_images/cosmetics/full_sets/nea-karlsson--rebel-streak--legs--nk-legs039.png",
+        "aliases": [
+          "rebel streak",
+          "tricks and treats",
+          "haunted by daylight 2026",
+          "legs",
+          "nea karlsson",
+          "unlinked",
+          "unlinked outfit"
+        ],
+        "sourceKind": "wiki-collection-page",
+        "sourcePage": "Haunted by Daylight 2026",
+        "assetProvenance": "official-piece-icon",
+        "status": "ready",
+        "rarity": "Very Rare",
+        "outfitLinkMode": "unlinked",
+        "boundSlots": [],
+        "bindSummary": "",
+        "isLinkedSet": false,
+        "isCharacterSwap": false,
+        "pieceType": "Legs",
+        "sourceBucket": "Haunted by Daylight 2026",
+        "assetFileTitleCandidates": [
+          "File:NK Legs039.png"
+        ],
+        "description": "She expected many suggestive interpretations of the infamous nurse’s uniform, none of which would adhere to hospital dress codes."
+      },
+      "source": {
+        "url": "https://deadbydaylight.wiki.gg/wiki/Haunted_by_Daylight_2026",
+        "patch": "Haunted by Daylight 2026",
+        "channel": "live"
+      }
+    },
+    {
+      "file": "content/cosmetics.json",
+      "path": [
+        "fullSets"
+      ],
+      "append": true,
+      "value": {
+        "id": "ace-visconti--huff-bluff--head--av-head030",
+        "name": "Huff & Bluff",
+        "baseCharacterId": "a830c003-9631-4722-91b6-f3ae0c3cfafe",
+        "baseCharacterName": "Ace Visconti",
+        "baseCharacterType": "Survivor",
+        "groupKey": "cosmetic",
+        "groupLabel": "Haunted by Daylight 2026",
+        "collectionName": "Tricks and Treats",
+        "image": "./dbd_images/cosmetics/full_sets/ace-visconti--huff-bluff--head--av-head030.png",
+        "aliases": [
+          "huff & bluff",
+          "tricks and treats",
+          "haunted by daylight 2026",
+          "head",
+          "ace visconti",
+          "unlinked",
+          "unlinked outfit"
+        ],
+        "sourceKind": "wiki-collection-page",
+        "sourcePage": "Haunted by Daylight 2026",
+        "assetProvenance": "official-piece-icon",
+        "status": "ready",
+        "rarity": "Very Rare",
+        "outfitLinkMode": "unlinked",
+        "boundSlots": [],
+        "bindSummary": "",
+        "isLinkedSet": false,
+        "isCharacterSwap": false,
+        "pieceType": "Head",
+        "sourceBucket": "Haunted by Daylight 2026",
+        "assetFileTitleCandidates": [
+          "File:AV Head030.png"
+        ],
+        "description": "The casino’s Halloween tournament brought out all the heavy hitters, including two-time hold ‘em champion Samuel “Hot Hands” Hain."
+      },
+      "source": {
+        "url": "https://deadbydaylight.wiki.gg/wiki/Haunted_by_Daylight_2026",
+        "patch": "Haunted by Daylight 2026",
+        "channel": "live"
+      }
+    },
+    {
+      "file": "content/cosmetics.json",
+      "path": [
+        "fullSets"
+      ],
+      "append": true,
+      "value": {
+        "id": "ace-visconti--full-house--body--av-torso030",
+        "name": "Full House",
+        "baseCharacterId": "a830c003-9631-4722-91b6-f3ae0c3cfafe",
+        "baseCharacterName": "Ace Visconti",
+        "baseCharacterType": "Survivor",
+        "groupKey": "cosmetic",
+        "groupLabel": "Haunted by Daylight 2026",
+        "collectionName": "Tricks and Treats",
+        "image": "./dbd_images/cosmetics/full_sets/ace-visconti--full-house--body--av-torso030.png",
+        "aliases": [
+          "full house",
+          "tricks and treats",
+          "haunted by daylight 2026",
+          "body",
+          "ace visconti",
+          "unlinked",
+          "unlinked outfit"
+        ],
+        "sourceKind": "wiki-collection-page",
+        "sourcePage": "Haunted by Daylight 2026",
+        "assetProvenance": "official-piece-icon",
+        "status": "ready",
+        "rarity": "Very Rare",
+        "outfitLinkMode": "unlinked",
+        "boundSlots": [],
+        "bindSummary": "",
+        "isLinkedSet": false,
+        "isCharacterSwap": false,
+        "pieceType": "Body",
+        "sourceBucket": "Haunted by Daylight 2026",
+        "assetFileTitleCandidates": [
+          "File:AV Torso030.png"
+        ],
+        "description": "He faced a gorilla, scarecrow, femme fatale, and the bottom half of a two-person horse costume. One after another, they folded...except for Hain."
+      },
+      "source": {
+        "url": "https://deadbydaylight.wiki.gg/wiki/Haunted_by_Daylight_2026",
+        "patch": "Haunted by Daylight 2026",
+        "channel": "live"
+      }
+    },
+    {
+      "file": "content/cosmetics.json",
+      "path": [
+        "fullSets"
+      ],
+      "append": true,
+      "value": {
+        "id": "ace-visconti--runner-runner--legs--av-legs030",
+        "name": "Runner Runner",
+        "baseCharacterId": "a830c003-9631-4722-91b6-f3ae0c3cfafe",
+        "baseCharacterName": "Ace Visconti",
+        "baseCharacterType": "Survivor",
+        "groupKey": "cosmetic",
+        "groupLabel": "Haunted by Daylight 2026",
+        "collectionName": "Tricks and Treats",
+        "image": "./dbd_images/cosmetics/full_sets/ace-visconti--runner-runner--legs--av-legs030.png",
+        "aliases": [
+          "runner runner",
+          "tricks and treats",
+          "haunted by daylight 2026",
+          "legs",
+          "ace visconti",
+          "unlinked",
+          "unlinked outfit"
+        ],
+        "sourceKind": "wiki-collection-page",
+        "sourcePage": "Haunted by Daylight 2026",
+        "assetProvenance": "official-piece-icon",
+        "status": "ready",
+        "rarity": "Very Rare",
+        "outfitLinkMode": "unlinked",
+        "boundSlots": [],
+        "bindSummary": "",
+        "isLinkedSet": false,
+        "isCharacterSwap": false,
+        "pieceType": "Legs",
+        "sourceBucket": "Haunted by Daylight 2026",
+        "assetFileTitleCandidates": [
+          "File:AV Legs030.png"
+        ],
+        "description": "Ace tried to read his opponent. His devilish grin. His twinkling, bead-black eyes. And then Hain spoke, an icy offer to raise the stakes..."
+      },
+      "source": {
+        "url": "https://deadbydaylight.wiki.gg/wiki/Haunted_by_Daylight_2026",
+        "patch": "Haunted by Daylight 2026",
+        "channel": "live"
+      }
+    },
+    {
+      "file": "content/cosmetics.json",
+      "path": [
+        "fullSets"
+      ],
+      "append": true,
+      "value": {
+        "id": "steve-harrington--tactical-babysitter--outfit--qm-outfit-011",
+        "name": "Tactical Babysitter",
+        "baseCharacterId": "b38fe73f-5f50-423d-9bcf-185dbc97b803",
+        "baseCharacterName": "Steve Harrington",
+        "baseCharacterType": "Survivor",
+        "groupKey": "cosmetic",
+        "groupLabel": "Stranger Things",
+        "collectionName": "Stranger Things",
+        "image": "./dbd_images/cosmetics/full_sets/steve-harrington--tactical-babysitter--outfit--qm-outfit-011.png",
+        "aliases": [
+          "tactical babysitter",
+          "stranger things",
+          "outfit",
+          "steve harrington",
+          "unlinked",
+          "unlinked outfit"
+        ],
+        "sourceKind": "wiki-collection-page",
+        "sourcePage": "Stranger Things Collection",
+        "assetProvenance": "official-outfit-icon",
+        "status": "ready",
+        "rarity": "Very Rare",
+        "outfitLinkMode": "unlinked",
+        "boundSlots": [],
+        "bindSummary": "Head + Body + Legs",
+        "isLinkedSet": false,
+        "isCharacterSwap": false,
+        "pieceType": "Outfit",
+        "sourceBucket": "Stranger Things",
+        "assetFileTitleCandidates": [
+          "File:QM Outfit 011.png"
+        ],
+        "description": "Battling the Mind Flayer head-on left him more determined than ever to protect the Party, no matter the cost."
+      },
+      "source": {
+        "url": "https://deadbydaylight.wiki.gg/wiki/Stranger_Things_Collection",
+        "patch": "Stranger Things Collection",
+        "channel": "live"
+      }
+    },
+    {
+      "file": "content/cosmetics.json",
+      "path": [
+        "fullSets"
+      ],
+      "append": true,
+      "value": {
+        "id": "the-first--curse-lifter--outfit--k42-outfit-008",
+        "name": "Curse Lifter",
+        "baseCharacterId": "f8d21e4c-9b3a-4f67-a123-1234567890ab",
+        "baseCharacterName": "The First",
+        "baseCharacterType": "Killer",
+        "groupKey": "cosmetic",
+        "groupLabel": "Stranger Things",
+        "collectionName": "Stranger Things",
+        "image": "./dbd_images/cosmetics/full_sets/the-first--curse-lifter--outfit--k42-outfit-008.png",
+        "aliases": [
+          "curse lifter",
+          "stranger things",
+          "outfit",
+          "the first",
+          "head",
+          "body",
+          "weapon",
+          "linked",
+          "linked outfit"
+        ],
+        "sourceKind": "wiki-collection-page",
+        "sourcePage": "Stranger Things Collection",
+        "assetProvenance": "official-outfit-icon",
+        "status": "ready",
+        "rarity": "Very Rare",
+        "outfitLinkMode": "linked",
+        "boundSlots": [
+          "Head",
+          "Body",
+          "Weapon"
+        ],
+        "bindSummary": "Head + Body + Weapon",
+        "isLinkedSet": true,
+        "isCharacterSwap": false,
+        "pieceType": "Outfit",
+        "sourceBucket": "Stranger Things",
+        "assetFileTitleCandidates": [
+          "File:K42 outfit 008.png"
+        ],
+        "description": "Four unfortunate souls is all it took. He crept into their minds, twisting them to his needs."
+      },
+      "source": {
+        "url": "https://deadbydaylight.wiki.gg/wiki/Stranger_Things_Collection",
+        "patch": "Stranger Things Collection",
+        "channel": "live"
+      }
+    },
+    {
+      "file": "content/cosmetics.json",
+      "path": [
+        "fullSets"
+      ],
+      "append": true,
+      "value": {
+        "id": "nancy-wheeler--battle-ready--outfit--qf-outfit-012",
+        "name": "Battle Ready",
+        "baseCharacterId": "989d3ba3-1119-4ff7-b6b0-c4d7d078aaf4",
+        "baseCharacterName": "Nancy Wheeler",
+        "baseCharacterType": "Survivor",
+        "groupKey": "cosmetic",
+        "groupLabel": "Stranger Things",
+        "collectionName": "Stranger Things",
+        "image": "./dbd_images/cosmetics/full_sets/nancy-wheeler--battle-ready--outfit--qf-outfit-012.png",
+        "aliases": [
+          "battle ready",
+          "stranger things",
+          "outfit",
+          "nancy wheeler",
+          "unlinked",
+          "unlinked outfit"
+        ],
+        "sourceKind": "wiki-collection-page",
+        "sourcePage": "Stranger Things Collection",
+        "assetProvenance": "official-outfit-icon",
+        "status": "ready",
+        "rarity": "Very Rare",
+        "outfitLinkMode": "unlinked",
+        "boundSlots": [],
+        "bindSummary": "Head + Body + Legs",
+        "isLinkedSet": false,
+        "isCharacterSwap": false,
+        "pieceType": "Outfit",
+        "sourceBucket": "Stranger Things",
+        "assetFileTitleCandidates": [
+          "File:QF outfit 012.png"
+        ],
+        "description": "This wasn't what she had imagined for her college years, but standing here, nothing was more important than taking down the Mind Flayer."
+      },
+      "source": {
+        "url": "https://deadbydaylight.wiki.gg/wiki/Stranger_Things_Collection",
+        "patch": "Stranger Things Collection",
+        "channel": "live"
+      }
+    },
+    {
+      "file": "content/cosmetics.json",
+      "path": [
+        "fullSets"
+      ],
+      "append": true,
+      "value": {
+        "id": "steve-harrington--reversed-baseball-cap--head--qm-head011",
+        "name": "Reversed Baseball Cap",
+        "baseCharacterId": "b38fe73f-5f50-423d-9bcf-185dbc97b803",
+        "baseCharacterName": "Steve Harrington",
+        "baseCharacterType": "Survivor",
+        "groupKey": "cosmetic",
+        "groupLabel": "Stranger Things",
+        "collectionName": "Stranger Things",
+        "image": "./dbd_images/cosmetics/full_sets/steve-harrington--reversed-baseball-cap--head--qm-head011.png",
+        "aliases": [
+          "reversed baseball cap",
+          "stranger things",
+          "head",
+          "steve harrington",
+          "unlinked",
+          "unlinked outfit"
+        ],
+        "sourceKind": "wiki-collection-page",
+        "sourcePage": "Stranger Things Collection",
+        "assetProvenance": "official-piece-icon",
+        "status": "ready",
+        "rarity": "Very Rare",
+        "outfitLinkMode": "unlinked",
+        "boundSlots": [],
+        "bindSummary": "",
+        "isLinkedSet": false,
+        "isCharacterSwap": false,
+        "pieceType": "Head",
+        "sourceBucket": "Stranger Things",
+        "assetFileTitleCandidates": [
+          "File:QM Head011.png"
+        ],
+        "description": "He held his spear high, his shield strapped to his back. This is the closest they had ever come to ending this war."
+      },
+      "source": {
+        "url": "https://deadbydaylight.wiki.gg/wiki/Stranger_Things_Collection",
+        "patch": "Stranger Things Collection",
+        "channel": "live"
+      }
+    },
+    {
+      "file": "content/cosmetics.json",
+      "path": [
+        "fullSets"
+      ],
+      "append": true,
+      "value": {
+        "id": "steve-harrington--worn-leather-jacket--body--qm-torso011",
+        "name": "Worn Leather Jacket",
+        "baseCharacterId": "b38fe73f-5f50-423d-9bcf-185dbc97b803",
+        "baseCharacterName": "Steve Harrington",
+        "baseCharacterType": "Survivor",
+        "groupKey": "cosmetic",
+        "groupLabel": "Stranger Things",
+        "collectionName": "Stranger Things",
+        "image": "./dbd_images/cosmetics/full_sets/steve-harrington--worn-leather-jacket--body--qm-torso011.png",
+        "aliases": [
+          "worn leather jacket",
+          "stranger things",
+          "body",
+          "steve harrington",
+          "unlinked",
+          "unlinked outfit"
+        ],
+        "sourceKind": "wiki-collection-page",
+        "sourcePage": "Stranger Things Collection",
+        "assetProvenance": "official-piece-icon",
+        "status": "ready",
+        "rarity": "Very Rare",
+        "outfitLinkMode": "unlinked",
+        "boundSlots": [],
+        "bindSummary": "",
+        "isLinkedSet": false,
+        "isCharacterSwap": false,
+        "pieceType": "Body",
+        "sourceBucket": "Stranger Things",
+        "assetFileTitleCandidates": [
+          "File:QM Torso011.png"
+        ],
+        "description": "No amount of retribution helped him process the memory of his kids getting hurt. Etched forever in his mind, it fueled every strike."
+      },
+      "source": {
+        "url": "https://deadbydaylight.wiki.gg/wiki/Stranger_Things_Collection",
+        "patch": "Stranger Things Collection",
+        "channel": "live"
+      }
+    },
+    {
+      "file": "content/cosmetics.json",
+      "path": [
+        "fullSets"
+      ],
+      "append": true,
+      "value": {
+        "id": "steve-harrington--brown-slacks--legs--qm-legs011",
+        "name": "Brown Slacks",
+        "baseCharacterId": "b38fe73f-5f50-423d-9bcf-185dbc97b803",
+        "baseCharacterName": "Steve Harrington",
+        "baseCharacterType": "Survivor",
+        "groupKey": "cosmetic",
+        "groupLabel": "Stranger Things",
+        "collectionName": "Stranger Things",
+        "image": "./dbd_images/cosmetics/full_sets/steve-harrington--brown-slacks--legs--qm-legs011.png",
+        "aliases": [
+          "brown slacks",
+          "stranger things",
+          "legs",
+          "steve harrington",
+          "unlinked",
+          "unlinked outfit"
+        ],
+        "sourceKind": "wiki-collection-page",
+        "sourcePage": "Stranger Things Collection",
+        "assetProvenance": "official-piece-icon",
+        "status": "ready",
+        "rarity": "Very Rare",
+        "outfitLinkMode": "unlinked",
+        "boundSlots": [],
+        "bindSummary": "",
+        "isLinkedSet": false,
+        "isCharacterSwap": false,
+        "pieceType": "Legs",
+        "sourceBucket": "Stranger Things",
+        "assetFileTitleCandidates": [
+          "File:QM Legs011.png"
+        ],
+        "description": "It would finally end here. Nothing was going to stop him now, not even the monstrous legs clawing away at him."
+      },
+      "source": {
+        "url": "https://deadbydaylight.wiki.gg/wiki/Stranger_Things_Collection",
+        "patch": "Stranger Things Collection",
+        "channel": "live"
+      }
+    },
+    {
+      "file": "content/cosmetics.json",
+      "path": [
+        "fullSets"
+      ],
+      "append": true,
+      "value": {
+        "id": "the-first--living-nightmare--head--k42-head008",
+        "name": "Living Nightmare",
+        "baseCharacterId": "f8d21e4c-9b3a-4f67-a123-1234567890ab",
+        "baseCharacterName": "The First",
+        "baseCharacterType": "Killer",
+        "groupKey": "cosmetic",
+        "groupLabel": "Stranger Things",
+        "collectionName": "Stranger Things",
+        "image": "./dbd_images/cosmetics/full_sets/the-first--living-nightmare--head--k42-head008.png",
+        "aliases": [
+          "living nightmare",
+          "stranger things",
+          "head",
+          "the first",
+          "unlinked",
+          "unlinked outfit"
+        ],
+        "sourceKind": "wiki-collection-page",
+        "sourcePage": "Stranger Things Collection",
+        "assetProvenance": "official-piece-icon",
+        "status": "ready",
+        "rarity": "Very Rare",
+        "outfitLinkMode": "unlinked",
+        "boundSlots": [],
+        "bindSummary": "",
+        "isLinkedSet": false,
+        "isCharacterSwap": false,
+        "pieceType": "Head",
+        "sourceBucket": "Stranger Things",
+        "assetFileTitleCandidates": [
+          "File:K42 Head008.png"
+        ],
+        "description": "He could not stand the lies and deceit. He wanted them to be free from their dishonest lives."
+      },
+      "source": {
+        "url": "https://deadbydaylight.wiki.gg/wiki/Stranger_Things_Collection",
+        "patch": "Stranger Things Collection",
+        "channel": "live"
+      }
+    },
+    {
+      "file": "content/cosmetics.json",
+      "path": [
+        "fullSets"
+      ],
+      "append": true,
+      "value": {
+        "id": "the-first--dimension-walker--body--k42-body008",
+        "name": "Dimension Walker",
+        "baseCharacterId": "f8d21e4c-9b3a-4f67-a123-1234567890ab",
+        "baseCharacterName": "The First",
+        "baseCharacterType": "Killer",
+        "groupKey": "cosmetic",
+        "groupLabel": "Stranger Things",
+        "collectionName": "Stranger Things",
+        "image": "./dbd_images/cosmetics/full_sets/the-first--dimension-walker--body--k42-body008.png",
+        "aliases": [
+          "dimension walker",
+          "stranger things",
+          "body",
+          "the first",
+          "unlinked",
+          "unlinked outfit"
+        ],
+        "sourceKind": "wiki-collection-page",
+        "sourcePage": "Stranger Things Collection",
+        "assetProvenance": "official-piece-icon",
+        "status": "ready",
+        "rarity": "Very Rare",
+        "outfitLinkMode": "unlinked",
+        "boundSlots": [],
+        "bindSummary": "",
+        "isLinkedSet": false,
+        "isCharacterSwap": false,
+        "pieceType": "Body",
+        "sourceBucket": "Stranger Things",
+        "assetFileTitleCandidates": [
+          "File:K42 Body008.png"
+        ],
+        "description": "He showed his victims the truths they tried so hard to hide. Their screams could only be heard inside their own heads."
+      },
+      "source": {
+        "url": "https://deadbydaylight.wiki.gg/wiki/Stranger_Things_Collection",
+        "patch": "Stranger Things Collection",
+        "channel": "live"
+      }
+    },
+    {
+      "file": "content/cosmetics.json",
+      "path": [
+        "fullSets"
+      ],
+      "append": true,
+      "value": {
+        "id": "the-first--gateway-opener--weapon--k42-w008",
+        "name": "Gateway Opener",
+        "baseCharacterId": "f8d21e4c-9b3a-4f67-a123-1234567890ab",
+        "baseCharacterName": "The First",
+        "baseCharacterType": "Killer",
+        "groupKey": "cosmetic",
+        "groupLabel": "Stranger Things",
+        "collectionName": "Stranger Things",
+        "image": "./dbd_images/cosmetics/full_sets/the-first--gateway-opener--weapon--k42-w008.png",
+        "aliases": [
+          "gateway opener",
+          "stranger things",
+          "weapon",
+          "the first",
+          "unlinked",
+          "unlinked outfit"
+        ],
+        "sourceKind": "wiki-collection-page",
+        "sourcePage": "Stranger Things Collection",
+        "assetProvenance": "official-piece-icon",
+        "status": "ready",
+        "rarity": "Very Rare",
+        "outfitLinkMode": "unlinked",
+        "boundSlots": [],
+        "bindSummary": "",
+        "isLinkedSet": false,
+        "isCharacterSwap": false,
+        "pieceType": "Weapon",
+        "sourceBucket": "Stranger Things",
+        "assetFileTitleCandidates": [
+          "File:K42 W008.png"
+        ],
+        "description": "As he broke their bones and minds alike they became part of a greater purpose. Hawkins would be his at last."
+      },
+      "source": {
+        "url": "https://deadbydaylight.wiki.gg/wiki/Stranger_Things_Collection",
+        "patch": "Stranger Things Collection",
+        "channel": "live"
+      }
+    },
+    {
+      "file": "content/cosmetics.json",
+      "path": [
+        "fullSets"
+      ],
+      "append": true,
+      "value": {
+        "id": "nancy-wheeler--tight-curls--head--qf-head012",
+        "name": "Tight Curls",
+        "baseCharacterId": "989d3ba3-1119-4ff7-b6b0-c4d7d078aaf4",
+        "baseCharacterName": "Nancy Wheeler",
+        "baseCharacterType": "Survivor",
+        "groupKey": "cosmetic",
+        "groupLabel": "Stranger Things",
+        "collectionName": "Stranger Things",
+        "image": "./dbd_images/cosmetics/full_sets/nancy-wheeler--tight-curls--head--qf-head012.png",
+        "aliases": [
+          "tight curls",
+          "stranger things",
+          "head",
+          "nancy wheeler",
+          "unlinked",
+          "unlinked outfit"
+        ],
+        "sourceKind": "wiki-collection-page",
+        "sourcePage": "Stranger Things Collection",
+        "assetProvenance": "official-piece-icon",
+        "status": "ready",
+        "rarity": "Very Rare",
+        "outfitLinkMode": "unlinked",
+        "boundSlots": [],
+        "bindSummary": "",
+        "isLinkedSet": false,
+        "isCharacterSwap": false,
+        "pieceType": "Head",
+        "sourceBucket": "Stranger Things",
+        "assetFileTitleCandidates": [
+          "File:QF Head012.png"
+        ],
+        "description": "Her book smarts were only going to get her so far. Everything she had learned over the last few years came from fights like these."
+      },
+      "source": {
+        "url": "https://deadbydaylight.wiki.gg/wiki/Stranger_Things_Collection",
+        "patch": "Stranger Things Collection",
+        "channel": "live"
+      }
+    },
+    {
+      "file": "content/cosmetics.json",
+      "path": [
+        "fullSets"
+      ],
+      "append": true,
+      "value": {
+        "id": "nancy-wheeler--bold-bandolier--body--qf-torso012",
+        "name": "Bold Bandolier",
+        "baseCharacterId": "989d3ba3-1119-4ff7-b6b0-c4d7d078aaf4",
+        "baseCharacterName": "Nancy Wheeler",
+        "baseCharacterType": "Survivor",
+        "groupKey": "cosmetic",
+        "groupLabel": "Stranger Things",
+        "collectionName": "Stranger Things",
+        "image": "./dbd_images/cosmetics/full_sets/nancy-wheeler--bold-bandolier--body--qf-torso012.png",
+        "aliases": [
+          "bold bandolier",
+          "stranger things",
+          "body",
+          "nancy wheeler",
+          "unlinked",
+          "unlinked outfit"
+        ],
+        "sourceKind": "wiki-collection-page",
+        "sourcePage": "Stranger Things Collection",
+        "assetProvenance": "official-piece-icon",
+        "status": "ready",
+        "rarity": "Very Rare",
+        "outfitLinkMode": "unlinked",
+        "boundSlots": [],
+        "bindSummary": "",
+        "isLinkedSet": false,
+        "isCharacterSwap": false,
+        "pieceType": "Body",
+        "sourceBucket": "Stranger Things",
+        "assetFileTitleCandidates": [
+          "File:QF Torso012.png"
+        ],
+        "description": "With her fingers on the trigger and an ice cold aim, she wasn't going to miss her mark. Not again."
+      },
+      "source": {
+        "url": "https://deadbydaylight.wiki.gg/wiki/Stranger_Things_Collection",
+        "patch": "Stranger Things Collection",
+        "channel": "live"
+      }
+    },
+    {
+      "file": "content/cosmetics.json",
+      "path": [
+        "fullSets"
+      ],
+      "append": true,
+      "value": {
+        "id": "nancy-wheeler--painter-s-jeans--legs--qf-legs012",
+        "name": "Painter's Jeans",
+        "baseCharacterId": "989d3ba3-1119-4ff7-b6b0-c4d7d078aaf4",
+        "baseCharacterName": "Nancy Wheeler",
+        "baseCharacterType": "Survivor",
+        "groupKey": "cosmetic",
+        "groupLabel": "Stranger Things",
+        "collectionName": "Stranger Things",
+        "image": "./dbd_images/cosmetics/full_sets/nancy-wheeler--painter-s-jeans--legs--qf-legs012.png",
+        "aliases": [
+          "painter's jeans",
+          "stranger things",
+          "legs",
+          "nancy wheeler",
+          "unlinked",
+          "unlinked outfit"
+        ],
+        "sourceKind": "wiki-collection-page",
+        "sourcePage": "Stranger Things Collection",
+        "assetProvenance": "official-piece-icon",
+        "status": "ready",
+        "rarity": "Very Rare",
+        "outfitLinkMode": "unlinked",
+        "boundSlots": [],
+        "bindSummary": "",
+        "isLinkedSet": false,
+        "isCharacterSwap": false,
+        "pieceType": "Legs",
+        "sourceBucket": "Stranger Things",
+        "assetFileTitleCandidates": [
+          "File:QF Legs012.png"
+        ],
+        "description": "Her finger tightened around the trigger. Each round carved through its flesh. She remained perfectly calm, right where she wanted to be."
+      },
+      "source": {
+        "url": "https://deadbydaylight.wiki.gg/wiki/Stranger_Things_Collection",
+        "patch": "Stranger Things Collection",
+        "channel": "live"
+      }
+    },
+    {
+      "file": "content/cosmetics.json",
+      "path": [
+        "metadata"
+      ],
+      "before": {
+        "sourceDiscoveryGeneratedAt": "2026-10-07T06:45:56.990Z",
+        "characterSwapCount": 120,
+        "fullSetCount": 4267,
+        "cosmeticCount": 4267,
+        "linkedFullSetCount": 57,
+        "linkedCosmeticCount": 57,
+        "fullSetLinkModeCounts": {
+          "unlinked": 4210,
+          "partially_linked": 7,
+          "linked": 50
+        },
+        "cosmeticLinkModeCounts": {
+          "unlinked": 4210,
+          "partially_linked": 7,
+          "linked": 50
+        }
+      },
+      "value": {
+        "sourceDiscoveryGeneratedAt": "2026-10-07T06:45:56.990Z",
+        "characterSwapCount": 120,
+        "fullSetCount": 4305,
+        "cosmeticCount": 4305,
+        "linkedFullSetCount": 58,
+        "linkedCosmeticCount": 58,
+        "fullSetLinkModeCounts": {
+          "unlinked": 4247,
+          "partially_linked": 7,
+          "linked": 51
+        },
+        "cosmeticLinkModeCounts": {
+          "unlinked": 4247,
+          "partially_linked": 7,
+          "linked": 51
+        },
+        "lastCollectionSync": "2026-11-08"
+      },
+      "source": {
+        "url": "https://deadbydaylight.wiki.gg/wiki/Haunted_by_Daylight_2026",
+        "patch": "Haunted by Daylight 2026",
+        "channel": "live"
+      }
+    },
+    {
+      "file": "content/cosmetics.json",
+      "path": [
+        "generatedAt"
+      ],
+      "before": "2026-10-07T06:45:57.392Z",
+      "value": "2026-11-08T00:00:00.000Z",
+      "source": {
+        "url": "https://deadbydaylight.wiki.gg/wiki/Haunted_by_Daylight_2026",
+        "patch": "Haunted by Daylight 2026",
+        "channel": "live"
+      }
+    }
+  ],
+  "deferred": [
+    "Uncorroborated API description changes and Refined Serum removals",
+    "Historical cosmetic and anniversary item coverage gaps",
+    "Terrifier PTB content, released November 24",
+    "Unsupported badges, banners and charms"
+  ]
+}

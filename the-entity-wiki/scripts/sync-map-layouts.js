@@ -436,12 +436,12 @@ async function main() {
     rows: reportRows
   };
 
-  writeJsonAtomic(REPORT_PATH, report, { backup: false });
+  if (!dryRun && !checkMode) writeJsonAtomic(REPORT_PATH, report, { backup: false });
 
   console.log(`sync-map-layouts: callout entries=${hensEntries.length}`);
   console.log(`sync-map-layouts: maps(unique)=${uniqueMaps.length} missingSource=${missingSourceMaps.length} missingMapLayoutKeys=${unresolvedMaps.length}`);
   console.log(`sync-map-layouts: downloaded=${downloadedCount} reused=${reusedCount} skipped=${skippedCount} failed=${failedCount}`);
-  console.log(`sync-map-layouts: report=${path.relative(ROOT, REPORT_PATH)}`);
+  console.log(`sync-map-layouts: report=${dryRun || checkMode ? 'not written (read-only)' : path.relative(ROOT, REPORT_PATH)}`);
 
   if (upgradeCandidates.length > 0) {
     console.log(`sync-map-layouts: legacy layout upgrade candidates=${upgradeCandidates.length}`);

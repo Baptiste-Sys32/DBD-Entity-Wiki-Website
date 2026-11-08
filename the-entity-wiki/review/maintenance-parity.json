@@ -1,0 +1,31 @@
+{
+  "compared": [
+    "content/database.json",
+    "content/community-content.json",
+    "content/cosmetics.json",
+    "content/timeline.json",
+    "content/perk-description-report.json",
+    "content/addon-description-report.json",
+    "content/killer-guides.json",
+    "content/killer-stats.json",
+    "content/power-mechanics.json",
+    "content/glossary.json",
+    "content/premade-builds.json",
+    "content/achievements.json",
+    "content/meta.json (shared game metadata)",
+    "web/data.js",
+    "web/lore.js",
+    "web/cosmetics.js",
+    "web/community-content.js",
+    "web/meta.js",
+    "web/changelog.js",
+    "web/guides.js",
+    "web/glossary.js",
+    "web/premade-builds.js",
+    "web/achievements.js",
+    "web/worldle-data.js",
+    "6045 referenced asset hashes"
+  ],
+  "drifts": [],
+  "warnings": []
+}

@@ -98,8 +98,9 @@ class CDP:
         self.call('Emulation.setCPUThrottlingRate', rate=rate)
         self.call('Emulation.setDeviceMetricsOverride', width=390 if rate > 1 else 1440,
                   height=844 if rate > 1 else 1000, deviceScaleFactor=1, mobile=rate > 1)
+        previous_origin = self.js('performance.timeOrigin')
         self.call('Page.navigate', url=url)
-        self.until("!!document.querySelector('[data-smoke-ready]')")
+        self.until("performance.timeOrigin !== " + str(previous_origin) + " && !!document.querySelector('[data-smoke-ready]')")
         time.sleep(1)
         return self.js("""({rootMs:__hardening.root,
           paints:performance.getEntriesByType('paint').map(e=>({name:e.name,ms:e.startTime})),

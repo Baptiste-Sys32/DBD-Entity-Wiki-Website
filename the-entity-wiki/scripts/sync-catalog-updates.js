@@ -2,14 +2,14 @@
 
 const fs = require('fs');
 const path = require('path');
-const https = require('https');
 const { spawnSync } = require('child_process');
-const { fetchJsonWithRetry, formatFetchError } = require('./network-resilience');
+const { fetchJsonWithRetry, fetchBinaryWithRetry, formatFetchError } = require('./network-resilience');
 const { writeJsonAtomic } = require('./atomic-write');
 
 const ROOT = path.resolve(__dirname, '..');
 const DATABASE_PATH = path.join(ROOT, 'content', 'database.json');
 const WEB_IMAGE_ROOT = path.join(ROOT, 'web', 'dbd_images');
+const dryRun = !process.argv.includes('--apply') || process.argv.includes('--dry-run') || process.argv.includes('--check');
 const API_BASE = 'https://dbd.tricky.lol/api';
 const WIKI_API_URL = 'https://deadbydaylight.wiki.gg/api.php';
 
@@ -47,53 +47,8 @@ async function requestJson(url) {
   }
 }
 
-function requestBuffer(url, timeoutMs = 15000) {
-  return new Promise((resolve, reject) => {
-    let settled = false;
-    const fail = (error) => {
-      if (settled) return;
-      settled = true;
-      reject(error);
-    };
-    const succeed = (value) => {
-      if (settled) return;
-      settled = true;
-      resolve(value);
-    };
-    let req;
-    try {
-      req = https.get(url, {
-        headers: {
-          'User-Agent': 'Mozilla/5.0 (compatible; sync-catalog-updates/1.0)',
-          Accept: 'image/webp,image/png,image/*,*/*;q=0.8'
-        }
-      }, (response) => {
-        if (response.statusCode >= 300 && response.statusCode < 400 && response.headers.location) {
-          requestBuffer(response.headers.location, timeoutMs).then(succeed, fail);
-          response.resume();
-          return;
-        }
-
-        if (response.statusCode !== 200) {
-          response.resume();
-          fail(new Error(`request failed with status ${response.statusCode} for ${url}`));
-          return;
-        }
-
-        const chunks = [];
-        response.on('data', (chunk) => chunks.push(chunk));
-        response.on('end', () => succeed(Buffer.concat(chunks)));
-        response.on('error', fail);
-      });
-    } catch (error) {
-      fail(error);
-      return;
-    }
-    req.on('error', fail);
-    req.setTimeout(timeoutMs, () => {
-      req.destroy(new Error(`request timed out after ${timeoutMs}ms for ${url}`));
-    });
-  });
+async function requestBuffer(url, timeoutMs = 15000) {
+  return fetchBinaryWithRetry(url, { ...NETWORK_OPTIONS, timeoutMs, maxRedirects: 5, headers: { 'user-agent': 'Mozilla/5.0 (compatible; sync-catalog-updates/1.0)', accept: 'image/webp,image/png,image/*,*/*;q=0.8' } });
 }
 
 function isPng(buffer) {
@@ -420,6 +375,7 @@ async function resolveImageUrl(titles) {
 }
 
 async function syncImage(sourcePath, localPath, sourceCharacter = null) {
+  if (dryRun) return { status: 'skipped', localPath: 'discovery-only' };
   const absolutePath = path.join(ROOT, 'web', localPath.replace(/^dbd_images\//, 'dbd_images/'));
   if (fs.existsSync(absolutePath) && fs.statSync(absolutePath).size > 100) {
     return { status: 'skipped', localPath };
@@ -551,7 +507,17 @@ async function main() {
     changes.images[imageResult.status].push(imageResult);
   }
 
-  writeJson(DATABASE_PATH, database);
+  const validator = require('./sync-approved-update').validateDocument;
+  for (const category of ['killers', 'survivors', 'perks', 'items', 'addons']) {
+    for (const entry of database[category].filter(entry => changes[category].includes(entry.name))) validator(entry);
+  }
+  validator(database, true);
+  if (process.argv.includes('--check') && Object.keys(changes).some(key => Array.isArray(changes[key]) && changes[key].length)) process.exitCode = 1;
+  if (!dryRun) {
+    if (changes.images.missing.length) throw new Error('Missing artwork; canonical catalog was not written');
+    writeJson(DATABASE_PATH, database);
+  }
+  console.log(`sync-catalog-updates: mode=${dryRun ? 'discovery' : 'apply'}`);
 
   console.log(`sync-catalog-updates: killers added=${changes.killers.length} survivors added=${changes.survivors.length}`);
   console.log(`sync-catalog-updates: perks added=${changes.perks.length} items added=${changes.items.length} addons added=${changes.addons.length}`);

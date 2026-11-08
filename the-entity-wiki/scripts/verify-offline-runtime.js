@@ -7,7 +7,7 @@ const vm = require('vm');
 const { validateNormalizedDatabase } = require('./normalize-images');
 
 const ROOT = path.resolve(__dirname, '..');
-const WEB_ROOT = path.join(ROOT, 'web');
+const WEB_ROOT = path.resolve(ROOT, process.env.DBD_WEB_ROOT || 'web');
 const INDEX_PATH = path.join(WEB_ROOT, 'index.html');
 const DATA_PATH = path.join(WEB_ROOT, 'data.js');
 const COSMETICS_DATA_PATH = path.join(WEB_ROOT, 'cosmetics.js');
@@ -29,7 +29,7 @@ function listJsRecursive(dir) {
 
 function readWebBundle() {
   const indexHtml = fs.readFileSync(INDEX_PATH, 'utf8');
-  const extraFiles = [...listJsRecursive(ENGINE_DIR), ...listJsRecursive(GAMES_DIR)];
+  const extraFiles = [...listJsRecursive(ENGINE_DIR), ...listJsRecursive(GAMES_DIR), ...['meta', 'changelog', 'guides', 'glossary', 'premade-builds', 'achievements'].map(name => path.join(WEB_ROOT, name + '.js'))];
   const extraSources = extraFiles.map((full) => ({
     name: path.relative(WEB_ROOT, full).replace(/\\/g, '/'),
     code: fs.readFileSync(full, 'utf8'),
@@ -226,8 +226,9 @@ function auditWorldle(indexHtml, db, worldleData) {
   const genders = worldleData?.genders || {};
   const emojiClues = worldleData?.emojiClues || {};
 
-  const killerStatsMatches = [...indexHtml.matchAll(/"([^"]+)":\s*\{\s*terrorRadius:\s*"[^"]+",\s*speed:\s*"[^"]+",\s*height:\s*"[^"]+"/g)];
-  const killerStatsNames = new Set(killerStatsMatches.map((match) => match[1]));
+  const guides = {};
+  vm.runInNewContext(fs.readFileSync(path.join(WEB_ROOT, 'guides.js'), 'utf8'), guides);
+  const killerStatsNames = new Set(Object.keys(guides.KILLER_STATS || {}));
 
   killers.forEach((killer) => {
     if (!killerStatsNames.has(killer.name)) {

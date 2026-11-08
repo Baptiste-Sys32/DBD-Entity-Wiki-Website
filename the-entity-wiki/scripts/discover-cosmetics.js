@@ -576,8 +576,8 @@ function parseCollectionOutfitRows(renderedHtml, pageTitle, characterLookup, cha
       description,
       collectionName,
       pieceType: 'Outfit',
-      outfitLinkMode: 'unlinked',
-      boundSlots,
+      outfitLinkMode: node.find('.linkedIcon').length ? inferOutfitLinkMode('Outfit', boundSlots) : 'unlinked',
+      boundSlots: node.find('.linkedIcon').length ? boundSlots : [],
       bindSummary: boundSlots.join(' + '),
       basePageTitle: baseCharacter.name,
       baseCharacterId: baseCharacter.id,
@@ -587,7 +587,34 @@ function parseCollectionOutfitRows(renderedHtml, pageTitle, characterLookup, cha
       sourceKind: 'wiki-collection-page',
       sourcePage: pageTitle,
       slugHint: `${slugify(baseCharacter.name)}--${slugify(name)}--${slugify(collectionName)}--${slugify(fileStem)}`,
-      statusHint: 'ready'
+      statusHint: 'ready',
+      releaseDate: node.find('.releaseDateValue').first().text().trim()
+    });
+  });
+
+  // Expanded components and standalone event rewards use a different table.
+  $('.expandedPiece, .fakeOutfit').each((_, element) => {
+    const node = $(element);
+    const parent = node.closest('.cosmeticTable');
+    const baseLabel = node.find('.pieceCharacter a').first().text().trim() || parent.find('.pieceCharacter a').first().text().trim();
+    const base = resolveCharacterFromLabel(baseLabel, characterLookup, characters);
+    const name = node.find('.pieceName.divTableCell').first().text().trim();
+    const asset = toCollectionAssetFileTitle(node.find('.pieceThumbnail img').first().attr('alt') || '');
+    if (!name || !asset) return;
+    if (!base) { unmappedRows.push(`${pageTitle}::${name}::${baseLabel}`); return; }
+    const slot = node.find('.bodyPartHeader.divTableCell img').first().attr('alt') || '';
+    const slotName = slot.replace(/^CategoryIcon[_ ]*/i, '').replace(/\.png$/i, '');
+    const pieceType = /weapon/i.test(slotName) ? 'Weapon' : /head|mask|hair/i.test(slotName) ? 'Head' : /legs|lower/i.test(slotName) ? 'Legs' : 'Body';
+    entries.push({
+      kind: 'cosmetic', groupKey: 'cosmetic', groupLabel: bucketLabel || 'Collection',
+      pageTitle, templateName: pageTitle, sourceBucket: bucketLabel, name,
+      rarity: inferRarityFromClassName(node.find('.pieceThumbnail').attr('class') || ''),
+      description: node.find('.pieceDesc').first().text().trim(),
+      collectionName: node.find('.collectionHeader.divTableCell').first().text().trim() || bucketLabel,
+      pieceType, outfitLinkMode: 'unlinked', boundSlots: [], bindSummary: '',
+      basePageTitle: base.name, baseCharacterId: base.id, baseCharacterName: base.name, baseCharacterType: base.type,
+      assetFileTitleCandidates: sanitizeAssetCandidates([asset]), sourceKind: 'wiki-collection-page', sourcePage: pageTitle,
+      releaseDate: parent.find('.releaseDateValue').first().text().trim(), statusHint: 'ready'
     });
   });
 
@@ -943,6 +970,25 @@ async function discoverRiftTemplates(characterLookup, characters, characterSwapL
 }
 
 async function main() {
+  const args = process.argv.slice(2);
+  const collectionIndex = args.indexOf('--collection');
+  if (collectionIndex !== -1) {
+    const page = args[collectionIndex + 1];
+    if (!page || page.startsWith('--')) throw new Error('--collection requires a page title');
+    const database = readJson(DATABASE_PATH);
+    const parsed = parseCollectionOutfitRows(await fetchRenderedHtml(page), page, buildCharacterLookup(database), buildCharactersList(database));
+    const sinceIndex = args.indexOf('--since');
+    const since = sinceIndex === -1 ? null : Date.parse(args[sinceIndex + 1]);
+    if (sinceIndex !== -1 && !Number.isFinite(since)) throw new Error('Invalid --since date');
+    const entries = parsed.entries.filter(entry => !since || (Number.isFinite(Date.parse(entry.releaseDate)) && Date.parse(entry.releaseDate) > since));
+    const outputIndex = args.indexOf('--output');
+    if (outputIndex !== -1 && !args.includes('--dry-run') && !args.includes('--check')) {
+      writeJson(require('path').resolve(args[outputIndex + 1]), { characterSwaps: [], fullSets: entries, unmappedRows: parsed.unmappedRows });
+    }
+    console.log(`discover-cosmetics: collection=${page} entries=${entries.length} unmapped=${parsed.unmappedRows.length}`);
+    if (parsed.unmappedRows.length) throw new Error('Unmapped collection rows');
+    return;
+  }
   console.log('discover-cosmetics: starting discovery run');
   const database = readJson(DATABASE_PATH);
   const characters = buildCharactersList(database);
@@ -1054,12 +1100,14 @@ async function main() {
     fullSets: cosmetics.entries
   };
 
-  writeJson(DISCOVERY_PATH, discovery);
-  console.log(`discover-cosmetics: wrote ${DISCOVERY_PATH}`);
+  if (!process.argv.includes('--dry-run') && !process.argv.includes('--check')) writeJson(DISCOVERY_PATH, discovery);
+  console.log(`discover-cosmetics: ${process.argv.includes('--dry-run') || process.argv.includes('--check') ? 'read-only, no report written' : 'wrote discovery report'}`);
   console.log(`discover-cosmetics: characterSwaps=${characterSwap.entries.length} cosmetics=${cosmetics.entries.length}`);
 }
 
-main().catch((error) => {
+module.exports = { parseCollectionOutfitRows, buildCharactersList };
+
+if (require.main === module) main().catch((error) => {
   console.error(`discover-cosmetics: ${error.message}`);
   process.exit(1);
 });

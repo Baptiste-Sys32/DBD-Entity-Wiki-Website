@@ -1,0 +1,11 @@
+[
+  {
+    "id": "aaef5753-3c84-4704-bab8-c0acf50f6d72",
+    "description": "You basic-vault Windows 15/20/25% faster. All basic-attack cooldowns are 10% shorter, including successful, missed and obstructed attacks. Blindness and Pallet stuns last 25% longer.",
+    "source": {
+      "url": "https://forums.bhvr.com/dead-by-daylight/kb/articles/562-10-2-2-bugfix-patch",
+      "patch": "10.2.2",
+      "channel": "live"
+    }
+  }
+]

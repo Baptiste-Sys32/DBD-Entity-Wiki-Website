@@ -275,6 +275,9 @@ async function getImageInfo(fileTitle) {
 async function downloadToFile(url, filePath) {
   ensureDir(path.dirname(filePath));
   const buffer = await request(url, 'buffer');
+  if (buffer.length < 24 || !buffer.subarray(0, 8).equals(Buffer.from([137, 80, 78, 71, 13, 10, 26, 10]))) {
+    throw new Error('Expected a non-empty PNG image; refusing to save invalid artwork');
+  }
   writeFileAtomic(filePath, buffer);
 }
 

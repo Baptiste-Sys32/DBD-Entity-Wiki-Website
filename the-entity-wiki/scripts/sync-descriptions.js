@@ -58,10 +58,13 @@ const NETWORK_OPTIONS = {
 };
 
 const args = new Set(process.argv.slice(2));
-const dryRun = args.has('--dry-run');
+const dryRun = args.has('--dry-run') || !args.has('--apply');
 const checkMode = args.has('--check');
 const allowUnresolved = args.has('--allow-unresolved');
 const healthCheckOnly = args.has('--health-check');
+const reviewedOverrides = require('./description-overrides.json');
+const unresolvedTemplate = /\{(?:Tunable|Keyword|Input)\.|\{\d+\}/;
+
 
 function fail(message) {
   console.error(`sync-descriptions: ${message}`);
@@ -350,6 +353,12 @@ function processPerks(database, perksPayload) {
     if (officialOverride) {
       sourceDescription = normalizeMultilineText(officialOverride);
     }
+    const reviewed = reviewedOverrides.find(operation => operation.id === perk.id);
+    if (reviewed) sourceDescription = normalizeMultilineText(reviewed.description);
+    if (unresolvedTemplate.test(sourceDescription)) {
+      unresolved.push(`${perk.name}: unresolved source template`);
+      continue;
+    }
     const legacyDescription = normalizeMultilineText(perk.description || '');
     const existingPost95 = normalizeMultilineText(perk.descriptionPost95 || '');
 
@@ -442,6 +451,10 @@ function processAddons(database, addonsPayload) {
     if (officialOverride) {
       sourceDescription = normalizeMultilineText(officialOverride);
     }
+    if (unresolvedTemplate.test(sourceDescription)) {
+      unresolved.push(`${addon.name}: unresolved source template`);
+      continue;
+    }
     const localDescription = normalizeMultilineText(addon.description || '');
     const changed = semanticNormalize(sourceDescription) !== semanticNormalize(localDescription);
 
@@ -524,9 +537,10 @@ async function main() {
     }
   };
 
+  if (unresolved.some(entry => entry.includes('unresolved source template'))) fail(`source templates unresolved: ${unresolved.join('; ')}. No files written.`);
   const hasUnresolved = unresolved.length > 0;
   if (hasUnresolved && !allowUnresolved) {
-    fail(`unresolved entries found (${unresolved.length}). Re-run with --allow-unresolved to continue.`);
+    fail(`unresolved entries found (${unresolved.length}): ${unresolved.join('; ')}. No files written.`);
   }
 
   const hasChanges = perkResult.changes.total + addonResult.changes.total > 0;

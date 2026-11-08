@@ -1,21 +1,4 @@
 /* DBD game adapter - registries consumed by the wiki engine (nav options, sections, browse shortlist, favorites, links, meta). Loaded as text/babel after engine/, before the game bundle. */
-    const META = {
-      siteVersion: "5.34.2",
-      gameVersion: "10.2.0",
-      lastSynced: "October 7, 2026",
-      contact: {
-        email: "hexplosions.happen@gmail.com",
-        discord: "hexplosions_happen"
-      },
-      thanks: [
-        "Hens333 - High quality map layouts",
-        "Claude - Research and support",
-        "Codex - Feedback and polish",
-        "Steam Community - Map layout guides",
-        "DBD Fandom Wiki - Game data and assets",
-        "DBD public sources - up-to-date game info"
-      ]
-    };
     const PLAY_STORE_LINKS = {
       en: 'https://play.google.com/store/apps/details?id=com.theentity.wiki&hl=en',
       fr: 'https://play.google.com/store/apps/details?id=com.theentity.wiki&hl=fr'

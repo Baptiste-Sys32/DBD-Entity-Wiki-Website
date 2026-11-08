@@ -19,8 +19,9 @@
 const fs = require('fs');
 const path = require('path');
 const vm = require('vm');
+const crypto = require('crypto');
 
-const LOCAL_ROOT = path.resolve(__dirname, '..');
+let LOCAL_ROOT = path.resolve(__dirname, '..');
 
 // Timestamp / volatile keys ignored everywhere (rebuild churn, not content).
 const VOLATILE_KEYS = new Set(['generatedAt', 'fetchedAt', 'sourceDiscoveryGeneratedAt', 'lastChecked', 'checkedAt']);
@@ -68,6 +69,7 @@ function parseArgs(argv) {
   for (let i = 0; i < argv.length; i++) {
     if (argv[i] === '--peer') peer = argv[++i];
     else if (argv[i] === '--json') jsonOut = argv[++i];
+    else if (argv[i] === '--local') LOCAL_ROOT = path.resolve(argv[++i]);
     else usageError(`unknown argument: ${argv[i]}`);
   }
   if (!peer) usageError('--peer <path> is required.');
@@ -98,7 +100,7 @@ function loadJson(filePath) {
 
 function loadJsGlobal(filePath, globalName) {
   const code = fs.readFileSync(filePath, 'utf8');
-  const sandbox = {};
+  const sandbox = { module: { exports: {} } };
   vm.createContext(sandbox);
   if (globalName) {
     vm.runInContext(`${code}\nthis.__parity = ${globalName};`, sandbox, { filename: filePath });
@@ -111,41 +113,31 @@ function loadJsGlobal(filePath, globalName) {
 // database.json gets a targeted diff: roster counts + per-id description drift.
 function diffDatabase(local, peer) {
   const drifts = [];
-  for (const key of ['killers', 'survivors', 'perks', 'items', 'offerings', 'addons', 'maps', 'realms']) {
-    const a = Array.isArray(local[key]) ? local[key] : [];
-    const b = Array.isArray(peer[key]) ? peer[key] : [];
-    if (a.length !== b.length) {
-      drifts.push(`${key} count: local=${a.length} peer=${b.length}`);
-    }
+  for (const key of Object.keys(local)) {
+    if (stableStringify(local[key]) !== stableStringify(peer[key])) drifts.push(`${key}: complete records differ`);
   }
-  const byId = (arr) => {
-    const m = new Map();
-    for (const e of arr || []) m.set(e.id || e.name, e);
-    return m;
-  };
-  for (const key of ['perks', 'addons']) {
-    const a = byId(local[key]);
-    const b = byId(peer[key]);
-    const divergent = [];
-    for (const [id, ea] of a) {
-      const eb = b.get(id);
-      if (!eb) {
-        if (divergent.length < 20) divergent.push(`${ea.name || id} (missing on peer)`);
-        continue;
-      }
-      for (const field of ['description', 'descriptionPost95', 'name']) {
-        if (stableStringify(ea[field]) !== stableStringify(eb[field])) {
-          if (divergent.length < 20) divergent.push(`${ea.name || id} field ${field}`);
-          break;
-        }
-      }
-    }
-    for (const [id, eb] of b) {
-      if (!a.has(id) && divergent.length < 20) divergent.push(`${eb.name || id} (missing locally)`);
-    }
-    if (divergent.length) drifts.push(`${key} divergent (${divergent.length} shown max 20): ${divergent.join('; ')}`);
-  }
+  for (const key of Object.keys(peer)) if (!(key in local)) drifts.push(`${key}: missing locally`);
   return drifts;
+}
+
+const BUNDLE_SOURCES = {
+  'web/data.js': ['content/database.json'], 'web/lore.js': ['content/timeline.json'],
+  'web/cosmetics.js': ['content/cosmetics.json'], 'web/community-content.js': ['content/community-content.json'],
+  'web/meta.js': ['content/meta.json'], 'web/changelog.js': ['content/changelog.json'],
+  'web/glossary.js': ['content/glossary.json'], 'web/premade-builds.js': ['content/premade-builds.json'],
+  'web/achievements.js': ['content/achievements.json'],
+  'web/guides.js': ['content/killer-guides.json', 'content/killer-stats.json', 'content/power-mechanics.json']
+};
+function expectedBundle(root, rel) {
+  const sources = BUNDLE_SOURCES[rel];
+  if (!sources) return undefined;
+  const values = sources.map(file => loadJson(path.join(root, file)));
+  return values.length === 1 ? values[0] : { KILLER_GUIDES: values[0], KILLER_STATS: values[1], POWER_MECHANICS: values[2] };
+}
+function assetPaths(value, paths = new Set()) {
+  if (typeof value === 'string' && /^(?:\.\/)?(?:dbd_images|assets)\/[^?#]+\.(?:png|jpe?g|webp|svg|gif)$/i.test(value)) paths.add(value.replace(/^\.\//, ''));
+  else if (value && typeof value === 'object') for (const child of Object.values(value)) assetPaths(child, paths);
+  return paths;
 }
 
 function main() {
@@ -184,9 +176,10 @@ function main() {
     const aPath = path.join(LOCAL_ROOT, rel);
     const bPath = path.join(peer, rel);
     if (fs.existsSync(aPath) && fs.existsSync(bPath)) {
-      compared.push(`${rel} (gameVersion only)`);
+      compared.push(`${rel} (shared game metadata)`);
       const a = loadJson(aPath);
       const b = loadJson(bPath);
+      if (a.lastSynced !== b.lastSynced) drifts.push(`${rel}: lastSynced differs.`);
       if ((a.gameVersion || '').trim() !== (b.gameVersion || '').trim()) {
         drifts.push(`${rel}: gameVersion differs (local=${a.gameVersion} peer=${b.gameVersion}).`);
       }
@@ -224,11 +217,29 @@ function main() {
       drifts.push(`${rel}: failed to parse on peer (${e.message}).`);
       continue;
     }
-    if (stableStringify(aVal) !== stableStringify(bVal)) {
+    for (const [root, value, label] of [[LOCAL_ROOT, aVal, 'local'], [peer, bVal, 'peer']]) {
+      const expected = expectedBundle(root, rel);
+      if (expected !== undefined && stableStringify(value) !== stableStringify(expected)) drifts.push(`${rel}: ${label} bundle is stale against its canonical JSON`);
+    }
+    if (!['web/meta.js', 'web/changelog.js'].includes(rel) && stableStringify(aVal) !== stableStringify(bVal)) {
       drifts.push(`${rel}: bundle payload differs semantically.`);
     }
   }
 
+  const assets = new Set();
+  for (const rel of CONTENT_FILES) {
+    for (const root of [LOCAL_ROOT, peer]) {
+      const file = path.join(root, rel);
+      if (fs.existsSync(file)) assetPaths(loadJson(file), assets);
+    }
+  }
+  for (const asset of assets) {
+    const files = [LOCAL_ROOT, peer].map(root => path.join(root, 'web', asset));
+    if (files.some(file => !fs.existsSync(file))) { drifts.push(`asset missing: ${asset}`); continue; }
+    const hashes = files.map(file => crypto.createHash('sha256').update(fs.readFileSync(file)).digest('hex'));
+    if (hashes[0] !== hashes[1]) drifts.push(`asset differs: ${asset}`);
+  }
+  compared.push(`${assets.size} referenced asset hashes`);
   const report = { compared, drifts, warnings };
   if (jsonOut) {
     const outPath = path.resolve(LOCAL_ROOT, jsonOut);

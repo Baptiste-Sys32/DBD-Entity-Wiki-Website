@@ -344,4 +344,6 @@ function main() {
   console.log(`normalize-cosmetics: characterSwaps=${characterSwaps.length} fullSets=${fullSets.length}`);
 }
 
-main();
+if (require.main === module) main();
+
+module.exports = { mapFullSet };

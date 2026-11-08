@@ -1,0 +1,3770 @@
+{
+  "before": {
+    "1": [
+      {
+        "load": {
+          "rootMs": 3524.5999999996275,
+          "paints": [
+            {
+              "name": "first-paint",
+              "ms": 636
+            },
+            {
+              "name": "first-contentful-paint",
+              "ms": 664
+            }
+          ],
+          "tasks": [
+            {
+              "start": 277.3999999994412,
+              "ms": 186
+            },
+            {
+              "start": 464.8999999994412,
+              "ms": 158
+            },
+            {
+              "start": 692.2999999998137,
+              "ms": 177
+            },
+            {
+              "start": 869.7999999998137,
+              "ms": 108
+            },
+            {
+              "start": 1012,
+              "ms": 2322
+            },
+            {
+              "start": 3335.2999999998137,
+              "ms": 225
+            }
+          ],
+          "resources": [
+            {
+              "name": "before/vendor/react.production.min.js",
+              "bytes": 10751,
+              "ms": 37.09999999962747
+            },
+            {
+              "name": "before/vendor/react-dom.production.min.js",
+              "bytes": 131835,
+              "ms": 37.80000000074506
+            },
+            {
+              "name": "before/vendor/tailwindcss.min.js",
+              "bytes": 407279,
+              "ms": 44.39999999944121
+            },
+            {
+              "name": "before/vendor/babel.min.js",
+              "bytes": 2921550,
+              "ms": 61.5
+            },
+            {
+              "name": "before/engine/engine.css",
+              "bytes": 57266,
+              "ms": 29.799999999813735
+            },
+            {
+              "name": "before/assets/loading/dbd-logo-static.png",
+              "bytes": 12469,
+              "ms": 38.299999999813735
+            },
+            {
+              "name": "before/data.js",
+              "bytes": 1450743,
+              "ms": 58.40000000037253
+            },
+            {
+              "name": "before/lore.js",
+              "bytes": 64103,
+              "ms": 44.90000000037253
+            },
+            {
+              "name": "before/cosmetics.js",
+              "bytes": 5645878,
+              "ms": 116.70000000018626
+            },
+            {
+              "name": "before/community-content.js",
+              "bytes": 2324002,
+              "ms": 111.70000000018626
+            },
+            {
+              "name": "before/worldle-data.js",
+              "bytes": 22742,
+              "ms": 175.09999999962747
+            },
+            {
+              "name": "before/engine/icons.js",
+              "bytes": 18450,
+              "ms": 7.7000000001862645
+            },
+            {
+              "name": "before/engine/core.js",
+              "bytes": 1465,
+              "ms": 6.1000000005587935
+            },
+            {
+              "name": "before/engine/theme.js",
+              "bytes": 3130,
+              "ms": 5.2999999998137355
+            },
+            {
+              "name": "before/engine/storage.js",
+              "bytes": 1604,
+              "ms": 8.099999999627471
+            },
+            {
+              "name": "before/engine/device.js",
+              "bytes": 5116,
+              "ms": 6.2000000001862645
+            },
+            {
+              "name": "before/engine/shell.js",
+              "bytes": 8335,
+              "ms": 8.599999999627471
+            },
+            {
+              "name": "before/engine/assets.js",
+              "bytes": 6741,
+              "ms": 11
+            },
+            {
+              "name": "before/engine/articles.js",
+              "bytes": 7744,
+              "ms": 11.700000000186265
+            },
+            {
+              "name": "before/games/dbd/config.js",
+              "bytes": 8643,
+              "ms": 9.300000000745058
+            },
+            {
+              "name": "before/assets/favicon.png",
+              "bytes": 974,
+              "ms": 7.8999999994412065
+            },
+            {
+              "name": "before/assets/wiki-logo.png",
+              "bytes": 12522,
+              "ms": 3.7999999998137355
+            },
+            {
+              "name": "before/assets/r6-badge.png",
+              "bytes": 1476,
+              "ms": 3.8999999994412065
+            },
+            {
+              "name": "before/assets/fonts/bitter-var.woff2",
+              "bytes": 34072,
+              "ms": 2.2999999998137355
+            },
+            {
+              "name": "intl/en_us/badges/static/images/badges/en_badge_web_generic.png",
+              "bytes": 0,
+              "ms": 69.79999999981374
+            }
+          ]
+        },
+        "worstScoringMs": 51.80000000074506
+      },
+      {
+        "load": {
+          "rootMs": 3079.100000000559,
+          "paints": [
+            {
+              "name": "first-paint",
+              "ms": 288
+            },
+            {
+              "name": "first-contentful-paint",
+              "ms": 288
+            }
+          ],
+          "tasks": [
+            {
+              "start": 181.90000000037253,
+              "ms": 66
+            },
+            {
+              "start": 295,
+              "ms": 122
+            },
+            {
+              "start": 547.6000000005588,
+              "ms": 69
+            },
+            {
+              "start": 617.4000000003725,
+              "ms": 2296
+            },
+            {
+              "start": 2915.2000000001863,
+              "ms": 198
+            }
+          ],
+          "resources": [
+            {
+              "name": "before/vendor/react.production.min.js",
+              "bytes": 10751,
+              "ms": 6.099999999627471
+            },
+            {
+              "name": "before/vendor/react-dom.production.min.js",
+              "bytes": 131835,
+              "ms": 8.5
+            },
+            {
+              "name": "before/vendor/babel.min.js",
+              "bytes": 2921550,
+              "ms": 36.700000000186265
+            },
+            {
+              "name": "before/vendor/tailwindcss.min.js",
+              "bytes": 407279,
+              "ms": 17
+            },
+            {
+              "name": "before/engine/engine.css",
+              "bytes": 57266,
+              "ms": 9.200000000186265
+            },
+            {
+              "name": "before/assets/loading/dbd-logo-static.png",
+              "bytes": 12469,
+              "ms": 10.400000000372529
+            },
+            {
+              "name": "before/data.js",
+              "bytes": 1450743,
+              "ms": 24.899999999441206
+            },
+            {
+              "name": "before/lore.js",
+              "bytes": 64103,
+              "ms": 20.100000000558794
+            },
+            {
+              "name": "before/community-content.js",
+              "bytes": 2324002,
+              "ms": 68.8999999994412
+            },
+            {
+              "name": "before/cosmetics.js",
+              "bytes": 5645878,
+              "ms": 83
+            },
+            {
+              "name": "before/worldle-data.js",
+              "bytes": 22742,
+              "ms": 155.70000000018626
+            },
+            {
+              "name": "before/engine/icons.js",
+              "bytes": 18450,
+              "ms": 7.699999999254942
+            },
+            {
+              "name": "before/engine/core.js",
+              "bytes": 1465,
+              "ms": 7.900000000372529
+            },
+            {
+              "name": "before/engine/theme.js",
+              "bytes": 3130,
+              "ms": 8.399999999441206
+            },
+            {
+              "name": "before/engine/storage.js",
+              "bytes": 1604,
+              "ms": 9.799999999813735
+            },
+            {
+              "name": "before/engine/device.js",
+              "bytes": 5116,
+              "ms": 8.5
+            },
+            {
+              "name": "before/engine/shell.js",
+              "bytes": 8335,
+              "ms": 9.700000000186265
+            },
+            {
+              "name": "before/engine/assets.js",
+              "bytes": 6741,
+              "ms": 11.099999999627471
+            },
+            {
+              "name": "before/engine/articles.js",
+              "bytes": 7744,
+              "ms": 12
+            },
+            {
+              "name": "before/games/dbd/config.js",
+              "bytes": 8643,
+              "ms": 12.200000000186265
+            },
+            {
+              "name": "before/assets/wiki-logo.png",
+              "bytes": 12522,
+              "ms": 2.2999999998137355
+            },
+            {
+              "name": "before/assets/r6-badge.png",
+              "bytes": 1476,
+              "ms": 2.900000000372529
+            },
+            {
+              "name": "before/assets/fonts/bitter-var.woff2",
+              "bytes": 34072,
+              "ms": 2.400000000372529
+            },
+            {
+              "name": "intl/en_us/badges/static/images/badges/en_badge_web_generic.png",
+              "bytes": 0,
+              "ms": 29.09999999962747
+            }
+          ]
+        },
+        "worstScoringMs": 34.700000000186265
+      },
+      {
+        "load": {
+          "rootMs": 3032.7999999998137,
+          "paints": [
+            {
+              "name": "first-paint",
+              "ms": 288
+            },
+            {
+              "name": "first-contentful-paint",
+              "ms": 288
+            }
+          ],
+          "tasks": [
+            {
+              "start": 195.79999999981374,
+              "ms": 61
+            },
+            {
+              "start": 306.59999999962747,
+              "ms": 116
+            },
+            {
+              "start": 440.5,
+              "ms": 73
+            },
+            {
+              "start": 516.0999999996275,
+              "ms": 2356
+            },
+            {
+              "start": 2872.9000000003725,
+              "ms": 185
+            }
+          ],
+          "resources": [
+            {
+              "name": "before/vendor/react.production.min.js",
+              "bytes": 10751,
+              "ms": 3.599999999627471
+            },
+            {
+              "name": "before/vendor/react-dom.production.min.js",
+              "bytes": 131835,
+              "ms": 7.599999999627471
+            },
+            {
+              "name": "before/vendor/babel.min.js",
+              "bytes": 2921550,
+              "ms": 29.600000000558794
+            },
+            {
+              "name": "before/vendor/tailwindcss.min.js",
+              "bytes": 407279,
+              "ms": 13.699999999254942
+            },
+            {
+              "name": "before/engine/engine.css",
+              "bytes": 57266,
+              "ms": 8.5
+            },
+            {
+              "name": "before/assets/loading/dbd-logo-static.png",
+              "bytes": 12469,
+              "ms": 12.100000000558794
+            },
+            {
+              "name": "before/data.js",
+              "bytes": 1450743,
+              "ms": 24.5
+            },
+            {
+              "name": "before/lore.js",
+              "bytes": 64103,
+              "ms": 17.200000000186265
+            },
+            {
+              "name": "before/cosmetics.js",
+              "bytes": 5645878,
+              "ms": 83.09999999962747
+            },
+            {
+              "name": "before/community-content.js",
+              "bytes": 2324002,
+              "ms": 66.59999999962747
+            },
+            {
+              "name": "before/worldle-data.js",
+              "bytes": 22742,
+              "ms": 113.5
+            },
+            {
+              "name": "before/engine/icons.js",
+              "bytes": 18450,
+              "ms": 9.700000000186265
+            },
+            {
+              "name": "before/engine/core.js",
+              "bytes": 1465,
+              "ms": 8.700000000186265
+            },
+            {
+              "name": "before/engine/theme.js",
+              "bytes": 3130,
+              "ms": 9.399999999441206
+            },
+            {
+              "name": "before/engine/storage.js",
+              "bytes": 1604,
+              "ms": 7.7999999998137355
+            },
+            {
+              "name": "before/engine/device.js",
+              "bytes": 5116,
+              "ms": 10.900000000372529
+            },
+            {
+              "name": "before/engine/shell.js",
+              "bytes": 8335,
+              "ms": 10.099999999627471
+            },
+            {
+              "name": "before/engine/assets.js",
+              "bytes": 6741,
+              "ms": 12.200000000186265
+            },
+            {
+              "name": "before/engine/articles.js",
+              "bytes": 7744,
+              "ms": 12.400000000372529
+            },
+            {
+              "name": "before/games/dbd/config.js",
+              "bytes": 8643,
+              "ms": 11.200000000186265
+            },
+            {
+              "name": "before/assets/wiki-logo.png",
+              "bytes": 12522,
+              "ms": 2.1000000005587935
+            },
+            {
+              "name": "before/assets/r6-badge.png",
+              "bytes": 1476,
+              "ms": 2.699999999254942
+            },
+            {
+              "name": "before/assets/fonts/bitter-var.woff2",
+              "bytes": 34072,
+              "ms": 2.2000000001862645
+            },
+            {
+              "name": "intl/en_us/badges/static/images/badges/en_badge_web_generic.png",
+              "bytes": 0,
+              "ms": 21.600000000558794
+            }
+          ]
+        },
+        "worstScoringMs": 40.299999999813735
+      }
+    ],
+    "4": [
+      {
+        "load": {
+          "rootMs": 12084.200000000186,
+          "paints": [
+            {
+              "name": "first-paint",
+              "ms": 616
+            },
+            {
+              "name": "first-contentful-paint",
+              "ms": 676
+            }
+          ],
+          "tasks": [
+            {
+              "start": 197.09999999962747,
+              "ms": 128
+            },
+            {
+              "start": 333.40000000037253,
+              "ms": 262
+            },
+            {
+              "start": 807.5,
+              "ms": 373
+            },
+            {
+              "start": 1181.5999999996275,
+              "ms": 75
+            },
+            {
+              "start": 1329.5,
+              "ms": 144
+            },
+            {
+              "start": 1475.2999999998137,
+              "ms": 164
+            },
+            {
+              "start": 1640.2999999998137,
+              "ms": 123
+            },
+            {
+              "start": 1764.5,
+              "ms": 164
+            },
+            {
+              "start": 1929.7000000001863,
+              "ms": 9420
+            },
+            {
+              "start": 11360.900000000373,
+              "ms": 856
+            },
+            {
+              "start": 12272.5,
+              "ms": 74
+            }
+          ],
+          "resources": [
+            {
+              "name": "before/vendor/react.production.min.js",
+              "bytes": 10751,
+              "ms": 4.7000000001862645
+            },
+            {
+              "name": "before/vendor/react-dom.production.min.js",
+              "bytes": 131835,
+              "ms": 7.900000000372529
+            },
+            {
+              "name": "before/vendor/babel.min.js",
+              "bytes": 2921550,
+              "ms": 31.200000000186265
+            },
+            {
+              "name": "before/vendor/tailwindcss.min.js",
+              "bytes": 407279,
+              "ms": 13.299999999813735
+            },
+            {
+              "name": "before/engine/engine.css",
+              "bytes": 57266,
+              "ms": 9.600000000558794
+            },
+            {
+              "name": "before/assets/loading/dbd-logo-static.png",
+              "bytes": 12469,
+              "ms": 9.5
+            },
+            {
+              "name": "before/data.js",
+              "bytes": 1450743,
+              "ms": 17.09999999962747
+            },
+            {
+              "name": "before/lore.js",
+              "bytes": 64103,
+              "ms": 21.899999999441206
+            },
+            {
+              "name": "before/cosmetics.js",
+              "bytes": 5645878,
+              "ms": 107.40000000037253
+            },
+            {
+              "name": "before/community-content.js",
+              "bytes": 2324002,
+              "ms": 77
+            },
+            {
+              "name": "before/worldle-data.js",
+              "bytes": 22742,
+              "ms": 254.5
+            },
+            {
+              "name": "before/engine/icons.js",
+              "bytes": 18450,
+              "ms": 2.7999999998137355
+            },
+            {
+              "name": "before/engine/core.js",
+              "bytes": 1465,
+              "ms": 2.7999999998137355
+            },
+            {
+              "name": "before/engine/theme.js",
+              "bytes": 3130,
+              "ms": 4.2999999998137355
+            },
+            {
+              "name": "before/engine/storage.js",
+              "bytes": 1604,
+              "ms": 3.7000000001862645
+            },
+            {
+              "name": "before/engine/device.js",
+              "bytes": 5116,
+              "ms": 3
+            },
+            {
+              "name": "before/engine/shell.js",
+              "bytes": 8335,
+              "ms": 5.2999999998137355
+            },
+            {
+              "name": "before/engine/assets.js",
+              "bytes": 6741,
+              "ms": 5.400000000372529
+            },
+            {
+              "name": "before/engine/articles.js",
+              "bytes": 7744,
+              "ms": 4.7999999998137355
+            },
+            {
+              "name": "before/games/dbd/config.js",
+              "bytes": 8643,
+              "ms": 4
+            },
+            {
+              "name": "before/assets/fonts/bitter-var.woff2",
+              "bytes": 34072,
+              "ms": 2.400000000372529
+            },
+            {
+              "name": "intl/en_us/badges/static/images/badges/en_badge_web_generic.png",
+              "bytes": 0,
+              "ms": 24.700000000186265
+            }
+          ]
+        },
+        "worstScoringMs": 124.5
+      },
+      {
+        "load": {
+          "rootMs": 12472.200000000186,
+          "paints": [
+            {
+              "name": "first-paint",
+              "ms": 624
+            },
+            {
+              "name": "first-contentful-paint",
+              "ms": 668
+            }
+          ],
+          "tasks": [
+            {
+              "start": 207.79999999981374,
+              "ms": 136
+            },
+            {
+              "start": 351.1000000005588,
+              "ms": 257
+            },
+            {
+              "start": 736.9000000003725,
+              "ms": 56
+            },
+            {
+              "start": 814.2999999998137,
+              "ms": 579
+            },
+            {
+              "start": 1436.5,
+              "ms": 298
+            },
+            {
+              "start": 1737.7000000001863,
+              "ms": 139
+            },
+            {
+              "start": 1877.7999999998137,
+              "ms": 171
+            },
+            {
+              "start": 2050.5,
+              "ms": 9734
+            },
+            {
+              "start": 11794.900000000373,
+              "ms": 804
+            },
+            {
+              "start": 12651.600000000559,
+              "ms": 66
+            },
+            {
+              "start": 12770.600000000559,
+              "ms": 52
+            }
+          ],
+          "resources": [
+            {
+              "name": "before/vendor/react.production.min.js",
+              "bytes": 10751,
+              "ms": 4.7000000001862645
+            },
+            {
+              "name": "before/vendor/react-dom.production.min.js",
+              "bytes": 131835,
+              "ms": 7.599999999627471
+            },
+            {
+              "name": "before/vendor/babel.min.js",
+              "bytes": 2921550,
+              "ms": 28.700000000186265
+            },
+            {
+              "name": "before/engine/engine.css",
+              "bytes": 57266,
+              "ms": 8
+            },
+            {
+              "name": "before/vendor/tailwindcss.min.js",
+              "bytes": 407279,
+              "ms": 11.900000000372529
+            },
+            {
+              "name": "before/assets/loading/dbd-logo-static.png",
+              "bytes": 12469,
+              "ms": 8.300000000745058
+            },
+            {
+              "name": "before/data.js",
+              "bytes": 1450743,
+              "ms": 14.700000000186265
+            },
+            {
+              "name": "before/lore.js",
+              "bytes": 64103,
+              "ms": 17.200000000186265
+            },
+            {
+              "name": "before/cosmetics.js",
+              "bytes": 5645878,
+              "ms": 92.5
+            },
+            {
+              "name": "before/community-content.js",
+              "bytes": 2324002,
+              "ms": 77.29999999981374
+            },
+            {
+              "name": "before/worldle-data.js",
+              "bytes": 22742,
+              "ms": 279.59999999962747
+            },
+            {
+              "name": "before/engine/icons.js",
+              "bytes": 18450,
+              "ms": 5.099999999627471
+            },
+            {
+              "name": "before/engine/core.js",
+              "bytes": 1465,
+              "ms": 3.2000000001862645
+            },
+            {
+              "name": "before/engine/theme.js",
+              "bytes": 3130,
+              "ms": 3.699999999254942
+            },
+            {
+              "name": "before/engine/storage.js",
+              "bytes": 1604,
+              "ms": 4.7999999998137355
+            },
+            {
+              "name": "before/engine/device.js",
+              "bytes": 5116,
+              "ms": 5.199999999254942
+            },
+            {
+              "name": "before/engine/shell.js",
+              "bytes": 8335,
+              "ms": 4.300000000745058
+            },
+            {
+              "name": "before/engine/assets.js",
+              "bytes": 6741,
+              "ms": 3.599999999627471
+            },
+            {
+              "name": "before/engine/articles.js",
+              "bytes": 7744,
+              "ms": 3.400000000372529
+            },
+            {
+              "name": "before/games/dbd/config.js",
+              "bytes": 8643,
+              "ms": 2.400000000372529
+            },
+            {
+              "name": "before/assets/fonts/bitter-var.woff2",
+              "bytes": 34072,
+              "ms": 3
+            },
+            {
+              "name": "intl/en_us/badges/static/images/badges/en_badge_web_generic.png",
+              "bytes": 0,
+              "ms": 26.200000000186265
+            }
+          ]
+        },
+        "worstScoringMs": 131.8999999994412
+      },
+      {
+        "load": {
+          "rootMs": 12244.5,
+          "paints": [
+            {
+              "name": "first-paint",
+              "ms": 596
+            },
+            {
+              "name": "first-contentful-paint",
+              "ms": 644
+            }
+          ],
+          "tasks": [
+            {
+              "start": 198.70000000018626,
+              "ms": 122
+            },
+            {
+              "start": 327.29999999981374,
+              "ms": 256
+            },
+            {
+              "start": 778.2000000001863,
+              "ms": 432
+            },
+            {
+              "start": 1212.2999999998137,
+              "ms": 75
+            },
+            {
+              "start": 1354.5,
+              "ms": 122
+            },
+            {
+              "start": 1477.4000000003725,
+              "ms": 187
+            },
+            {
+              "start": 1666,
+              "ms": 107
+            },
+            {
+              "start": 1775.9000000003725,
+              "ms": 9808
+            },
+            {
+              "start": 11592.700000000186,
+              "ms": 777
+            },
+            {
+              "start": 12418.600000000559,
+              "ms": 71
+            }
+          ],
+          "resources": [
+            {
+              "name": "before/vendor/react.production.min.js",
+              "bytes": 10751,
+              "ms": 2.300000000745058
+            },
+            {
+              "name": "before/vendor/react-dom.production.min.js",
+              "bytes": 131835,
+              "ms": 7.199999999254942
+            },
+            {
+              "name": "before/vendor/babel.min.js",
+              "bytes": 2921550,
+              "ms": 24.199999999254942
+            },
+            {
+              "name": "before/vendor/tailwindcss.min.js",
+              "bytes": 407279,
+              "ms": 10.100000000558794
+            },
+            {
+              "name": "before/engine/engine.css",
+              "bytes": 57266,
+              "ms": 6.7999999998137355
+            },
+            {
+              "name": "before/assets/loading/dbd-logo-static.png",
+              "bytes": 12469,
+              "ms": 7.2000000001862645
+            },
+            {
+              "name": "before/data.js",
+              "bytes": 1450743,
+              "ms": 18.40000000037253
+            },
+            {
+              "name": "before/lore.js",
+              "bytes": 64103,
+              "ms": 13.300000000745058
+            },
+            {
+              "name": "before/community-content.js",
+              "bytes": 2324002,
+              "ms": 69.80000000074506
+            },
+            {
+              "name": "before/cosmetics.js",
+              "bytes": 5645878,
+              "ms": 102
+            },
+            {
+              "name": "before/worldle-data.js",
+              "bytes": 22742,
+              "ms": 119.19999999925494
+            },
+            {
+              "name": "before/engine/icons.js",
+              "bytes": 18450,
+              "ms": 3.7000000001862645
+            },
+            {
+              "name": "before/engine/core.js",
+              "bytes": 1465,
+              "ms": 3.699999999254942
+            },
+            {
+              "name": "before/engine/theme.js",
+              "bytes": 3130,
+              "ms": 3.599999999627471
+            },
+            {
+              "name": "before/engine/storage.js",
+              "bytes": 1604,
+              "ms": 3
+            },
+            {
+              "name": "before/engine/device.js",
+              "bytes": 5116,
+              "ms": 2.099999999627471
+            },
+            {
+              "name": "before/engine/shell.js",
+              "bytes": 8335,
+              "ms": 3.5
+            },
+            {
+              "name": "before/engine/assets.js",
+              "bytes": 6741,
+              "ms": 3.599999999627471
+            },
+            {
+              "name": "before/engine/articles.js",
+              "bytes": 7744,
+              "ms": 3.7000000001862645
+            },
+            {
+              "name": "before/games/dbd/config.js",
+              "bytes": 8643,
+              "ms": 2.900000000372529
+            },
+            {
+              "name": "before/assets/fonts/bitter-var.woff2",
+              "bytes": 34072,
+              "ms": 2
+            },
+            {
+              "name": "intl/en_us/badges/static/images/badges/en_badge_web_generic.png",
+              "bytes": 0,
+              "ms": 20.5
+            }
+          ]
+        },
+        "worstScoringMs": 126.30000000074506
+      }
+    ]
+  },
+  "after": {
+    "1": [
+      {
+        "load": {
+          "rootMs": 3472.5,
+          "paints": [
+            {
+              "name": "first-paint",
+              "ms": 632
+            },
+            {
+              "name": "first-contentful-paint",
+              "ms": 664
+            }
+          ],
+          "tasks": [
+            {
+              "start": 268.70000000018626,
+              "ms": 183
+            },
+            {
+              "start": 453.6000000005588,
+              "ms": 163
+            },
+            {
+              "start": 683.7999999998137,
+              "ms": 145
+            },
+            {
+              "start": 830.2999999998137,
+              "ms": 81
+            },
+            {
+              "start": 912.1000000005588,
+              "ms": 52
+            },
+            {
+              "start": 1042.7000000001863,
+              "ms": 2233
+            },
+            {
+              "start": 3278.100000000559,
+              "ms": 242
+            }
+          ],
+          "resources": [
+            {
+              "name": "after/vendor/react.production.min.js",
+              "bytes": 10751,
+              "ms": 37.5
+            },
+            {
+              "name": "after/vendor/react-dom.production.min.js",
+              "bytes": 131835,
+              "ms": 44.799999999813735
+            },
+            {
+              "name": "after/vendor/babel.min.js",
+              "bytes": 2921550,
+              "ms": 70.20000000018626
+            },
+            {
+              "name": "after/vendor/tailwindcss.min.js",
+              "bytes": 407279,
+              "ms": 48
+            },
+            {
+              "name": "after/engine/engine.css",
+              "bytes": 57266,
+              "ms": 36.69999999925494
+            },
+            {
+              "name": "after/assets/loading/dbd-logo-static.png",
+              "bytes": 12469,
+              "ms": 42.700000000186265
+            },
+            {
+              "name": "after/data.js",
+              "bytes": 1450830,
+              "ms": 61
+            },
+            {
+              "name": "after/lore.js",
+              "bytes": 64103,
+              "ms": 49.80000000074506
+            },
+            {
+              "name": "after/cosmetics.js",
+              "bytes": 5695687,
+              "ms": 121.5
+            },
+            {
+              "name": "after/community-content.js",
+              "bytes": 2324002,
+              "ms": 116.5
+            },
+            {
+              "name": "after/meta.js",
+              "bytes": 559,
+              "ms": 166.79999999981374
+            },
+            {
+              "name": "after/changelog.js",
+              "bytes": 16263,
+              "ms": 169.30000000074506
+            },
+            {
+              "name": "after/guides.js",
+              "bytes": 151266,
+              "ms": 172.5
+            },
+            {
+              "name": "after/glossary.js",
+              "bytes": 24025,
+              "ms": 367.20000000018626
+            },
+            {
+              "name": "after/premade-builds.js",
+              "bytes": 3794,
+              "ms": 367.30000000074506
+            },
+            {
+              "name": "after/achievements.js",
+              "bytes": 55057,
+              "ms": 425.59999999962747
+            },
+            {
+              "name": "after/worldle-data.js",
+              "bytes": 22742,
+              "ms": 426
+            },
+            {
+              "name": "after/engine/icons.js",
+              "bytes": 18450,
+              "ms": 6.8999999994412065
+            },
+            {
+              "name": "after/engine/core.js",
+              "bytes": 1465,
+              "ms": 9.200000000186265
+            },
+            {
+              "name": "after/engine/theme.js",
+              "bytes": 3130,
+              "ms": 7.099999999627471
+            },
+            {
+              "name": "after/engine/storage.js",
+              "bytes": 1604,
+              "ms": 9.299999999813735
+            },
+            {
+              "name": "after/engine/device.js",
+              "bytes": 5116,
+              "ms": 11.5
+            },
+            {
+              "name": "after/engine/shell.js",
+              "bytes": 8335,
+              "ms": 12.100000000558794
+            },
+            {
+              "name": "after/engine/assets.js",
+              "bytes": 6741,
+              "ms": 10.799999999813735
+            },
+            {
+              "name": "after/engine/articles.js",
+              "bytes": 7744,
+              "ms": 12.099999999627471
+            },
+            {
+              "name": "after/games/dbd/config.js",
+              "bytes": 8112,
+              "ms": 13.599999999627471
+            },
+            {
+              "name": "after/assets/favicon.png",
+              "bytes": 974,
+              "ms": 10.5
+            },
+            {
+              "name": "after/assets/r6-badge.png",
+              "bytes": 1476,
+              "ms": 2.5
+            },
+            {
+              "name": "after/assets/wiki-logo.png",
+              "bytes": 12522,
+              "ms": 3.2000000001862645
+            },
+            {
+              "name": "after/assets/fonts/bitter-var.woff2",
+              "bytes": 34072,
+              "ms": 2
+            },
+            {
+              "name": "intl/en_us/badges/static/images/badges/en_badge_web_generic.png",
+              "bytes": 0,
+              "ms": 78.20000000018626
+            }
+          ]
+        },
+        "worstScoringMs": 52.30000000074506
+      },
+      {
+        "load": {
+          "rootMs": 3022.899999999441,
+          "paints": [
+            {
+              "name": "first-paint",
+              "ms": 292
+            },
+            {
+              "name": "first-contentful-paint",
+              "ms": 292
+            }
+          ],
+          "tasks": [
+            {
+              "start": 186.3999999994412,
+              "ms": 71
+            },
+            {
+              "start": 301.09999999962747,
+              "ms": 191
+            },
+            {
+              "start": 493.29999999981374,
+              "ms": 57
+            },
+            {
+              "start": 584.6999999992549,
+              "ms": 2255
+            },
+            {
+              "start": 2841.199999999255,
+              "ms": 217
+            }
+          ],
+          "resources": [
+            {
+              "name": "after/vendor/react.production.min.js",
+              "bytes": 10751,
+              "ms": 6.7000000001862645
+            },
+            {
+              "name": "after/vendor/react-dom.production.min.js",
+              "bytes": 131835,
+              "ms": 10
+            },
+            {
+              "name": "after/vendor/babel.min.js",
+              "bytes": 2921550,
+              "ms": 44.700000000186265
+            },
+            {
+              "name": "after/vendor/tailwindcss.min.js",
+              "bytes": 407279,
+              "ms": 12.099999999627471
+            },
+            {
+              "name": "after/engine/engine.css",
+              "bytes": 57266,
+              "ms": 7.1000000005587935
+            },
+            {
+              "name": "after/assets/loading/dbd-logo-static.png",
+              "bytes": 12469,
+              "ms": 15.5
+            },
+            {
+              "name": "after/data.js",
+              "bytes": 1450830,
+              "ms": 27
+            },
+            {
+              "name": "after/lore.js",
+              "bytes": 64103,
+              "ms": 22.5
+            },
+            {
+              "name": "after/community-content.js",
+              "bytes": 2324002,
+              "ms": 68.20000000018626
+            },
+            {
+              "name": "after/meta.js",
+              "bytes": 559,
+              "ms": 120.29999999981374
+            },
+            {
+              "name": "after/cosmetics.js",
+              "bytes": 5695687,
+              "ms": 77.8999999994412
+            },
+            {
+              "name": "after/changelog.js",
+              "bytes": 16263,
+              "ms": 123.79999999981374
+            },
+            {
+              "name": "after/guides.js",
+              "bytes": 151266,
+              "ms": 127.6000000005588
+            },
+            {
+              "name": "after/glossary.js",
+              "bytes": 24025,
+              "ms": 135.8999999994412
+            },
+            {
+              "name": "after/premade-builds.js",
+              "bytes": 3794,
+              "ms": 165.19999999925494
+            },
+            {
+              "name": "after/worldle-data.js",
+              "bytes": 22742,
+              "ms": 173.20000000018626
+            },
+            {
+              "name": "after/achievements.js",
+              "bytes": 55057,
+              "ms": 172.30000000074506
+            },
+            {
+              "name": "after/engine/icons.js",
+              "bytes": 18450,
+              "ms": 9.299999999813735
+            },
+            {
+              "name": "after/engine/core.js",
+              "bytes": 1465,
+              "ms": 7.7999999998137355
+            },
+            {
+              "name": "after/engine/theme.js",
+              "bytes": 3130,
+              "ms": 8.400000000372529
+            },
+            {
+              "name": "after/engine/storage.js",
+              "bytes": 1604,
+              "ms": 8.699999999254942
+            },
+            {
+              "name": "after/engine/device.js",
+              "bytes": 5116,
+              "ms": 6.599999999627471
+            },
+            {
+              "name": "after/engine/shell.js",
+              "bytes": 8335,
+              "ms": 9.399999999441206
+            },
+            {
+              "name": "after/engine/assets.js",
+              "bytes": 6741,
+              "ms": 11.400000000372529
+            },
+            {
+              "name": "after/engine/articles.js",
+              "bytes": 7744,
+              "ms": 11.400000000372529
+            },
+            {
+              "name": "after/games/dbd/config.js",
+              "bytes": 8112,
+              "ms": 10.300000000745058
+            },
+            {
+              "name": "after/assets/wiki-logo.png",
+              "bytes": 12522,
+              "ms": 3.199999999254942
+            },
+            {
+              "name": "after/assets/r6-badge.png",
+              "bytes": 1476,
+              "ms": 3.400000000372529
+            },
+            {
+              "name": "after/assets/fonts/bitter-var.woff2",
+              "bytes": 34072,
+              "ms": 2.2999999998137355
+            },
+            {
+              "name": "intl/en_us/badges/static/images/badges/en_badge_web_generic.png",
+              "bytes": 0,
+              "ms": 24.299999999813735
+            }
+          ]
+        },
+        "worstScoringMs": 35
+      },
+      {
+        "load": {
+          "rootMs": 2969.5,
+          "paints": [
+            {
+              "name": "first-paint",
+              "ms": 276
+            },
+            {
+              "name": "first-contentful-paint",
+              "ms": 276
+            }
+          ],
+          "tasks": [
+            {
+              "start": 181.40000000037253,
+              "ms": 61
+            },
+            {
+              "start": 289,
+              "ms": 126
+            },
+            {
+              "start": 433.20000000018626,
+              "ms": 104
+            },
+            {
+              "start": 538.8000000007451,
+              "ms": 2265
+            },
+            {
+              "start": 2805.2000000001863,
+              "ms": 202
+            }
+          ],
+          "resources": [
+            {
+              "name": "after/vendor/react.production.min.js",
+              "bytes": 10751,
+              "ms": 4.3999999994412065
+            },
+            {
+              "name": "after/vendor/react-dom.production.min.js",
+              "bytes": 131835,
+              "ms": 10.200000000186265
+            },
+            {
+              "name": "after/vendor/babel.min.js",
+              "bytes": 2921550,
+              "ms": 36.200000000186265
+            },
+            {
+              "name": "after/engine/engine.css",
+              "bytes": 57266,
+              "ms": 5.699999999254942
+            },
+            {
+              "name": "after/vendor/tailwindcss.min.js",
+              "bytes": 407279,
+              "ms": 16.5
+            },
+            {
+              "name": "after/assets/loading/dbd-logo-static.png",
+              "bytes": 12469,
+              "ms": 12.400000000372529
+            },
+            {
+              "name": "after/data.js",
+              "bytes": 1450830,
+              "ms": 24.800000000745058
+            },
+            {
+              "name": "after/lore.js",
+              "bytes": 64103,
+              "ms": 17.200000000186265
+            },
+            {
+              "name": "after/community-content.js",
+              "bytes": 2324002,
+              "ms": 69.29999999981374
+            },
+            {
+              "name": "after/cosmetics.js",
+              "bytes": 5695687,
+              "ms": 74
+            },
+            {
+              "name": "after/meta.js",
+              "bytes": 559,
+              "ms": 114.5
+            },
+            {
+              "name": "after/changelog.js",
+              "bytes": 16263,
+              "ms": 117.20000000018626
+            },
+            {
+              "name": "after/guides.js",
+              "bytes": 151266,
+              "ms": 120.5
+            },
+            {
+              "name": "after/glossary.js",
+              "bytes": 24025,
+              "ms": 124.70000000018626
+            },
+            {
+              "name": "after/premade-builds.js",
+              "bytes": 3794,
+              "ms": 127.79999999981374
+            },
+            {
+              "name": "after/achievements.js",
+              "bytes": 55057,
+              "ms": 134.3999999994412
+            },
+            {
+              "name": "after/worldle-data.js",
+              "bytes": 22742,
+              "ms": 161.40000000037253
+            },
+            {
+              "name": "after/engine/icons.js",
+              "bytes": 18450,
+              "ms": 7.7999999998137355
+            },
+            {
+              "name": "after/engine/core.js",
+              "bytes": 1465,
+              "ms": 6
+            },
+            {
+              "name": "after/engine/theme.js",
+              "bytes": 3130,
+              "ms": 8.300000000745058
+            },
+            {
+              "name": "after/engine/storage.js",
+              "bytes": 1604,
+              "ms": 8.900000000372529
+            },
+            {
+              "name": "after/engine/device.js",
+              "bytes": 5116,
+              "ms": 10.099999999627471
+            },
+            {
+              "name": "after/engine/shell.js",
+              "bytes": 8335,
+              "ms": 10.400000000372529
+            },
+            {
+              "name": "after/engine/assets.js",
+              "bytes": 6741,
+              "ms": 8.799999999813735
+            },
+            {
+              "name": "after/engine/articles.js",
+              "bytes": 7744,
+              "ms": 11.400000000372529
+            },
+            {
+              "name": "after/games/dbd/config.js",
+              "bytes": 8112,
+              "ms": 10.899999999441206
+            },
+            {
+              "name": "after/assets/wiki-logo.png",
+              "bytes": 12522,
+              "ms": 2.900000000372529
+            },
+            {
+              "name": "after/assets/r6-badge.png",
+              "bytes": 1476,
+              "ms": 3
+            },
+            {
+              "name": "after/assets/fonts/bitter-var.woff2",
+              "bytes": 34072,
+              "ms": 2.2000000001862645
+            },
+            {
+              "name": "intl/en_us/badges/static/images/badges/en_badge_web_generic.png",
+              "bytes": 0,
+              "ms": 28.59999999962747
+            }
+          ]
+        },
+        "worstScoringMs": 35.200000000186265
+      }
+    ],
+    "4": [
+      {
+        "load": {
+          "rootMs": 11963.299999999814,
+          "paints": [
+            {
+              "name": "first-paint",
+              "ms": 596
+            },
+            {
+              "name": "first-contentful-paint",
+              "ms": 648
+            }
+          ],
+          "tasks": [
+            {
+              "start": 178.5,
+              "ms": 128
+            },
+            {
+              "start": 313.90000000037253,
+              "ms": 257
+            },
+            {
+              "start": 768.4000000003725,
+              "ms": 417
+            },
+            {
+              "start": 1189.4000000003725,
+              "ms": 78
+            },
+            {
+              "start": 1270.7000000001863,
+              "ms": 77
+            },
+            {
+              "start": 1350.0999999996275,
+              "ms": 138
+            },
+            {
+              "start": 1489.5,
+              "ms": 193
+            },
+            {
+              "start": 1683.4000000003725,
+              "ms": 110
+            },
+            {
+              "start": 1795,
+              "ms": 140
+            },
+            {
+              "start": 1937.4000000003725,
+              "ms": 9326
+            },
+            {
+              "start": 11271.799999999814,
+              "ms": 820
+            },
+            {
+              "start": 12154.5,
+              "ms": 63
+            }
+          ],
+          "resources": [
+            {
+              "name": "after/vendor/react.production.min.js",
+              "bytes": 10751,
+              "ms": 4.2000000001862645
+            },
+            {
+              "name": "after/vendor/react-dom.production.min.js",
+              "bytes": 131835,
+              "ms": 4
+            },
+            {
+              "name": "after/vendor/tailwindcss.min.js",
+              "bytes": 407279,
+              "ms": 11.700000000186265
+            },
+            {
+              "name": "after/vendor/babel.min.js",
+              "bytes": 2921550,
+              "ms": 20.09999999962747
+            },
+            {
+              "name": "after/engine/engine.css",
+              "bytes": 57266,
+              "ms": 6.3999999994412065
+            },
+            {
+              "name": "after/assets/loading/dbd-logo-static.png",
+              "bytes": 12469,
+              "ms": 8.5
+            },
+            {
+              "name": "after/data.js",
+              "bytes": 1450830,
+              "ms": 15.099999999627471
+            },
+            {
+              "name": "after/lore.js",
+              "bytes": 64103,
+              "ms": 23.40000000037253
+            },
+            {
+              "name": "after/cosmetics.js",
+              "bytes": 5695687,
+              "ms": 107.20000000018626
+            },
+            {
+              "name": "after/community-content.js",
+              "bytes": 2324002,
+              "ms": 75.79999999981374
+            },
+            {
+              "name": "after/meta.js",
+              "bytes": 559,
+              "ms": 246.90000000037253
+            },
+            {
+              "name": "after/changelog.js",
+              "bytes": 16263,
+              "ms": 250.20000000018626
+            },
+            {
+              "name": "after/guides.js",
+              "bytes": 151266,
+              "ms": 282.5
+            },
+            {
+              "name": "after/glossary.js",
+              "bytes": 24025,
+              "ms": 282.09999999962747
+            },
+            {
+              "name": "after/premade-builds.js",
+              "bytes": 3794,
+              "ms": 279
+            },
+            {
+              "name": "after/achievements.js",
+              "bytes": 55057,
+              "ms": 280.79999999981374
+            },
+            {
+              "name": "after/worldle-data.js",
+              "bytes": 22742,
+              "ms": 279.70000000018626
+            },
+            {
+              "name": "after/engine/icons.js",
+              "bytes": 18450,
+              "ms": 2.599999999627471
+            },
+            {
+              "name": "after/engine/core.js",
+              "bytes": 1465,
+              "ms": 2.400000000372529
+            },
+            {
+              "name": "after/engine/theme.js",
+              "bytes": 3130,
+              "ms": 4.2999999998137355
+            },
+            {
+              "name": "after/engine/storage.js",
+              "bytes": 1604,
+              "ms": 3.7000000001862645
+            },
+            {
+              "name": "after/engine/device.js",
+              "bytes": 5116,
+              "ms": 3.7999999998137355
+            },
+            {
+              "name": "after/engine/shell.js",
+              "bytes": 8335,
+              "ms": 4.2999999998137355
+            },
+            {
+              "name": "after/engine/assets.js",
+              "bytes": 6741,
+              "ms": 3.6000000005587935
+            },
+            {
+              "name": "after/engine/articles.js",
+              "bytes": 7744,
+              "ms": 4
+            },
+            {
+              "name": "after/games/dbd/config.js",
+              "bytes": 8112,
+              "ms": 3.400000000372529
+            },
+            {
+              "name": "after/assets/fonts/bitter-var.woff2",
+              "bytes": 34072,
+              "ms": 2
+            },
+            {
+              "name": "intl/en_us/badges/static/images/badges/en_badge_web_generic.png",
+              "bytes": 0,
+              "ms": 21.800000000745058
+            }
+          ]
+        },
+        "worstScoringMs": 170.79999999981374
+      },
+      {
+        "load": {
+          "rootMs": 11775.5,
+          "paints": [
+            {
+              "name": "first-paint",
+              "ms": 616
+            },
+            {
+              "name": "first-contentful-paint",
+              "ms": 672
+            }
+          ],
+          "tasks": [
+            {
+              "start": 218.70000000018626,
+              "ms": 128
+            },
+            {
+              "start": 351.90000000037253,
+              "ms": 250
+            },
+            {
+              "start": 788.7000000001863,
+              "ms": 421
+            },
+            {
+              "start": 1212.2999999998137,
+              "ms": 73
+            },
+            {
+              "start": 1288,
+              "ms": 65
+            },
+            {
+              "start": 1358.6000000005588,
+              "ms": 122
+            },
+            {
+              "start": 1485.6000000005588,
+              "ms": 9532
+            },
+            {
+              "start": 11027.299999999814,
+              "ms": 913
+            },
+            {
+              "start": 11994,
+              "ms": 56
+            }
+          ],
+          "resources": [
+            {
+              "name": "after/vendor/react.production.min.js",
+              "bytes": 10751,
+              "ms": 4
+            },
+            {
+              "name": "after/vendor/react-dom.production.min.js",
+              "bytes": 131835,
+              "ms": 10.200000000186265
+            },
+            {
+              "name": "after/vendor/babel.min.js",
+              "bytes": 2921550,
+              "ms": 29.600000000558794
+            },
+            {
+              "name": "after/vendor/tailwindcss.min.js",
+              "bytes": 407279,
+              "ms": 14
+            },
+            {
+              "name": "after/engine/engine.css",
+              "bytes": 57266,
+              "ms": 9.799999999813735
+            },
+            {
+              "name": "after/assets/loading/dbd-logo-static.png",
+              "bytes": 12469,
+              "ms": 13.200000000186265
+            },
+            {
+              "name": "after/data.js",
+              "bytes": 1450830,
+              "ms": 20.799999999813735
+            },
+            {
+              "name": "after/lore.js",
+              "bytes": 64103,
+              "ms": 26.100000000558794
+            },
+            {
+              "name": "after/cosmetics.js",
+              "bytes": 5695687,
+              "ms": 110.19999999925494
+            },
+            {
+              "name": "after/community-content.js",
+              "bytes": 2324002,
+              "ms": 78.6000000005588
+            },
+            {
+              "name": "after/meta.js",
+              "bytes": 559,
+              "ms": 126.30000000074506
+            },
+            {
+              "name": "after/changelog.js",
+              "bytes": 16263,
+              "ms": 129
+            },
+            {
+              "name": "after/guides.js",
+              "bytes": 151266,
+              "ms": 133.20000000018626
+            },
+            {
+              "name": "after/glossary.js",
+              "bytes": 24025,
+              "ms": 138.6000000005588
+            },
+            {
+              "name": "after/premade-builds.js",
+              "bytes": 3794,
+              "ms": 141.5
+            },
+            {
+              "name": "after/achievements.js",
+              "bytes": 55057,
+              "ms": 145.90000000037253
+            },
+            {
+              "name": "after/worldle-data.js",
+              "bytes": 22742,
+              "ms": 150.40000000037253
+            },
+            {
+              "name": "after/engine/icons.js",
+              "bytes": 18450,
+              "ms": 2.400000000372529
+            },
+            {
+              "name": "after/engine/core.js",
+              "bytes": 1465,
+              "ms": 3.599999999627471
+            },
+            {
+              "name": "after/engine/theme.js",
+              "bytes": 3130,
+              "ms": 4.2999999998137355
+            },
+            {
+              "name": "after/engine/storage.js",
+              "bytes": 1604,
+              "ms": 3.7999999998137355
+            },
+            {
+              "name": "after/engine/device.js",
+              "bytes": 5116,
+              "ms": 8
+            },
+            {
+              "name": "after/engine/shell.js",
+              "bytes": 8335,
+              "ms": 8
+            },
+            {
+              "name": "after/engine/assets.js",
+              "bytes": 6741,
+              "ms": 7.1000000005587935
+            },
+            {
+              "name": "after/engine/articles.js",
+              "bytes": 7744,
+              "ms": 8.099999999627471
+            },
+            {
+              "name": "after/games/dbd/config.js",
+              "bytes": 8112,
+              "ms": 4.699999999254942
+            },
+            {
+              "name": "after/assets/fonts/bitter-var.woff2",
+              "bytes": 34072,
+              "ms": 2.900000000372529
+            },
+            {
+              "name": "intl/en_us/badges/static/images/badges/en_badge_web_generic.png",
+              "bytes": 0,
+              "ms": 27.90000000037253
+            }
+          ]
+        },
+        "worstScoringMs": 127.20000000018626
+      },
+      {
+        "load": {
+          "rootMs": 11881.599999999627,
+          "paints": [
+            {
+              "name": "first-paint",
+              "ms": 620
+            },
+            {
+              "name": "first-contentful-paint",
+              "ms": 668
+            }
+          ],
+          "tasks": [
+            {
+              "start": 193.09999999962747,
+              "ms": 136
+            },
+            {
+              "start": 338.3999999994412,
+              "ms": 264
+            },
+            {
+              "start": 793.0999999996275,
+              "ms": 383
+            },
+            {
+              "start": 1177,
+              "ms": 77
+            },
+            {
+              "start": 1321.8999999994412,
+              "ms": 121
+            },
+            {
+              "start": 1448.7999999998137,
+              "ms": 419
+            },
+            {
+              "start": 1869.0999999996275,
+              "ms": 9223
+            },
+            {
+              "start": 11103.799999999814,
+              "ms": 914
+            },
+            {
+              "start": 12065.699999999255,
+              "ms": 62
+            },
+            {
+              "start": 12176,
+              "ms": 62
+            }
+          ],
+          "resources": [
+            {
+              "name": "after/vendor/react.production.min.js",
+              "bytes": 10751,
+              "ms": 4.7999999998137355
+            },
+            {
+              "name": "after/vendor/react-dom.production.min.js",
+              "bytes": 131835,
+              "ms": 9.900000000372529
+            },
+            {
+              "name": "after/vendor/babel.min.js",
+              "bytes": 2921550,
+              "ms": 26.5
+            },
+            {
+              "name": "after/vendor/tailwindcss.min.js",
+              "bytes": 407279,
+              "ms": 16.299999999813735
+            },
+            {
+              "name": "after/engine/engine.css",
+              "bytes": 57266,
+              "ms": 4.3999999994412065
+            },
+            {
+              "name": "after/assets/loading/dbd-logo-static.png",
+              "bytes": 12469,
+              "ms": 9.399999999441206
+            },
+            {
+              "name": "after/data.js",
+              "bytes": 1450830,
+              "ms": 20.199999999254942
+            },
+            {
+              "name": "after/lore.js",
+              "bytes": 64103,
+              "ms": 27.09999999962747
+            },
+            {
+              "name": "after/cosmetics.js",
+              "bytes": 5695687,
+              "ms": 135.8999999994412
+            },
+            {
+              "name": "after/community-content.js",
+              "bytes": 2324002,
+              "ms": 90.5
+            },
+            {
+              "name": "after/meta.js",
+              "bytes": 559,
+              "ms": 273.70000000018626
+            },
+            {
+              "name": "after/changelog.js",
+              "bytes": 16263,
+              "ms": 274.59999999962747
+            },
+            {
+              "name": "after/guides.js",
+              "bytes": 151266,
+              "ms": 307.6000000005588
+            },
+            {
+              "name": "after/glossary.js",
+              "bytes": 24025,
+              "ms": 305.19999999925494
+            },
+            {
+              "name": "after/premade-builds.js",
+              "bytes": 3794,
+              "ms": 305.40000000037253
+            },
+            {
+              "name": "after/achievements.js",
+              "bytes": 55057,
+              "ms": 306.79999999981374
+            },
+            {
+              "name": "after/worldle-data.js",
+              "bytes": 22742,
+              "ms": 305.80000000074506
+            },
+            {
+              "name": "after/engine/icons.js",
+              "bytes": 18450,
+              "ms": 2.400000000372529
+            },
+            {
+              "name": "after/engine/core.js",
+              "bytes": 1465,
+              "ms": 2.7999999998137355
+            },
+            {
+              "name": "after/engine/theme.js",
+              "bytes": 3130,
+              "ms": 3.5
+            },
+            {
+              "name": "after/engine/storage.js",
+              "bytes": 1604,
+              "ms": 3.5
+            },
+            {
+              "name": "after/engine/device.js",
+              "bytes": 5116,
+              "ms": 4.5
+            },
+            {
+              "name": "after/engine/shell.js",
+              "bytes": 8335,
+              "ms": 5.800000000745058
+            },
+            {
+              "name": "after/engine/assets.js",
+              "bytes": 6741,
+              "ms": 4.599999999627471
+            },
+            {
+              "name": "after/engine/articles.js",
+              "bytes": 7744,
+              "ms": 3.2999999998137355
+            },
+            {
+              "name": "after/games/dbd/config.js",
+              "bytes": 8112,
+              "ms": 4.099999999627471
+            },
+            {
+              "name": "after/assets/fonts/bitter-var.woff2",
+              "bytes": 34072,
+              "ms": 2.599999999627471
+            },
+            {
+              "name": "intl/en_us/badges/static/images/badges/en_badge_web_generic.png",
+              "bytes": 0,
+              "ms": 24.09999999962747
+            }
+          ]
+        },
+        "worstScoringMs": 117.29999999981374
+      }
+    ]
+  },
+  "newCosmeticImages": 38,
+  "browserVersion": "Google Chrome 157.0.8103.38",
+  "searchRegression": {
+    "after": {
+      "1": {
+        "load": {
+          "rootMs": 3495.7000000001863,
+          "paints": [
+            {
+              "name": "first-paint",
+              "ms": 648
+            },
+            {
+              "name": "first-contentful-paint",
+              "ms": 672
+            }
+          ],
+          "tasks": [
+            {
+              "start": 275,
+              "ms": 197
+            },
+            {
+              "start": 474,
+              "ms": 152
+            },
+            {
+              "start": 691.9000000003725,
+              "ms": 152
+            },
+            {
+              "start": 925.8000000007451,
+              "ms": 53
+            },
+            {
+              "start": 1058.5,
+              "ms": 2241
+            },
+            {
+              "start": 3301.100000000559,
+              "ms": 238
+            }
+          ],
+          "resources": [
+            {
+              "name": "vendor/react.production.min.js",
+              "bytes": 10751,
+              "ms": 41.299999999813735
+            },
+            {
+              "name": "vendor/react-dom.production.min.js",
+              "bytes": 131835,
+              "ms": 41.19999999925494
+            },
+            {
+              "name": "vendor/babel.min.js",
+              "bytes": 2921550,
+              "ms": 77.1000000005588
+            },
+            {
+              "name": "vendor/tailwindcss.min.js",
+              "bytes": 407279,
+              "ms": 49.700000000186265
+            },
+            {
+              "name": "engine/engine.css",
+              "bytes": 57266,
+              "ms": 34
+            },
+            {
+              "name": "assets/loading/dbd-logo-static.png",
+              "bytes": 12469,
+              "ms": 36.299999999813735
+            },
+            {
+              "name": "lore.js",
+              "bytes": 64103,
+              "ms": 51
+            },
+            {
+              "name": "data.js",
+              "bytes": 1450830,
+              "ms": 63
+            },
+            {
+              "name": "cosmetics.js",
+              "bytes": 5695687,
+              "ms": 115.29999999981374
+            },
+            {
+              "name": "community-content.js",
+              "bytes": 2324002,
+              "ms": 106.1000000005588
+            },
+            {
+              "name": "meta.js",
+              "bytes": 559,
+              "ms": 159.19999999925494
+            },
+            {
+              "name": "changelog.js",
+              "bytes": 16263,
+              "ms": 161.70000000018626
+            },
+            {
+              "name": "guides.js",
+              "bytes": 151266,
+              "ms": 165.1000000005588
+            },
+            {
+              "name": "glossary.js",
+              "bytes": 24025,
+              "ms": 171.20000000018626
+            },
+            {
+              "name": "premade-builds.js",
+              "bytes": 3794,
+              "ms": 174.90000000037253
+            },
+            {
+              "name": "achievements.js",
+              "bytes": 55057,
+              "ms": 381.3999999994412
+            },
+            {
+              "name": "worldle-data.js",
+              "bytes": 22742,
+              "ms": 381.70000000018626
+            },
+            {
+              "name": "engine/icons.js",
+              "bytes": 18450,
+              "ms": 7.7999999998137355
+            },
+            {
+              "name": "engine/core.js",
+              "bytes": 1465,
+              "ms": 8.400000000372529
+            },
+            {
+              "name": "engine/theme.js",
+              "bytes": 3130,
+              "ms": 5.7000000001862645
+            },
+            {
+              "name": "engine/storage.js",
+              "bytes": 1604,
+              "ms": 7.900000000372529
+            },
+            {
+              "name": "engine/device.js",
+              "bytes": 5116,
+              "ms": 8.900000000372529
+            },
+            {
+              "name": "engine/shell.js",
+              "bytes": 8335,
+              "ms": 11.5
+            },
+            {
+              "name": "engine/assets.js",
+              "bytes": 6741,
+              "ms": 11.600000000558794
+            },
+            {
+              "name": "engine/articles.js",
+              "bytes": 7744,
+              "ms": 12.599999999627471
+            },
+            {
+              "name": "games/dbd/config.js",
+              "bytes": 8112,
+              "ms": 13.700000000186265
+            },
+            {
+              "name": "assets/favicon.png",
+              "bytes": 974,
+              "ms": 10.799999999813735
+            },
+            {
+              "name": "assets/wiki-logo.png",
+              "bytes": 12522,
+              "ms": 3.6000000005587935
+            },
+            {
+              "name": "assets/r6-badge.png",
+              "bytes": 1476,
+              "ms": 3.2000000001862645
+            },
+            {
+              "name": "assets/fonts/bitter-var.woff2",
+              "bytes": 34072,
+              "ms": 2.5
+            },
+            {
+              "name": "intl/en_us/badges/static/images/badges/en_badge_web_generic.png",
+              "bytes": 0,
+              "ms": 396.20000000018626
+            }
+          ]
+        },
+        "search": [
+          {
+            "query": "dwight",
+            "ms": 56.40000000037253,
+            "results": [
+              {
+                "id": "c1ad4f3a-3f31-47f6-ae66-7ba2746a1423",
+                "name": "Dwight Fairfield",
+                "category": "Survivor",
+                "score": 123,
+                "role": "Survivor"
+              },
+              {
+                "id": "dwight-fairfield--dwight--head--d-head01",
+                "name": "Dwight",
+                "category": "Cosmetic",
+                "score": 163,
+                "rarity": "Common"
+              },
+              {
+                "id": "dwight-fairfield--bloody-dwight--head--d-head01-p01",
+                "name": "Bloody Dwight",
+                "category": "Cosmetic",
+                "score": 88,
+                "rarity": "Rare"
+              },
+              {
+                "id": "dwight-fairfield--dearest-dwight--outfit--df-outfit-040",
+                "name": "Dearest Dwight",
+                "category": "Cosmetic",
+                "score": 88,
+                "rarity": "Very Rare"
+              },
+              {
+                "id": "dwight-fairfield--dwight-cubed--body--df-torso03-02",
+                "name": "Dwight Cubed",
+                "category": "Cosmetic",
+                "score": 88,
+                "rarity": "Uncommon"
+              },
+              {
+                "id": "dwight-fairfield--dwight-unknown--outfit--df-outfit-021",
+                "name": "Dwight Unknown",
+                "category": "Cosmetic",
+                "score": 88,
+                "rarity": "Very Rare"
+              },
+              {
+                "id": "dwight-fairfield--dwight-in-a-box--outfit--df-outfit-013",
+                "name": "Dwight-in-a-Box",
+                "category": "Cosmetic",
+                "score": 88,
+                "rarity": "Very Rare"
+              },
+              {
+                "id": "dwight-fairfield--dwight-s-mask--head--df-head019",
+                "name": "Dwight's Mask",
+                "category": "Cosmetic",
+                "score": 88,
+                "rarity": "Event"
+              }
+            ]
+          },
+          {
+            "query": "nurse",
+            "ms": 13.299999999813735,
+            "results": [
+              {
+                "id": "3191f632-4d35-4464-8c2d-db185d06209f",
+                "name": "The Nurse",
+                "category": "Killer",
+                "score": 123
+              },
+              {
+                "id": "54944810-74fa-4452-8c18-6508af885055",
+                "name": "A Nurse's Calling",
+                "category": "Perk",
+                "score": 93,
+                "role": "Killer"
+              },
+              {
+                "id": "the-nurse--bloody-nurse--body--nurse-body01-p01",
+                "name": "Bloody Nurse",
+                "category": "Cosmetic",
+                "score": 88,
+                "rarity": "Rare"
+              },
+              {
+                "id": "the-spirit--bubble-head-nurse",
+                "name": "Bubble Head Nurse",
+                "category": "Cosmetic",
+                "score": 88,
+                "rarity": "Legendary"
+              },
+              {
+                "id": "the-nurse--classic-nurses-outfit--body--nurse-body01",
+                "name": "Classic Nurses Outfit",
+                "category": "Cosmetic",
+                "score": 88,
+                "rarity": "Common"
+              },
+              {
+                "id": "the-nurse--legacy-nurse-2--head--nr-head01-lp01",
+                "name": "Legacy Nurse 2",
+                "category": "Cosmetic",
+                "score": 88,
+                "rarity": "Very Rare"
+              },
+              {
+                "id": "the-nurse--legacy-nurse-3--body--nr-body01-lp01",
+                "name": "Legacy Nurse 3",
+                "category": "Cosmetic",
+                "score": 88,
+                "rarity": "Very Rare"
+              },
+              {
+                "id": "the-nurse--legacy-nurse-i--weapon--nr-bonesaw01-lp01",
+                "name": "Legacy Nurse I",
+                "category": "Cosmetic",
+                "score": 88,
+                "rarity": "Very Rare"
+              }
+            ]
+          },
+          {
+            "query": "trapper",
+            "ms": 13.599999999627471,
+            "results": [
+              {
+                "id": "7a34f0fb-fe18-4854-ab5d-47f89a210051",
+                "name": "The Trapper",
+                "category": "Killer",
+                "score": 123
+              },
+              {
+                "id": "4e0d3786-2c31-481d-b172-eb9940ddc4b6",
+                "name": "Trapper Bag",
+                "category": "Addon",
+                "score": 93,
+                "rarity": "rare",
+                "itemType": null,
+                "role": "killer"
+              },
+              {
+                "id": "1a956e25-3c4a-42e2-a910-25e2d1a46492",
+                "name": "Trapper Gloves",
+                "category": "Addon",
+                "score": 93,
+                "rarity": "common",
+                "itemType": null,
+                "role": "killer"
+              },
+              {
+                "id": "b28a1318-f9c3-4987-9007-e7a203f33253",
+                "name": "Trapper Sack",
+                "category": "Addon",
+                "score": 93,
+                "rarity": "veryrare",
+                "itemType": null,
+                "role": "killer"
+              },
+              {
+                "id": "the-trapper--best-new-trapper-mask--head--tr-head01-cva",
+                "name": "Best New Trapper Mask",
+                "category": "Cosmetic",
+                "score": 88,
+                "rarity": "Very Rare"
+              },
+              {
+                "id": "the-trapper--legacy-trapper-1--weapon--tr-machete01-lp01",
+                "name": "Legacy Trapper 1",
+                "category": "Cosmetic",
+                "score": 88,
+                "rarity": "Very Rare"
+              },
+              {
+                "id": "the-trapper--legacy-trapper-2--body--tr-body01-lp01",
+                "name": "Legacy Trapper 2",
+                "category": "Cosmetic",
+                "score": 88,
+                "rarity": "Very Rare"
+              },
+              {
+                "id": "the-trapper--legacy-trapper-3--head--tr-head01-lp01",
+                "name": "Legacy Trapper 3",
+                "category": "Cosmetic",
+                "score": 88,
+                "rarity": "Very Rare"
+              }
+            ]
+          },
+          {
+            "query": "spirit",
+            "ms": 10.199999999254942,
+            "results": [
+              {
+                "id": "c5b56576-0afb-4f1e-ac73-bac5bd3ee9a0",
+                "name": "The Spirit",
+                "category": "Killer",
+                "score": 123
+              },
+              {
+                "id": "the-spirit--the-spirit--head--hk-head01",
+                "name": "The Spirit",
+                "category": "Cosmetic",
+                "score": 138,
+                "rarity": "Common"
+              },
+              {
+                "id": "434be009-2075-4c07-89cc-2a5f757e2361",
+                "name": "Spirit Fury",
+                "category": "Perk",
+                "score": 93,
+                "role": "Killer"
+              },
+              {
+                "id": "the-spirit--bloody-spirit--head--hk-head01-p01",
+                "name": "Bloody Spirit",
+                "category": "Cosmetic",
+                "score": 88,
+                "rarity": "Rare"
+              },
+              {
+                "id": "the-dredge--half-spirits-torments",
+                "name": "Half Spirits' Torments",
+                "category": "Cosmetic",
+                "score": 88,
+                "rarity": "Legendary"
+              },
+              {
+                "id": "the-spirit--spirit-s-mask--head--hk-head015",
+                "name": "Spirit's Mask",
+                "category": "Cosmetic",
+                "score": 88,
+                "rarity": "Event"
+              },
+              {
+                "id": "b83c0eb3-e7d5-4cd6-a41f-a840c224bf47",
+                "name": "\"All Seeing\" - Spirit",
+                "category": "Addon",
+                "score": 73,
+                "rarity": "visceral",
+                "itemType": null,
+                "role": "killer"
+              },
+              {
+                "id": "d03e92ab-1e88-4331-9f48-1074344c2483",
+                "name": "Calm Spirit",
+                "category": "Perk",
+                "score": 73,
+                "role": "Survivor"
+              }
+            ]
+          },
+          {
+            "query": "trapper mask",
+            "ms": 23.299999999813735,
+            "results": [
+              {
+                "id": "the-trapper--best-new-trapper-mask--head--tr-head01-cva",
+                "name": "Best New Trapper Mask",
+                "category": "Cosmetic",
+                "score": 101,
+                "rarity": "Very Rare"
+              },
+              {
+                "id": "7a34f0fb-fe18-4854-ab5d-47f89a210051",
+                "name": "The Trapper",
+                "category": "Killer",
+                "score": 58
+              },
+              {
+                "id": "the-trapper--trapper-s-mask--head--tr-mask014",
+                "name": "Trapper's Mask",
+                "category": "Cosmetic",
+                "score": 36,
+                "rarity": "Event"
+              },
+              {
+                "id": "4e0d3786-2c31-481d-b172-eb9940ddc4b6",
+                "name": "Trapper Bag",
+                "category": "Addon",
+                "score": 28,
+                "rarity": "rare",
+                "itemType": null,
+                "role": "killer"
+              },
+              {
+                "id": "1a956e25-3c4a-42e2-a910-25e2d1a46492",
+                "name": "Trapper Gloves",
+                "category": "Addon",
+                "score": 28,
+                "rarity": "common",
+                "itemType": null,
+                "role": "killer"
+              },
+              {
+                "id": "b28a1318-f9c3-4987-9007-e7a203f33253",
+                "name": "Trapper Sack",
+                "category": "Addon",
+                "score": 28,
+                "rarity": "veryrare",
+                "itemType": null,
+                "role": "killer"
+              },
+              {
+                "id": "301c9881-53a7-4b5f-99a4-479e5954129a",
+                "name": "4-Coil Spring Kit",
+                "category": "Addon",
+                "score": 20,
+                "rarity": "uncommon",
+                "itemType": null,
+                "role": "killer"
+              },
+              {
+                "id": "d74b2d10-d629-4b25-aea6-5e8a3117cbc1",
+                "name": "Agitation",
+                "category": "Perk",
+                "score": 20,
+                "role": "Killer"
+              }
+            ]
+          },
+          {
+            "query": "purple toolbox addons",
+            "ms": 1.5,
+            "results": []
+          },
+          {
+            "query": "green toolbox addons",
+            "ms": 1.5,
+            "results": [
+              {
+                "id": "eb8597b2-7862-45ed-bedb-a76baeae5ada",
+                "name": "Grip Wrench",
+                "category": "Addon",
+                "score": 40,
+                "rarity": "rare",
+                "itemType": "toolbox",
+                "role": "survivor"
+              },
+              {
+                "id": "c0a38f21-07f6-43a6-afa1-2f9f960eab22",
+                "name": "Hacksaw",
+                "category": "Addon",
+                "score": 40,
+                "rarity": "rare",
+                "itemType": "toolbox",
+                "role": "survivor"
+              }
+            ]
+          },
+          {
+            "query": "purple toolbox items",
+            "ms": 1.2999999998137355,
+            "results": [
+              {
+                "id": "d3ce0ce5-9f7d-4337-85ab-8c3095c16a5b",
+                "name": "Alex's Toolbox",
+                "category": "Item",
+                "score": 48,
+                "rarity": "veryrare",
+                "itemType": "toolbox",
+                "role": "survivor"
+              },
+              {
+                "id": "032e1e59-70b9-495a-b04b-9cbe139562ac",
+                "name": "Engineer's Toolbox",
+                "category": "Item",
+                "score": 48,
+                "rarity": "veryrare",
+                "itemType": "toolbox",
+                "role": "survivor"
+              }
+            ]
+          },
+          {
+            "query": "killer perks",
+            "ms": 2.599999999627471,
+            "results": [
+              {
+                "id": "54944810-74fa-4452-8c18-6508af885055",
+                "name": "A Nurse's Calling",
+                "category": "Perk",
+                "score": 15,
+                "role": "Killer"
+              },
+              {
+                "id": "d74b2d10-d629-4b25-aea6-5e8a3117cbc1",
+                "name": "Agitation",
+                "category": "Perk",
+                "score": 15,
+                "role": "Killer"
+              },
+              {
+                "id": "b6940536-9372-455f-abb3-14dccba26a0e",
+                "name": "Alien Instinct",
+                "category": "Perk",
+                "score": 15,
+                "role": "Killer"
+              },
+              {
+                "id": "178688f3-64ba-4e06-85a4-2ec75c3fb211",
+                "name": "All-Shaking Thunder",
+                "category": "Perk",
+                "score": 15,
+                "role": "Killer"
+              },
+              {
+                "id": "2e5382d0-70a2-4143-b270-4743bfa0d516",
+                "name": "Awakened Awareness",
+                "category": "Perk",
+                "score": 15,
+                "role": "Killer"
+              },
+              {
+                "id": "de13a977-5ff0-4cc2-8c5c-0278013da721",
+                "name": "Bamboozle",
+                "category": "Perk",
+                "score": 15,
+                "role": "Killer"
+              },
+              {
+                "id": "b075b4a0-0fcc-4ac8-8ce2-ff46553d6092",
+                "name": "Barbecue & Chili",
+                "category": "Perk",
+                "score": 15,
+                "role": "Killer"
+              },
+              {
+                "id": "320a2bcb-b84e-424a-95e0-b12e47201b7c",
+                "name": "Batteries Included",
+                "category": "Perk",
+                "score": 15,
+                "role": "Killer"
+              }
+            ]
+          },
+          {
+            "query": "survivor perks",
+            "ms": 2.2999999998137355,
+            "results": [
+              {
+                "id": "b761a0e2-a9a3-476f-9c81-ca0f0b6e8dc4",
+                "name": "Sole Survivor",
+                "category": "Perk",
+                "score": 23,
+                "role": "Survivor"
+              },
+              {
+                "id": "akc-perk-001-aplaceforus",
+                "name": "A Place For Us",
+                "category": "Perk",
+                "score": 15,
+                "role": "Survivor"
+              },
+              {
+                "id": "08198d7f-1561-4cf3-b112-7969f8aebc32",
+                "name": "Ace in the Hole",
+                "category": "Perk",
+                "score": 15,
+                "role": "Survivor"
+              },
+              {
+                "id": "6e0523a9-0f3f-4329-87c6-01500e72b054",
+                "name": "Adrenaline",
+                "category": "Perk",
+                "score": 15,
+                "role": "Survivor"
+              },
+              {
+                "id": "19fce903-4735-4332-b609-becf90bfb9c8",
+                "name": "Aftercare",
+                "category": "Perk",
+                "score": 15,
+                "role": "Survivor"
+              },
+              {
+                "id": "7c61d214-5247-405b-80d6-2ddf7e9d7ad1",
+                "name": "Alert",
+                "category": "Perk",
+                "score": 15,
+                "role": "Survivor"
+              },
+              {
+                "id": "321407ec-ba71-49f7-8d2b-c38c4930c11b",
+                "name": "Any Means Necessary",
+                "category": "Perk",
+                "score": 15,
+                "role": "Survivor"
+              },
+              {
+                "id": "13db6264-2bc8-4252-9e56-8cc6955720d4",
+                "name": "Apocalyptic Ingenuity",
+                "category": "Perk",
+                "score": 15,
+                "role": "Survivor"
+              }
+            ]
+          },
+          {
+            "query": "perks survivor healing",
+            "ms": 3.2999999998137355,
+            "results": [
+              {
+                "id": "c3216a0e-b763-4857-88d7-2c6260beb9ad",
+                "name": "Boon: Circle of Healing",
+                "category": "Perk",
+                "score": 35,
+                "role": "Survivor"
+              },
+              {
+                "id": "10340736-3601-4bdd-a5b4-d23295644ab9",
+                "name": "Reactive Healing",
+                "category": "Perk",
+                "score": 35,
+                "role": "Survivor"
+              },
+              {
+                "id": "04c95215-eb62-4457-bb56-078c7897c043",
+                "name": "Soul Guard",
+                "category": "Perk",
+                "score": 31,
+                "role": "Survivor"
+              },
+              {
+                "id": "c24fad8b-31ea-4aa8-843b-bb9a0fcae4d2",
+                "name": "Buckle Up",
+                "category": "Perk",
+                "score": 29,
+                "role": "Survivor"
+              },
+              {
+                "id": "cf0536f5-62ba-4b43-9b95-ef1dd75080fc",
+                "name": "Conviction",
+                "category": "Perk",
+                "score": 29,
+                "role": "Survivor"
+              },
+              {
+                "id": "14839c0f-159c-49d0-a34e-6c66627bb814",
+                "name": "Made for This",
+                "category": "Perk",
+                "score": 29,
+                "role": "Survivor"
+              },
+              {
+                "id": "8adf88bc-7a4d-400d-9bdb-917d37d01ed2",
+                "name": "No Mither",
+                "category": "Perk",
+                "score": 29,
+                "role": "Survivor"
+              },
+              {
+                "id": "fc4a9248-90ab-4fe5-8631-88862be4f784",
+                "name": "Plot Twist",
+                "category": "Perk",
+                "score": 29,
+                "role": "Survivor"
+              }
+            ]
+          },
+          {
+            "query": "perks:survivor healing",
+            "ms": 3.2000000001862645,
+            "results": [
+              {
+                "id": "c3216a0e-b763-4857-88d7-2c6260beb9ad",
+                "name": "Boon: Circle of Healing",
+                "category": "Perk",
+                "score": 25,
+                "role": "Survivor"
+              },
+              {
+                "id": "10340736-3601-4bdd-a5b4-d23295644ab9",
+                "name": "Reactive Healing",
+                "category": "Perk",
+                "score": 25,
+                "role": "Survivor"
+              },
+              {
+                "id": "04c95215-eb62-4457-bb56-078c7897c043",
+                "name": "Soul Guard",
+                "category": "Perk",
+                "score": 21,
+                "role": "Survivor"
+              },
+              {
+                "id": "c24fad8b-31ea-4aa8-843b-bb9a0fcae4d2",
+                "name": "Buckle Up",
+                "category": "Perk",
+                "score": 19,
+                "role": "Survivor"
+              },
+              {
+                "id": "cf0536f5-62ba-4b43-9b95-ef1dd75080fc",
+                "name": "Conviction",
+                "category": "Perk",
+                "score": 19,
+                "role": "Survivor"
+              },
+              {
+                "id": "14839c0f-159c-49d0-a34e-6c66627bb814",
+                "name": "Made for This",
+                "category": "Perk",
+                "score": 19,
+                "role": "Survivor"
+              },
+              {
+                "id": "8adf88bc-7a4d-400d-9bdb-917d37d01ed2",
+                "name": "No Mither",
+                "category": "Perk",
+                "score": 19,
+                "role": "Survivor"
+              },
+              {
+                "id": "fc4a9248-90ab-4fe5-8631-88862be4f784",
+                "name": "Plot Twist",
+                "category": "Perk",
+                "score": 19,
+                "role": "Survivor"
+              }
+            ]
+          },
+          {
+            "query": "addons:killer",
+            "ms": 7.7999999998137355,
+            "results": [
+              {
+                "id": "2f841628-3d78-46f7-bf21-50f34a64d32b",
+                "name": "Killer Doll",
+                "category": "Addon",
+                "score": 78,
+                "rarity": "rare",
+                "itemType": null,
+                "role": "killer"
+              },
+              {
+                "id": "668c5f3f-30f3-4652-8206-108d04245ed1",
+                "name": "\"All Seeing\" - Blood",
+                "category": "Addon",
+                "score": 5,
+                "rarity": "veryrare",
+                "itemType": null,
+                "role": "killer"
+              },
+              {
+                "id": "b83c0eb3-e7d5-4cd6-a41f-a840c224bf47",
+                "name": "\"All Seeing\" - Spirit",
+                "category": "Addon",
+                "score": 5,
+                "rarity": "visceral",
+                "itemType": null,
+                "role": "killer"
+              },
+              {
+                "id": "2bebeb54-adaa-47c2-a5bc-03c7c4b7ebab",
+                "name": "\"Bad Man's\" Last Breath",
+                "category": "Addon",
+                "score": 5,
+                "rarity": "veryrare",
+                "itemType": null,
+                "role": "killer"
+              },
+              {
+                "id": "b408e442-80ca-424b-bca8-1823425d6fd8",
+                "name": "\"Blind Warrior\" - Mud",
+                "category": "Addon",
+                "score": 5,
+                "rarity": "uncommon",
+                "itemType": null,
+                "role": "killer"
+              },
+              {
+                "id": "639e3987-9f03-45fc-b9e2-1bed0a34f9e9",
+                "name": "\"Blind Warrior\" - White",
+                "category": "Addon",
+                "score": 5,
+                "rarity": "rare",
+                "itemType": null,
+                "role": "killer"
+              },
+              {
+                "id": "b3e53313-b914-4762-a6c6-0bf50d5c4e04",
+                "name": "\"Blink\" - Mud",
+                "category": "Addon",
+                "score": 5,
+                "rarity": "uncommon",
+                "itemType": null,
+                "role": "killer"
+              },
+              {
+                "id": "d966f00d-c649-434a-b921-8f95c4b39ef0",
+                "name": "\"Blink\" - White",
+                "category": "Addon",
+                "score": 5,
+                "rarity": "rare",
+                "itemType": null,
+                "role": "killer"
+              }
+            ]
+          },
+          {
+            "query": "dark lord very rare addons",
+            "ms": 2.900000000372529,
+            "results": [
+              {
+                "id": "4dc03cdb-344c-4b66-99af-47e2cb3fe4f2",
+                "name": "Cube of Zoe",
+                "category": "Addon",
+                "score": 45,
+                "rarity": "veryrare",
+                "itemType": null,
+                "role": "killer"
+              },
+              {
+                "id": "4a5514aa-9552-4b95-9d2d-905db68c6520",
+                "name": "Lapis Lazuli",
+                "category": "Addon",
+                "score": 45,
+                "rarity": "veryrare",
+                "itemType": null,
+                "role": "killer"
+              },
+              {
+                "id": "7017c984-5131-4f92-8660-86a3ef6ff256",
+                "name": "Medusa\u2019s Hair",
+                "category": "Addon",
+                "score": 45,
+                "rarity": "veryrare",
+                "itemType": null,
+                "role": "killer"
+              },
+              {
+                "id": "36db781b-ea30-4e71-96d9-33b28ed21549",
+                "name": "Warg\u2019s Fang",
+                "category": "Addon",
+                "score": 45,
+                "rarity": "veryrare",
+                "itemType": null,
+                "role": "killer"
+              },
+              {
+                "id": "f5bf3bcb-2677-432e-8b32-e7ae31e2df0c",
+                "name": "Broken Recovery Coin",
+                "category": "Addon",
+                "score": 33,
+                "rarity": "veryrare",
+                "itemType": null,
+                "role": "killer"
+              },
+              {
+                "id": "fc84337f-6f85-45dd-b8ac-75670f54ff6d",
+                "name": "Dark Sunglasses",
+                "category": "Addon",
+                "score": 33,
+                "rarity": "veryrare",
+                "itemType": null,
+                "role": "killer"
+              },
+              {
+                "id": "3b4d0dd9-56cd-4ba0-9ec0-85311897ea13",
+                "name": "Depth Gauge Rake",
+                "category": "Addon",
+                "score": 30,
+                "rarity": "veryrare",
+                "itemType": null,
+                "role": "killer"
+              },
+              {
+                "id": "668c5f3f-30f3-4652-8206-108d04245ed1",
+                "name": "\"All Seeing\" - Blood",
+                "category": "Addon",
+                "score": 25,
+                "rarity": "veryrare",
+                "itemType": null,
+                "role": "killer"
+              }
+            ]
+          },
+          {
+            "query": "not very rare addons",
+            "ms": 6.7000000001862645,
+            "results": [
+              {
+                "id": "b83c0eb3-e7d5-4cd6-a41f-a840c224bf47",
+                "name": "\"All Seeing\" - Spirit",
+                "category": "Addon",
+                "score": 10,
+                "rarity": "visceral",
+                "itemType": null,
+                "role": "killer"
+              },
+              {
+                "id": "b408e442-80ca-424b-bca8-1823425d6fd8",
+                "name": "\"Blind Warrior\" - Mud",
+                "category": "Addon",
+                "score": 10,
+                "rarity": "uncommon",
+                "itemType": null,
+                "role": "killer"
+              },
+              {
+                "id": "639e3987-9f03-45fc-b9e2-1bed0a34f9e9",
+                "name": "\"Blind Warrior\" - White",
+                "category": "Addon",
+                "score": 10,
+                "rarity": "rare",
+                "itemType": null,
+                "role": "killer"
+              },
+              {
+                "id": "b3e53313-b914-4762-a6c6-0bf50d5c4e04",
+                "name": "\"Blink\" - Mud",
+                "category": "Addon",
+                "score": 10,
+                "rarity": "uncommon",
+                "itemType": null,
+                "role": "killer"
+              },
+              {
+                "id": "d966f00d-c649-434a-b921-8f95c4b39ef0",
+                "name": "\"Blink\" - White",
+                "category": "Addon",
+                "score": 10,
+                "rarity": "rare",
+                "itemType": null,
+                "role": "killer"
+              },
+              {
+                "id": "fa974a6f-909d-4f01-9cf9-e82bb8c4f460",
+                "name": "\"Calm\" - Class I",
+                "category": "Addon",
+                "score": 10,
+                "rarity": "common",
+                "itemType": null,
+                "role": "killer"
+              },
+              {
+                "id": "2d15209b-da79-4fe3-9924-aa53ae05cef6",
+                "name": "\"Calm\" - Class II",
+                "category": "Addon",
+                "score": 10,
+                "rarity": "uncommon",
+                "itemType": null,
+                "role": "killer"
+              },
+              {
+                "id": "a7e1072f-c797-446f-a0ee-8f74d4775721",
+                "name": "\"Discipline\" - Class II",
+                "category": "Addon",
+                "score": 10,
+                "rarity": "uncommon",
+                "itemType": null,
+                "role": "killer"
+              }
+            ]
+          },
+          {
+            "query": "perks not hex",
+            "ms": 2.6000000005587935,
+            "results": [
+              {
+                "id": "54944810-74fa-4452-8c18-6508af885055",
+                "name": "A Nurse's Calling",
+                "category": "Perk",
+                "score": 10,
+                "role": "Killer"
+              },
+              {
+                "id": "akc-perk-001-aplaceforus",
+                "name": "A Place For Us",
+                "category": "Perk",
+                "score": 10,
+                "role": "Survivor"
+              },
+              {
+                "id": "08198d7f-1561-4cf3-b112-7969f8aebc32",
+                "name": "Ace in the Hole",
+                "category": "Perk",
+                "score": 10,
+                "role": "Survivor"
+              },
+              {
+                "id": "6e0523a9-0f3f-4329-87c6-01500e72b054",
+                "name": "Adrenaline",
+                "category": "Perk",
+                "score": 10,
+                "role": "Survivor"
+              },
+              {
+                "id": "19fce903-4735-4332-b609-becf90bfb9c8",
+                "name": "Aftercare",
+                "category": "Perk",
+                "score": 10,
+                "role": "Survivor"
+              },
+              {
+                "id": "d74b2d10-d629-4b25-aea6-5e8a3117cbc1",
+                "name": "Agitation",
+                "category": "Perk",
+                "score": 10,
+                "role": "Killer"
+              },
+              {
+                "id": "7c61d214-5247-405b-80d6-2ddf7e9d7ad1",
+                "name": "Alert",
+                "category": "Perk",
+                "score": 10,
+                "role": "Survivor"
+              },
+              {
+                "id": "b6940536-9372-455f-abb3-14dccba26a0e",
+                "name": "Alien Instinct",
+                "category": "Perk",
+                "score": 10,
+                "role": "Killer"
+              }
+            ]
+          },
+          {
+            "query": "Sole Survivor",
+            "ms": 14.200000000186265,
+            "results": [
+              {
+                "id": "b761a0e2-a9a3-476f-9c81-ca0f0b6e8dc4",
+                "name": "Sole Survivor",
+                "category": "Perk",
+                "score": 171,
+                "role": "Survivor"
+              },
+              {
+                "name": "Baby Survivor / Dweet",
+                "category": "Glossary",
+                "score": 8
+              },
+              {
+                "id": "mikaela-reid--blood-soaked-camisole--body--s28-torso01-p01",
+                "name": "Blood-Soaked Camisole",
+                "category": "Cosmetic",
+                "score": 8,
+                "rarity": "Rare"
+              },
+              {
+                "id": "ellen-ripley--cat-survivor--outfit--s39-outfit-011",
+                "name": "Cat Survivor",
+                "category": "Cosmetic",
+                "score": 8,
+                "rarity": "Very Rare"
+              },
+              {
+                "id": "the-huntress--cold-wasteland-survivor--outfit--be-outfit-009",
+                "name": "Cold Wasteland Survivor",
+                "category": "Cosmetic",
+                "score": 8,
+                "rarity": "Very Rare"
+              },
+              {
+                "id": "mikaela-reid--crescent-camisole--body--s28-torso01-04",
+                "name": "Crescent Camisole",
+                "category": "Cosmetic",
+                "score": 8,
+                "rarity": "Uncommon"
+              },
+              {
+                "id": "mikaela-reid--ochre-camisole--body--s28-torso01",
+                "name": "Ochre Camisole",
+                "category": "Cosmetic",
+                "score": 8,
+                "rarity": "Common"
+              },
+              {
+                "id": "b2534c28-3d51-4066-9dde-fa0a28bbde7b",
+                "name": "Smelly Inner Soles",
+                "category": "Addon",
+                "score": 8,
+                "rarity": "rare",
+                "itemType": null,
+                "role": "killer"
+              }
+            ]
+          },
+          {
+            "query": "No Mither",
+            "ms": 10.699999999254942,
+            "results": [
+              {
+                "id": "8adf88bc-7a4d-400d-9bdb-917d37d01ed2",
+                "name": "No Mither",
+                "category": "Perk",
+                "score": 131,
+                "role": "Survivor"
+              },
+              {
+                "id": "20ecec63-1583-422d-adbd-8b8ef3616bb9",
+                "name": "\"Calm\" - Carter's Notes",
+                "category": "Addon",
+                "score": 8,
+                "rarity": "veryrare",
+                "itemType": null,
+                "role": "killer"
+              },
+              {
+                "id": "5120c5d2-4d05-4317-9d9f-4b131fe47e3c",
+                "name": "\"Discipline\" - Carter's Notes",
+                "category": "Addon",
+                "score": 8,
+                "rarity": "veryrare",
+                "itemType": null,
+                "role": "killer"
+              },
+              {
+                "id": "26d68d70-8707-46b1-9b1e-462901ce9e29",
+                "name": "\"Order\" - Carter's Notes",
+                "category": "Addon",
+                "score": 8,
+                "rarity": "veryrare",
+                "itemType": null,
+                "role": "killer"
+              },
+              {
+                "id": "f1176042-d6b4-4d4d-9dbe-e2da25a8f9cf",
+                "name": "\"Restraint\" - Carter's Notes",
+                "category": "Addon",
+                "score": 8,
+                "rarity": "veryrare",
+                "itemType": null,
+                "role": "killer"
+              },
+              {
+                "id": "the-dredge--a-house-not-a-home--outfit--k28-outfit-022",
+                "name": "A House Not A Home",
+                "category": "Cosmetic",
+                "score": 8,
+                "rarity": "Very Rare"
+              },
+              {
+                "id": "the-unknown--abnormal-being--body--k35-body01-p01",
+                "name": "Abnormal Being",
+                "category": "Cosmetic",
+                "score": 8,
+                "rarity": "Rare"
+              },
+              {
+                "id": "the-doctor--adreno-head--head--do-head010",
+                "name": "Adreno-Head",
+                "category": "Cosmetic",
+                "score": 8,
+                "rarity": "Rare"
+              }
+            ]
+          },
+          {
+            "query": "No One Left Behind",
+            "ms": 17.09999999962747,
+            "results": [
+              {
+                "id": "f68aed3b-e8dc-478b-91eb-0fb05a73cb87",
+                "name": "No One Left Behind",
+                "category": "Perk",
+                "score": 147,
+                "role": "Survivor"
+              },
+              {
+                "id": "2af0cb82-accc-4ab6-9078-13cbfa89586c",
+                "name": "Hex: No One Escapes Death",
+                "category": "Perk",
+                "score": 16,
+                "role": "Killer"
+              },
+              {
+                "id": "10e9bfd6-f002-4cd5-8b9f-88cbc88e3b52",
+                "name": "Left Behind",
+                "category": "Perk",
+                "score": 16,
+                "role": "Survivor"
+              },
+              {
+                "id": "left-behind",
+                "name": "Left Behind",
+                "category": "Chapter",
+                "score": 16,
+                "role": "paragraph"
+              },
+              {
+                "id": "e8229df8-9955-4f2e-a1f2-6bb1578872b2",
+                "name": "None Are Free",
+                "category": "Perk",
+                "score": 16,
+                "role": "Killer"
+              },
+              {
+                "id": "the-wraith--unknown-backbone--weapon--tw-w009-01",
+                "name": "Unknown Backbone",
+                "category": "Cosmetic",
+                "score": 16,
+                "rarity": "Very Rare"
+              },
+              {
+                "id": "the-xenomorph--xenomorph-clone",
+                "name": "Xenomorph Clone",
+                "category": "Cosmetic",
+                "score": 16,
+                "rarity": "Costume"
+              },
+              {
+                "id": "20ecec63-1583-422d-adbd-8b8ef3616bb9",
+                "name": "\"Calm\" - Carter's Notes",
+                "category": "Addon",
+                "score": 8,
+                "rarity": "veryrare",
+                "itemType": null,
+                "role": "killer"
+              }
+            ]
+          },
+          {
+            "query": "aura",
+            "ms": 14.099999999627471,
+            "results": [
+              {
+                "id": "e3b0a01c-fde7-4d6e-a7c8-7f9420ae0ad8",
+                "name": "Restaurant Menu",
+                "category": "Addon",
+                "score": 73,
+                "rarity": "common",
+                "itemType": null,
+                "role": "killer"
+              },
+              {
+                "id": "fbdc181e-3a2f-4950-bc7f-63d2ff81b451",
+                "name": "SCREECH COBBLER",
+                "category": "Offering",
+                "score": 20,
+                "rarity": "common",
+                "role": "points"
+              },
+              {
+                "id": "8e662ce3-1cb2-4487-935f-60dc0f6183a0",
+                "name": "The Dark Lord",
+                "category": "Killer",
+                "score": 15
+              },
+              {
+                "id": "114736cd-6f78-4d86-88fd-58351384195a",
+                "name": "The Mastermind",
+                "category": "Killer",
+                "score": 15
+              },
+              {
+                "id": "c991df44-f218-40ab-ab99-60cefb3c161f",
+                "name": "The Xenomorph",
+                "category": "Killer",
+                "score": 15
+              },
+              {
+                "id": "668c5f3f-30f3-4652-8206-108d04245ed1",
+                "name": "\"All Seeing\" - Blood",
+                "category": "Addon",
+                "score": 14,
+                "rarity": "veryrare",
+                "itemType": null,
+                "role": "killer"
+              },
+              {
+                "id": "f1176042-d6b4-4d4d-9dbe-e2da25a8f9cf",
+                "name": "\"Restraint\" - Carter's Notes",
+                "category": "Addon",
+                "score": 14,
+                "rarity": "veryrare",
+                "itemType": null,
+                "role": "killer"
+              },
+              {
+                "id": "1ecfb587-2dca-4615-8cc0-79922393400a",
+                "name": "\"Restraint\" - Class II",
+                "category": "Addon",
+                "score": 14,
+                "rarity": "uncommon",
+                "itemType": null,
+                "role": "killer"
+              }
+            ]
+          },
+          {
+            "query": "icons:exausted",
+            "ms": 1.7999999998137355,
+            "results": [
+              {
+                "id": "exhausted",
+                "name": "Exhausted",
+                "category": "GameIcon",
+                "score": 20,
+                "role": "debuff"
+              }
+            ]
+          },
+          {
+            "query": "perks:",
+            "ms": 2.5,
+            "results": [
+              {
+                "id": "54944810-74fa-4452-8c18-6508af885055",
+                "name": "A Nurse's Calling",
+                "category": "Perk",
+                "score": 1,
+                "role": "Killer"
+              },
+              {
+                "id": "akc-perk-001-aplaceforus",
+                "name": "A Place For Us",
+                "category": "Perk",
+                "score": 1,
+                "role": "Survivor"
+              },
+              {
+                "id": "08198d7f-1561-4cf3-b112-7969f8aebc32",
+                "name": "Ace in the Hole",
+                "category": "Perk",
+                "score": 1,
+                "role": "Survivor"
+              },
+              {
+                "id": "6e0523a9-0f3f-4329-87c6-01500e72b054",
+                "name": "Adrenaline",
+                "category": "Perk",
+                "score": 1,
+                "role": "Survivor"
+              },
+              {
+                "id": "19fce903-4735-4332-b609-becf90bfb9c8",
+                "name": "Aftercare",
+                "category": "Perk",
+                "score": 1,
+                "role": "Survivor"
+              },
+              {
+                "id": "d74b2d10-d629-4b25-aea6-5e8a3117cbc1",
+                "name": "Agitation",
+                "category": "Perk",
+                "score": 1,
+                "role": "Killer"
+              },
+              {
+                "id": "7c61d214-5247-405b-80d6-2ddf7e9d7ad1",
+                "name": "Alert",
+                "category": "Perk",
+                "score": 1,
+                "role": "Survivor"
+              },
+              {
+                "id": "b6940536-9372-455f-abb3-14dccba26a0e",
+                "name": "Alien Instinct",
+                "category": "Perk",
+                "score": 1,
+                "role": "Killer"
+              }
+            ]
+          },
+          {
+            "query": "the",
+            "ms": 0.7000000001862645,
+            "results": []
+          },
+          {
+            "query": "aura reveal generator healing chase hex boon",
+            "ms": 35.59999999962747,
+            "results": [
+              {
+                "id": "c3216a0e-b763-4857-88d7-2c6260beb9ad",
+                "name": "Boon: Circle of Healing",
+                "category": "Perk",
+                "score": 56,
+                "role": "Survivor"
+              },
+              {
+                "id": "46445e8e-69b9-40d0-8820-1423d545643f",
+                "name": "Boon: Illumination",
+                "category": "Perk",
+                "score": 36,
+                "role": "Survivor"
+              },
+              {
+                "id": "3b04e69f-2975-481b-9cc0-5eb5eafd81e1",
+                "name": "Hex: Face the Darkness",
+                "category": "Perk",
+                "score": 36,
+                "role": "Killer"
+              },
+              {
+                "id": "2af0cb82-accc-4ab6-9078-13cbfa89586c",
+                "name": "Hex: No One Escapes Death",
+                "category": "Perk",
+                "score": 36,
+                "role": "Killer"
+              },
+              {
+                "id": "697ab247-b1e1-4eea-90c5-47c1fa8de821",
+                "name": "Hex: Overture of Doom",
+                "category": "Perk",
+                "score": 36,
+                "role": "Killer"
+              },
+              {
+                "id": "s54p03-boon-steadfast",
+                "name": "Boon: Steadfast",
+                "category": "Perk",
+                "score": 32,
+                "role": "Survivor"
+              },
+              {
+                "id": "st2-perk-003-hexhivemind",
+                "name": "Hex: Hive Mind",
+                "category": "Perk",
+                "score": 32,
+                "role": "Killer"
+              },
+              {
+                "id": "f7d9b1df-b8c2-4280-9b97-8dde8987e521",
+                "name": "Hex: Plaything",
+                "category": "Perk",
+                "score": 32,
+                "role": "Killer"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    "assertions": {
+      "passed": true,
+      "queries": 24,
+      "characterNames": 98,
+      "inputAndNavigation": true
+    },
+    "transpileBenchmark": [
+      {
+        "presets": [
+          "env",
+          "react"
+        ],
+        "samplesMs": [
+          4643.600000000559,
+          4384.699999999255,
+          4180.300000000745
+        ],
+        "outputBytes": 706152
+      },
+      {
+        "presets": [
+          "wiki"
+        ],
+        "samplesMs": [
+          1592.199999999255,
+          1570.1000000005588,
+          1732.7999999998137
+        ],
+        "outputBytes": 626728
+      }
+    ]
+  }
+}

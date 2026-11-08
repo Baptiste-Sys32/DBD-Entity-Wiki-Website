@@ -133,26 +133,43 @@ async function fetchWithRetry(url, options = {}) {
     }, timeoutMs);
 
     try {
-      const response = await fetch(url, {
-        method,
-        headers: mergeHeaders(options.defaultHeaders, options.headers),
-        body: options.body,
-        signal: controller.signal,
-        redirect: options.redirect || 'follow'
-      });
-
-      clearTimeout(timeoutHandle);
-
-      if (!response.ok) {
-        throw classifyHttpStatusError(response, {
-          url,
+      let requestUrl = url;
+      let response;
+      const maxRedirects = options.maxRedirects ?? 5;
+      for (let redirects = 0; ; redirects++) {
+        response = await fetch(requestUrl, {
           method,
-          attempt,
-          maxAttempts
+          headers: mergeHeaders(options.defaultHeaders, options.headers),
+          body: options.body,
+          signal: controller.signal,
+          redirect: 'manual'
         });
+        if (![301, 302, 303, 307, 308].includes(response.status)) break;
+        const location = response.headers.get('location');
+        await response.body?.cancel();
+        if (!location || redirects >= maxRedirects) throw new FetchRequestError('Redirect limit or missing redirect location', { url, kind: 'redirect' });
+        const next = new URL(location, requestUrl);
+        if (!['http:', 'https:'].includes(next.protocol)) throw new FetchRequestError('Unsupported redirect protocol', { url, kind: 'redirect' });
+        requestUrl = next.href;
       }
-
-      return response;
+      if (!response.ok) {
+        const error = classifyHttpStatusError(response, { url, method, attempt, maxAttempts });
+        const retryAfter = response.headers.get('retry-after');
+        if (retryAfter) {
+          const seconds = Number(retryAfter);
+          error.retryAfterMs = Math.min(maxDelayMs, Math.max(0, Number.isFinite(seconds) ? seconds * 1000 : Date.parse(retryAfter) - Date.now()));
+        }
+        await response.body?.cancel();
+        throw error;
+      }
+      // Keep the deadline active through body consumption, not only headers.
+      const bytes = await response.arrayBuffer();
+      clearTimeout(timeoutHandle);
+      const result = new Response([204, 205].includes(response.status) || method === 'HEAD' ? null : bytes, {
+        status: response.status, statusText: response.statusText, headers: response.headers
+      });
+      Object.defineProperty(result, 'url', { value: requestUrl });
+      return result;
     } catch (error) {
       clearTimeout(timeoutHandle);
 
@@ -173,7 +190,7 @@ async function fetchWithRetry(url, options = {}) {
       }
 
       const delayMs = computeBackoffDelayMs(attempt, baseDelayMs, maxDelayMs);
-      await sleep(delayMs);
+      await sleep(Math.max(delayMs, classified.retryAfterMs || 0));
     }
   }
 
