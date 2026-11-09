@@ -26,6 +26,7 @@ jobs:
         uses: actions/checkout@v4
         with:
           repository: Baptiste-Sys32/DBD-Entity-Wiki-Android
+          ref: modernize/vite-cap8
           path: dbd-app
           token: ${{ secrets.GITHUB_TOKEN }}
 

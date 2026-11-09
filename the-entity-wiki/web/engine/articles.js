@@ -53,26 +53,8 @@
       );
     };
     const ImageLightbox = ({ src, alt, meta, fit, onClose }) => {
-      useEffect(() => {
-        const onKey = (e) => { if (e.key === 'Escape' && onClose) onClose(); };
-        window.addEventListener('keydown', onKey);
-        return () => window.removeEventListener('keydown', onKey);
-      }, [onClose]);
       if (!src) return null;
-      return (
-        <div className="fixed inset-0 z-[100] flex items-center justify-center p-4" style={{ background: 'rgba(0,0,0,0.85)' }} onClick={onClose} role="dialog" aria-label={alt || 'Image preview'}>
-          <div className="relative w-full max-w-5xl" onClick={e => e.stopPropagation()}>
-            <img src={src} alt={alt || ''} style={fit === 'icon' ? { display: 'block', width: '100%', maxWidth: '320px', margin: '0 auto' } : { display: 'block', width: '100%', maxHeight: '86vh', objectFit: 'contain' }} />
-            <div className="flex items-center justify-between gap-4 mt-2">
-              <div className="min-w-0">
-                <p className="text-sm font-semibold" style={{ color: '#fafafa' }}>{alt}</p>
-                {meta ? <p className="text-xs mt-0.5" style={{ color: 'rgba(250,250,250,0.65)' }}>{meta}</p> : null}
-              </div>
-              <button type="button" onClick={onClose} className="cx-alink shrink-0" style={{ color: '#fafafa' }}>Close</button>
-            </div>
-          </div>
-        </div>
-      );
+      return <WikiDialog title={alt || 'Image reference'} eyebrow="Image reference" subtitle={meta} onClose={onClose} className="cx-dialog--lightbox" footer={<><span>{fit === 'icon' ? 'Perk artwork' : 'Image preview'}</span><button type="button" className="cx-toolbtn" onClick={onClose}>Close image</button></>}><div className={`cx-lightbox-image ${fit === 'icon' ? 'cx-lightbox-image--icon' : ''}`}><img src={src} alt={alt || ''} /></div></WikiDialog>;
     };
     const useNarrowTier = () => {
       const [narrow, setNarrow] = useState(() => typeof window !== 'undefined' && window.matchMedia('(max-width: 860px)').matches);

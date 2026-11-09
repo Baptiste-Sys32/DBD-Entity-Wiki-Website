@@ -51,6 +51,10 @@ function buildRuntime({ check = false, webRoot = WEB } = {}) {
     const errorHandler = file.startsWith('runtime/') && !attributes.includes('onerror=')
       ? ` onerror="window.__dbdDataScriptError('${file}')"` : '';
     return `<script src="${src}?v=${hash(bytes).slice(0, 12)}"${attributes}${errorHandler}></script>`;
+  }).replace(/<link\s+rel="stylesheet"\s+href="([^"?]+)(?:\?v=[^"]+)?"/g, (tag, href) => {
+    if (/^https?:/.test(href)) throw new Error('Stylesheets must be local');
+    const bytes = fs.readFileSync(path.join(webRoot, href.replace(/^\.\//, '')));
+    return `<link rel="stylesheet" href="${href}?v=${hash(bytes).slice(0, 12)}"`;
   });
   outputs.set('index.html', nextHtml);
   outputs.set('runtime/manifest.json', JSON.stringify(manifest, null, 2) + '\n');

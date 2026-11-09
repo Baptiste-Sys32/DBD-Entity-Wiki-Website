@@ -93,61 +93,24 @@ var ImageLightbox = _ref3 => {
     fit,
     onClose
   } = _ref3;
-  useEffect(() => {
-    var onKey = e => {
-      if (e.key === 'Escape' && onClose) onClose();
-    };
-    window.addEventListener('keydown', onKey);
-    return () => window.removeEventListener('keydown', onKey);
-  }, [onClose]);
   if (!src) return null;
-  return React.createElement("div", {
-    className: "fixed inset-0 z-[100] flex items-center justify-center p-4",
-    style: {
-      background: 'rgba(0,0,0,0.85)'
-    },
-    onClick: onClose,
-    role: "dialog",
-    "aria-label": alt || 'Image preview'
+  return React.createElement(WikiDialog, {
+    title: alt || 'Image reference',
+    eyebrow: "Image reference",
+    subtitle: meta,
+    onClose: onClose,
+    className: "cx-dialog--lightbox",
+    footer: React.createElement(React.Fragment, null, React.createElement("span", null, fit === 'icon' ? 'Perk artwork' : 'Image preview'), React.createElement("button", {
+      type: "button",
+      className: "cx-toolbtn",
+      onClick: onClose
+    }, "Close image"))
   }, React.createElement("div", {
-    className: "relative w-full max-w-5xl",
-    onClick: e => e.stopPropagation()
+    className: "cx-lightbox-image ".concat(fit === 'icon' ? 'cx-lightbox-image--icon' : '')
   }, React.createElement("img", {
     src: src,
-    alt: alt || '',
-    style: fit === 'icon' ? {
-      display: 'block',
-      width: '100%',
-      maxWidth: '320px',
-      margin: '0 auto'
-    } : {
-      display: 'block',
-      width: '100%',
-      maxHeight: '86vh',
-      objectFit: 'contain'
-    }
-  }), React.createElement("div", {
-    className: "flex items-center justify-between gap-4 mt-2"
-  }, React.createElement("div", {
-    className: "min-w-0"
-  }, React.createElement("p", {
-    className: "text-sm font-semibold",
-    style: {
-      color: '#fafafa'
-    }
-  }, alt), meta ? React.createElement("p", {
-    className: "text-xs mt-0.5",
-    style: {
-      color: 'rgba(250,250,250,0.65)'
-    }
-  }, meta) : null), React.createElement("button", {
-    type: "button",
-    onClick: onClose,
-    className: "cx-alink shrink-0",
-    style: {
-      color: '#fafafa'
-    }
-  }, "Close"))));
+    alt: alt || ''
+  })));
 };
 var useNarrowTier = () => {
   var [narrow, setNarrow] = useState(() => typeof window !== 'undefined' && window.matchMedia('(max-width: 860px)').matches);

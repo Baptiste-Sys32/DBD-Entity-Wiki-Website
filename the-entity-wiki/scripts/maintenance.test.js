@@ -21,7 +21,8 @@ test('runtime freshness checks reject stale source without rewriting output and 
       fs.writeFileSync(file, `const fixture${index} = ${index};`);
     }
     const indexPath = path.join(root, 'index.html');
-    fs.writeFileSync(indexPath, SOURCES.map(source => `<script src="./${outputFor(source)}"></script>`).join('\n'));
+    fs.writeFileSync(path.join(root, 'style.css'), 'body { color: white; }');
+    fs.writeFileSync(indexPath, '<link rel="stylesheet" href="./style.css">\n' + SOURCES.map(source => `<script src="./${outputFor(source)}"></script>`).join('\n'));
     buildRuntime({ webRoot: root });
     const firstHtml = fs.readFileSync(indexPath, 'utf8');
     const outputPath = path.join(root, outputFor(SOURCES[0]));
@@ -33,6 +34,13 @@ test('runtime freshness checks reject stale source without rewriting output and 
     assert.equal(fs.readFileSync(outputPath, 'utf8'), firstOutput);
     buildRuntime({ webRoot: root });
     assert.notEqual(fs.readFileSync(indexPath, 'utf8'), firstHtml);
+    buildRuntime({ webRoot: root, check: true });
+    const beforeCss = fs.readFileSync(indexPath, 'utf8');
+    fs.appendFileSync(path.join(root, 'style.css'), '\nbody { background: black; }');
+    assert.throws(() => buildRuntime({ webRoot: root, check: true }), /stale/);
+    assert.equal(fs.readFileSync(indexPath, 'utf8'), beforeCss);
+    buildRuntime({ webRoot: root });
+    assert.notEqual(fs.readFileSync(indexPath, 'utf8'), beforeCss);
     buildRuntime({ webRoot: root, check: true });
   } finally { fs.rmSync(root, { recursive: true, force: true }); }
 });

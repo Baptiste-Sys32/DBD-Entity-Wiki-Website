@@ -4292,6 +4292,8 @@
       );
     };
     const ListView = ({ data, type, filterOptions, activeFilter, setActiveFilter, allPerks = [], setView, onPerkSelect, initialSearch = '', onSearchChange, buildsByOwner = {}, onCreateBuildSeed, onBack, comparePerks = [], onPerkLongPress, favoritePerks = [], onToggleFavorite, onPerkTap, onPerkPreview, onShowLore, onShowPower, onViewProfile, allCharacters = [], settings = {} }) => {
+      const comparePress = useRef({ timer: null, firedId: null });
+      useEffect(() => () => clearTimeout(comparePress.current.timer), []);
       const scrollRef = useRef(null);
       const [localSearch, setLocalSearch] = useState(initialSearch || '');
       const DEFAULT_SORT = { key: 'name', dir: 'asc' };
@@ -4503,28 +4505,26 @@
               const onToggleFavoriteFn = onToggleFavorite ? () => onToggleFavorite(item.id) : undefined;
               const onPerkTapFn = isPerk && onPerkTap ? () => onPerkTap(item) : undefined;
               const onViewProfileFn = isCharacter && onViewProfile ? () => onViewProfile(item) : undefined;
-              let pressTimer = null;
-              let longPressFired = false;
+              const consumeComparePress = () => {
+                if (comparePress.current.firedId !== item.id) return false;
+                comparePress.current.firedId = null;
+                return true;
+              };
               const handleTouchStart = () => {
                 if (!isPerk || !onPerkLongPress) return;
-                longPressFired = false;
-                pressTimer = setTimeout(() => {
-                  longPressFired = true;
+                clearTimeout(comparePress.current.timer);
+                comparePress.current.firedId = null;
+                comparePress.current.timer = setTimeout(() => {
+                  comparePress.current.firedId = item.id;
                   onPerkLongPress(item);
                 }, 500);
               };
               const handleTouchEnd = () => {
-                if (pressTimer) {
-                  clearTimeout(pressTimer);
-                  pressTimer = null;
-                }
+                clearTimeout(comparePress.current.timer);
+                comparePress.current.timer = null;
               };
               const handlePerkClick = () => {
-                if (longPressFired) {
-                  longPressFired = false;
-                  return;
-                }
-                if (onPerkTapFn) onPerkTapFn();
+                if (!consumeComparePress()) onPerkTapFn?.();
               };
               const handleCharacterClick = () => {
                 if (onViewProfileFn) onViewProfileFn();
@@ -4599,7 +4599,7 @@
                   <td className="cx-perkcell">
                     <div className="cx-perkimg">
                       {onPerkPreview && item.image ? (
-                        <button type="button" onClick={(e) => { e.stopPropagation(); onPerkPreview(item); }} style={{ padding: 0, border: 0, background: 'none', cursor: 'zoom-in' }} aria-label={`Preview ${item.name}`}>
+                        <button type="button" onClick={(e) => { e.stopPropagation(); if (!consumeComparePress()) onPerkPreview(item); }} style={{ padding: 0, border: 0, background: 'none', cursor: 'zoom-in' }} aria-label={`Preview ${item.name}`}>
                           <div className="cx-imgbox">
                             <AssetFrame type={category} imageUrl={item.image} fallbackIcon={fallbackIcon} size="fill" />
                           </div>
@@ -4610,9 +4610,10 @@
                         </div>
                       )}
                       {onPerkTapFn ? (
-                        <button type="button" className="cx-alink" onClick={(e) => { e.stopPropagation(); onPerkTapFn(); }}>{item.name}</button>
+                        <button type="button" className="cx-alink" onClick={(e) => { e.stopPropagation(); handlePerkClick(); }}>{item.name}</button>
                       ) : <span className="font-semibold text-zinc-100">{item.name}</span>}
                       <small>{typeLabel}</small>
+                      {onPerkLongPress && <button type="button" className="cx-compare-pick" aria-label={`${isInCompare ? 'Remove' : 'Add'} ${item.name} ${isInCompare ? 'from' : 'to'} comparison`} aria-pressed={isInCompare} onMouseDown={event => event.stopPropagation()} onTouchStart={event => event.stopPropagation()} onClick={event => { event.stopPropagation(); comparePress.current.firedId = null; onPerkLongPress(item); }}>{isInCompare ? 'Selected' : 'Compare'}</button>}
                     </div>
                   </td>
                   <td style={{ textAlign: 'center', verticalAlign: 'middle' }}>
@@ -9537,6 +9538,55 @@
         </div>
       );
     };
+    // Shared popup shell. Portalled above site chrome, with contained focus.
+    const WikiDialog = ({ title, eyebrow, subtitle, onClose, children, footer, className = '' }) => {
+      const panelRef = useRef(null);
+      const closeRef = useRef(onClose);
+      closeRef.current = onClose;
+      const titleId = React.useId();
+      useEffect(() => {
+        const previous = document.activeElement;
+        const shell = document.querySelector('.site-shell');
+        const wasInert = shell?.inert;
+        if (shell) shell.inert = true;
+        const previousOverflow = document.body.style.overflow;
+        document.body.style.overflow = 'hidden';
+        const panel = panelRef.current;
+        panel?.querySelector('[data-dialog-close]')?.focus();
+        const handleKey = event => {
+          if (event.key === 'Escape') { event.preventDefault(); event.stopPropagation(); closeRef.current?.(); }
+          if (event.key !== 'Tab') return;
+          const stops = [...(panel?.querySelectorAll('button:not([disabled]), a[href], textarea, input, select, [tabindex="0"]') || [])].filter(node => node.getClientRects().length && !node.closest('[hidden]'));
+          const first = stops[0], last = stops[stops.length - 1];
+          if (!first) { event.preventDefault(); panel?.focus(); return; }
+          if (event.shiftKey && (document.activeElement === first || !panel.contains(document.activeElement))) { event.preventDefault(); last.focus(); }
+          else if (!event.shiftKey && (document.activeElement === last || !panel.contains(document.activeElement))) { event.preventDefault(); first.focus(); }
+        };
+        document.addEventListener('keydown', handleKey, true);
+        return () => {
+          document.removeEventListener('keydown', handleKey, true);
+          if (shell) shell.inert = wasInert;
+          document.body.style.overflow = previousOverflow;
+          if (previous?.isConnected) previous.focus({ preventScroll: true });
+        };
+      }, []);
+      return ReactDOM.createPortal(
+        <div className="cx-dialog-backdrop" onClick={event => { if (event.target === event.currentTarget) onClose(); }}>
+          <section ref={panelRef} tabIndex={-1} role="dialog" aria-modal="true" aria-labelledby={titleId} className={`cx-dialog ${className}`} data-no-swipe>
+            <header className="cx-dialog-head">
+              <div className="cx-dialog-heading">
+                {eyebrow && <p className="cx-dialog-eyebrow">{eyebrow}</p>}
+                <h2 id={titleId}>{title}</h2>
+                {subtitle && <p className="cx-dialog-subtitle">{subtitle}</p>}
+              </div>
+              <button type="button" className="cx-dialog-close" onClick={onClose} data-dialog-close aria-label={`Close ${title}`}><Icons.X width={20} height={20} /></button>
+            </header>
+            <div className="cx-dialog-body">{children}</div>
+            {footer && <footer className="cx-dialog-footer">{footer}</footer>}
+          </section>
+        </div>, document.body
+      );
+    };
     const GameIconsView = ({ onBack, theme }) => {
       const scrollRef = useRef(null);
       const [search, setSearch] = useState('');
@@ -9560,9 +9610,6 @@
         return matchesSearch && matchesFilter;
       }), [search, filter]);
 
-      const scrollToTop = () => scrollRef.current?.scrollTo({ top: 0, behavior: 'smooth' });
-      const accentColor = theme?.accent || '#fafafa';
-      const accentSoft = theme?.accentSoft || '#0f172a';
 
       // Quick-reference tips for Trial Grid flashcards
       const getQuickTip = (icon) => {
@@ -9629,467 +9676,95 @@
         return tips[icon.id] || icon.description;
       };
 
-      // Flashcard Modal for Trial Grid
-      const FlashcardModal = ({ icon, onClose }) => {
-        if (!icon) return null;
-        const isBuff = icon.type === 'buff';
-        const isDebuff = icon.type === 'debuff';
-        const borderColor = isBuff ? '#e4e4e7' : isDebuff ? '#71717a' : accentColor;
-        return (
-          <div className="fixed inset-0 z-[100] flex items-center justify-center p-4" onClick={onClose}>
-            <div className="absolute inset-0 bg-black/85 backdrop-blur-sm" />
-            <div
-              className="relative w-full max-w-sm rounded-xl overflow-hidden border-2"
-              style={{ borderColor, background: '#0a0a0a', boxShadow: `0 0 40px ${borderColor}40` }}
-              onClick={e => e.stopPropagation()}
-            >
-              {/* Close button */}
-              <button onClick={onClose} className="absolute top-3 right-3 z-10 p-2 rounded-full bg-white/10 hover:bg-white/20 transition-colors">
-                <Icons.X width={18} height={18} className="text-white" />
-              </button>
-              {/* Icon + Name */}
-              <div className="flex flex-col items-center pt-8 pb-4 px-6">
-                <div className="w-20 h-20 rounded-xl flex items-center justify-center mb-4 border-2" style={{ borderColor: `${borderColor}60`, backgroundColor: `${borderColor}15` }}>
-                  <div className="w-14 h-14">
-                    <AssetFrame
-                      type="GameIcon"
-                      size="fill"
-                      imageUrl={icon.icon}
-                      fallbackIcon={<Icons.Zap width={32} height={32} style={{ color: borderColor }} />}
-                    />
-                  </div>
-                </div>
-                <h2 className="text-xl font-black text-white tracking-tight text-center" style={{ borderBottom: `3px solid ${borderColor}`, paddingBottom: '4px' }}>
-                  {icon.name}
-                </h2>
-                <span className="text-[10px] font-bold uppercase tracking-widest mt-2 px-3 py-1 rounded-md" style={{ backgroundColor: `${borderColor}20`, color: borderColor }}>
-                  {categoryLabels[icon.category] || icon.category}
-                </span>
-              </div>
-              {/* What it does */}
-              <div className="px-6 pb-3">
-                <p className="text-[11px] font-bold uppercase tracking-widest text-zinc-500 mb-2">What it does</p>
-                <p className="text-zinc-200 text-sm leading-relaxed">{icon.description}</p>
-              </div>
-              {/* Quick tip */}
-              <div className="px-6 pb-8">
-                <p className="text-[11px] font-bold uppercase tracking-widest mb-2" style={{ color: borderColor }}>Quick Tip</p>
-                <p className="text-zinc-300 text-sm leading-relaxed font-medium">{getQuickTip(icon)}</p>
-              </div>
-            </div>
-          </div>
-        );
-      };
-
       return (
-        <div ref={scrollRef} className="flex flex-col h-full pt-6 pb-32 overflow-y-auto custom-scrollbar">
-          <div className="px-6"><ViewCrumbs trail={[{ label: 'Main page', onClick: onBack }]} current={viewMode === 'glossary' ? 'Glossary' : 'Trial Grid'} />
-            <h1 className="cx-title">Game Icons</h1>
-            <p className="cx-hatnote">Status icons and their meanings, plus a glossary view.</p>
-          </div>
-
-          {/* Mode Toggle */}
-          <div className="px-6 mb-3">
-            <div className="max-w-3xl mx-auto flex rounded-xl overflow-hidden border border-[var(--stroke)] bg-[var(--panel)]">
-              <button
-                onClick={() => setViewMode('glossary')}
-                className={`flex-1 py-3 px-4 text-xs font-bold uppercase tracking-wider transition-all flex items-center justify-center gap-2 ${viewMode === 'glossary' ? 'text-white' : 'text-zinc-500 hover:text-zinc-300'}`}
-                style={viewMode === 'glossary' ? { background: `${accentColor}25`, color: accentColor } : {}}
-              >
-                <Icons.BookOpen width={14} height={14} />
-                Glossary
-              </button>
-              <button
-                onClick={() => setViewMode('grid')}
-                className={`flex-1 py-3 px-4 text-xs font-bold uppercase tracking-wider transition-all flex items-center justify-center gap-2 ${viewMode === 'grid' ? 'text-white' : 'text-zinc-500 hover:text-zinc-300'}`}
-                style={viewMode === 'grid' ? { background: `${accentColor}25`, color: accentColor } : {}}
-              >
-                <Icons.Zap width={14} height={14} />
-                Trial Grid
-              </button>
+        <div ref={scrollRef} className="h-full overflow-y-auto custom-scrollbar">
+          <article className="cx-article cx-icons-page">
+            <ViewCrumbs trail={[{ label: 'Main page', onClick: onBack }]} current="Game icons" />
+            <h1 className="cx-title">Game icons</h1>
+            <p className="cx-hatnote">A reference to health states, status effects and the Trial HUD.</p>
+            <WikiHeaderSearchPortal><div className="cx-icon-search"><Icons.Search width={16} height={16} /><input aria-label="Search game icons" value={search} onChange={event => setSearch(event.target.value)} placeholder="Search icons and descriptions..." />{search && <button type="button" onClick={() => setSearch('')} aria-label="Clear icon search"><Icons.X width={16} height={16} /></button>}</div></WikiHeaderSearchPortal>
+            <div className="cx-icons-tools">
+              <div className="cx-reference-tabs" role="group" aria-label="Icon display"><button type="button" aria-pressed={viewMode === 'glossary'} onClick={() => setViewMode('glossary')}>Reference list</button><button type="button" aria-pressed={viewMode === 'grid'} onClick={() => setViewMode('grid')}>Icon grid</button></div>
+              <span aria-live="polite">{filteredIcons.length} {filteredIcons.length === 1 ? 'icon' : 'icons'}</span>
             </div>
-          </div>
-
-          {/* Sticky Search + Filters (both modes) */}
-          <WikiHeaderSearchPortal>
-            <div className="relative w-full">
-              <div className="absolute left-4 top-1/2 -translate-y-1/2 text-zinc-500">
-                <Icons.Search width={18} height={18} />
-              </div>
-              <input type="text" placeholder={viewMode === 'grid' ? 'Filter icons...' : 'Search icons...'} className="w-full bg-[var(--panel)] border border-[var(--stroke)] rounded-xl py-3 pl-12 pr-10 text-white placeholder-zinc-600 text-sm focus:outline-none" value={search} onChange={e => setSearch(e.target.value)} />
-              {search && <button onClick={() => setSearch('')} className="absolute right-3 top-1/2 -translate-y-1/2 p-1.5 rounded-lg bg-white/5 text-zinc-400 hover:text-white transition-colors"><Icons.X width={14} height={14} /></button>}
-
-            </div>
-          </WikiHeaderSearchPortal>
-
-          {/* Filter Pills */}
-          <div className="max-w-3xl mx-auto flex flex-wrap justify-center gap-2 mb-2 px-4">
-            {filters.map(f => (
-              <button key={f} type="button" onClick={() => setFilter(f)} className={`mode-choice px-4 py-2 text-xs font-bold ${filter === f ? 'mode-choice--active' : ''}`}>{f}</button>
-            ))}
-          </div>
-
-          {/* =================== LIST BODY (persistent wrapper) =================== */}
-          <div>
-          {viewMode === 'grid' && (
-            <div className="px-4 pb-32">
-              {filter !== 'All' && (
-                <p className="text-center text-zinc-500 text-xs font-bold uppercase tracking-widest mb-4">
-                  {filteredIcons.length} {filter} icons
-                </p>
-              )}
-              <div className="grid grid-cols-4 sm:grid-cols-5 md:grid-cols-6 gap-2 max-w-3xl mx-auto">
-                {filteredIcons.map(icon => {
-                  const isBuff = icon.type === 'buff';
-                  const isDebuff = icon.type === 'debuff';
-                  const ringColor = isBuff ? '#e4e4e7' : isDebuff ? '#71717a' : `${accentColor}60`;
-                  return (
-                    <button
-                      key={icon.id}
-                      onClick={() => setFlashcardIcon(icon)}
-                      className="game-icon-tile relative aspect-square rounded-xl flex flex-col items-center justify-center p-1.5 border transition-colors group"
-                      style={{
-                        borderColor: `${ringColor}40`,
-                        background: `linear-gradient(145deg, ${ringColor}10, #0a0a0a)`,
-                      }}
-                      title={icon.name}
-                    >
-                      <div className="w-10 h-10 sm:w-12 sm:h-12 flex items-center justify-center">
-                        <AssetFrame
-                          type="GameIcon"
-                          size="fill"
-                          imageUrl={icon.icon}
-                          fallbackIcon={<Icons.Zap width={28} height={28} style={{ color: ringColor }} />}
-                        />
-                      </div>
-                      <p className="text-[9px] sm:text-[10px] text-zinc-400 font-semibold text-center leading-tight mt-1 line-clamp-2 group-hover:text-white transition-colors">
-                        {icon.name}
-                      </p>
-                      {/* Type indicator dot */}
-                      <div className="absolute top-1.5 right-1.5 w-2 h-2 rounded-full" style={{ backgroundColor: ringColor, opacity: 0.7 }} />
-                    </button>
-                  );
+            <div className="cx-icons-reference">
+              <nav className="cx-icon-categories" aria-label="Icon categories"><p>Contents</p>{filters.map(label => {
+                const category = label.toLowerCase();
+                const count = label === 'All' ? GAME_ICONS.length : GAME_ICONS.filter(icon => icon.category === category).length;
+                return <button type="button" key={label} aria-pressed={filter === label} onClick={() => { setFilter(label); setExpandedId(null); }}><span>{label === 'All' ? 'All icons' : categoryLabels[category]}</span><span>{count}</span></button>;
+              })}</nav>
+              <div className="cx-icons-results">
+                {filteredIcons.length === 0 ? <div className="cx-reference-empty"><Icons.Search width={30} height={30} /><h2>No icons found</h2><p>Try another name or description, or reset the category.</p><button type="button" className="cx-alink" onClick={() => { setSearch(''); setFilter('All'); }}>Reset filters</button></div> : filters.slice(1).map(label => {
+                  const group = filteredIcons.filter(icon => icon.category === label.toLowerCase());
+                  if (!group.length) return null;
+                  return <section key={label} className="cx-icon-section"><h2 className="cx-sec">{categoryLabels[label.toLowerCase()]}<span className="cx-reference-count">{group.length}</span></h2>
+                    {viewMode === 'grid' ? <div className="cx-icon-grid">{group.map(icon => <button type="button" key={icon.id} className="cx-icon-tile" onClick={() => setFlashcardIcon(icon)} aria-label={`Open ${icon.name}`}><span className="cx-icon-art"><AssetFrame type="GameIcon" size="fill" imageUrl={icon.icon} fallbackIcon={<Icons.Zap width={28} height={28} />} /></span><span>{icon.name}</span></button>)}</div> : <div className="cx-icon-list">{group.map(icon => {
+                      const expanded = expandedId === icon.id;
+                      return <div className="cx-icon-entry" key={icon.id}><button type="button" className="cx-icon-summary" aria-expanded={expanded} aria-controls={`icon-detail-${icon.id}`} onClick={() => setExpandedId(expanded ? null : icon.id)}><span className="cx-icon-art"><AssetFrame type="GameIcon" size="fill" imageUrl={icon.icon} fallbackIcon={<Icons.Zap width={24} height={24} />} /></span><span className="cx-icon-summary-copy"><span className="cx-icon-name">{icon.name}</span><span className="cx-icon-excerpt">{icon.description}</span></span><span className="cx-icon-expand" aria-hidden="true">{expanded ? '−' : '+'}</span></button><div id={`icon-detail-${icon.id}`} hidden={!expanded} className="cx-icon-detail"><p>{icon.description}</p><h3>In the Trial</h3><p>{getQuickTip(icon)}</p></div></div>;
+                    })}</div>}
+                  </section>;
                 })}
               </div>
-              {filteredIcons.length === 0 && (
-                <div className="text-center py-16">
-                  <Icons.Search width={48} height={48} className="mx-auto text-zinc-700 mb-4" />
-                  <p className="text-zinc-500 text-lg">No icons match</p>
-                </div>
-              )}
-              {/* Legend */}
-              <div className="max-w-3xl mx-auto mt-6 flex items-center justify-center gap-4 text-[10px] text-zinc-600 font-bold uppercase tracking-wider">
-                <span className="flex items-center gap-1.5"><span className="w-2.5 h-2.5 rounded-full bg-zinc-300 inline-block" /> Buff</span>
-                <span className="flex items-center gap-1.5"><span className="w-2.5 h-2.5 rounded-full bg-zinc-500 inline-block" /> Debuff</span>
-                <span className="flex items-center gap-1.5"><span className="w-2.5 h-2.5 rounded-full inline-block" style={{ backgroundColor: `${accentColor}60` }} /> Neutral</span>
-              </div>
             </div>
-          )}
-
-          {/* =================== GLOSSARY MODE =================== */}
-          {viewMode === 'glossary' && (
-            <div className="px-6 pb-32">
-              {filteredIcons.map(icon => {
-                const isExpanded = expandedId === icon.id;
-                const isBuff = icon.type === 'buff';
-                const isDebuff = icon.type === 'debuff';
-                const underlineColor = isBuff ? '#e4e4e7' : isDebuff ? '#71717a' : 'transparent';
-                return (
-                  <div
-                    key={icon.id}
-                    onClick={() => setExpandedId(isExpanded ? null : icon.id)}
-                    className="game-icon-row mb-3 rounded-xl border border-[var(--stroke)] bg-[var(--panel)] cursor-pointer transition-colors overflow-hidden"
-                    style={{
-                      background: `linear-gradient(145deg, ${accentSoft}40, #09090b)`,
-                      boxShadow: isExpanded ? `0 0 20px ${accentColor}30` : 'none'
-                    }}
-                  >
-                    <div className="p-4 flex items-center gap-4">
-                      <div
-                        className="w-14 h-14 rounded-xl flex items-center justify-center shrink-0 border"
-                        style={{
-                          backgroundColor: `${accentColor}15`,
-                          borderColor: `${accentColor}30`
-                        }}
-                      >
-                        <AssetFrame
-                          type="GameIcon"
-                          size="fill"
-                          imageUrl={icon.icon}
-                          fallbackIcon={<Icons.Zap width={24} height={24} style={{ color: accentColor }} />}
-                        />
-                      </div>
-                      <div className="flex-1 min-w-0">
-                        <div className="flex items-center gap-2 flex-wrap">
-                          <h3
-                            className="text-white font-bold text-base pb-0.5 [font-family:var(--font-display)]"
-                            style={{ borderBottom: `2px solid ${underlineColor}`, display: 'inline-block' }}
-                          >
-                            {icon.name}
-                          </h3>
-                          <span
-                            className="game-icon-category text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-full"
-                            style={{
-                              backgroundColor: `${accentColor}20`,
-                              color: accentColor
-                            }}
-                          >
-                            {categoryLabels[icon.category] || icon.category}
-                          </span>
-                        </div>
-                        {!isExpanded && (
-                          <p className="text-zinc-400 text-sm mt-1 line-clamp-1">{icon.description}</p>
-                        )}
-                      </div>
-                      <Icons.ChevronLeft
-                        width={18} height={18}
-                        className={`text-zinc-500 transition-transform shrink-0 ${isExpanded ? 'rotate-90' : '-rotate-90'}`}
-                      />
-                    </div>
-                    {isExpanded && (
-                      <div className="px-4 pb-4 pt-0">
-                        <div className="p-3 rounded-xl bg-[var(--panel)] border border-[var(--stroke)]">
-                          <p className="text-zinc-300 text-sm leading-relaxed">{icon.description}</p>
-                        </div>
-                      </div>
-                    )}
-                  </div>
-                );
-              })}
-              {filteredIcons.length === 0 && (
-                <div className="text-center py-16">
-                  <Icons.Search width={48} height={48} className="mx-auto text-zinc-700 mb-4" />
-                  <p className="text-zinc-500 text-lg">No icons found</p>
-                  <p className="text-zinc-600 text-sm mt-1">Try adjusting your search or filter</p>
-                </div>
-              )}
-            </div>
-          )}
-          </div>
-
-          {/* Flashcard Modal (Trial Grid) */}
-          {flashcardIcon && <FlashcardModal icon={flashcardIcon} onClose={() => setFlashcardIcon(null)} />}
+          </article>
+          {flashcardIcon && <WikiDialog title={flashcardIcon.name} eyebrow={categoryLabels[flashcardIcon.category]} onClose={() => setFlashcardIcon(null)} className="cx-dialog--icon" footer={<><span>Game icon reference</span><button type="button" className="cx-toolbtn" onClick={() => setFlashcardIcon(null)}>Close reference</button></>}><div className="cx-icon-dialog-art"><AssetFrame type="GameIcon" size="fill" imageUrl={flashcardIcon.icon} fallbackIcon={<Icons.Zap width={48} height={48} />} /></div><section className="cx-icon-dialog-copy"><h3 className="cx-sec">What it means</h3><p>{flashcardIcon.description}</p><h3 className="cx-sec">In the Trial</h3><p>{getQuickTip(flashcardIcon)}</p></section></WikiDialog>}
         </div>
       );
     };
-    const FloatingCompareBadge = ({ count, onClick, onClear, theme }) => {
-      if (count === 0) return null;
-      const accentColor = theme?.accent || '#fafafa';
+    const FloatingCompareBadge = ({ count, onClick, onClear }) => {
+      if (!count) return null;
+      return <div className="cx-compare-bar" role="region" aria-label="Selected perks"><button type="button" onClick={onClick}><Icons.BookOpen width={16} height={16} /><span aria-live="polite">Compare ({count}/4)</span></button><button type="button" onClick={onClear} aria-label="Clear comparison"><Icons.X width={16} height={16} /></button></div>;
+    };
+    const MapLayoutModal = ({ map, onClose, noteValue = '', onNoteChange }) => {
+      const [currentIndex, setCurrentIndex] = useState(0);
+      const [layoutBroken, setLayoutBroken] = useState(false);
+      const [zoom, setZoom] = useState(1);
+      const stageRef = useRef(null);
+      useEffect(() => { setCurrentIndex(0); setZoom(1); setLayoutBroken(false); }, [map?.id]);
+      useEffect(() => { setLayoutBroken(false); setZoom(1); stageRef.current?.scrollTo(0, 0); }, [currentIndex]);
+      if (!map) return null;
+      const layouts = getMapLayoutsForName(map.name);
+      const selected = layouts[currentIndex] || layouts[0];
+      const variation = selected?.label || (layouts.length > 1 ? `Layout ${currentIndex + 1}` : 'Map layout');
       return (
-        <div className="fixed bottom-24 right-4 z-50 flex items-center gap-2">
-          {/* Clear button */}
-          <button
-            onClick={onClear}
-            className="p-3 rounded-full font-bold shadow-lg hover:scale-105 transition-all"
-            style={{
-              background: '#0a0a0a',
-              border: '2px solid #fafafa',
-              color: '#fafafa',
-              boxShadow: '0 4px 20px rgba(250,250,250,0.25)'
-            }}
-            title="Clear comparison"
-          >
-            <Icons.X width={16} height={16} />
-          </button>
-          {/* Compare button */}
-          <button
-            onClick={onClick}
-            className="flex items-center gap-2 px-4 py-3 rounded-full font-bold shadow-lg hover:scale-105 transition-all"
-            style={{
-              background: '#0a0a0a',
-              border: `2px solid ${accentColor}`,
-              color: accentColor,
-              boxShadow: `0 4px 20px ${accentColor}30`
-            }}
-          >
-            <Icons.BookOpen width={18} height={18} />
-            <span>Compare ({count}/4)</span>
-          </button>
-        </div>
+        <WikiDialog title={map.name} eyebrow="Map reference" subtitle={map.realm} onClose={onClose} className="cx-dialog--map" footer={
+          <><span>{layouts.length} {layouts.length === 1 ? 'layout' : 'layouts'} available</span><button type="button" className="cx-toolbtn" onClick={onClose}>Close map</button></>
+        }>
+          <div className="cx-map-reference">
+            <section className="cx-map-visual" aria-label="Layout viewer">
+              <div className="cx-map-toolbar">
+                <p aria-live="polite">{variation}</p>
+                <div className="cx-map-zoom" role="group" aria-label="Layout zoom">
+                  <button type="button" aria-label="Zoom out" disabled={zoom <= 1 || layoutBroken || !selected} onClick={() => setZoom(value => Math.max(1, value - .5))}>−</button>
+                  <button type="button" disabled={!selected || layoutBroken} onClick={() => { setZoom(1); stageRef.current?.scrollTo(0, 0); }} aria-label="Fit layout">{zoom === 1 ? 'Fit' : `${Math.round(zoom * 100)}%`}</button>
+                  <button type="button" aria-label="Zoom in" disabled={zoom >= 3 || layoutBroken || !selected} onClick={() => setZoom(value => Math.min(3, value + .5))}>+</button>
+                </div>
+              </div>
+              <div ref={stageRef} className={`cx-map-stage ${zoom > 1 ? 'cx-map-stage--zoomed' : ''}`} tabIndex={0} aria-label={`${map.name} layout, scroll to inspect when zoomed`}>
+                {selected && !layoutBroken ? <img key={selected.path} src={`./dbd_images/${selected.path}`} alt={`${map.name}: ${variation}`} style={{ width: `${zoom * 100}%`, maxWidth: 'none' }} onError={() => setLayoutBroken(true)} /> : <div className="cx-reference-empty"><Icons.Map width={32} height={32} /><p>{selected ? 'This layout could not load.' : 'No layout is available for this map.'}</p>{selected && <button className="cx-alink" type="button" onClick={() => setLayoutBroken(false)}>Try again</button>}</div>}
+              </div>
+              {layouts.length > 1 && <div className="cx-reference-tabs cx-map-variations" role="group" aria-label="Map layout variations">{layouts.map((layout, index) => <button type="button" key={layout.path} aria-pressed={index === currentIndex} onClick={() => setCurrentIndex(index)}>{layout.label || `Layout ${index + 1}`}</button>)}</div>}
+              <p className="cx-reference-caption">{zoom > 1 ? 'Scroll the layout to inspect it. Select Fit to reset.' : 'Select a variation or zoom in to inspect tiles and callouts.'}</p>
+            </section>
+            <aside className="cx-map-sidebar">
+              <h3 className="cx-sec">Overview</h3>
+              <p>{map.description || 'No description is available for this map yet.'}</p>
+              <dl className="cx-reference-facts"><div><dt>Realm</dt><dd>{map.realm}</dd></div></dl>
+              <section className="cx-map-notes"><h3 className="cx-sec"><label htmlFor="map-reference-notes">Personal notes</label></h3><textarea id="map-reference-notes" rows={5} value={noteValue} onChange={event => onNoteChange?.(event.target.value)} placeholder="Loops, spawns, tiles and callouts..." /><p className="cx-reference-caption">Saved on this device.</p></section>
+            </aside>
+          </div>
+        </WikiDialog>
       );
     };
-/* ANCHOR: replaces PowerModal, lines 13719-13812 (useState stays first, before guard) */
-const MapLayoutModal = ({ map, onClose, noteValue = '', onNoteChange }) => {
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const [layoutBroken, setLayoutBroken] = useState(false);
-  useEffect(() => {
-    setLayoutBroken(false);
-    setCurrentIndex(0);
-  }, [map?.name]);
-  useEffect(() => {
-    setLayoutBroken(false);
-  }, [currentIndex]);
-  if (!map) return null;
-  const layouts = getMapLayoutsForName(map.name);
-  const hasMultiple = layouts.length > 1;
-  return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/90 backdrop-blur-sm" onClick={onClose}>
-      <div
-        className="relative w-full max-w-2xl max-h-[90vh] flex flex-col rounded-xl bg-[#0a0a0a] border border-white/10 shadow-2xl"
-        onClick={e => e.stopPropagation()}
-      >
-        {/* Header */}
-        <div className="flex-shrink-0 flex items-center justify-between p-4 bg-[#0a0a0a]/95 backdrop-blur border-b border-white/10 rounded-t-xl">
-          <div>
-            <p className="text-[10px] font-bold uppercase tracking-widest text-zinc-500 mb-1">Map Details</p>
-            <h2 className="text-lg text-white pb-1" style={{ fontFamily: 'var(--font-display)', fontWeight: 600, borderBottom: '2px solid #fafafa', display: 'inline-block' }}>{map.name}</h2>
-            {map.realm && <p className="text-xs text-zinc-500 mt-1">{map.realm}</p>}
-            {hasMultiple && layouts[currentIndex].label && (
-              <p className="text-xs text-zinc-400 mt-1">{layouts[currentIndex].label}</p>
-            )}
-          </div>
-          <button
-            onClick={onClose}
-            className="p-2 rounded-full bg-white/10 hover:bg-white/20 transition-colors"
-          >
-            <Icons.X width={20} height={20} className="text-white" />
-          </button>
-        </div>
-        {/* Layout Image - scrollable area */}
-        <div className="flex-1 overflow-y-auto p-4 flex flex-col items-center">
-          <div className="w-full space-y-4">
-            <div className="p-4 rounded-xl bg-white/5 border border-white/10">
-              <p className="text-[10px] uppercase tracking-wider text-zinc-500 font-bold mb-2">Overview</p>
-              <p className="text-sm text-zinc-300 leading-relaxed">{map.description || 'No description available for this map yet.'}</p>
-            </div>
-            {layouts.length > 0 ? (
-              <div className="relative w-full aspect-square max-h-[55vh] bg-zinc-800 rounded-xl overflow-hidden flex items-center justify-center">
-                {!layoutBroken ? (
-                  <img
-                    src={`./dbd_images/${layouts[currentIndex].path}`}
-                    alt={`${map.name} layout`}
-                    className="max-w-full max-h-full object-contain"
-                    onError={() => setLayoutBroken(true)}
-                  />
-                ) : (
-                  <div className="flex flex-col items-center justify-center gap-3 text-zinc-500 px-6 text-center">
-                    <Icons.Map width={36} height={36} className="text-zinc-600" />
-                    <p className="text-sm font-medium">Map layout unavailable in the offline bundle.</p>
-                  </div>
-                )}
-              </div>
-            ) : (
-              <div className="w-full aspect-square max-h-[40vh] rounded-xl bg-zinc-800/70 border border-white/10 flex flex-col items-center justify-center text-center px-6">
-                <Icons.Map width={36} height={36} className="text-zinc-600 mb-3" />
-                <p className="text-sm font-medium text-zinc-400">No layout art bundled for this map.</p>
-              </div>
-            )}
-          </div>
-          {hasMultiple && (
-            <div className="flex gap-2 mt-4 flex-wrap justify-center">
-              {layouts.map((layout, idx) => (
-                <button
-                  key={idx}
-                  onClick={() => setCurrentIndex(idx)}
-                  className={`px-4 py-2 rounded-xl text-sm font-medium transition-colors ${currentIndex === idx ? 'bg-zinc-100 text-black' : 'bg-white/10 text-zinc-400 hover:bg-white/20'}`}
-                >
-                  {layout.label || `Layout ${idx + 1}`}
-                </button>
-              ))}
-            </div>
-          )}
-          <div className="w-full">
-            <NotesEditor
-              title="Map Notes"
-              value={noteValue}
-              onChange={onNoteChange}
-              placeholder="Tiles to watch, favorite loops, spawn notes, or personal callouts..."
-            />
-          </div>
-        </div>
-        {/* Close Button - fixed at bottom */}
-        <div className="flex-shrink-0 p-4 pt-3 pb-5 border-t border-white/10">
-          <button
-            onClick={onClose}
-            className="w-full py-3 rounded-xl bg-white/5 hover:bg-white/10 text-zinc-300 font-semibold transition-colors"
-          >
-            Close
-          </button>
-        </div>
-      </div>
-    </div>
-  );
-};
     const PerkCompareModal = ({ perks, onClose, onRemove, theme, settings = {} }) => {
-      if (!perks || perks.length === 0) return null;
-      const accentColor = theme?.accent || '#fafafa';
-      return (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm" onClick={onClose}>
-          <div
-            className="relative w-full max-w-2xl max-h-[85vh] overflow-y-auto rounded-3xl bg-zinc-900 shadow-2xl"
-            style={{ border: `1px solid ${accentColor}40` }}
-            onClick={e => e.stopPropagation()}
-          >
-            {/* Header */}
-            <div
-              className="sticky top-0 z-10 flex items-center justify-between p-4 backdrop-blur"
-              style={{
-                background: `linear-gradient(180deg, ${accentColor}15, transparent)`,
-                borderBottom: `1px solid ${accentColor}30`
-              }}
-            >
-              <h2 className="text-lg font-bold text-white">Compare Perks ({perks.length}/4)</h2>
-              <button
-                onClick={onClose}
-                className="p-2 rounded-full bg-white/10 hover:bg-white/20 transition-colors"
-              >
-                <Icons.X width={20} height={20} className="text-white" />
-              </button>
-            </div>
-            {/* Perk Cards Grid */}
-            <div className="p-4 grid grid-cols-2 gap-4">
-              {perks.map(perk => (
-                <div
-                  key={perk.id}
-                  className="relative p-4 rounded-2xl border"
-                  style={{
-                    background: `linear-gradient(145deg, ${accentColor}10, transparent)`,
-                    borderColor: `${accentColor}20`
-                  }}
-                >
-                  {/* Remove button */}
-                  <button
-                    onClick={() => onRemove(perk)}
-                    className="absolute top-2 right-2 p-1 rounded-full bg-zinc-500/20 hover:bg-zinc-500/40 transition-colors"
-                  >
-                    <Icons.X width={14} height={14} className="text-zinc-100" />
-                  </button>
-                  {/* Perk Image */}
-                  <div className="flex justify-center mb-3">
-                    <AssetFrame type="Perk" imageUrl={perk.image} size="large" />
-                  </div>
-                  {/* Perk Name */}
-                  <h3 className="text-center text-white font-bold text-sm mb-1">{perk.name}</h3>
-                  <p className="text-center text-xs text-zinc-500 mb-3">
-                    {perk.type} • {perk.owner || 'Universal'}
-                  </p>
-                  {/* Description */}
-                  <PerkDescriptionBlock
-                    perk={perk}
-                    settings={settings}
-                    accentColor={accentColor}
-                    className="text-xs text-zinc-400"
-                    lineClassName="leading-relaxed"
-                  />
-                </div>
-              ))}
-            </div>
-            {/* Close Button */}
-            <div className="p-4 border-t border-white/10">
-              <button
-                onClick={onClose}
-                className="w-full py-3 rounded-xl font-semibold transition-colors"
-                style={{
-                  background: `${accentColor}20`,
-                  color: accentColor
-                }}
-              >
-                Close Comparison
-              </button>
-            </div>
-          </div>
-        </div>
-      );
+      if (!perks?.length) return null;
+      return <WikiDialog title="Compare perks" eyebrow="Perk reference" subtitle={`${perks.length} of 4 comparison slots used`} onClose={onClose} className="cx-dialog--compare" footer={<><span>Remove a perk to free a slot.</span><button type="button" className="cx-toolbtn" onClick={onClose}>Close comparison</button></>}>
+        <p className="cx-compare-hint">Swipe sideways to compare perks.</p><div className="cx-compare-grid" style={{ '--compare-columns': perks.length }}>{perks.map(perk => <section className="cx-compare-entry" key={perk.id}>
+          <div className="cx-compare-entry-head"><span>{perk.type || 'Perk'}</span><button type="button" aria-label={`Remove ${perk.name}`} onClick={() => onRemove(perk)}><Icons.X width={16} height={16} /></button></div>
+          <div className="cx-compare-image"><AssetFrame type="Perk" size="fill" imageUrl={perk.image} /></div><h3>{perk.name}</h3><p>{perk.owner || 'Universal'}</p>
+          <PerkDescriptionBlock perk={perk} settings={settings} accentColor="var(--link)" className="cx-compare-description" lineClassName="leading-relaxed" />
+        </section>)}</div>
+      </WikiDialog>;
     };
     /* Moved to ./engine/shell.js (wiki engine bundle, loaded above). */
     /* ===== Codex shared components ===== */

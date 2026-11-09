@@ -47,8 +47,8 @@
     {
       "source": "engine/articles.js",
       "output": "runtime/engine/articles.js",
-      "sourceSha256": "559f4e657ede11abe99453f09a3cc264613d8c5fff07ab69401a6b3016f7bfb2",
-      "outputSha256": "fe0b66ae22805b2dc0d94c4832ba8d00911c637a795cbf1ffe1da50700975267"
+      "sourceSha256": "c391a31dd5a6a7c8be93e97a00484349643db4173562133cdd10ff5cf9f543e4",
+      "outputSha256": "9486f806973b1af161ee7d2670da7002f09756403c65ebd008382bc2ea1efc92"
     },
     {
       "source": "games/dbd/config.js",
@@ -59,8 +59,8 @@
     {
       "source": "app.jsx",
       "output": "runtime/app.js",
-      "sourceSha256": "d2e8a68a0c2514afb97578e698ed6702a3b90173a5445ed6ec8c30467a2367c5",
-      "outputSha256": "6ef50e7588724255b6037bcb90224b25ec897ddae6e13afaeab2378b9f2d7028"
+      "sourceSha256": "f6ff8378a824bfa57ca7b3be7b9b37cc04bac014337a4f930cb60cf28de4ceeb",
+      "outputSha256": "af87339031e06b3609392d50e9150750dfa26fd441eca6ec72833aae8951cf77"
     }
   ]
 }

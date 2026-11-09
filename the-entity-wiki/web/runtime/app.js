@@ -5501,6 +5501,11 @@ var ListView = _ref26 => {
     allCharacters = [],
     settings = {}
   } = _ref26;
+  var comparePress = useRef({
+    timer: null,
+    firedId: null
+  });
+  useEffect(() => () => clearTimeout(comparePress.current.timer), []);
   var scrollRef = useRef(null);
   var [localSearch, setLocalSearch] = useState(initialSearch || '');
   var DEFAULT_SORT = {
@@ -5778,28 +5783,26 @@ var ListView = _ref26 => {
     var onToggleFavoriteFn = onToggleFavorite ? () => onToggleFavorite(item.id) : undefined;
     var onPerkTapFn = isPerk && onPerkTap ? () => onPerkTap(item) : undefined;
     var onViewProfileFn = isCharacter && onViewProfile ? () => onViewProfile(item) : undefined;
-    var pressTimer = null;
-    var longPressFired = false;
+    var consumeComparePress = () => {
+      if (comparePress.current.firedId !== item.id) return false;
+      comparePress.current.firedId = null;
+      return true;
+    };
     var handleTouchStart = () => {
       if (!isPerk || !onPerkLongPress) return;
-      longPressFired = false;
-      pressTimer = setTimeout(() => {
-        longPressFired = true;
+      clearTimeout(comparePress.current.timer);
+      comparePress.current.firedId = null;
+      comparePress.current.timer = setTimeout(() => {
+        comparePress.current.firedId = item.id;
         onPerkLongPress(item);
       }, 500);
     };
     var handleTouchEnd = () => {
-      if (pressTimer) {
-        clearTimeout(pressTimer);
-        pressTimer = null;
-      }
+      clearTimeout(comparePress.current.timer);
+      comparePress.current.timer = null;
     };
     var handlePerkClick = () => {
-      if (longPressFired) {
-        longPressFired = false;
-        return;
-      }
-      if (onPerkTapFn) onPerkTapFn();
+      if (!consumeComparePress()) onPerkTapFn === null || onPerkTapFn === void 0 || onPerkTapFn();
     };
     var handleCharacterClick = () => {
       if (onViewProfileFn) onViewProfileFn();
@@ -5901,7 +5904,7 @@ var ListView = _ref26 => {
       type: "button",
       onClick: e => {
         e.stopPropagation();
-        onPerkPreview(item);
+        if (!consumeComparePress()) onPerkPreview(item);
       },
       style: {
         padding: 0,
@@ -5929,11 +5932,23 @@ var ListView = _ref26 => {
       className: "cx-alink",
       onClick: e => {
         e.stopPropagation();
-        onPerkTapFn();
+        handlePerkClick();
       }
     }, item.name) : React.createElement("span", {
       className: "font-semibold text-zinc-100"
-    }, item.name), React.createElement("small", null, typeLabel))), React.createElement("td", {
+    }, item.name), React.createElement("small", null, typeLabel), onPerkLongPress && React.createElement("button", {
+      type: "button",
+      className: "cx-compare-pick",
+      "aria-label": "".concat(isInCompare ? 'Remove' : 'Add', " ").concat(item.name, " ").concat(isInCompare ? 'from' : 'to', " comparison"),
+      "aria-pressed": isInCompare,
+      onMouseDown: event => event.stopPropagation(),
+      onTouchStart: event => event.stopPropagation(),
+      onClick: event => {
+        event.stopPropagation();
+        comparePress.current.firedId = null;
+        onPerkLongPress(item);
+      }
+    }, isInCompare ? 'Selected' : 'Compare'))), React.createElement("td", {
       style: {
         textAlign: 'center',
         verticalAlign: 'middle'
@@ -12518,11 +12533,107 @@ var PrestigeCalculatorView = _ref54 => {
     className: "text-zinc-500"
   }, "P25/50/75/100"), " Character badge reward tiers"))))))));
 };
-var GameIconsView = _ref55 => {
+var WikiDialog = _ref55 => {
+  var {
+    title,
+    eyebrow,
+    subtitle,
+    onClose,
+    children,
+    footer,
+    className = ''
+  } = _ref55;
+  var panelRef = useRef(null);
+  var closeRef = useRef(onClose);
+  closeRef.current = onClose;
+  var titleId = React.useId();
+  useEffect(() => {
+    var _panel$querySelector;
+    var previous = document.activeElement;
+    var shell = document.querySelector('.site-shell');
+    var wasInert = shell === null || shell === void 0 ? void 0 : shell.inert;
+    if (shell) shell.inert = true;
+    var previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = 'hidden';
+    var panel = panelRef.current;
+    panel === null || panel === void 0 || (_panel$querySelector = panel.querySelector('[data-dialog-close]')) === null || _panel$querySelector === void 0 || _panel$querySelector.focus();
+    var handleKey = event => {
+      if (event.key === 'Escape') {
+        var _closeRef$current;
+        event.preventDefault();
+        event.stopPropagation();
+        (_closeRef$current = closeRef.current) === null || _closeRef$current === void 0 || _closeRef$current.call(closeRef);
+      }
+      if (event.key !== 'Tab') return;
+      var stops = [...((panel === null || panel === void 0 ? void 0 : panel.querySelectorAll('button:not([disabled]), a[href], textarea, input, select, [tabindex="0"]')) || [])].filter(node => node.getClientRects().length && !node.closest('[hidden]'));
+      var first = stops[0],
+        last = stops[stops.length - 1];
+      if (!first) {
+        event.preventDefault();
+        panel === null || panel === void 0 || panel.focus();
+        return;
+      }
+      if (event.shiftKey && (document.activeElement === first || !panel.contains(document.activeElement))) {
+        event.preventDefault();
+        last.focus();
+      } else if (!event.shiftKey && (document.activeElement === last || !panel.contains(document.activeElement))) {
+        event.preventDefault();
+        first.focus();
+      }
+    };
+    document.addEventListener('keydown', handleKey, true);
+    return () => {
+      document.removeEventListener('keydown', handleKey, true);
+      if (shell) shell.inert = wasInert;
+      document.body.style.overflow = previousOverflow;
+      if (previous !== null && previous !== void 0 && previous.isConnected) previous.focus({
+        preventScroll: true
+      });
+    };
+  }, []);
+  return ReactDOM.createPortal(React.createElement("div", {
+    className: "cx-dialog-backdrop",
+    onClick: event => {
+      if (event.target === event.currentTarget) onClose();
+    }
+  }, React.createElement("section", {
+    ref: panelRef,
+    tabIndex: -1,
+    role: "dialog",
+    "aria-modal": "true",
+    "aria-labelledby": titleId,
+    className: "cx-dialog ".concat(className),
+    "data-no-swipe": true
+  }, React.createElement("header", {
+    className: "cx-dialog-head"
+  }, React.createElement("div", {
+    className: "cx-dialog-heading"
+  }, eyebrow && React.createElement("p", {
+    className: "cx-dialog-eyebrow"
+  }, eyebrow), React.createElement("h2", {
+    id: titleId
+  }, title), subtitle && React.createElement("p", {
+    className: "cx-dialog-subtitle"
+  }, subtitle)), React.createElement("button", {
+    type: "button",
+    className: "cx-dialog-close",
+    onClick: onClose,
+    "data-dialog-close": true,
+    "aria-label": "Close ".concat(title)
+  }, React.createElement(Icons.X, {
+    width: 20,
+    height: 20
+  }))), React.createElement("div", {
+    className: "cx-dialog-body"
+  }, children), footer && React.createElement("footer", {
+    className: "cx-dialog-footer"
+  }, footer))), document.body);
+};
+var GameIconsView = _ref56 => {
   var {
     onBack,
     theme
-  } = _ref55;
+  } = _ref56;
   var scrollRef = useRef(null);
   var [search, setSearch] = useState('');
   var [filter, setFilter] = useState('All');
@@ -12543,15 +12654,6 @@ var GameIconsView = _ref55 => {
     var matchesFilter = filter === 'All' || filter === 'Health' && icon.category === 'health' || filter === 'Buff' && icon.category === 'buff' || filter === 'Debuff' && icon.category === 'debuff' || filter === 'Killer' && icon.category === 'killer' || filter === 'Proficiency' && icon.category === 'proficiency' || filter === 'Activity' && icon.category === 'activity';
     return matchesSearch && matchesFilter;
   }), [search, filter]);
-  var scrollToTop = () => {
-    var _scrollRef$current2;
-    return (_scrollRef$current2 = scrollRef.current) === null || _scrollRef$current2 === void 0 ? void 0 : _scrollRef$current2.scrollTo({
-      top: 0,
-      behavior: 'smooth'
-    });
-  };
-  var accentColor = (theme === null || theme === void 0 ? void 0 : theme.accent) || '#fafafa';
-  var accentSoft = (theme === null || theme === void 0 ? void 0 : theme.accentSoft) || '#0f172a';
   var getQuickTip = icon => {
     if (icon.tip) return icon.tip;
     var tips = {
@@ -12615,331 +12717,206 @@ var GameIconsView = _ref55 => {
     };
     return tips[icon.id] || icon.description;
   };
-  var FlashcardModal = _ref56 => {
-    var {
-      icon,
-      onClose
-    } = _ref56;
-    if (!icon) return null;
-    var isBuff = icon.type === 'buff';
-    var isDebuff = icon.type === 'debuff';
-    var borderColor = isBuff ? '#e4e4e7' : isDebuff ? '#71717a' : accentColor;
-    return React.createElement("div", {
-      className: "fixed inset-0 z-[100] flex items-center justify-center p-4",
-      onClick: onClose
-    }, React.createElement("div", {
-      className: "absolute inset-0 bg-black/85 backdrop-blur-sm"
-    }), React.createElement("div", {
-      className: "relative w-full max-w-sm rounded-xl overflow-hidden border-2",
-      style: {
-        borderColor,
-        background: '#0a0a0a',
-        boxShadow: "0 0 40px ".concat(borderColor, "40")
-      },
-      onClick: e => e.stopPropagation()
-    }, React.createElement("button", {
-      onClick: onClose,
-      className: "absolute top-3 right-3 z-10 p-2 rounded-full bg-white/10 hover:bg-white/20 transition-colors"
-    }, React.createElement(Icons.X, {
-      width: 18,
-      height: 18,
-      className: "text-white"
-    })), React.createElement("div", {
-      className: "flex flex-col items-center pt-8 pb-4 px-6"
-    }, React.createElement("div", {
-      className: "w-20 h-20 rounded-xl flex items-center justify-center mb-4 border-2",
-      style: {
-        borderColor: "".concat(borderColor, "60"),
-        backgroundColor: "".concat(borderColor, "15")
-      }
-    }, React.createElement("div", {
-      className: "w-14 h-14"
-    }, React.createElement(AssetFrame, {
-      type: "GameIcon",
-      size: "fill",
-      imageUrl: icon.icon,
-      fallbackIcon: React.createElement(Icons.Zap, {
-        width: 32,
-        height: 32,
-        style: {
-          color: borderColor
-        }
-      })
-    }))), React.createElement("h2", {
-      className: "text-xl font-black text-white tracking-tight text-center",
-      style: {
-        borderBottom: "3px solid ".concat(borderColor),
-        paddingBottom: '4px'
-      }
-    }, icon.name), React.createElement("span", {
-      className: "text-[10px] font-bold uppercase tracking-widest mt-2 px-3 py-1 rounded-md",
-      style: {
-        backgroundColor: "".concat(borderColor, "20"),
-        color: borderColor
-      }
-    }, categoryLabels[icon.category] || icon.category)), React.createElement("div", {
-      className: "px-6 pb-3"
-    }, React.createElement("p", {
-      className: "text-[11px] font-bold uppercase tracking-widest text-zinc-500 mb-2"
-    }, "What it does"), React.createElement("p", {
-      className: "text-zinc-200 text-sm leading-relaxed"
-    }, icon.description)), React.createElement("div", {
-      className: "px-6 pb-8"
-    }, React.createElement("p", {
-      className: "text-[11px] font-bold uppercase tracking-widest mb-2",
-      style: {
-        color: borderColor
-      }
-    }, "Quick Tip"), React.createElement("p", {
-      className: "text-zinc-300 text-sm leading-relaxed font-medium"
-    }, getQuickTip(icon)))));
-  };
   return React.createElement("div", {
     ref: scrollRef,
-    className: "flex flex-col h-full pt-6 pb-32 overflow-y-auto custom-scrollbar"
-  }, React.createElement("div", {
-    className: "px-6"
+    className: "h-full overflow-y-auto custom-scrollbar"
+  }, React.createElement("article", {
+    className: "cx-article cx-icons-page"
   }, React.createElement(ViewCrumbs, {
     trail: [{
       label: 'Main page',
       onClick: onBack
     }],
-    current: viewMode === 'glossary' ? 'Glossary' : 'Trial Grid'
+    current: "Game icons"
   }), React.createElement("h1", {
     className: "cx-title"
-  }, "Game Icons"), React.createElement("p", {
+  }, "Game icons"), React.createElement("p", {
     className: "cx-hatnote"
-  }, "Status icons and their meanings, plus a glossary view.")), React.createElement("div", {
-    className: "px-6 mb-3"
-  }, React.createElement("div", {
-    className: "max-w-3xl mx-auto flex rounded-xl overflow-hidden border border-[var(--stroke)] bg-[var(--panel)]"
-  }, React.createElement("button", {
-    onClick: () => setViewMode('glossary'),
-    className: "flex-1 py-3 px-4 text-xs font-bold uppercase tracking-wider transition-all flex items-center justify-center gap-2 ".concat(viewMode === 'glossary' ? 'text-white' : 'text-zinc-500 hover:text-zinc-300'),
-    style: viewMode === 'glossary' ? {
-      background: "".concat(accentColor, "25"),
-      color: accentColor
-    } : {}
-  }, React.createElement(Icons.BookOpen, {
-    width: 14,
-    height: 14
-  }), "Glossary"), React.createElement("button", {
-    onClick: () => setViewMode('grid'),
-    className: "flex-1 py-3 px-4 text-xs font-bold uppercase tracking-wider transition-all flex items-center justify-center gap-2 ".concat(viewMode === 'grid' ? 'text-white' : 'text-zinc-500 hover:text-zinc-300'),
-    style: viewMode === 'grid' ? {
-      background: "".concat(accentColor, "25"),
-      color: accentColor
-    } : {}
-  }, React.createElement(Icons.Zap, {
-    width: 14,
-    height: 14
-  }), "Trial Grid"))), React.createElement(WikiHeaderSearchPortal, null, React.createElement("div", {
-    className: "relative w-full"
-  }, React.createElement("div", {
-    className: "absolute left-4 top-1/2 -translate-y-1/2 text-zinc-500"
+  }, "A reference to health states, status effects and the Trial HUD."), React.createElement(WikiHeaderSearchPortal, null, React.createElement("div", {
+    className: "cx-icon-search"
   }, React.createElement(Icons.Search, {
-    width: 18,
-    height: 18
-  })), React.createElement("input", {
-    type: "text",
-    placeholder: viewMode === 'grid' ? 'Filter icons...' : 'Search icons...',
-    className: "w-full bg-[var(--panel)] border border-[var(--stroke)] rounded-xl py-3 pl-12 pr-10 text-white placeholder-zinc-600 text-sm focus:outline-none",
+    width: 16,
+    height: 16
+  }), React.createElement("input", {
+    "aria-label": "Search game icons",
     value: search,
-    onChange: e => setSearch(e.target.value)
+    onChange: event => setSearch(event.target.value),
+    placeholder: "Search icons and descriptions..."
   }), search && React.createElement("button", {
-    onClick: () => setSearch(''),
-    className: "absolute right-3 top-1/2 -translate-y-1/2 p-1.5 rounded-lg bg-white/5 text-zinc-400 hover:text-white transition-colors"
-  }, React.createElement(Icons.X, {
-    width: 14,
-    height: 14
-  })))), React.createElement("div", {
-    className: "max-w-3xl mx-auto flex flex-wrap justify-center gap-2 mb-2 px-4"
-  }, filters.map(f => React.createElement("button", {
-    key: f,
     type: "button",
-    onClick: () => setFilter(f),
-    className: "mode-choice px-4 py-2 text-xs font-bold ".concat(filter === f ? 'mode-choice--active' : '')
-  }, f))), React.createElement("div", null, viewMode === 'grid' && React.createElement("div", {
-    className: "px-4 pb-32"
-  }, filter !== 'All' && React.createElement("p", {
-    className: "text-center text-zinc-500 text-xs font-bold uppercase tracking-widest mb-4"
-  }, filteredIcons.length, " ", filter, " icons"), React.createElement("div", {
-    className: "grid grid-cols-4 sm:grid-cols-5 md:grid-cols-6 gap-2 max-w-3xl mx-auto"
-  }, filteredIcons.map(icon => {
-    var isBuff = icon.type === 'buff';
-    var isDebuff = icon.type === 'debuff';
-    var ringColor = isBuff ? '#e4e4e7' : isDebuff ? '#71717a' : "".concat(accentColor, "60");
+    onClick: () => setSearch(''),
+    "aria-label": "Clear icon search"
+  }, React.createElement(Icons.X, {
+    width: 16,
+    height: 16
+  })))), React.createElement("div", {
+    className: "cx-icons-tools"
+  }, React.createElement("div", {
+    className: "cx-reference-tabs",
+    role: "group",
+    "aria-label": "Icon display"
+  }, React.createElement("button", {
+    type: "button",
+    "aria-pressed": viewMode === 'glossary',
+    onClick: () => setViewMode('glossary')
+  }, "Reference list"), React.createElement("button", {
+    type: "button",
+    "aria-pressed": viewMode === 'grid',
+    onClick: () => setViewMode('grid')
+  }, "Icon grid")), React.createElement("span", {
+    "aria-live": "polite"
+  }, filteredIcons.length, " ", filteredIcons.length === 1 ? 'icon' : 'icons')), React.createElement("div", {
+    className: "cx-icons-reference"
+  }, React.createElement("nav", {
+    className: "cx-icon-categories",
+    "aria-label": "Icon categories"
+  }, React.createElement("p", null, "Contents"), filters.map(label => {
+    var category = label.toLowerCase();
+    var count = label === 'All' ? GAME_ICONS.length : GAME_ICONS.filter(icon => icon.category === category).length;
     return React.createElement("button", {
+      type: "button",
+      key: label,
+      "aria-pressed": filter === label,
+      onClick: () => {
+        setFilter(label);
+        setExpandedId(null);
+      }
+    }, React.createElement("span", null, label === 'All' ? 'All icons' : categoryLabels[category]), React.createElement("span", null, count));
+  })), React.createElement("div", {
+    className: "cx-icons-results"
+  }, filteredIcons.length === 0 ? React.createElement("div", {
+    className: "cx-reference-empty"
+  }, React.createElement(Icons.Search, {
+    width: 30,
+    height: 30
+  }), React.createElement("h2", null, "No icons found"), React.createElement("p", null, "Try another name or description, or reset the category."), React.createElement("button", {
+    type: "button",
+    className: "cx-alink",
+    onClick: () => {
+      setSearch('');
+      setFilter('All');
+    }
+  }, "Reset filters")) : filters.slice(1).map(label => {
+    var group = filteredIcons.filter(icon => icon.category === label.toLowerCase());
+    if (!group.length) return null;
+    return React.createElement("section", {
+      key: label,
+      className: "cx-icon-section"
+    }, React.createElement("h2", {
+      className: "cx-sec"
+    }, categoryLabels[label.toLowerCase()], React.createElement("span", {
+      className: "cx-reference-count"
+    }, group.length)), viewMode === 'grid' ? React.createElement("div", {
+      className: "cx-icon-grid"
+    }, group.map(icon => React.createElement("button", {
+      type: "button",
       key: icon.id,
+      className: "cx-icon-tile",
       onClick: () => setFlashcardIcon(icon),
-      className: "game-icon-tile relative aspect-square rounded-xl flex flex-col items-center justify-center p-1.5 border transition-colors group",
-      style: {
-        borderColor: "".concat(ringColor, "40"),
-        background: "linear-gradient(145deg, ".concat(ringColor, "10, #0a0a0a)")
-      },
-      title: icon.name
-    }, React.createElement("div", {
-      className: "w-10 h-10 sm:w-12 sm:h-12 flex items-center justify-center"
+      "aria-label": "Open ".concat(icon.name)
+    }, React.createElement("span", {
+      className: "cx-icon-art"
     }, React.createElement(AssetFrame, {
       type: "GameIcon",
       size: "fill",
       imageUrl: icon.icon,
       fallbackIcon: React.createElement(Icons.Zap, {
         width: 28,
-        height: 28,
-        style: {
-          color: ringColor
-        }
+        height: 28
       })
-    })), React.createElement("p", {
-      className: "text-[9px] sm:text-[10px] text-zinc-400 font-semibold text-center leading-tight mt-1 line-clamp-2 group-hover:text-white transition-colors"
-    }, icon.name), React.createElement("div", {
-      className: "absolute top-1.5 right-1.5 w-2 h-2 rounded-full",
-      style: {
-        backgroundColor: ringColor,
-        opacity: 0.7
-      }
-    }));
-  })), filteredIcons.length === 0 && React.createElement("div", {
-    className: "text-center py-16"
-  }, React.createElement(Icons.Search, {
-    width: 48,
-    height: 48,
-    className: "mx-auto text-zinc-700 mb-4"
-  }), React.createElement("p", {
-    className: "text-zinc-500 text-lg"
-  }, "No icons match")), React.createElement("div", {
-    className: "max-w-3xl mx-auto mt-6 flex items-center justify-center gap-4 text-[10px] text-zinc-600 font-bold uppercase tracking-wider"
-  }, React.createElement("span", {
-    className: "flex items-center gap-1.5"
-  }, React.createElement("span", {
-    className: "w-2.5 h-2.5 rounded-full bg-zinc-300 inline-block"
-  }), " Buff"), React.createElement("span", {
-    className: "flex items-center gap-1.5"
-  }, React.createElement("span", {
-    className: "w-2.5 h-2.5 rounded-full bg-zinc-500 inline-block"
-  }), " Debuff"), React.createElement("span", {
-    className: "flex items-center gap-1.5"
-  }, React.createElement("span", {
-    className: "w-2.5 h-2.5 rounded-full inline-block",
-    style: {
-      backgroundColor: "".concat(accentColor, "60")
-    }
-  }), " Neutral"))), viewMode === 'glossary' && React.createElement("div", {
-    className: "px-6 pb-32"
-  }, filteredIcons.map(icon => {
-    var isExpanded = expandedId === icon.id;
-    var isBuff = icon.type === 'buff';
-    var isDebuff = icon.type === 'debuff';
-    var underlineColor = isBuff ? '#e4e4e7' : isDebuff ? '#71717a' : 'transparent';
-    return React.createElement("div", {
-      key: icon.id,
-      onClick: () => setExpandedId(isExpanded ? null : icon.id),
-      className: "game-icon-row mb-3 rounded-xl border border-[var(--stroke)] bg-[var(--panel)] cursor-pointer transition-colors overflow-hidden",
-      style: {
-        background: "linear-gradient(145deg, ".concat(accentSoft, "40, #09090b)"),
-        boxShadow: isExpanded ? "0 0 20px ".concat(accentColor, "30") : 'none'
-      }
-    }, React.createElement("div", {
-      className: "p-4 flex items-center gap-4"
-    }, React.createElement("div", {
-      className: "w-14 h-14 rounded-xl flex items-center justify-center shrink-0 border",
-      style: {
-        backgroundColor: "".concat(accentColor, "15"),
-        borderColor: "".concat(accentColor, "30")
-      }
-    }, React.createElement(AssetFrame, {
-      type: "GameIcon",
-      size: "fill",
-      imageUrl: icon.icon,
-      fallbackIcon: React.createElement(Icons.Zap, {
-        width: 24,
-        height: 24,
-        style: {
-          color: accentColor
-        }
-      })
-    })), React.createElement("div", {
-      className: "flex-1 min-w-0"
-    }, React.createElement("div", {
-      className: "flex items-center gap-2 flex-wrap"
-    }, React.createElement("h3", {
-      className: "text-white font-bold text-base pb-0.5 [font-family:var(--font-display)]",
-      style: {
-        borderBottom: "2px solid ".concat(underlineColor),
-        display: 'inline-block'
-      }
-    }, icon.name), React.createElement("span", {
-      className: "game-icon-category text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-full",
-      style: {
-        backgroundColor: "".concat(accentColor, "20"),
-        color: accentColor
-      }
-    }, categoryLabels[icon.category] || icon.category)), !isExpanded && React.createElement("p", {
-      className: "text-zinc-400 text-sm mt-1 line-clamp-1"
-    }, icon.description)), React.createElement(Icons.ChevronLeft, {
-      width: 18,
-      height: 18,
-      className: "text-zinc-500 transition-transform shrink-0 ".concat(isExpanded ? 'rotate-90' : '-rotate-90')
-    })), isExpanded && React.createElement("div", {
-      className: "px-4 pb-4 pt-0"
-    }, React.createElement("div", {
-      className: "p-3 rounded-xl bg-[var(--panel)] border border-[var(--stroke)]"
-    }, React.createElement("p", {
-      className: "text-zinc-300 text-sm leading-relaxed"
-    }, icon.description))));
-  }), filteredIcons.length === 0 && React.createElement("div", {
-    className: "text-center py-16"
-  }, React.createElement(Icons.Search, {
-    width: 48,
-    height: 48,
-    className: "mx-auto text-zinc-700 mb-4"
-  }), React.createElement("p", {
-    className: "text-zinc-500 text-lg"
-  }, "No icons found"), React.createElement("p", {
-    className: "text-zinc-600 text-sm mt-1"
-  }, "Try adjusting your search or filter")))), flashcardIcon && React.createElement(FlashcardModal, {
-    icon: flashcardIcon,
-    onClose: () => setFlashcardIcon(null)
-  }));
+    })), React.createElement("span", null, icon.name)))) : React.createElement("div", {
+      className: "cx-icon-list"
+    }, group.map(icon => {
+      var expanded = expandedId === icon.id;
+      return React.createElement("div", {
+        className: "cx-icon-entry",
+        key: icon.id
+      }, React.createElement("button", {
+        type: "button",
+        className: "cx-icon-summary",
+        "aria-expanded": expanded,
+        "aria-controls": "icon-detail-".concat(icon.id),
+        onClick: () => setExpandedId(expanded ? null : icon.id)
+      }, React.createElement("span", {
+        className: "cx-icon-art"
+      }, React.createElement(AssetFrame, {
+        type: "GameIcon",
+        size: "fill",
+        imageUrl: icon.icon,
+        fallbackIcon: React.createElement(Icons.Zap, {
+          width: 24,
+          height: 24
+        })
+      })), React.createElement("span", {
+        className: "cx-icon-summary-copy"
+      }, React.createElement("span", {
+        className: "cx-icon-name"
+      }, icon.name), React.createElement("span", {
+        className: "cx-icon-excerpt"
+      }, icon.description)), React.createElement("span", {
+        className: "cx-icon-expand",
+        "aria-hidden": "true"
+      }, expanded ? '−' : '+')), React.createElement("div", {
+        id: "icon-detail-".concat(icon.id),
+        hidden: !expanded,
+        className: "cx-icon-detail"
+      }, React.createElement("p", null, icon.description), React.createElement("h3", null, "In the Trial"), React.createElement("p", null, getQuickTip(icon))));
+    })));
+  })))), flashcardIcon && React.createElement(WikiDialog, {
+    title: flashcardIcon.name,
+    eyebrow: categoryLabels[flashcardIcon.category],
+    onClose: () => setFlashcardIcon(null),
+    className: "cx-dialog--icon",
+    footer: React.createElement(React.Fragment, null, React.createElement("span", null, "Game icon reference"), React.createElement("button", {
+      type: "button",
+      className: "cx-toolbtn",
+      onClick: () => setFlashcardIcon(null)
+    }, "Close reference"))
+  }, React.createElement("div", {
+    className: "cx-icon-dialog-art"
+  }, React.createElement(AssetFrame, {
+    type: "GameIcon",
+    size: "fill",
+    imageUrl: flashcardIcon.icon,
+    fallbackIcon: React.createElement(Icons.Zap, {
+      width: 48,
+      height: 48
+    })
+  })), React.createElement("section", {
+    className: "cx-icon-dialog-copy"
+  }, React.createElement("h3", {
+    className: "cx-sec"
+  }, "What it means"), React.createElement("p", null, flashcardIcon.description), React.createElement("h3", {
+    className: "cx-sec"
+  }, "In the Trial"), React.createElement("p", null, getQuickTip(flashcardIcon)))));
 };
 var FloatingCompareBadge = _ref57 => {
   var {
     count,
     onClick,
-    onClear,
-    theme
+    onClear
   } = _ref57;
-  if (count === 0) return null;
-  var accentColor = (theme === null || theme === void 0 ? void 0 : theme.accent) || '#fafafa';
+  if (!count) return null;
   return React.createElement("div", {
-    className: "fixed bottom-24 right-4 z-50 flex items-center gap-2"
+    className: "cx-compare-bar",
+    role: "region",
+    "aria-label": "Selected perks"
   }, React.createElement("button", {
+    type: "button",
+    onClick: onClick
+  }, React.createElement(Icons.BookOpen, {
+    width: 16,
+    height: 16
+  }), React.createElement("span", {
+    "aria-live": "polite"
+  }, "Compare (", count, "/4)")), React.createElement("button", {
+    type: "button",
     onClick: onClear,
-    className: "p-3 rounded-full font-bold shadow-lg hover:scale-105 transition-all",
-    style: {
-      background: '#0a0a0a',
-      border: '2px solid #fafafa',
-      color: '#fafafa',
-      boxShadow: '0 4px 20px rgba(250,250,250,0.25)'
-    },
-    title: "Clear comparison"
+    "aria-label": "Clear comparison"
   }, React.createElement(Icons.X, {
     width: 16,
     height: 16
-  })), React.createElement("button", {
-    onClick: onClick,
-    className: "flex items-center gap-2 px-4 py-3 rounded-full font-bold shadow-lg hover:scale-105 transition-all",
-    style: {
-      background: '#0a0a0a',
-      border: "2px solid ".concat(accentColor),
-      color: accentColor,
-      boxShadow: "0 4px 20px ".concat(accentColor, "30")
-    }
-  }, React.createElement(Icons.BookOpen, {
-    width: 18,
-    height: 18
-  }), React.createElement("span", null, "Compare (", count, "/4)")));
+  })));
 };
 var MapLayoutModal = _ref58 => {
   var {
@@ -12950,97 +12927,121 @@ var MapLayoutModal = _ref58 => {
   } = _ref58;
   var [currentIndex, setCurrentIndex] = useState(0);
   var [layoutBroken, setLayoutBroken] = useState(false);
+  var [zoom, setZoom] = useState(1);
+  var stageRef = useRef(null);
   useEffect(() => {
-    setLayoutBroken(false);
     setCurrentIndex(0);
-  }, [map === null || map === void 0 ? void 0 : map.name]);
-  useEffect(() => {
+    setZoom(1);
     setLayoutBroken(false);
+  }, [map === null || map === void 0 ? void 0 : map.id]);
+  useEffect(() => {
+    var _stageRef$current;
+    setLayoutBroken(false);
+    setZoom(1);
+    (_stageRef$current = stageRef.current) === null || _stageRef$current === void 0 || _stageRef$current.scrollTo(0, 0);
   }, [currentIndex]);
   if (!map) return null;
   var layouts = getMapLayoutsForName(map.name);
-  var hasMultiple = layouts.length > 1;
-  return React.createElement("div", {
-    className: "fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/90 backdrop-blur-sm",
-    onClick: onClose
+  var selected = layouts[currentIndex] || layouts[0];
+  var variation = (selected === null || selected === void 0 ? void 0 : selected.label) || (layouts.length > 1 ? "Layout ".concat(currentIndex + 1) : 'Map layout');
+  return React.createElement(WikiDialog, {
+    title: map.name,
+    eyebrow: "Map reference",
+    subtitle: map.realm,
+    onClose: onClose,
+    className: "cx-dialog--map",
+    footer: React.createElement(React.Fragment, null, React.createElement("span", null, layouts.length, " ", layouts.length === 1 ? 'layout' : 'layouts', " available"), React.createElement("button", {
+      type: "button",
+      className: "cx-toolbtn",
+      onClick: onClose
+    }, "Close map"))
   }, React.createElement("div", {
-    className: "relative w-full max-w-2xl max-h-[90vh] flex flex-col rounded-xl bg-[#0a0a0a] border border-white/10 shadow-2xl",
-    onClick: e => e.stopPropagation()
+    className: "cx-map-reference"
+  }, React.createElement("section", {
+    className: "cx-map-visual",
+    "aria-label": "Layout viewer"
   }, React.createElement("div", {
-    className: "flex-shrink-0 flex items-center justify-between p-4 bg-[#0a0a0a]/95 backdrop-blur border-b border-white/10 rounded-t-xl"
-  }, React.createElement("div", null, React.createElement("p", {
-    className: "text-[10px] font-bold uppercase tracking-widest text-zinc-500 mb-1"
-  }, "Map Details"), React.createElement("h2", {
-    className: "text-lg text-white pb-1",
-    style: {
-      fontFamily: 'var(--font-display)',
-      fontWeight: 600,
-      borderBottom: '2px solid #fafafa',
-      display: 'inline-block'
-    }
-  }, map.name), map.realm && React.createElement("p", {
-    className: "text-xs text-zinc-500 mt-1"
-  }, map.realm), hasMultiple && layouts[currentIndex].label && React.createElement("p", {
-    className: "text-xs text-zinc-400 mt-1"
-  }, layouts[currentIndex].label)), React.createElement("button", {
-    onClick: onClose,
-    className: "p-2 rounded-full bg-white/10 hover:bg-white/20 transition-colors"
-  }, React.createElement(Icons.X, {
-    width: 20,
-    height: 20,
-    className: "text-white"
-  }))), React.createElement("div", {
-    className: "flex-1 overflow-y-auto p-4 flex flex-col items-center"
-  }, React.createElement("div", {
-    className: "w-full space-y-4"
-  }, React.createElement("div", {
-    className: "p-4 rounded-xl bg-white/5 border border-white/10"
+    className: "cx-map-toolbar"
   }, React.createElement("p", {
-    className: "text-[10px] uppercase tracking-wider text-zinc-500 font-bold mb-2"
-  }, "Overview"), React.createElement("p", {
-    className: "text-sm text-zinc-300 leading-relaxed"
-  }, map.description || 'No description available for this map yet.')), layouts.length > 0 ? React.createElement("div", {
-    className: "relative w-full aspect-square max-h-[55vh] bg-zinc-800 rounded-xl overflow-hidden flex items-center justify-center"
-  }, !layoutBroken ? React.createElement("img", {
-    src: "./dbd_images/".concat(layouts[currentIndex].path),
-    alt: "".concat(map.name, " layout"),
-    className: "max-w-full max-h-full object-contain",
+    "aria-live": "polite"
+  }, variation), React.createElement("div", {
+    className: "cx-map-zoom",
+    role: "group",
+    "aria-label": "Layout zoom"
+  }, React.createElement("button", {
+    type: "button",
+    "aria-label": "Zoom out",
+    disabled: zoom <= 1 || layoutBroken || !selected,
+    onClick: () => setZoom(value => Math.max(1, value - .5))
+  }, "\u2212"), React.createElement("button", {
+    type: "button",
+    disabled: !selected || layoutBroken,
+    onClick: () => {
+      var _stageRef$current2;
+      setZoom(1);
+      (_stageRef$current2 = stageRef.current) === null || _stageRef$current2 === void 0 || _stageRef$current2.scrollTo(0, 0);
+    },
+    "aria-label": "Fit layout"
+  }, zoom === 1 ? 'Fit' : "".concat(Math.round(zoom * 100), "%")), React.createElement("button", {
+    type: "button",
+    "aria-label": "Zoom in",
+    disabled: zoom >= 3 || layoutBroken || !selected,
+    onClick: () => setZoom(value => Math.min(3, value + .5))
+  }, "+"))), React.createElement("div", {
+    ref: stageRef,
+    className: "cx-map-stage ".concat(zoom > 1 ? 'cx-map-stage--zoomed' : ''),
+    tabIndex: 0,
+    "aria-label": "".concat(map.name, " layout, scroll to inspect when zoomed")
+  }, selected && !layoutBroken ? React.createElement("img", {
+    key: selected.path,
+    src: "./dbd_images/".concat(selected.path),
+    alt: "".concat(map.name, ": ").concat(variation),
+    style: {
+      width: "".concat(zoom * 100, "%"),
+      maxWidth: 'none'
+    },
     onError: () => setLayoutBroken(true)
   }) : React.createElement("div", {
-    className: "flex flex-col items-center justify-center gap-3 text-zinc-500 px-6 text-center"
+    className: "cx-reference-empty"
   }, React.createElement(Icons.Map, {
-    width: 36,
-    height: 36,
-    className: "text-zinc-600"
-  }), React.createElement("p", {
-    className: "text-sm font-medium"
-  }, "Map layout unavailable in the offline bundle."))) : React.createElement("div", {
-    className: "w-full aspect-square max-h-[40vh] rounded-xl bg-zinc-800/70 border border-white/10 flex flex-col items-center justify-center text-center px-6"
-  }, React.createElement(Icons.Map, {
-    width: 36,
-    height: 36,
-    className: "text-zinc-600 mb-3"
-  }), React.createElement("p", {
-    className: "text-sm font-medium text-zinc-400"
-  }, "No layout art bundled for this map."))), hasMultiple && React.createElement("div", {
-    className: "flex gap-2 mt-4 flex-wrap justify-center"
-  }, layouts.map((layout, idx) => React.createElement("button", {
-    key: idx,
-    onClick: () => setCurrentIndex(idx),
-    className: "px-4 py-2 rounded-xl text-sm font-medium transition-colors ".concat(currentIndex === idx ? 'bg-zinc-100 text-black' : 'bg-white/10 text-zinc-400 hover:bg-white/20')
-  }, layout.label || "Layout ".concat(idx + 1)))), React.createElement("div", {
-    className: "w-full"
-  }, React.createElement(NotesEditor, {
-    title: "Map Notes",
+    width: 32,
+    height: 32
+  }), React.createElement("p", null, selected ? 'This layout could not load.' : 'No layout is available for this map.'), selected && React.createElement("button", {
+    className: "cx-alink",
+    type: "button",
+    onClick: () => setLayoutBroken(false)
+  }, "Try again"))), layouts.length > 1 && React.createElement("div", {
+    className: "cx-reference-tabs cx-map-variations",
+    role: "group",
+    "aria-label": "Map layout variations"
+  }, layouts.map((layout, index) => React.createElement("button", {
+    type: "button",
+    key: layout.path,
+    "aria-pressed": index === currentIndex,
+    onClick: () => setCurrentIndex(index)
+  }, layout.label || "Layout ".concat(index + 1)))), React.createElement("p", {
+    className: "cx-reference-caption"
+  }, zoom > 1 ? 'Scroll the layout to inspect it. Select Fit to reset.' : 'Select a variation or zoom in to inspect tiles and callouts.')), React.createElement("aside", {
+    className: "cx-map-sidebar"
+  }, React.createElement("h3", {
+    className: "cx-sec"
+  }, "Overview"), React.createElement("p", null, map.description || 'No description is available for this map yet.'), React.createElement("dl", {
+    className: "cx-reference-facts"
+  }, React.createElement("div", null, React.createElement("dt", null, "Realm"), React.createElement("dd", null, map.realm))), React.createElement("section", {
+    className: "cx-map-notes"
+  }, React.createElement("h3", {
+    className: "cx-sec"
+  }, React.createElement("label", {
+    htmlFor: "map-reference-notes"
+  }, "Personal notes")), React.createElement("textarea", {
+    id: "map-reference-notes",
+    rows: 5,
     value: noteValue,
-    onChange: onNoteChange,
-    placeholder: "Tiles to watch, favorite loops, spawn notes, or personal callouts..."
-  }))), React.createElement("div", {
-    className: "flex-shrink-0 p-4 pt-3 pb-5 border-t border-white/10"
-  }, React.createElement("button", {
-    onClick: onClose,
-    className: "w-full py-3 rounded-xl bg-white/5 hover:bg-white/10 text-zinc-300 font-semibold transition-colors"
-  }, "Close"))));
+    onChange: event => onNoteChange === null || onNoteChange === void 0 ? void 0 : onNoteChange(event.target.value),
+    placeholder: "Loops, spawns, tiles and callouts..."
+  }), React.createElement("p", {
+    className: "cx-reference-caption"
+  }, "Saved on this device.")))));
 };
 var PerkCompareModal = _ref59 => {
   var {
@@ -13050,74 +13051,50 @@ var PerkCompareModal = _ref59 => {
     theme,
     settings = {}
   } = _ref59;
-  if (!perks || perks.length === 0) return null;
-  var accentColor = (theme === null || theme === void 0 ? void 0 : theme.accent) || '#fafafa';
-  return React.createElement("div", {
-    className: "fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm",
-    onClick: onClose
-  }, React.createElement("div", {
-    className: "relative w-full max-w-2xl max-h-[85vh] overflow-y-auto rounded-3xl bg-zinc-900 shadow-2xl",
+  if (!(perks !== null && perks !== void 0 && perks.length)) return null;
+  return React.createElement(WikiDialog, {
+    title: "Compare perks",
+    eyebrow: "Perk reference",
+    subtitle: "".concat(perks.length, " of 4 comparison slots used"),
+    onClose: onClose,
+    className: "cx-dialog--compare",
+    footer: React.createElement(React.Fragment, null, React.createElement("span", null, "Remove a perk to free a slot."), React.createElement("button", {
+      type: "button",
+      className: "cx-toolbtn",
+      onClick: onClose
+    }, "Close comparison"))
+  }, React.createElement("p", {
+    className: "cx-compare-hint"
+  }, "Swipe sideways to compare perks."), React.createElement("div", {
+    className: "cx-compare-grid",
     style: {
-      border: "1px solid ".concat(accentColor, "40")
-    },
-    onClick: e => e.stopPropagation()
-  }, React.createElement("div", {
-    className: "sticky top-0 z-10 flex items-center justify-between p-4 backdrop-blur",
-    style: {
-      background: "linear-gradient(180deg, ".concat(accentColor, "15, transparent)"),
-      borderBottom: "1px solid ".concat(accentColor, "30")
+      '--compare-columns': perks.length
     }
-  }, React.createElement("h2", {
-    className: "text-lg font-bold text-white"
-  }, "Compare Perks (", perks.length, "/4)"), React.createElement("button", {
-    onClick: onClose,
-    className: "p-2 rounded-full bg-white/10 hover:bg-white/20 transition-colors"
+  }, perks.map(perk => React.createElement("section", {
+    className: "cx-compare-entry",
+    key: perk.id
+  }, React.createElement("div", {
+    className: "cx-compare-entry-head"
+  }, React.createElement("span", null, perk.type || 'Perk'), React.createElement("button", {
+    type: "button",
+    "aria-label": "Remove ".concat(perk.name),
+    onClick: () => onRemove(perk)
   }, React.createElement(Icons.X, {
-    width: 20,
-    height: 20,
-    className: "text-white"
+    width: 16,
+    height: 16
   }))), React.createElement("div", {
-    className: "p-4 grid grid-cols-2 gap-4"
-  }, perks.map(perk => React.createElement("div", {
-    key: perk.id,
-    className: "relative p-4 rounded-2xl border",
-    style: {
-      background: "linear-gradient(145deg, ".concat(accentColor, "10, transparent)"),
-      borderColor: "".concat(accentColor, "20")
-    }
-  }, React.createElement("button", {
-    onClick: () => onRemove(perk),
-    className: "absolute top-2 right-2 p-1 rounded-full bg-zinc-500/20 hover:bg-zinc-500/40 transition-colors"
-  }, React.createElement(Icons.X, {
-    width: 14,
-    height: 14,
-    className: "text-zinc-100"
-  })), React.createElement("div", {
-    className: "flex justify-center mb-3"
+    className: "cx-compare-image"
   }, React.createElement(AssetFrame, {
     type: "Perk",
-    imageUrl: perk.image,
-    size: "large"
-  })), React.createElement("h3", {
-    className: "text-center text-white font-bold text-sm mb-1"
-  }, perk.name), React.createElement("p", {
-    className: "text-center text-xs text-zinc-500 mb-3"
-  }, perk.type, " \u2022 ", perk.owner || 'Universal'), React.createElement(PerkDescriptionBlock, {
+    size: "fill",
+    imageUrl: perk.image
+  })), React.createElement("h3", null, perk.name), React.createElement("p", null, perk.owner || 'Universal'), React.createElement(PerkDescriptionBlock, {
     perk: perk,
     settings: settings,
-    accentColor: accentColor,
-    className: "text-xs text-zinc-400",
+    accentColor: "var(--link)",
+    className: "cx-compare-description",
     lineClassName: "leading-relaxed"
-  })))), React.createElement("div", {
-    className: "p-4 border-t border-white/10"
-  }, React.createElement("button", {
-    onClick: onClose,
-    className: "w-full py-3 rounded-xl font-semibold transition-colors",
-    style: {
-      background: "".concat(accentColor, "20"),
-      color: accentColor
-    }
-  }, "Close Comparison"))));
+  })))));
 };
 var WikiTable = _ref60 => {
   var {
