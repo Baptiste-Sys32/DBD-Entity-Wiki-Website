@@ -39,3 +39,10 @@ Run check:data, test:smoke, verify:offline, build-data --check, maintenance.test
 Use the website parity checker with --peer, and again with --local pointing at Android. It compares all shared canonical record fields, each generated payload against its own source, shared game metadata and referenced asset hashes. App/site release metadata and changelog histories intentionally differ. The older Android parity tool remains unchanged.
 
 Port changed shared JSON and referenced images, update Android's dated metadata/changelog without a release bump, and regenerate using Android's existing build-data script. Never copy the website index, engine, tooling, native files or dist directory. Verify the staged file list before committing. Site main requires explicit push approval.
+
+
+## Website runtime and map safeguards
+
+Edit web/app.jsx, web/engine/*.js or web/games/dbd/config.js, then run node scripts/build-data.js. Never edit web/runtime output by hand. The already vendored Babel compiler precompiles classic scripts with the existing esmodules/react settings; it does not bundle modules. Generated script hashes in index.html prevent stale cached code after a data or UI update. build-data --check validates generated data, source/compiler hashes, script ordering and outputs without rewriting them. Keep the compiler vendored for regeneration, but do not load it in the browser.
+
+Map/realm contracts are checked before promotion and by check:data. A map must have a stable unique ID, a valid realm name and membership in that realm's ID list. Identically named historical variants can retain distinct IDs. Do not infer map identity from an engine filename such as Ice_Level01. Use named source images and release evidence. audit-map-associations.js compares layout bytes with independently named sources, including pixel comparison for the legacy Midwich PNGs. Its three known drawing differences are pending visual review; do not automatically overwrite those assets. Images with immutable cache headers need new content-versioned filenames when replacements are approved.

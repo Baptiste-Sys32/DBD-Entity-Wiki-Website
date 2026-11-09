@@ -10,7 +10,7 @@ const { writeJsonAtomic } = require('./atomic-write');
 const root = path.resolve(__dirname, '..');
 const web = path.join(root, 'web');
 const report = path.join(root, 'review', 'map-layout-usage.json');
-const html = fs.readFileSync(path.join(web, 'index.html'), 'utf8');
+const html = require('./web-source').readUiSource();
 const start = html.indexOf('const MAP_LAYOUTS =');
 const end = html.indexOf('const GAME_ICONS =', start);
 if (start < 0 || end < 0) throw new Error('Map layout declarations were not found.');

@@ -508,6 +508,7 @@ function main() {
       process.exit(1);
     }
 
+    require('./build-runtime').buildRuntime({ check: true });
     console.log('build-data: generated runtime data is up to date.');
     return;
   }
@@ -522,6 +523,7 @@ function main() {
   writeOutput(WEB_GLOSSARY_PATH, nextGlossaryModule);
   writeOutput(WEB_PREMADE_BUILDS_PATH, nextPremadeBuildsModule);
   writeOutput(WEB_ACHIEVEMENTS_PATH, nextAchievementsModule);
+  require('./build-runtime').buildRuntime();
 }
 
-main();
+try { main(); } catch (error) { fail(error.message); }

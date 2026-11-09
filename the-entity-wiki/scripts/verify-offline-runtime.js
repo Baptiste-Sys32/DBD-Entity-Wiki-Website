@@ -29,7 +29,7 @@ function listJsRecursive(dir) {
 
 function readWebBundle() {
   const indexHtml = fs.readFileSync(INDEX_PATH, 'utf8');
-  const extraFiles = [...listJsRecursive(ENGINE_DIR), ...listJsRecursive(GAMES_DIR), ...['meta', 'changelog', 'guides', 'glossary', 'premade-builds', 'achievements'].map(name => path.join(WEB_ROOT, name + '.js'))];
+  const extraFiles = [...listJsRecursive(path.join(WEB_ROOT, 'runtime')),  ...['meta', 'changelog', 'guides', 'glossary', 'premade-builds', 'achievements'].map(name => path.join(WEB_ROOT, name + '.js'))];
   const extraSources = extraFiles.map((full) => ({
     name: path.relative(WEB_ROOT, full).replace(/\\/g, '/'),
     code: fs.readFileSync(full, 'utf8'),
@@ -198,17 +198,17 @@ function auditRequiredFiles(indexHtml, extraSources) {
     if (!fileExists(relPath)) warn(`Missing map layout asset referenced in web/index.html: ${relPath}`);
   });
 
-  if (!/<script\s+src=["']cosmetics\.js["'][^>]*><\/script>/.test(indexHtml)) {
+  if (!/<script\s+src=["']cosmetics\.js(?:\?v=[^"']+)?["'][^>]*><\/script>/.test(indexHtml)) {
     fail('web/index.html does not load web/cosmetics.js.');
   }
 
-  if (!/<script\s+src=["']community-content\.js["'][^>]*><\/script>/.test(indexHtml)) {
+  if (!/<script\s+src=["']community-content\.js(?:\?v=[^"']+)?["'][^>]*><\/script>/.test(indexHtml)) {
     fail('web/index.html does not load web/community-content.js.');
   }
 
   extraSources.forEach(({ name }) => {
     const escaped = name.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
-    if (!new RegExp(`<script[^>]*src=["'](\\./)?${escaped}["']`).test(indexHtml)) {
+    if (!new RegExp(`<script[^>]*src=["'](\\./)?${escaped}(\\?v=[^"']+)?["']`).test(indexHtml)) {
       fail(`web/index.html does not load web/${name} (engine/game bundle file).`);
     }
   });

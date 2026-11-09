@@ -30,7 +30,8 @@ def main():
     for name in ['index.html', 'games/dbd/config.js', 'data.js', 'cosmetics.js', 'lore.js', 'community-content.js']:
         baseline_files[name] = subprocess.check_output(['git', 'show', f'{args.baseline}:the-entity-wiki/web/{name}'], cwd=ROOT)
     before_html = hardening.instrument(baseline_files['index.html'].decode()).encode()
-    after_html = hardening.instrument((WEB / 'index.html').read_text()).encode()
+    after_source, prepared_html, after_runtime = hardening.prepare_page(WEB)
+    after_html = prepared_html.encode()
     manifest = json.loads((ROOT / 'review/maintenance-update.json').read_text())
     additions = [operation['value'] for operation in manifest['operations'] if operation.get('append')]
     gallery = '<html><head><meta charset="utf-8"><style>body{background:#141414;color:white;font:16px sans-serif}main{display:grid;grid-template-columns:repeat(6,1fr);gap:12px}figure{margin:0;background:#242424;padding:10px}img{width:100%;height:170px;object-fit:contain}small{color:#ccc}</style></head><body><h1>New cosmetics: verified character and piece identities</h1><main>'
@@ -53,6 +54,9 @@ def main():
             elif relative in ['', 'index.html']:
                 payload = before_html if phase == 'before' else after_html
                 content_type = 'text/html'
+            elif phase == 'after' and relative == 'runtime/app.js' and after_runtime is not None:
+                payload = after_runtime.encode()
+                content_type = 'text/javascript'
             elif phase == 'before' and relative in baseline_files:
                 payload = baseline_files[relative]
                 content_type = 'text/javascript'

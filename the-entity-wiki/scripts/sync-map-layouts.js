@@ -15,7 +15,7 @@ const { fetchTextWithRetry, fetchBinaryWithRetry, formatFetchError } = require('
 
 const ROOT = path.resolve(__dirname, '..');
 const DATABASE_PATH = path.join(ROOT, 'content', 'database.json');
-const INDEX_PATH = path.join(ROOT, 'web', 'index.html');
+const INDEX_PATH = require('./web-source').UI_SOURCE_PATH;
 const OUTPUT_ROOT = path.join(ROOT, 'web', 'dbd_images');
 const REPORT_PATH = path.join(ROOT, 'review', 'map-layouts-audit.json');
 
@@ -23,7 +23,7 @@ const HENS_CALLOUTS_URL = 'https://hens333.com/callouts';
 const HENS_BASE_URL = 'https://hens333.com/img/dbd/callouts';
 
 const args = new Set(process.argv.slice(2));
-const dryRun = args.has('--dry-run');
+const dryRun = args.has('--dry-run') || args.has('--check');
 const refresh = args.has('--refresh');
 const checkMode = args.has('--check');
 const upgradeLegacy = args.has('--upgrade-legacy');
@@ -244,9 +244,12 @@ function parseHensCallouts(html) {
 
   $('button[data-path]').each((_, element) => {
     const dataPath = String($(element).attr('data-path') || '').trim();
-    const label = String($(element).text() || '').trim();
+    const rawLabel = String($(element).text() || '').trim();
+    // The source labels its fourth Badham file IIIV. Keep the raw evidence,
+    // but match the confirmed Preschool4 asset to the canonical IV name.
+    const label = rawLabel === 'Preschool IIIV' && dataPath === 'Badham/Preschool4.webp' ? 'Preschool IV' : rawLabel;
     if (!dataPath || !label) return;
-    entries.push({ label, dataPath });
+    entries.push({ label, rawLabel, dataPath });
   });
 
   const deduped = [];
@@ -320,7 +323,7 @@ async function main() {
     });
 
     const firstExistingEntry = existingResolvedPaths[0] || null;
-    const hasExistingFile = existingResolvedPaths.some((entry) => entry.exists);
+    const hasExistingFile = existingResolvedPaths.length > 0 && existingResolvedPaths.every((entry) => entry.exists);
     const hasLegacyOnly = hasMapLayoutKey && existingPaths.length > 0 && existingPaths.every((value) => !value.startsWith('map_layouts_hens/'));
     const sourceExt = path.extname(matchedHens?.dataPath || '').toLowerCase() || '.webp';
     const generatedRelPath = `map_layouts_hens/${slugify(map.name)}${sourceExt}`;
@@ -331,7 +334,7 @@ async function main() {
     const targetAbsPath = path.join(OUTPUT_ROOT, targetRelPath);
 
     let status = 'covered';
-    let sourceUrl = '';
+    let sourceUrl = matchedHens ? `${HENS_BASE_URL}/${encodePathSegments(matchedHens.dataPath)}` : '';
     let downloaded = false;
     let errorMessage = '';
 
@@ -382,6 +385,7 @@ async function main() {
       hasMapLayoutKey,
       hasExistingFile,
       hasLegacyOnly,
+      missingLocalPaths: existingPaths.filter(file => !fs.existsSync(path.join(OUTPUT_ROOT, file))),
       currentPrimaryRelPath: firstExistingEntry?.relPath || '',
       candidates,
       matchedSourceLabel: matchedHens?.label || '',
@@ -395,8 +399,8 @@ async function main() {
     });
   }
 
-  const missingSourceMaps = reportRows.filter((entry) => entry.status === 'missing-source').map((entry) => entry.mapName);
-  const unresolvedMaps = reportRows.filter((entry) => !entry.hasMapLayoutKey).map((entry) => entry.mapName);
+  const missingSourceMaps = reportRows.filter((entry) => !entry.matchedSourcePath).map((entry) => entry.mapName);
+  const unresolvedMaps = reportRows.filter((entry) => !entry.hasMapLayoutKey || entry.missingLocalPaths.length).map((entry) => entry.mapName);
   const upgradeCandidates = reportRows
     .filter((entry) => entry.hasLegacyOnly && entry.matchedSourcePath)
     .map((entry) => entry.mapName);
@@ -452,10 +456,12 @@ async function main() {
   }
 
   if (checkMode && unresolvedMaps.length > 0) {
-    fail(`check mode failed (unresolvedMaps=${unresolvedMaps.length}, missing index.html MAP_LAYOUTS keys: ${unresolvedMaps.join(', ')})`);
+    fail(`check mode failed (unresolvedMaps=${unresolvedMaps.length}, missing UI source MAP_LAYOUTS keys: ${unresolvedMaps.join(', ')})`);
   }
 }
 
-main().catch((error) => {
+module.exports = { parseHensCallouts, buildMapCandidates, normalizeKey, encodePathSegments };
+
+if (require.main === module) main().catch((error) => {
   fail(error.message || String(error));
 });

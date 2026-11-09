@@ -1,0 +1,2332 @@
+{
+  "before": {
+    "1": [
+      {
+        "load": {
+          "rootMs": 3492.399999999441,
+          "paints": [
+            {
+              "name": "first-paint",
+              "ms": 636
+            },
+            {
+              "name": "first-contentful-paint",
+              "ms": 656
+            }
+          ],
+          "tasks": [
+            {
+              "start": 268.70000000018626,
+              "ms": 187
+            },
+            {
+              "start": 457.70000000018626,
+              "ms": 151
+            },
+            {
+              "start": 670.5999999996275,
+              "ms": 165
+            },
+            {
+              "start": 920.8999999994412,
+              "ms": 52
+            },
+            {
+              "start": 1008.2000000001863,
+              "ms": 2285
+            },
+            {
+              "start": 3295.0999999996275,
+              "ms": 246
+            }
+          ],
+          "resources": [
+            {
+              "name": "before/vendor/react.production.min.js",
+              "bytes": 10751,
+              "ms": 28.09999999962747
+            },
+            {
+              "name": "before/vendor/react-dom.production.min.js",
+              "bytes": 131835,
+              "ms": 44.200000000186265
+            },
+            {
+              "name": "before/vendor/babel.min.js",
+              "bytes": 2921550,
+              "ms": 66.6000000005588
+            },
+            {
+              "name": "before/vendor/tailwindcss.min.js",
+              "bytes": 407279,
+              "ms": 46.5
+            },
+            {
+              "name": "before/engine/engine.css",
+              "bytes": 57266,
+              "ms": 35
+            },
+            {
+              "name": "before/assets/loading/dbd-logo-static.png",
+              "bytes": 12469,
+              "ms": 41.700000000186265
+            },
+            {
+              "name": "before/data.js",
+              "bytes": 1450830,
+              "ms": 60.40000000037253
+            },
+            {
+              "name": "before/lore.js",
+              "bytes": 64103,
+              "ms": 49.5
+            },
+            {
+              "name": "before/cosmetics.js",
+              "bytes": 5695687,
+              "ms": 109
+            },
+            {
+              "name": "before/community-content.js",
+              "bytes": 2324002,
+              "ms": 102.29999999981374
+            },
+            {
+              "name": "before/meta.js",
+              "bytes": 559,
+              "ms": 155.90000000037253
+            },
+            {
+              "name": "before/changelog.js",
+              "bytes": 16268,
+              "ms": 158.20000000018626
+            },
+            {
+              "name": "before/guides.js",
+              "bytes": 151266,
+              "ms": 162
+            },
+            {
+              "name": "before/glossary.js",
+              "bytes": 24023,
+              "ms": 169.79999999981374
+            },
+            {
+              "name": "before/premade-builds.js",
+              "bytes": 3794,
+              "ms": 358.5
+            },
+            {
+              "name": "before/achievements.js",
+              "bytes": 55057,
+              "ms": 359.30000000074506
+            },
+            {
+              "name": "before/worldle-data.js",
+              "bytes": 22742,
+              "ms": 411.70000000018626
+            },
+            {
+              "name": "before/engine/icons.js",
+              "bytes": 18450,
+              "ms": 6.1000000005587935
+            },
+            {
+              "name": "before/engine/core.js",
+              "bytes": 1465,
+              "ms": 9
+            },
+            {
+              "name": "before/engine/theme.js",
+              "bytes": 3130,
+              "ms": 7.2999999998137355
+            },
+            {
+              "name": "before/engine/storage.js",
+              "bytes": 1604,
+              "ms": 8.200000000186265
+            },
+            {
+              "name": "before/engine/device.js",
+              "bytes": 5116,
+              "ms": 7.7999999998137355
+            },
+            {
+              "name": "before/engine/shell.js",
+              "bytes": 8335,
+              "ms": 9
+            },
+            {
+              "name": "before/engine/assets.js",
+              "bytes": 6741,
+              "ms": 10.900000000372529
+            },
+            {
+              "name": "before/engine/articles.js",
+              "bytes": 7744,
+              "ms": 11.099999999627471
+            },
+            {
+              "name": "before/games/dbd/config.js",
+              "bytes": 8112,
+              "ms": 10.400000000372529
+            },
+            {
+              "name": "before/assets/favicon.png",
+              "bytes": 974,
+              "ms": 2.900000000372529
+            },
+            {
+              "name": "before/assets/wiki-logo.png",
+              "bytes": 12522,
+              "ms": 2.3999999994412065
+            },
+            {
+              "name": "before/assets/r6-badge.png",
+              "bytes": 1476,
+              "ms": 3.7999999998137355
+            },
+            {
+              "name": "before/assets/fonts/bitter-var.woff2",
+              "bytes": 34072,
+              "ms": 2.400000000372529
+            },
+            {
+              "name": "intl/en_us/badges/static/images/badges/en_badge_web_generic.png",
+              "bytes": 0,
+              "ms": 66.59999999962747
+            }
+          ]
+        },
+        "worstScoringMs": 57.59999999962747
+      },
+      {
+        "load": {
+          "rootMs": 2947.5999999996275,
+          "paints": [
+            {
+              "name": "first-paint",
+              "ms": 272
+            },
+            {
+              "name": "first-contentful-paint",
+              "ms": 272
+            }
+          ],
+          "tasks": [
+            {
+              "start": 172.09999999962747,
+              "ms": 68
+            },
+            {
+              "start": 286.59999999962747,
+              "ms": 129
+            },
+            {
+              "start": 461.70000000018626,
+              "ms": 51
+            },
+            {
+              "start": 578.5999999996275,
+              "ms": 2206
+            },
+            {
+              "start": 2785.2000000001863,
+              "ms": 200
+            }
+          ],
+          "resources": [
+            {
+              "name": "before/vendor/react.production.min.js",
+              "bytes": 10751,
+              "ms": 5.7000000001862645
+            },
+            {
+              "name": "before/vendor/react-dom.production.min.js",
+              "bytes": 131835,
+              "ms": 8.799999999813735
+            },
+            {
+              "name": "before/vendor/babel.min.js",
+              "bytes": 2921550,
+              "ms": 35.299999999813735
+            },
+            {
+              "name": "before/vendor/tailwindcss.min.js",
+              "bytes": 407279,
+              "ms": 20.399999999441206
+            },
+            {
+              "name": "before/engine/engine.css",
+              "bytes": 57266,
+              "ms": 8.900000000372529
+            },
+            {
+              "name": "before/assets/loading/dbd-logo-static.png",
+              "bytes": 12469,
+              "ms": 19.100000000558794
+            },
+            {
+              "name": "before/data.js",
+              "bytes": 1450830,
+              "ms": 22.200000000186265
+            },
+            {
+              "name": "before/lore.js",
+              "bytes": 64103,
+              "ms": 26.200000000186265
+            },
+            {
+              "name": "before/community-content.js",
+              "bytes": 2324002,
+              "ms": 77.5
+            },
+            {
+              "name": "before/meta.js",
+              "bytes": 559,
+              "ms": 151.20000000018626
+            },
+            {
+              "name": "before/cosmetics.js",
+              "bytes": 5695687,
+              "ms": 85.29999999981374
+            },
+            {
+              "name": "before/changelog.js",
+              "bytes": 16268,
+              "ms": 161.40000000037253
+            },
+            {
+              "name": "before/guides.js",
+              "bytes": 151266,
+              "ms": 165.40000000037253
+            },
+            {
+              "name": "before/glossary.js",
+              "bytes": 24023,
+              "ms": 163.79999999981374
+            },
+            {
+              "name": "before/premade-builds.js",
+              "bytes": 3794,
+              "ms": 164.79999999981374
+            },
+            {
+              "name": "before/achievements.js",
+              "bytes": 55057,
+              "ms": 162.40000000037253
+            },
+            {
+              "name": "before/worldle-data.js",
+              "bytes": 22742,
+              "ms": 165.09999999962747
+            },
+            {
+              "name": "before/engine/icons.js",
+              "bytes": 18450,
+              "ms": 10.700000000186265
+            },
+            {
+              "name": "before/engine/core.js",
+              "bytes": 1465,
+              "ms": 9.5
+            },
+            {
+              "name": "before/engine/theme.js",
+              "bytes": 3130,
+              "ms": 12.5
+            },
+            {
+              "name": "before/engine/storage.js",
+              "bytes": 1604,
+              "ms": 9.799999999813735
+            },
+            {
+              "name": "before/engine/device.js",
+              "bytes": 5116,
+              "ms": 11.400000000372529
+            },
+            {
+              "name": "before/engine/shell.js",
+              "bytes": 8335,
+              "ms": 12.800000000745058
+            },
+            {
+              "name": "before/engine/assets.js",
+              "bytes": 6741,
+              "ms": 13.099999999627471
+            },
+            {
+              "name": "before/engine/articles.js",
+              "bytes": 7744,
+              "ms": 14.299999999813735
+            },
+            {
+              "name": "before/games/dbd/config.js",
+              "bytes": 8112,
+              "ms": 14.299999999813735
+            },
+            {
+              "name": "before/assets/wiki-logo.png",
+              "bytes": 12522,
+              "ms": 2.199999999254942
+            },
+            {
+              "name": "before/assets/r6-badge.png",
+              "bytes": 1476,
+              "ms": 3.2000000001862645
+            },
+            {
+              "name": "before/assets/fonts/bitter-var.woff2",
+              "bytes": 34072,
+              "ms": 2.599999999627471
+            },
+            {
+              "name": "intl/en_us/badges/static/images/badges/en_badge_web_generic.png",
+              "bytes": 0,
+              "ms": 24.09999999962747
+            }
+          ]
+        },
+        "worstScoringMs": 40.700000000186265
+      },
+      {
+        "load": {
+          "rootMs": 2866.5999999996275,
+          "paints": [
+            {
+              "name": "first-paint",
+              "ms": 268
+            },
+            {
+              "name": "first-contentful-paint",
+              "ms": 268
+            }
+          ],
+          "tasks": [
+            {
+              "start": 180.29999999981374,
+              "ms": 63
+            },
+            {
+              "start": 289.19999999925494,
+              "ms": 113
+            },
+            {
+              "start": 420.5,
+              "ms": 87
+            },
+            {
+              "start": 582.8999999994412,
+              "ms": 2108
+            },
+            {
+              "start": 2691.7999999998137,
+              "ms": 205
+            }
+          ],
+          "resources": [
+            {
+              "name": "before/vendor/react.production.min.js",
+              "bytes": 10751,
+              "ms": 4.2999999998137355
+            },
+            {
+              "name": "before/vendor/react-dom.production.min.js",
+              "bytes": 131835,
+              "ms": 9.400000000372529
+            },
+            {
+              "name": "before/vendor/tailwindcss.min.js",
+              "bytes": 407279,
+              "ms": 15.799999999813735
+            },
+            {
+              "name": "before/vendor/babel.min.js",
+              "bytes": 2921550,
+              "ms": 33
+            },
+            {
+              "name": "before/engine/engine.css",
+              "bytes": 57266,
+              "ms": 5.699999999254942
+            },
+            {
+              "name": "before/assets/loading/dbd-logo-static.png",
+              "bytes": 12469,
+              "ms": 13.299999999813735
+            },
+            {
+              "name": "before/lore.js",
+              "bytes": 64103,
+              "ms": 19.5
+            },
+            {
+              "name": "before/data.js",
+              "bytes": 1450830,
+              "ms": 24
+            },
+            {
+              "name": "before/cosmetics.js",
+              "bytes": 5695687,
+              "ms": 69.59999999962747
+            },
+            {
+              "name": "before/community-content.js",
+              "bytes": 2324002,
+              "ms": 66.90000000037253
+            },
+            {
+              "name": "before/meta.js",
+              "bytes": 559,
+              "ms": 112.20000000018626
+            },
+            {
+              "name": "before/changelog.js",
+              "bytes": 16268,
+              "ms": 114.79999999981374
+            },
+            {
+              "name": "before/guides.js",
+              "bytes": 151266,
+              "ms": 117.6000000005588
+            },
+            {
+              "name": "before/glossary.js",
+              "bytes": 24023,
+              "ms": 122.90000000037253
+            },
+            {
+              "name": "before/premade-builds.js",
+              "bytes": 3794,
+              "ms": 128.1000000005588
+            },
+            {
+              "name": "before/achievements.js",
+              "bytes": 55057,
+              "ms": 158.5
+            },
+            {
+              "name": "before/worldle-data.js",
+              "bytes": 22742,
+              "ms": 165.5
+            },
+            {
+              "name": "before/engine/icons.js",
+              "bytes": 18450,
+              "ms": 8.799999999813735
+            },
+            {
+              "name": "before/engine/core.js",
+              "bytes": 1465,
+              "ms": 10.099999999627471
+            },
+            {
+              "name": "before/engine/theme.js",
+              "bytes": 3130,
+              "ms": 9.399999999441206
+            },
+            {
+              "name": "before/engine/storage.js",
+              "bytes": 1604,
+              "ms": 6.5
+            },
+            {
+              "name": "before/engine/device.js",
+              "bytes": 5116,
+              "ms": 7
+            },
+            {
+              "name": "before/engine/shell.js",
+              "bytes": 8335,
+              "ms": 8.400000000372529
+            },
+            {
+              "name": "before/engine/assets.js",
+              "bytes": 6741,
+              "ms": 11.400000000372529
+            },
+            {
+              "name": "before/engine/articles.js",
+              "bytes": 7744,
+              "ms": 10.900000000372529
+            },
+            {
+              "name": "before/games/dbd/config.js",
+              "bytes": 8112,
+              "ms": 11.400000000372529
+            },
+            {
+              "name": "before/assets/wiki-logo.png",
+              "bytes": 12522,
+              "ms": 3.2000000001862645
+            },
+            {
+              "name": "before/assets/r6-badge.png",
+              "bytes": 1476,
+              "ms": 3.2999999998137355
+            },
+            {
+              "name": "before/assets/fonts/bitter-var.woff2",
+              "bytes": 34072,
+              "ms": 2.6000000005587935
+            },
+            {
+              "name": "intl/en_us/badges/static/images/badges/en_badge_web_generic.png",
+              "bytes": 0,
+              "ms": 21.299999999813735
+            }
+          ]
+        },
+        "worstScoringMs": 46.59999999962747
+      }
+    ],
+    "4": [
+      {
+        "load": {
+          "rootMs": 11572.299999999814,
+          "paints": [
+            {
+              "name": "first-paint",
+              "ms": 600
+            },
+            {
+              "name": "first-contentful-paint",
+              "ms": 660
+            }
+          ],
+          "tasks": [
+            {
+              "start": 196.70000000018626,
+              "ms": 124
+            },
+            {
+              "start": 327.5,
+              "ms": 253
+            },
+            {
+              "start": 787.5,
+              "ms": 407
+            },
+            {
+              "start": 1197.2999999998137,
+              "ms": 83
+            },
+            {
+              "start": 1316.0999999996275,
+              "ms": 159
+            },
+            {
+              "start": 1479.2000000001863,
+              "ms": 282
+            },
+            {
+              "start": 1763,
+              "ms": 180
+            },
+            {
+              "start": 1944.7999999998137,
+              "ms": 8944
+            },
+            {
+              "start": 10899.5,
+              "ms": 816
+            },
+            {
+              "start": 11778,
+              "ms": 58
+            },
+            {
+              "start": 11887.599999999627,
+              "ms": 51
+            }
+          ],
+          "resources": [
+            {
+              "name": "before/vendor/react.production.min.js",
+              "bytes": 10751,
+              "ms": 3.5
+            },
+            {
+              "name": "before/vendor/react-dom.production.min.js",
+              "bytes": 131835,
+              "ms": 13.900000000372529
+            },
+            {
+              "name": "before/vendor/babel.min.js",
+              "bytes": 2921550,
+              "ms": 38.09999999962747
+            },
+            {
+              "name": "before/vendor/tailwindcss.min.js",
+              "bytes": 407279,
+              "ms": 12.899999999441206
+            },
+            {
+              "name": "before/engine/engine.css",
+              "bytes": 57266,
+              "ms": 6.5
+            },
+            {
+              "name": "before/assets/loading/dbd-logo-static.png",
+              "bytes": 12469,
+              "ms": 5.400000000372529
+            },
+            {
+              "name": "before/data.js",
+              "bytes": 1450830,
+              "ms": 16.299999999813735
+            },
+            {
+              "name": "before/lore.js",
+              "bytes": 64103,
+              "ms": 24.799999999813735
+            },
+            {
+              "name": "before/cosmetics.js",
+              "bytes": 5695687,
+              "ms": 103.8999999994412
+            },
+            {
+              "name": "before/community-content.js",
+              "bytes": 2324002,
+              "ms": 72.40000000037253
+            },
+            {
+              "name": "before/meta.js",
+              "bytes": 559,
+              "ms": 261.79999999981374
+            },
+            {
+              "name": "before/changelog.js",
+              "bytes": 16268,
+              "ms": 263.20000000018626
+            },
+            {
+              "name": "before/guides.js",
+              "bytes": 151266,
+              "ms": 294.8999999994412
+            },
+            {
+              "name": "before/glossary.js",
+              "bytes": 24023,
+              "ms": 291.8999999994412
+            },
+            {
+              "name": "before/premade-builds.js",
+              "bytes": 3794,
+              "ms": 293.70000000018626
+            },
+            {
+              "name": "before/achievements.js",
+              "bytes": 55057,
+              "ms": 291.20000000018626
+            },
+            {
+              "name": "before/worldle-data.js",
+              "bytes": 22742,
+              "ms": 292.59999999962747
+            },
+            {
+              "name": "before/engine/icons.js",
+              "bytes": 18450,
+              "ms": 3
+            },
+            {
+              "name": "before/engine/core.js",
+              "bytes": 1465,
+              "ms": 3.2999999998137355
+            },
+            {
+              "name": "before/engine/theme.js",
+              "bytes": 3130,
+              "ms": 3.8999999994412065
+            },
+            {
+              "name": "before/engine/storage.js",
+              "bytes": 1604,
+              "ms": 5.400000000372529
+            },
+            {
+              "name": "before/engine/device.js",
+              "bytes": 5116,
+              "ms": 3.2999999998137355
+            },
+            {
+              "name": "before/engine/shell.js",
+              "bytes": 8335,
+              "ms": 5.5
+            },
+            {
+              "name": "before/engine/assets.js",
+              "bytes": 6741,
+              "ms": 3.1000000005587935
+            },
+            {
+              "name": "before/engine/articles.js",
+              "bytes": 7744,
+              "ms": 2.800000000745058
+            },
+            {
+              "name": "before/games/dbd/config.js",
+              "bytes": 8112,
+              "ms": 3.2000000001862645
+            },
+            {
+              "name": "before/assets/fonts/bitter-var.woff2",
+              "bytes": 34072,
+              "ms": 2.900000000372529
+            },
+            {
+              "name": "intl/en_us/badges/static/images/badges/en_badge_web_generic.png",
+              "bytes": 0,
+              "ms": 20.200000000186265
+            }
+          ]
+        },
+        "worstScoringMs": 114.90000000037253
+      },
+      {
+        "load": {
+          "rootMs": 11575.5,
+          "paints": [
+            {
+              "name": "first-paint",
+              "ms": 600
+            },
+            {
+              "name": "first-contentful-paint",
+              "ms": 648
+            }
+          ],
+          "tasks": [
+            {
+              "start": 209.8999999994412,
+              "ms": 125
+            },
+            {
+              "start": 341.3999999994412,
+              "ms": 242
+            },
+            {
+              "start": 760.5,
+              "ms": 391
+            },
+            {
+              "start": 1156.2000000001863,
+              "ms": 111
+            },
+            {
+              "start": 1303.8999999994412,
+              "ms": 115
+            },
+            {
+              "start": 1422.2999999998137,
+              "ms": 175
+            },
+            {
+              "start": 1598.2000000001863,
+              "ms": 270
+            },
+            {
+              "start": 1869.8999999994412,
+              "ms": 9050
+            },
+            {
+              "start": 10927,
+              "ms": 785
+            },
+            {
+              "start": 11765.099999999627,
+              "ms": 59
+            }
+          ],
+          "resources": [
+            {
+              "name": "before/vendor/react.production.min.js",
+              "bytes": 10751,
+              "ms": 3.900000000372529
+            },
+            {
+              "name": "before/vendor/react-dom.production.min.js",
+              "bytes": 131835,
+              "ms": 12.200000000186265
+            },
+            {
+              "name": "before/vendor/babel.min.js",
+              "bytes": 2921550,
+              "ms": 26.600000000558794
+            },
+            {
+              "name": "before/vendor/tailwindcss.min.js",
+              "bytes": 407279,
+              "ms": 13.299999999813735
+            },
+            {
+              "name": "before/engine/engine.css",
+              "bytes": 57266,
+              "ms": 7.5
+            },
+            {
+              "name": "before/assets/loading/dbd-logo-static.png",
+              "bytes": 12469,
+              "ms": 6.5
+            },
+            {
+              "name": "before/data.js",
+              "bytes": 1450830,
+              "ms": 16.299999999813735
+            },
+            {
+              "name": "before/lore.js",
+              "bytes": 64103,
+              "ms": 20.5
+            },
+            {
+              "name": "before/cosmetics.js",
+              "bytes": 5695687,
+              "ms": 109.59999999962747
+            },
+            {
+              "name": "before/community-content.js",
+              "bytes": 2324002,
+              "ms": 68.8999999994412
+            },
+            {
+              "name": "before/meta.js",
+              "bytes": 559,
+              "ms": 120.30000000074506
+            },
+            {
+              "name": "before/changelog.js",
+              "bytes": 16268,
+              "ms": 126.3999999994412
+            },
+            {
+              "name": "before/guides.js",
+              "bytes": 151266,
+              "ms": 130.40000000037253
+            },
+            {
+              "name": "before/glossary.js",
+              "bytes": 24023,
+              "ms": 135.59999999962747
+            },
+            {
+              "name": "before/premade-builds.js",
+              "bytes": 3794,
+              "ms": 140
+            },
+            {
+              "name": "before/achievements.js",
+              "bytes": 55057,
+              "ms": 273.20000000018626
+            },
+            {
+              "name": "before/worldle-data.js",
+              "bytes": 22742,
+              "ms": 274.90000000037253
+            },
+            {
+              "name": "before/engine/icons.js",
+              "bytes": 18450,
+              "ms": 2.2999999998137355
+            },
+            {
+              "name": "before/engine/core.js",
+              "bytes": 1465,
+              "ms": 4.300000000745058
+            },
+            {
+              "name": "before/engine/theme.js",
+              "bytes": 3130,
+              "ms": 3.7000000001862645
+            },
+            {
+              "name": "before/engine/storage.js",
+              "bytes": 1604,
+              "ms": 3.2999999998137355
+            },
+            {
+              "name": "before/engine/device.js",
+              "bytes": 5116,
+              "ms": 3.599999999627471
+            },
+            {
+              "name": "before/engine/shell.js",
+              "bytes": 8335,
+              "ms": 5.7999999998137355
+            },
+            {
+              "name": "before/engine/assets.js",
+              "bytes": 6741,
+              "ms": 4.5
+            },
+            {
+              "name": "before/engine/articles.js",
+              "bytes": 7744,
+              "ms": 3
+            },
+            {
+              "name": "before/games/dbd/config.js",
+              "bytes": 8112,
+              "ms": 3.599999999627471
+            },
+            {
+              "name": "before/assets/fonts/bitter-var.woff2",
+              "bytes": 34072,
+              "ms": 2.3999999994412065
+            },
+            {
+              "name": "intl/en_us/badges/static/images/badges/en_badge_web_generic.png",
+              "bytes": 0,
+              "ms": 21.59999999962747
+            }
+          ]
+        },
+        "worstScoringMs": 119.40000000037253
+      },
+      {
+        "load": {
+          "rootMs": 12026.600000000559,
+          "paints": [
+            {
+              "name": "first-paint",
+              "ms": 596
+            },
+            {
+              "name": "first-contentful-paint",
+              "ms": 652
+            }
+          ],
+          "tasks": [
+            {
+              "start": 175.79999999981374,
+              "ms": 130
+            },
+            {
+              "start": 312.90000000037253,
+              "ms": 267
+            },
+            {
+              "start": 775,
+              "ms": 457
+            },
+            {
+              "start": 1236.7000000001863,
+              "ms": 126
+            },
+            {
+              "start": 1408.4000000003725,
+              "ms": 559
+            },
+            {
+              "start": 1968.4000000003725,
+              "ms": 9369
+            },
+            {
+              "start": 11346.5,
+              "ms": 800
+            },
+            {
+              "start": 12196.5,
+              "ms": 67
+            }
+          ],
+          "resources": [
+            {
+              "name": "before/vendor/react.production.min.js",
+              "bytes": 10751,
+              "ms": 4.7000000001862645
+            },
+            {
+              "name": "before/vendor/react-dom.production.min.js",
+              "bytes": 131835,
+              "ms": 8.5
+            },
+            {
+              "name": "before/vendor/babel.min.js",
+              "bytes": 2921550,
+              "ms": 25.299999999813735
+            },
+            {
+              "name": "before/vendor/tailwindcss.min.js",
+              "bytes": 407279,
+              "ms": 11.799999999813735
+            },
+            {
+              "name": "before/engine/engine.css",
+              "bytes": 57266,
+              "ms": 4.3999999994412065
+            },
+            {
+              "name": "before/assets/loading/dbd-logo-static.png",
+              "bytes": 12469,
+              "ms": 8.599999999627471
+            },
+            {
+              "name": "before/data.js",
+              "bytes": 1450830,
+              "ms": 17.5
+            },
+            {
+              "name": "before/lore.js",
+              "bytes": 64103,
+              "ms": 24
+            },
+            {
+              "name": "before/community-content.js",
+              "bytes": 2324002,
+              "ms": 73.29999999981374
+            },
+            {
+              "name": "before/cosmetics.js",
+              "bytes": 5695687,
+              "ms": 101.40000000037253
+            },
+            {
+              "name": "before/meta.js",
+              "bytes": 559,
+              "ms": 252.3999999994412
+            },
+            {
+              "name": "before/changelog.js",
+              "bytes": 16268,
+              "ms": 252.8999999994412
+            },
+            {
+              "name": "before/guides.js",
+              "bytes": 151266,
+              "ms": 284.29999999981374
+            },
+            {
+              "name": "before/glossary.js",
+              "bytes": 24023,
+              "ms": 281.90000000037253
+            },
+            {
+              "name": "before/premade-builds.js",
+              "bytes": 3794,
+              "ms": 283
+            },
+            {
+              "name": "before/worldle-data.js",
+              "bytes": 22742,
+              "ms": 283.40000000037253
+            },
+            {
+              "name": "before/achievements.js",
+              "bytes": 55057,
+              "ms": 282.40000000037253
+            },
+            {
+              "name": "before/engine/icons.js",
+              "bytes": 18450,
+              "ms": 3.2999999998137355
+            },
+            {
+              "name": "before/engine/core.js",
+              "bytes": 1465,
+              "ms": 5.7000000001862645
+            },
+            {
+              "name": "before/engine/theme.js",
+              "bytes": 3130,
+              "ms": 4.5
+            },
+            {
+              "name": "before/engine/storage.js",
+              "bytes": 1604,
+              "ms": 4.6000000005587935
+            },
+            {
+              "name": "before/engine/device.js",
+              "bytes": 5116,
+              "ms": 8
+            },
+            {
+              "name": "before/engine/shell.js",
+              "bytes": 8335,
+              "ms": 5
+            },
+            {
+              "name": "before/engine/assets.js",
+              "bytes": 6741,
+              "ms": 5.3999999994412065
+            },
+            {
+              "name": "before/engine/articles.js",
+              "bytes": 7744,
+              "ms": 4.7999999998137355
+            },
+            {
+              "name": "before/games/dbd/config.js",
+              "bytes": 8112,
+              "ms": 3.900000000372529
+            },
+            {
+              "name": "before/assets/fonts/bitter-var.woff2",
+              "bytes": 34072,
+              "ms": 2.1000000005587935
+            },
+            {
+              "name": "intl/en_us/badges/static/images/badges/en_badge_web_generic.png",
+              "bytes": 0,
+              "ms": 23.299999999813735
+            }
+          ]
+        },
+        "worstScoringMs": 132.40000000037253
+      }
+    ]
+  },
+  "after": {
+    "1": [
+      {
+        "load": {
+          "rootMs": 492.29999999981374,
+          "paints": [
+            {
+              "name": "first-paint",
+              "ms": 296
+            },
+            {
+              "name": "first-contentful-paint",
+              "ms": 296
+            }
+          ],
+          "tasks": [
+            {
+              "start": 55.299999999813735,
+              "ms": 63
+            },
+            {
+              "start": 119.69999999925494,
+              "ms": 139
+            },
+            {
+              "start": 290.09999999962747,
+              "ms": 248
+            }
+          ],
+          "resources": [
+            {
+              "name": "after/vendor/react.production.min.js",
+              "bytes": 10751,
+              "ms": 4.699999999254942
+            },
+            {
+              "name": "after/vendor/react-dom.production.min.js",
+              "bytes": 131835,
+              "ms": 10.600000000558794
+            },
+            {
+              "name": "after/vendor/tailwindcss.min.js",
+              "bytes": 407279,
+              "ms": 19.200000000186265
+            },
+            {
+              "name": "after/engine/engine.css",
+              "bytes": 57266,
+              "ms": 4.599999999627471
+            },
+            {
+              "name": "after/assets/loading/dbd-logo-static.png",
+              "bytes": 12469,
+              "ms": 11.5
+            },
+            {
+              "name": "after/data.js",
+              "bytes": 1450830,
+              "ms": 24.90000000037253
+            },
+            {
+              "name": "after/lore.js",
+              "bytes": 64103,
+              "ms": 20
+            },
+            {
+              "name": "after/cosmetics.js",
+              "bytes": 5695687,
+              "ms": 78
+            },
+            {
+              "name": "after/meta.js",
+              "bytes": 559,
+              "ms": 121.90000000037253
+            },
+            {
+              "name": "after/community-content.js",
+              "bytes": 2324002,
+              "ms": 154.70000000018626
+            },
+            {
+              "name": "after/changelog.js",
+              "bytes": 16268,
+              "ms": 126.8999999994412
+            },
+            {
+              "name": "after/guides.js",
+              "bytes": 151266,
+              "ms": 132.5
+            },
+            {
+              "name": "after/glossary.js",
+              "bytes": 24023,
+              "ms": 122.09999999962747
+            },
+            {
+              "name": "after/premade-builds.js",
+              "bytes": 3794,
+              "ms": 125
+            },
+            {
+              "name": "after/achievements.js",
+              "bytes": 55057,
+              "ms": 131.5
+            },
+            {
+              "name": "after/worldle-data.js",
+              "bytes": 22742,
+              "ms": 136.59999999962747
+            },
+            {
+              "name": "after/runtime/engine/icons.js",
+              "bytes": 26539,
+              "ms": 136.90000000037253
+            },
+            {
+              "name": "after/runtime/engine/core.js",
+              "bytes": 2164,
+              "ms": 139
+            },
+            {
+              "name": "after/runtime/engine/theme.js",
+              "bytes": 2803,
+              "ms": 145.79999999981374
+            },
+            {
+              "name": "after/runtime/engine/storage.js",
+              "bytes": 1486,
+              "ms": 144.20000000018626
+            },
+            {
+              "name": "after/runtime/engine/device.js",
+              "bytes": 6830,
+              "ms": 146.09999999962747
+            },
+            {
+              "name": "after/runtime/engine/shell.js",
+              "bytes": 9688,
+              "ms": 146.30000000074506
+            },
+            {
+              "name": "after/runtime/engine/assets.js",
+              "bytes": 7410,
+              "ms": 149.6000000005588
+            },
+            {
+              "name": "after/runtime/engine/articles.js",
+              "bytes": 7855,
+              "ms": 154.79999999981374
+            },
+            {
+              "name": "after/runtime/games/dbd/config.js",
+              "bytes": 7642,
+              "ms": 155.5
+            },
+            {
+              "name": "after/runtime/app.js",
+              "bytes": 706894,
+              "ms": 159.6000000005588
+            },
+            {
+              "name": "after/assets/wiki-logo.png",
+              "bytes": 12522,
+              "ms": 2.7999999998137355
+            },
+            {
+              "name": "after/assets/r6-badge.png",
+              "bytes": 1476,
+              "ms": 3.400000000372529
+            },
+            {
+              "name": "after/assets/fonts/bitter-var.woff2",
+              "bytes": 34072,
+              "ms": 2.400000000372529
+            },
+            {
+              "name": "intl/en_us/badges/static/images/badges/en_badge_web_generic.png",
+              "bytes": 0,
+              "ms": 26.09999999962747
+            },
+            {
+              "name": "after/assets/favicon.png",
+              "bytes": 974,
+              "ms": 2.199999999254942
+            }
+          ]
+        },
+        "worstScoringMs": 40
+      },
+      {
+        "load": {
+          "rootMs": 424.5,
+          "paints": [
+            {
+              "name": "first-paint",
+              "ms": 192
+            },
+            {
+              "name": "first-contentful-paint",
+              "ms": 192
+            }
+          ],
+          "tasks": [
+            {
+              "start": 69.79999999981374,
+              "ms": 91
+            },
+            {
+              "start": 241.19999999925494,
+              "ms": 210
+            }
+          ],
+          "resources": [
+            {
+              "name": "after/vendor/react.production.min.js",
+              "bytes": 10751,
+              "ms": 4.400000000372529
+            },
+            {
+              "name": "after/vendor/react-dom.production.min.js",
+              "bytes": 131835,
+              "ms": 10.600000000558794
+            },
+            {
+              "name": "after/vendor/tailwindcss.min.js",
+              "bytes": 407279,
+              "ms": 18
+            },
+            {
+              "name": "after/engine/engine.css",
+              "bytes": 57266,
+              "ms": 8.599999999627471
+            },
+            {
+              "name": "after/assets/loading/dbd-logo-static.png",
+              "bytes": 12469,
+              "ms": 12.5
+            },
+            {
+              "name": "after/data.js",
+              "bytes": 1450830,
+              "ms": 26.90000000037253
+            },
+            {
+              "name": "after/lore.js",
+              "bytes": 64103,
+              "ms": 20
+            },
+            {
+              "name": "after/community-content.js",
+              "bytes": 2324002,
+              "ms": 109.40000000037253
+            },
+            {
+              "name": "after/cosmetics.js",
+              "bytes": 5695687,
+              "ms": 104.29999999981374
+            },
+            {
+              "name": "after/meta.js",
+              "bytes": 559,
+              "ms": 65.20000000018626
+            },
+            {
+              "name": "after/changelog.js",
+              "bytes": 16268,
+              "ms": 68.79999999981374
+            },
+            {
+              "name": "after/guides.js",
+              "bytes": 151266,
+              "ms": 69.5
+            },
+            {
+              "name": "after/glossary.js",
+              "bytes": 24023,
+              "ms": 66.20000000018626
+            },
+            {
+              "name": "after/premade-builds.js",
+              "bytes": 3794,
+              "ms": 78
+            },
+            {
+              "name": "after/achievements.js",
+              "bytes": 55057,
+              "ms": 78.8999999994412
+            },
+            {
+              "name": "after/worldle-data.js",
+              "bytes": 22742,
+              "ms": 80.19999999925494
+            },
+            {
+              "name": "after/runtime/engine/icons.js",
+              "bytes": 26539,
+              "ms": 81.1000000005588
+            },
+            {
+              "name": "after/runtime/engine/core.js",
+              "bytes": 2164,
+              "ms": 84.79999999981374
+            },
+            {
+              "name": "after/runtime/engine/theme.js",
+              "bytes": 2803,
+              "ms": 85
+            },
+            {
+              "name": "after/runtime/engine/storage.js",
+              "bytes": 1486,
+              "ms": 87
+            },
+            {
+              "name": "after/runtime/engine/device.js",
+              "bytes": 6830,
+              "ms": 94.79999999981374
+            },
+            {
+              "name": "after/runtime/engine/shell.js",
+              "bytes": 9688,
+              "ms": 97
+            },
+            {
+              "name": "after/runtime/engine/assets.js",
+              "bytes": 7410,
+              "ms": 98.09999999962747
+            },
+            {
+              "name": "after/runtime/engine/articles.js",
+              "bytes": 7855,
+              "ms": 99.6000000005588
+            },
+            {
+              "name": "after/runtime/games/dbd/config.js",
+              "bytes": 7642,
+              "ms": 106.20000000018626
+            },
+            {
+              "name": "after/runtime/app.js",
+              "bytes": 706894,
+              "ms": 112.09999999962747
+            },
+            {
+              "name": "after/assets/wiki-logo.png",
+              "bytes": 12522,
+              "ms": 2.900000000372529
+            },
+            {
+              "name": "after/assets/r6-badge.png",
+              "bytes": 1476,
+              "ms": 3.1000000005587935
+            },
+            {
+              "name": "after/assets/fonts/bitter-var.woff2",
+              "bytes": 34072,
+              "ms": 2
+            },
+            {
+              "name": "intl/en_us/badges/static/images/badges/en_badge_web_generic.png",
+              "bytes": 0,
+              "ms": 24.5
+            }
+          ]
+        },
+        "worstScoringMs": 34.09999999962747
+      },
+      {
+        "load": {
+          "rootMs": 460.3999999994412,
+          "paints": [
+            {
+              "name": "first-paint",
+              "ms": 204
+            },
+            {
+              "name": "first-contentful-paint",
+              "ms": 204
+            }
+          ],
+          "tasks": [
+            {
+              "start": 65,
+              "ms": 111
+            },
+            {
+              "start": 241.79999999981374,
+              "ms": 251
+            }
+          ],
+          "resources": [
+            {
+              "name": "after/vendor/react.production.min.js",
+              "bytes": 10751,
+              "ms": 4.900000000372529
+            },
+            {
+              "name": "after/vendor/react-dom.production.min.js",
+              "bytes": 131835,
+              "ms": 13.599999999627471
+            },
+            {
+              "name": "after/vendor/tailwindcss.min.js",
+              "bytes": 407279,
+              "ms": 16.200000000186265
+            },
+            {
+              "name": "after/engine/engine.css",
+              "bytes": 57266,
+              "ms": 7
+            },
+            {
+              "name": "after/assets/loading/dbd-logo-static.png",
+              "bytes": 12469,
+              "ms": 11.099999999627471
+            },
+            {
+              "name": "after/data.js",
+              "bytes": 1450830,
+              "ms": 24.90000000037253
+            },
+            {
+              "name": "after/lore.js",
+              "bytes": 64103,
+              "ms": 18.40000000037253
+            },
+            {
+              "name": "after/cosmetics.js",
+              "bytes": 5695687,
+              "ms": 102.70000000018626
+            },
+            {
+              "name": "after/community-content.js",
+              "bytes": 2324002,
+              "ms": 99.90000000037253
+            },
+            {
+              "name": "after/meta.js",
+              "bytes": 559,
+              "ms": 60.59999999962747
+            },
+            {
+              "name": "after/changelog.js",
+              "bytes": 16268,
+              "ms": 62.40000000037253
+            },
+            {
+              "name": "after/guides.js",
+              "bytes": 151266,
+              "ms": 63.5
+            },
+            {
+              "name": "after/glossary.js",
+              "bytes": 24023,
+              "ms": 64
+            },
+            {
+              "name": "after/premade-builds.js",
+              "bytes": 3794,
+              "ms": 70.09999999962747
+            },
+            {
+              "name": "after/worldle-data.js",
+              "bytes": 22742,
+              "ms": 74.5
+            },
+            {
+              "name": "after/achievements.js",
+              "bytes": 55057,
+              "ms": 74.20000000018626
+            },
+            {
+              "name": "after/runtime/engine/icons.js",
+              "bytes": 26539,
+              "ms": 75.29999999981374
+            },
+            {
+              "name": "after/runtime/engine/core.js",
+              "bytes": 2164,
+              "ms": 80.79999999981374
+            },
+            {
+              "name": "after/runtime/engine/theme.js",
+              "bytes": 2803,
+              "ms": 82.19999999925494
+            },
+            {
+              "name": "after/runtime/engine/storage.js",
+              "bytes": 1486,
+              "ms": 84.40000000037253
+            },
+            {
+              "name": "after/runtime/engine/device.js",
+              "bytes": 6830,
+              "ms": 87.40000000037253
+            },
+            {
+              "name": "after/runtime/engine/shell.js",
+              "bytes": 9688,
+              "ms": 89.6000000005588
+            },
+            {
+              "name": "after/runtime/engine/assets.js",
+              "bytes": 7410,
+              "ms": 90.09999999962747
+            },
+            {
+              "name": "after/runtime/engine/articles.js",
+              "bytes": 7855,
+              "ms": 94.40000000037253
+            },
+            {
+              "name": "after/runtime/games/dbd/config.js",
+              "bytes": 7642,
+              "ms": 93.1000000005588
+            },
+            {
+              "name": "after/runtime/app.js",
+              "bytes": 706894,
+              "ms": 104.1000000005588
+            },
+            {
+              "name": "after/assets/wiki-logo.png",
+              "bytes": 12522,
+              "ms": 3.7999999998137355
+            },
+            {
+              "name": "after/assets/r6-badge.png",
+              "bytes": 1476,
+              "ms": 4.2000000001862645
+            },
+            {
+              "name": "after/assets/fonts/bitter-var.woff2",
+              "bytes": 34072,
+              "ms": 2.8999999994412065
+            },
+            {
+              "name": "intl/en_us/badges/static/images/badges/en_badge_web_generic.png",
+              "bytes": 0,
+              "ms": 55.200000000186265
+            }
+          ]
+        },
+        "worstScoringMs": 33.299999999813735
+      }
+    ],
+    "4": [
+      {
+        "load": {
+          "rootMs": 1193.4000000003725,
+          "paints": [
+            {
+              "name": "first-paint",
+              "ms": 420
+            },
+            {
+              "name": "first-contentful-paint",
+              "ms": 420
+            }
+          ],
+          "tasks": [
+            {
+              "start": 108.6000000005588,
+              "ms": 283
+            },
+            {
+              "start": 493,
+              "ms": 822
+            },
+            {
+              "start": 1392.300000000745,
+              "ms": 75
+            }
+          ],
+          "resources": [
+            {
+              "name": "after/vendor/react.production.min.js",
+              "bytes": 10751,
+              "ms": 3.099999999627471
+            },
+            {
+              "name": "after/vendor/react-dom.production.min.js",
+              "bytes": 131835,
+              "ms": 8.700000000186265
+            },
+            {
+              "name": "after/vendor/tailwindcss.min.js",
+              "bytes": 407279,
+              "ms": 11.700000000186265
+            },
+            {
+              "name": "after/engine/engine.css",
+              "bytes": 57266,
+              "ms": 5.900000000372529
+            },
+            {
+              "name": "after/assets/loading/dbd-logo-static.png",
+              "bytes": 12469,
+              "ms": 6
+            },
+            {
+              "name": "after/data.js",
+              "bytes": 1450830,
+              "ms": 16.299999999813735
+            },
+            {
+              "name": "after/lore.js",
+              "bytes": 64103,
+              "ms": 28.399999999441206
+            },
+            {
+              "name": "after/cosmetics.js",
+              "bytes": 5695687,
+              "ms": 137
+            },
+            {
+              "name": "after/community-content.js",
+              "bytes": 2324002,
+              "ms": 93.29999999981374
+            },
+            {
+              "name": "after/meta.js",
+              "bytes": 559,
+              "ms": 86.29999999981374
+            },
+            {
+              "name": "after/changelog.js",
+              "bytes": 16268,
+              "ms": 87.09999999962747
+            },
+            {
+              "name": "after/guides.js",
+              "bytes": 151266,
+              "ms": 87.5
+            },
+            {
+              "name": "after/glossary.js",
+              "bytes": 24023,
+              "ms": 88.1000000005588
+            },
+            {
+              "name": "after/premade-builds.js",
+              "bytes": 3794,
+              "ms": 89.70000000018626
+            },
+            {
+              "name": "after/achievements.js",
+              "bytes": 55057,
+              "ms": 91.20000000018626
+            },
+            {
+              "name": "after/worldle-data.js",
+              "bytes": 22742,
+              "ms": 92.90000000037253
+            },
+            {
+              "name": "after/runtime/engine/icons.js",
+              "bytes": 26539,
+              "ms": 96.6000000005588
+            },
+            {
+              "name": "after/runtime/engine/core.js",
+              "bytes": 2164,
+              "ms": 94.29999999981374
+            },
+            {
+              "name": "after/runtime/engine/theme.js",
+              "bytes": 2803,
+              "ms": 96.5
+            },
+            {
+              "name": "after/runtime/engine/storage.js",
+              "bytes": 1486,
+              "ms": 96.79999999981374
+            },
+            {
+              "name": "after/runtime/engine/device.js",
+              "bytes": 6830,
+              "ms": 96.70000000018626
+            },
+            {
+              "name": "after/runtime/engine/shell.js",
+              "bytes": 9688,
+              "ms": 100.29999999981374
+            },
+            {
+              "name": "after/runtime/engine/assets.js",
+              "bytes": 7410,
+              "ms": 101.5
+            },
+            {
+              "name": "after/runtime/engine/articles.js",
+              "bytes": 7855,
+              "ms": 101.8999999994412
+            },
+            {
+              "name": "after/runtime/games/dbd/config.js",
+              "bytes": 7642,
+              "ms": 101.29999999981374
+            },
+            {
+              "name": "after/runtime/app.js",
+              "bytes": 706894,
+              "ms": 106.09999999962747
+            },
+            {
+              "name": "after/assets/fonts/bitter-var.woff2",
+              "bytes": 34072,
+              "ms": 2.2000000001862645
+            },
+            {
+              "name": "intl/en_us/badges/static/images/badges/en_badge_web_generic.png",
+              "bytes": 0,
+              "ms": 49.09999999962747
+            }
+          ]
+        },
+        "worstScoringMs": 119.19999999925494
+      },
+      {
+        "load": {
+          "rootMs": 1238.5999999996275,
+          "paints": [
+            {
+              "name": "first-paint",
+              "ms": 424
+            },
+            {
+              "name": "first-contentful-paint",
+              "ms": 484
+            }
+          ],
+          "tasks": [
+            {
+              "start": 108.79999999981374,
+              "ms": 289
+            },
+            {
+              "start": 536.8999999994412,
+              "ms": 834
+            },
+            {
+              "start": 1427.5,
+              "ms": 59
+            }
+          ],
+          "resources": [
+            {
+              "name": "after/vendor/react.production.min.js",
+              "bytes": 10751,
+              "ms": 3.3999999994412065
+            },
+            {
+              "name": "after/vendor/react-dom.production.min.js",
+              "bytes": 131835,
+              "ms": 6.099999999627471
+            },
+            {
+              "name": "after/vendor/tailwindcss.min.js",
+              "bytes": 407279,
+              "ms": 12.799999999813735
+            },
+            {
+              "name": "after/engine/engine.css",
+              "bytes": 57266,
+              "ms": 6.6000000005587935
+            },
+            {
+              "name": "after/assets/loading/dbd-logo-static.png",
+              "bytes": 12469,
+              "ms": 9.799999999813735
+            },
+            {
+              "name": "after/data.js",
+              "bytes": 1450830,
+              "ms": 14.599999999627471
+            },
+            {
+              "name": "after/lore.js",
+              "bytes": 64103,
+              "ms": 34.10000000055879
+            },
+            {
+              "name": "after/cosmetics.js",
+              "bytes": 5695687,
+              "ms": 130.79999999981374
+            },
+            {
+              "name": "after/community-content.js",
+              "bytes": 2324002,
+              "ms": 85.20000000018626
+            },
+            {
+              "name": "after/meta.js",
+              "bytes": 559,
+              "ms": 93.70000000018626
+            },
+            {
+              "name": "after/changelog.js",
+              "bytes": 16268,
+              "ms": 95.70000000018626
+            },
+            {
+              "name": "after/guides.js",
+              "bytes": 151266,
+              "ms": 96.29999999981374
+            },
+            {
+              "name": "after/glossary.js",
+              "bytes": 24023,
+              "ms": 93.19999999925494
+            },
+            {
+              "name": "after/premade-builds.js",
+              "bytes": 3794,
+              "ms": 93.20000000018626
+            },
+            {
+              "name": "after/achievements.js",
+              "bytes": 55057,
+              "ms": 97.20000000018626
+            },
+            {
+              "name": "after/worldle-data.js",
+              "bytes": 22742,
+              "ms": 99.90000000037253
+            },
+            {
+              "name": "after/runtime/engine/icons.js",
+              "bytes": 26539,
+              "ms": 105.59999999962747
+            },
+            {
+              "name": "after/runtime/engine/core.js",
+              "bytes": 2164,
+              "ms": 101.29999999981374
+            },
+            {
+              "name": "after/runtime/engine/theme.js",
+              "bytes": 2803,
+              "ms": 98.6000000005588
+            },
+            {
+              "name": "after/runtime/engine/storage.js",
+              "bytes": 1486,
+              "ms": 102.70000000018626
+            },
+            {
+              "name": "after/runtime/engine/device.js",
+              "bytes": 6830,
+              "ms": 104.6000000005588
+            },
+            {
+              "name": "after/runtime/engine/shell.js",
+              "bytes": 9688,
+              "ms": 105.20000000018626
+            },
+            {
+              "name": "after/runtime/engine/assets.js",
+              "bytes": 7410,
+              "ms": 107.1000000005588
+            },
+            {
+              "name": "after/runtime/engine/articles.js",
+              "bytes": 7855,
+              "ms": 107
+            },
+            {
+              "name": "after/runtime/games/dbd/config.js",
+              "bytes": 7642,
+              "ms": 105.5
+            },
+            {
+              "name": "after/runtime/app.js",
+              "bytes": 706894,
+              "ms": 110.8999999994412
+            },
+            {
+              "name": "after/assets/fonts/bitter-var.woff2",
+              "bytes": 34072,
+              "ms": 1.8999999994412065
+            },
+            {
+              "name": "intl/en_us/badges/static/images/badges/en_badge_web_generic.png",
+              "bytes": 0,
+              "ms": 30.40000000037253
+            }
+          ]
+        },
+        "worstScoringMs": 115.5
+      },
+      {
+        "load": {
+          "rootMs": 1189.5,
+          "paints": [
+            {
+              "name": "first-paint",
+              "ms": 412
+            },
+            {
+              "name": "first-contentful-paint",
+              "ms": 476
+            }
+          ],
+          "tasks": [
+            {
+              "start": 99.90000000037253,
+              "ms": 291
+            },
+            {
+              "start": 529.5,
+              "ms": 798
+            },
+            {
+              "start": 1384.5,
+              "ms": 64
+            },
+            {
+              "start": 1501.6000000005588,
+              "ms": 52
+            }
+          ],
+          "resources": [
+            {
+              "name": "after/vendor/react.production.min.js",
+              "bytes": 10751,
+              "ms": 9.700000000186265
+            },
+            {
+              "name": "after/vendor/react-dom.production.min.js",
+              "bytes": 131835,
+              "ms": 9.700000000186265
+            },
+            {
+              "name": "after/vendor/tailwindcss.min.js",
+              "bytes": 407279,
+              "ms": 12.299999999813735
+            },
+            {
+              "name": "after/engine/engine.css",
+              "bytes": 57266,
+              "ms": 6.400000000372529
+            },
+            {
+              "name": "after/assets/loading/dbd-logo-static.png",
+              "bytes": 12469,
+              "ms": 8
+            },
+            {
+              "name": "after/data.js",
+              "bytes": 1450830,
+              "ms": 14
+            },
+            {
+              "name": "after/lore.js",
+              "bytes": 64103,
+              "ms": 28.899999999441206
+            },
+            {
+              "name": "after/cosmetics.js",
+              "bytes": 5695687,
+              "ms": 119.29999999981374
+            },
+            {
+              "name": "after/community-content.js",
+              "bytes": 2324002,
+              "ms": 83.70000000018626
+            },
+            {
+              "name": "after/meta.js",
+              "bytes": 559,
+              "ms": 86.19999999925494
+            },
+            {
+              "name": "after/changelog.js",
+              "bytes": 16268,
+              "ms": 85.5
+            },
+            {
+              "name": "after/guides.js",
+              "bytes": 151266,
+              "ms": 87.90000000037253
+            },
+            {
+              "name": "after/glossary.js",
+              "bytes": 24023,
+              "ms": 86
+            },
+            {
+              "name": "after/premade-builds.js",
+              "bytes": 3794,
+              "ms": 85.59999999962747
+            },
+            {
+              "name": "after/worldle-data.js",
+              "bytes": 22742,
+              "ms": 88.8999999994412
+            },
+            {
+              "name": "after/achievements.js",
+              "bytes": 55057,
+              "ms": 89.69999999925494
+            },
+            {
+              "name": "after/runtime/engine/icons.js",
+              "bytes": 26539,
+              "ms": 94.70000000018626
+            },
+            {
+              "name": "after/runtime/engine/core.js",
+              "bytes": 2164,
+              "ms": 92.20000000018626
+            },
+            {
+              "name": "after/runtime/engine/theme.js",
+              "bytes": 2803,
+              "ms": 94.8999999994412
+            },
+            {
+              "name": "after/runtime/engine/storage.js",
+              "bytes": 1486,
+              "ms": 96.79999999981374
+            },
+            {
+              "name": "after/runtime/engine/device.js",
+              "bytes": 6830,
+              "ms": 98.59999999962747
+            },
+            {
+              "name": "after/runtime/engine/shell.js",
+              "bytes": 9688,
+              "ms": 101.09999999962747
+            },
+            {
+              "name": "after/runtime/engine/assets.js",
+              "bytes": 7410,
+              "ms": 98.69999999925494
+            },
+            {
+              "name": "after/runtime/engine/articles.js",
+              "bytes": 7855,
+              "ms": 99.8999999994412
+            },
+            {
+              "name": "after/runtime/games/dbd/config.js",
+              "bytes": 7642,
+              "ms": 102.29999999981374
+            },
+            {
+              "name": "after/runtime/app.js",
+              "bytes": 706894,
+              "ms": 104.5
+            },
+            {
+              "name": "after/assets/fonts/bitter-var.woff2",
+              "bytes": 34072,
+              "ms": 2.2999999998137355
+            },
+            {
+              "name": "intl/en_us/badges/static/images/badges/en_badge_web_generic.png",
+              "bytes": 0,
+              "ms": 20.59999999962747
+            }
+          ]
+        },
+        "worstScoringMs": 156.19999999925494
+      }
+    ]
+  },
+  "newCosmeticImages": 38,
+  "baselineCommit": "6ad04a0",
+  "browserVersion": "Google Chrome 157.0.8103.38",
+  "runtimeManifest": {
+    "compilerSha256": "e4ba9efd616147cc67f3945ee3f39f00c9046442ed6ecc0a403a2338c8dcb310",
+    "target": "esmodules",
+    "entries": [
+      {
+        "source": "engine/icons.js",
+        "output": "runtime/engine/icons.js",
+        "sourceSha256": "9758c6daf0d104f1346b556c8806d41b0d2e03daf867a4e08d2e0120c7efc6ae",
+        "outputSha256": "085174704de04b9900bb2a930c35ab73bf8232369faba556b6ebbf7117ec80dd"
+      },
+      {
+        "source": "engine/core.js",
+        "output": "runtime/engine/core.js",
+        "sourceSha256": "c47a67181505cb8f6dbe32e6ecea59ddfbe12ced680a4a58703dac943d028130",
+        "outputSha256": "21b3db3ede3b677833fb46568b4e037c6a2337aa23c24711e4ab0ef83596dab7"
+      },
+      {
+        "source": "engine/theme.js",
+        "output": "runtime/engine/theme.js",
+        "sourceSha256": "7c327ae66e875a2dce1c9fbb1bb7b01202a53ed6abe03e48da7b67519681995f",
+        "outputSha256": "455acdfb888464bb02e966939ae6be911898b8d65252c5fd9b6bab962597406a"
+      },
+      {
+        "source": "engine/storage.js",
+        "output": "runtime/engine/storage.js",
+        "sourceSha256": "d1287e9ae6e404565c31cb928c77bf3d43795047381041eaebb4d27f7b68d102",
+        "outputSha256": "f296db615377294014e7abd5351beb575344de83f98dc59fd99fc6021c88fd84"
+      },
+      {
+        "source": "engine/device.js",
+        "output": "runtime/engine/device.js",
+        "sourceSha256": "4a5216b018dc4dca9662a7944828dbefb4d5e6ef6b5e618f0f8c93d86b778833",
+        "outputSha256": "b1f7ac409f77b1248d2c0bac213b03b7852e251436db8564a5a52aa0920c6753"
+      },
+      {
+        "source": "engine/shell.js",
+        "output": "runtime/engine/shell.js",
+        "sourceSha256": "3786e7cadbdfca035b9d56725d5cf4c3237b0688594425c2b6ba1b35d09cbe33",
+        "outputSha256": "eeec2f61cda473ca13c50259cd8c1f502781b31be991853399626982dc293d82"
+      },
+      {
+        "source": "engine/assets.js",
+        "output": "runtime/engine/assets.js",
+        "sourceSha256": "2c0f3f69838284fe1ff828e4ec2f8134aa774e40a609117253ff2fea82e4e727",
+        "outputSha256": "f05c7878b88fdf4599cda41a6b1d09d98b97abdb05eca8bd67ceff606d23b894"
+      },
+      {
+        "source": "engine/articles.js",
+        "output": "runtime/engine/articles.js",
+        "sourceSha256": "559f4e657ede11abe99453f09a3cc264613d8c5fff07ab69401a6b3016f7bfb2",
+        "outputSha256": "fe0b66ae22805b2dc0d94c4832ba8d00911c637a795cbf1ffe1da50700975267"
+      },
+      {
+        "source": "games/dbd/config.js",
+        "output": "runtime/games/dbd/config.js",
+        "sourceSha256": "bf81742874493920a3f2cf734986ddf16f01e7c4ef928e7c9176f3e98c9cc7de",
+        "outputSha256": "c916c84a4104df7d928e8496d2e143e517d516cc7c4b1d51f9e6c8735c7c68e4"
+      },
+      {
+        "source": "app.jsx",
+        "output": "runtime/app.js",
+        "sourceSha256": "9c403910a59b1549e1f4784368d9eb436599dc766d2c512b5976dffaf9aa58d2",
+        "outputSha256": "6ef50e7588724255b6037bcb90224b25ec897ddae6e13afaeab2378b9f2d7028"
+      }
+    ]
+  },
+  "footerRegression": {
+    "before": {
+      "crashed": true,
+      "search": false
+    },
+    "after": {
+      "crashed": false,
+      "search": true,
+      "top": "Dwight Fairfield"
+    }
+  }
+}

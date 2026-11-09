@@ -55,8 +55,23 @@ def instrument(source):
     if 'const searchIndex = useMemo' in source:
         bindings += 'window.__catalogForTest = searchIndex;\n'
     source = source[:start] + bindings + source[start:]
+    source = source.replace('setResults(scored.slice(0, 50));', 'setResults(scored.slice(0, 50)); window.__lastScoredQueryForTest = deferredSearchTerm;')
     source = source.replace('      const renderContent = () => {', '      window.__navigateForTest = setView;\n      const renderContent = () => {')
     return source
+
+
+def compile_source(source):
+    command = "try { const fs=require('fs');process.stdout.write(require('./scripts/build-runtime').compile(fs.readFileSync(0,'utf8'))); } catch(error) { console.error(error.message);process.exitCode=1; }"
+    return subprocess.check_output(['node', '-e', command], input=source, text=True, cwd=ROOT)
+
+
+def prepare_page(directory):
+    raw = (directory / 'index.html').read_text()
+    if re.search(r'<script\s+type="text/babel"(?![^>]*\bsrc=)', raw):
+        return raw, instrument(raw), None
+    source_path = directory / 'app.jsx'
+    source = (source_path if source_path.exists() else WEB / 'app.jsx').read_text()
+    return source, raw, compile_source(instrument(source))
 
 
 class CDP:
@@ -112,6 +127,30 @@ def search(cdp, query):
     return cdp.js("""(() => { const start=performance.now();
       const results=__searchForTest(QUERY) || [];
       return {query:QUERY,ms:performance.now()-start,results:results.map(x=>({id:x.id,name:x.name,category:x.category,score:x._score,rarity:x.rarity,itemType:x.itemType,role:x.role||x.type}))}; })()""".replace('QUERY', json.dumps(query)))
+
+
+def profile_input(cdp, base):
+    cdp.load(base + '/after?view=home', 4)
+    records = []
+    for query in ['dwight', 'trapper mask', 'purple toolbox addons', 'perks survivor healing', 'icons:exausted', 'aura reveal generator healing chase hex boon']:
+        expected = cdp.js("__searchForTest(" + json.dumps(query) + ").map(item=>[item.category,item.id||item.name])")
+        cdp.js("document.querySelector('#home-search-input').focus();document.querySelector('#home-search-input').select()")
+        start = cdp.js('performance.now()')
+        final_key = start
+        for index, letter in enumerate(query):
+            final_key = cdp.js('performance.now()')
+            cdp.call('Input.insertText', text=letter)
+            if index < len(query) - 1:
+                time.sleep(.05)
+        expected_json = json.dumps(expected, ensure_ascii=False, separators=(',', ':'))
+        condition = "window.__lastScoredQueryForTest === " + json.dumps(query) + " && JSON.stringify(window.__actualResultsForTest?.map(item=>[item.category,item.id||item.name])) === " + json.dumps(expected_json)
+        cdp.until(condition)
+        cdp.js('new Promise(resolve=>requestAnimationFrame(()=>requestAnimationFrame(resolve)))')
+        done = cdp.js('performance.now()')
+        tasks = cdp.js('__hardening.tasks.filter(task=>task.start>=' + str(start) + ' && task.start<=' + str(done) + ')')
+        records.append({'query': query, 'typingMs': done - start, 'finalKeyToResultsMs': done - final_key,
+                        'longTasks': len(tasks), 'maxLongTaskMs': max((task['ms'] for task in tasks), default=0)})
+    return records
 
 
 def assert_search(cdp):
@@ -177,12 +216,21 @@ def assert_search(cdp):
     cdp.js("[...document.querySelectorAll('p')].find(p=>p.textContent==='Best New Trapper Mask').parentElement.parentElement.querySelector('button').click()")
     cdp.until("!!document.querySelector('[data-smoke-target]')")
     assert cdp.js('document.querySelector("[data-smoke-view]").dataset.smokeView') == 'killer'
+    # Article cleanup must not remove the newly mounted React-owned home footer.
+    cdp.js("__navigateForTest('home', {})")
+    cdp.until("!!document.querySelector('#home-search-input')")
+    time.sleep(.2)
+    cdp.js("document.querySelector('#home-search-input').focus()")
+    cdp.call('Input.insertText', text='dwight')
+    cdp.until("window.__actualResultsForTest?.[0]?.name==='Dwight Fairfield'")
+    assert not cdp.js("document.body.innerText.includes('Something went wrong')")
+    assert cdp.js("!!document.querySelector('[data-smoke-view=home] .site-footer')")
     print(f'hardening-browser: search assertions passed ({len(QUERIES)} queries plus all 98 character names)', flush=True)
     return results
 
 
-def assert_maps(cdp, base, screenshots=None):
-    database = json.loads((ROOT / 'content/database.json').read_text())
+def assert_maps(cdp, base, screenshots=None, database=None):
+    database = database or json.loads((ROOT / 'content/database.json').read_text())
     maps = database['maps']
     sample = next(entry for entry in maps if entry['name'] == 'Coal Tower')
     for entry in maps:
@@ -226,7 +274,50 @@ def assert_maps(cdp, base, screenshots=None):
         if screenshots:
             screenshots.mkdir(parents=True, exist_ok=True)
             (screenshots / (label + '.png')).write_bytes(base64.b64decode(cdp.call('Page.captureScreenshot', format='png')['data']))
+    dead_sands = next((entry for entry in maps if entry['name'] == 'Dead Sands'), None)
+    if screenshots and dead_sands:
+        cdp.js('__navigateForTest("map",' + json.dumps({'id': dead_sands['id']}) + ')')
+        cdp.until('document.querySelector("h1")?.textContent==="Dead Sands"')
+        for label, width, height, mobile in [('desktop', 1440, 1100, False), ('mobile', 390, 844, True)]:
+            cdp.call('Emulation.setDeviceMetricsOverride', width=width, height=height, deviceScaleFactor=1, mobile=mobile)
+            time.sleep(.4)
+            assert not cdp.js('document.documentElement.scrollWidth>innerWidth')
+            (screenshots / ('dead-sands-' + label + '.png')).write_bytes(base64.b64decode(cdp.call('Page.captureScreenshot', format='png')['data']))
     print(f'hardening-browser: all {len(maps)} map IDs, canonicals, notes, layouts, realm links, unknown route and responsive checks passed', flush=True)
+
+
+def assert_catalog_maps(cdp, base, screenshots=None, baseline=False):
+    database = json.loads((ROOT / 'content/database.json').read_text())
+    dead_sands = next(entry for entry in database['maps'] if entry['name'] == 'Dead Sands')
+    realm = next(entry for entry in database['realms'] if entry['name'] == dead_sands['realm'])
+    if screenshots:
+        screenshots.mkdir(parents=True, exist_ok=True)
+    for label, rate in [('desktop', 1), ('mobile', 4)]:
+        if baseline:
+            cdp.load(base + '/before?view=home', rate)
+            assert not cdp.js("__searchForTest('maps:dead sands').some(item=>item.name==='Dead Sands')")
+            cdp.js("document.querySelector('#home-search-input').focus()")
+            cdp.call('Input.insertText', text='maps:dead sands')
+            cdp.until("window.__lastScoredQueryForTest === 'maps:dead sands'")
+            assert not cdp.js("window.__actualResultsForTest.some(item=>item.name==='Dead Sands')")
+            if screenshots:
+                (screenshots / ('dead-sands-before-' + label + '.png')).write_bytes(base64.b64decode(cdp.call('Page.captureScreenshot', format='png')['data']))
+        cdp.load(base + '/after?view=home', rate)
+        cdp.js("document.querySelector('#home-search-input').focus()")
+        cdp.call('Input.insertText', text='maps:dead sands')
+        cdp.until("window.__actualResultsForTest?.[0]?.id === " + json.dumps(dead_sands['id']))
+        cdp.js("[...document.querySelectorAll('button')].find(button=>button.textContent==='Open maps').click()")
+        cdp.until("[...document.querySelectorAll('button')].some(button=>button.textContent==='Dead Sands')")
+        assert cdp.js("document.body.innerText.includes('Forsaken Boneyard')")
+        cdp.js("[...document.querySelectorAll('button')].find(button=>button.textContent==='Dead Sands').click()")
+        cdp.until("[...document.images].some(image=>image.src.includes('dead_sands') && image.complete && image.naturalWidth>0)")
+        if screenshots:
+            (screenshots / ('dead-sands-after-' + label + '.png')).write_bytes(base64.b64decode(cdp.call('Page.captureScreenshot', format='png')['data']))
+        cdp.load(base + '/after?view=realm&id=' + realm['id'], rate)
+        cdp.until("document.body.innerText.includes('Dead Sands')")
+        if screenshots:
+            (screenshots / ('forsaken-boneyard-after-' + label + '.png')).write_bytes(base64.b64decode(cdp.call('Page.captureScreenshot', format='png')['data']))
+    print('hardening-browser: approved catalog corrections reachable through search, realm and layout', flush=True)
 
 
 def main():
@@ -236,11 +327,25 @@ def main():
     parser.add_argument('--candidate-dir', type=pathlib.Path, help='Preview web directory; other assets fall back to the repo')
     parser.add_argument('--screenshots', type=pathlib.Path, help='Save reviewed map screenshots')
     parser.add_argument('--transpile-benchmark', action='store_true', help='Time three inline-script transforms per preset at desktop CPU speed')
+    parser.add_argument('--input-profile', action='store_true', help='Measure actual 50ms-per-character typing at 4x CPU throttle')
     args = parser.parse_args()
     candidate = args.candidate_dir or WEB
-    raw_current = (candidate / 'index.html').read_text()
-    current = instrument(raw_current)
-    baseline = instrument(subprocess.check_output(['git', 'show', f'{args.compare}:the-entity-wiki/web/index.html'], cwd=ROOT, text=True)) if args.compare else None
+    raw_current, current, current_runtime = prepare_page(candidate)
+    baseline = None
+    baseline_runtime = None
+    baseline_assets = {}
+    if args.compare:
+        read_ref = lambda name: subprocess.check_output(['git', 'show', f'{args.compare}:the-entity-wiki/web/{name}'], cwd=ROOT)
+        raw_baseline = read_ref('index.html').decode()
+        if re.search(r'<script\s+type="text/babel"(?![^>]*\bsrc=)', raw_baseline):
+            baseline = instrument(raw_baseline)
+        else:
+            baseline = raw_baseline
+            baseline_runtime = compile_source(instrument(read_ref('app.jsx').decode()))
+        for name in re.findall(r'<script[^>]*\bsrc="([^"?]+)"', raw_baseline):
+            if not name.startswith(('http:', 'https:')):
+                name = name.removeprefix('./')
+                baseline_assets['/' + name] = read_ref(name)
 
     class Handler(SimpleHTTPRequestHandler):
         def __init__(self, *a, **kw):
@@ -260,6 +365,18 @@ def main():
                 self.send_header('Content-Length', str(len(data)))
                 self.end_headers()
                 self.wfile.write(data)
+            elif route == '/runtime/app.js' and current_runtime is not None:
+                source = baseline_runtime if '/before' in self.headers.get('Referer', '') and baseline_runtime else current_runtime
+                data = source.encode()
+                self.send_response(200)
+                self.send_header('Content-Type', 'text/javascript')
+                self.end_headers()
+                self.wfile.write(data)
+            elif '/before' in self.headers.get('Referer', '') and route in baseline_assets:
+                self.send_response(200)
+                self.send_header('Content-Type', 'text/javascript')
+                self.end_headers()
+                self.wfile.write(baseline_assets[route])
             else:
                 super().do_GET()
 
@@ -283,7 +400,7 @@ def main():
             for label in (['before', 'after'] if baseline else ['after']):
                 evidence[label] = {}
                 for rate in ([1, 4] if baseline else [1]):
-                    record = {'load': cdp.load(base + '/' + label, rate)}
+                    record = {'load': cdp.load(base + '/' + label + '?view=home', rate)}
                     record['search'] = [search(cdp, query) for query in QUERIES]
                     for result in record['search']:
                         result['results'] = result['results'][:8]
@@ -295,13 +412,22 @@ def main():
                 args.out.write_text(json.dumps(evidence, indent=2) + '\n')
             assert_search(cdp)
             evidence['assertions'] = {'passed': True, 'queries': len(QUERIES), 'characterNames': 98, 'inputAndNavigation': True}
+            if args.input_profile:
+                evidence['mobileInputProfile'] = profile_input(cdp, base)
+                print('hardening-browser: actual mobile input profile collected', flush=True)
             if 'const MapArticleView =' in raw_current:
-                assert_maps(cdp, base, args.screenshots)
+                candidate_database = candidate.parent / 'content/database.json'
+                preview_data = json.loads(candidate_database.read_text()) if candidate_database.exists() else None
+                assert_maps(cdp, base, args.screenshots, preview_data)
                 evidence['mapAssertions'] = 'passed'
             else:
-                print('hardening-browser: map assertions pending preview approval/integration', flush=True)
+                assert_catalog_maps(cdp, base, args.screenshots, bool(baseline))
+                evidence['catalogMapAssertions'] = 'passed'
+                print('hardening-browser: map article UI remains in the unapproved preview', flush=True)
             if args.transpile_benchmark:
-                source = re.search(r'<script\s+type="text/babel"(?![^>]*\bsrc=)[^>]*>([\s\S]*?)</script>', raw_current).group(1)
+                match = re.search(r'<script\s+type="text/babel"(?![^>]*\bsrc=)[^>]*>([\s\S]*?)</script>', raw_current)
+                source = match.group(1) if match else raw_current
+                cdp.js((WEB / 'vendor/babel.min.js').read_text() + "\nBabel.registerPreset('wiki',{presets:[[Babel.availablePresets.env,{targets:{esmodules:true},modules:false}],Babel.availablePresets.react]});true")
                 evidence['transpileBenchmark'] = cdp.js("""(() => {
                   const source=SOURCE;
                   return [['env','react'],['wiki']].map(presets=>{

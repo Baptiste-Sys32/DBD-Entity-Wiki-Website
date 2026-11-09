@@ -3,9 +3,10 @@
 const fs = require('fs');
 const path = require('path');
 const { isDeepStrictEqual } = require('util');
+const { mapContractIssues } = require('./map-contracts');
 const { writeJsonAtomic } = require('./atomic-write');
 const ROOT = path.resolve(__dirname, '..');
-const UNRESOLVED = /\{(?:Tunable|Keyword|Input)\.|\{\d+\}/;
+const UNRESOLVED = /\{(?:Tunable|Keyword|Input)\.|\{\d+\}|@#[A-Za-z0-9_]+/;
 
 function locate(document, parts) {
   let current = document;
@@ -96,6 +97,11 @@ function stage(manifest, root = ROOT) {
   }
   // Validate the complete staged update before writing any canonical file.
   for (const document of documents.values()) validateDocument(document, true);
+  const database = documents.get('content/database.json');
+  if (database && ('maps' in database || 'realms' in database)) {
+    const issues = mapContractIssues(database);
+    if (issues.length) throw new Error(issues.join('; '));
+  }
   return { documents, changed };
 }
 

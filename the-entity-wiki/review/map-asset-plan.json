@@ -1,0 +1,30 @@
+{
+  "status": "pending visual approval",
+  "reason": "Use new content-derived filenames because /dbd_images/* is cached immutable for one year. Retain old files as historical assets.",
+  "operations": [
+    {
+      "map": "Freddy Fazbear's Pizza",
+      "oldPath": "map_layouts_hens/freddy_fazbears_pizza.webp",
+      "newPath": "map_layouts_hens/freddy_fazbears_pizza-21a9a37dc8a3.webp",
+      "oldSha256": "ae0e8a69d10f2ba7c054da3593514dc6c6c4cf6e06259c3e5646c8faee4c0a3a",
+      "newSha256": "21a9a37dc8a30ceabe0c89b3f82c5fe4c2aca931d25fc42d1766e3e722b319ae",
+      "sourceUrl": "https://hens333.com/img/dbd/callouts/Other/Freddy%20Fazbears%20Pizza.webp"
+    },
+    {
+      "map": "Fallen Refuge",
+      "oldPath": "map_layouts_hens/fallen_refuge.webp",
+      "newPath": "map_layouts_hens/fallen_refuge-a397cea6c9c9.webp",
+      "oldSha256": "dc9b81dfdf752dab3e61b352d5ed9ea1592f8d0753639456c38515e041359634",
+      "newSha256": "a397cea6c9c91178b8b09cd049dfd221808efa49582ac60159c55a78338672ab",
+      "sourceUrl": "https://hens333.com/img/dbd/callouts/Other/Fallen%20Refuge.webp"
+    },
+    {
+      "map": "Disturbed Ward",
+      "oldPath": "map_layouts_hens/disturbed_ward.webp",
+      "newPath": "map_layouts_hens/disturbed_ward-9e62ab3a17a4.webp",
+      "oldSha256": "776499e3efdbc69ff7a9c6b60e75def73b12cf2eaccb43c909a117995561a7b1",
+      "newSha256": "9e62ab3a17a4d78018de474906cdd3e5bada42ef419b0a2ba8a4cc2d013bce6c",
+      "sourceUrl": "https://hens333.com/img/dbd/callouts/Crotus%20Pen/Disturbed%20Ward.webp"
+    }
+  ]
+}

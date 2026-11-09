@@ -1,0 +1,66 @@
+{
+  "compilerSha256": "e4ba9efd616147cc67f3945ee3f39f00c9046442ed6ecc0a403a2338c8dcb310",
+  "target": "esmodules",
+  "entries": [
+    {
+      "source": "engine/icons.js",
+      "output": "runtime/engine/icons.js",
+      "sourceSha256": "9758c6daf0d104f1346b556c8806d41b0d2e03daf867a4e08d2e0120c7efc6ae",
+      "outputSha256": "085174704de04b9900bb2a930c35ab73bf8232369faba556b6ebbf7117ec80dd"
+    },
+    {
+      "source": "engine/core.js",
+      "output": "runtime/engine/core.js",
+      "sourceSha256": "c47a67181505cb8f6dbe32e6ecea59ddfbe12ced680a4a58703dac943d028130",
+      "outputSha256": "21b3db3ede3b677833fb46568b4e037c6a2337aa23c24711e4ab0ef83596dab7"
+    },
+    {
+      "source": "engine/theme.js",
+      "output": "runtime/engine/theme.js",
+      "sourceSha256": "7c327ae66e875a2dce1c9fbb1bb7b01202a53ed6abe03e48da7b67519681995f",
+      "outputSha256": "455acdfb888464bb02e966939ae6be911898b8d65252c5fd9b6bab962597406a"
+    },
+    {
+      "source": "engine/storage.js",
+      "output": "runtime/engine/storage.js",
+      "sourceSha256": "d1287e9ae6e404565c31cb928c77bf3d43795047381041eaebb4d27f7b68d102",
+      "outputSha256": "f296db615377294014e7abd5351beb575344de83f98dc59fd99fc6021c88fd84"
+    },
+    {
+      "source": "engine/device.js",
+      "output": "runtime/engine/device.js",
+      "sourceSha256": "4a5216b018dc4dca9662a7944828dbefb4d5e6ef6b5e618f0f8c93d86b778833",
+      "outputSha256": "b1f7ac409f77b1248d2c0bac213b03b7852e251436db8564a5a52aa0920c6753"
+    },
+    {
+      "source": "engine/shell.js",
+      "output": "runtime/engine/shell.js",
+      "sourceSha256": "3786e7cadbdfca035b9d56725d5cf4c3237b0688594425c2b6ba1b35d09cbe33",
+      "outputSha256": "eeec2f61cda473ca13c50259cd8c1f502781b31be991853399626982dc293d82"
+    },
+    {
+      "source": "engine/assets.js",
+      "output": "runtime/engine/assets.js",
+      "sourceSha256": "2c0f3f69838284fe1ff828e4ec2f8134aa774e40a609117253ff2fea82e4e727",
+      "outputSha256": "f05c7878b88fdf4599cda41a6b1d09d98b97abdb05eca8bd67ceff606d23b894"
+    },
+    {
+      "source": "engine/articles.js",
+      "output": "runtime/engine/articles.js",
+      "sourceSha256": "559f4e657ede11abe99453f09a3cc264613d8c5fff07ab69401a6b3016f7bfb2",
+      "outputSha256": "fe0b66ae22805b2dc0d94c4832ba8d00911c637a795cbf1ffe1da50700975267"
+    },
+    {
+      "source": "games/dbd/config.js",
+      "output": "runtime/games/dbd/config.js",
+      "sourceSha256": "bf81742874493920a3f2cf734986ddf16f01e7c4ef928e7c9176f3e98c9cc7de",
+      "outputSha256": "c916c84a4104df7d928e8496d2e143e517d516cc7c4b1d51f9e6c8735c7c68e4"
+    },
+    {
+      "source": "app.jsx",
+      "output": "runtime/app.js",
+      "sourceSha256": "d2e8a68a0c2514afb97578e698ed6702a3b90173a5445ed6ec8c30467a2367c5",
+      "outputSha256": "6ef50e7588724255b6037bcb90224b25ec897ddae6e13afaeab2378b9f2d7028"
+    }
+  ]
+}

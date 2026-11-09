@@ -63,7 +63,7 @@ const checkMode = args.has('--check');
 const allowUnresolved = args.has('--allow-unresolved');
 const healthCheckOnly = args.has('--health-check');
 const reviewedOverrides = require('./description-overrides.json');
-const unresolvedTemplate = /\{(?:Tunable|Keyword|Input)\.|\{\d+\}/;
+const unresolvedTemplate = /\{(?:Tunable|Keyword|Input)\.|\{\d+\}|@#[A-Za-z0-9_]+/;
 
 
 function fail(message) {

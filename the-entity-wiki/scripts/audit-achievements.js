@@ -5,7 +5,7 @@ const path = require('path');
 const https = require('https');
 
 const ROOT = path.resolve(__dirname, '..');
-const INDEX_PATH = path.join(ROOT, 'web', 'index.html');
+const ACHIEVEMENTS_PATH = path.join(ROOT, 'content', 'achievements.json');
 const WIKI_API_URL = 'https://deadbydaylight.wiki.gg/api.php';
 
 function fetchJson(url, timeoutMs = 15000) {
@@ -60,8 +60,9 @@ async function fetchWikiAchievementPages() {
 }
 
 function main() {
-  const html = fs.readFileSync(INDEX_PATH, 'utf8');
-  const ids = [...html.matchAll(/id:\s*'ach_(\d+)'/g)].map((match) => Number(match[1]));
+  const entries = JSON.parse(fs.readFileSync(ACHIEVEMENTS_PATH, 'utf8'));
+  const ids = entries.map(entry => /^ach_(\d+)$/.exec(entry.id || '')).filter(Boolean).map(match => Number(match[1]));
+  if (ids.length !== entries.length || !ids.length) throw new Error('Achievement IDs are missing or invalid');
   const unique = [...new Set(ids)].sort((a, b) => a - b);
   const duplicates = ids.length - unique.length;
   const max = unique.length ? unique[unique.length - 1] : 0;

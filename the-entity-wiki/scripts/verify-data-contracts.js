@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 
 const fs = require('fs');
+const { mapContractIssues } = require('./map-contracts');
 const path = require('path');
 
 const ROOT = path.resolve(__dirname, '..');
@@ -66,6 +67,8 @@ function validateDatabase(database) {
   requiredArrays.forEach((key) => {
     assert(Array.isArray(database[key]), `content/database.json.${key} must be an array`);
   });
+
+  assert(mapContractIssues(database).length === 0, mapContractIssues(database).join('; '));
 
   assert(database.perks.length > 0, 'database perks array is empty');
   assert(database.addons.length > 0, 'database addons array is empty');

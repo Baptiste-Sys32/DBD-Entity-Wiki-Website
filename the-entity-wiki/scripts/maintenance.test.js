@@ -8,6 +8,49 @@ const { stage, validateDocument } = require('./sync-approved-update');
 const { fetchTextWithRetry } = require('./network-resilience');
 const { parseCollectionOutfitRows, buildCharactersList } = require('./discover-cosmetics');
 const { buildCharacterLookup } = require('./cosmetics-shared');
+const { parseHensCallouts } = require('./sync-map-layouts');
+const vm = require('vm');
+const { compile, buildRuntime, SOURCES, outputFor } = require('./build-runtime');
+
+test('runtime freshness checks reject stale source without rewriting output and refresh cache versions on build', () => {
+  const root = fs.mkdtempSync(path.join(os.tmpdir(), 'dbd-runtime-test-'));
+  try {
+    for (const [index, source] of SOURCES.entries()) {
+      const file = path.join(root, source);
+      fs.mkdirSync(path.dirname(file), { recursive: true });
+      fs.writeFileSync(file, `const fixture${index} = ${index};`);
+    }
+    const indexPath = path.join(root, 'index.html');
+    fs.writeFileSync(indexPath, SOURCES.map(source => `<script src="./${outputFor(source)}"></script>`).join('\n'));
+    buildRuntime({ webRoot: root });
+    const firstHtml = fs.readFileSync(indexPath, 'utf8');
+    const outputPath = path.join(root, outputFor(SOURCES[0]));
+    const firstOutput = fs.readFileSync(outputPath, 'utf8');
+    buildRuntime({ webRoot: root, check: true });
+    fs.appendFileSync(path.join(root, SOURCES[0]), '\nconst changed = 42;');
+    assert.throws(() => buildRuntime({ webRoot: root, check: true }), /stale/);
+    assert.equal(fs.readFileSync(indexPath, 'utf8'), firstHtml);
+    assert.equal(fs.readFileSync(outputPath, 'utf8'), firstOutput);
+    buildRuntime({ webRoot: root });
+    assert.notEqual(fs.readFileSync(indexPath, 'utf8'), firstHtml);
+    buildRuntime({ webRoot: root, check: true });
+  } finally { fs.rmSync(root, { recursive: true, force: true }); }
+});
+
+test('compiled classic scripts preserve shared globals and JSX rendering', () => {
+  const sandbox = { React: { createElement: (type, props, ...children) => ({ type, props, children }) } };
+  vm.createContext(sandbox);
+  vm.runInContext(compile('const shared = { label: "visible" };'), sandbox);
+  vm.runInContext(compile('const Component = () => <span>{shared.label}</span>; globalThis.rendered = Component();'), sandbox);
+  assert.deepEqual(JSON.parse(JSON.stringify(sandbox.rendered)), { type: 'span', props: null, children: ['visible'] });
+});
+
+test('known source typo maps Badham IV without rewriting unrelated labels', () => {
+  const rows = parseHensCallouts('<button data-path="Badham/Preschool4.webp">Preschool IIIV</button><button data-path="Elsewhere/Unknown.webp">Preschool IIIV</button>');
+  assert.equal(rows[0].label, 'Preschool IV');
+  assert.equal(rows[0].rawLabel, 'Preschool IIIV');
+  assert.equal(rows[1].label, 'Preschool IIIV');
+});
 
 test('reviewed updates reject changed inputs and invalid templates before any write', () => {
   const root = fs.mkdtempSync(path.join(os.tmpdir(), 'dbd-update-test-'));
@@ -21,6 +64,7 @@ test('reviewed updates reject changed inputs and invalid templates before any wr
     assert.equal(fs.readFileSync(file, 'utf8'), original);
     assert.throws(() => stage({ operations: [{ ...operation, before: 'unexpected' }] }, root), /Local value changed/);
     assert.throws(() => stage({ operations: [{ ...operation, value: '{Tunable.X.Value}' }] }, root), /Unresolved/);
+    assert.throws(() => stage({ operations: [{ ...operation, value: '@#MAP_swamp_III_NAME' }] }, root), /Unresolved/);
     assert.throws(() => stage({ operations: [{ ...operation, source: { ...operation.source, channel: 'ptb' } }] }, root), /live/);
     assert.throws(() => stage({ operations: [{ ...operation, file: '../outside.json' }] }, root), /canonical/);
     assert.throws(() => validateDocument([{ id: 'same' }, { id: 'same' }]), /Duplicate/);
@@ -64,4 +108,27 @@ test('network requests follow relative redirects, bound loops, retry HTTP errors
     assert.equal(attempts, 2);
     await assert.rejects(fetchTextWithRetry(base + '/stall', { retries: 0, timeoutMs: 1000 }), /Timeout/);
   } finally { server.closeAllConnections(); await new Promise(resolve => server.close(resolve)); }
+});
+
+test('map contracts detect missing, duplicate, cross-realm and orphan references while retaining name variants', () => {
+  const { mapContractIssues } = require('./map-contracts');
+  const valid = { maps: [{ id: 'a', name: 'Variant', realm: 'R' }, { id: 'b', name: 'Variant', realm: 'R' }], realms: [{ name: 'R', maps: ['a', 'b'] }] };
+  assert.deepEqual(mapContractIssues(valid), []);
+  const changed = structuredClone(valid);
+  changed.realms[0].maps = ['a', 'missing', 'a'];
+  changed.realms.push({ name: 'Other', maps: ['a'] });
+  const issues = mapContractIssues(changed).join('; ');
+  for (const pattern of [/Missing map/, /Duplicate map reference/, /Wrong realm/, /Orphan map/]) assert.match(issues, pattern);
+  assert.match(mapContractIssues({ maps: valid.maps, realms: [{ name: 'R', maps: null }] }).join('; '), /must be an array/);
+  assert.match(mapContractIssues({ ...valid, maps: [...valid.maps, valid.maps[0]] }).join('; '), /duplicate map ID/);
+  const root = fs.mkdtempSync(path.join(os.tmpdir(), 'dbd-map-stage-'));
+  try {
+    fs.mkdirSync(path.join(root, 'content'));
+    const file = path.join(root, 'content/database.json');
+    const original = JSON.stringify(valid);
+    fs.writeFileSync(file, original);
+    assert.throws(() => stage({ operations: [{ file: 'content/database.json', path: ['realms', { name: 'R' }, 'maps'], before: ['a', 'b'], value: ['missing'], source: { url: 'https://example.com/patch', patch: '1.0.0', channel: 'live' } }] }, root), /Missing map/);
+    assert.equal(fs.readFileSync(file, 'utf8'), original);
+  } finally { fs.rmSync(root, { recursive: true, force: true }); }
+
 });

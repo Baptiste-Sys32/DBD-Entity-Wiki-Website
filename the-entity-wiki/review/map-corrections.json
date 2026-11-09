@@ -1,0 +1,50 @@
+{
+  "asOf": "2026-11-08",
+  "purpose": "Historical map coverage and reference repairs, approved by user on 2026-11-09",
+  "operations": [
+    {
+      "file": "content/database.json",
+      "path": [
+        "maps"
+      ],
+      "append": true,
+      "value": {
+        "id": "b1449806-4191-4df6-b122-4dc2158f0138",
+        "name": "Dead Sands",
+        "realm": "Forsaken Boneyard",
+        "description": "An open desert graveyard in Forsaken Boneyard, centered on the Killer Shack rather than the Eyrie. Stone sentinels overlook the site of Carmina Mora's suffering.",
+        "dlc": "Ion",
+        "image": "dbd_images/maps/IconMap_Ice_Level01.png"
+      },
+      "source": {
+        "url": "https://deadbydaylight.wiki.gg/wiki/Dead_Sands",
+        "patch": "8.6.0",
+        "channel": "live"
+      }
+    },
+    {
+      "file": "content/database.json",
+      "path": [
+        "realms",
+        {
+          "id": "c79ab758-5dae-421e-9022-fd8cb3d27085"
+        },
+        "maps"
+      ],
+      "before": [
+        "de355d2e-1a15-4b6c-aea4-0cf8d778c973",
+        "70c50980-678c-4286-9c5c-d98efab39877",
+        "63cb0c99-d18b-4148-add1-f0118deb55de"
+      ],
+      "value": [
+        "de355d2e-1a15-4b6c-aea4-0cf8d778c973",
+        "63cb0c99-d18b-4148-add1-f0118deb55de"
+      ],
+      "source": {
+        "url": "https://deadbydaylight.wiki.gg/wiki/Backwater_Swamp",
+        "patch": "1.3.1",
+        "channel": "live"
+      }
+    }
+  ]
+}
