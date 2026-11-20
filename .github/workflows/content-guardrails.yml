@@ -10,7 +10,7 @@ permissions:
 
 jobs:
   guardrails:
-    name: Data gates + parity + smoke
+    name: Data integrity + smoke + port status
     runs-on: ubuntu-latest
     defaults:
       run:
@@ -41,7 +41,10 @@ jobs:
           python-version: '3.12'
 
       - name: Install Chrome (smoke test)
+        id: chrome
         uses: browser-actions/setup-chrome@latest
+        with:
+          install-dependencies: true
 
       - name: Install JS + Python deps
         run: |
@@ -49,10 +52,15 @@ jobs:
           pip install websockets
 
       - name: Resolve Chrome binary
-        run: echo "CHROME_BIN=$(which google-chrome || which chrome || which chromium)" >> $GITHUB_ENV
+        run: |
+          test -x "${{ steps.chrome.outputs.chrome-path }}"
+          echo "CHROME_BIN=${{ steps.chrome.outputs.chrome-path }}" >> $GITHUB_ENV
 
       - name: Data contract gates
         run: npm run check:data
+
+      - name: Pipeline regression tests
+        run: node --test scripts/maintenance.test.js
 
       - name: Generated bundles up to date
         run: node scripts/build-data.js --check
@@ -63,5 +71,13 @@ jobs:
       - name: Smoke test (headless Chrome)
         run: python3 scripts/smoke-test.py
 
-      - name: Cross-repo parity vs app
-        run: node scripts/parity-check.js --peer ../dbd-app/the-entity-wiki --json review/parity-report.json
+      - name: App integrity and pending data-port report
+        run: node scripts/parity-check.js --site-first --peer ../dbd-app/the-entity-wiki --json review/parity-report.json
+
+      - name: Save parity diagnostics
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: parity-report
+          path: the-entity-wiki/review/parity-report.json
+          if-no-files-found: warn

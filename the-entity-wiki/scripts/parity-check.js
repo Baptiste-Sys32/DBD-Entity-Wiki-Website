@@ -7,7 +7,8 @@
 //   node scripts/parity-check.js --peer <path-to-other-repo>/the-entity-wiki \
 //     [--json review/parity-report.json]
 //
-// Exit codes: 0 = parity (warnings allowed), 1 = content drift, 2 = usage/config error.
+// Exit codes: 0 = success, 1 = integrity failure or strict content drift, 2 = usage/config error.
+// --site-first reports pending content ports as warnings; integrity checks stay fatal.
 //
 // Design notes:
 // - content/meta.json + content/changelog.json are repo-specific by design
@@ -66,14 +67,16 @@ function usageError(message) {
 function parseArgs(argv) {
   let peer = null;
   let jsonOut = null;
+  let siteFirst = false;
   for (let i = 0; i < argv.length; i++) {
-    if (argv[i] === '--peer') peer = argv[++i];
+    if (argv[i] === '--site-first') siteFirst = true;
+    else if (argv[i] === '--peer') peer = argv[++i];
     else if (argv[i] === '--json') jsonOut = argv[++i];
     else if (argv[i] === '--local') LOCAL_ROOT = path.resolve(argv[++i]);
     else usageError(`unknown argument: ${argv[i]}`);
   }
   if (!peer) usageError('--peer <path> is required.');
-  return { peer: path.resolve(peer), jsonOut };
+  return { peer: path.resolve(peer), jsonOut, siteFirst };
 }
 
 function normalize(value) {
@@ -141,12 +144,13 @@ function assetPaths(value, paths = new Set()) {
 }
 
 function main() {
-  const { peer, jsonOut } = parseArgs(process.argv.slice(2));
+  const { peer, jsonOut, siteFirst } = parseArgs(process.argv.slice(2));
   if (!fs.existsSync(peer) || !fs.statSync(peer).isDirectory()) {
     usageError(`peer dir not found: ${peer}`);
   }
 
   const drifts = [];
+  const contentDrifts = [];
   const warnings = [];
   const compared = [];
 
@@ -165,9 +169,9 @@ function main() {
     }
     compared.push(rel);
     if (rel === 'content/database.json') {
-      for (const d of diffDatabase(loadJson(aPath), loadJson(bPath))) drifts.push(`${rel}: ${d}`);
+      for (const d of diffDatabase(loadJson(aPath), loadJson(bPath))) contentDrifts.push(`${rel}: ${d}`);
     } else if (stableStringify(loadJson(aPath)) !== stableStringify(loadJson(bPath))) {
-      drifts.push(`${rel}: semantic content differs.`);
+      contentDrifts.push(`${rel}: semantic content differs.`);
     }
   }
 
@@ -179,9 +183,9 @@ function main() {
       compared.push(`${rel} (shared game metadata)`);
       const a = loadJson(aPath);
       const b = loadJson(bPath);
-      if (a.lastSynced !== b.lastSynced) drifts.push(`${rel}: lastSynced differs.`);
+      if (a.lastSynced !== b.lastSynced) contentDrifts.push(`${rel}: lastSynced differs.`);
       if ((a.gameVersion || '').trim() !== (b.gameVersion || '').trim()) {
-        drifts.push(`${rel}: gameVersion differs (local=${a.gameVersion} peer=${b.gameVersion}).`);
+        contentDrifts.push(`${rel}: gameVersion differs (local=${a.gameVersion} peer=${b.gameVersion}).`);
       }
     } else {
       warnings.push(`${rel}: not present on both sides yet (repo-specific versions), skipped.`);
@@ -222,25 +226,31 @@ function main() {
       if (expected !== undefined && stableStringify(value) !== stableStringify(expected)) drifts.push(`${rel}: ${label} bundle is stale against its canonical JSON`);
     }
     if (!['web/meta.js', 'web/changelog.js'].includes(rel) && stableStringify(aVal) !== stableStringify(bVal)) {
-      drifts.push(`${rel}: bundle payload differs semantically.`);
+      contentDrifts.push(`${rel}: bundle payload differs semantically.`);
     }
   }
 
-  const assets = new Set();
-  for (const rel of CONTENT_FILES) {
-    for (const root of [LOCAL_ROOT, peer]) {
+  const assetsByRoot = [LOCAL_ROOT, peer].map(root => {
+    const assets = new Set();
+    for (const rel of CONTENT_FILES) {
       const file = path.join(root, rel);
       if (fs.existsSync(file)) assetPaths(loadJson(file), assets);
     }
-  }
+    for (const asset of assets) {
+      if (!fs.existsSync(path.join(root, 'web', asset))) drifts.push(`asset missing ${root === LOCAL_ROOT ? 'locally' : 'on peer'}: ${asset}`);
+    }
+    return assets;
+  });
+  const assets = new Set([...assetsByRoot[0], ...assetsByRoot[1]]);
   for (const asset of assets) {
     const files = [LOCAL_ROOT, peer].map(root => path.join(root, 'web', asset));
-    if (files.some(file => !fs.existsSync(file))) { drifts.push(`asset missing: ${asset}`); continue; }
+    if (assetsByRoot.some(paths => !paths.has(asset))) { contentDrifts.push(`asset reference differs: ${asset}`); continue; }
+    if (files.some(file => !fs.existsSync(file))) continue;
     const hashes = files.map(file => crypto.createHash('sha256').update(fs.readFileSync(file)).digest('hex'));
-    if (hashes[0] !== hashes[1]) drifts.push(`asset differs: ${asset}`);
+    if (hashes[0] !== hashes[1]) contentDrifts.push(`asset differs: ${asset}`);
   }
   compared.push(`${assets.size} referenced asset hashes`);
-  const report = { compared, drifts, warnings };
+  const report = { compared, drifts: [...drifts, ...contentDrifts], errors: drifts, contentDrifts, warnings, siteFirst };
   if (jsonOut) {
     const outPath = path.resolve(LOCAL_ROOT, jsonOut);
     fs.mkdirSync(path.dirname(outPath), { recursive: true });
@@ -250,13 +260,22 @@ function main() {
 
   for (const w of warnings) console.log(`parity-check warning: ${w}`);
   console.log(`parity-check: compared ${compared.length} files.`);
-  if (drifts.length) {
+  if (siteFirst && contentDrifts.length) {
+    console.log(`::warning::Site/app content differs (${contentDrifts.length} checks); data port pending. See parity report.`);
+    for (const drift of contentDrifts) console.log(`Pending port: ${drift}`);
+  }
+  if (shouldFail(drifts, contentDrifts, siteFirst)) {
+    drifts.push(...(siteFirst ? [] : contentDrifts));
     console.error(`parity-check: DRIFT (${drifts.length}):`);
     for (const d of drifts.slice(0, 20)) console.error(`  - ${d}`);
     if (drifts.length > 20) console.error(`  ... and ${drifts.length - 20} more.`);
     process.exit(1);
   }
-  console.log('parity-check: parity OK.');
+  console.log(siteFirst && contentDrifts.length ? 'parity-check: integrity OK; content port pending.' : 'parity-check: parity OK.');
 }
 
-main();
+function shouldFail(errors, contentDrifts, siteFirst) {
+  return errors.length > 0 || (!siteFirst && contentDrifts.length > 0);
+}
+module.exports = { shouldFail };
+if (require.main === module) main();

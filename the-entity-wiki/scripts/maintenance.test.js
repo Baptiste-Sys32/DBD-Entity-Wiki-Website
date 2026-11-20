@@ -147,3 +147,12 @@ test('backend discovery separates official tunables from unrelated and syndicate
   assert.equal(candidates({ appnews: { newsitems: [official, { ...official, feedname: 'other' }, { ...official, title: 'Sale', contents: 'Outfits' }] } }).length, 1);
   assert.throws(() => candidates({}), /Unexpected/);
 });
+
+test('site-first parity warns only for content drift, never integrity failures', () => {
+  const { shouldFail } = require('./parity-check');
+  assert.equal(shouldFail([], ['pending update'], true), false);
+  assert.equal(shouldFail([], ['pending update'], false), true);
+  assert.equal(shouldFail(['stale bundle'], [], true), true);
+  assert.equal(shouldFail(['missing image'], ['pending update'], true), true);
+  assert.equal(shouldFail([], [], false), false);
+});
