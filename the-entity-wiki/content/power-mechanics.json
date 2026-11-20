@@ -155,7 +155,7 @@
       "Punishment of the Damned reaches 16 meters.",
       "Rites of Judgment has 8 charges and recharges 0.5 charges per second.",
       "Entering Rites takes 0.8 seconds; cancelling takes 1.2 seconds.",
-      "Punishment starts after 0.25 seconds; segments appear 0.001 seconds apart and last 0.3 seconds."
+      "Punishment starts after 0.25 seconds; segments appear 0.015 seconds apart and last 0.3 seconds."
     ]
   },
   "4f19458e-d265-4eec-9346-07640367d337": {
@@ -163,7 +163,7 @@
     "mechanics": [
       "Hidey-Ho recharges in 10 seconds.",
       "Slice and Dice can dash for up to 2 seconds.",
-      "Scampering through a vault takes 0.8 seconds."
+      "Scampering through a vault or under a pallet during Slice and Dice takes 0.8 seconds."
     ]
   }
 }

@@ -140,3 +140,10 @@ test('map contracts detect missing, duplicate, cross-realm and orphan references
   } finally { fs.rmSync(root, { recursive: true, force: true }); }
 
 });
+
+test('backend discovery separates official tunables from unrelated and syndicated news', () => {
+  const { candidates } = require('./discover-backend-updates');
+  const official = { title: 'Backend Patch', contents: 'Tunables', feedname: 'steam_community_announcements', date: 1, url: 'https://example.com/official' };
+  assert.equal(candidates({ appnews: { newsitems: [official, { ...official, feedname: 'other' }, { ...official, title: 'Sale', contents: 'Outfits' }] } }).length, 1);
+  assert.throws(() => candidates({}), /Unexpected/);
+});

@@ -31,7 +31,7 @@ if (args.includes('--apply')) {
   }
 } else {
   let ok = true;
-  for (const script of ['sync-catalog-updates.js', 'sync-descriptions.js']) {
+  for (const script of ['discover-backend-updates.js', 'sync-catalog-updates.js', 'sync-descriptions.js']) {
     if (!run(script, ['--dry-run'])) ok = false;
   }
   console.log('sync-all-updates: discovery only. Review a source-backed manifest; apply with --apply --manifest FILE.');

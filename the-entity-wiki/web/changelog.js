@@ -1,12 +1,13 @@
 var CHANGELOG = [
   {
     "version": "5.34.2",
-    "date": "November 9, 2026",
+    "date": "November 20, 2026",
     "changes": [
       "UPDATE : Synced Dead by Daylight 10.2.2, with 10.2.1 feature changes and 10.2.2a backend killer adjustments",
       "UPDATE : Added 38 Halloween and Stranger Things cosmetic records with local images",
       "FIX : Canonical guides and glossary now drive the website runtime",
-      "FIX : Restored Dead Sands map coverage and removed a stale Backwater Swamp map reference"
+      "FIX : Restored Dead Sands map coverage and removed a stale Backwater Swamp map reference",
+      "UPDATE : Applied 10.2.2b backend tuning: Executioner Punishment segments are 0.015 seconds apart; Good Guy pallet Scamper takes 0.8 seconds"
     ]
   },
   {

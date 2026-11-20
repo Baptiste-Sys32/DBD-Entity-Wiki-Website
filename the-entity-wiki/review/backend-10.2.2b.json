@@ -1,0 +1,35 @@
+{
+  "asOf": "2026-11-20",
+  "operations": [
+    {
+      "file": "content/power-mechanics.json",
+      "path": [
+        "b126576a-cf67-45a5-87e5-2533b9646ebc",
+        "mechanics",
+        3
+      ],
+      "before": "Punishment starts after 0.25 seconds; segments appear 0.001 seconds apart and last 0.3 seconds.",
+      "value": "Punishment starts after 0.25 seconds; segments appear 0.015 seconds apart and last 0.3 seconds.",
+      "source": {
+        "url": "https://discord.com/announcements/538844350856298526/1569428739446673498",
+        "patch": "10.2.2b",
+        "channel": "live"
+      }
+    },
+    {
+      "file": "content/power-mechanics.json",
+      "path": [
+        "4f19458e-d265-4eec-9346-07640367d337",
+        "mechanics",
+        2
+      ],
+      "before": "Scampering through a vault takes 0.8 seconds.",
+      "value": "Scampering through a vault or under a pallet during Slice and Dice takes 0.8 seconds.",
+      "source": {
+        "url": "https://discord.com/announcements/538844350856298526/1569428739446673498",
+        "patch": "10.2.2b",
+        "channel": "live"
+      }
+    }
+  ]
+}
