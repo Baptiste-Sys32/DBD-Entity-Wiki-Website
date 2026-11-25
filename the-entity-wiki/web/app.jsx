@@ -2904,7 +2904,7 @@
         </div>
       );
     };
-    const HomeView = ({ setView, data, theme, builds = [], maps = [], challenges = [], setBuildSeed, perks = [], setBuilds, items = [], addons = [], offerings = [], cosmeticsCatalog = { characterSwaps: [], fullSets: [] }, allCharacters = [], onOpenCharacterProfile, settings = {} }) => {
+    const HomeView = ({ setView, data, theme, builds = [], maps = [], challenges = [], setBuildSeed, perks = [], setBuilds, items = [], addons = [], offerings = [], cosmeticsCatalog = { characterSwaps: [], fullSets: [] }, allCharacters = [], onOpenCharacterProfile, onPerkTap, settings = {} }) => {
       const { killers = [], survivors = [] } = data || {};
       const [searchTerm, setSearchTerm] = useState('');
       const deferredSearchTerm = useDeferredValue(searchTerm);
@@ -3880,182 +3880,112 @@
                 <div className="flex items-center justify-between mb-6 px-2">
                   <span className="text-xs font-bold text-zinc-500 uppercase tracking-wider">
                     {results.length} Matches
-                    {searchTerm.includes(':') && <span className="ml-2 text-zinc-600">• {searchTerm.split(':')[0]} filter</span>}
+                    {searchTerm.includes(':') && <span className="ml-2 text-zinc-400">• {searchTerm.split(':')[0]} filter</span>}
                   </span>
                   {results.length > 0 && results[0]._score >= 20 && searchTerm.split(/\s+/).length >= 2 && (
-                    <span className="text-[10px] font-bold uppercase tracking-wider text-zinc-100 bg-white/10 border border-white/20 px-2 py-1 rounded-lg">Best Match ↓</span>
+                    <span className="text-[10px] font-bold uppercase tracking-wider text-sky-400 bg-sky-500/10 border border-sky-500/20 px-2 py-1 rounded-lg">Best Match ↓</span>
                   )}
                 </div>
-                {results.length > 0 ? results.map((item, idx) => {
-                  const isBestMatch = idx === 0 && item._score >= 20 && searchTerm.split(/\s+/).length >= 2;
-                  const wrapBest = (el) => isBestMatch ? (
-                    <div key={'best-' + (item.id || item.name || idx)} className="ring-1 ring-sky-500/30 rounded-2xl shadow-lg shadow-sky-500/5">
-                      {el}
+                {results.length > 0 ? (() => {
+                  const GROUP_LABELS = { Killer: 'Killers', Survivor: 'Survivors', Perk: 'Perks', Cosmetic: 'Cosmetics', Build: 'Builds', Map: 'Maps', Challenge: 'Challenges', Item: 'Items', Addon: 'Add-ons', Offering: 'Offerings', GameIcon: 'Game Icons', Glossary: 'Glossary', Chapter: 'Chapters' };
+                  const groups = [];
+                  const byCat = {};
+                  results.forEach((item) => {
+                    const c = item.category || 'Other';
+                    if (!byCat[c]) { byCat[c] = []; groups.push(c); }
+                    byCat[c].push(item);
+                  });
+                  const row = (key, thumb, name, tag, onTap) => (
+                    <button key={key} type="button" className="cx-result-row" onClick={onTap}>
+                      {thumb}
+                      <span style={{ minWidth: 0 }}>
+                        <span className="nm">{name}</span><br />
+                        <span className="tag">{tag}</span>
+                      </span>
+                      <span className="chev">›</span>
+                    </button>
+                  );
+                  const img = (type, imageUrl, fallback) => (
+                    <span className="thumb"><AssetFrame type={type} size="fill" imageUrl={imageUrl} fallbackIcon={fallback} /></span>
+                  );
+                  const diamond = (imageUrl) => (
+                    <span className="thumb diamond"><span><AssetFrame type="Perk" size="fill" imageUrl={imageUrl} fallbackIcon={<Icons.BookOpen width={16} height={16} className="text-white/40" />} /></span></span>
+                  );
+                  const glyph = (icon) => (<span className="thumb">{icon}</span>);
+                  const renderItem = (item, idx) => {
+                    const key = item.id || item.name || idx;
+                    if (item.category === 'Killer' || item.category === 'Survivor') {
+                      const isK = item.category === 'Killer';
+                      return row(key, img(isK ? 'Killer' : 'Survivor', item.image, <Icons.User width={18} height={18} className="text-white/40" />),
+                        item.name, `${item.category}${item.realName && item.realName !== item.name ? ` · ${item.realName}` : ''}`,
+                        () => onOpenCharacterProfile && onOpenCharacterProfile(item));
+                    }
+                    if (item.category === 'Perk') {
+                      return row(key, diamond(item.image), item.name,
+                        `${item.type ? `${item.type} perk` : 'Perk'}${item.owner ? ` · ${item.owner}` : ''}`,
+                        () => onPerkTap && onPerkTap(item));
+                    }
+                    if (item.category === 'Cosmetic') {
+                      return row(key, img(item.baseCharacterType, item.image, <Icons.User width={18} height={18} className="text-white/40" />),
+                        item.name, `${item.isCharacterSwap ? 'Character swap' : `${item.pieceType || 'Cosmetic'} Cosmetic`} • ${item.baseCharacterName || ''}`,
+                        () => openCosmeticProfile(item));
+                    }
+                    if (item.category === 'Build') {
+                      return row(key, glyph(<Icons.Wrench width={18} height={18} className="text-white/40" />),
+                        item.name, `${item.role || ''} Build • ${(item.perks || []).length} perks`,
+                        () => { setBuildSeed && setBuildSeed(item); setView('buildLab'); });
+                    }
+                    if (item.category === 'Map') {
+                      return row(key, glyph(<Icons.Map width={18} height={18} className="text-white/40" />),
+                        item.name, 'Map',
+                        () => setView('realms', { search: item.name }));
+                    }
+                    if (item.category === 'Challenge') {
+                      return row(key, glyph(<Icons.Target width={18} height={18} className="text-white/40" />),
+                        item.name, 'Challenge',
+                        () => setView('progression', { tab: 'challenges' }));
+                    }
+                    if (item.category === 'Item') {
+                      return row(key, img('Item', item.image, <Icons.Package width={16} height={16} className="text-white/40" />),
+                        item.name, `Item • ${item.itemType || 'Unknown'}`,
+                        () => setView('items', { search: item.name, mode: 'survivor', targetId: item.id, targetType: 'item' }));
+                    }
+                    if (item.category === 'Addon') {
+                      const isKillerAddon = item.role === 'killer';
+                      const searchQuery = item.name || (isKillerAddon ? (item.killerName || '') : (item.itemType || ''));
+                      return row(key, img('Addon', item.image, <Icons.Wrench width={16} height={16} className="text-white/40" />),
+                        item.name, `${isKillerAddon ? 'Killer' : 'Survivor'} Addon${item.killerName ? ` • ${item.killerName}` : item.itemType ? ` • ${item.itemType}` : ''}`,
+                        () => setView('items', { search: searchQuery, mode: isKillerAddon ? 'killer' : 'survivor', targetId: item.id, targetType: 'addon' }));
+                    }
+                    if (item.category === 'Offering') {
+                      return row(key, img('Offering', item.image, <Icons.Flame width={16} height={16} className="text-white/40" />),
+                        item.name, `Offering${item.type ? ` • ${item.type}` : ''}`,
+                        () => setView('offerings', { search: item.name, targetId: item.id, targetType: 'offering' }));
+                    }
+                    if (item.category === 'GameIcon') {
+                      return row(key, img('GameIcon', item.icon, <Icons.AlertCircle width={16} height={16} className="text-white/40" />),
+                        item.name, `Game Icon • ${item.iconCategory || ''}`,
+                        () => setView('gameIcons'));
+                    }
+                    if (item.category === 'Glossary') {
+                      return row(key, glyph(<Icons.BookOpen width={18} height={18} className="text-white/40" />),
+                        item.name, `Glossary • ${item.section || ''}`,
+                        () => setView('glossary'));
+                    }
+                    if (item.category === 'Chapter') {
+                      return row(key, glyph(<Icons.Clock width={18} height={18} className="text-white/40" />),
+                        item.name, `${item.chapterNumber ? `Chapter ${item.chapterNumber}` : item.type === 'base' ? 'Base Game' : 'Release'} • ${item.displayDate || ''}`,
+                        () => setView('timeline'));
+                    }
+                    return null;
+                  };
+                  return groups.map((cat) => (
+                    <div key={cat}>
+                      <p className="home-secttl">{GROUP_LABELS[cat] || cat} · {byCat[cat].length}</p>
+                      {byCat[cat].map(renderItem)}
                     </div>
-                  ) : el;
-                  if (['Killer', 'Survivor', 'Perk'].includes(item.category)) {
-                    return wrapBest(<GlassCard key={item.id || Math.random()} item={item} category={item.category} settings={settings} />);
-                  }
-                  if (item.category === 'Cosmetic') {
-                    return wrapBest(
-                      <div key={item.id || item.name} className="p-3 rounded-2xl bg-zinc-900/60 border border-white/10 flex items-center gap-3">
-                        <div className="w-12 h-12 rounded-xl bg-white/5 border border-white/10 flex-shrink-0 overflow-hidden">
-                          <AssetFrame type={item.baseCharacterType} size="fill" imageUrl={item.image} fallbackIcon={<Icons.User width={18} height={18} className="text-white/40" />} />
-                        </div>
-                        <div className="flex-1 min-w-0">
-                          <p className="text-white font-bold text-sm">{item.name}</p>
-                          <p className="text-[11px] text-zinc-500 uppercase tracking-wider">{item.isCharacterSwap ? 'Character swaps' : `${item.pieceType || 'Cosmetic'} Cosmetic`}</p>
-                          <p className="text-xs text-zinc-400 mt-1 line-clamp-2">
-                            {item.isCharacterSwap
-                              ? `Character swaps outfit for ${item.baseCharacterName}`
-                              : `${item.collectionName || item.sourceBucket || item.rarity || 'Cosmetic'} ${item.pieceType || 'cosmetic'} for ${item.baseCharacterName}${item.bindSummary ? ` (${item.bindSummary})` : ''}`}
-                          </p>
-                        </div>
-                        <button
-                          onClick={() => openCosmeticProfile(item)}
-                          className="px-3 py-1 rounded-lg bg-white/5 border border-white/10 text-[11px] text-white"
-                        >
-                          Open
-                        </button>
-                      </div>
-                    );
-                  }
-                  if (item.category === 'Build') {
-                    return wrapBest(
-                      <div key={item.id || item.name} className="p-3 rounded-2xl bg-zinc-900/60 border border-white/10">
-                        <div className="flex justify-between items-center mb-1">
-                          <span className="text-[10px] uppercase tracking-widest font-bold text-zinc-500">Build</span>
-                          <span className={`px-2 py-1 rounded-lg text-[10px] font-bold uppercase tracking-wider ${item.role === 'Killer' ? 'bg-white/10 text-zinc-100' : 'bg-white/5 text-zinc-300'}`}>{item.role}</span>
-                        </div>
-                        <p className="text-white font-bold">{item.name}</p>
-                        <div className="flex flex-wrap gap-1 mt-1">
-                          {(item.perks || []).slice(0, 4).map(p => <span key={p.name} className="px-2 py-1 rounded-lg bg-white/5 border border-white/10 text-[11px] text-white">{p.name}</span>)}
-                        </div>
-                        <button onClick={() => { setBuildSeed && setBuildSeed(item); setView('buildLab'); }} className="mt-2 px-3 py-1 rounded-lg bg-white/5 border border-white/10 text-[11px] text-white">Open in Build Lab</button>
-                      </div>
-                    );
-                  }
-                  if (item.category === 'Map') {
-                    return wrapBest(
-                      <div key={item.id || item.name} className="p-3 rounded-2xl bg-zinc-900/60 border border-white/10 flex items-center justify-between">
-                        <div>
-                          <p className="text-white font-bold text-sm">{item.name}</p>
-                          <p className="text-[11px] text-zinc-500 uppercase tracking-wider">Map</p>
-                        </div>
-                        <button onClick={() => setView('realms', { search: item.name })} className="px-3 py-1 rounded-lg bg-white/5 border border-white/10 text-[11px] text-white">Open maps</button>
-                      </div>
-                    );
-                  }
-                  if (item.category === 'Challenge') {
-                    return wrapBest(
-                      <div key={item.id} className="p-3 rounded-2xl bg-zinc-900/60 border border-white/10">
-                        <p className="text-white font-bold">{item.name}</p>
-                        <p className="text-[11px] text-zinc-500 uppercase tracking-wider">Challenge</p>
-                        {item.tags?.length > 0 && <div className="flex flex-wrap gap-1 mt-1">{item.tags.map(t => <span key={t} className="px-2 py-1 rounded-lg bg-white/5 border border-white/10 text-[10px] text-zinc-300 uppercase tracking-wider">{t}</span>)}</div>}
-                        <button onClick={() => setView('progression', { tab: 'challenges' })} className="mt-2 px-3 py-1 rounded-lg bg-white/5 border border-white/10 text-[11px] text-white">Open challenges</button>
-                      </div>
-                    );
-                  }
-                  if (item.category === 'Item') {
-                    return wrapBest(
-                      <div key={item.id || item.name} className="p-3 rounded-2xl bg-zinc-900/60 border border-white/10 flex items-center gap-3">
-                        <div className="w-10 h-10 rounded-lg bg-white/5 border border-white/10 flex-shrink-0 overflow-hidden">
-                          <AssetFrame type="Item" size="fill" imageUrl={item.image} fallbackIcon={<Icons.Package width={16} height={16} className="text-white/40" />} />
-                        </div>
-                        <div className="flex-1">
-                          <p className="text-white font-bold text-sm">{item.name}</p>
-                          <p className="text-[11px] text-zinc-500 uppercase tracking-wider">Item • {item.itemType || 'Unknown'}</p>
-                        </div>
-                        <button onClick={() => setView('items', { search: item.name, mode: 'survivor', targetId: item.id, targetType: 'item' })} className="px-3 py-1 rounded-lg bg-white/5 border border-white/10 text-[11px] text-white">Open</button>
-                      </div>
-                    );
-                  }
-                  if (item.category === 'Addon') {
-                    const isKillerAddon = item.role === 'killer';
-                    const searchQuery = item.name || (isKillerAddon ? (item.killerName || '') : (item.itemType || ''));
-                    const addonMode = isKillerAddon ? 'killer' : 'survivor';
-                    return wrapBest(
-                      <div key={item.id || item.name} className="p-3 rounded-2xl bg-zinc-900/60 border border-white/10 flex items-center gap-3">
-                        <div className="w-10 h-10 rounded-lg bg-white/5 border border-white/10 flex-shrink-0 overflow-hidden">
-                          <AssetFrame type="Addon" size="fill" imageUrl={item.image} fallbackIcon={<Icons.Wrench width={16} height={16} className="text-white/40" />} />
-                        </div>
-                        <div className="flex-1">
-                          <p className="text-white font-bold text-sm">{item.name}</p>
-                          <p className="text-[11px] text-zinc-500 uppercase tracking-wider">
-                            {isKillerAddon ? 'Killer' : 'Survivor'} Addon{item.killerName ? ` • ${item.killerName}` : item.itemType ? ` • ${item.itemType}` : ''}
-                          </p>
-                        </div>
-                        <button onClick={() => setView('items', { search: searchQuery, mode: addonMode, targetId: item.id, targetType: 'addon' })} className="px-3 py-1 rounded-lg bg-white/5 border border-white/10 text-[11px] text-white">Open</button>
-                      </div>
-                    );
-                  }
-                  if (item.category === 'Offering') {
-                    return wrapBest(
-                      <div key={item.id || item.name} className="p-3 rounded-2xl bg-zinc-900/60 border border-white/10 flex items-center gap-3">
-                        <div className="w-10 h-10 rounded-lg bg-white/5 border border-white/10 flex-shrink-0 overflow-hidden">
-                          <AssetFrame type="Offering" size="fill" imageUrl={item.image} fallbackIcon={<Icons.Flame width={16} height={16} className="text-white/40" />} />
-                        </div>
-                        <div className="flex-1">
-                          <p className="text-white font-bold text-sm">{item.name}</p>
-                          <p className="text-[11px] text-zinc-500 uppercase tracking-wider">Offering{item.type ? ` • ${item.type}` : ''}</p>
-                        </div>
-                        <button onClick={() => setView('offerings', { search: item.name, targetId: item.id, targetType: 'offering' })} className="px-3 py-1 rounded-lg bg-white/5 border border-white/10 text-[11px] text-white">Open</button>
-                      </div>
-                    );
-                  }
-                  if (item.category === 'GameIcon') {
-                    const categoryColors = { health: 'var(--rar-veryrare)', buff: 'var(--rar-rare)', debuff: 'var(--rar-common)', killer: 'var(--rar-ultrarare)', activity: 'var(--rar-uncommon)' };
-                    const color = categoryColors[item.iconCategory] || '#a1a1aa';
-                    return wrapBest(
-                      <div key={item.id || item.name} className="p-3 rounded-2xl bg-zinc-900/60 border border-white/10 flex items-center gap-3">
-                        <div className="w-10 h-10 rounded-lg bg-white/5 border border-white/10 flex-shrink-0 overflow-hidden flex items-center justify-center">
-                          <AssetFrame
-                            type="GameIcon"
-                            size="fill"
-                            imageUrl={item.icon}
-                            fallbackIcon={<Icons.AlertCircle width={16} height={16} className="text-white/40" />}
-                          />
-                        </div>
-                        <div className="flex-1">
-                          <p className="text-white font-bold text-sm">{item.name}</p>
-                          <p className="text-[11px] text-zinc-500 uppercase tracking-wider">Game Icon • <span style={{ color }}>{item.iconCategory}</span></p>
-                        </div>
-                        <button onClick={() => setView('gameIcons')} className="px-3 py-1 rounded-lg bg-white/5 border border-white/10 text-[11px] text-white">Open</button>
-                      </div>
-                    );
-                  }
-                  if (item.category === 'Glossary') {
-                    return wrapBest(
-                      <div key={item.term || item.name} className="p-3 rounded-2xl bg-zinc-900/60 border border-white/10">
-                        <div className="flex items-start justify-between gap-2">
-                          <div className="flex-1">
-                            <p className="text-white font-bold text-sm">{item.name}</p>
-                            <p className="text-[11px] text-zinc-500 uppercase tracking-wider mb-1">Glossary • {item.section}</p>
-                            <p className="text-xs text-zinc-400 line-clamp-2">{item.def}</p>
-                          </div>
-                          <button onClick={() => setView('glossary')} className="px-3 py-1 rounded-lg bg-white/5 border border-white/10 text-[11px] text-white flex-shrink-0">Open</button>
-                        </div>
-                      </div>
-                    );
-                  }
-                  if (item.category === 'Chapter') {
-                    return wrapBest(
-                      <div key={item.id || item.name} className="p-3 rounded-2xl bg-zinc-900/60 border border-white/10 flex items-center gap-3">
-                        <div className="w-10 h-10 rounded-lg bg-white/5 border border-white/10 flex-shrink-0 flex items-center justify-center">
-                          <Icons.Clock width={18} height={18} className="text-zinc-400" />
-                        </div>
-                        <div className="flex-1">
-                          <p className="text-white font-bold text-sm">{item.name}</p>
-                          <p className="text-[11px] text-zinc-500 uppercase tracking-wider">
-                            {item.chapterNumber ? `Chapter ${item.chapterNumber}` : item.type === 'base' ? 'Base Game' : 'Release'} • {item.displayDate}
-                          </p>
-                        </div>
-                        <button onClick={() => setView('timeline')} className="px-3 py-1 rounded-lg bg-white/5 border border-white/10 text-[11px] text-white">Open Timeline</button>
-                      </div>
-                    );
-                  }
-                  return null;
-                }) : <div className="text-center mt-12 text-zinc-600"><p className="font-medium text-sm">No results found.</p></div>}
+                  ));
+                })() : <div className="text-center mt-12 text-zinc-400"><p className="font-medium text-sm">No results found.</p></div>}
                 <SiteFooterContent />
               </div>
             ) : (
@@ -11202,7 +11132,7 @@
       };
       const renderContent = () => {
         switch (currentView) {
-          case 'home': return <HomeView setView={setView} data={{ killers: visibleKillers, survivors: visibleSurvivors, perks: visiblePerks }} theme={theme} builds={builds} maps={maps} challenges={progression?.challenges || []} setBuildSeed={setBuildSeed} perks={visiblePerks} items={items} addons={visibleAddons} offerings={offerings} cosmeticsCatalog={cosmeticsCatalogForDisplay} allCharacters={[...killers, ...survivors]} onOpenCharacterProfile={openCharacterArticle} settings={settings} />;
+          case 'home': return <HomeView setView={setView} data={{ killers: visibleKillers, survivors: visibleSurvivors, perks: visiblePerks }} theme={theme} builds={builds} maps={maps} challenges={progression?.challenges || []} setBuildSeed={setBuildSeed} perks={visiblePerks} items={items} addons={visibleAddons} offerings={offerings} cosmeticsCatalog={cosmeticsCatalogForDisplay} allCharacters={[...killers, ...survivors]} onOpenCharacterProfile={openCharacterArticle} onPerkTap={openPerkArticle} settings={settings} />;
           case 'progression':
             return (
               <ProgressionView
@@ -11318,7 +11248,7 @@
           case 'timeline': return <TimelineView onBack={() => setView('home')} setView={setView} killers={killers} survivors={survivors} theme={theme} />;
           case 'settings': return <SettingsView onBack={() => setView('home')} settings={settings} setSettings={setSettings} backupSummary={websiteBackupSummary} onCopyBackup={copyWebsiteBackup} onDownloadBackup={downloadWebsiteBackup} onRestoreBackup={restoreWebsiteBackup} isMobile={device.isMobile} />;
           case 'favorites': return <FavoritesView onBack={() => setView('home')} settings={settings} killers={killers} survivors={survivors} perks={perks} items={items} addons={addons} offerings={offerings} toggleFavorite={toggleFavorite} setView={setView} onPerkTap={openPerkArticle} />;
-          default: return <HomeView setView={setView} data={{ killers: visibleKillers, survivors: visibleSurvivors, perks: visiblePerks }} theme={theme} builds={builds} maps={maps} challenges={progression?.challenges || []} setBuildSeed={setBuildSeed} perks={visiblePerks} items={items} addons={visibleAddons} offerings={offerings} cosmeticsCatalog={cosmeticsCatalogForDisplay} allCharacters={[...killers, ...survivors]} onOpenCharacterProfile={openCharacterArticle} settings={settings} />;
+          default: return <HomeView setView={setView} data={{ killers: visibleKillers, survivors: visibleSurvivors, perks: visiblePerks }} theme={theme} builds={builds} maps={maps} challenges={progression?.challenges || []} setBuildSeed={setBuildSeed} perks={visiblePerks} items={items} addons={visibleAddons} offerings={offerings} cosmeticsCatalog={cosmeticsCatalogForDisplay} allCharacters={[...killers, ...survivors]} onOpenCharacterProfile={openCharacterArticle} onPerkTap={openPerkArticle} settings={settings} />;
         }
       };
       return (

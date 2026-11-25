@@ -59,8 +59,8 @@
     {
       "source": "app.jsx",
       "output": "runtime/app.js",
-      "sourceSha256": "f6ff8378a824bfa57ca7b3be7b9b37cc04bac014337a4f930cb60cf28de4ceeb",
-      "outputSha256": "af87339031e06b3609392d50e9150750dfa26fd441eca6ec72833aae8951cf77"
+      "sourceSha256": "fe587a6ed5b47147be891d12a6ab943e7ef93be765e7e05654eb9a128afad2e6",
+      "outputSha256": "9073ca63552b58d94dbb7adaadcb2bb891d975d4e22219331e9f5c652db9c3eb"
     }
   ]
 }

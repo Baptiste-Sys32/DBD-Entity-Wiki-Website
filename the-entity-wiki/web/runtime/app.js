@@ -3815,6 +3815,7 @@ var HomeView = _ref24 => {
     },
     allCharacters = [],
     onOpenCharacterProfile,
+    onPerkTap,
     settings = {}
   } = _ref24;
   var {
@@ -4887,288 +4888,189 @@ var HomeView = _ref24 => {
   }, React.createElement("span", {
     className: "text-xs font-bold text-zinc-500 uppercase tracking-wider"
   }, results.length, " Matches", searchTerm.includes(':') && React.createElement("span", {
-    className: "ml-2 text-zinc-600"
+    className: "ml-2 text-zinc-400"
   }, "\u2022 ", searchTerm.split(':')[0], " filter")), results.length > 0 && results[0]._score >= 20 && searchTerm.split(/\s+/).length >= 2 && React.createElement("span", {
-    className: "text-[10px] font-bold uppercase tracking-wider text-zinc-100 bg-white/10 border border-white/20 px-2 py-1 rounded-lg"
-  }, "Best Match \u2193")), results.length > 0 ? results.map((item, idx) => {
-    var isBestMatch = idx === 0 && item._score >= 20 && searchTerm.split(/\s+/).length >= 2;
-    var wrapBest = el => isBestMatch ? React.createElement("div", {
-      key: 'best-' + (item.id || item.name || idx),
-      className: "ring-1 ring-sky-500/30 rounded-2xl shadow-lg shadow-sky-500/5"
-    }, el) : el;
-    if (['Killer', 'Survivor', 'Perk'].includes(item.category)) {
-      return wrapBest(React.createElement(GlassCard, {
-        key: item.id || Math.random(),
-        item: item,
-        category: item.category,
-        settings: settings
-      }));
-    }
-    if (item.category === 'Cosmetic') {
-      return wrapBest(React.createElement("div", {
-        key: item.id || item.name,
-        className: "p-3 rounded-2xl bg-zinc-900/60 border border-white/10 flex items-center gap-3"
-      }, React.createElement("div", {
-        className: "w-12 h-12 rounded-xl bg-white/5 border border-white/10 flex-shrink-0 overflow-hidden"
-      }, React.createElement(AssetFrame, {
-        type: item.baseCharacterType,
-        size: "fill",
-        imageUrl: item.image,
-        fallbackIcon: React.createElement(Icons.User, {
+    className: "text-[10px] font-bold uppercase tracking-wider text-sky-400 bg-sky-500/10 border border-sky-500/20 px-2 py-1 rounded-lg"
+  }, "Best Match \u2193")), results.length > 0 ? (() => {
+    var GROUP_LABELS = {
+      Killer: 'Killers',
+      Survivor: 'Survivors',
+      Perk: 'Perks',
+      Cosmetic: 'Cosmetics',
+      Build: 'Builds',
+      Map: 'Maps',
+      Challenge: 'Challenges',
+      Item: 'Items',
+      Addon: 'Add-ons',
+      Offering: 'Offerings',
+      GameIcon: 'Game Icons',
+      Glossary: 'Glossary',
+      Chapter: 'Chapters'
+    };
+    var groups = [];
+    var byCat = {};
+    results.forEach(item => {
+      var c = item.category || 'Other';
+      if (!byCat[c]) {
+        byCat[c] = [];
+        groups.push(c);
+      }
+      byCat[c].push(item);
+    });
+    var row = (key, thumb, name, tag, onTap) => React.createElement("button", {
+      key: key,
+      type: "button",
+      className: "cx-result-row",
+      onClick: onTap
+    }, thumb, React.createElement("span", {
+      style: {
+        minWidth: 0
+      }
+    }, React.createElement("span", {
+      className: "nm"
+    }, name), React.createElement("br", null), React.createElement("span", {
+      className: "tag"
+    }, tag)), React.createElement("span", {
+      className: "chev"
+    }, "\u203A"));
+    var img = (type, imageUrl, fallback) => React.createElement("span", {
+      className: "thumb"
+    }, React.createElement(AssetFrame, {
+      type: type,
+      size: "fill",
+      imageUrl: imageUrl,
+      fallbackIcon: fallback
+    }));
+    var diamond = imageUrl => React.createElement("span", {
+      className: "thumb diamond"
+    }, React.createElement("span", null, React.createElement(AssetFrame, {
+      type: "Perk",
+      size: "fill",
+      imageUrl: imageUrl,
+      fallbackIcon: React.createElement(Icons.BookOpen, {
+        width: 16,
+        height: 16,
+        className: "text-white/40"
+      })
+    })));
+    var glyph = icon => React.createElement("span", {
+      className: "thumb"
+    }, icon);
+    var renderItem = (item, idx) => {
+      var key = item.id || item.name || idx;
+      if (item.category === 'Killer' || item.category === 'Survivor') {
+        var isK = item.category === 'Killer';
+        return row(key, img(isK ? 'Killer' : 'Survivor', item.image, React.createElement(Icons.User, {
           width: 18,
           height: 18,
           className: "text-white/40"
-        })
-      })), React.createElement("div", {
-        className: "flex-1 min-w-0"
-      }, React.createElement("p", {
-        className: "text-white font-bold text-sm"
-      }, item.name), React.createElement("p", {
-        className: "text-[11px] text-zinc-500 uppercase tracking-wider"
-      }, item.isCharacterSwap ? 'Character swaps' : "".concat(item.pieceType || 'Cosmetic', " Cosmetic")), React.createElement("p", {
-        className: "text-xs text-zinc-400 mt-1 line-clamp-2"
-      }, item.isCharacterSwap ? "Character swaps outfit for ".concat(item.baseCharacterName) : "".concat(item.collectionName || item.sourceBucket || item.rarity || 'Cosmetic', " ").concat(item.pieceType || 'cosmetic', " for ").concat(item.baseCharacterName).concat(item.bindSummary ? " (".concat(item.bindSummary, ")") : ''))), React.createElement("button", {
-        onClick: () => openCosmeticProfile(item),
-        className: "px-3 py-1 rounded-lg bg-white/5 border border-white/10 text-[11px] text-white"
-      }, "Open")));
-    }
-    if (item.category === 'Build') {
-      return wrapBest(React.createElement("div", {
-        key: item.id || item.name,
-        className: "p-3 rounded-2xl bg-zinc-900/60 border border-white/10"
-      }, React.createElement("div", {
-        className: "flex justify-between items-center mb-1"
-      }, React.createElement("span", {
-        className: "text-[10px] uppercase tracking-widest font-bold text-zinc-500"
-      }, "Build"), React.createElement("span", {
-        className: "px-2 py-1 rounded-lg text-[10px] font-bold uppercase tracking-wider ".concat(item.role === 'Killer' ? 'bg-white/10 text-zinc-100' : 'bg-white/5 text-zinc-300')
-      }, item.role)), React.createElement("p", {
-        className: "text-white font-bold"
-      }, item.name), React.createElement("div", {
-        className: "flex flex-wrap gap-1 mt-1"
-      }, (item.perks || []).slice(0, 4).map(p => React.createElement("span", {
-        key: p.name,
-        className: "px-2 py-1 rounded-lg bg-white/5 border border-white/10 text-[11px] text-white"
-      }, p.name))), React.createElement("button", {
-        onClick: () => {
+        })), item.name, "".concat(item.category).concat(item.realName && item.realName !== item.name ? " \xB7 ".concat(item.realName) : ''), () => onOpenCharacterProfile && onOpenCharacterProfile(item));
+      }
+      if (item.category === 'Perk') {
+        return row(key, diamond(item.image), item.name, "".concat(item.type ? "".concat(item.type, " perk") : 'Perk').concat(item.owner ? " \xB7 ".concat(item.owner) : ''), () => onPerkTap && onPerkTap(item));
+      }
+      if (item.category === 'Cosmetic') {
+        return row(key, img(item.baseCharacterType, item.image, React.createElement(Icons.User, {
+          width: 18,
+          height: 18,
+          className: "text-white/40"
+        })), item.name, "".concat(item.isCharacterSwap ? 'Character swap' : "".concat(item.pieceType || 'Cosmetic', " Cosmetic"), " \u2022 ").concat(item.baseCharacterName || ''), () => openCosmeticProfile(item));
+      }
+      if (item.category === 'Build') {
+        return row(key, glyph(React.createElement(Icons.Wrench, {
+          width: 18,
+          height: 18,
+          className: "text-white/40"
+        })), item.name, "".concat(item.role || '', " Build \u2022 ").concat((item.perks || []).length, " perks"), () => {
           setBuildSeed && setBuildSeed(item);
           setView('buildLab');
-        },
-        className: "mt-2 px-3 py-1 rounded-lg bg-white/5 border border-white/10 text-[11px] text-white"
-      }, "Open in Build Lab")));
-    }
-    if (item.category === 'Map') {
-      return wrapBest(React.createElement("div", {
-        key: item.id || item.name,
-        className: "p-3 rounded-2xl bg-zinc-900/60 border border-white/10 flex items-center justify-between"
-      }, React.createElement("div", null, React.createElement("p", {
-        className: "text-white font-bold text-sm"
-      }, item.name), React.createElement("p", {
-        className: "text-[11px] text-zinc-500 uppercase tracking-wider"
-      }, "Map")), React.createElement("button", {
-        onClick: () => setView('realms', {
+        });
+      }
+      if (item.category === 'Map') {
+        return row(key, glyph(React.createElement(Icons.Map, {
+          width: 18,
+          height: 18,
+          className: "text-white/40"
+        })), item.name, 'Map', () => setView('realms', {
           search: item.name
-        }),
-        className: "px-3 py-1 rounded-lg bg-white/5 border border-white/10 text-[11px] text-white"
-      }, "Open maps")));
-    }
-    if (item.category === 'Challenge') {
-      var _item$tags;
-      return wrapBest(React.createElement("div", {
-        key: item.id,
-        className: "p-3 rounded-2xl bg-zinc-900/60 border border-white/10"
-      }, React.createElement("p", {
-        className: "text-white font-bold"
-      }, item.name), React.createElement("p", {
-        className: "text-[11px] text-zinc-500 uppercase tracking-wider"
-      }, "Challenge"), ((_item$tags = item.tags) === null || _item$tags === void 0 ? void 0 : _item$tags.length) > 0 && React.createElement("div", {
-        className: "flex flex-wrap gap-1 mt-1"
-      }, item.tags.map(t => React.createElement("span", {
-        key: t,
-        className: "px-2 py-1 rounded-lg bg-white/5 border border-white/10 text-[10px] text-zinc-300 uppercase tracking-wider"
-      }, t))), React.createElement("button", {
-        onClick: () => setView('progression', {
+        }));
+      }
+      if (item.category === 'Challenge') {
+        return row(key, glyph(React.createElement(Icons.Target, {
+          width: 18,
+          height: 18,
+          className: "text-white/40"
+        })), item.name, 'Challenge', () => setView('progression', {
           tab: 'challenges'
-        }),
-        className: "mt-2 px-3 py-1 rounded-lg bg-white/5 border border-white/10 text-[11px] text-white"
-      }, "Open challenges")));
-    }
-    if (item.category === 'Item') {
-      return wrapBest(React.createElement("div", {
-        key: item.id || item.name,
-        className: "p-3 rounded-2xl bg-zinc-900/60 border border-white/10 flex items-center gap-3"
-      }, React.createElement("div", {
-        className: "w-10 h-10 rounded-lg bg-white/5 border border-white/10 flex-shrink-0 overflow-hidden"
-      }, React.createElement(AssetFrame, {
-        type: "Item",
-        size: "fill",
-        imageUrl: item.image,
-        fallbackIcon: React.createElement(Icons.Package, {
+        }));
+      }
+      if (item.category === 'Item') {
+        return row(key, img('Item', item.image, React.createElement(Icons.Package, {
           width: 16,
           height: 16,
           className: "text-white/40"
-        })
-      })), React.createElement("div", {
-        className: "flex-1"
-      }, React.createElement("p", {
-        className: "text-white font-bold text-sm"
-      }, item.name), React.createElement("p", {
-        className: "text-[11px] text-zinc-500 uppercase tracking-wider"
-      }, "Item \u2022 ", item.itemType || 'Unknown')), React.createElement("button", {
-        onClick: () => setView('items', {
+        })), item.name, "Item \u2022 ".concat(item.itemType || 'Unknown'), () => setView('items', {
           search: item.name,
           mode: 'survivor',
           targetId: item.id,
           targetType: 'item'
-        }),
-        className: "px-3 py-1 rounded-lg bg-white/5 border border-white/10 text-[11px] text-white"
-      }, "Open")));
-    }
-    if (item.category === 'Addon') {
-      var isKillerAddon = item.role === 'killer';
-      var searchQuery = item.name || (isKillerAddon ? item.killerName || '' : item.itemType || '');
-      var addonMode = isKillerAddon ? 'killer' : 'survivor';
-      return wrapBest(React.createElement("div", {
-        key: item.id || item.name,
-        className: "p-3 rounded-2xl bg-zinc-900/60 border border-white/10 flex items-center gap-3"
-      }, React.createElement("div", {
-        className: "w-10 h-10 rounded-lg bg-white/5 border border-white/10 flex-shrink-0 overflow-hidden"
-      }, React.createElement(AssetFrame, {
-        type: "Addon",
-        size: "fill",
-        imageUrl: item.image,
-        fallbackIcon: React.createElement(Icons.Wrench, {
+        }));
+      }
+      if (item.category === 'Addon') {
+        var isKillerAddon = item.role === 'killer';
+        var searchQuery = item.name || (isKillerAddon ? item.killerName || '' : item.itemType || '');
+        return row(key, img('Addon', item.image, React.createElement(Icons.Wrench, {
           width: 16,
           height: 16,
           className: "text-white/40"
-        })
-      })), React.createElement("div", {
-        className: "flex-1"
-      }, React.createElement("p", {
-        className: "text-white font-bold text-sm"
-      }, item.name), React.createElement("p", {
-        className: "text-[11px] text-zinc-500 uppercase tracking-wider"
-      }, isKillerAddon ? 'Killer' : 'Survivor', " Addon", item.killerName ? " \u2022 ".concat(item.killerName) : item.itemType ? " \u2022 ".concat(item.itemType) : '')), React.createElement("button", {
-        onClick: () => setView('items', {
+        })), item.name, "".concat(isKillerAddon ? 'Killer' : 'Survivor', " Addon").concat(item.killerName ? " \u2022 ".concat(item.killerName) : item.itemType ? " \u2022 ".concat(item.itemType) : ''), () => setView('items', {
           search: searchQuery,
-          mode: addonMode,
+          mode: isKillerAddon ? 'killer' : 'survivor',
           targetId: item.id,
           targetType: 'addon'
-        }),
-        className: "px-3 py-1 rounded-lg bg-white/5 border border-white/10 text-[11px] text-white"
-      }, "Open")));
-    }
-    if (item.category === 'Offering') {
-      return wrapBest(React.createElement("div", {
-        key: item.id || item.name,
-        className: "p-3 rounded-2xl bg-zinc-900/60 border border-white/10 flex items-center gap-3"
-      }, React.createElement("div", {
-        className: "w-10 h-10 rounded-lg bg-white/5 border border-white/10 flex-shrink-0 overflow-hidden"
-      }, React.createElement(AssetFrame, {
-        type: "Offering",
-        size: "fill",
-        imageUrl: item.image,
-        fallbackIcon: React.createElement(Icons.Flame, {
+        }));
+      }
+      if (item.category === 'Offering') {
+        return row(key, img('Offering', item.image, React.createElement(Icons.Flame, {
           width: 16,
           height: 16,
           className: "text-white/40"
-        })
-      })), React.createElement("div", {
-        className: "flex-1"
-      }, React.createElement("p", {
-        className: "text-white font-bold text-sm"
-      }, item.name), React.createElement("p", {
-        className: "text-[11px] text-zinc-500 uppercase tracking-wider"
-      }, "Offering", item.type ? " \u2022 ".concat(item.type) : '')), React.createElement("button", {
-        onClick: () => setView('offerings', {
+        })), item.name, "Offering".concat(item.type ? " \u2022 ".concat(item.type) : ''), () => setView('offerings', {
           search: item.name,
           targetId: item.id,
           targetType: 'offering'
-        }),
-        className: "px-3 py-1 rounded-lg bg-white/5 border border-white/10 text-[11px] text-white"
-      }, "Open")));
-    }
-    if (item.category === 'GameIcon') {
-      var categoryColors = {
-        health: 'var(--rar-veryrare)',
-        buff: 'var(--rar-rare)',
-        debuff: 'var(--rar-common)',
-        killer: 'var(--rar-ultrarare)',
-        activity: 'var(--rar-uncommon)'
-      };
-      var color = categoryColors[item.iconCategory] || '#a1a1aa';
-      return wrapBest(React.createElement("div", {
-        key: item.id || item.name,
-        className: "p-3 rounded-2xl bg-zinc-900/60 border border-white/10 flex items-center gap-3"
-      }, React.createElement("div", {
-        className: "w-10 h-10 rounded-lg bg-white/5 border border-white/10 flex-shrink-0 overflow-hidden flex items-center justify-center"
-      }, React.createElement(AssetFrame, {
-        type: "GameIcon",
-        size: "fill",
-        imageUrl: item.icon,
-        fallbackIcon: React.createElement(Icons.AlertCircle, {
+        }));
+      }
+      if (item.category === 'GameIcon') {
+        return row(key, img('GameIcon', item.icon, React.createElement(Icons.AlertCircle, {
           width: 16,
           height: 16,
           className: "text-white/40"
-        })
-      })), React.createElement("div", {
-        className: "flex-1"
-      }, React.createElement("p", {
-        className: "text-white font-bold text-sm"
-      }, item.name), React.createElement("p", {
-        className: "text-[11px] text-zinc-500 uppercase tracking-wider"
-      }, "Game Icon \u2022 ", React.createElement("span", {
-        style: {
-          color
-        }
-      }, item.iconCategory))), React.createElement("button", {
-        onClick: () => setView('gameIcons'),
-        className: "px-3 py-1 rounded-lg bg-white/5 border border-white/10 text-[11px] text-white"
-      }, "Open")));
-    }
-    if (item.category === 'Glossary') {
-      return wrapBest(React.createElement("div", {
-        key: item.term || item.name,
-        className: "p-3 rounded-2xl bg-zinc-900/60 border border-white/10"
-      }, React.createElement("div", {
-        className: "flex items-start justify-between gap-2"
-      }, React.createElement("div", {
-        className: "flex-1"
-      }, React.createElement("p", {
-        className: "text-white font-bold text-sm"
-      }, item.name), React.createElement("p", {
-        className: "text-[11px] text-zinc-500 uppercase tracking-wider mb-1"
-      }, "Glossary \u2022 ", item.section), React.createElement("p", {
-        className: "text-xs text-zinc-400 line-clamp-2"
-      }, item.def)), React.createElement("button", {
-        onClick: () => setView('glossary'),
-        className: "px-3 py-1 rounded-lg bg-white/5 border border-white/10 text-[11px] text-white flex-shrink-0"
-      }, "Open"))));
-    }
-    if (item.category === 'Chapter') {
-      return wrapBest(React.createElement("div", {
-        key: item.id || item.name,
-        className: "p-3 rounded-2xl bg-zinc-900/60 border border-white/10 flex items-center gap-3"
-      }, React.createElement("div", {
-        className: "w-10 h-10 rounded-lg bg-white/5 border border-white/10 flex-shrink-0 flex items-center justify-center"
-      }, React.createElement(Icons.Clock, {
-        width: 18,
-        height: 18,
-        className: "text-zinc-400"
-      })), React.createElement("div", {
-        className: "flex-1"
-      }, React.createElement("p", {
-        className: "text-white font-bold text-sm"
-      }, item.name), React.createElement("p", {
-        className: "text-[11px] text-zinc-500 uppercase tracking-wider"
-      }, item.chapterNumber ? "Chapter ".concat(item.chapterNumber) : item.type === 'base' ? 'Base Game' : 'Release', " \u2022 ", item.displayDate)), React.createElement("button", {
-        onClick: () => setView('timeline'),
-        className: "px-3 py-1 rounded-lg bg-white/5 border border-white/10 text-[11px] text-white"
-      }, "Open Timeline")));
-    }
-    return null;
-  }) : React.createElement("div", {
-    className: "text-center mt-12 text-zinc-600"
+        })), item.name, "Game Icon \u2022 ".concat(item.iconCategory || ''), () => setView('gameIcons'));
+      }
+      if (item.category === 'Glossary') {
+        return row(key, glyph(React.createElement(Icons.BookOpen, {
+          width: 18,
+          height: 18,
+          className: "text-white/40"
+        })), item.name, "Glossary \u2022 ".concat(item.section || ''), () => setView('glossary'));
+      }
+      if (item.category === 'Chapter') {
+        return row(key, glyph(React.createElement(Icons.Clock, {
+          width: 18,
+          height: 18,
+          className: "text-white/40"
+        })), item.name, "".concat(item.chapterNumber ? "Chapter ".concat(item.chapterNumber) : item.type === 'base' ? 'Base Game' : 'Release', " \u2022 ").concat(item.displayDate || ''), () => setView('timeline'));
+      }
+      return null;
+    };
+    return groups.map(cat => React.createElement("div", {
+      key: cat
+    }, React.createElement("p", {
+      className: "home-secttl"
+    }, GROUP_LABELS[cat] || cat, " \xB7 ", byCat[cat].length), byCat[cat].map(renderItem)));
+  })() : React.createElement("div", {
+    className: "text-center mt-12 text-zinc-400"
   }, React.createElement("p", {
     className: "font-medium text-sm"
   }, "No results found.")), React.createElement(SiteFooterContent, null)) : React.createElement("div", {
@@ -15051,6 +14953,7 @@ var App = () => {
           cosmeticsCatalog: cosmeticsCatalogForDisplay,
           allCharacters: [...killers, ...survivors],
           onOpenCharacterProfile: openCharacterArticle,
+          onPerkTap: openPerkArticle,
           settings: settings
         });
       case 'progression':
@@ -15439,6 +15342,7 @@ var App = () => {
           cosmeticsCatalog: cosmeticsCatalogForDisplay,
           allCharacters: [...killers, ...survivors],
           onOpenCharacterProfile: openCharacterArticle,
+          onPerkTap: openPerkArticle,
           settings: settings
         });
     }

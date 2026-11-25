@@ -184,6 +184,13 @@ function cleanDescription(text, tunables) {
   return normalizeMultilineText(applyTunables(text || '', tunables));
 }
 
+function cleanPowerDescription(item) {
+  const text = cleanDescription(item.description || '', item.modifiers);
+  const lead = `Power: ${item.name} `;
+  if (item.name && text.startsWith(lead)) return text.slice(lead.length);
+  return text;
+}
+
 function slugName(value) {
   return String(value || '')
     .toLowerCase()
@@ -315,7 +322,7 @@ function toPowerItemEntry(sourceKey, item, character) {
     name: item.name,
     type: item.type || 'power',
     itemType: item.item_type || null,
-    description: cleanDescription(item.description || '', item.modifiers),
+    description: cleanPowerDescription(item),
     role: item.role || 'killer',
     rarity: item.rarity || 'common',
     bloodweb: item.bloodweb === 1,
