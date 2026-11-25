@@ -1,11 +1,65 @@
 [
   {
-    "id": "aaef5753-3c84-4704-bab8-c0acf50f6d72",
-    "description": "You basic-vault Windows 15/20/25% faster. All basic-attack cooldowns are 10% shorter, including successful, missed and obstructed attacks. Blindness and Pallet stuns last 25% longer.",
+    "id": "0ef07304-9160-4bf8-8445-14d7350764c2",
+    "description": "When the Trial starts: - 4 random Hooks become Scourge Hooks. - The Basement Hooks become Scourge Hooks. While you are at least 24m away from a Survivor on a Scourge Hook, any Generator that isn't being repaired regresses at 200% speed. When the Survivor is no longer hooked this effect ends in 20/25/30s.",
     "source": {
-      "url": "https://forums.bhvr.com/dead-by-daylight/kb/articles/562-10-2-2-bugfix-patch",
-      "patch": "10.2.2",
-      "channel": "live"
+      "url": "https://steamstore-a.akamaihd.net/news/externalpost/steam_community_announcements/1849827110447019",
+      "channel": "live",
+      "patch": "10.3.0"
+    }
+  },
+  {
+    "id": "40743bbd-e2cc-4d8e-b03b-8df64d00f3fd",
+    "description": "While within 28/26/24m of a Survivor, you randomly hear whispers. While more than 28/26/24m away from a Survivor, gain 7% Haste.",
+    "source": {
+      "url": "https://steamstore-a.akamaihd.net/news/externalpost/steam_community_announcements/1849827110447019",
+      "channel": "live",
+      "patch": "10.3.0"
+    }
+  },
+  {
+    "id": "409cc60f-238b-4d81-9fb2-3c4ab78911fc",
+    "description": "Other Survivors unhook you 65/70/75% faster. Whenever you are unhooked, you gain 7% more Haste.",
+    "source": {
+      "url": "https://steamstore-a.akamaihd.net/news/externalpost/steam_community_announcements/1849827110447019",
+      "channel": "live",
+      "patch": "10.3.0"
+    }
+  },
+  {
+    "id": "5594e410-b903-44d7-b949-477d34f6b2a7",
+    "description": "The first time you hook each Survivor, you earn 1 Token. For each Token: - Gain 4% Haste while carrying a Survivor. - Hook Survivors 4% faster. When you have 4 Tokens, all Survivors: - Scream. - Gain Exposed for 60/65/70s.",
+    "source": {
+      "url": "https://steamstore-a.akamaihd.net/news/externalpost/steam_community_announcements/1849827110447019",
+      "channel": "live",
+      "patch": "10.3.0"
+    }
+  },
+  {
+    "id": "901abd9c-9b05-40e7-8f70-c2150f24c844",
+    "description": "When the trial starts, and after a Generator is completed, you earn 1 Token, up to 5. When the Killer gets within 20m of you, spend 1 Token. Then, for the next 13/14/15s: - You see the Auras of Pallets and Windows within 32m. - You see the Auras of other Survivors. - You see the Killer's Aura.",
+    "source": {
+      "url": "https://steamstore-a.akamaihd.net/news/externalpost/steam_community_announcements/1849827110447019",
+      "channel": "live",
+      "patch": "10.3.0"
+    }
+  },
+  {
+    "id": "aaef5753-3c84-4704-bab8-c0acf50f6d72",
+    "description": "You basic-vault Windows 15% faster. Your successful basic-attack cooldown is 13/14/15% shorter. Whenever you are blinded or Pallet-stunned the duration is 15% longer.",
+    "source": {
+      "url": "https://steamstore-a.akamaihd.net/news/externalpost/steam_community_announcements/1849827110447019",
+      "channel": "live",
+      "patch": "10.3.0"
+    }
+  },
+  {
+    "id": "d03e92ab-1e88-4331-9f48-1074344c2483",
+    "description": "You do not scare Crows or scream. You bless and cleanse Totems, and unlock Chests silently, and 23/24/25% faster.",
+    "source": {
+      "url": "https://steamstore-a.akamaihd.net/news/externalpost/steam_community_announcements/1849827110447019",
+      "channel": "live",
+      "patch": "10.3.0"
     }
   }
 ]
